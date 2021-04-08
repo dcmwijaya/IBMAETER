@@ -38,6 +38,12 @@
 
 <br>
 
+**Run the server**
+
+```bash
+php spark serve
+```
+
 ## Kelompok 05 Framewok - C 2021
 | NO | NAMA ANGGOTA | NPM |
 | --- | --- | --- |
