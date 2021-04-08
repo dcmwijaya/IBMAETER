@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class Admin_Model extends Model
+{
+    // protected $table = 'pengumuman';
+
+    protected $table = 'user';
+
+    // ============= CRUD Data User ================
+
+    public function getUser()
+    {
+        return $this->findAll();
+    }
+
+    public function addUser($data)
+    {
+        $query = $this->db->table('user')->insert($data);
+        return $query;
+    }
+
+    public function updateUser($data, $id)
+    {
+        $query = $this->db->table('user')->update($data, array('uid' => $id));
+        return $query;
+    }
+
+    public function deleteUser($id)
+    {
+        $query = $this->db->table('user')->delete(array('uid' => $id));
+        return $query;
+    }
+}
