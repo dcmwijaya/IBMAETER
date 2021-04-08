@@ -4,7 +4,7 @@
 ![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
 ![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-black.svg?style=flat&logo=mysql&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-blue.svg?style=flat&logo=mysql&logoColor=white)
 
 # WEB-INVENTARIS-BARANG-CODEIGNITER-4
 <b>Web Inventaris Barang Berbasis Codeigniter 4</b>
