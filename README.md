@@ -27,9 +27,9 @@
 <p>3. Download Visual Studio Code (https://code.visualstudio.com/)</p>
 <p>4. Download Composer (https://getcomposer.org/)</p>
 <p>5. Download Git (http://git-scm.com/)</p>
-<p>6. Install Codeigniter 4 melalui gitbash arahkan pada htdocs (https://codeigniter.com/user_guide/installation/installing_composer.html)</p>
-<p>7. Extract file yang di download tadi ke XAMPP -> htdocs</p>
-<p>8. Rename folder menjadi : invenbar-ci4 -> Masuk folder tersebut lalu klik kanan pilih gitbash lalu ketikkan -> $php spark serve</p>
+<p>6. Install Codeigniter 4 melalui gitbash arahkan pada htdocs dengan nama folder invenbar-ci4 (https://codeigniter.com/user_guide/installation/installing_composer.html)</p>
+<p>7. Extract file yang di download tadi -> Buka folder -> isinya semua copy paste-kan ke dalam folder invenbar-ci4 yang berada pada direktori XAMPP/htdocs anda (replace)</p>
+<p>8. Buka folder invenbar-ci4 yang di htdocs -> Masuk folder tersebut lalu klik kanan pilih gitbash lalu ketikkan -> $php spark serve</p>
 <p>9. Buka XAMPP lalu start apache dan mysql</p>
 <p>10. Kemudian buat database melalui browser di localhost/phpmyadmin/ dengan nama ci4warehouse_db -> import database warehouse_db.sql</p>
 <p>11. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 (atau sesuaikan dengan yang ada pada gitbash)</p>
