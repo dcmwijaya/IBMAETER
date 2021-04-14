@@ -38,6 +38,11 @@ https://getcomposer.org/
 ```bash
 http://git-scm.com/
 ```
+5. Buat database dengan nama warehouse_db di local, ketikkan pada browser :
+```bash
+localhost/phpmyadmin/
+```
+6. Import database dengan nama warehouse_db.sql
 
 <br>
 
@@ -53,12 +58,18 @@ composer create-project codeigniter4/appstarter invenbar-ci4
 1. Download repository ini
 2. Lalu buka file XAMP (php.ini) -> hapus semicolon (;) didepan extension=intl ->save
 3. Extract file yang di download tadi -> Copy & Paste isi folder -> XAMP (htdocs) -> masuk kedalam folder invenbar-ci4 -> Replace
-4. Pastikan masih berada di dalam folder invenbar-ci4 -> Klik kanan pilih gitbash lalu ketikkan -> $php spark serve
-5. Buka XAMPP lalu start apache dan mysql
-6. Kemudian buat database melalui browser di localhost/phpmyadmin/ dengan nama warehouse_db -> import database warehouse_db.sql
-7. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 atau sesuaikan yang ada pada gitbash
-8. email admin : saber.genshin@gmail.com, password admin : diluc-senpai
-9. Selesai, selamat menikmati
+4. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 atau sesuaikan yang ada pada gitbash
+5. email admin : saber.genshin@gmail.com, password admin : diluc-senpai
+6. Selesai, selamat menikmati
+
+<br>
+
+## Run Server
+1. Pastikan masih berada di dalam folder invenbar-ci4 -> Klik kanan pilih gitbash lalu ketikkan :
+```bash
+$php spark serve
+```
+2. Buka XAMPP lalu start apache dan mysql
 
 <br>
 
