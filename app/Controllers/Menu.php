@@ -16,6 +16,8 @@ class Menu extends BaseController
 	protected $request; // Menghilangkan alert getPost()
 	protected $session;
 	protected $userModel;
+	protected $barangModel;
+	protected $newsModel;
 
 	public function __construct()
 	{
@@ -23,6 +25,8 @@ class Menu extends BaseController
 		$this->session->start();
 
 		$this->userModel = new userModel();
+		$this->barangModel = new Barang_Model();
+		$this->newsModel = new Pengumuman_Model();
 	}
 
 	// ========================= Login ========================
@@ -92,34 +96,28 @@ class Menu extends BaseController
 
 	public function dashboard()
 	{
-
-		$users = new Barang_Model();
-		$info = new Pengumuman_Model();
-		// $items = 
 		$data = [
 			"title" => "Menu User | INVENBAR",
-			"info" => $info->showTask(),
-			"item" => $users->getItems()
+			"info" => $this->newsModel->showTask(),
+			"item" => $this->barangModel->getItems()
 		];
 		return view('global/dashboard', $data);
 	}
 
 	public function Add_item()
 	{
-		$model = new Barang_Model();
 		$data = array(
 			'nama_item' => $this->request->getPost('nama_item'),
 			'stok' => $this->request->getPost('stok'),
 			'jenis' => $this->request->getPost('jenis'),
 			'penyimpanan' => $this->request->getPost('penyimpanan')
 		);
-		$model->addItem($data);
+		$this->barangModel->addItem($data);
 		return redirect()->to('dashboard');
 	}
 
 	public function Edit_item()
 	{
-		$model = new Barang_Model();
 		$id = $this->request->getPost('id_item');
 		$data = array(
 			'nama_item' => $this->request->getPost('nama_item'),
@@ -127,28 +125,26 @@ class Menu extends BaseController
 			'jenis' => $this->request->getPost('jenis'),
 			'penyimpanan' => $this->request->getPost('penyimpanan')
 		);
-		$model->updateItem($data, $id);
+		$this->barangModel->updateItem($data, $id);
 		return redirect()->to('dashboard');
 	}
 
 	public function Delete_item()
 	{
-		$model = new Barang_Model();
 		$id = $this->request->getPost('id_item');
-		$model->deleteItem($id);
+		$this->barangModel->deleteItem($id);
 		return redirect()->to('dashboard');
 	}
 
 	public function Income_item()
 	{
-		$model = new Barang_Model();
 		$id = $this->request->getPost('id_item');
 		if ($id != 0) { // if gk guna
 			$data = array(
 				'jumlah_in' => $this->request->getPost('jumlah_in'),
 				'id_item' => $this->request->getPost('id_item')
 			);
-			$model->IncomeItem($data, $id);
+			$this->barangModel->IncomeItem($data, $id);
 		}
 		$data = array(
 			'tgl' => $this->request->getPost('tgl'),
@@ -157,21 +153,20 @@ class Menu extends BaseController
 			'ket' => $this->request->getPost('ket')
 		);
 
-		$model->LogItem($data);
+		$this->barangModel->LogItem($data);
 
 		return redirect()->to('dashboard');
 	}
 
 	public function Outcome_item()
 	{
-		$model = new Barang_Model();
 		$id = $this->request->getPost('id_item');
 		if ($id != 0) { // if gk guna
 			$data = array(
 				'jumlah_out' => $this->request->getPost('jumlah_out'),
 				'id_item' => $this->request->getPost('id_item')
 			);
-			$model->OutcomeItem($data, $id);
+			$this->barangModel->OutcomeItem($data, $id);
 		}
 		$data = array(
 			'tgl' => $this->request->getPost('tgl'),
@@ -180,7 +175,7 @@ class Menu extends BaseController
 			'ket' => $this->request->getPost('ket')
 		);
 
-		$model->LogItem($data);
+		$this->barangModel->LogItem($data);
 
 		return redirect()->to('dashboard');
 	}
@@ -188,10 +183,9 @@ class Menu extends BaseController
 
 	public function pengumuman()
 	{
-		$info = new Pengumuman_Model();
 		$data = [
 			"title" => "Pengumuman | INVENBAR",
-			"info" => $info->showTask()
+			"info" => $this->newsModel->showTask()
 		];
 		return view('global/user_pengumuman.php', $data);
 	}
@@ -199,11 +193,10 @@ class Menu extends BaseController
 	// ============================= Profile Akun ================================
 	public function profakun($email)
 	{
-		$info = new Pengumuman_Model();
 		$data = [
 			"title" => "My Profile | INVENBAR",
 			'user' => $this->userModel->getUser($email),
-			"info" => $info->showTask()
+			"info" => $this->newsModel->showTask()
 		];
 		return view('global/myprofile', $data);
 	}
@@ -212,10 +205,9 @@ class Menu extends BaseController
 
 	public function profedit($uid)
 	{
-		$info = new Pengumuman_Model();
 		$data = [
 			"title" => "Edit Profile | INVENBAR",
-			"info" => $info->showTask(),
+			"info" => $this->newsModel->showTask(),
 			'validation' => \Config\Services::Validation(),
 			'user' => $this->userModel->getUserId($uid)
 		];
@@ -330,28 +322,35 @@ class Menu extends BaseController
 	}
 
 
-	// ==================================== View Chart =========================================
-
+	// ==================================== View Chart & Excel =========================================
 	public function chart()
 	{
-		$info = new Pengumuman_Model();
-		$model = new Barang_Model();
 		$data = [
 			"title" => "View Chart | INVENBAR",
-			"info" => $info->showTask(),
-			"stok" => $model->stock(),
-			"class" => $model->invenclass(),
-			"category" => $model->jenis()
+			"info" => $this->newsModel->showTask(),
+			"class" => $this->barangModel->invenclass(),
+			"category" => $this->barangModel->jenis(),
+			"sc1" => $this->barangModel->stockclass1(),
+			"sc2" => $this->barangModel->stockclass2(),
+			"sc3" => $this->barangModel->stockclass3(),
+			"sc4" => $this->barangModel->stockclass4(),
+			"sc5" => $this->barangModel->stockclass5(),
+			"sc6" => $this->barangModel->stockclass6(),
+			"sc7" => $this->barangModel->stockclass7(),
+			"sj1" => $this->barangModel->stockjenis1(),
+			"sj2" => $this->barangModel->stockjenis2(),
+			"sj3" => $this->barangModel->stockjenis3(),
+			"sj4" => $this->barangModel->stockjenis4(),
+			"sj5" => $this->barangModel->stockjenis5()
 		];
 		return view('global/viewchart', $data);
 	}
 
 	public function excelbarang() // **********
 	{
-		$model = new Barang_Model();
 		$data = [
 			"title" => "Excel | INVENBAR",
-			"item" => $model->getItems()
+			"item" => $this->barangModel->getItems()
 		];
 
 		return view('global/excelBarang', $data);

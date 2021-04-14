@@ -4,18 +4,65 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <?php
-foreach ($category as $val) {
-	$ctg[] = $val['jenis'];
+foreach ($category as $value) {
+	$ctg[] = $value['jenis'];
 }
 
 foreach ($class as $value) {
 	$inv[] = $value['penyimpanan'];
 }
 
-foreach ($stok as $value) {
-	$stk[] = $value['stok'];
+foreach ($sc1 as $vs1) {
+	$sin[] = $vs1['stok'];
 }
+
+foreach ($sc2 as $vs2) {
+	$sin[] = $vs2['stok'];
+}
+
+foreach ($sc3 as $vs3) {
+	$sin[] = $vs3['stok'];
+}
+
+foreach ($sc4 as $vs4) {
+	$sin[] = $vs4['stok'];
+}
+
+foreach ($sc5 as $vs5) {
+	$sin[] = $vs5['stok'];
+}
+
+foreach ($sc6 as $vs6) {
+	$sin[] = $vs6['stok'];
+}
+
+foreach ($sc7 as $vs7) {
+	$sin[] = $vs7['stok'];
+}
+
+foreach ($sj1 as $vj1) {
+	$sct[] = $vj1['stok'];
+}
+
+foreach ($sj2 as $vj2) {
+	$sct[] = $vj2['stok'];
+}
+
+foreach ($sj3 as $vj3) {
+	$sct[] = $vj3['stok'];
+}
+
+foreach ($sj4 as $vj4) {
+	$sct[] = $vj4['stok'];
+}
+
+foreach ($sj5 as $vj5) {
+	$sct[] = $vj5['stok'];
+}
+
 ?>
+
+
 
 <!--Main layout-->
 <main class="bg-dark">
@@ -41,7 +88,7 @@ foreach ($stok as $value) {
 								labels: <?= json_encode($inv); ?>,
 								datasets: [{
 									label: 'R-Barang',
-									data: <?= json_encode($stk); ?>,
+									data: <?= json_encode($sin); ?>,
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
 										'rgba(54, 162, 235, 0.2)',
@@ -84,7 +131,7 @@ foreach ($stok as $value) {
 								labels: <?= json_encode($ctg); ?>,
 								datasets: [{
 									label: 'J-Barang',
-									data: <?= json_encode($stk); ?>,
+									data: <?= json_encode($sct); ?>,
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
 										'rgba(54, 162, 235, 0.2)',
@@ -127,7 +174,7 @@ foreach ($stok as $value) {
 								labels: <?= json_encode($inv); ?>,
 								datasets: [{
 									label: 'R-Barang',
-									data: <?= json_encode($stk); ?>,
+									data: <?= json_encode($sin); ?>,
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
 										'rgba(54, 162, 235, 0.2)',
@@ -170,7 +217,7 @@ foreach ($stok as $value) {
 								labels: <?= json_encode($ctg); ?>,
 								datasets: [{
 									label: 'J-Barang',
-									data: <?= json_encode($stk); ?>,
+									data: <?= json_encode($sct); ?>,
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
 										'rgba(54, 162, 235, 0.2)',

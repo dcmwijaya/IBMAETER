@@ -1,47 +1,63 @@
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?style=flat)](https://github.com/ellerbrock/open-source-badges/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![GitHub last commit](https://img.shields.io/github/last-commit/devancakra/WEB-INVENTARIS-BARANG-CODEIGNITER-4)
-![CI4](https://img.shields.io/badge/-Codeigniter4-black?style=flat&logo=Codeigniter)
-![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
-![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
-![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-black.svg?style=flat&logo=mysql&logoColor=white)
+# CodeIgniter 4 Application Starter
 
-# WEB-INVENTARIS-BARANG-CODEIGNITER-4
-<b>Web Inventaris Barang Berbasis Codeigniter 4</b>
-<p>Dibuat untuk pemenuhan tugas final project UTS mata kuliah Pemrograman Framework</p>
+## What is CodeIgniter?
 
-<br>
+CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
+More information can be found at the [official site](http://codeigniter.com).
 
-## Tools / Framework / Other
-| Bagian | Tools yang digunakan |
-| --- | --- |
-| Fitur | Login, Create, Read, Update, Delete, Validation, Print, Export excel, Pagination, Profile, Etc |
-| Framework | Bootstrap 4, CodeIgniter 4 |
-| Tools | Visual Studio Code, XAMPP (PHP Versi 7.4.16), Composer, Git |
+This repository holds a composer-installable app starter.
+It has been built from the
+[development repository](https://github.com/codeigniter4/CodeIgniter4).
 
-<br>
+More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
 
-## Cara Menjalankan Web Secara Local
-<p>1. Download repository ini</p>
-<p>2. Download XAMPP (https://www.apachefriends.org/index.html), lalu buka file php.ini -> hapus semicolon (;) didepan extension=intl ->save</p>
-<p>3. Download Visual Studio Code (https://code.visualstudio.com/)</p>
-<p>4. Download Composer (https://getcomposer.org/)</p>
-<p>5. Download Git (http://git-scm.com/)</p>
-<p>6. Install Codeigniter 4 melalui gitbash arahkan pada htdocs (https://codeigniter.com/user_guide/installation/installing_composer.html)</p>
-<p>7. Extract file yang di download tadi ke XAMPP -> htdocs (replace)</p>
-<p>8. Masuk kedalam folder ci4app -> Klik kanan pilih gitbash lalu ketikkan -> $php spark serve</p>
-<p>9. Buka XAMPP lalu start apache dan mysql</p>
-<p>10. Kemudian buat database melalui browser di localhost/phpmyadmin/ dengan nama ci4warehouse_db -> import database warehouse_db.sql</p>
-<p>11. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 (atau sesuaikan dengan yang ada pada gitbash)</p>
-<p>12. email admin : saber.genshin@gmail.com, password admin : diluc-senpai</p>
-<p>13. Selesai, selamat menikmati</p>
+The user guide corresponding to this version of the framework can be found
+[here](https://codeigniter4.github.io/userguide/).
 
-<br>
+## Installation & updates
 
-## Kelompok 05 Framewok - C 2021
-| NO | NAMA ANGGOTA | NPM |
-| --- | --- | --- |
-| 1 | Devan Cakra Mudra Wijaya | 18081010013 |
-| 2 | Merdin Risalul Abrori | 18081010081 |
-| 3 | Rifky Akhmad Fernanda | 18081010126 |
+`composer create-project codeigniter4/appstarter` then `composer update` whenever
+there is a new release of the framework.
+
+When updating, check the release notes to see if there are any changes you might need to apply
+to your `app` folder. The affected files can be copied or merged from
+`vendor/codeigniter4/framework/app`.
+
+## Setup
+
+Copy `env` to `.env` and tailor for your app, specifically the baseURL
+and any database settings.
+
+## Important Change with index.php
+
+`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
+for better security and separation of components.
+
+This means that you should configure your web server to "point" to your project's *public* folder, and
+not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
+framework are exposed.
+
+**Please** read the user guide for a better explanation of how CI4 works!
+
+## Repository Management
+
+We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
+We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
+FEATURE REQUESTS.
+
+This repository is a "distribution" one, built by our release preparation script.
+Problems with it can be raised on our forum, or as issues in the main repository.
+
+## Server Requirements
+
+PHP version 7.3 or higher is required, with the following extensions installed:
+
+- [intl](http://php.net/manual/en/intl.requirements.php)
+- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+Additionally, make sure that the following extensions are enabled in your PHP:
+
+- json (enabled by default - don't turn it off)
+- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
+- xml (enabled by default - don't turn it off)

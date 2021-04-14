@@ -14,6 +14,20 @@ class Admin extends BaseController
 	 * @var HTTP\IncomingRequest
 	 */
 	protected $request; // Menghilangkan alert getPost()
+	protected $session;
+	protected $adminModel;
+	protected $barangModel;
+	protected $newsModel;
+
+	public function __construct()
+	{
+		$this->session = \Config\Services::session();
+		$this->session->start();
+
+		$this->adminModel = new Admin_Model();
+		$this->barangModel = new Barang_Model();
+		$this->newsModel = new Pengumuman_Model();
+	}
 
 	public function index()
 	{
@@ -22,32 +36,28 @@ class Admin extends BaseController
 
 	public function datauser()
 	{
-		$users = new Admin_Model();
-		$info = new Pengumuman_Model();
 		$data = [
 			"title" => "Data User | INVENBAR",
-			"info" => $info->showTask(),
-			"user" => $users->getUser()
+			"info" => $this->newsModel->showTask(),
+			"user" => $this->adminModel->getUser()
 		];
 		return view('admin/data_user', $data);
 	}
 
 	public function Add_User()
 	{
-		$model = new Admin_Model();
 		$data = array(
 			'nama' => $this->request->getPost('user'),
 			'email' => $this->request->getPost('email'),
 			'password' => $this->request->getPost('password'),
 			'role' => $this->request->getPost('role')
 		);
-		$model->addUser($data);
+		$this->adminModel->addUser($data);
 		return redirect()->to('datauser');
 	}
 
 	public function Edit_User()
 	{
-		$model = new Admin_Model();
 		$id = $this->request->getPost('user_id');
 		$data = array(
 			'nama' => $this->request->getPost('user'),
@@ -55,24 +65,22 @@ class Admin extends BaseController
 			'password' => $this->request->getPost('password'),
 			'role' => $this->request->getPost('role')
 		);
-		$model->updateUser($data, $id);
+		$this->adminModel->updateUser($data, $id);
 		return redirect()->to('datauser');
 	}
 
 	public function Delete_User()
 	{
-		$model = new Admin_Model();
 		$id = $this->request->getPost('user_id');
-		$model->deleteUser($id);
+		$this->adminModel->deleteUser($id);
 		return redirect()->to('datauser');
 	}
 
 	public function exceluser()
 	{
-		$model = new Admin_Model();
 		$data = [
 			"title" => "Excel | INVENBAR",
-			"user" => $model->getUser()
+			"user" => $this->adminModel->getUser()
 		];
 
 		return view('admin/excelUser', $data);
@@ -82,11 +90,10 @@ class Admin extends BaseController
 
 	public function adminpengumuman()
 	{
-		$info = new Pengumuman_Model();
 		// $info2 = new Admin_Model();
 		$data = [
 			"title" => "Edit Pengumuman | INVENBAR",
-			"info" => $info->showTask()
+			"info" => $this->newsModel->showTask()
 			// "info2" => $info2->showInfo()
 		];
 		return view('admin/pengumuman', $data);
@@ -95,13 +102,12 @@ class Admin extends BaseController
 	public function editpengumuman()
 	{
 		// $info = new Admin_Model();
-		$info = new Pengumuman_Model();
 		$id = $this->request->getPost('id_info');
 		$data = array(
 			'judul' => $this->request->getPost('judul'),
 			'isi' => $this->request->getPost('isi')
 		);
-		$info->editInfo($data, $id);
+		$this->newsModel->editInfo($data, $id);
 		return redirect()->to('adminpengumuman');
 	}
 }
