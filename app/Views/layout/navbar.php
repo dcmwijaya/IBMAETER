@@ -11,7 +11,7 @@
 			<!-- Right links -->
 			<ul class="navbar-nav ms-auto d-flex flex-row">
 				<!-- Nav Item - Messages -->
-				<li class="nav-item dropdown no-arrow mx-1">
+				<li class="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
 					<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-envelope fa-fw"></i>
 						<!-- Counter - Messages -->
@@ -49,6 +49,7 @@
 							</a> -->
 					</div>
 				</li>
+
 				<!-- Avatar -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">

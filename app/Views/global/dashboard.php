@@ -30,7 +30,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<table id="table_item" class="display nowrap" style="font-size: 14px; width:100%;">
+							<table id="table_item" class="display nowrap" style="font-size: 14px; width:99%;">
 								<thead>
 									<tr>
 										<th>No</th>

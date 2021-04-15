@@ -1,27 +1,44 @@
 <!-- start wrapper pembungkus bodieh-->
 <div class="wrapper">
 	<nav id="sidebar" class="collapse d-lg-block sidebar collapse">
-		<div class="container sidebar-header" style="padding: 11px">
+		<!-- Image and text -->
+		<nav class="navbar navbar-light bg-light justify-content-center font-weight-bold" style="padding: 10.5px">
 			<a class="navbar-brand" href="<?= base_url('dashboard') ?>">
-				<div class="row align-items-center">
-					<div class="col-4 align-self-start px-4">
-						<img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" alt="" loading="lazy" />
-
-					</div>
-					<div class="col-8 align-self-end">
-						<h5 class="text-center">INVENBAR</h5>
+				<img class="mr-3 d-inline-block align-top" src="<?= base_url('../img/icon/favicon-32x32.png') ?>" width="30" height="30" alt="Logo Brand">
+				INVENBAR
+			</a>
+		</nav>
+		<!-- Profile Picture -->
+		<!-- <div class="container sidebar-header">
+			<div class="row align-items-center">
+				<nav class="navbar justify-content-center font-weight-bold" style="padding: 10.5px">
+					<a class="navbar-brand" href="<?= base_url('dashboard') ?>">
+						<img class="d-inline-block align-top rounded-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" width="150" height="150" alt="Photo Profile">
+					</a>
+				</nav>
+			</div>
+			<div class="row">
+				<p class="text-center font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 6px; color:yellowgreen"></i></p>
+				<p class="text-center">User | Online</p>
+			</div>
+		</div> -->
+		<div class="card my-4 mx-2">
+			<div class="card-body">
+				<div class="d-flex flex-column align-items-center text-center">
+					<a href="<?= base_url('menu/profakun') . "/" . session('email') ?>">
+						<img class="d-inline-block align-top rounded-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" width="150" height="150" style="box-shadow: 0px 3px 5px 0px #a8a8a8;" alt="Photo Profile">
+					</a>
+					<div class="mt-3">
+						<h5 class="text-center text-dark font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 10px; color:yellowgreen; vertical-align: middle;"></i></h5>
+						<p class="text-dark mb-1">Pekerja | Online</p>
 					</div>
 				</div>
-			</a>
+			</div>
 		</div>
-		<ul class="lisst-unstyled components">
+		<!-- Menus Sidebar -->
+		<ul class="sidebar-navigation px-0">
 			<div class="pilside position-sticky">
-				<div class="list-group list-group-flush mx-3 mt-4">
-					<!-- profile -->
-					<!-- <div class="col-sm-12 p-0">
-						<img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22" alt="" loading="lazy" />
-					</div> -->
-					<!-- admon -->
+				<div class="list-group list-group-flush mx-2 mt-4">
 					<div>
 						<button class="list-group-item list-group-item-action py-2 ripple font-weight-bold" type="button" data-toggle="collapse" data-target="#admin_menu" aria-expanded="false" aria-controls="admin_menu">
 							<i class="fas fa-user-tie fa-fw me-3"></i>Admin Menu
