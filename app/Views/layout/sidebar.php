@@ -8,20 +8,6 @@
 				INVENBAR
 			</a>
 		</nav>
-		<!-- Profile Picture -->
-		<!-- <div class="container sidebar-header">
-			<div class="row align-items-center">
-				<nav class="navbar justify-content-center font-weight-bold" style="padding: 10.5px">
-					<a class="navbar-brand" href="<?= base_url('dashboard') ?>">
-						<img class="d-inline-block align-top rounded-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" width="150" height="150" alt="Photo Profile">
-					</a>
-				</nav>
-			</div>
-			<div class="row">
-				<p class="text-center font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 6px; color:yellowgreen"></i></p>
-				<p class="text-center">User | Online</p>
-			</div>
-		</div> -->
 		<div class="card my-4 mx-2">
 			<div class="card-body">
 				<div class="d-flex flex-column align-items-center text-center">
