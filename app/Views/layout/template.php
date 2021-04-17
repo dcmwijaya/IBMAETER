@@ -1,79 +1,117 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- CSS -->
-	<link rel="icon" href="<?= base_url('img/icon/favicon.ico') ?>">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="<?= base_url('fontawesome/css/all.css') ?>">
+	<meta name="description" content="Website Item Warehouse Management Framework C">
+	<meta name="author" content="Dev Cakra, Merdin Risal, RifkyA911">
 	<title><?= $title; ?></title>
-
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+	<link rel="icon" href="<?= base_url('img/icon/favicon.ico') ?>">
 	<!-- Google Fonts Roboto -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-	<!-- MDB -->
+
+	<!------------------------ CSS ------------------------>
+	<!-- Bootsrap 4.0.0 but replace and using ver MDB -->
+	<link rel="stylesheet" href="<?= base_url('../vendor/bootstrap-4.0.0/dist/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('../css/mdb.min.css') ?>" />
-	<!-- Custom styles -->
-	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" /> <!-- ganti cuy -->
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="<?= base_url('fontawesome/css/all.css') ?>">
+
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 	<!-- datatables -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="<?= base_url('../vendor/DataTables/css/jquery.dataTables.css') ?>">
 
+	<!-- malihu scrollbar -->
+	<link rel="stylesheet" href="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css') ?>">
 
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
 </head>
 
 <body>
-
+	<?= $this->include('layout/tentang'); ?>
 	<?= $this->include('layout/sidebar'); ?>
 	<?= $this->include('layout/navbar'); ?>
-
 	<?= $this->renderSection('content'); ?>
+
 	<footer class="py-5 bg-light mt-auto" style="font-family: 'Roboto';">
 		<div class="container">
-			<p class="m-0 text-center text-dark"><img class="mr-1" src="<?= base_url('img/icon/favicon-32x32.png') ?>" alt=""> Inventory Barang Gudang - Kelompok 5 Framework C 2021</p>
+			<p class="m-0 text-center text-dark"><a class="text-dark" type="button" data-toggle="modal" data-target="#TentangModal"><img class="mr-1" src="<?= base_url('img/icon/favicon-32x32.png') ?>" alt=""> Inventory Barang Gudang - Kelompok 5 Framework C 2021</a></p>
 		</div>
 	</footer>
-	</div>
-	<!-- END wrapper pembungkus bodieh from sidebar.php-->
-
+	</div> <!-- END wrapper pembungkus body from sidebar.php-->
 </body>
 
-<!-- MDB -->
+<!------------------------ JavaScript ------------------------>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../vendor/jquery/jquery.slim.min.js"></script>
+<!-- Bootsrap MDB -->
 <script type="text/javascript" src="<?= base_url('../js/mdb.min.js') ?>"></script>
-<!-- Custom scripts -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- jQuery Custom Scroller CDN -->
+<!-- Bootsrap 4.0.0 JS -->
+<script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
+<script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+<!-- malhiu scrollbar plugin -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
+<script>
+	// $(document).ready(function() {
+	// 	$("#sidebar-body").mCustomScrollbar({
+	// 		theme: "minimal"
+	// 	});
+	// });
+
+	(function($) {
+		$(window).on("load", function() {
+
+			$("#sidebar-body").mCustomScrollbar({
+				theme: "minimal"
+			});
+
+		});
+	})(jQuery);
+</script>
+
 <!-- datatables -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="<?= base_url('../vendor/DataTables/js/jquery.dataTables.js') ?>"></script>
 <script>
 	$(document).ready(function() {
 		$('#table_user').DataTable({
-			scrollX: 'true',
-			scrollCollapse: true
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
 		});
 		$('#table_item').DataTable({
-			scrollX: 'true'
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
 		});
 	});
 </script>
+<!-- Custom scripts -->
 
 <!-- sidebar -->
 <script>
 	$(document).ready(function() {
-		$("#sidebarCollapse").on('click', function() {
+		$("#sidebarCollapse").on('click', function(e) {
+			e.stopPropagation();
 			$("#sidebar").toggleClass('active');
+		});
+		$('#sidebar').click(function(e) {
+			e.stopPropagation();
+		});
+		// media query 
+		$('body,html').click(function(e) {
+			if ($(window).width() < 760) {
+				$('#sidebar').removeClass('active');
+			}
 		});
 	});
 </script>

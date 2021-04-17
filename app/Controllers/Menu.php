@@ -33,7 +33,7 @@ class Menu extends BaseController
 	public function login()
 	{
 		$data = [
-			"title" => "INVENBAR",
+			"title" => "Login | INVENBAR",
 			"validation" => \Config\Services::Validation()
 		];
 		return view('auth/login', $data);

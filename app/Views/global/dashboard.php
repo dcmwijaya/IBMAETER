@@ -12,25 +12,25 @@
 						<strong>DASHBOARD - Tabel Barang Gudang</strong>
 					</h5>
 				</div>
-				<div class="card-body">
+				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="d-flex flex-wrap">
-									<button type="button" class="btn btn-primary p-2 m-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<a type="button" href="<?= base_url('Menu/excelbarang'); ?>" id="item_csv" class="btn btn-success p-2 m-2"><i class="fas fa-file-excel fa-fw"></i> Export Excel</a>
+									<button type="button" class="btn btn-primary shadow-sm p-2 m-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
+									<a type="button" href="<?= base_url('Menu/excelbarang'); ?>" id="item_csv" class="btn btn-success shadow-sm p-2 m-2"><i class="fas fa-file-excel fa-fw"></i> Export Excel</a>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="d-flex justify-content-end">
-									<button type="button" onclick="window.print()" id="item_pdf" class="ml-auto btn btn-info p-2 m-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
+									<button type="button" onclick="window.print()" id="item_pdf" class="ml-auto btn btn-info shadow-sm p-2 m-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<table id="table_item" class="display nowrap" style="font-size: 14px; width:100%;">
+							<table id="table_item" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
 								<thead>
 									<tr>
 										<th>No</th>

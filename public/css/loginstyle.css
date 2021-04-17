@@ -1,57 +1,84 @@
-.login {
-   margin: 0 auto;
-   margin-top: 12.5%;
-   top: 50%;
-   left: 50%;
-   background: -webkit-linear-gradient(right, #826757, #c9bcaf, #87868b);
-   opacity: 0.8;
-   padding: 10px;
-   max-width: 600px;
-   width: 100%;
-   box-shadow: 0px 0px 20px 10px white;
-   border-radius: 15px;
+html {
+  height: 110%;
 }
 
-.avatar {
-   margin: 0 auto;
-   margin-top: -40px;
-   left: 50%;
-   font-size: 30px ;
-   background: #c9bcaf;
-   width: 80px;
-   height: 80px;
-   line-height: 20px;
-   text-align: center;
-   border-radius: 50%;
-   box-shadow: 0px 0px 0px 5px white;
+body {
+  margin: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.ico{
-   margin-top: 25px;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-i{
-   color: #826757;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.custom, .reg{
-   color: #3f2d25;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
 }
 
-.reg:hover{
-   color: black;
-   text-decoration: none;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-.form-group{
-   margin-top: 10px;
+.login-body {
+  background: rgb(29, 180, 215);
+  background-image: -moz-linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1db4d7",endColorstr="#1071bf",GradientType=1);
+  background-size: cover;
 }
 
-.btn{
-   margin-top: -20px;
-   background-color: #fff2ee;
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.4s;
 }
 
-button:hover{
-   background-color: #edd8d1;
+/* card login */
+.bg-login-image {
+  background: url("../img/brand.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.modal-open {
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-right: 0 !important;
+}
+
+.icolog {
+  color: chocolate;
+}
+
+.icotit {
+  color: coral;
+}
+
+.icoh {
+  color: #ff4d4d;
 }

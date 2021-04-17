@@ -1,57 +1,55 @@
 <?= $this->extend('layout/logintemplate') ?>
 
 <?= $this->section('logincontent') ?>
-<link rel="stylesheet" href="<?= base_url('css/loginstyle.css') ?>">
 
-<div class="container">
-	<div class="row">
-		<div class="col">
-			<div class="login">
-				<div class="avatar">
-					<i class="ico fa fa-user"></i>
-				</div>
-				<div class="card-body">
-					<form action="<?= base_url('menu/validasi') ?>" method="post">
-						<div class="main form-group">
-							<span><i class="fas fa-envelope-open-text me-2 custom"></i><strong>Email</strong></span>
-							<input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Masukkan Email" autocomplete="off" value="<?= old('email'); ?>">
-							<div class="invalid-feedback">
-								<?= $validation->getError('email'); ?>
+<div class="container py-3">
+	<!-- Outer Row -->
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<form class="user" method="POST" action="<?= base_url('menu/validasi') ?>">
+					<div class="card-body" style="padding: 0 12px; overflow: hidden;">
+						<!-- Nested Row within Card Body -->
+						<div class="row">
+							<div class="col-lg-6 d-none d-lg-block bg-login-image text-center"></div>
+							<div class="col-lg-6">
+								<div class="p-5">
+									<div class="text-center">
+										<h1 class="h4 text-gray-900 mb-4">Halaman Login</h1>
+									</div>
+									<div class="py-1">
+										<label for="ib-email"><i class="icolog fas fa-envelope fa-fw"></i><b>&nbsp; E-Mail</b></label>
+										<input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="ib-email" name="email" placeholder="Masukkan Email" autocomplete="off" value="<?= old('email'); ?>">
+										<div class="invalid-feedback">
+											<?= $validation->getError('email'); ?>
+										</div>
+									</div>
+									<div class="py-1">
+										<label for="ib-password"><i class="icolog fas fa-key fa-fw"></i><b>&nbsp; Password</b></label>
+										<input type="password" class="form-control  <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="ib-password" name="password" placeholder="Masukkan Password" autocomplete="off">
+										<div class="invalid-feedback">
+											<?= $validation->getError('password'); ?>
+										</div>
+									</div>
+									<div class="mt-4">
+										<button type="submit" class="btn btn-primary btn-user btn-block">
+											Login
+										</button>
+									</div>
+									<hr>
+									<div class="text-center">
+										<a tabindex="0" class="small" role="button" data-toggle="popover" data-trigger="focus" title="Lupa Password ?" data-content="Silahkan Menghubungi Admin Via WhatsApp : 0821-****-****">Lupa Password?</a>
+									</div>
+								</div>
 							</div>
 						</div>
-
-						<div class="secondary form-group">
-
-						</div>
-
-						<div class="main form-group">
-							<span><i class="fas fa-unlock-alt me-2 custom"></i><strong>Password</strong></span>
-							<input type="password" class="form-control  <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Masukkan Password" autocomplete="off">
-							<div class="invalid-feedback">
-								<?= $validation->getError('password'); ?>
-							</div>
-						</div>
-
-						<div class=" secondary form-group">
-
-						</div><br>
-
-						<button type="submit" class="btn btn-block"><i class="fas fa-sign-in-alt me-3"></i><strong>Login</strong></button>
-					</form>
-					<hr>
-					<td class="kotak" width="25%" valign="top">
+					</div>
+					<div class="card-footer">
 						<div class="link-text text-center">
-							<a class="reg" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=fikinvenbar@upnjatim.ac.id&subject?&su=AJUAN%20REGISTRASI%20ADMIN%20INVENBAR&body=Isi%20Pesan:%0A%0A[Tuliskan%20pesan%20anda%20disini%2E%2E%2E%2E%2E]%0A%0A%0ADengan%20ini%2C%20saya%20menyatakan%20bahwa%20saya%20mengajukan%20ini%20tanpa%20paksaan%20siapapun%20serta%20dalam%20keadaan%20sadar%2E%20Sekian%20dari%20saya%2C%20terima%20kasih%2E%0A%0AHormat%20Saya%2C%0A%0A%0ANama%20Anda" target="_blank" http-equiv="refresh" content="2">
-								<p class="small">Belum Punya Akun? Silahkan Registrasi!</p>
-							</a>
+							<p class="small">Framework C Kelompok 5 - Created at 2021</p>
 						</div>
-						<div class="link-text text-center">
-							<a class="reg" href="#">
-								<p class="small">Lupa Akun? Silahkan Verifikasi!</p>
-							</a>
-						</div>
-					</td>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

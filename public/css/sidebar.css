@@ -24,6 +24,12 @@ a:focus {
   display: flex;
   text-decoration: none;
   transition: all 0.4s;
+  min-height: 50em;
+}
+
+.sidebar-heading {
+  background-color: #f0f0f0;
+  padding: 10px;
 }
 
 #sidebar {
@@ -37,6 +43,13 @@ a:focus {
 
 #sidebar.active {
   margin-left: -250px;
+}
+
+#sidebar-body {
+  position: relative;
+  height: 130vh;
+  overflow: visible;
+  box-shadow: 0 2px 0 #2c2f38;
 }
 
 #sidebar .sidebar-header {
@@ -75,18 +88,26 @@ a[data-toggle="collapse"] {
   position: relative;
 }
 
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
   display: block;
   position: absolute;
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
-}
+} */
 
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
   background: #1b1d24;
+}
+
+.menu-parent {
+  border-radius: 4px;
+}
+
+.menu-head {
+  cursor: context-menu;
 }
 
 #content {
@@ -105,17 +126,42 @@ ul ul a {
   text-align: justify;
 }
 
+.custom-badge {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  position: absolute;
+  top: 5px;
+  font-family: "Roboto";
+  right: 0px;
+}
+
 @media (max-width: 768px) {
   #sidebar {
     display: block;
     margin-left: -250px;
+    position: fixed;
+    z-index: 5;
   }
 
   #sidebar.active {
     margin-left: 0;
+    min-height: 130vh;
+    box-shadow: 10px 0 10px #7e7e7e5c;
   }
 
   #sidebarCollapse span {
     display: none;
+  }
+
+  .sidebar-list {
+    min-height: 150vh;
   }
 }
