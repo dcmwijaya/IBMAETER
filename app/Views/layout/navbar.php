@@ -4,18 +4,19 @@
 	<nav class="navbar bg-light navbar-expand-lg">
 		<div class="container-fluid">
 			<!-- Toggler untuk Sidebar -->
-			<button type="button" id="sidebarCollapse" class="btn btn-info px-3">
+			<button type="button" id="sidebarCollapse" class="btn btn-info px-3" style="box-shadow: 0px 2px 3px #c9c9c9;">
 				<i class="fas fa-align-left"></i>
 				<span></span>
 			</button>
 			<!-- Right links -->
 			<ul class="navbar-nav ms-auto d-flex flex-row">
 				<!-- Nav Item - Messages -->
-				<li class="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
-					<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-envelope fa-fw"></i>
-						<!-- Counter - Messages -->
-						<span class="badge badge-danger badge-counter mr-4">1</span>
+				<li class="nav-item dropdown no-arrow d-flex align-items-center mx-3">
+					<a class="nav-link" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-bell fa-fw" style="font-size: 20px;">
+							<!-- Counter - Messages -->
+							<span class="custom-badge badge-danger badge-counter">1</span>
+						</i>
 					</a>
 					<!-- Dropdown - Messages -->
 					<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -24,7 +25,7 @@
 						</h5>
 						<hr>
 						<?php foreach ($info as $i) : ?>
-							<a class="dropdown-item d-flex align-items-center" href="#">
+							<a class="dropdown-item d-flex align-items-center">
 								<div class="container">
 									<div class="row">
 										<div class="col-12 dropdown-list-image text-center">
