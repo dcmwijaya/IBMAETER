@@ -8,7 +8,7 @@
 
 # WEB-INVENTARIS-BARANG-CODEIGNITER-4
 <b>Website inventaris barang dengan menggunakan framework Codeigniter 4</b>
-<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework</p>
+<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C</p>
 
 <br>
 
