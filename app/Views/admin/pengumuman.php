@@ -1,6 +1,7 @@
 <?= $this->extend('layout/template') ?>
 
 <?= $this->section('content') ?>
+<link rel="stylesheet" href="<?= base_url('../css/dragdrop.css') ?>" />
 
 <!--Main layout-->
 <main class="bg-dark">
@@ -27,11 +28,13 @@
 											<textarea class="col-sm-12 p-2" id="edit_isi_info" rows="6" name="isi" placeholder="Sampaikan isi pengumuman..."><?= $i['isi']; ?></textarea>
 											<small class="text-muted"><span style="color: red;">*</span> Maksimal 256 huruf</small>
 										</div>
-
-										<div class="form-group">
-											<label for="exampleFormControlFile1">Example file input</label>
-											<input type="file" class="form-control-file" id="exampleFormControlFile1">
+										<div class="drop-zone">
+											<span class="drop-zone__prompt">Drop file here or click to upload</span>
+											<input type="file" name="myFile" class="drop-zone__input" />
 										</div>
+
+										<script src="<?= base_url('../js/dragdrop.js'); ?>"></script>
+
 										<div class="my-4">
 											<input type="hidden" class="form-control" value="<?= $i['id']; ?>" name="id_info">
 											<button type="submit" class="btn btn-success btn-block"><i class="fas fa-fw fa-check"></i> Terapkan</button>
