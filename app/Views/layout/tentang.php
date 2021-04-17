@@ -11,7 +11,12 @@
 				<div class="modal-body">
 					<h6 class="pemanis"><i class="text-dark fab fa-github fa-fw"></i> <i class="icotit fas fa-code-branch fa-fw"></i> <i class="text-dark fab fa-bootstrap fa-fw"></i> <i class="fab fa-mdb fa-fw"></i> <i class="icotit fab fa-free-code-camp fa-fw"></i> <b>Codeigniter 4</b>&nbsp; <i class="icotit fas fa-laptop-code fa-fw"></i></h6>
 					<p class="mb-3 py-2" style="border-bottom: 1px dashed #2b9e59;">INVENBAR(Inventori Barang Warehouse) aplikasi untuk memanajemen barang didalam gudang.</p>
-					<pre>Anggota Kelompok 5 Framework C :
+					<pre>
+					<br>user
+					<br>email : saber.genshin@gmail.com, electro.chuuni@gmail.com
+					<br>pwd : diluc-senpai, yorunogengen
+					<br>------------------------------------------------------------
+					<br>Anggota Kelompok 5 Framework C :
 					<br>1. 18081010013 - Devan Cakra
 					<br>2. 18081010??? - Merdin
 					<br>3. 18081010126 - Rifky Akhmad Fernanda&nbsp; <i class="fas fa-cat fa-fw" style="color: #c72876;"></i>
