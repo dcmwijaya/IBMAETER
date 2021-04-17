@@ -1,7 +1,7 @@
 <!-- SUPER BODY -->
 <div id="content" style="padding: 0;">
 	<!-- Navbar -->
-	<nav class="navbar bg-light navbar-expand-lg">
+	<nav id="head-navbar" class="navbar bg-light navbar-expand-lg">
 		<div class="container-fluid">
 			<!-- Toggler untuk Sidebar -->
 			<button type="button" id="sidebarCollapse" class="btn btn-info px-3" style="box-shadow: 0px 2px 3px #c9c9c9;">

@@ -1,5 +1,6 @@
 <!-- start wrapper pembungkus bodieh-->
 <div class="wrapper">
+	<div id="fading" class=""></div> <!-- bg gelap fading -->
 	<nav id="sidebar" class="collapse d-lg-block sidebar collapse ">
 
 		<!-- Image and text -->

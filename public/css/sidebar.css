@@ -154,7 +154,7 @@ ul ul a {
   #sidebar.active {
     margin-left: 0;
     min-height: 130vh;
-    box-shadow: 10px 0 10px #7e7e7e5c;
+    box-shadow: 5px 0 5px #7e7e7e5c;
   }
 
   #sidebarCollapse span {
@@ -163,5 +163,23 @@ ul ul a {
 
   .sidebar-list {
     min-height: 150vh;
+  }
+
+  #head-navbar {
+    z-index: 2;
+  }
+
+  .fading {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 1;
+    transition: 1.5s;
   }
 }

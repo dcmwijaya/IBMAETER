@@ -102,6 +102,7 @@
 	$(document).ready(function() {
 		$("#sidebarCollapse").on('click', function(e) {
 			e.stopPropagation();
+			$("#fading").toggleClass('fading');
 			$("#sidebar").toggleClass('active');
 		});
 		$('#sidebar').click(function(e) {
@@ -111,6 +112,7 @@
 		$('body,html').click(function(e) {
 			if ($(window).width() < 760) {
 				$('#sidebar').removeClass('active');
+				$("#fading").removeClass('fading');
 			}
 		});
 	});
