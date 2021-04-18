@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2021 at 01:47 PM
+-- Generation Time: Apr 18, 2021 at 04:38 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -116,7 +116,8 @@ INSERT INTO `item` (`id_item`, `nama_item`, `stok`, `jenis`, `penyimpanan`) VALU
 (21, 'Sikat Gigih', 44, 'Mudah Terbakar', 'F'),
 (22, 'Dodo Sakti', 44, 'Minyak', 'D'),
 (23, 'Mixin 210ml', 12, 'Cair', 'C'),
-(24, 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C');
+(24, 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C'),
+(25, 'Mayoness', 24, 'Minyak', 'C');
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,10 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`) VALUES
 (1, 'Venti Girl', 'saber.genshin@gmail.com', '$2y$10$FNpnGwUIbeXn066yNh2Y2OOieRJxWfeX.1jx.LTwrVSkGyoWMiAD6', 0, 'venti.jpg'),
 (2, 'Fischl', 'electro.chuuni@gmail.com', '$2y$10$GJ5cL0DROJ45x07LICrhIuG6tbLZLBBMxRJamXKe6St53BuarLfeS', 1, '1617703302_42c2caa0966e587ae300.jpg'),
-(4, 'Petugas', 'petugas@gmail.com', 'sde', 0, '');
+(5, 'Ini Boedi', 'boedi@iv.com', '1', 0, ''),
+(6, 'Santoso', '111@gmail.com', 's', 1, ''),
+(7, 'paimonte', '1211@gmail.com', 'sdw', 1, ''),
+(8, 'Keqing Wangy', 'wangy.genshin@gmail.com', '$2y$10$FNpnGwUIbeXn066yNh2Y2OOieRJxWfeX.1jx.LTwrVSkGyoWMiAD6', 1, 'keqing.jpg');
 
 --
 -- Indexes for dumped tables
@@ -252,7 +256,7 @@ ALTER TABLE `detail_out`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -270,7 +274,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
