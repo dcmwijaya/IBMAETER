@@ -176,6 +176,37 @@
 
 <!-- Catch Data for Data User -->
 <script>
+	function previewAddImg() {
+
+		const add_img = document.querySelector('#add_img');
+		const label_add_img = document.querySelector('.label-img-input');
+		const preview_img = document.querySelector('.img-preview');
+
+		label_add_img.textContent = add_img.files[0].name;
+
+		const file_img = new FileReader();
+		file_img.readAsDataURL(add_img.files[0]);
+
+		file_img.onload = function(e) {
+			preview_img.src = e.target.result;
+		}
+	}
+
+	function previewEditImg() {
+
+		const edit_img = document.querySelector('#edit_img');
+		const label_edit_img = document.querySelector('.label-img-edit');
+		const preview_img = document.querySelector('.edit-img-preview');
+
+		label_edit_img.textContent = edit_img.files[0].name;
+
+		const file_img = new FileReader();
+		file_img.readAsDataURL(edit_img.files[0]);
+
+		file_img.onload = function(e) {
+			preview_img.src = e.target.result;
+		}
+	}
 	$(document).ready(function() {
 
 		// get Edit User
