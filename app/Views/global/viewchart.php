@@ -5,65 +5,104 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <?php
-foreach ($category as $value) {
-	$ctg[] = $value['jenis'];
-}
+// foreach ($category as $value) {
+// 	$ctg[] = $value['jenis'];
+// }
 
-foreach ($class as $value) {
-	$inv[] = $value['penyimpanan'];
-}
+// foreach ($class as $value) {
+// 	$inv[] = $value['penyimpanan'];
+// }
 
-foreach ($sc1 as $vs1) {
-	$sin[] = $vs1['stok'];
-}
 
-foreach ($sc2 as $vs2) {
-	$sin[] = $vs2['stok'];
-}
-
-foreach ($sc3 as $vs3) {
-	$sin[] = $vs3['stok'];
-}
-
-foreach ($sc4 as $vs4) {
-	$sin[] = $vs4['stok'];
-}
-
-foreach ($sc5 as $vs5) {
-	$sin[] = $vs5['stok'];
-}
-
-foreach ($sc6 as $vs6) {
-	$sin[] = $vs6['stok'];
-}
-
-foreach ($sc7 as $vs7) {
-	$sin[] = $vs7['stok'];
-}
-
+// Stok Berdasarkan Jenis
 foreach ($sj1 as $vj1) {
-	$sct[] = $vj1['stok'];
+	if ($sj1 != null) {
+		$sct[] = $vj1['stok'];
+	} else {
+		$sct[] = 0;
+	}
 }
-
 foreach ($sj2 as $vj2) {
-	$sct[] = $vj2['stok'];
+	if ($sj2 != null) {
+		$sct[] = $vj2['stok'];
+	} else {
+		$sct[] = 0;
+	}
 }
-
 foreach ($sj3 as $vj3) {
-	$sct[] = $vj3['stok'];
+	if ($sj3 != null) {
+		$sct[] = $vj3['stok'];
+	} else {
+		$sct[] = 0;
+	}
 }
-
 foreach ($sj4 as $vj4) {
-	$sct[] = $vj4['stok'];
+	if ($sj4 != null) {
+		$sct[] = $vj4['stok'];
+	} else {
+		$sct[] = 0;
+	}
+}
+foreach ($sj5 as $vj5) {
+	if ($sj5 != null) {
+		$sct[] = $vj5['stok'];
+	} else {
+		$sct[] = 0;
+	}
 }
 
-foreach ($sj5 as $vj5) {
-	$sct[] = $vj5['stok'];
+// Stok Berdasarkan Penyimpanan
+foreach ($sc1 as $vs1) {
+	if ($sc1 != null) {
+		$sin[] = $vs1['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc2 as $vs2) {
+	if ($sc2 != null) {
+		$sin[] = $vs2['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc3 as $vs3) {
+	if ($sc3 != null) {
+		$sin[] = $vs3['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc4 as $vs4) {
+	if ($sc4 != null) {
+		$sin[] = $vs4['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc5 as $vs5) {
+	if ($sc5 != null) {
+		$sin[] = $vs5['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc6 as $vs6) {
+	if ($sc6 != null) {
+		$sin[] = $vs6['stok'];
+	} else {
+		$sin[] = 0;
+	}
+}
+foreach ($sc7 as $vs7) {
+	if ($sc7 != null) {
+		$sin[] = $vs7['stok'];
+	} else {
+		$sin[] = 0;
+	}
 }
 
 ?>
-
-
 
 <!--Main layout-->
 <main class="bg-dark">
@@ -87,7 +126,7 @@ foreach ($sj5 as $vj5) {
 							var ChartBar = new Chart(ctx, {
 								type: 'bar',
 								data: {
-									labels: <?= json_encode($inv); ?>,
+									labels: ["A", "B", "C", "D", "E", "F", "G"],
 									datasets: [{
 										label: 'R-Barang',
 										data: <?= json_encode($sin); ?>,
@@ -98,7 +137,7 @@ foreach ($sj5 as $vj5) {
 											'rgba(127, 253, 125, 0.2)',
 											'rgba(153, 102, 255, 0.2)',
 											'rgba(255, 159, 64, 0.2)',
-											'rgba(175, 222, 225, 0.2)'
+											'rgba(175, 222, 225, 0.2)',
 										],
 										borderColor: [
 											'rgba(255, 99, 132, 1)',
@@ -134,7 +173,7 @@ foreach ($sj5 as $vj5) {
 							var ChartLine = new Chart(ctx, {
 								type: 'line',
 								data: {
-									labels: <?= json_encode($ctg); ?>,
+									labels: ["Cair", "Minyak", "Mudah Terbakar", "Padat", "Daging"],
 									datasets: [{
 										label: 'J-Barang',
 										data: <?= json_encode($sct); ?>,
@@ -181,7 +220,7 @@ foreach ($sj5 as $vj5) {
 							var ChartPie = new Chart(ctx, {
 								type: 'pie',
 								data: {
-									labels: <?= json_encode($inv); ?>,
+									labels: ["A", "B", "C", "D", "E", "F", "G"],
 									datasets: [{
 										label: 'R-Barang',
 										data: <?= json_encode($sin); ?>,
@@ -232,7 +271,7 @@ foreach ($sj5 as $vj5) {
 							var ChartDonuts = new Chart(ctx, {
 								type: 'doughnut',
 								data: {
-									labels: <?= json_encode($ctg); ?>,
+									labels: ["Cair", "Minyak", "Mudah Terbakar", "Padat", "Daging"],
 									datasets: [{
 										label: 'J-Barang',
 										data: <?= json_encode($sct); ?>,
