@@ -80,8 +80,9 @@ a:focus {
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-  color: #fff;
-  background: #1b1d24;
+  color: #fff !important;
+  background: #0e2534;
+  border-radius: 4px;
 }
 
 a[data-toggle="collapse"] {

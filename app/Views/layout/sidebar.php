@@ -20,7 +20,7 @@
 						</a>
 						<div class="mt-3">
 							<h6 class="text-center text-dark font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 10px; color:yellowgreen; vertical-align: middle;"></i></h6>
-							<p class="text-dark mb-1">??? | Online</p>
+							<p class="text-dark mb-1"><?= (session('role') == 0 ? "Admin" : "Pekerja") ?> | Online</p>
 						</div>
 					</div>
 				</div>

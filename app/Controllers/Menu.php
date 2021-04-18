@@ -102,6 +102,9 @@ class Menu extends BaseController
 			"info" => $this->newsModel->showTask(),
 			"item" => $this->barangModel->getItems()
 		];
+		// $data['user'] = $this->getUser->get_where('user', [
+		// 	'email' => $this->session->userdata('email')
+		// ])->row_array();
 		return view('global/dashboard', $data);
 	}
 

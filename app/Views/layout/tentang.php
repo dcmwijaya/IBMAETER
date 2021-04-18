@@ -13,8 +13,8 @@
 					<p class="mb-3 py-2" style="border-bottom: 1px dashed #2b9e59;">INVENBAR(Inventori Barang Warehouse) aplikasi untuk memanajemen barang didalam gudang.</p>
 					<pre>
 					<br>user
-					<br>email : saber.genshin@gmail.com, electro.chuuni@gmail.com
-					<br>pwd : diluc-senpai, yorunogengen
+					<br>email : wangy.genshin@gmail.com, saber.genshin@gmail.com
+					<br>pwd : diluc-senpai
 					<br>------------------------------------------------------------
 					<br>Anggota Kelompok 5 Framework C :
 					<br>1. 18081010013 - Devan Cakra

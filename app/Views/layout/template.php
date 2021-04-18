@@ -56,10 +56,9 @@
 <!-- Bootsrap 4.0.0 JS -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <!-- malhiu scrollbar plugin -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
 <script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
 <script>
 	// $(document).ready(function() {
@@ -202,7 +201,7 @@
 			const nama = $(this).data('nama');
 			// Set data to Form delete
 			$('#Delete_user #delete_user_id').val(uid);
-			$('#Delete_user #delete_nama_user').val(nama);
+			$('#Delete_user #delete_nama_user').text(nama);
 		});
 	});
 </script>
