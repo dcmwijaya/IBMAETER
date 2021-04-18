@@ -38,6 +38,7 @@ class Admin extends BaseController
 	{
 		$data = [
 			"title" => "Data User | INVENBAR",
+			"CurrentMenu" => "data_user",
 			"info" => $this->newsModel->showTask(),
 			"user" => $this->adminModel->getUser()
 		];
@@ -93,6 +94,7 @@ class Admin extends BaseController
 		// $info2 = new Admin_Model();
 		$data = [
 			"title" => "Edit Pengumuman | INVENBAR",
+			"CurrentMenu" => "edit_pengumuman",
 			"info" => $this->newsModel->showTask()
 			// "info2" => $info2->showInfo()
 		];

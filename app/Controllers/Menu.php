@@ -98,6 +98,7 @@ class Menu extends BaseController
 	{
 		$data = [
 			"title" => "Menu User | INVENBAR",
+			"CurrentMenu" => "dashboard",
 			"info" => $this->newsModel->showTask(),
 			"item" => $this->barangModel->getItems()
 		];
@@ -185,6 +186,7 @@ class Menu extends BaseController
 	{
 		$data = [
 			"title" => "Pengumuman | INVENBAR",
+			"CurrentMenu" => "pengumuman",
 			"info" => $this->newsModel->showTask()
 		];
 		return view('global/user_pengumuman.php', $data);
@@ -195,6 +197,7 @@ class Menu extends BaseController
 	{
 		$data = [
 			"title" => "My Profile | INVENBAR",
+			"CurrentMenu" => "profakun",
 			'user' => $this->userModel->getUser($email),
 			"info" => $this->newsModel->showTask()
 		];
@@ -207,6 +210,7 @@ class Menu extends BaseController
 	{
 		$data = [
 			"title" => "Edit Profile | INVENBAR",
+			"CurrentMenu" => "profedit",
 			"info" => $this->newsModel->showTask(),
 			'validation' => \Config\Services::Validation(),
 			'user' => $this->userModel->getUserId($uid)
@@ -327,6 +331,7 @@ class Menu extends BaseController
 	{
 		$data = [
 			"title" => "View Chart | INVENBAR",
+			"CurrentMenu" => "view_chart",
 			"info" => $this->newsModel->showTask(),
 			"class" => $this->barangModel->invenclass(),
 			"category" => $this->barangModel->jenis(),
