@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2021 at 10:12 PM
+-- Generation Time: Apr 18, 2021 at 01:47 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -107,11 +107,16 @@ INSERT INTO `item` (`id_item`, `nama_item`, `stok`, `jenis`, `penyimpanan`) VALU
 (4, 'Pepsodent 102gr', 44, 'Cair', 'A'),
 (5, 'Dodo Mainanmu', 22, 'Padat', 'C'),
 (8, 'Mentari SimCard', 100, 'Padat', 'A'),
-(9, 'Solonensi', 22, 'Cair', 'C'),
+(9, 'Solonensi Ajaib', 33, 'Cair', 'C'),
 (10, 'Bearbrando 210ml', 22, 'Cair', 'B'),
-(13, 'Sikat Gigih', 44, 'Padat', 'A'),
 (15, 'So Clean 320ml', 12, 'Cair', 'C'),
-(16, 'Betadine', 22, 'Cair', 'B');
+(16, 'Betadine', 22, 'Cair', 'B'),
+(17, 'Barang', 33, 'Cair', 'D'),
+(20, 'Antangin Ngelu', 33, 'Padat', 'A'),
+(21, 'Sikat Gigih', 44, 'Mudah Terbakar', 'F'),
+(22, 'Dodo Sakti', 44, 'Minyak', 'D'),
+(23, 'Mixin 210ml', 12, 'Cair', 'C'),
+(24, 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C');
 
 -- --------------------------------------------------------
 
@@ -161,7 +166,7 @@ CREATE TABLE `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id`, `judul`, `isi`, `foto`) VALUES
-(1, 'Jadwal Supplier Masuk Maret 2022', '1. pt indah\r\n2. pt makmur\r\n3. pt sentosa\r\n4. pt awkoawkokwa', 'image.jpg');
+(1, 'Jadwal Supplier Masuk Mei 2025', '1. pt indah\r\n2. pt makmur\r\n3. pt sentosa\r\n4. pt awokawok\r\n5. pt entahlah\r\n', 'image.jpg');
 
 -- --------------------------------------------------------
 
@@ -183,8 +188,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`) VALUES
-(1, 'Jean', 'saber.genshin@gmail.com', '$2y$10$FNpnGwUIbeXn066yNh2Y2OOieRJxWfeX.1jx.LTwrVSkGyoWMiAD6', 0, 'default.jpg'),
-(2, 'Fischl', 'electro.chuuni@gmail.com', '$2y$10$GJ5cL0DROJ45x07LICrhIuG6tbLZLBBMxRJamXKe6St53BuarLfeS', 1, '1617703302_42c2caa0966e587ae300.jpg');
+(1, 'Venti Girl', 'saber.genshin@gmail.com', '$2y$10$FNpnGwUIbeXn066yNh2Y2OOieRJxWfeX.1jx.LTwrVSkGyoWMiAD6', 0, 'venti.jpg'),
+(2, 'Fischl', 'electro.chuuni@gmail.com', '$2y$10$GJ5cL0DROJ45x07LICrhIuG6tbLZLBBMxRJamXKe6St53BuarLfeS', 1, '1617703302_42c2caa0966e587ae300.jpg'),
+(4, 'Petugas', 'petugas@gmail.com', 'sde', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -246,7 +252,7 @@ ALTER TABLE `detail_out`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -264,7 +270,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
