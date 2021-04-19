@@ -18,12 +18,38 @@
 							<div class="col-sm-6">
 								<div class="d-flex flex-wrap">
 									<button type="button" class="btn btn-primary shadow-sm p-2 m-2" data-toggle="modal" data-target="#Tambah_user"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
-									<a type="button" href="<?= base_url('admin/exceluser'); ?>" id="user_csv" class="btn btn-success shadow-sm p-2 m-2"><i class="fas fa-file-excel fa-fw"></i> Export Excel</a>
+									<button type="button" onclick="window.print()" id="user_pdf" class="ml-auto btn btn-info shadow-sm p-2 m-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="d-flex justify-content-end">
-									<button type="button" onclick="window.print()" id="user_pdf" class="ml-auto btn btn-info shadow-sm p-2 m-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
+									<div class="btn-group m-2">
+										<a type="button" href="#" class="btn btn-dark btn-sm" onclick="return false;"><i class="fas fa-download fa-fw"></i> Export Data User</a>
+										<button type="button" class="btn btn-dark btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="sr-only">Toggle Dropdown</span>
+										</button>
+										<div class="dropdown-menu dm-export">
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/exceluser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docuser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/pdfuser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										</div>
+										<style>
+											.dm-export {
+												background-color: rgba(225, 225, 225);
+												margin: 10px 10px;
+												border-radius: 2px;
+											}
+
+											.dm-export-item:hover {
+												background-color: grey;
+												color: white;
+												padding-left: 10px;
+												border-radius: 2px;
+												width: 100%;
+												text-transform: uppercase;
+											}
+										</style>
+									</div>
 								</div>
 							</div>
 						</div>
