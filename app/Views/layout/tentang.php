@@ -22,14 +22,14 @@
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Pekerja&nbsp;&nbsp;&nbsp; :</label>
 						<div class="col-sm-10">
-							<input type="text" class="col-sm-5 form-control-sm" value="wangy.genshin@gmail.com" id="myInput2" readonly>
+							<input type="text" class="col-sm-5 form-control-sm" value="billy@gantx.com" id="myInput2" readonly>
 							<button onclick="copy2()" class="btn btn-sm btn-secondary ml-3 py-2 shadow-sm px-3"><i class="fas fa-fw fa-clipboard"></i></button>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="inputPassword" class="col-sm-2 col-form-label font-weight-bold">Password&nbsp; :</label>
 						<div class="col-sm-10">
-							<input type="text" class="col-sm-5 form-control-sm" value="diluc-senpai" id="myInput3" readonly>
+							<input type="text" class="col-sm-5 form-control-sm" value="Admin123" id="myInput3" readonly>
 							<button onclick="copy3()" class="btn btn-sm btn-danger ml-3 py-2 shadow-sm px-3"><i class="fas fa-fw fa-clipboard"></i></button>
 						</div>
 					</div>

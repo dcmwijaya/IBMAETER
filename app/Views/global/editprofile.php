@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<!--Main layout-->
+<!-- Main layout  -->
 <main class="bg-dark">
 	<div class="container py-4">
 		<section class="mb-4">
@@ -41,6 +41,15 @@
 							</div>
 						</div>
 						<div class="row mb-3 ms-4">
+							<label for="password" class="col-sm-2 col-form-label">*&nbsp; Password Lama</label>
+							<div class="col-sm-7">
+								<input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password">
+								<div class="invalid-feedback">
+									<?= $validation->getError('password'); ?>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3 ms-4">
 							<label for="password1" class="col-sm-2 col-form-label">Password Baru</label>
 							<div class="col-sm-7">
 								<input type="password" class="form-control <?= ($validation->hasError('password1')) ? 'is-invalid' : ''; ?>" id="password1" name="password1" value="<?= (old('password1')); ?>">
@@ -55,15 +64,6 @@
 								<input type="password" class="form-control mt-3 <?= ($validation->hasError('password2')) ? 'is-invalid' : ''; ?>" id="password2" name="password2">
 								<div class="invalid-feedback">
 									<?= $validation->getError('password2'); ?>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-3 ms-4">
-							<label for="password" class="col-sm-2 col-form-label">Password</label>
-							<div class="col-sm-7">
-								<input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password">
-								<div class="invalid-feedback">
-									<?= $validation->getError('password'); ?>
 								</div>
 							</div>
 						</div>
