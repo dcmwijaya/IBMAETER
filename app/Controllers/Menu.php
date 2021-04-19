@@ -118,10 +118,10 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = array(
-				'nama_item' => $this->request->getPost('nama_item'),
-				'stok' => $this->request->getPost('stok'),
-				'jenis' => $this->request->getPost('jenis'),
-				'penyimpanan' => $this->request->getPost('penyimpanan')
+				'nama_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_item'), ENT_QUOTES)),
+				'stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('stok'), ENT_QUOTES)),
+				'jenis' => str_replace("'", "", htmlspecialchars($this->request->getPost('jenis'), ENT_QUOTES)),
+				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
 			return redirect()->to('Dashboard');
@@ -135,10 +135,10 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$data = array(
-				'nama_item' => $this->request->getPost('nama_item'),
-				'stok' => $this->request->getPost('stok'),
-				'jenis' => $this->request->getPost('jenis'),
-				'penyimpanan' => $this->request->getPost('penyimpanan')
+				'nama_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_item'), ENT_QUOTES)),
+				'stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('stok'), ENT_QUOTES)),
+				'jenis' => str_replace("'", "", htmlspecialchars($this->request->getPost('jenis'), ENT_QUOTES)),
+				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
 			return redirect()->to('Dashboard');
@@ -164,16 +164,16 @@ class Menu extends BaseController
 			$id = $this->request->getPost('id_item');
 			if ($id != 0) { // if gk guna
 				$data = array(
-					'jumlah_in' => $this->request->getPost('jumlah_in'),
-					'id_item' => $this->request->getPost('id_item')
+					'jumlah_in' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_in'), ENT_QUOTES)),
+					'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_item'), ENT_QUOTES))
 				);
 				$this->barangModel->IncomeItem($data, $id);
 			}
 			$data = array(
-				'tgl' => $this->request->getPost('tgl'),
-				'status' => 'Masuk',
-				'uid' => session('role'),
-				'ket' => $this->request->getPost('ket')
+				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
+				'status' => str_replace("'", "", htmlspecialchars('Masuk', ENT_QUOTES)),
+				'uid' => str_replace("'", "", htmlspecialchars(session('role'), ENT_QUOTES)),
+				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
 
 			$this->barangModel->LogItem($data);
@@ -189,27 +189,17 @@ class Menu extends BaseController
 			$id = $this->request->getPost('id_item');
 			if ($id != 0) { // if gk guna
 				$data = array(
-					'jumlah_out' => $this->request->getPost('jumlah_out'),
-					'id_item' => $this->request->getPost('id_item')
+					'jumlah_out' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_out'), ENT_QUOTES)),
+					'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_item'), ENT_QUOTES))
 				);
 				$this->barangModel->OutcomeItem($data, $id);
 			}
 			$data = array(
-				'tgl' => $this->request->getPost('tgl'),
-				'status' => 'Keluar',
-				'uid' => session('role'),
-				'ket' => $this->request->getPost('ket')
+				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
+				'status' => str_replace("'", "", htmlspecialchars('Keluar', ENT_QUOTES)),
+				'uid' => str_replace("'", "", htmlspecialchars(session('role'), ENT_QUOTES)),
+				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
-			$this->barangModel->OutcomeItem($data, $id);
-		
-    
-		$data = array(
-			'tgl' => $this->request->getPost('tgl'),
-			'status' => 'Keluar',
-			'uid' => session('role'), // tambahkan woy dari role user session
-			'ket' => $this->request->getPost('ket')
-		);
-
 			$this->barangModel->LogItem($data);
 			return redirect()->to('Dashboard');
 		} else {
@@ -313,10 +303,11 @@ class Menu extends BaseController
 				'errors' => ['required' => '{field} harus diisi.']
 			],
 			'foto' => [
-				'rules' => 'max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'rules' => 'max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]',
 				'errors' => [
 					'max_size' => 'Ukuran gambar {field} maksimal 2MB',
 					'is_image' => '{field} harus merupakan gambar.',
+					'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
 					'mime_in' => '{field} harus berekstensi .jpg, .jpeg, atau .png'
 				]
 			]
@@ -325,7 +316,7 @@ class Menu extends BaseController
 		}
 
 		// mengambil inputan foto/gambar
-		$fileFoto = $this->request->getFile('foto');
+		$fileFoto = $this->request->getFile('foto'); //<<<<<<<<<< Eror jika tidak di isi
 
 		// cek gambar lama
 		if ($fileFoto->getError() == 4) {
@@ -356,16 +347,16 @@ class Menu extends BaseController
 			}
 
 			$this->userModel->update($uid, [
-				'nama' => $this->request->getVar('nama'),
-				'email' => $this->request->getVar('email'),
+				'nama' => str_replace("'", "", htmlspecialchars($this->request->getVar('nama'), ENT_QUOTES)),
+				'email' => str_replace("'", "", htmlspecialchars($this->request->getVar('email'), ENT_QUOTES)),
 				'password' => password_hash($password, PASSWORD_DEFAULT),
-				'role' => $dataUser['role'],
+				'role' => str_replace("'", "", htmlspecialchars($dataUser['role'], ENT_QUOTES)),
 				'picture' => $namaFoto
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
 			$this->session->set('picture', $namaFoto); // ganti session gambar
-      
+
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
 			// echo "2";
 		} else {

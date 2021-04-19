@@ -215,12 +215,10 @@
 			const uid = $(this).data('uid');
 			const nama = $(this).data('nama');
 			const email = $(this).data('email');
-			const password = $(this).data('password');
 			const urole = $(this).data('urole');
 			// Set data to Form Edit
 			$('#Edit_user #edit_nama_user').val(nama);
 			$('#Edit_user #edit_email_user').val(email);
-			$('#Edit_user #edit_password').val(password);
 			$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
 			$('#Edit_user #edit_user_id').val(uid);
 		});

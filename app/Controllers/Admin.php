@@ -44,7 +44,7 @@ class Admin extends BaseController
 				"info" => $this->newsModel->showTask(),
 				"user" => $this->adminModel->getUser()
 			];
-			return view('Admin/data_user', $data);
+			return view('admin/data_user', $data);
 		} else {
 			return redirect()->to('/Dashboard');
 		}
@@ -81,11 +81,13 @@ class Admin extends BaseController
 				$fileImg->move('img/user', $namaImg); // move gambar to img folder
 			}
 
+			$password = $this->request->getPost('password');
 			$data = array(
-				'nama' => $this->request->getPost('user'),
-				'email' => $this->request->getPost('email'),
-				'password' => $this->request->getPost('password'),
-				'role' => $this->request->getPost('role'),
+
+				'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
+				'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
+				'password' => password_hash($password, PASSWORD_DEFAULT),
+				'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 				'picture' => $namaImg
 			);
 			$this->adminModel->addUser($data);
@@ -120,12 +122,14 @@ class Admin extends BaseController
 				// return redirect()->to('datauser')->withInput()->with('validation', $validation);
 				return redirect()->to('Datauser')->withInput();
 			}
+
 			$id = $this->request->getPost('user_id');
+			$password = $this->request->getPost('password');
 			$data = array(
-				'nama' => $this->request->getPost('user'),
-				'email' => $this->request->getPost('email'),
-				'password' => $this->request->getPost('password'),
-				'role' => $this->request->getPost('role')
+				'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
+				'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
+				'password' => password_hash($password, PASSWORD_DEFAULT),
+				'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES))
 			);
 			$this->adminModel->updateUser($data, $id);
 			return redirect()->to('Datauser');
@@ -186,8 +190,8 @@ class Admin extends BaseController
 			// $info = new Admin_Model();
 			$id = $this->request->getPost('id_info');
 			$data = array(
-				'judul' => $this->request->getPost('judul'),
-				'isi' => $this->request->getPost('isi')
+				'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
+				'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
 			);
 			$this->newsModel->editInfo($data, $id);
 			return redirect()->to('Adminpengumuman');

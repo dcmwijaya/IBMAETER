@@ -52,8 +52,8 @@
 											<td><?= $u['role']; ?></td>
 											<td>
 												<div class="btn-group" role="group" aria-label="user_action">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-password="<?= $u['password']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-password="<?= $u['password']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Delete_user"><i class="fas fa-trash fa-fw"></i></button>
+													<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
+													<button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Delete_user"><i class="fas fa-trash fa-fw"></i></button>
 												</div>
 											</td>
 										</tr>
@@ -108,11 +108,11 @@
 						</div>
 						<div class="form-group">
 							<label for="tambah_password">Password</label>
-							<input type="new-password" class="form-control" id="tambah_password" placeholder="Tuliskan Password User..." name="password" required>
+							<input type="password" class="form-control" id="tambah_password" placeholder="Tuliskan Password User..." name="password" required>
 						</div>
 						<div class="form-group">
 							<label for="tambah_password2">Konfirmasi Password</label>
-							<input type="new-password" class="form-control" id="tambah_password2" placeholder="konfirmasi Password User..." name="password2" required>
+							<input type="password" class="form-control" id="tambah_password2" placeholder="konfirmasi Password User..." name="password2" required>
 						</div>
 						<div class="form-group">
 							<label for="jenis_user">Role</label>
@@ -159,19 +159,15 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="edit_nama_user">Nama User</label>
-							<input type="text" class="form-control" id="edit_nama_user" name="user" required>
+							<input type="text" class="form-control" id="edit_nama_user" name="user" required autofocus>
 						</div>
 						<div class="form-group">
 							<label for="edit_email_user">E-mail</label>
 							<input type="email" class="form-control" id="edit_email_user" name="email" required>
 						</div>
 						<div class="form-group">
-							<label for="edit_password">Password</label>
-							<input type="new-password" class="form-control" id="edit_password" name="password" required>
-						</div>
-						<div class="form-group">
-							<label for="edit_password2">Konfirmasi Password</label>
-							<input type="new-password" class="form-control" id="edit_password2" name="password2" required>
+							<label for="edit_password2">Password Baru</label>
+							<input type="password" class="form-control" id="edit_password2" name="password" required>
 						</div>
 						<div class="form-group">
 							<label for="jenis_user">Role</label>
