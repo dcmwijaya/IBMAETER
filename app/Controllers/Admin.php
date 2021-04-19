@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Barang_Model;
 use App\Models\Admin_Model;
 use App\Models\Pengumuman_Model;
+use Dompdf\Dompdf;
 
 class Admin extends BaseController
 {
@@ -188,7 +189,13 @@ class Admin extends BaseController
 				"user" => $this->adminModel->getUser(),
 			];
 
-			return view('admin/expdfUser', $data);
+			$html = view('admin/expdfUser', $data);
+
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'potrait');
+			$dompdf->render();
+			$dompdf->stream('Data-User.pdf');
 		} else {
 			return redirect()->to('/dashboard');
 		}
