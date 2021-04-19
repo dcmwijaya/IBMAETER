@@ -406,14 +406,43 @@ class Menu extends BaseController
 		}
 	}
 
-	public function excelbarang() // **********
+	public function excelbarang()
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "Excel | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
-			return view('global/excelBarang', $data);
+
+			return view('global/exxlsBarang', $data);
+		} else {
+			return redirect()->to('/');
+		}
+	}
+
+	public function docbarang()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "DOC | INVENBAR",
+				"item" => $this->barangModel->getItems()
+			];
+
+			return view('global/exdocBarang', $data);
+		} else {
+			return redirect()->to('/');
+		}
+	}
+
+	public function pdfbarang()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF | INVENBAR",
+				"item" => $this->barangModel->getItems()
+			];
+
+			return view('global/expdfBarang', $data);
 		} else {
 			return redirect()->to('/');
 		}
