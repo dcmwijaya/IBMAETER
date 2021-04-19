@@ -32,16 +32,20 @@ class Menu extends BaseController
 	// ========================= Login ========================
 	public function login()
 	{
-		$data = [
-			"title" => "Login | INVENBAR",
-			"validation" => \Config\Services::Validation()
-		];
-		return view('auth/login', $data);
+		// jika sudah dilakukan login dan belum logout
+		if (session('uid') != null) {
+			return redirect()->to('/Dashboard');
+		} else {
+			$data = [
+				"title" => "Login | INVENBAR",
+				"validation" => \Config\Services::Validation()
+			];
+			return view('auth/login', $data);
+		}
 	}
 
 	public function validasi()
 	{
-
 		// validasi input
 		if (!$this->validate([
 			'email' => [
@@ -69,7 +73,7 @@ class Menu extends BaseController
 			// jika password benar lanjut ke dasboard
 			if (password_verify($password, $user['password'])) {
 				$this->session->set($user);
-				return redirect()->to('/dashboard');
+				return redirect()->to('Menu/Dashboard');
 			} else {
 				// jika password salah kemabali ke login
 				return redirect()->to('/')->withInput();
@@ -89,136 +93,169 @@ class Menu extends BaseController
 
 	//========================= Dashboard Index()=====================
 
-	public function index()
+	public function Index()
 	{
-		return redirect()->to('dashboard');
+		return redirect()->to('Dashboard');
 	}
 
-	public function dashboard()
+	public function Dashboard()
 	{
-		$data = [
-			"title" => "Menu User | INVENBAR",
-			"CurrentMenu" => "dashboard",
-			"info" => $this->newsModel->showTask(),
-			"item" => $this->barangModel->getItems()
-		];
-		// $data['user'] = $this->getUser->get_where('user', [
-		// 	'email' => $this->session->userdata('email')
-		// ])->row_array();
-		return view('global/dashboard', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Menu User | INVENBAR",
+				"CurrentMenu" => "dashboard",
+				"info" => $this->newsModel->showTask(),
+				"item" => $this->barangModel->getItems(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/dashboard', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function Add_item()
 	{
-		$data = array(
-			'nama_item' => $this->request->getPost('nama_item'),
-			'stok' => $this->request->getPost('stok'),
-			'jenis' => $this->request->getPost('jenis'),
-			'penyimpanan' => $this->request->getPost('penyimpanan')
-		);
-		$this->barangModel->addItem($data);
-		return redirect()->to('dashboard');
+		if (session('uid') != null) {
+			$data = array(
+				'nama_item' => $this->request->getPost('nama_item'),
+				'stok' => $this->request->getPost('stok'),
+				'jenis' => $this->request->getPost('jenis'),
+				'penyimpanan' => $this->request->getPost('penyimpanan')
+			);
+			$this->barangModel->addItem($data);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function Edit_item()
 	{
-		$id = $this->request->getPost('id_item');
-		$data = array(
-			'nama_item' => $this->request->getPost('nama_item'),
-			'stok' => $this->request->getPost('stok'),
-			'jenis' => $this->request->getPost('jenis'),
-			'penyimpanan' => $this->request->getPost('penyimpanan')
-		);
-		$this->barangModel->updateItem($data, $id);
-		return redirect()->to('dashboard');
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			$data = array(
+				'nama_item' => $this->request->getPost('nama_item'),
+				'stok' => $this->request->getPost('stok'),
+				'jenis' => $this->request->getPost('jenis'),
+				'penyimpanan' => $this->request->getPost('penyimpanan')
+			);
+			$this->barangModel->updateItem($data, $id);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function Delete_item()
 	{
-		$id = $this->request->getPost('id_item');
-		$this->barangModel->deleteItem($id);
-		return redirect()->to('dashboard');
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			$this->barangModel->deleteItem($id);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function Income_item()
 	{
-		$id = $this->request->getPost('id_item');
-		if ($id != 0) { // if gk guna
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			if ($id != 0) { // if gk guna
+				$data = array(
+					'jumlah_in' => $this->request->getPost('jumlah_in'),
+					'id_item' => $this->request->getPost('id_item')
+				);
+				$this->barangModel->IncomeItem($data, $id);
+			}
 			$data = array(
-				'jumlah_in' => $this->request->getPost('jumlah_in'),
-				'id_item' => $this->request->getPost('id_item')
+				'tgl' => $this->request->getPost('tgl'),
+				'status' => 'Masuk',
+				'uid' => session('role'),
+				'ket' => $this->request->getPost('ket')
 			);
-			$this->barangModel->IncomeItem($data, $id);
+
+			$this->barangModel->LogItem($data);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
 		}
-		$data = array(
-			'tgl' => $this->request->getPost('tgl'),
-			'status' => 'Masuk',
-			'uid' => '001',
-			'ket' => $this->request->getPost('ket')
-		);
-
-		$this->barangModel->LogItem($data);
-
-		return redirect()->to('dashboard');
 	}
 
 	public function Outcome_item()
 	{
-		$id = $this->request->getPost('id_item');
-		if ($id != 0) { // if gk guna
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			if ($id != 0) { // if gk guna
+				$data = array(
+					'jumlah_out' => $this->request->getPost('jumlah_out'),
+					'id_item' => $this->request->getPost('id_item')
+				);
+				$this->barangModel->OutcomeItem($data, $id);
+			}
 			$data = array(
-				'jumlah_out' => $this->request->getPost('jumlah_out'),
-				'id_item' => $this->request->getPost('id_item')
+				'tgl' => $this->request->getPost('tgl'),
+				'status' => 'Keluar',
+				'uid' => session('role'),
+				'ket' => $this->request->getPost('ket')
 			);
-			$this->barangModel->OutcomeItem($data, $id);
+
+			$this->barangModel->LogItem($data);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
 		}
-		$data = array(
-			'tgl' => $this->request->getPost('tgl'),
-			'status' => 'Keluar',
-			'uid' => '1', // tambahkan woy dari role user session
-			'ket' => $this->request->getPost('ket')
-		);
-
-		$this->barangModel->LogItem($data);
-
-		return redirect()->to('dashboard');
 	}
 	// =============================== Pengumuman User ======================
 
-	public function pengumuman()
+	public function Pengumuman()
 	{
-		$data = [
-			"title" => "Pengumuman | INVENBAR",
-			"CurrentMenu" => "pengumuman",
-			"info" => $this->newsModel->showTask()
-		];
-		return view('global/user_pengumuman.php', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Pengumuman | INVENBAR",
+				"CurrentMenu" => "pengumuman",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/user_pengumuman.php', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	// ============================= Profile Akun ================================
-	public function profakun($email)
+	public function Profakun($email)
 	{
-		$data = [
-			"title" => "My Profile | INVENBAR",
-			"CurrentMenu" => "profakun",
-			'user' => $this->userModel->getUser($email),
-			"info" => $this->newsModel->showTask()
-		];
-		return view('global/myprofile', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "My Profile | INVENBAR",
+				"CurrentMenu" => "profakun",
+				'user' => $this->userModel->getUser($email),
+				"info" => $this->newsModel->showTask()
+			];
+			return view('global/myprofile', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	// =================================== Profile Edit ====================================
 
-	public function profedit($uid)
+	public function Profedit($uid)
 	{
-		$data = [
-			"title" => "Edit Profile | INVENBAR",
-			"CurrentMenu" => "profedit",
-			"info" => $this->newsModel->showTask(),
-			'validation' => \Config\Services::Validation(),
-			'user' => $this->userModel->getUserId($uid)
-		];
-		return view('global/editprofile', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Edit Profile | INVENBAR",
+				"CurrentMenu" => "profedit",
+				"info" => $this->newsModel->showTask(),
+				'validation' => \Config\Services::Validation(),
+				'user' => $this->userModel->getUserId($uid)
+			];
+			return view('global/editprofile', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function profUpdate($uid)
@@ -318,7 +355,7 @@ class Menu extends BaseController
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
-
+			$this->session->set('picture', $namaFoto); // ganti session gambar
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
 			// echo "2";
 		} else {
@@ -330,37 +367,45 @@ class Menu extends BaseController
 
 
 	// ==================================== View Chart & Excel =========================================
-	public function chart()
+	public function Chart()
 	{
-		$data = [
-			"title" => "View Chart | INVENBAR",
-			"CurrentMenu" => "view_chart",
-			"info" => $this->newsModel->showTask(),
-			// "class" => $this->barangModel->invenclass(),
-			// "category" => $this->barangModel->jenis(),
-			"sc1" => $this->barangModel->stockclass1(),
-			"sc2" => $this->barangModel->stockclass2(),
-			"sc3" => $this->barangModel->stockclass3(),
-			"sc4" => $this->barangModel->stockclass4(),
-			"sc5" => $this->barangModel->stockclass5(),
-			"sc6" => $this->barangModel->stockclass6(),
-			"sc7" => $this->barangModel->stockclass7(),
-			"sj1" => $this->barangModel->stockjenis1(),
-			"sj2" => $this->barangModel->stockjenis2(),
-			"sj3" => $this->barangModel->stockjenis3(),
-			"sj4" => $this->barangModel->stockjenis4(),
-			"sj5" => $this->barangModel->stockjenis5()
-		];
-		return view('global/viewchart', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "View Chart | INVENBAR",
+				"CurrentMenu" => "view_chart",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid')),
+				"class" => $this->barangModel->invenclass(),
+				"category" => $this->barangModel->jenis(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
+			];
+			return view('global/viewchart', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function excelbarang() // **********
 	{
-		$data = [
-			"title" => "Excel | INVENBAR",
-			"item" => $this->barangModel->getItems()
-		];
-
-		return view('global/excelBarang', $data);
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Excel | INVENBAR",
+				"item" => $this->barangModel->getItems()
+			];
+			return view('global/excelBarang', $data);
+		} else {
+			return redirect()->to('/');
+		}
 	}
 }

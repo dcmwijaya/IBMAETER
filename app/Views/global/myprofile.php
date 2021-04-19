@@ -28,7 +28,7 @@
 								<div class="card-body">
 									<p class="card-text"><b>Nama : </b><?= $user['nama']; ?></p>
 									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p>
-									<h4 class="card-text"><b><?= ($user['role'] == 0) ? "ADMIN" : "PETUGAS" ?></b></h4>
+									<h4 class="card-text"><b><?= ($user['role'] == 0) ? "ADMIN" : "PEKERJA" ?></b></h4>
 								</div>
 							</div>
 						</div>
