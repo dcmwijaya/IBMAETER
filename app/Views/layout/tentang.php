@@ -36,8 +36,8 @@
 					<pre>
 					<br>------------------------------------------------------------
 					<br>Anggota Kelompok 5 Framework C :
-					<br>1. 18081010013 - Devan Cakra
-					<br>2. 18081010??? - Merdin
+					<br>1. 18081010013 - Devan Cakra Mudra Wijaya&nbsp; <i class="fas fa-code" style="color: #000336"></i>
+					<br>2. 18081010081 - Merdin Risalul Abrori&nbsp; <i class="fas fa-lemon" style="color: #60c940"></i>
 					<br>3. 18081010126 - Rifky Akhmad Fernanda&nbsp; <i class="fas fa-cat fa-fw" style="color: #c72876;"></i>
 					</pre>
 				</div>
