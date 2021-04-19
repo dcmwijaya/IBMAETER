@@ -73,7 +73,7 @@ class Menu extends BaseController
 			// jika password benar lanjut ke dasboard
 			if (password_verify($password, $user['password'])) {
 				$this->session->set($user);
-				return redirect()->to('Menu/Dashboard');
+				return redirect()->to('/Menu/Dashboard');
 			} else {
 				// jika password salah kemabali ke login
 				return redirect()->to('/')->withInput();
@@ -95,7 +95,7 @@ class Menu extends BaseController
 
 	public function Index()
 	{
-		return redirect()->to('Dashboard');
+		return redirect()->to('/Menu/Dashboard');
 	}
 
 	public function Dashboard()

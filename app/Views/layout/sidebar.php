@@ -86,13 +86,13 @@
 								</h6>
 								<hr class="my-0 font-weight-bold">
 								<div class=" mb-1" id="admin_menu">
-									<a href="<?= base_url('') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('Menu') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-question fa-fw me-3"></i><span>Laporan Gudang</span>
 									</a>
-									<a href="<?= base_url('') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('Menu') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-question fa-fw me-3"></i><span>Detail Barang</span>
 									</a>
-									<a href="<?= base_url('') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('Menu') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-question fa-fw me-3"></i><span>Data Kamar</span>
 									</a>
 								</div>
