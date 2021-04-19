@@ -30,7 +30,7 @@
 				<ul class="sidebar-navigation px-0">
 					<div class="pilside position-sticky">
 						<div class="list-group list-group-flush mx-2 mt-2">
-							<!-- cluster admin -->
+							<!-- Cluster admin -->
 							<?php if (session('role') == 0) : ?>
 								<div class="menu-parent bg-light mb-2">
 									<h6 class="menu-head sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
