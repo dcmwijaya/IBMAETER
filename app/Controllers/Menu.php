@@ -201,7 +201,7 @@ class Menu extends BaseController
 				'ket' => $this->request->getPost('ket')
 			);
 			$this->barangModel->OutcomeItem($data, $id);
-		}
+		
     
 		$data = array(
 			'tgl' => $this->request->getPost('tgl'),
