@@ -12,7 +12,7 @@
 			<ul class="navbar-nav ms-auto d-flex flex-row">
 				<!-- Nav Item - Messages -->
 				<li class="nav-item dropdown no-arrow d-flex align-items-center mx-3">
-					<a class="nav-link" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a class="nav-link" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-bell fa-fw" style="font-size: 20px;">
 							<!-- Counter - Messages -->
 							<span class="custom-badge badge-danger badge-counter">1</span>
@@ -53,13 +53,13 @@
 
 				<!-- Avatar -->
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 						<img src="<?= base_url("/img/user") . "/" . session('picture'); ?>" class="rounded-circle" height="30" alt="" loading="lazy" />
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item" href="<?= base_url('menu/profakun') . "/" . session('email') ?>"><i class="far fa-user-circle fa-fw me-3"></i>My profile</a></li>
 						<li><a class="dropdown-item" href="<?= base_url('menu/profedit') . "/" . session('uid') ?>"><i class="fas fa-users-cog fa-fw me-3"></i>Edit Profile</a></li>
-						<li><a class="dropdown-item" href="<?= base_url('/') ?>"><i class="fas fa-sign-out-alt fa-fw me-3"></i>Keluar Akun</a></li>
+						<li><a class="dropdown-item" href="<?= base_url('menu/logout') ?>"><i class="fas fa-sign-out-alt fa-fw me-3"></i>Keluar Akun</a></li>
 					</ul>
 				</li>
 			</ul>

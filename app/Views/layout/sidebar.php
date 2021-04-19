@@ -20,7 +20,7 @@
 						</a>
 						<div class="mt-3">
 							<h6 class="text-center text-dark font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 10px; color:yellowgreen; vertical-align: middle;"></i></h6>
-							<p class="text-dark mb-1"><?= (session('role') == 0 ? "Admin" : "Pekerja") ?> | Online</p>
+							<p class="text-dark mb-1">??? | Online</p>
 						</div>
 					</div>
 				</div>
@@ -31,45 +31,47 @@
 					<div class="pilside position-sticky">
 						<div class="list-group list-group-flush mx-2 mt-2">
 							<!-- admon -->
-							<div class="menu-parent bg-light mb-2">
-								<h6 class="menu-head sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
-									<span>Admin Menu</span>
-									<a class=" d-flex align-items-center text-muted disabled"><i class="fas fa-fw fa-address-card"></i></a>
-								</h6>
-								<hr class="my-0 font-weight-bold">
-								<div class=" mb-1" id="admin_menu">
-									<a href="<?= base_url('admin/datauser') ?>" class="<?= ($CurrentMenu == 'data_user') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-										<i class="fas fa-users fa-fw me-3"></i><span>Data Users</span>
-									</a>
-									<a href="<?= base_url('admin/adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-										<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
-									</a>
+							<?php if (session('role') == 0) : ?>
+								<div class="menu-parent bg-light mb-2">
+									<h6 class="sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
+										<span>Admin Menu</span>
+										<a class="menu-head d-flex align-items-center text-muted disabled" href="#"><i class="fas fa-fw fa-address-card"></i></a>
+									</h6>
+									<hr class="my-0 font-weight-bold">
+									<div class=" mb-1" id="admin_menu">
+										<a href="<?= base_url('admin/datauser') ?>" class="list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-users fa-fw me-3"></i><span>Data Users</span>
+										</a>
+										<a href="<?= base_url('admin/adminpengumuman') ?>" class="list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
+										</a>
+									</div>
 								</div>
-							</div>
+							<?php endif; ?>
 							<!-- user -->
 							<div class="menu-parent bg-light mb-2 ">
-								<h6 class="menu-head sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
+								<h6 class="sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
 									<span>User Menu</span>
-									<a class=" d-flex align-items-center text-muted disabled"><i class="fas fa-fw fa-box"></i></a>
+									<a class="menu-head d-flex align-items-center text-muted disabled" href="#"><i class="fas fa-fw fa-box"></i></a>
 								</h6>
 								<hr class="my-0 font-weight-bold">
 								<div class="mb-1" id="user_menu">
-									<a href="<?= base_url('menu/dashboard') ?>" class="<?= ($CurrentMenu == 'dashboard') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/dashboard') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-house-user fa-fw me-3"></i><span>Dashboard</span>
 									</a>
-									<a href="<?= base_url('menu/pengumuman') ?>" class="<?= ($CurrentMenu == 'pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/pengumuman') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
 									</a>
-									<a href="<?= base_url('menu/profakun') . "/" . session('email') ?>" class="<?= ($CurrentMenu == 'profakun') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/profakun') . "/" . session('email') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="far fa-user-circle fa-fw me-3"></i><span>My Profile</span>
 									</a>
-									<a href="<?= base_url('menu/profedit') . "/" . session('uid') ?>" class="<?= ($CurrentMenu == 'profedit') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/profedit') . "/" . session('uid') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-users-cog fa-fw me-3"></i><span>Edit Profile</span>
 									</a>
-									<a href="<?= base_url('menu/chart') ?>" class="<?= ($CurrentMenu == 'view_chart') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/chart') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-chart-line fa-fw me-3"></i><span>View Chart</span>
 									</a>
-									<a href="<?= base_url('/') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('menu/logout') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-sign-out-alt fa-fw me-3"></i><span>Keluar Akun</span>
 									</a>
 								</div>
@@ -82,10 +84,10 @@
 								</h6>
 								<hr class="my-0 font-weight-bold">
 								<div class=" mb-1" id="admin_menu">
-									<a href="<?= base_url('') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('admin/datauser') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-question fa-fw me-3"></i><span>Laporan Gudang</span>
 									</a>
-									<a href="<?= base_url('') ?>" class="list-group-item list-group-item-action py-2 ripple">
+									<a href="<?= base_url('admin/adminpengumuman') ?>" class="list-group-item list-group-item-action py-2 ripple">
 										<i class="fas fa-question fa-fw me-3"></i><span>Data</span>
 									</a>
 								</div>
