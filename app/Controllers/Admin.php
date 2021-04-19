@@ -144,7 +144,7 @@ class Admin extends BaseController
 			return redirect()->to('/');
 		}
 	}
-
+	
 	public function exceluser()
 	{
 		// jika user merupakan Admin
@@ -154,9 +154,39 @@ class Admin extends BaseController
 				"user" => $this->adminModel->getUser(),
 			];
 
-			return view('admin/excelUser', $data);
+			return view('admin/exxlsUser', $data);
 		} else {
-			return redirect()->to('/Dashboard');
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function docuser()
+	{
+		// jika user merupakan Admin
+		if (session('role') == 0) {
+			$data = [
+				"title" => "DOC | INVENBAR",
+				"user" => $this->adminModel->getUser(),
+			];
+
+			return view('admin/exdocUser', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function pdfuser()
+	{
+		// jika user merupakan Admin
+		if (session('role') == 0) {
+			$data = [
+				"title" => "PDF | INVENBAR",
+				"user" => $this->adminModel->getUser(),
+			];
+
+			return view('admin/expdfUser', $data);
+		} else {
+			return redirect()->to('/dashboard');
 		}
 	}
 
