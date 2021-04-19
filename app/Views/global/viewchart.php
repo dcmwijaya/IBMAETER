@@ -117,7 +117,7 @@ foreach ($sc7 as $vs7) {
 				<!-- card body -->
 				<div class="card-body">
 					<div class="diagram-wrap">
-						<div class="title">
+						<div class="chart-title">
 							<center><i class="fas fa-chart-bar fa-fw me-3"></i>Diagram Batang</center>
 						</div>
 						<canvas class="chartview" id="ChartBar"></canvas>
@@ -164,7 +164,7 @@ foreach ($sc7 as $vs7) {
 					<hr>
 
 					<div class="diagram-wrap">
-						<div class="title">
+						<div class="chart-title">
 							<center><i class="fas fa-chart-line fa-fw me-3"></i>Diagram Garis</center>
 						</div>
 						<canvas class="chartview" id="ChartLine"></canvas>
@@ -211,7 +211,7 @@ foreach ($sc7 as $vs7) {
 					<hr>
 
 					<div class="diagram-wrap">
-						<div class="title">
+						<div class="chart-title">
 							<center><i class="fas fa-chart-pie fa-fw me-3"></i>Diagram Pai</center>
 						</div>
 						<canvas class="chartview" id="ChartPie"></canvas>
@@ -262,7 +262,7 @@ foreach ($sc7 as $vs7) {
 					<hr>
 
 					<div class="diagram-wrap">
-						<div class="title">
+						<div class="chart-title">
 							<center><i class="fas fa-dot-circle fa-fw me-3"></i>Diagram Donat</center>
 						</div>
 						<canvas class="chartview" id="ChartDonuts"></canvas>

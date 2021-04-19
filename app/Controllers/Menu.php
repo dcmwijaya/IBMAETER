@@ -34,7 +34,7 @@ class Menu extends BaseController
 	{
 		// jika sudah dilakukan login dan belum logout
 		if (session('uid') != null) {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/Dashboard');
 		} else {
 			$data = [
 				"title" => "Login | INVENBAR",
@@ -46,7 +46,6 @@ class Menu extends BaseController
 
 	public function validasi()
 	{
-
 		// validasi input
 		if (!$this->validate([
 			'email' => [
@@ -74,7 +73,7 @@ class Menu extends BaseController
 			// jika password benar lanjut ke dasboard
 			if (password_verify($password, $user['password'])) {
 				$this->session->set($user);
-				return redirect()->to('/dashboard');
+				return redirect()->to('/Menu/Dashboard');
 			} else {
 				// jika password salah kemabali ke login
 				return redirect()->to('/')->withInput();
@@ -94,16 +93,17 @@ class Menu extends BaseController
 
 	//========================= Dashboard Index()=====================
 
-	public function index()
+	public function Index()
 	{
-		return redirect()->to('dashboard');
+		return redirect()->to('/Menu/Dashboard');
 	}
 
-	public function dashboard()
+	public function Dashboard()
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "Menu User | INVENBAR",
+				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
 				"item" => $this->barangModel->getItems(),
 				'user' => $this->userModel->getUserId(session('uid'))
@@ -124,7 +124,7 @@ class Menu extends BaseController
 				'penyimpanan' => $this->request->getPost('penyimpanan')
 			);
 			$this->barangModel->addItem($data);
-			return redirect()->to('dashboard');
+			return redirect()->to('Dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -141,7 +141,7 @@ class Menu extends BaseController
 				'penyimpanan' => $this->request->getPost('penyimpanan')
 			);
 			$this->barangModel->updateItem($data, $id);
-			return redirect()->to('dashboard');
+			return redirect()->to('Dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -152,7 +152,7 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$this->barangModel->deleteItem($id);
-			return redirect()->to('dashboard');
+			return redirect()->to('Dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -160,36 +160,49 @@ class Menu extends BaseController
 
 	public function Income_item()
 	{
-		$id = $this->request->getPost('id_item');
-		if ($id != 0) { // if gk guna
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			if ($id != 0) { // if gk guna
+				$data = array(
+					'jumlah_in' => $this->request->getPost('jumlah_in'),
+					'id_item' => $this->request->getPost('id_item')
+				);
+				$this->barangModel->IncomeItem($data, $id);
+			}
 			$data = array(
-				'jumlah_in' => $this->request->getPost('jumlah_in'),
-				'id_item' => $this->request->getPost('id_item')
+				'tgl' => $this->request->getPost('tgl'),
+				'status' => 'Masuk',
+				'uid' => session('role'),
+				'ket' => $this->request->getPost('ket')
 			);
-			$this->barangModel->IncomeItem($data, $id);
+
+			$this->barangModel->LogItem($data);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
 		}
-		$data = array(
-			'tgl' => $this->request->getPost('tgl'),
-			'status' => 'Masuk',
-			'uid' => '001',
-			'ket' => $this->request->getPost('ket')
-		);
-
-		$this->barangModel->LogItem($data);
-
-		return redirect()->to('dashboard');
 	}
 
 	public function Outcome_item()
 	{
-		$id = $this->request->getPost('id_item');
-		if ($id != 0) { // if gk guna
+		if (session('uid') != null) {
+			$id = $this->request->getPost('id_item');
+			if ($id != 0) { // if gk guna
+				$data = array(
+					'jumlah_out' => $this->request->getPost('jumlah_out'),
+					'id_item' => $this->request->getPost('id_item')
+				);
+				$this->barangModel->OutcomeItem($data, $id);
+			}
 			$data = array(
-				'jumlah_out' => $this->request->getPost('jumlah_out'),
-				'id_item' => $this->request->getPost('id_item')
+				'tgl' => $this->request->getPost('tgl'),
+				'status' => 'Keluar',
+				'uid' => session('role'),
+				'ket' => $this->request->getPost('ket')
 			);
 			$this->barangModel->OutcomeItem($data, $id);
 		}
+    
 		$data = array(
 			'tgl' => $this->request->getPost('tgl'),
 			'status' => 'Keluar',
@@ -197,17 +210,20 @@ class Menu extends BaseController
 			'ket' => $this->request->getPost('ket')
 		);
 
-		$this->barangModel->LogItem($data);
-
-		return redirect()->to('dashboard');
+			$this->barangModel->LogItem($data);
+			return redirect()->to('Dashboard');
+		} else {
+			return redirect()->to('/');
+		}
 	}
 	// =============================== Pengumuman User ======================
 
-	public function pengumuman()
+	public function Pengumuman()
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "Pengumuman | INVENBAR",
+				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
 				'user' => $this->userModel->getUserId(session('uid'))
 			];
@@ -218,11 +234,12 @@ class Menu extends BaseController
 	}
 
 	// ============================= Profile Akun ================================
-	public function profakun($email)
+	public function Profakun($email)
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "My Profile | INVENBAR",
+				"CurrentMenu" => "profakun",
 				'user' => $this->userModel->getUser($email),
 				"info" => $this->newsModel->showTask()
 			];
@@ -234,11 +251,12 @@ class Menu extends BaseController
 
 	// =================================== Profile Edit ====================================
 
-	public function profedit($uid)
+	public function Profedit($uid)
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "Edit Profile | INVENBAR",
+				"CurrentMenu" => "profedit",
 				"info" => $this->newsModel->showTask(),
 				'validation' => \Config\Services::Validation(),
 				'user' => $this->userModel->getUserId($uid)
@@ -346,9 +364,8 @@ class Menu extends BaseController
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
-
 			$this->session->set('picture', $namaFoto); // ganti session gambar
-
+      
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
 			// echo "2";
 		} else {
@@ -360,11 +377,12 @@ class Menu extends BaseController
 
 
 	// ==================================== View Chart & Excel =========================================
-	public function chart()
+	public function Chart()
 	{
 		if (session('uid') != null) {
 			$data = [
 				"title" => "View Chart | INVENBAR",
+				"CurrentMenu" => "view_chart",
 				"info" => $this->newsModel->showTask(),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"class" => $this->barangModel->invenclass(),
@@ -395,7 +413,6 @@ class Menu extends BaseController
 				"title" => "Excel | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
-
 			return view('global/excelBarang', $data);
 		} else {
 			return redirect()->to('/');
