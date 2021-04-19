@@ -22,11 +22,9 @@ header('Content-Disposition: attachment; filename="Data-User.xls"');
 								<thead>
 									<tr>
 										<th>No</th>
-										<th>Foto</th>
 										<th>Nama User</th>
 										<th>E-mail</th>
 										<th>Role</th>
-										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -34,7 +32,6 @@ header('Content-Disposition: attachment; filename="Data-User.xls"');
 									<?php foreach ($user as $u) : ?>
 										<tr>
 											<td><?= $no ?></td>
-											<td><img width="100" src="https://www.flaticon.com/svg/vstatic/svg/2922/2922506.svg?token=exp=1617452642~hmac=de629f88fa4948d6f0843084a7b561c0" alt=""></td>
 											<td><?= $u['nama']; ?></td>
 											<td><?= $u['email']; ?></td>
 											<td><?= $u['role']; ?></td>
