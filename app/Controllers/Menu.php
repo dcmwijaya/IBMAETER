@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Barang_Model;
 use App\Models\Pengumuman_Model;
 use App\Models\userModel;
+use Dompdf\Dompdf;
 
 class Menu extends BaseController
 {
@@ -433,7 +434,14 @@ class Menu extends BaseController
 				"item" => $this->barangModel->getItems()
 			];
 
-			return view('global/expdfBarang', $data);
+			$html = view('global/expdfBarang', $data);
+			
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'potrait');
+			$dompdf->render();
+			$dompdf->stream('Tabel-Barang-Gudang-2021.pdf');
+
 		} else {
 			return redirect()->to('/');
 		}
