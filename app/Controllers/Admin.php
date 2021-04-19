@@ -44,7 +44,7 @@ class Admin extends BaseController
 				"info" => $this->newsModel->showTask(),
 				"user" => $this->adminModel->getUser()
 			];
-			return view('Admin/data_user', $data);
+			return view('admin/data_user', $data);
 		} else {
 			return redirect()->to('/Dashboard');
 		}
