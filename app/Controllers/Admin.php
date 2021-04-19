@@ -120,7 +120,6 @@ class Admin extends BaseController
 				// return redirect()->to('datauser')->withInput()->with('validation', $validation);
 				return redirect()->to('Datauser')->withInput();
 			}
-
 			$id = $this->request->getPost('user_id');
 			$data = array(
 				'nama' => $this->request->getPost('user'),

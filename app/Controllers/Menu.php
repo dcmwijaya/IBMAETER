@@ -200,6 +200,15 @@ class Menu extends BaseController
 				'uid' => session('role'),
 				'ket' => $this->request->getPost('ket')
 			);
+			$this->barangModel->OutcomeItem($data, $id);
+		}
+    
+		$data = array(
+			'tgl' => $this->request->getPost('tgl'),
+			'status' => 'Keluar',
+			'uid' => session('role'), // tambahkan woy dari role user session
+			'ket' => $this->request->getPost('ket')
+		);
 
 			$this->barangModel->LogItem($data);
 			return redirect()->to('Dashboard');
@@ -356,6 +365,7 @@ class Menu extends BaseController
 
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
 			$this->session->set('picture', $namaFoto); // ganti session gambar
+      
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
 			// echo "2";
 		} else {
