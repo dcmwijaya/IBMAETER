@@ -35,7 +35,7 @@ class Menu extends BaseController
 	{
 		// jika sudah dilakukan login dan belum logout
 		if (session('uid') != null) {
-			return redirect()->to('/Dashboard');
+			return redirect()->to('/dashboard');
 		} else {
 			$data = [
 				"title" => "Login | INVENBAR",
@@ -74,7 +74,7 @@ class Menu extends BaseController
 			// jika password benar lanjut ke dasboard
 			if (password_verify($password, $user['password'])) {
 				$this->session->set($user);
-				return redirect()->to('/Menu/Dashboard');
+				return redirect()->to('/dashboard');
 			} else {
 				// jika password salah kemabali ke login
 				return redirect()->to('/')->withInput();
@@ -96,7 +96,11 @@ class Menu extends BaseController
 
 	public function Index()
 	{
-		return redirect()->to('/Menu/Dashboard');
+		if (session('uid') != null) {
+			return redirect()->to('/dashboard');
+		} else {
+			return redirect()->to('/');
+		}
 	}
 
 	public function Dashboard()
@@ -125,7 +129,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
-			return redirect()->to('Dashboard');
+			return redirect()->to('/dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -142,7 +146,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
-			return redirect()->to('Dashboard');
+			return redirect()->to('/dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -153,7 +157,7 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$this->barangModel->deleteItem($id);
-			return redirect()->to('Dashboard');
+			return redirect()->to('/dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -178,7 +182,7 @@ class Menu extends BaseController
 			);
 
 			$this->barangModel->LogItem($data);
-			return redirect()->to('Dashboard');
+			return redirect()->to('/dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -202,7 +206,7 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
 			$this->barangModel->LogItem($data);
-			return redirect()->to('Dashboard');
+			return redirect()->to('dashboard');
 		} else {
 			return redirect()->to('/');
 		}
@@ -347,15 +351,23 @@ class Menu extends BaseController
 				$password = $inputPassword;
 			}
 
+			// tampung masukan
+			$inputNama = str_replace("'", "", htmlspecialchars($this->request->getVar('nama'), ENT_QUOTES));
+			$inputEmail = str_replace("'", "", htmlspecialchars($this->request->getVar('email'), ENT_QUOTES));
+			$inputPW = password_hash($password, PASSWORD_DEFAULT);
+
 			$this->userModel->update($uid, [
-				'nama' => str_replace("'", "", htmlspecialchars($this->request->getVar('nama'), ENT_QUOTES)),
-				'email' => str_replace("'", "", htmlspecialchars($this->request->getVar('email'), ENT_QUOTES)),
-				'password' => password_hash($password, PASSWORD_DEFAULT),
+				'nama' => $inputNama,
+				'email' => $inputEmail,
+				'password' => $inputPW,
 				'role' => str_replace("'", "", htmlspecialchars($dataUser['role'], ENT_QUOTES)),
 				'picture' => $namaFoto
 			]);
 
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
+			$this->session->set('nama', $inputNama); // ganti session nama
+			$this->session->set('email', $inputEmail); // ganti session email
+			$this->session->set('password', $inputPW); // ganti session password
 			$this->session->set('picture', $namaFoto); // ganti session gambar
 
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
@@ -435,13 +447,12 @@ class Menu extends BaseController
 			];
 
 			$html = view('global/expdfBarang', $data);
-			
+
 			$dompdf = new Dompdf();
 			$dompdf->loadHtml($html);
 			$dompdf->setPaper('A4', 'potrait');
 			$dompdf->render();
 			$dompdf->stream('Tabel-Barang-Gudang-2021.pdf');
-
 		} else {
 			return redirect()->to('/');
 		}

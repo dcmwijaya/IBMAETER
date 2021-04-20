@@ -47,7 +47,7 @@ class Admin extends BaseController
 			];
 			return view('admin/data_user', $data);
 		} else {
-			return redirect()->to('/Dashboard');
+			return redirect()->to('/dashboard');
 		}
 	}
 
@@ -149,7 +149,7 @@ class Admin extends BaseController
 			return redirect()->to('/');
 		}
 	}
-	
+
 	public function exceluser()
 	{
 		// jika user merupakan Admin
@@ -216,7 +216,7 @@ class Admin extends BaseController
 			];
 			return view('admin/pengumuman', $data);
 		} else {
-			return redirect()->to('/Dashboard');
+			return redirect()->to('/dashboard');
 		}
 	}
 
@@ -233,7 +233,7 @@ class Admin extends BaseController
 			$this->newsModel->editInfo($data, $id);
 			return redirect()->to('Adminpengumuman');
 		} else {
-			return redirect()->to('/Dashboard');
+			return redirect()->to('/dashboard');
 		}
 	}
 }
