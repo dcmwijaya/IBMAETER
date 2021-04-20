@@ -5,9 +5,8 @@
 <!--Main layout-->
 <main class="bg-dark">
     <div class="container py-4">
-        <div class="row mb-4">
-            <div class="col-2"></div>
-            <div class="card col-8">
+        <div class="row mb-4 mx-2">
+            <div class="card col-sm-8 mx-auto">
                 <div class="card-header text-center py-3">
                     <h5 class="mb-0 text-center">
                         <strong>PENGUMUMAN</strong>
@@ -25,7 +24,6 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="col-2"></div>
         </div>
     </div>
 </main>

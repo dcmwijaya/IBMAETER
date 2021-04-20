@@ -15,14 +15,14 @@
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Admin&nbsp;&nbsp;&nbsp; :</label>
 						<div class="col-sm-10">
-							<input type="text" class="col-sm-5 form-control-sm" value="saber.genshin@gmail.com" id="myInput1" readonly>
+							<input type="text" class="col-sm-5 form-control-sm" value="billy@gantx.com" id="myInput1" readonly>
 							<button onclick="copy1()" class="btn btn-sm btn-success ml-3 py-2 shadow-sm px-3"><i class="fas fa-fw fa-clipboard"></i></button>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Pekerja&nbsp;&nbsp;&nbsp; :</label>
 						<div class="col-sm-10">
-							<input type="text" class="col-sm-5 form-control-sm" value="billy@gantx.com" id="myInput2" readonly>
+							<input type="text" class="col-sm-5 form-control-sm" value="erwin@gmail.com" id="myInput2" readonly>
 							<button onclick="copy2()" class="btn btn-sm btn-secondary ml-3 py-2 shadow-sm px-3"><i class="fas fa-fw fa-clipboard"></i></button>
 						</div>
 					</div>

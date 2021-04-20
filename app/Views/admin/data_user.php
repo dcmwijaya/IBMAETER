@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template') ?>
 
 <?= $this->section('content') ?>
-
+<link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container py-4">
@@ -14,83 +14,61 @@
 				</div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
-						<div class="row">
-							<nav class="navbar navbar-light justify-content-between">
-								<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm p-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<button type="button" onclick="window.print()" id="item_pdf" class="btn btn-info btn-sm p-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
+						<div class="row my-3">
+							<div class="d-flex">
+								<div class="flex-fill mr-auto">
+									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
+									<button type="button" onclick="window.print()" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
 								</div>
-								<div class="form-inline">
-									<div class="dropdown show">
-										<a class="btn btn-secondary dropdown-toggle" href="#" class="btn btn-dark btn-sm" style="float:right;margin-top:20px;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-download me-2"></i> Export
-										</a>
-										<div class="dropdown-menu dm-export">
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/exceluser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/docuser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfuser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
-										</div>
-										<style>
-											.dm-export {
-												background-color: rgba(225, 225, 225);
-												padding: 10px 10px;
-												border-radius: 2px;
-											}
-
-											.dm-export-item {
-												background-color: rgba(180, 180, 180);
-											}
-
-											.dm-export-item:hover {
-												background-color: black;
-												color: white;
-												padding-left: 10px;
-												border-radius: 2px;
-												width: 100%;
-												text-transform: uppercase;
-											}
-										</style>
+								<div class="flex-fill">
+									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-fw fa-file"></i> Export
+									</button>
+									<div class="dropdown-menu dm-export">
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/exceluser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i> Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/docuser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i> Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfuser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i> Pdf</a>
 									</div>
 								</div>
-							</nav>
+							</div>
 						</div>
-					<div class="row">
-						<div class="col table-responsive">
-							<table id="table_user" class="display nowrap" style="font-size: 14px; width:100%;">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th>Foto</th>
-										<th>Nama User</th>
-										<th>E-mail</th>
-										<th>Role</th>
-										<th>Aksi</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $no = 1; ?>
-									<?php foreach ($user as $u) : ?>
+						<div class="row">
+							<div class="col table-responsive">
+								<table id="table_user" class="display nowrap" style="font-size: 14px; width:100%;">
+									<thead>
 										<tr>
-											<td><?= $no ?></td>
-											<td><img width="100" src="<?= base_url('../img/user') . "/" .  $u['picture']; ?> " alt=""></td>
-											<td><?= $u['nama']; ?></td>
-											<td><?= $u['email']; ?></td>
-											<td><?= $u['role']; ?></td>
-											<td>
-												<div class="btn-group" role="group" aria-label="user_action">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Delete_user"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
+											<th>No</th>
+											<th>Foto</th>
+											<th>Nama User</th>
+											<th>E-mail</th>
+											<th>Role</th>
+											<th>Aksi</th>
 										</tr>
-										<?php $no++; ?>
-									<?php endforeach; ?>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<?php $no = 1; ?>
+										<?php foreach ($user as $u) : ?>
+											<tr>
+												<td><?= $no ?></td>
+												<td><img width="100" src="<?= base_url('../img/user') . "/" .  $u['picture']; ?> " alt=""></td>
+												<td><?= $u['nama']; ?></td>
+												<td><?= $u['email']; ?></td>
+												<td><?= $u['role']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="user_action">
+														<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
+														<button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Delete_user"><i class="fas fa-trash fa-fw"></i></button>
+													</div>
+												</td>
+											</tr>
+											<?php $no++; ?>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 	</div>
 </main class="mb-3">

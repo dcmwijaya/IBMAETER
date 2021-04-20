@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template') ?>
 
 <?= $this->section('content') ?>
-
+<link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
@@ -14,90 +14,69 @@
 				</div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
-						<div class="row">
-							<nav class="navbar navbar-light justify-content-between">
-								<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm p-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<button type="button" onclick="window.print()" id="item_pdf" class="btn btn-info btn-sm p-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
+						<div class="row my-3">
+							<div class="d-flex">
+								<div class="flex-fill mr-auto">
+									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
+									<button type="button" onclick="window.print()" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+
 								</div>
-								<div class="form-inline">
-									<div class="dropdown show">
-										<a class="btn btn-secondary dropdown-toggle" href="#" class="btn btn-dark btn-sm" style="float:right;margin-top:20px;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-download me-2"></i> Export
-										</a>
-										<div class="dropdown-menu dm-export">
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
-										</div>
-										<style>
-											.dm-export {
-												background-color: rgba(225, 225, 225);
-												padding: 10px 10px;
-												border-radius: 2px;
-											}
-
-											.dm-export-item {
-												background-color: rgba(180, 180, 180);
-											}
-
-											.dm-export-item:hover {
-												background-color: black;
-												color: white;
-												padding-left: 10px;
-												border-radius: 2px;
-												width: 100%;
-												text-transform: uppercase;
-											}
-										</style>
+								<div class="flex-fill">
+									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-fw fa-file"></i> Export
+									</button>
+									<div class="dropdown-menu dm-export">
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
 									</div>
 								</div>
-							</nav>
+							</div>
 						</div>
-					<div class="row">
-						<div class="col">
-							<table id="table_item" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th>Nama Barang</th>
-										<th>Stok</th>
-										<th>Jenis</th>
-										<th>Room</th>
-										<th>Aksi</th>
-										<th>Kirim</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $no = 1; ?>
-									<?php foreach ($item as $b) : ?>
+						<div class="row">
+							<div class="col">
+								<table id="table_item" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
+									<thead>
 										<tr>
-											<td><?= $no ?></td>
-											<td><?= $b['nama_item'] ?></td>
-											<td><?= $b['stok']; ?></td>
-											<td><?= $b['jenis']; ?></td>
-											<td><?= $b['penyimpanan']; ?></td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemIn"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
-													<button type="button" class="btn btn-success btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemOut"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
-												</div>
-											</td>
+											<th>No</th>
+											<th>Nama Barang</th>
+											<th>Stok</th>
+											<th>Jenis</th>
+											<th>Room</th>
+											<th>Aksi</th>
+											<th>Kirim</th>
 										</tr>
-										<?php $no++; ?>
-									<?php endforeach; ?>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<?php $no = 1; ?>
+										<?php foreach ($item as $b) : ?>
+											<tr>
+												<td><?= $no ?></td>
+												<td><?= $b['nama_item'] ?></td>
+												<td><?= $b['stok']; ?></td>
+												<td><?= $b['jenis']; ?></td>
+												<td><?= $b['penyimpanan']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
+														<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+													</div>
+												</td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemIn"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
+														<button type="button" class="btn btn-success btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemOut"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
+													</div>
+												</td>
+											</tr>
+											<?php $no++; ?>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 	</div><br>
 </main>
