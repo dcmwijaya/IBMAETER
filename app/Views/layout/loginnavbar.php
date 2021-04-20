@@ -14,8 +14,21 @@
 					<li class="nav-item active">
 						<a class="nav-link">Home <span class="sr-only">(current)</span></a>
 					</li>
+					<?php
+						$mail = "https://mail.google.com/mail/";
+						$emailtujuan = "fikinvenbar@upnjatim.ac.id";
+						$subject = "HUBUNGI ADMIN INVENBAR";
+						$enter = "%0A%0A%0A";
+						$pg1 = "[Tuliskan pesan anda disini]";
+						$pg2 = "Dengan ini, saya menyatakan bahwa saya menghubungi admin tanpa paksaan siapapun serta dalam keadaan sadar.";
+						$pg3 = "Atas perhatian Bapak/Ibu, besar harapan saya agar permintaan saya dapat diproses sebagaimana mestinya. Sekian dari saya, terima kasih.";
+						$namaAnda = "[Nama Anda]";
+						$body = "Isi Pesan:%0A".$pg1."".$enter."".$pg2."%0A".$pg3."%0A%0AHormat Saya,".$enter."".$namaAnda;
+
+						$pesan = "".$mail. "?view=cm&fs=1&tf=1&to=".$emailtujuan."&subject?&su=".$subject."&body=".$body;
+					?>
 					<li class="nav-item">
-						<a class="nav-link reg" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=fikinvenbar@upnjatim.ac.id&subject?&su=AJUAN%20REGISTRASI%20ADMIN%20INVENBAR&body=Isi%20Pesan:%0A%0A[Tuliskan%20pesan%20anda%20disini%2E%2E%2E%2E%2E]%0A%0A%0ADengan%20ini%2C%20saya%20menyatakan%20bahwa%20saya%20mengajukan%20ini%20tanpa%20paksaan%20siapapun%20serta%20dalam%20keadaan%20sadar%2E%20Sekian%20dari%20saya%2C%20terima%20kasih%2E%0A%0AHormat%20Saya%2C%0A%0A%0ANama%20Anda" target="_blank" http-equiv="refresh" content="2">
+						<a class="nav-link reg" href="<?= $pesan; ?>" target="_blank" http-equiv="refresh" content="2">
 							Kontak
 						</a>
 					</li>
