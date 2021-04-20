@@ -15,19 +15,16 @@
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row">
-							<div class="col-sm-6">
-								<div class="d-flex flex-wrap">
-									<button type="button" class="btn btn-primary shadow-sm p-2 m-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<button type="button" onclick="window.print()" id="item_pdf" class="ml-auto btn btn-info shadow-sm p-2 m-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
+							<nav class="navbar navbar-light justify-content-between">
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm p-2" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
+									<button type="button" onclick="window.print()" id="item_pdf" class="btn btn-info btn-sm p-2"><i class="fas fa-file-pdf fa-fw"></i> Print Laporan</button>
 								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="d-flex justify-content-end">
-									<div class="btn-group m-2">
-										<a type="button" href="#" class="btn btn-dark btn-sm" onclick="return false;"><i class="fas fa-download fa-fw"></i> Export Data Barang</a>
-										<button type="button" class="btn btn-dark btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<span class="sr-only">Toggle Dropdown</span>
-										</button>
+								<div class="form-inline">
+									<div class="dropdown show">
+										<a class="btn btn-secondary dropdown-toggle" href="#" class="btn btn-dark btn-sm" style="float:right;margin-top:20px;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-download me-2"></i> Export
+										</a>
 										<div class="dropdown-menu dm-export">
 											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
 											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
@@ -36,12 +33,16 @@
 										<style>
 											.dm-export {
 												background-color: rgba(225, 225, 225);
-												margin: 10px 10px;
+												padding: 10px 10px;
 												border-radius: 2px;
 											}
 
+											.dm-export-item {
+												background-color: rgba(180, 180, 180);
+											}
+
 											.dm-export-item:hover {
-												background-color: grey;
+												background-color: black;
 												color: white;
 												padding-left: 10px;
 												border-radius: 2px;
@@ -51,9 +52,8 @@
 										</style>
 									</div>
 								</div>
-							</div>
+							</nav>
 						</div>
-					</div>
 					<div class="row">
 						<div class="col">
 							<table id="table_item" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
