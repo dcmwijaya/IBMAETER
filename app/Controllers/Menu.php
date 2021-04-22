@@ -30,68 +30,6 @@ class Menu extends BaseController
 		$this->newsModel = new Pengumuman_Model();
 	}
 
-	// ========================= Login ========================
-	public function login()
-	{
-		// jika sudah dilakukan login dan belum logout
-		if (session('uid') != null) {
-			return redirect()->to('/dashboard');
-		} else {
-			$data = [
-				"title" => "Login | INVENBAR",
-				"validation" => \Config\Services::Validation()
-			];
-			return view('auth/login', $data);
-		}
-	}
-
-	public function validasi()
-	{
-		// validasi input
-		if (!$this->validate([
-			'email' => [
-				'rules' => 'required|valid_email',
-				'errors' => [
-					'required' => 'Email harus diisi.',
-					'valid_email' => 'Format email tidak valid.'
-				]
-			],
-			'password' => [
-				'rules' => 'required',
-				'errors' => ['required' => 'Password harus diisi.']
-			]
-		])) {
-			return redirect()->to('/')->withInput();
-		}
-
-		$email = $this->request->getVar('email');
-		$password = $this->request->getVar('password');
-
-		$user = $this->userModel->getUser($email);
-
-		// jika email terdaftar
-		if ($user != null) {
-			// jika password benar lanjut ke dasboard
-			if (password_verify($password, $user['password'])) {
-				$this->session->set($user);
-				return redirect()->to('/dashboard');
-			} else {
-				// jika password salah kemabali ke login
-				return redirect()->to('/')->withInput();
-			}
-		} else {
-			// jika email tidak terdaftar
-			return redirect()->to('/')->withInput();
-		}
-	}
-
-	//========================= Logout ==============================
-	public function logout()
-	{
-		session()->destroy();
-		return redirect()->to('/');
-	}
-
 	//========================= Dashboard Index()=====================
 
 	public function Index()
@@ -99,8 +37,15 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			return redirect()->to('/dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
+	}
+
+	//========================= Logout ==============================
+	public function logout()
+	{
+		session()->destroy();
+		return redirect()->to('/login');
 	}
 
 	public function Dashboard()
@@ -115,7 +60,7 @@ class Menu extends BaseController
 			];
 			return view('global/dashboard', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -131,7 +76,7 @@ class Menu extends BaseController
 			$this->barangModel->addItem($data);
 			return redirect()->to('/dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -148,7 +93,7 @@ class Menu extends BaseController
 			$this->barangModel->updateItem($data, $id);
 			return redirect()->to('/dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -159,7 +104,7 @@ class Menu extends BaseController
 			$this->barangModel->deleteItem($id);
 			return redirect()->to('/dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -184,7 +129,7 @@ class Menu extends BaseController
 			$this->barangModel->LogItem($data);
 			return redirect()->to('/dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -208,7 +153,7 @@ class Menu extends BaseController
 			$this->barangModel->LogItem($data);
 			return redirect()->to('dashboard');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 	// =============================== Pengumuman User ======================
@@ -224,7 +169,7 @@ class Menu extends BaseController
 			];
 			return view('global/user_pengumuman.php', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -240,7 +185,7 @@ class Menu extends BaseController
 			];
 			return view('global/myprofile', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -258,7 +203,7 @@ class Menu extends BaseController
 			];
 			return view('global/editprofile', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -406,7 +351,7 @@ class Menu extends BaseController
 			];
 			return view('global/viewchart', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -420,7 +365,7 @@ class Menu extends BaseController
 
 			return view('global/exxlsBarang', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -434,7 +379,7 @@ class Menu extends BaseController
 
 			return view('global/exdocBarang', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -454,7 +399,7 @@ class Menu extends BaseController
 			$dompdf->render();
 			$dompdf->stream('Tabel-Barang-Gudang-2021.pdf');
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 }

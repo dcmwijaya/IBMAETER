@@ -31,7 +31,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Menu::login');
+$routes->get('/', 'Menu::dashboard');		# routes buat halaman depan
+$routes->get('/login', 'Auth::login');
 $routes->get('/dashboard', 'Menu::dashboard');
 $routes->get('/Menu/profedit/(:segment)', 'Menu::profedit/$1');
 

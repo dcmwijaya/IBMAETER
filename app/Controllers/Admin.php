@@ -52,7 +52,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -104,7 +104,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -150,7 +150,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -166,7 +166,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -187,7 +187,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -207,7 +207,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -233,7 +233,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -257,7 +257,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 
@@ -279,7 +279,7 @@ class Admin extends BaseController
 				return redirect()->to('/dashboard');
 			}
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/login');
 		}
 	}
 }
