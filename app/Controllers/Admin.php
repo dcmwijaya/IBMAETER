@@ -37,62 +37,72 @@ class Admin extends BaseController
 
 	public function Datauser()
 	{
-		if (session('role') == 0) {
-			$data = [
-				"title" => "Data User | INVENBAR",
-				"CurrentMenu" => "data_user",
-				'validation' => \Config\Services::validation(),
-				"info" => $this->newsModel->showTask(),
-				"user" => $this->adminModel->getUser()
-			];
-			return view('admin/data_user', $data);
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"title" => "Data User | INVENBAR",
+					"CurrentMenu" => "data_user",
+					'validation' => \Config\Services::validation(),
+					"info" => $this->newsModel->showTask(),
+					"user" => $this->adminModel->getUser()
+				];
+				return view('admin/data_user', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 
 	public function Add_User()
 	{
-		if (session('role') == 0) {
-			if (!$this->validate([ //passing validate
-				// 'nama' => [
-				// 	'rules' => 'required',
-				// 	'errors' => [
-				// 		'required' => 'Nama User harus di isi'
-				// 	]
-				// ],
-				'add_img' => [
-					'rules' => 'max_size[add_img,5120]|is_image[add_img]|max_dims[add_img],3500,3500]|mime_in[add_img,image/jpg,image/jpeg,image/png]',
-					'errors' => [
-						'max_size' => 'Ukuran Gambar melebihi 5MB !',
-						'is_image' => 'File bukan gambar !',
-						'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-						'mime_in' => 'Format file harus jpg/jpeg/png !'
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				if (!$this->validate([ //passing validate
+					// 'nama' => [
+					// 	'rules' => 'required',
+					// 	'errors' => [
+					// 		'required' => 'Nama User harus di isi'
+					// 	]
+					// ],
+					'add_img' => [
+						'rules' => 'max_size[add_img,5120]|is_image[add_img]|max_dims[add_img],3500,3500]|mime_in[add_img,image/jpg,image/jpeg,image/png]',
+						'errors' => [
+							'max_size' => 'Ukuran Gambar melebihi 5MB !',
+							'is_image' => 'File bukan gambar !',
+							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+							'mime_in' => 'Format file harus jpg/jpeg/png !'
+						]
 					]
-				]
-			])) {
-				return redirect()->to('Datauser')->withInput();
-			}
+				])) {
+					return redirect()->to('Datauser')->withInput();
+				}
 
-			$fileImg = $this->request->getFile('add_img'); // ambil gambar
-			if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
-				$namaImg = 'default.jpg';
+				$fileImg = $this->request->getFile('add_img'); // ambil gambar
+				if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
+					$namaImg = 'default.jpg';
+				} else {
+					$namaImg = $fileImg->getRandomName(); // mengambil nama file Random
+					$fileImg->move('img/user', $namaImg); // move gambar to img folder
+				}
+
+				$password = $this->request->getPost('password');
+				$data = array(
+
+					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
+					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
+					'password' => password_hash($password, PASSWORD_DEFAULT),
+					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
+					'picture' => $namaImg
+				);
+				$this->adminModel->addUser($data);
+				return redirect()->to('Datauser');
 			} else {
-				$namaImg = $fileImg->getRandomName(); // mengambil nama file Random
-				$fileImg->move('img/user', $namaImg); // move gambar to img folder
+				return redirect()->to('/dashboard');
 			}
-
-			$password = $this->request->getPost('password');
-			$data = array(
-
-				'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
-				'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
-				'password' => password_hash($password, PASSWORD_DEFAULT),
-				'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
-				'picture' => $namaImg
-			);
-			$this->adminModel->addUser($data);
-			return redirect()->to('Datauser');
 		} else {
 			return redirect()->to('/');
 		}
@@ -100,40 +110,45 @@ class Admin extends BaseController
 
 	public function Edit_User()
 	{
-		// seleksi role pengguna
-		if (session('role') == 0) {
-			if (!$this->validate([
-				// 'nama' => [
-				// 	'rules' => 'required',
-				// 	'errors' => [
-				// 		'required' => 'Nama User harus di isi'
-				// 	]
-				// ],
-				'edit_img' => [
-					'rules' => 'max_size[edit_img,5120]|is_image[edit_img]|max_dims[edit_img],3500,3500]|mime_in[edit_img,image/jpg,image/jpeg,image/png]',
-					'errors' => [
-						'max_size' => 'Ukuran Gambar melebihi 5MB !',
-						'is_image' => 'File bukan gambar !',
-						'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-						'mime_in' => 'Format file harus jpg/jpeg/png !'
+		// seleksi login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				if (!$this->validate([
+					// 'nama' => [
+					// 	'rules' => 'required',
+					// 	'errors' => [
+					// 		'required' => 'Nama User harus di isi'
+					// 	]
+					// ],
+					'edit_img' => [
+						'rules' => 'max_size[edit_img,5120]|is_image[edit_img]|max_dims[edit_img],3500,3500]|mime_in[edit_img,image/jpg,image/jpeg,image/png]',
+						'errors' => [
+							'max_size' => 'Ukuran Gambar melebihi 5MB !',
+							'is_image' => 'File bukan gambar !',
+							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+							'mime_in' => 'Format file harus jpg/jpeg/png !'
+						]
 					]
-				]
-			])) {
-				// $validation = \Config\Services::validation();
-				// return redirect()->to('datauser')->withInput()->with('validation', $validation);
-				return redirect()->to('Datauser')->withInput();
-			}
+				])) {
+					// $validation = \Config\Services::validation();
+					// return redirect()->to('datauser')->withInput()->with('validation', $validation);
+					return redirect()->to('Datauser')->withInput();
+				}
 
-			$id = $this->request->getPost('user_id');
-			$password = $this->request->getPost('password');
-			$data = array(
-				'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
-				'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
-				'password' => password_hash($password, PASSWORD_DEFAULT),
-				'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES))
-			);
-			$this->adminModel->updateUser($data, $id);
-			return redirect()->to('Datauser');
+				$id = $this->request->getPost('user_id');
+				$password = $this->request->getPost('password');
+				$data = array(
+					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
+					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
+					'password' => password_hash($password, PASSWORD_DEFAULT),
+					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES))
+				);
+				$this->adminModel->updateUser($data, $id);
+				return redirect()->to('Datauser');
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
 			return redirect()->to('/');
 		}
@@ -141,10 +156,15 @@ class Admin extends BaseController
 
 	public function Delete_User()
 	{
-		if (session('role') == 0) {
-			$id = $this->request->getPost('user_id');
-			$this->adminModel->deleteUser($id);
-			return redirect()->to('Datauser');
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$id = $this->request->getPost('user_id');
+				$this->adminModel->deleteUser($id);
+				return redirect()->to('Datauser');
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
 			return redirect()->to('/');
 		}
@@ -152,52 +172,68 @@ class Admin extends BaseController
 
 	public function exceluser()
 	{
-		// jika user merupakan Admin
-		if (session('role') == 0) {
-			$data = [
-				"title" => "Excel | INVENBAR",
-				"user" => $this->adminModel->getUser(),
-			];
+		// seleksi login
+		if (session('uid') != null) {
+			# code
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "Excel | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+				];
 
-			return view('admin/exxlsUser', $data);
+				return view('admin/exxlsUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 
 	public function docuser()
 	{
-		// jika user merupakan Admin
-		if (session('role') == 0) {
-			$data = [
-				"title" => "DOC | INVENBAR",
-				"user" => $this->adminModel->getUser(),
-			];
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "DOC | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+				];
 
-			return view('admin/exdocUser', $data);
+				return view('admin/exdocUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 
 	public function pdfuser()
 	{
-		// jika user merupakan Admin
-		if (session('role') == 0) {
-			$data = [
-				"title" => "PDF | INVENBAR",
-				"user" => $this->adminModel->getUser(),
-			];
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+				];
 
-			$html = view('admin/expdfUser', $data);
+				$html = view('admin/expdfUser', $data);
 
-			$dompdf = new Dompdf();
-			$dompdf->loadHtml($html);
-			$dompdf->setPaper('A4', 'potrait');
-			$dompdf->render();
-			$dompdf->stream('Data-User.pdf');
+				$dompdf = new Dompdf();
+				$dompdf->loadHtml($html);
+				$dompdf->setPaper('A4', 'potrait');
+				$dompdf->render();
+				$dompdf->stream('Data-User.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 
@@ -205,35 +241,45 @@ class Admin extends BaseController
 
 	public function Adminpengumuman()
 	{
-		// seleksi role pengguna
-		if (session('role') == 0) {
-			// $info2 = new Admin_Model();
-			$data = [
-				"title" => "Edit Pengumuman | INVENBAR",
-				"CurrentMenu" => "edit_pengumuman",
-				"info" => $this->newsModel->showTask(),
-				"user" => $this->adminModel->getUser(),
-			];
-			return view('admin/pengumuman', $data);
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// $info2 = new Admin_Model();
+				$data = [
+					"title" => "Edit Pengumuman | INVENBAR",
+					"CurrentMenu" => "edit_pengumuman",
+					"info" => $this->newsModel->showTask(),
+					"user" => $this->adminModel->getUser(),
+				];
+				return view('admin/pengumuman', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 
 	public function editpengumuman()
 	{
-		// seleksi role pengguna
-		if (session('role') == 0) {
-			// $info = new Admin_Model();
-			$id = $this->request->getPost('id_info');
-			$data = array(
-				'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
-				'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
-			);
-			$this->newsModel->editInfo($data, $id);
-			return redirect()->to('Adminpengumuman');
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// $info = new Admin_Model();
+				$id = $this->request->getPost('id_info');
+				$data = array(
+					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
+					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
+				);
+				$this->newsModel->editInfo($data, $id);
+				return redirect()->to('Adminpengumuman');
+			} else {
+				return redirect()->to('/dashboard');
+			}
 		} else {
-			return redirect()->to('/dashboard');
+			return redirect()->to('/');
 		}
 	}
 }
