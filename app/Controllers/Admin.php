@@ -131,18 +131,32 @@ class Admin extends BaseController
 						]
 					]
 				])) {
-					// $validation = \Config\Services::validation();
-					// return redirect()->to('datauser')->withInput()->with('validation', $validation);
 					return redirect()->to('Datauser')->withInput();
 				}
+
+				$fileImg = $this->request->getFile('edit_img');
+				// cek gambar apakah tetap gambar lama
+				if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
+					$namaImg = $this->request->getPost('old_image');
+				} else {
+					$namaImg = $fileImg->getRandomName(); // mengambil nama file Random
+					$fileImg->move('img/user', $namaImg); // move gambar to img folder
+					// jika nama foto lama bukan default.jpg
+					if ($fileImg->getName() != "default.jpg") {
+						//hapus gambar lama
+						unlink('img/user/' . $this->request->getVar('old_image'));
+					}
+				}
+
 
 				$id = $this->request->getPost('user_id');
 				$password = $this->request->getPost('password');
 				$data = array(
 					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
-					'password' => password_hash($password, PASSWORD_DEFAULT),
-					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES))
+					// 'password' => password_hash($password, PASSWORD_DEFAULT), ganti jadi popup sendiri
+					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
+					'picture' => $namaImg
 				);
 				$this->adminModel->updateUser($data, $id);
 				return redirect()->to('Datauser');
@@ -160,6 +174,11 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			if (session('role') == 0) {
 				$id = $this->request->getPost('user_id');
+
+				$user = $this->adminModel->find($id); //cari gambar berdasarkan id
+				if ($user['picture'] != 'default.jpg') {
+					unlink('img/user/' . $user['picture']); //hapus gambar jika nama file bukan default.jpg
+				}
 				$this->adminModel->deleteUser($id);
 				return redirect()->to('Datauser');
 			} else {
@@ -174,7 +193,6 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			# code
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [

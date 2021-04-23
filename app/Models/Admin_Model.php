@@ -9,6 +9,7 @@ class Admin_Model extends Model
     // protected $table = 'pengumuman';
 
     protected $table = 'user';
+    protected $primaryKey = 'uid';
 
     // ============= CRUD Data User ================
 

@@ -30,6 +30,9 @@
 	<!-- malihu scrollbar -->
 	<link rel="stylesheet" href="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css') ?>">
 
+	<!-- croppie -->
+	<link rel="stylesheet" href="<?= base_url('../vendor/croppie/croppie.css') ?>">
+
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
 </head>
@@ -56,7 +59,8 @@
 <!-- Bootsrap 4.0.0 JS -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-
+<!--  croppie js -->
+<script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
 <!-- malhiu scrollbar plugin -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
 <script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
@@ -216,10 +220,13 @@
 			const nama = $(this).data('nama');
 			const email = $(this).data('email');
 			const urole = $(this).data('urole');
+			const picture = $(this).data('picture');
 			// Set data to Form Edit
 			$('#Edit_user #edit_nama_user').val(nama);
 			$('#Edit_user #edit_email_user').val(email);
 			$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
+			$('#Edit_user .edit-img-preview').attr("src", `<?= base_url('../img/user'); ?>/${picture}`);
+			$('#Edit_user #old_image').val(picture);
 			$('#Edit_user #edit_user_id').val(uid);
 		});
 

@@ -17,7 +17,7 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
+									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_user"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
 									<button type="button" onclick="window.print()" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
 								</div>
 								<div class="flex-fill">
@@ -56,7 +56,7 @@
 												<td><?= $u['role']; ?></td>
 												<td>
 													<div class="btn-group" role="group" aria-label="user_action">
-														<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
+														<button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-picture="<?= $u['picture']; ?>" data-toggle="modal" data-target="#Edit_user"><i class="fas fa-edit fa-fw"></i></button>
 														<button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" data-uid="<?= $u['uid']; ?>" data-nama="<?= $u["nama"]; ?>" data-email="<?= $u['email']; ?>" data-urole="<?= $u['role']; ?>" data-toggle="modal" data-target="#Delete_user"><i class="fas fa-trash fa-fw"></i></button>
 													</div>
 												</td>
@@ -148,9 +148,10 @@
 			<form action="<?= base_url('/Admin/Edit_user'); ?>" method="POST" enctype="multipart/form-data">
 				<?= csrf_field(); ?>
 				<div class="modal-body row">
+					<input type="hidden" name="old_image" id="old_image">
 					<div class="col-sm-6">
 						<div class="show-img text-center mb-2" style="height: 370px;">
-							<img class="img-thumbnail edit-img-preview" src="<?= base_url('../img/user/default.jpg'); ?>" alt="image preview" style="max-height: 370px; ">
+							<img class="img-thumbnail edit-img-preview" src="" alt="image preview" style="max-height: 370px; ">
 						</div>
 						<div class="custom-file" style="overflow-x: hidden;">
 							<input type="file" class="custom-file-input <?= ($validation->hasError('edit_img')) ? 'is-invalid' : ''; ?>" id="edit_img" name="edit_img" onchange="previewEditImg()">
@@ -169,10 +170,10 @@
 							<label for="edit_email_user">E-mail</label>
 							<input type="email" class="form-control" id="edit_email_user" name="email" required>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="edit_password2">Password Baru</label>
 							<input type="password" class="form-control" id="edit_password2" name="password" required>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="jenis_user">Role</label>
 							<select class="form-control" id="edit_jenis_user" name="role">
