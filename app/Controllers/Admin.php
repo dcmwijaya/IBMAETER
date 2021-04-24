@@ -269,6 +269,7 @@ class Admin extends BaseController
 					"CurrentMenu" => "edit_pengumuman",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
+					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/pengumuman', $data);
 			} else {
@@ -285,12 +286,41 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
-				// $info = new Admin_Model();
+				if (!$this->validate([
+					'foto' => [
+						'rules' => 'max_size[foto,10240]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+						'errors' => [
+							'max_size' => 'Ukuran Gambar maksimal 10MB.',
+							'is_image' => 'Berkas bukan gambar !',
+							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+							'mime_in' => 'Format file harus jpg/jpeg/png !'
+						]
+					]
+				])) {
+					return redirect()->to('editpengumuman')->withInput();
+				}
+
+				// mengambil inputan foto/gambar
+				$fileFoto = $this->request->getFile('foto');
+
+				// cek gambar lama
+				if ($fileFoto->getError() == 4) {
+					// jika tidak diubah maka pakai foto lama
+					$namaFoto = $this->request->getVar('fotoLama');
+				} else {
+					// generate nama random
+					$namaFoto = str_replace("'", "", htmlspecialchars($fileFoto->getName(), ENT_QUOTES));
+					// upload gambar
+					$fileFoto->move('img/', $namaFoto);
+				}
+
 				$id = $this->request->getPost('id_info');
 				$data = array(
 					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
-					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
+					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES)),
+					'foto' => $namaFoto
 				);
+
 				$this->newsModel->editInfo($data, $id);
 				return redirect()->to('Adminpengumuman');
 			} else {

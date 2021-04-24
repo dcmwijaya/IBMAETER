@@ -8,7 +8,6 @@ class userModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'uid';
-    protected $useAutoIncrement = false;
     protected $allowedFields = ['nama', 'email', 'password', 'role', 'picture'];
 
     public function getUser($email = false)

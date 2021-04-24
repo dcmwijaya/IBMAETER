@@ -255,7 +255,7 @@ class Menu extends BaseController
 			'foto' => [
 				'rules' => 'max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]',
 				'errors' => [
-					'max_size' => 'Ukuran gambar {field} maksimal 2MB',
+					'max_size' => 'Ukuran gambar {field} maksimal 5MB',
 					'is_image' => '{field} harus merupakan gambar.',
 					'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
 					'mime_in' => '{field} harus berekstensi .jpg, .jpeg, atau .png'
@@ -266,7 +266,7 @@ class Menu extends BaseController
 		}
 
 		// mengambil inputan foto/gambar
-		$fileFoto = $this->request->getFile('foto'); //<<<<<<<<<< Eror jika tidak di isi
+		$fileFoto = $this->request->getFile('foto');
 
 		// cek gambar lama
 		if ($fileFoto->getError() == 4) {

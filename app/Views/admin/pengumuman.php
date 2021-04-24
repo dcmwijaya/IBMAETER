@@ -19,6 +19,7 @@
 							<div class="col-sm-8" id="info-maker">
 								<?php foreach ($info as $i) : ?>
 									<form action="<?= base_url('/Admin/editpengumuman'); ?>" method="POST" enctype="multipart/form-data">
+										<input type="hidden" name="fotoLama" value="<?= $i['foto']; ?>">
 										<div class="form-group">
 											<label for="edit_judul_info"><b>Judul Pengumuman</b></label>
 											<input type="text" class="form-control" id="edit_judul_info" name="judul" placeholder="Tuliskan judul pengumuman..." value="<?= $i['judul']; ?>">
@@ -28,9 +29,14 @@
 											<textarea class="col-sm-12 p-2" id="edit_isi_info" rows="6" name="isi" placeholder="Sampaikan isi pengumuman..."><?= $i['isi']; ?></textarea>
 											<small class="text-muted"><span style="color: red;">*</span> Maksimal 256 huruf</small>
 										</div>
-										<div class="drop-zone">
-											<span class="drop-zone__prompt">Drop file here or click to upload</span>
-											<input type="file" name="myFile" class="drop-zone__input" />
+										<div class="form-group">
+											<label for="edit_gambar_info"><b>Gambar</b></label><br>
+											<small class="text-muted"><span style="color: red;">*</span> Gunakan ekstensi .jpg/.jpeg/.png dengan ukuran maksimal 10Mb</small>
+											<div class="drop-zone">
+												<span class="drop-zone__prompt">Drop file here or click to upload</span>
+												<input type="file" name="foto" class="drop-zone__input" />
+											</div>
+
 										</div>
 
 										<script src="<?= base_url('../js/dragdrop.js'); ?>"></script>

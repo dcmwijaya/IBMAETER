@@ -15,7 +15,7 @@
 					<a class="nav-link" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-bell fa-fw" style="font-size: 20px;">
 							<!-- Counter - Messages -->
-							<span class="custom-badge badge-danger badge-counter">1</span>
+							<span class="custom-badge badge-danger badge-counter"><?= count($info); ?></span>
 						</i>
 					</a>
 					<!-- Dropdown - Messages -->
