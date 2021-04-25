@@ -14,7 +14,7 @@
                 </div>
                 <?php foreach ($info as $i) : ?>
                     <div class="card-body px-5 text-center">
-                        <img src="<?= base_url('../img/' . $i['foto']); ?>" class="card-img-top" alt="judul pengumuman" style="max-width: 800px; max-height: 400px">
+                        <img src="<?= base_url('../img/' . $i['foto']); ?>" class="card-img-top" alt="judul pengumuman" style="max-width:100%;max-height:100%;width:1000px;height:300px">
                     </div>
                     <div class="card-body px-5">
                         <hr>
