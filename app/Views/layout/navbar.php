@@ -19,7 +19,7 @@
 						</i>
 					</a>
 					<!-- Dropdown - Messages -->
-					<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+					<div id="pengumuman-navbar" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
 						<h5 class="dropdown-header text-center pt-3 pb-0">
 							<strong>Pengumuman</strong>
 						</h5>
@@ -54,7 +54,7 @@
 				<!-- Avatar -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-						<img src="<?= base_url("/img/user") . "/" . session('picture'); ?>" class="rounded-circle" height="30" alt="" loading="lazy" />
+						<img class="r-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" class="rounded-circle" height="30" alt="" loading="lazy" />
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item" href="<?= base_url('Menu/Profakun') . "/" . session('email') ?>"><i class="far fa-user-circle fa-fw me-3"></i>My profile</a></li>
