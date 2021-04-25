@@ -19,15 +19,15 @@
 				</div>
 
 				<div class="card-body mx-auto" style="height:450px;">
-					<div class="card mb-3" style="max-width: 400px;">
-						<div class="row no-gutters">
-							<div class="col-md-4 d-inline">
-								<img src="<?= base_url("/img/user") . "/" . $user['picture']; ?>" width="100%" height="100%">
+					<div class="card mb-3" style="box-shadow: 0px 3px 5px 0px #a8a8a8;">
+						<div class="row no-gutters" style="max-width:800px;">
+							<div class="col-md-5 d-inline">
+								<img src="<?= base_url("/img/user") . "/" . $user['picture']; ?>" style="max-width:100%;max-height:100%;width:1000px;height:300px;display:flex;">
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-6">
 								<div class="card-body">
 									<p class="card-text"><b>Nama : </b><?= $user['nama']; ?></p>
-									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p>
+									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p><br>
 									<h4 class="card-text"><b><?= ($user['role'] == 0) ? "ADMIN" : "PEKERJA" ?></b></h4>
 								</div>
 							</div>
