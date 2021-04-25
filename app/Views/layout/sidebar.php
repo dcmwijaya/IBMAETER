@@ -16,7 +16,7 @@
 				<div class="card-body p-2">
 					<div class="d-flex flex-column align-items-center text-center">
 						<a href="<?= base_url('menu/profakun') . "/" . session('email') ?>">
-							<img class="d-inline-block align-top rounded-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" width="110" style="box-shadow: 0px 3px 5px 0px #a8a8a8;" alt="Photo Profile">
+							<img id="photoUser" class="d-inline-block align-top rounded-circle" src="<?= base_url("/img/user") . "/" . session('picture'); ?>" alt="Photo Profile">
 						</a>
 						<div class="mt-3">
 							<h6 class="text-center text-dark font-weight-bold"><?= session('nama'); ?><i class="fas fa-fw fa-circle ml-2" style="font-size: 10px; color:yellowgreen; vertical-align: middle;"></i></h6>
