@@ -11,6 +11,20 @@ p {
   font-family: "Inter", sans-serif;
 }
 
+#photoUser{
+  max-width: 100%;
+  max-height: 100%;
+  width: 120px;
+  height: 120px;
+  padding: 2px;
+  display: flex;
+  box-shadow: 0px 3px 5px 0px #a8a8a8;
+}
+
+.clear {
+  clear: both;
+}
+
 a,
 a:hover,
 a:focus {
