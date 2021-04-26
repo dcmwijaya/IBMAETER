@@ -12,20 +12,20 @@
 				<span class="navbar-text mr-auto"></span>
 				<ul class="navbar-nav ">
 					<li class="nav-item active">
-						<a class="nav-link">Home <span class="sr-only">(current)</span></a>
+						<a href="<?= base_url('/') ?>" class="nav-link">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<?php
-						$mail = "https://mail.google.com/mail/";
-						$emailtujuan = "fikinvenbar@upnjatim.ac.id";
-						$subject = "HUBUNGI ADMIN INVENBAR";
-						$enter = "%0A%0A%0A";
-						$pg1 = "[Tuliskan pesan anda disini]";
-						$pg2 = "Dengan ini, saya menyatakan bahwa saya menghubungi admin tanpa paksaan siapapun serta dalam keadaan sadar.";
-						$pg3 = "Atas perhatian Bapak/Ibu, besar harapan saya agar permintaan saya dapat diproses sebagaimana mestinya. Sekian dari saya, terima kasih.";
-						$namaAnda = "[Nama Anda]";
-						$body = "Isi Pesan:%0A".$pg1."".$enter."".$pg2."%0A".$pg3."%0A%0AHormat Saya,".$enter."".$namaAnda;
+					$mail = "https://mail.google.com/mail/";
+					$emailtujuan = "fikinvenbar@upnjatim.ac.id";
+					$subject = "HUBUNGI ADMIN INVENBAR";
+					$enter = "%0A%0A%0A";
+					$pg1 = "[Tuliskan pesan anda disini]";
+					$pg2 = "Dengan ini, saya menyatakan bahwa saya menghubungi admin tanpa paksaan siapapun serta dalam keadaan sadar.";
+					$pg3 = "Atas perhatian Bapak/Ibu, besar harapan saya agar permintaan saya dapat diproses sebagaimana mestinya. Sekian dari saya, terima kasih.";
+					$namaAnda = "[Nama Anda]";
+					$body = "Isi Pesan:%0A" . $pg1 . "" . $enter . "" . $pg2 . "%0A" . $pg3 . "%0A%0AHormat Saya," . $enter . "" . $namaAnda;
 
-						$pesan = "".$mail. "?view=cm&fs=1&tf=1&to=".$emailtujuan."&subject?&su=".$subject."&body=".$body;
+					$pesan = "" . $mail . "?view=cm&fs=1&tf=1&to=" . $emailtujuan . "&subject?&su=" . $subject . "&body=" . $body;
 					?>
 					<li class="nav-item">
 						<a class="nav-link reg" href="<?= $pesan; ?>" target="_blank" http-equiv="refresh" content="2">

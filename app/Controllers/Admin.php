@@ -62,22 +62,49 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			if (session('role') == 0) {
 				if (!$this->validate([ //passing validate
-					// 'nama' => [
-					// 	'rules' => 'required',
-					// 	'errors' => [
-					// 		'required' => 'Nama User harus di isi'
-					// 	]
-					// ],
-					'add_img' => [
-						'rules' => 'max_size[add_img,5120]|is_image[add_img]|max_dims[add_img],3500,3500]|mime_in[add_img,image/jpg,image/jpeg,image/png]',
+					'user' => [
+						'rules' => 'max_length[60]',
 						'errors' => [
-							'max_size' => 'Ukuran Gambar melebihi 5MB !',
-							'is_image' => 'File bukan gambar !',
-							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-							'mime_in' => 'Format file harus jpg/jpeg/png !'
+							'max_length' => 'nama huruf haurs lebih kecil dari 60 karakter'
 						]
-					]
+					],
+					'email' => [
+						'rules' => 'valid_email|is_unique[user.email]',
+						'errors' => [
+							'valid_email' => 'E-mail User harus sesuai format email',
+							'is_unique' => '{field} sudah terdaftar'
+						]
+					],
+					'password' => [
+						'rules' => 'min_length[7]|max_length[24]',
+						'errors' => [
+							'min_length' => 'Password harus lebih besar dari 7 karakter',
+							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
+						]
+					],
+					'confirm_password' => [
+						'rules' => 'matches[password]',
+						'errors' => [
+							'matches' => 'input Password tidak sama !'
+						]
+					],
+					'role' => [
+						'rules' => 'alpha_numeric',
+						'errors' => [
+							'alpha_numeric' => 'input harus angka'
+						]
+					],
+					// 'add_img' => [
+					// 	'rules' => 'max_size[add_img,5120]|is_image[add_img]|max_dims[add_img],3500,3500]|mime_in[add_img,image/jpg,image/jpeg,image/png]',
+					// 	'errors' => [
+					// 		'max_size' => 'Ukuran Gambar melebihi 5MB !',
+					// 		'is_image' => 'File bukan gambar !',
+					// 		'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+					// 		'mime_in' => 'Format file harus jpg/jpeg/png !'
+					// 	]
+					// ]
 				])) {
+					session()->setFlashdata('pesan', '<div class="notif-failed">Data Gagal Ditambahkan!</div>');
 					return redirect()->to('Datauser')->withInput();
 				}
 
@@ -98,7 +125,11 @@ class Admin extends BaseController
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
+				dd($data);
 				$this->adminModel->addUser($data);
+				session()->setFlashdata('pesan', '<div class="notif-success">
+				Data Berhasil Ditambahkan!
+			  </div>');
 				return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
@@ -108,29 +139,49 @@ class Admin extends BaseController
 		}
 	}
 
-	public function Edit_User()
+	public function Edit_User() //<< tambahi untuk update session jika user ini sedang login
 	{
 		// seleksi login
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				if (!$this->validate([
-					// 'nama' => [
-					// 	'rules' => 'required',
-					// 	'errors' => [
-					// 		'required' => 'Nama User harus di isi'
-					// 	]
-					// ],
+					'nama' => [
+						'rules' => 'max_length[60]',
+						'errors' => [
+							'max_length' => 'nama huruf haurs lebih kecil dari 60 karakter'
+						]
+					],
+					'email' => [
+						'rules' => 'valid_email',
+						'errors' => [
+							'valid_email' => 'E-mail User harus sesuai format email'
+						]
+					],
+					'role' => [
+						'rules' => 'alpha_numeric',
+						'errors' => [
+							'alpha_numeric' => 'input harus angka'
+						]
+					],
+					'new_password' => [
+						'rules' => 'permit_empty|min_length[7]|max_length[24]',
+						'errors' => [
+							'min_length' => 'Password harus lebih besar dari 7 karakter',
+							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
+						]
+					],
 					'edit_img' => [
 						'rules' => 'max_size[edit_img,5120]|is_image[edit_img]|max_dims[edit_img],3500,3500]|mime_in[edit_img,image/jpg,image/jpeg,image/png]',
 						'errors' => [
-							'max_size' => 'Ukuran Gambar melebihi 5MB !',
+							'max_size' => 'Ukuran Gambar melebihi 5MB !', //<<<< Masalah
 							'is_image' => 'File bukan gambar !',
 							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
 							'mime_in' => 'Format file harus jpg/jpeg/png !'
 						]
 					]
 				])) {
+					session()->setFlashdata('pesan', '<div class="notif-failed">Data Gagal Di Update!</div>');
 					return redirect()->to('Datauser')->withInput();
 				}
 
@@ -148,17 +199,25 @@ class Admin extends BaseController
 					}
 				}
 
-
 				$id = $this->request->getPost('user_id');
-				$password = $this->request->getPost('password');
+				$old_password = $this->request->getPost('old_password');
+				$new_password = $this->request->getPost('new_password');
+				//If the password IS NOT '' or 0 or '0' or NULL
+				if (!empty($new_password)) {
+					$pass = password_hash($new_password, PASSWORD_DEFAULT);
+				} else {
+					$pass = $old_password;
+				}
+
 				$data = array(
 					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
-					// 'password' => password_hash($password, PASSWORD_DEFAULT), ganti jadi popup sendiri
+					'password' => $pass,
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
 				$this->adminModel->updateUser($data, $id);
+				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
 				return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
@@ -180,6 +239,7 @@ class Admin extends BaseController
 					unlink('img/user/' . $user['picture']); //hapus gambar jika nama file bukan default.jpg
 				}
 				$this->adminModel->deleteUser($id);
+				session()->setFlashdata('pesan', '<div class="notif-success">User Berhasil Di Hapus!</div>');
 				return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
@@ -247,6 +307,24 @@ class Admin extends BaseController
 				$dompdf->setPaper('A4', 'potrait');
 				$dompdf->render();
 				$dompdf->stream('Data-User.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function cropImage()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->adminModel->getUser(),
+				];
+				return view('admin/upload', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}

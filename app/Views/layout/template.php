@@ -57,20 +57,13 @@
 <!-- Bootsrap MDB -->
 <script type="text/javascript" src="<?= base_url('../js/mdb.min.js') ?>"></script>
 <!-- Bootsrap 4.0.0 JS -->
-<script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-<!--  croppie js -->
-<script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
+<script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
+
 <!-- malhiu scrollbar plugin -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
 <script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
 <script>
-	// $(document).ready(function() {
-	// 	$("#sidebar-body").mCustomScrollbar({
-	// 		theme: "minimal"
-	// 	});
-	// });
-
 	(function($) {
 		$(window).on("load", function() {
 
@@ -96,6 +89,7 @@
 			scrollCollapse: true,
 			paging: false
 		});
+		$('.toast').toast('show');
 	});
 </script>
 <!-- Custom scripts -->
@@ -180,22 +174,6 @@
 
 <!-- Catch Data for Data User -->
 <script>
-	function previewAddImg() {
-
-		const add_img = document.querySelector('#add_img');
-		const label_add_img = document.querySelector('.label-img-input');
-		const preview_img = document.querySelector('.img-preview');
-
-		label_add_img.textContent = add_img.files[0].name;
-
-		const file_img = new FileReader();
-		file_img.readAsDataURL(add_img.files[0]);
-
-		file_img.onload = function(e) {
-			preview_img.src = e.target.result;
-		}
-	}
-
 	function previewEditImg() {
 
 		const edit_img = document.querySelector('#edit_img');
@@ -219,6 +197,7 @@
 			const uid = $(this).data('uid');
 			const nama = $(this).data('nama');
 			const email = $(this).data('email');
+			const password = $(this).data('password');
 			const urole = $(this).data('urole');
 			const picture = $(this).data('picture');
 			// Set data to Form Edit
@@ -227,6 +206,7 @@
 			$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
 			$('#Edit_user .edit-img-preview').attr("src", `<?= base_url('../img/user'); ?>/${picture}`);
 			$('#Edit_user #old_image').val(picture);
+			$('#Edit_user #old_password').val(password);
 			$('#Edit_user #edit_user_id').val(uid);
 		});
 
@@ -269,6 +249,79 @@
 			imgPreview.src = e.target.result;
 		}
 	}
+</script>
+
+<!-- croppie js -->
+<script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
+<script>
+	$(document).ready(function() {
+
+		$image_crop = $('#image_demo').croppie({
+			enableExif: true,
+			viewport: {
+				width: 400,
+				height: 400,
+				type: 'square' //circle
+			},
+			boundary: {
+				width: 500,
+				height: 500
+			}
+		});
+
+		$('#add_img').on('change', function() {
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				$image_crop.croppie('bind', {
+					url: event.target.result
+				}).then(function() {
+					console.log('jQuery bind complete');
+				});
+			}
+			reader.readAsDataURL(this.files[0]);
+			$('#uploadimageModal').modal('show');
+		});
+
+		$('.crop_image').click(function(event) {
+			$image_crop.croppie('result', {
+				type: 'canvas',
+				size: 'viewport'
+			}).then(function(response) {
+				$.ajax({
+					url: "<?= base_url('Admin/cropImage'); ?>",
+					type: "POST",
+					data: {
+						"image": response
+					},
+					success: function(data) {
+						$('#uploadimageModal').modal('hide');
+						$('#show-add-img').html(data);
+						const file_img = new FileReader();
+						const label_add_img = document.querySelector('.label-img-input');
+						label_add_img.textContent = $('#add_img').files[0].name;
+						file_img.readAsDataURL($('#add_img').files[0]);
+					}
+				});
+			})
+		});
+
+	});
+
+	// function previewAddImg() {
+
+	// 	const add_img = document.querySelector('#add_img');
+	// 	const label_add_img = document.querySelector('.label-img-input');
+	// 	const preview_img = document.querySelector('.img-preview');
+
+	// 	label_add_img.textContent = add_img.files[0].name;
+
+	// 	const file_img = new FileReader();
+	// 	file_img.readAsDataURL(add_img.files[0]);
+
+	// 	file_img.onload = function(e) {
+	// 		preview_img.src = e.target.result;
+	// 	}
+	// }
 </script>
 
 </html>

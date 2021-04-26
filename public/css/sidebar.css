@@ -158,6 +158,20 @@ ul ul a {
   right: 0px;
 }
 
+#cfading {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 1;
+  transition: 1.5s;
+}
+
 @media (max-width: 768px) {
   #sidebar {
     display: block;
