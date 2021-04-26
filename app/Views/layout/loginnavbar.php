@@ -16,7 +16,7 @@
 					</li>
 					<?php
 					$mail = "https://mail.google.com/mail/";
-					$emailtujuan = "fikinvenbar@upnjatim.ac.id";
+					$emailtujuan = "invenbar@invweb.ac.id";
 					$subject = "HUBUNGI ADMIN INVENBAR";
 					$enter = "%0A%0A%0A";
 					$pg1 = "[Tuliskan pesan anda disini]";
