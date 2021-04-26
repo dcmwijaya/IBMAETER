@@ -57,8 +57,8 @@
 <!-- Bootsrap MDB -->
 <script type="text/javascript" src="<?= base_url('../js/mdb.min.js') ?>"></script>
 <!-- Bootsrap 4.0.0 JS -->
-<script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
+<script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
 
 <!-- malhiu scrollbar plugin -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
@@ -254,7 +254,7 @@
 <!-- croppie js -->
 <script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
 <script>
-	$(document).ready(function() {
+	$(document).ready(function() { // OVERLOAD MODAL
 
 		$image_crop = $('#image_demo').croppie({
 			enableExif: true,

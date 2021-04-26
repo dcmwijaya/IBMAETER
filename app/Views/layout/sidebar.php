@@ -4,7 +4,7 @@
 	<nav id="sidebar" class="collapse d-lg-block sidebar collapse ">
 
 		<!-- Image and text -->
-		<nav class="navbar navbar-light bg-light justify-content-center font-weight-bold" style="padding: 10.5px">
+		<nav class="navbar navbar-light bg-light justify-content-center font-weight-bold" style="padding: 9px">
 			<a class="navbar-brand" href="<?= base_url('dashboard') ?>">
 				<img class="mr-3 d-inline-block align-top" src="<?= base_url('../img/icon/favicon-32x32.png') ?>" width="30" height="30" alt="Logo Brand">
 				INVENBAR
