@@ -64,7 +64,7 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">VIEW CHART</h4>
                                                     <p class="card-text">View Chart Invenbar merupakan sebuah menu yang berfungsi menampilkan data stok anda dalam bentuk beberapa diagram.</p>
-                                                    <a href="<?= base_url("/Menu/viewchart"); ?>">Kunjungi</a>
+                                                    <a href="<?= base_url("/Menu/chart"); ?>">Kunjungi</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">PENGUMUMAN</h4>
                                                     <p class="card-text">Pengumuman Invenbar merupakan sebuah menu yang dibuat bertujuan agar pengguna dapat mengetahui informasi dari Admin.</p>
-                                                    <a href="<?= base_url("/Menu/user_pengumuman") ?>">Kunjungi</a>
+                                                    <a href="<?= base_url("/Menu/pengumuman") ?>">Kunjungi</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">ABSENSI PEKERJA</h4>
                                                     <p class="card-text">Absensi Pekerja Invenbar merupakan sebuah menu yang ditujukan untuk pengguna agar dapat melakukan absensi.</p>
-                                                    <a href="<?= base_url("/Menu/absensi") ?>">Kunjungi</a>
+                                                    <a href="<?= base_url("/Menu/absensiUser") ?>">Kunjungi</a>
                                                 </div>
 
                                             </div>
