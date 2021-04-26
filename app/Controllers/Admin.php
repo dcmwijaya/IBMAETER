@@ -330,4 +330,27 @@ class Admin extends BaseController
 			return redirect()->to('/login');
 		}
 	}
+	
+	// ==================================== Activity Records =========================================
+
+	public function LogUser()
+	{ 
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				$data = [
+					"title" => "Log User Activities | INVENBAR",
+					"CurrentMenu" => "logUser",
+					"info" => $this->newsModel->showTask(),
+					"user" => $this->adminModel->getUser()
+				];
+				return view('admin/logUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
 }
