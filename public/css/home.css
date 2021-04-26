@@ -2,6 +2,70 @@
   list-style: none;
 }
 
+body{
+  margin:0px;
+}
+
 .cbg-sea {
   background-color: #86c2dd !important;
+}
+
+.card-img-top{
+  height: 320px;
+}
+
+.con-article .card{
+  height: 400px;
+}
+
+.con-article .card a{
+  margin-top: 20px;
+}
+
+.article{
+  margin-top: 15px;
+}
+
+.article p{
+  text-align: justify;
+}
+
+.intro{
+  text-align: justify;
+}
+
+.row-footer{
+  width: 90%;
+}
+
+.sosmed-home{
+  width: 100%;
+}
+
+.sosmed-home a{
+  margin-right: 20px;
+}
+
+.sosmed-home a:hover{
+  color : yellow;
+}
+
+.row-footer a, .footer-copyright a{
+  text-decoration: none;
+}
+
+.footer-copyright a:hover{
+  color : yellow;
+}
+
+.network, .our-website{
+  display: inline-flexbox;
+  text-align: left;
+  left:10%;
+}
+
+.network a:hover, .our-website a:hover{
+  margin-left: 10px;
+  color : yellow;
+  transition-duration: 2s;
 }
