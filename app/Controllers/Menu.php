@@ -402,4 +402,36 @@ class Menu extends BaseController
 			return redirect()->to('/login');
 		}
 	}
+	
+	// ==================================== Highlights =========================================
+
+	public function absensiUser()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Absensi Pekerja | INVENBAR",
+				"CurrentMenu" => "absensi",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/absensi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function LaporanBulanan()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Laporan Bulanan | INVENBAR",
+				"CurrentMenu" => "laporanBulanan",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/laporanBulanan', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
 }
