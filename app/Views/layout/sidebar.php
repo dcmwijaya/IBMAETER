@@ -45,6 +45,9 @@
 										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
 										</a>
+										<a href="<?= base_url('Admin/logUser') ?>" class="list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-book-reader fa-fw me-3"></i><span>Log User Activities</span>
+										</a>
 									</div>
 								</div>
 							<?php endif; ?>
@@ -78,22 +81,24 @@
 									</div>
 								</div>
 							<?php endif; ?>
-							<!-- utility -->
-							<div class="menu-parent bg-light mb-2">
-								<h6 class="sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
-									<span>Activity Records</span>
-									<a class="d-flex align-items-center text-muted disabled"><i class="fas fa-fw fa-thumbtack"></i></a>
-								</h6>
-								<hr class="my-0 font-weight-bold">
-								<div class=" mb-1" id="admin_menu">
-									<a href="<?= base_url('Menu') ?>" class="list-group-item list-group-item-action py-2 ripple">
-										<i class="fas fa-book-reader fa-fw me-3"></i><span>Log Direct Activities</span>
-									</a>
-									<a href="<?= base_url('Menu') ?>" class="list-group-item list-group-item-action py-2 ripple">
-										<i class="fas fa-book-dead fa-fw me-3"></i><span>Log Past Activities</span>
-									</a>
+							<!-- Cluster Activity Records -->
+							<?php if (session('role') != null) : ?>
+								<div class="menu-parent bg-light mb-2">
+									<h6 class="sidebar-heading shadow-lg d-flex justify-content-between align-items-center px-3 m-0 text-muted rounded">
+										<span>Highlights</span>
+										<a class="d-flex align-items-center text-muted disabled"><i class="fas fa-fw fa-thumbtack"></i></a>
+									</h6>
+									<hr class="my-0 font-weight-bold">
+									<div class=" mb-1" id="admin_menu">
+										<a href="<?= base_url('Menu/absensiUser') ?>" class="list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-clipboard fa-fw me-3"></i><span>Absensi Pekerja</span>
+										</a>
+										<a href="<?= base_url('Menu/laporanBulanan') ?>" class="list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-print fa-fw me-3"></i><span>Cetak Laporan Bulanan</span>
+										</a>
+									</div>
 								</div>
-							</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</ul>
