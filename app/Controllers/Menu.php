@@ -74,7 +74,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
-			return redirect()->to('/kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -91,7 +91,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
-			return redirect()->to('/kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -102,7 +102,7 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$this->barangModel->deleteItem($id);
-			return redirect()->to('/kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -127,7 +127,7 @@ class Menu extends BaseController
 			);
 
 			$this->barangModel->LogItem($data);
-			return redirect()->to('/kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -151,7 +151,7 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
 			$this->barangModel->LogItem($data);
-			return redirect()->to('/kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
