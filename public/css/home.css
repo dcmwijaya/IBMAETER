@@ -248,3 +248,9 @@ body{
   margin-bottom: 30px;
   border-radius: 10px;
 }
+
+.kebijakan{
+  max-width: 1920px;
+  margin:0 auto;
+  border-radius: 20px;
+}
