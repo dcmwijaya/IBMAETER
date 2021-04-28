@@ -48,17 +48,17 @@ class Menu extends BaseController
 		return redirect()->to('/login');
 	}
 
-	public function Dashboard()
+	public function kelolaBarang()
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Menu User | INVENBAR",
-				"CurrentMenu" => "dashboard",
+				"title" => "Kelola Barang | INVENBAR",
+				"CurrentMenu" => "kelolabarang",
 				"info" => $this->newsModel->showTask(),
 				"item" => $this->barangModel->getItems(),
 				'user' => $this->userModel->getUserId(session('uid'))
 			];
-			return view('global/dashboard', $data);
+			return view('global/kelolabarang', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -74,7 +74,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
-			return redirect()->to('/dashboard');
+			return redirect()->to('/kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -91,7 +91,7 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
-			return redirect()->to('/dashboard');
+			return redirect()->to('/kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -102,7 +102,7 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$this->barangModel->deleteItem($id);
-			return redirect()->to('/dashboard');
+			return redirect()->to('/kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -127,7 +127,7 @@ class Menu extends BaseController
 			);
 
 			$this->barangModel->LogItem($data);
-			return redirect()->to('/dashboard');
+			return redirect()->to('/kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -151,7 +151,7 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
 			$this->barangModel->LogItem($data);
-			return redirect()->to('dashboard');
+			return redirect()->to('/kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -424,12 +424,42 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Laporan Bulanan | INVENBAR",
+				"title" => "Cetak Laporan | INVENBAR",
 				"CurrentMenu" => "laporanBulanan",
 				"info" => $this->newsModel->showTask(),
 				'user' => $this->userModel->getUserId(session('uid'))
 			];
 			return view('global/laporanBulanan', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function Dashboard()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Dashboard | INVENBAR",
+				"CurrentMenu" => "dashboard",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/dashboard', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function Pengaduan()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Pengaduan | INVENBAR",
+				"CurrentMenu" => "pengaduan",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid'))
+			];
+			return view('global/pengaduan', $data);
 		} else {
 			return redirect()->to('/login');
 		}
