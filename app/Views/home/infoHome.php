@@ -25,7 +25,7 @@
 						<div class="card-body event-description">
 							<h5 class="card-title"><i class="fas fa-business-time fa-fw me-2"></i>Kinerja Pada Tahun 2021</h5>
 							<p class="card-text"><small class="text-muted"><i class="fas fa-calendar fa-fw me-2"></i>02-04-2021 | 10:15 AM</small></p>
-							<p class="card-text col-md-12">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text col-md-12">Berdasarkan laporan bulanan dapat disimpulkan hingga tahun 2021 ini, Invenbar sudah sangat membantu beberapa bisnis dengan skala kecil.</p>
 							<button class="btn btn-primary" type="button">
 								<span>Read More</span>
 							</button>
@@ -42,7 +42,7 @@
 						<div class="card-body event-description">
 							<h5 class="card-title"><i class="fas fa-business-time fa-fw me-2"></i>Partnership Startup Jawa Timur 2021</h5>
 							<p class="card-text"><small class="text-muted"><i class="fas fa-calendar fa-fw me-2"></i>20-02-2021 | 08:15 AM</small></p>
-							<p class="card-text col-md-12">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text col-md-12">Partnership kami dengan Startup yang ada di Jawa Timur meliputi Startup-1, Startup-2, Startup-3, dan Startup-4.</p>
 							<button class="btn btn-primary" type="button">
 								<span>Read More</span>
 							</button>
@@ -59,7 +59,7 @@
 						<div class="card-body event-description">
 							<h5 class="card-title"><i class="fas fa-business-time fa-fw me-2"></i>Agenda Kegiatan Tahun 2021</h5>
 							<p class="card-text"><small class="text-muted"><i class="fas fa-calendar fa-fw me-2"></i>01-01-2021 | 10:15 PM</small></p>
-							<p class="card-text col-md-12">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text col-md-12">Agenda tahunan kami di tahun 2021 ini berupa perencanaan kerjasama dengan beberapa Startup yang ada di Jawa Timur.</p>
 							<button class="btn btn-primary" type="button">
 								<span>Read More</span>
 							</button>
