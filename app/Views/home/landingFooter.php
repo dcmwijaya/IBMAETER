@@ -30,16 +30,16 @@ $pesan = "" . $mail . "?view=cm&fs=1&tf=1&to=" . $emailtujuan . "&subject?&su=" 
                 <div class="f2-content f-kolom col-lg-3 col-md-6 footer-links">
                     <h4>NETWORK</h4>
                     <ul>
-                        <li><a href="<?= base_url("menu/InfoHome"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Invenbar Info</a></li>
-                        <li><a href="<?= base_url("menu/Partnership"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Partnership</a></li>
+                        <li><a href="<?= base_url("home/InfoHome"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Invenbar Info</a></li>
+                        <li><a href="<?= base_url("home/Partnership"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Partnership</a></li>
                     </ul>
                 </div>
 
                 <div class="f3-content f-kolom col-lg-3 col-md-6 footer-links">
                     <h4>OUR WEBSITE</h4>
                     <ul>
-                        <li><a href="<?= base_url("menu/KebijakanPrivasi"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Kebijakan Privasi</a></li>
-                        <li><a href="<?= base_url("menu/WaspadaPenipuan"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Waspada Penipuan</a></li>
+                        <li><a href="<?= base_url("home/KebijakanPrivasi"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Kebijakan Privasi</a></li>
+                        <li><a href="<?= base_url("home/WaspadaPenipuan"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Waspada Penipuan</a></li>
                     </ul>
                 </div>
                 <hr class="line">
