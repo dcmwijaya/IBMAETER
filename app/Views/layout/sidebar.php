@@ -45,11 +45,11 @@
 										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
 										</a>
-										<a href="<?= base_url('Admin/logUser') ?>" class="list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-book-reader fa-fw me-3"></i><span>Laporan Pekerja</span>
+										<a href="<?= base_url('Admin/LogUser') ?>" class="<?= ($CurrentMenu == 'logUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-book-reader fa-fw me-3"></i><span>Aktivitas User</span>
 										</a>
-										<a href="<?= base_url('Menu/laporanBulanan') ?>" class="list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-question fa-fw me-3"></i><span>???</span>
+										<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
 										</a>
 									</div>
 								</div>
@@ -66,23 +66,20 @@
 										<a href="<?= base_url('Menu/Dashboard') ?>" class="<?= ($CurrentMenu == 'dashboard') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-house-user fa-fw me-3"></i><span>Dashboard</span>
 										</a>
-										<a href="<?= base_url('Menu/Chart') ?>" class="<?= ($CurrentMenu == 'view_chart') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-chart-line fa-fw me-3"></i><span style="color: red;">View Chart</span>
-										</a>
-										<a href="<?= base_url('Menu/laporanBulanan') ?>" class="<?= ($CurrentMenu == 'dashboard') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+										<a href="<?= base_url('Menu/kelolaBarang') ?>" class="<?= ($CurrentMenu == 'kelolabarang') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-box fa-fw me-3"></i><span>Kelola Barang</span>
 										</a>
-										<a href="<?= base_url('Menu/absensiUser') ?>" class="list-group-item list-group-item-action py-2 ripple">
+										<a href="<?= base_url('Menu/absensiUser') ?>" class="<?= ($CurrentMenu == 'absensi') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-clipboard fa-fw me-3"></i><span>Absensi Pekerja</span>
 										</a>
 										<a href="<?= base_url('Menu/Pengumuman') ?>" class="<?= ($CurrentMenu == 'pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
 										</a>
-										<a href="<?= base_url('Menu/laporanBulanan') ?>" class="list-group-item list-group-item-action py-2 ripple">
+										<a href="<?= base_url('Menu/LaporanBulanan') ?>" class="<?= ($CurrentMenu == 'laporanBulanan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-print fa-fw me-3"></i><span>Cetak Laporan</span>
 										</a>
-										<a href="<?= base_url('Menu/laporanBulanan') ?>" class="list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-question fa-fw me-3"></i><span>???</span>
+										<a href="<?= base_url('Menu/Pengaduan') ?>" class="<?= ($CurrentMenu == 'pengaduan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-comment-dots fa-fw me-3"></i><span>Pengaduan</span>
 										</a>
 									</div>
 								</div>
