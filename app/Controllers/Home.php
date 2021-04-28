@@ -54,4 +54,56 @@ class Home extends BaseController
             return redirect()->to('/dashboard');
         }
     }
+    
+    public function InfoHome()
+    {
+        // seleksi login
+        if (session('role') == 0) {
+            $data = [
+                "title" => "Invenbar Info | INVENBAR"
+            ];
+            return view('home/infoHome', $data);
+        } else {
+            return redirect()->to('/Home');
+        }
+    }
+
+    public function Partnership()
+    {
+        // seleksi login
+        if (session('role') == 0) {
+            $data = [
+                "title" => "Partnership | INVENBAR"
+            ];
+            return view('home/partnership', $data);
+        } else {
+            return redirect()->to('/Home');
+        }
+    }
+
+    public function KebijakanPrivasi()
+    {
+        // seleksi login
+        if (session('role') == 0) {
+            $data = [
+                "title" => "Kebijakan Privasi | INVENBAR"
+            ];
+            return view('home/kebijakanPrivasi', $data);
+        } else {
+            return redirect()->to('/Home');
+        }
+    }
+
+    public function WaspadaPenipuan()
+    {
+        // seleksi login
+        if (session('role') == 0) {
+            $data = [
+                "title" => "Waspada Penipuan | INVENBAR"
+            ];
+            return view('home/waspadaPenipuan', $data);
+        } else {
+            return redirect()->to('/Home');
+        }
+    }
 }
