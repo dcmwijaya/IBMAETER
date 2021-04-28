@@ -9,7 +9,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>LOG USER ACTIVITIES</strong>
+						<strong>AKTIVITAS USER</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -20,8 +20,8 @@
 									<thead>
 										<tr>
 											<th>Email</th>
-											<th>Activities</th>
-											<th>Timestamps</th>
+											<th>Aktivitas</th>
+											<th>Waktu</th>
 											<th>Status Absensi</th>
 										</tr>
 									</thead>
