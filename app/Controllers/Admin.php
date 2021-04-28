@@ -409,7 +409,7 @@ class Admin extends BaseController
 		}
 	}
 	
-	// ==================================== Activity Records =========================================
+	// ==================================== Highlights =========================================
 
 	public function LogUser()
 	{ 
@@ -418,12 +418,33 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Log User Activities | INVENBAR",
+					"title" => "Aktivitas User | INVENBAR",
 					"CurrentMenu" => "logUser",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser()
 				];
 				return view('admin/logUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function Complain()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				$data = [
+					"title" => "Komplain Pekerja | INVENBAR",
+					"CurrentMenu" => "komplainUser",
+					"info" => $this->newsModel->showTask(),
+					"user" => $this->adminModel->getUser()
+				];
+				return view('admin/komplainUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
