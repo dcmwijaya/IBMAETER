@@ -325,36 +325,7 @@ class Menu extends BaseController
 	}
 
 
-	// ==================================== View Chart & Excel =========================================
-	public function Chart()
-	{
-		if (session('uid') != null) {
-			$data = [
-				"title" => "View Chart | INVENBAR",
-				"CurrentMenu" => "view_chart",
-				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid')),
-				"class" => $this->barangModel->invenclass(),
-				"category" => $this->barangModel->jenis(),
-				"sc1" => $this->barangModel->stockclass1(),
-				"sc2" => $this->barangModel->stockclass2(),
-				"sc3" => $this->barangModel->stockclass3(),
-				"sc4" => $this->barangModel->stockclass4(),
-				"sc5" => $this->barangModel->stockclass5(),
-				"sc6" => $this->barangModel->stockclass6(),
-				"sc7" => $this->barangModel->stockclass7(),
-				"sj1" => $this->barangModel->stockjenis1(),
-				"sj2" => $this->barangModel->stockjenis2(),
-				"sj3" => $this->barangModel->stockjenis3(),
-				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5()
-			];
-			return view('global/viewchart', $data);
-		} else {
-			return redirect()->to('/login');
-		}
-	}
-
+	// ==================================== Export Data =========================================
 	public function excelbarang()
 	{
 		if (session('uid') != null) {
@@ -442,7 +413,22 @@ class Menu extends BaseController
 				"title" => "Dashboard | INVENBAR",
 				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				"class" => $this->barangModel->invenclass(),
+				"category" => $this->barangModel->jenis(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5(),
+				"us" => $this->userModel->countUser()
 			];
 			return view('global/dashboard', $data);
 		} else {
