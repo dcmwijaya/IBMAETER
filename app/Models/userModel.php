@@ -22,4 +22,9 @@ class userModel extends Model
     {
         return $this->where(['uid' => $uid])->first();
     }
+    
+    public function countUser()
+    {
+        return $this->db->table('user')->selectCount('uid')->distinct()->get()->getResultArray();
+    }
 }
