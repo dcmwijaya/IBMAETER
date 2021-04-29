@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\userModel;
+use PhpParser\Node\Expr\Isset_;
 
 class Auth extends BaseController
 {
@@ -46,12 +47,48 @@ class Auth extends BaseController
                 "title" => "Login | INVENBAR",
                 "validation" => \Config\Services::Validation()
             ];
+
+            // logika limit waktu percobaan login
+            if ($this->session->has('time_locked')) {
+                $cooldown = time() - $this->session->get('time_locked');
+                if ($cooldown > 120) {
+                    // session('time_locked')->destroy();
+                    // session('login_attemp')->destroy();
+                    unset($_SESSION["time_locked"]);
+                    unset($_SESSION["login_attemp"]);
+                }
+            }
+
+            // jika sudah 3 kali percobaan kirim pesan
+            if (session('login_attemp') > 2) {
+                session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 2 (dua) menit untuk mencoba kembali.</b></p>');
+            }
+
             return view('auth/login', $data);
         }
     }
 
     public function validasi()
     {
+        // preparation for login attemps
+        if (isset($_SESSION['login_attemp'])) {
+            // jika session 'login_attemp' sudah dibuat sebelumnya
+            $attemps = [
+                'login_attemp' => session('login_attemp')
+            ];
+        } else {
+            // jika session 'login_attemp' belum pernah dibuat
+            $attemps = ['login_attemp' => 0];
+        }
+
+        // anti cracker console :v
+        if (isset($_SESSION['login_attemp'])) {
+            // jika session 'login_attemp' sudah dibuat sebelumnya
+            if ($_SESSION['login_attemp'] > 2) {
+                return redirect()->to('/login')->withInput();
+            }
+        }
+
         // validasi input
         if (!$this->validate([
             'email' => [
@@ -81,10 +118,33 @@ class Auth extends BaseController
                 $this->session->set($user);
                 return redirect()->to('/dashboard');
             } else {
+                // mark percobaan login tambah 1
+                $increment = session('login_attemp') + 1;
+                $attemps = [
+                    'login_attemp' => $increment
+                ];
+                $this->session->set($attemps);
+
+                // jika sudah 3 kali percobaan kirim pesan
+                if (session('login_attemp') > 2) {
+                    session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 2 (dua) menit untuk mencoba kembali.</b></p>');
+                }
+
                 // jika password salah kemabali ke login
                 return redirect()->to('/login')->withInput();
             }
         } else {
+            // mark percobaan login tambah 1
+            $increment = session('login_attemp') + 1;
+            $attemps = [
+                'login_attemp' => $increment
+            ];
+            $this->session->set($attemps);
+
+            // jika sudah 3 kali percobaan kirim pesan
+            if (session('login_attemp') > 2) {
+                session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 2 (dua) menit untuk mencoba kembali.</b></p>');
+            }
             // jika email tidak terdaftar
             return redirect()->to('/login')->withInput();
         }

@@ -18,11 +18,11 @@
 					<?php endif ?>
 				</div>
 
-				<div class="card-body mx-auto" style="height:450px;">
+				<div class="card-body mx-auto">
 					<div class="card mb-3" style="box-shadow: 0px 3px 5px 0px #a8a8a8;">
 						<div class="row no-gutters" style="max-width:800px;">
 							<div class="col-md-5 d-inline">
-								<img src="<?= base_url("/img/user") . "/" . $user['picture']; ?>" style="max-width:100%;max-height:100%;width:1000px;height:300px;display:flex;">
+								<img src="<?= base_url("/img/user") . "/" . $user['picture']; ?>" class="img-thumbnail img-preview" style="max-width:100%;max-height:100%;width:1000px;height:300px;display:flex;">
 							</div>
 							<div class="col-md-6">
 								<div class="card-body">

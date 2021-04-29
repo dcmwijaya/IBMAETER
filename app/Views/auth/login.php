@@ -7,6 +7,11 @@
 	<div class="row justify-content-center">
 		<div class="col-xl-10 col-lg-12 col-md-9">
 			<div class="card o-hidden border-0 shadow-lg my-5">
+				<?php if (session()->getFlashdata('locked')) : ?>
+					<div class="alert alert-danger" role="alert">
+						<?= session()->getFlashdata('locked'); ?>
+					</div>
+				<?php endif ?>
 				<form class="user" method="POST" action="<?= base_url('auth/validasi') ?>">
 					<div class="card-body" style="padding: 0 12px; overflow: hidden;">
 						<!-- Nested Row within Card Body -->
@@ -32,7 +37,23 @@
 										</div>
 									</div>
 									<div class="mt-4">
-										<button type="submit" class="btn btn-primary btn-user btn-block">
+										<?php
+										if (isset($_SESSION["login_attemp"])) {
+											if ($_SESSION['login_attemp'] > 2) {
+												if (isset($_SESSION['time_locked'])) {
+													# agar session 'time_locked' tidak diperbarui
+												} else {
+													# jika session 'time_locked' belum pernah dibuat
+													$_SESSION['time_locked'] = time();	// tandai waktu terblokir
+												}
+												$state = "disabled";
+											} else {
+												$state = "";
+											}
+										} else {
+											$state = "";
+										} ?>
+										<button type="submit" class="btn btn-primary btn-user btn-block" <?= $state; ?>>
 											Login
 										</button>
 									</div>

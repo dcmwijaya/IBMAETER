@@ -17,7 +17,7 @@
 						<div class="row">
 							<div class="col">
 								<marquee>
-									<img src="<?= base_url('img/development.gif') ?>">
+									<img src="<?= base_url('img/altera_dance.gif') ?>">
 									<h1 class="blink">Dalam proses pengembangan...</h1>
 									</img>
 								</marquee>
