@@ -1,0 +1,55 @@
+.chart-wrap{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+}
+
+.chart-wrap h2{
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.chart-wrap h2 span{
+    font-size: 10px;
+}
+
+.chart-content{
+    margin-top: -15%;
+}
+
+.menu-wrap .tombolmenu{
+    background-color: black;
+    border: 5px blue;
+    color: white;
+    border-radius: 20px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.menu-wrap .tombolmenu h2{
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.menu-wrap .tombolmenu h2 span{
+    font-size: 10px;
+}
+
+.menu-wrap .tombolmenu:hover{
+    color: rgb(0, 173, 241);
+    border-style: double;
+}
+
+.views-wrap{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    height: 80px;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.views-wrap span, .views-wrap i{
+    font-size: 18px;
+    color: yellow;
+}
