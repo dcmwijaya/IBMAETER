@@ -2,6 +2,19 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
+
+<?php
+
+foreach ($us as $usc) {
+	if ($us != null) {
+		$usersCount = $usc['uid'];
+	} else {
+		$usersCount = 0;
+	}
+}
+
+?>
+
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container py-4">
@@ -84,6 +97,7 @@
 								</table>
 							</div>
 						</div>
+						<p>Jumlah pengguna saat ini : <?= $usersCount; ?></p>
 					</div>
 				</div>
 		</section>
