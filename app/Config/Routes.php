@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::Landing');		# routes buat halaman depan
 $routes->get('/Menu', 'Menu::dashboard');		# routes buat halaman depan
+$routes->get('/home', 'Home::landing');		# routes buat halaman home
 $routes->get('/login', 'Auth::login');
 $routes->get('/dashboard', 'Menu::dashboard');
 $routes->get('/Menu/profedit/(:segment)', 'Menu::profedit/$1');
