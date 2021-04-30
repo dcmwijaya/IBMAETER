@@ -427,8 +427,7 @@ class Menu extends BaseController
 				"sj2" => $this->barangModel->stockjenis2(),
 				"sj3" => $this->barangModel->stockjenis3(),
 				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5(),
-				"us" => $this->userModel->countUser()
+				"sj5" => $this->barangModel->stockjenis5()
 			];
 			return view('global/dashboard', $data);
 		} else {
