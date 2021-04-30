@@ -123,7 +123,7 @@
 									<tbody>
 										<tr>
 											<td>1</td>
-											<td>14</td>
+											<td>SBR-1</td>
 											<td>1000</td>
 											<td>200</td>
 											<td>Bobby</td>
@@ -136,7 +136,7 @@
 										</tr>
 										<tr>
 											<td>2</td>
-											<td>22</td>
+											<td>SBR-2</td>
 											<td>2000</td>
 											<td>300</td>
 											<td>Deddy</td>
@@ -149,7 +149,7 @@
 										</tr>
 										<tr>
 											<td>3</td>
-											<td>30</td>
+											<td>SBR-3</td>
 											<td>1200</td>
 											<td>250</td>
 											<td>Lily</td>
@@ -162,7 +162,7 @@
 										</tr>
 										<tr>
 											<td>4</td>
-											<td>34</td>
+											<td>SBR-4</td>
 											<td>1500</td>
 											<td>150</td>
 											<td>Keilya</td>
@@ -175,7 +175,7 @@
 										</tr>
 										<tr>
 											<td>5</td>
-											<td>45</td>
+											<td>SBR-5</td>
 											<td>1200</td>
 											<td>220</td>
 											<td>Joni</td>
@@ -188,7 +188,7 @@
 										</tr>
 										<tr>
 											<td>6</td>
-											<td>56</td>
+											<td>SBR-6</td>
 											<td>1800</td>
 											<td>350</td>
 											<td>Jenny</td>
@@ -201,7 +201,7 @@
 										</tr>
 										<tr>
 											<td>7</td>
-											<td>67</td>
+											<td>SBR-7</td>
 											<td>1250</td>
 											<td>280</td>
 											<td>Keisha</td>
@@ -214,7 +214,7 @@
 										</tr>
 										<tr>
 											<td>8</td>
-											<td>68</td>
+											<td>SBR-8</td>
 											<td>3000</td>
 											<td>500</td>
 											<td>Biebie</td>
@@ -227,7 +227,7 @@
 										</tr>
 										<tr>
 											<td>9</td>
-											<td>79</td>
+											<td>SBR-9</td>
 											<td>2750</td>
 											<td>380</td>
 											<td>Pinkie</td>
@@ -240,7 +240,7 @@
 										</tr>
 										<tr>
 											<td>10</td>
-											<td>100</td>
+											<td>SBR-10</td>
 											<td>3200</td>
 											<td>600</td>
 											<td>Blackie</td>
@@ -253,7 +253,7 @@
 										</tr>
 										<tr>
 											<td>11</td>
-											<td>80</td>
+											<td>SBR-11</td>
 											<td>1000</td>
 											<td>200</td>
 											<td>Birdie</td>
@@ -266,7 +266,7 @@
 										</tr>
 										<tr>
 											<td>12</td>
-											<td>82</td>
+											<td>SBR-12</td>
 											<td>2000</td>
 											<td>300</td>
 											<td>Hokage</td>
@@ -279,7 +279,7 @@
 										</tr>
 										<tr>
 											<td>13</td>
-											<td>84</td>
+											<td>SBR-13</td>
 											<td>1200</td>
 											<td>250</td>
 											<td>Guru Domba</td>
@@ -292,7 +292,7 @@
 										</tr>
 										<tr>
 											<td>14</td>
-											<td>90</td>
+											<td>SBR-14</td>
 											<td>1500</td>
 											<td>150</td>
 											<td>Ilya</td>
@@ -305,7 +305,7 @@
 										</tr>
 										<tr>
 											<td>15</td>
-											<td>92</td>
+											<td>SBR-15</td>
 											<td>1200</td>
 											<td>220</td>
 											<td>Nero</td>
@@ -318,7 +318,7 @@
 										</tr>
 										<tr>
 											<td>16</td>
-											<td>94</td>
+											<td>SBR-16</td>
 											<td>1800</td>
 											<td>350</td>
 											<td>Tohka</td>
@@ -331,7 +331,7 @@
 										</tr>
 										<tr>
 											<td>17</td>
-											<td>95</td>
+											<td>SBR-17</td>
 											<td>1250</td>
 											<td>280</td>
 											<td>Kuro Sensei</td>
@@ -344,7 +344,7 @@
 										</tr>
 										<tr>
 											<td>18</td>
-											<td>100</td>
+											<td>SBR-18</td>
 											<td>3000</td>
 											<td>500</td>
 											<td>Kirito</td>
@@ -357,7 +357,7 @@
 										</tr>
 										<tr>
 											<td>19</td>
-											<td>110</td>
+											<td>SBR-19</td>
 											<td>2750</td>
 											<td>380</td>
 											<td>Asuna</td>
@@ -370,7 +370,7 @@
 										</tr>
 										<tr>
 											<td>20</td>
-											<td>200</td>
+											<td>SBR-20</td>
 											<td>3200</td>
 											<td>600</td>
 											<td>Yely Yordan</td>
