@@ -89,6 +89,21 @@
 			scrollCollapse: true,
 			paging: false
 		});
+		$('#table_spesifikasi').DataTable({
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
+		});
+		$('#table_absensi').DataTable({
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
+		});
+		$('#table_aktivitas').DataTable({
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
+		});
 		$('.toast').toast('show');
 	});
 </script>
