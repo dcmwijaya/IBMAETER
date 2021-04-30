@@ -76,7 +76,7 @@
 											<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
 										</a>
 										<a href="<?= base_url('Menu/LaporanBulanan') ?>" class="<?= ($CurrentMenu == 'laporanBulanan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-print fa-fw me-3"></i><span>Cetak Laporan</span>
+											<i class="fas fa-print fa-fw me-3"></i><span>Laporan Bulanan</span>
 										</a>
 										<a href="<?= base_url('Menu/Pengaduan') ?>" class="<?= ($CurrentMenu == 'pengaduan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-comment-dots fa-fw me-3"></i><span>Pengaduan</span>
