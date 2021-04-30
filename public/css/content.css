@@ -17,9 +17,27 @@
   text-transform: uppercase;
 }
 
+.btn-wrap{
+  padding-top: 30px; 
+  margin-bottom: -50px;
+}
+
+.absensiCount{
+  margin-top: 25px;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   .r-btn {
     margin: 8px 0px 0px 0px;
     padding: 0 28px;
+  }
+  .btn-wrap{
+    margin-bottom: 20px;
+  }
+  .absensiCount{
+    line-height: 20px;
+    display: grid;
+      place-items: center;
   }
 }
