@@ -14,6 +14,23 @@
 				</div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row my-3">
+							<div class="btn-wrap d-flex">
+								<div class="flex-fill">
+									<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										<button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-fw fa-file"></i> Export
+										</button>
+										<div class="dropdown-menu dm-export">
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										</div>
+										<button type="button" onclick="window.print()" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col">
 								<table id="table_absensi" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
@@ -59,6 +76,10 @@
 								</table>
 							</div>
 						</div>
+						<p class="absensiCount">
+							Jumlah pekerja hadir saat ini : 4<br>
+							Jumlah pekerja bolos saat ini : 2
+						</p>
 					</div>
 				</div>
 		</section>
@@ -71,6 +92,23 @@
 				</div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row my-3">
+							<div class="btn-wrap d-flex">
+								<div class="flex-fill">
+									<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										<button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-fw fa-file"></i> Export
+										</button>
+										<div class="dropdown-menu dm-export">
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										</div>
+										<button type="button" onclick="window.print()" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col">
 								<table id="table_aktivitas" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
