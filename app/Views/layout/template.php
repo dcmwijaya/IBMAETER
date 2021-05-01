@@ -33,6 +33,9 @@
 	<!-- croppie -->
 	<link rel="stylesheet" href="<?= base_url('../vendor/croppie/croppie.css') ?>">
 
+	<!-- stepwizard -->
+	<!-- <link rel="stylesheet" href="<?= base_url('../vendor/stepwizard/style.css') ?>"> -->
+
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
 </head>
@@ -59,7 +62,8 @@
 <!-- Bootsrap 4.0.0 JS -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-
+<!-- stepwizard -->
+<!-- <script src="<?= base_url('../vendor/stepwizard/script.js') ?>"></script> -->
 <!-- malhiu scrollbar plugin -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
 <script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
@@ -295,11 +299,8 @@
 					},
 					success: function(data) {
 						$('#uploadimageModal').modal('hide');
-						$('#show-add-img').html(data);
-						const file_img = new FileReader();
-						const label_add_img = document.querySelector('.label-img-input');
-						label_add_img.textContent = $('#add_img').files[0].name;
-						file_img.readAsDataURL($('#add_img').files[0]);
+						html = '<img src="' + response + '" class="img-thumbnail img-preview" alt="image preview" style="max-height: 370px; " />';
+						$('#show-add-img').html(html);
 					}
 				});
 			})

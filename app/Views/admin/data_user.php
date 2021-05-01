@@ -111,8 +111,11 @@
 							<div class="invalid-feedback m-2">
 								<?= $validation->getError('add_img'); ?>
 							</div>
-							<input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="add_img" onchange="previewAddImg()">
-							<label class="custom-file-label label-img-input" for="add_img">Pilih Gambar</label>
+							<input type="hidden" id="crop-result" name="add_imgs" value="sd">
+							<div id="add-input-file">
+								<input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="add_img" onchange="previewAddImg()">
+								<label class="custom-file-label label-img-input" for="add_img">Pilih Gambar</label>
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-6">
