@@ -39,6 +39,7 @@
 											<th>Email</th>
 											<th>Perihal Komplain</th>
 											<th>Kendala</th>
+											<th>Bukti</th>
 											<th>Waktu Komplain</th>
 											<th>Aksi</th>
 										</tr>
@@ -48,6 +49,9 @@
 											<td>saber.datealive@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:31:10 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -60,6 +64,9 @@
 											<td>kacangjago@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:32:11 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -72,6 +79,9 @@
 											<td>kuro911@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:33:12 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -84,6 +94,9 @@
 											<td>rifkya911@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:36:15 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -96,6 +109,9 @@
 											<td>merdinabrori@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:34:13 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -108,6 +124,9 @@
 											<td>devancakra@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/26 11:35:14 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -120,6 +139,9 @@
 											<td>okezone712@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/27 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -132,6 +154,9 @@
 											<td>dyandra90@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/27 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -144,6 +169,9 @@
 											<td>genshin_keqing@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/27 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -156,6 +184,9 @@
 											<td>saber.nero@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/27 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -168,6 +199,9 @@
 											<td>kuro.sensei99@gmail.com</td>
 											<td>Kendala Menu Absensi</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 07:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -180,6 +214,9 @@
 											<td>nikey88@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 07:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -192,6 +229,9 @@
 											<td>liediana@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 07:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -204,6 +244,9 @@
 											<td>rungkutgakure@gmail.com</td>
 											<td>Kendala Menu Home</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 09:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -216,6 +259,9 @@
 											<td>suketteki@gmail.com</td>
 											<td>Kendala Menu Home</td>
 											<td>Menu tidak bisa diakses</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 09:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -228,6 +274,9 @@
 											<td>buildingclub@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 09:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -240,6 +289,9 @@
 											<td>bagindahokage@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -252,6 +304,9 @@
 											<td>nagissa@gmail.com</td>
 											<td>Kendala Menu Pengumuman</td>
 											<td>Gambar tidak tampil</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -264,6 +319,9 @@
 											<td>suparmanbentor@gmail.com</td>
 											<td>Kendala Menu Pengumuman</td>
 											<td>Gambar tidak tampil</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -276,6 +334,9 @@
 											<td>indahbersamamu@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -288,6 +349,9 @@
 											<td>muraiki@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -300,6 +364,9 @@
 											<td>melinda@gmail.com</td>
 											<td>Kendala Menu Pengumuman</td>
 											<td>Gambar tidak tampil</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -312,6 +379,9 @@
 											<td>lunayaluna@gmail.com</td>
 											<td>Kendala Menu Pengumuman</td>
 											<td>Gambar tidak tampil</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -324,6 +394,9 @@
 											<td>warbyasahh@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
@@ -336,6 +409,9 @@
 											<td>miraihikari@gmail.com</td>
 											<td>Kendala Edit Profile</td>
 											<td>Foto tidak bisa dirubah</td>
+											<td>
+												<!-- Bagian ini : Gambar SS -->
+											</td>
 											<td>2021/4/28 11:37:16 AM</td>
 											<td>
 												<div class="btn-group" role="group" aria-label="inoutcom">
