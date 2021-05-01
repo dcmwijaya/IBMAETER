@@ -45,7 +45,8 @@ class Admin extends BaseController
 					"CurrentMenu" => "data_user",
 					'validation' => \Config\Services::validation(),
 					"info" => $this->newsModel->showTask(),
-					"user" => $this->adminModel->getUser()
+					"user" => $this->adminModel->getUser(),
+					"us" => $this->adminModel->countUser()
 				];
 				return view('admin/data_user', $data);
 			} else {
