@@ -36,7 +36,85 @@
 				</div>
 			</div>
 		</section>
-		<!--Section: Sales Performance KPIs-->
+
+		<section class="mb-4">
+			<div class="card">
+				<div class="card-header text-center py-3">
+					<h5 class="mb-0 text-center">
+						<strong>AKTIVITAS USER</strong>
+					</h5>
+				</div>
+				<div class="card-body pt-1">
+					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row">
+							<div class="col">
+								<table id="table_aktivitas" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
+									<thead>
+										<tr>
+											<th>Id User</th>
+											<th>Aktivitas</th>
+											<th>Waktu</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/login</td>
+											<td>2021/4/26 11:31:10 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/LaporanBulanan</td>
+											<td>2021/4/26 11:32:11 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Pengaduan</td>
+											<td>2021/4/26 11:33:12 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/pengumuman</td>
+											<td>2021/4/26 11:34:13 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Profedit</td>
+											<td>2021/4/26 11:35:14 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Profakun</td>
+											<td>2021/4/26 11:36:15 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Absensi</td>
+											<td>2021/4/27 11:37:16 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Dashboard</td>
+											<td>2021/4/27 11:37:16 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/kelolaBarang</td>
+											<td>2021/4/27 11:37:16 AM</td>
+										</tr>
+										<tr>
+											<td>USP-1</td>
+											<td>http://localhost:8080/menu/Logout</td>
+											<td>2021/4/27 11:37:16 AM</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+
 	</div>
 </main>
 

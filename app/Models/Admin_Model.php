@@ -36,4 +36,9 @@ class Admin_Model extends Model
         $query = $this->db->table('user')->delete(array('uid' => $id));
         return $query;
     }
+    
+    public function countUser()
+    {
+        return $this->db->table('user')->selectCount('uid')->distinct()->get()->getResultArray();
+    }
 }

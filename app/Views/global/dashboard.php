@@ -101,13 +101,6 @@ foreach ($sc7 as $vs7) {
 		$sin[] = 0;
 	}
 }
-foreach ($us as $usc) {
-	if ($us != null) {
-		$usersCount = $usc['uid'];
-	} else {
-		$usersCount = 0;
-	}
-}
 
 ?>
 
@@ -122,14 +115,6 @@ foreach ($us as $usc) {
 					</h5>
 				</div><br><br>
 				<div class="card-body pt-1">
-					<div class="card-deck">
-						<div class="card views-wrap">
-							<p class="text-center">Jumlah pengguna website : &nbsp;&nbsp;
-								<i class="fas fa-user fa-fw"></i>
-								<span><?= $usersCount; ?> Pengguna</span>
-							</p>
-						</div>
-					</div><br>
 					<div class="card-deck">
 						<div class="card chart-wrap">
 							<h2>
