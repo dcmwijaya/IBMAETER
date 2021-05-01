@@ -20,7 +20,7 @@
 							<div class="info-card card mb-3 bg-light">
 								<div class="row no-gutters">
 									<div class="col-md-5" id="img-absensi">
-										<img src="<?= base_url("img/home/dashboard.jpg"); ?>" class="card-img" alt="img-1">
+										<img src="<?= base_url("img/Absensi.jpg"); ?>" class="card-img" alt="img-1">
 									</div>
 									<div class="col-md-6" id="absensi-user">
 										<div class=" card-body event-description">
