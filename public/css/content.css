@@ -27,6 +27,11 @@
   font-size: 14px;
 }
 
+.userVCount{
+  margin-top: 25px;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   .r-btn {
     margin: 8px 0px 0px 0px;
@@ -38,6 +43,11 @@
   .absensiCount{
     line-height: 20px;
     display: grid;
-      place-items: center;
+    place-items: center;
+  }
+  .userVCount{
+    line-height: 20px;
+    display: grid;
+    place-items: center;
   }
 }
