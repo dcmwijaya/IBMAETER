@@ -23,7 +23,7 @@
 									</div>
 									<div class="col-md-6" id="absensi-user">
 										<div class=" card-body event-description">
-											<form action=" <?= base_url('/Menu/Absensi'); ?>" method="POST" enctype="multipart/form-data">
+											<form action=" <?= base_url('/Menu/absensiUser'); ?>" method="POST" enctype="multipart/form-data">
 												<div class="form-group absensi-content">
 													<label for="nama_user">
 														<i class="fas fa-user-tie fa-fw me-1"></i>
