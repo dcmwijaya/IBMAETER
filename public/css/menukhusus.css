@@ -1,0 +1,71 @@
+#pengaduan-user{
+  padding-top: 5px;
+}
+
+#img-pengaduan{
+  padding-top: 25px;
+  max-width: 100%;
+  width: 480px;
+}
+
+#img-pengaduan img{
+  max-height: 100%;
+  height: 610px;
+}
+
+#absensi-user{
+  padding-top: 5px;
+}
+
+#img-absensi{
+  padding-top: 25px;
+  max-width: 100%;
+  width: 480px;
+}
+
+#img-absensi img{
+  max-height: 100%;
+  height: 400px;
+}
+
+.absensi-content{
+  font-size: 20px;  
+  line-height: 75px;
+}
+
+.absensi-content span{
+  padding-left: 10px;
+  letter-spacing: 3px;
+}
+
+#img-laporanbulanan{
+  padding-top: 25px;
+  max-width: 100%;
+  width: 480px;
+}
+
+#img-laporanbulanan img{
+  max-height: 100%;
+  height: 400px;
+}
+
+.laporanbulanan-content{  
+  padding-top: 30px;
+  font-size: 20px;  
+}
+
+.laporan-button button{  
+  margin-top: 50px;
+}
+
+.ntombol{
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nama_tombol{
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: bold;
+}
