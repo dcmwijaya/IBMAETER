@@ -2,7 +2,6 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('css/menukhusus.css') ?>">
-<link rel="stylesheet" href="<?= base_url('css/dragdrop.css') ?>" />
 
 <!--Main layout-->
 <main class="bg-dark">
@@ -20,11 +19,11 @@
 							<div class="info-card card mb-3 bg-light">
 								<div class="row no-gutters">
 									<div class="col-md-5" id="img-absensi">
-										<img src="<?= base_url("img/home/dashboard.jpg"); ?>" class="card-img" alt="img-1">
+										<img src="<?= base_url("img/Absensi.jpg"); ?>" class="card-img" alt="img-1">
 									</div>
 									<div class="col-md-6" id="absensi-user">
 										<div class=" card-body event-description">
-											<form action=" <?= base_url('/Menu/Absensi'); ?>" method="POST" enctype="multipart/form-data">
+											<form action=" <?= base_url('/Menu/absensiUser'); ?>" method="POST" enctype="multipart/form-data">
 												<div class="form-group absensi-content">
 													<label for="nama_user">
 														<i class="fas fa-user-tie fa-fw me-1"></i>

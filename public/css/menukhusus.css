@@ -38,6 +38,32 @@
   letter-spacing: 3px;
 }
 
+#img-laporanbulanan{
+  padding-top: 25px;
+  max-width: 100%;
+  width: 480px;
+}
+
+#img-laporanbulanan img{
+  max-height: 100%;
+  height: 400px;
+}
+
+.laporanbulanan-content{  
+  padding-top: 30px;
+  font-size: 20px;  
+}
+
+.laporan-button button{  
+  margin-top: 50px;
+}
+
+.ntombol{
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .nama_tombol{
   margin: 0 auto;
   font-size: 20px;
