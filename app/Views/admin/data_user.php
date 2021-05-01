@@ -97,7 +97,7 @@ foreach ($us as $usc) {
 								</table>
 							</div>
 						</div>
-						<p>Jumlah pengguna saat ini : <?= $usersCount; ?></p>
+						<p class="userVCount">Jumlah pengguna saat ini : <?= $usersCount; ?></p>
 					</div>
 				</div>
 		</section>
