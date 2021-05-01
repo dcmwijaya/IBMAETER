@@ -2,7 +2,6 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('css/menukhusus.css') ?>">
-<link rel="stylesheet" href="<?= base_url('css/dragdrop.css') ?>" />
 
 <!--Main layout-->
 <main class="bg-dark">
