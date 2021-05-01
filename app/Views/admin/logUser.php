@@ -22,9 +22,9 @@
 											<i class="fas fa-fw fa-file"></i> Export
 										</button>
 										<div class="dropdown-menu dm-export">
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
 										</div>
 										<button type="button" onclick="window.print()" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
 									</div>
@@ -100,9 +100,9 @@
 											<i class="fas fa-fw fa-file"></i> Export
 										</button>
 										<div class="dropdown-menu dm-export">
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/logUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
+											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/LogUser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
 										</div>
 										<button type="button" onclick="window.print()" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
 									</div>
