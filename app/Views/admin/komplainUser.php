@@ -45,381 +45,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>saber.datealive@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:31:10 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>kacangjago@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:32:11 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>kuro911@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:33:12 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>rifkya911@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:36:15 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>merdinabrori@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:34:13 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>devancakra@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/26 11:35:14 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>okezone712@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/27 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>dyandra90@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/27 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>genshin_keqing@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/27 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>saber.nero@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/27 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>kuro.sensei99@gmail.com</td>
-											<td>Kendala Menu Absensi</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 07:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>nikey88@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 07:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>liediana@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 07:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>rungkutgakure@gmail.com</td>
-											<td>Kendala Menu Home</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 09:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>suketteki@gmail.com</td>
-											<td>Kendala Menu Home</td>
-											<td>Menu tidak bisa diakses</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 09:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>buildingclub@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 09:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>bagindahokage@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>nagissa@gmail.com</td>
-											<td>Kendala Menu Pengumuman</td>
-											<td>Gambar tidak tampil</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>suparmanbentor@gmail.com</td>
-											<td>Kendala Menu Pengumuman</td>
-											<td>Gambar tidak tampil</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>indahbersamamu@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>muraiki@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>melinda@gmail.com</td>
-											<td>Kendala Menu Pengumuman</td>
-											<td>Gambar tidak tampil</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>lunayaluna@gmail.com</td>
-											<td>Kendala Menu Pengumuman</td>
-											<td>Gambar tidak tampil</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>warbyasahh@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>miraihikari@gmail.com</td>
-											<td>Kendala Edit Profile</td>
-											<td>Foto tidak bisa dirubah</td>
-											<td>
-												<!-- Bagian ini : Gambar SS -->
-											</td>
-											<td>2021/4/28 11:37:16 AM</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
+										<?php foreach ($komplain as $k) : ?>
+											<tr>
+												<td><?= $k['email_komplain']; ?></td>
+												<td><?= $k['judul_komplain']; ?></td>
+												<td><?= $k['isi_komplain']; ?></td>
+												<td>
+													<?php if ($k['foto_komplain'] == "-") : ?>
+														<b class="center">-</b>
+													<?php else : ?>
+														<img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
+													<?php endif; ?>
+												</td>
+												<td><?= $k['waktu_komplain']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
+														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
+													</div>
+												</td>
+											</tr>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>
@@ -441,12 +87,15 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="<?= base_url('Admin/Complain'); ?>" method="POST" enctype="multipart/form-data">
+				<form action="<?= base_url('Admin/arsipKomplain'); ?>" method="POST" enctype="multipart/form-data">
+					<?= csrf_field(); ?>
 					<div class="form-group">
 						<label for="acc_komentar">Komentar</label>
-						<input type="text" class="form-control" id="acc_komentar" placeholder="Tuliskan Komentar Anda" name="k_accept">
+						<input type="text" class="form-control" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda">
 					</div>
 					<div class="modal-footer">
+						<input type="hidden" id="nomor" name="no_komplain">
+						<input type="hidden" id="status" name="status" value="accepted">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
 					</div>
@@ -467,12 +116,15 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="<?= base_url('Admin/Complain'); ?>" method="POST" enctype="multipart/form-data">
+				<form action="<?= base_url('Admin/arsipKomplain'); ?>" method="POST" enctype="multipart/form-data">
+					<?= csrf_field(); ?>
 					<div class="form-group">
 						<label for="rjc_komentar">Komentar</label>
-						<input type="text" class="form-control" id="rjc_komentar" placeholder="Tuliskan Komentar Anda" name="k_rejected">
+						<input type="text" class="form-control" id="rjc_komentar" name="komen" placeholder="Tuliskan Komentar Anda">
 					</div>
 					<div class="modal-footer">
+						<input type="hidden" id="no_komplain" name="no_komplain">
+						<input type="hidden" id="status" name="status" value="rejected">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
 					</div>
