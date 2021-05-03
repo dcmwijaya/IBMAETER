@@ -2,6 +2,10 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
+
+<!-- style for td -->
+<?php $tdStyle = "white-space: -moz-pre-wrap !important; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; white-space: -webkit-pre-wrap; word-break: break-word; white-space: normal;" ?>
+
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
@@ -49,7 +53,7 @@
 											<tr>
 												<td><?= $k['email_komplain']; ?></td>
 												<td><?= $k['judul_komplain']; ?></td>
-												<td><?= $k['isi_komplain']; ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $k['isi_komplain']; ?></td>
 												<td>
 													<?php if ($k['foto_komplain'] == "-") : ?>
 														<b class="center">-</b>
