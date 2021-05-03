@@ -1,55 +1,187 @@
-.chart-wrap{
-    background-color: black;
-    color: white;
-    border-radius: 20px;
+.row-dashboard{
+    padding-left: 4%;
+    place-items: center;
 }
 
-.chart-wrap h2{
-    padding-top: 20px;
-    font-size: 15px;
+.chart1-dashboard, .chart3-dashboard{
+    float: left;
+    box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.3);
+    margin-right: 3%;
+    margin-top: 2%;    
+    padding-bottom: 1%;
 }
 
-.chart-wrap h2 span{
-    font-size: 10px;
+.chart2-dashboard, .chart4-dashboard{
+    float: left;
+    box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.3);
+    margin-top: 2%;
+    padding-bottom: 1%;
 }
 
-.chart-content{
-    margin-top: -15%;
+.chart1-dashboard .content-dashboard{
+    background: linear-gradient(-45deg, rgba(234, 0, 255, 0.2),rgba(120, 255, 108, 0.4));
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
-.menu-wrap .tombolmenu{
-    background-color: black;
-    border: 5px blue;
-    color: white;
-    border-radius: 20px;
+.chart2-dashboard .content-dashboard {
+    background: linear-gradient(-45deg, rgba(25, 0, 255, 0.2),rgba(159, 255, 231, 0.4));
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.chart3-dashboard .content-dashboard{
+    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.chart4-dashboard .content-dashboard{
+    background: linear-gradient(-45deg,rgba(100, 0, 25, 0.3), rgba(24, 150, 253, 0.4));
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.title-card-1, .title-card-2{
+    font-size: 13px;
+    padding-left: -20px;
+    margin-top: 20px;
+    background: linear-gradient(-45deg, rgba(18, 4, 143, 0.2),rgba(0, 90, 163, 0.4));
+    color: rgba(0, 90, 163, 0.8);
+    font-weight: bold;
+}
+
+.menu{
+    float: right;
+    padding-left: 2%;
+    border-radius: 3px;
+}
+
+.menu .list{
+    max-width: 100%;
+    width: 25px;
+    margin: 0 auto;
+}
+
+.content1-header, .content2-header, .content3-header, .content4-header{
+    margin-top: -2%;
+    box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.3);
+    width: 19.9%;
+    margin-right: 5%;
     height: 100px;
+}
+
+.content1-header{
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6),rgba(66, 0, 153, 0.8));
+}
+
+.content2-header{
+    background: linear-gradient(-45deg, rgba(18, 4, 143, 0.6),rgba(0, 90, 163, 0.8));
+}
+
+.content3-header{
+    background: linear-gradient(-45deg, rgba(255, 94, 0, 0.6),rgba(170, 0, 0, 0.8));
+}
+
+.content4-header{
+    background: linear-gradient(-45deg, rgba(255, 0, 0, 0.6),rgba(204, 0, 255, 0.8));
+}
+
+.menu-wrap-content{
+    padding-top: 8px;
+    width: 100%;
+}
+
+.content-icon{
+    padding-top: 4px;
+    font-size:40px;
+}
+
+.content-click .title-menu{
+    font-size: 30px;    
+    text-align: left;
+    margin-bottom: -20px;
+    letter-spacing: 5px;
+    padding-left: 5%;
+}
+
+.content-click .sub-menu{
+    text-align: left;
+    font-size: 10px;
+    padding-left: 5%;
+}
+
+.success-login{
     margin-top: 20px;
 }
 
-.menu-wrap .tombolmenu h2{
-    padding-top: 20px;
-    font-size: 15px;
+@media (max-width: 1024px) {
+    .content-icon{
+        font-size: 25px;
+    }
+    .content-click .title-menu{
+        padding-top: 5px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+    .content-click .sub-menu{
+        padding-top: 10px;
+        margin-left: -10px;
+    }
 }
 
-.menu-wrap .tombolmenu h2 span{
-    font-size: 10px;
+@media (max-width: 768px) {
+    .content-click .title-menu{
+        letter-spacing: 3px;
+        padding-left: 10px;
+    }
+    .content-click .sub-menu{
+        margin-left: -20px;
+    }
 }
 
-.menu-wrap .tombolmenu:hover{
-    color: rgb(0, 173, 241);
-    border-style: double;
+@media (max-width: 540px) {    
+    .menu-wrap-content{
+        margin-top: -10px;
+    }
+    .content-click .title-menu{
+        padding-left: 0px;
+        margin-top: -10px;
+    }
+    .content-click .sub-menu{
+        margin-top: -10px;
+        font-size: 7px;
+        margin-left: 0px;
+    }
 }
 
-.views-wrap{
-    background-color: black;
-    color: white;
-    border-radius: 20px;
-    height: 80px;
-    margin-top: 10px;
-    padding-top: 20px;
+@media (max-width: 414px) {    
+    .content-click .title-menu{
+        margin-left: -4px;
+        line-height: 20px;
+        font-size: 8px;
+        letter-spacing: 2px;
+        margin-top: 5px;
+    }
+    .content-click .sub-menu{
+        margin-left: -5px;
+        font-size: 4px; 
+    }
 }
 
-.views-wrap span, .views-wrap i{
-    font-size: 18px;
-    color: yellow;
+@media (max-width: 280px) {    
+    .menu-wrap-content{
+        margin-left: -16px;
+    }
+    .content-click .title-menu{
+        margin-left: 0px;
+        line-height: 30px;
+        font-size: 8px;
+        letter-spacing: 2px;
+        margin-top: 30px;
+    }
+    .content-click .sub-menu{
+        margin-left: -4px;
+        font-size: 4px; 
+    }
 }
