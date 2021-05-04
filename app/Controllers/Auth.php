@@ -51,7 +51,7 @@ class Auth extends BaseController
             // logika limit waktu percobaan login
             if ($this->session->has('time_locked')) {
                 $cooldown = time() - $this->session->get('time_locked');
-                if ($cooldown > 1800) {
+                if ($cooldown > 120) {
                     // session('time_locked')->destroy();
                     // session('login_attemp')->destroy();
                     unset($_SESSION["time_locked"]);
