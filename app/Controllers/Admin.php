@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Barang_Model;
 use App\Models\Admin_Model;
 use App\Models\Pengumuman_Model;
+use App\Models\Komplain_Model;
+use App\Models\ArsipKomp_Model;
 use Dompdf\Dompdf;
 
 class Admin extends BaseController
@@ -19,6 +21,8 @@ class Admin extends BaseController
 	protected $adminModel;
 	protected $barangModel;
 	protected $newsModel;
+	protected $komplainModel;
+	protected $arsipKompModel;
 
 	public function __construct()
 	{
@@ -28,6 +32,8 @@ class Admin extends BaseController
 		$this->adminModel = new Admin_Model();
 		$this->barangModel = new Barang_Model();
 		$this->newsModel = new Pengumuman_Model();
+		$this->komplainModel = new Komplain_Model();
+		$this->arsipKompModel = new ArsipKomp_Model();
 	}
 
 	public function index()
@@ -409,11 +415,11 @@ class Admin extends BaseController
 			return redirect()->to('/login');
 		}
 	}
-	
+
 	// ==================================== Highlights =========================================
 
 	public function LogUser()
-	{ 
+	{
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
@@ -443,9 +449,40 @@ class Admin extends BaseController
 					"title" => "Komplain Pekerja | INVENBAR",
 					"CurrentMenu" => "komplainUser",
 					"info" => $this->newsModel->showTask(),
-					"user" => $this->adminModel->getUser()
+					"user" => $this->adminModel->getUser(),
+					'komplain' => $this->komplainModel->getKomplain()
 				];
 				return view('admin/komplainUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function arsipKomplain()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// upload tabel 'arsip_komplain'
+				// $this->arsipKompModel->insert([
+				// 	'no_arsipKomp' => $no_komp,
+				// 	'uid_arsipKomp' => $uid,
+				// 	'email_arsipKomp' => $inputEmail,
+				// 	'judul_arsipKomp' => $judul,
+				// 	'isi_arsipKomp' => $isi,
+				// 	'foto_arsipKomp' => $namaFoto,
+				// 	'waktu_arsipKomp' => $namaFoto
+				// ]);
+
+				// return redirect()->to('/Admin/Complain');
+				$a = $this->request->getVar('no_komplain');
+				$b = $this->request->getVar('status');
+				$c = $this->request->getVar('komen');
+				echo $c . "-" . $b . "-" . $a;
 			} else {
 				return redirect()->to('/dashboard');
 			}

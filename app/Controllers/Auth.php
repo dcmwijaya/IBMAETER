@@ -51,7 +51,7 @@ class Auth extends BaseController
             // logika limit waktu percobaan login
             if ($this->session->has('time_locked')) {
                 $cooldown = time() - $this->session->get('time_locked');
-                if ($cooldown > 120) {
+                if ($cooldown > 1800) {
                     // session('time_locked')->destroy();
                     // session('login_attemp')->destroy();
                     unset($_SESSION["time_locked"]);
@@ -116,6 +116,10 @@ class Auth extends BaseController
             // jika password benar lanjut ke dasboard
             if (password_verify($password, $user['password'])) {
                 $this->session->set($user);
+
+                unset($_SESSION["time_locked"]);
+                unset($_SESSION["login_attemp"]);
+
                 return redirect()->to('/dashboard');
             } else {
                 // mark percobaan login tambah 1
@@ -127,7 +131,7 @@ class Auth extends BaseController
 
                 // jika sudah 3 kali percobaan kirim pesan
                 if (session('login_attemp') > 2) {
-                    session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 2 (dua) menit untuk mencoba kembali.</b></p>');
+                    session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 30 (tiga puluh) menit untuk mencoba kembali.</b></p>');
                 }
 
                 // jika password salah kemabali ke login

@@ -192,7 +192,6 @@
 			$('#itemOut #itemOutId').val(id);
 			$('#itemOut #itemOutNama').text(nama);
 		});
-
 	});
 </script>
 
@@ -343,6 +342,29 @@
 	// 		preview_img.src = e.target.result;
 	// 	}
 	// }
+</script>
+
+<!-- arsip komplain -->
+<script>
+	$(document).ready(function() {
+		// get Accept Komplain
+		$('.btn-acc-item').on('click', function() {
+			// get data from button accept
+			const noKomp = $(this).data('no');
+
+			// Set data to Form accept
+			$('#Accept #no_komplain').val(noKomp);
+		});
+
+		// get Decline Komplain
+		$('.btn-rjc-item').on('click', function() {
+			// get data from button accept
+			const noKomp = $(this).data('no');
+
+			// Set data to Form decline
+			$('#Rejected #no_komplain').val(noKomp);
+		});
+	});
 </script>
 
 </html>

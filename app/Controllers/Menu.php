@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Barang_Model;
 use App\Models\Pengumuman_Model;
 use App\Models\userModel;
+use App\Models\Komplain_Model;
+use App\Models\ArsipKomp_Model;
 use Dompdf\Dompdf;
 
 class Menu extends BaseController
@@ -19,6 +21,8 @@ class Menu extends BaseController
 	protected $userModel;
 	protected $barangModel;
 	protected $newsModel;
+	protected $komplainModel;
+	protected $arsipKompModel;
 
 	public function __construct()
 	{
@@ -28,6 +32,8 @@ class Menu extends BaseController
 		$this->userModel = new userModel();
 		$this->barangModel = new Barang_Model();
 		$this->newsModel = new Pengumuman_Model();
+		$this->komplainModel = new Komplain_Model();
+		$this->arsipKompModel = new ArsipKomp_Model();
 	}
 
 	//========================= Dashboard Index()=====================
@@ -316,11 +322,9 @@ class Menu extends BaseController
 			$this->session->set('picture', $namaFoto); // ganti session gambar
 
 			return redirect()->to('/menu/profakun/' . $dataUser['email']);
-			// echo "2";
 		} else {
 			session()->setFlashdata('pesanPassword', 'Password Salah. Harap masukkan password valid untuk mengubah data.');
 			return redirect()->to('/menu/profedit/' . $uid)->withInput();
-			// echo "3";
 		}
 	}
 
@@ -373,7 +377,7 @@ class Menu extends BaseController
 			return redirect()->to('/login');
 		}
 	}
-	
+
 	// ==================================== Highlights =========================================
 
 	public function absensiUser()
@@ -442,9 +446,92 @@ class Menu extends BaseController
 				"title" => "Pengaduan | INVENBAR",
 				"CurrentMenu" => "pengaduan",
 				"info" => $this->newsModel->showTask(),
+				'validation' => \Config\Services::Validation(),
 				'user' => $this->userModel->getUserId(session('uid'))
 			];
 			return view('global/pengaduan', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function adukan()
+	{
+		if (session('uid') != null) {
+
+			// jika valdiasi tidakk lolos maka redirect ke halaman edit
+			if (!$this->validate([
+				'judul' => [
+					'rules' => 'required',
+					'errors' => ['required' => 'Judul harus diisi.']
+				],
+				'isi' => [
+					'rules' => 'required|min_length[1]|max_length[256]',
+					'errors' => [
+						'required' => 'Isi pengaduan harus diisi.',
+						'min_length' => 'Isi pengaduan minimal terdapat satu huruf.',
+						'max_length' => 'Isi pengaduan tidak boleh lebih dari 255 huruf dan karakter.'
+					]
+				],
+				'foto' => [
+					'rules' => 'max_size[foto,10240]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+					'errors' => [
+						'max_size' => 'Ukuran bukti screenshot maksimal 10MB',
+						'is_image' => 'Bukti screenshot harus merupakan gambar.',
+						'mime_in' => 'Bukti screenshot harus berekstensi .jpg, .jpeg, atau .png'
+					]
+				]
+			])) {
+				return redirect()->to('/Menu/pengaduan')->withInput();
+			}
+
+			// mengambil uid pengadu
+			$uid = $this->request->getVar('uid');
+			// random number
+			$randomNumb = rand(100, 999);
+
+			// make uid for no_komplain
+			if ($uid < 10) {
+				$noKomp = "00" . $uid;
+			} elseif ($uid < 100) {
+				$noKomp = "0" . $uid;
+			} else {
+				$noKomp = $uid;
+			}
+
+			// generate no_komplain
+			$no_komp = "K-" . date("dmy") . "-" . $noKomp . "-" . $randomNumb;
+
+			// mengambil input gambar
+			$fileFoto = $this->request->getFile('foto');
+
+			// cek inputan gambar, jika gambar tidak kosong
+			if ($fileFoto->getError() != 4) {
+				// generate nama random
+				$namaFoto = $fileFoto->getRandomName();
+				// upload gambar
+				$fileFoto->move('img/komplain', $namaFoto);
+			} else {
+				$namaFoto = "-";
+			}
+
+			// tampung masukan
+			$judul = str_replace("'", "", htmlspecialchars($this->request->getVar('judul'), ENT_QUOTES));
+			$isi = str_replace("'", "", htmlspecialchars($this->request->getVar('isi'), ENT_QUOTES));
+			$inputEmail = str_replace("'", "", htmlspecialchars($this->request->getVar('email'), ENT_QUOTES));
+
+			// upload tabel 'komplain'
+			$this->komplainModel->insert([
+				'no_komplain' => $no_komp,
+				'uid_komplain' => $uid,
+				'email_komplain' => $inputEmail,
+				'judul_komplain' => $judul,
+				'isi_komplain' => $isi,
+				'foto_komplain' => $namaFoto,
+				'waktu_komplain' => date("Y-m-d h:i:sa")
+			]);
+
+			return redirect()->to('/Menu/pengaduan');
 		} else {
 			return redirect()->to('/login');
 		}
