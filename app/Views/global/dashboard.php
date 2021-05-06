@@ -115,13 +115,13 @@ foreach ($sc7 as $vs7) {
 					</h5>
 
 					<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
-						<strong>Hai Venti Girl!</strong> Selamat datang di website <strong>INVENBAR</strong>...
+						<strong>Hai <?= session('nama'); ?></strong> Selamat datang di website <strong>INVENBAR</strong>...
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 				</div><br><br>
-				
+
 				<div class="card-body pt-1">
 					<div class="row row-dashboard">
 						<a href="<?= base_url('menu/kelolaBarang') ?>" type="button" class="btn btn-primary card content1-header mb-3 col-md-2 sm-shadow">

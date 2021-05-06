@@ -353,7 +353,7 @@
 			const noKomp = $(this).data('no');
 
 			// Set data to Form accept
-			$('#Accept #no_komplain').val(noKomp);
+			$('#acc-nomor').val(noKomp);
 		});
 
 		// get Decline Komplain
@@ -362,7 +362,7 @@
 			const noKomp = $(this).data('no');
 
 			// Set data to Form decline
-			$('#Rejected #no_komplain').val(noKomp);
+			$('#dec-nomor').val(noKomp);
 		});
 	});
 </script>

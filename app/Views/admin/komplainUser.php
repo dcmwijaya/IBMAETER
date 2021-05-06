@@ -9,6 +9,11 @@
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
+		<?php if (session()->getFlashdata('komenKomp')) : ?>
+			<div class="alert alert-success" role="alert">
+				<?= session()->getFlashdata('komenKomp'); ?>
+			</div>
+		<?php endif ?>
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">
@@ -58,14 +63,40 @@
 													<?php if ($k['foto_komplain'] == "-") : ?>
 														<b class="center">-</b>
 													<?php else : ?>
-														<img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
+														<a href="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" target="_blank">
+															<img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
+														</a>
 													<?php endif; ?>
 												</td>
 												<td><?= $k['waktu_komplain']; ?></td>
 												<td>
 													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i></button>
-														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i></button>
+														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
+														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
+													</div>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+										<!-- data arsip komplain -->
+										<?php foreach ($arsipKomp as $arc) : ?>
+											<tr>
+												<td><?= $arc['email_arsipKomp']; ?></td>
+												<td><?= $arc['judul_arsipKomp']; ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $arc['isi_arsipKomp']; ?></td>
+												<td>
+													<?php if ($arc['foto_arsipKomp'] == "-") : ?>
+														<b class="center">-</b>
+													<?php else : ?>
+														<a href="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" target="_blank">
+															<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
+														</a>
+													<?php endif; ?>
+												</td>
+												<td><?= $arc['waktu_arsipKomp']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" disabled><i class="fas fa-check fa-fw"></i>Accept</button>
+														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" disabled><i class="fas fa-times fa-fw"></i>Decline</button>
 													</div>
 												</td>
 											</tr>
@@ -95,10 +126,13 @@
 					<?= csrf_field(); ?>
 					<div class="form-group">
 						<label for="acc_komentar">Komentar</label>
-						<input type="text" class="form-control" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda">
+						<textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
+						<div class="invalid-feedback">
+							<?= $validation->getError('komen'); ?>
+						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" id="nomor" name="no_komplain">
+						<input type="hidden" id="acc-nomor" name="no_komplain">
 						<input type="hidden" id="status" name="status" value="accepted">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
@@ -124,10 +158,13 @@
 					<?= csrf_field(); ?>
 					<div class="form-group">
 						<label for="rjc_komentar">Komentar</label>
-						<input type="text" class="form-control" id="rjc_komentar" name="komen" placeholder="Tuliskan Komentar Anda">
+						<textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="rjc_komentar" name="komen" placeholder="Tuliskan Komentar Anda" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
+						<div class="invalid-feedback">
+							<?= $validation->getError('komen'); ?>
+						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" id="no_komplain" name="no_komplain">
+						<input type="hidden" id="dec-nomor" name="no_komplain">
 						<input type="hidden" id="status" name="status" value="rejected">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
