@@ -531,6 +531,7 @@ class Menu extends BaseController
 				'waktu_komplain' => date("Y-m-d h:i:sa")
 			]);
 
+			session()->setFlashdata('pengaduanSukses', 'Pengaduan telah diterima, masalah sedang diselidiki.');
 			return redirect()->to('/Menu/pengaduan');
 		} else {
 			return redirect()->to('/login');

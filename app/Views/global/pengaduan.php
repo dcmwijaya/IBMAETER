@@ -7,6 +7,11 @@
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
+		<?php if (session()->getFlashdata('pengaduanSukses')) : ?>
+			<div class="alert alert-success" role="alert">
+				<?= session()->getFlashdata('pengaduanSukses'); ?>
+			</div>
+		<?php endif ?>
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">

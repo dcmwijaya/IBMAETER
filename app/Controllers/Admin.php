@@ -450,7 +450,9 @@ class Admin extends BaseController
 					"CurrentMenu" => "komplainUser",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
-					'komplain' => $this->komplainModel->getKomplain()
+					'komplain' => $this->komplainModel->getKomplain(),
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/komplainUser', $data);
 			} else {
@@ -467,22 +469,45 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
-				// upload tabel 'arsip_komplain'
-				// $this->arsipKompModel->insert([
-				// 	'no_arsipKomp' => $no_komp,
-				// 	'uid_arsipKomp' => $uid,
-				// 	'email_arsipKomp' => $inputEmail,
-				// 	'judul_arsipKomp' => $judul,
-				// 	'isi_arsipKomp' => $isi,
-				// 	'foto_arsipKomp' => $namaFoto,
-				// 	'waktu_arsipKomp' => $namaFoto
-				// ]);
+				if (!$this->validate([
+					'komen' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'Komen tidak boleh lebih dari 256 huruf & karakter.']
+					]
+				])) {
+					return redirect()->to('/Admin/Complain')->withInput();
+				}
 
-				// return redirect()->to('/Admin/Complain');
-				$a = $this->request->getVar('no_komplain');
-				$b = $this->request->getVar('status');
-				$c = $this->request->getVar('komen');
-				echo $c . "-" . $b . "-" . $a;
+				// mengambil data
+				$no_komp = $this->request->getPost('no_komplain');
+				$status = $this->request->getPost('status');
+				$komen = $this->request->getPost('komen');
+
+				// jika komen kosong
+				if ($komen == null) {
+					$komen = "-";
+				}
+
+				$komplain = $this->komplainModel->getKomplain($no_komp);
+
+				// upload tabel 'arsip_komplain'
+				$this->arsipKompModel->insert([
+					'no_arsipKomp' => $no_komp,
+					'uid_arsipKomp' => $komplain['uid_komplain'],
+					'email_arsipKomp' => $komplain['email_komplain'],
+					'judul_arsipKomp' => $komplain['judul_komplain'],
+					'isi_arsipKomp' => $komplain['isi_komplain'],
+					'foto_arsipKomp' => $komplain['foto_komplain'],
+					'waktu_arsipKomp' => $komplain['waktu_komplain'],
+					'status_arsipKomp' => $status,
+					'comment_arsipKomp' => str_replace("'", "", htmlspecialchars($komen, ENT_QUOTES)),
+					'commented_at' => date("Y-m-d h:i:sa")
+				]);
+
+				$this->komplainModel->where('no_komplain', $no_komp)->delete();;
+
+				session()->setFlashdata('komenKomp', 'Pesan terkirim.');
+				return redirect()->to('/Admin/Complain');
 			} else {
 				return redirect()->to('/dashboard');
 			}
