@@ -4,14 +4,14 @@
 
 <div class="container py-3">
 	<!-- Outer Row -->
-	<div class="row justify-content-center">
+	<div class="row justify-content-center py-5">
 		<div class="col-xl-10 col-lg-12 col-md-9">
-			<div class="card o-hidden border-0 shadow-lg my-5">
-				<?php if (session()->getFlashdata('locked')) : ?>
-					<div class="alert alert-danger" role="alert">
-						<?= session()->getFlashdata('locked'); ?>
-					</div>
-				<?php endif ?>
+			<?php if (session()->getFlashdata('locked')) : ?>
+				<div class="alert alert-danger py-1 m-0" role="alert">
+					<?= session()->getFlashdata('locked'); ?>
+				</div>
+			<?php endif ?>
+			<div class="card o-hidden border-0 shadow-lg ">
 				<form class="user" method="POST" action="<?= base_url('auth/validasi') ?>">
 					<div class="card-body" style="padding: 0 12px; overflow: hidden;">
 						<!-- Nested Row within Card Body -->

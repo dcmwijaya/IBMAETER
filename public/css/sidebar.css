@@ -11,7 +11,7 @@ p {
   font-family: "Inter", sans-serif;
 }
 
-#photoUser{
+#photoUser {
   max-width: 100%;
   max-height: 100%;
   width: 120px;
@@ -61,7 +61,7 @@ a:focus {
 
 #sidebar-body {
   position: relative;
-  height: 130vh;
+  height: 145vh;
   overflow: visible;
   box-shadow: 0 2px 0 #2c2f38;
 }
