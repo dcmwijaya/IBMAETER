@@ -1,0 +1,112 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<?php
+
+// Stok Berdasarkan Penyimpanan
+if (!empty($sc1)) { foreach ($sc1 as $vs1) { $sin[] = $vs1['stok'];	$sin1 = json_encode(json_decode($vs1['stok']));	} }
+if (!empty($sc2)) {	foreach ($sc2 as $vs2) { $sin[] = $vs2['stok'];	$sin2 = json_encode(json_decode($vs2['stok']));	} }
+if (!empty($sc3)) { foreach ($sc3 as $vs3) { $sin[] = $vs3['stok'];	$sin3 = json_encode(json_decode($vs3['stok']));	} }
+if (!empty($sc4)) {	foreach ($sc4 as $vs4) { $sin[] = $vs4['stok'];	$sin4 = json_encode(json_decode($vs4['stok']));	} }
+if (!empty($sc5)) {	foreach ($sc5 as $vs5) { $sin[] = $vs5['stok'];	$sin5 = json_encode(json_decode($vs5['stok']));	} }
+if (!empty($sc6)) {	foreach ($sc6 as $vs6) { $sin[] = $vs6['stok'];	$sin6 = json_encode(json_decode($vs6['stok']));	} }
+if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json_encode(json_decode($vs7['stok']));	} }
+
+?>
+
+<!doctype html>
+<html lang="id">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Website Item Warehouse Management Framework C">
+	<meta name="author" content="Dev Cakra, Merdin Risal, RifkyA911">
+	<title><?= $title; ?></title>
+	<link rel="icon" href="<?= base_url('img/icon/favicon.ico') ?>">
+	<!-- Google Fonts Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+	<link rel="stylesheet" href="<?= base_url('../vendor/bootstrap-4.0.0/dist/css/bootstrap.min.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('fontawesome/css/all.css') ?>">
+</head>
+
+<body>
+	<!--Main layout-->
+	<main style="margin-top: 58px">
+		<div class="container pt-4">
+			<section class="mb-4">
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+					<tr>
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;"></td>
+						<td width="85%" style="text-align: center;">
+							<div style="font-size: 13pt; font-weight: bold;">INVENBAR INDONESIA</div>
+							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+						</td>
+					</tr>
+				</table>
+
+				<hr style="color:black; height: 2px;">
+
+				<div class="card" style="margin-top:50px;">
+					<div class="card-header text-center">
+						<h5><i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Room</h5>
+					</div>
+					<div class="card-body">
+						<canvas class="chartPie" id="ChartPie" style="margin:0 auto;place-items:center;margin-left:-8%;margin-right:-20%;"></canvas>
+					</div>
+					<script>
+						var ctx = document.getElementById('ChartPie');
+						var ChartDonuts = new Chart(ctx, {
+							type: 'pie',
+							data: {
+								labels: ["A = <?= $sin1; ?>", "B = <?= $sin2; ?>", "C = <?= $sin3; ?>", "D = <?= $sin4; ?>", "E = <?= $sin5; ?>", "F = <?= $sin6; ?>", "G = <?= $sin7; ?>"],
+								datasets: [{
+									label: 'R-Barang',
+									data: <?= json_encode($sin); ?>,
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)',
+										'rgba(255, 94, 0, 0.2)','rgba(127, 253, 125, 0.2)',
+										'rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)','rgba(175, 222, 225, 0.2)'
+									],
+									borderColor: [
+										'rgba(255, 0, 0, 1)','rgba(25, 0, 255, 1)',
+										'rgba(170, 25, 150, 1)','rgba(0, 90, 163, 1)',
+										'rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)','rgba(153, 50, 155, 1)'
+									],
+									borderWidth: 1,
+								}, ],
+							},
+							options: {
+								scales: {
+									y: {
+										beginAtZero: true,
+									}
+								},
+								legend: {
+									display: true, position: "bottom",
+								}
+							}
+						});
+					</script>
+				</div>
+
+				<div class="bawah-laporan" style="float:right;margin-top:80px;margin-right:20px;">
+					<h5 style="margin-bottom: 30px;">Founder Invenbar,</h5>
+					<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="height:150px;width:150px;margin-bottom:10px;">
+					<u>
+						<h6>Alfha Fierly Firdaus</h6>
+					</u>
+				</div>
+			</section>
+		</div><br>
+	</main>
+
+	<script>
+		setTimeout(function() {	window.print();	}, 1000);
+		window.onafterprint = function() { window.location.href = "<?= base_url('menu/dashboard') ?>"; }
+	</script>
+</body>
+
+</html>
