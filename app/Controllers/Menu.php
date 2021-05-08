@@ -378,6 +378,86 @@ class Menu extends BaseController
 		}
 	}
 
+	public function pdfchart1()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-1 | INVENBAR",
+				"class" => $this->barangModel->invenclass(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7()
+			];
+
+			return view('global/printChart1', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart2()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-2 | INVENBAR",
+				"class" => $this->barangModel->invenclass(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7()
+			];
+
+			return view('global/printChart2', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart3()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-3 | INVENBAR",
+				"category" => $this->barangModel->jenis(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
+			];
+
+			return view('global/printChart3', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart4()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-4 | INVENBAR",
+				"category" => $this->barangModel->jenis(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
+			];
+
+			return view('global/printChart4', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	// ==================================== Highlights =========================================
 
 	public function absensiUser()
