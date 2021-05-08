@@ -513,6 +513,15 @@ class Menu extends BaseController
 				"sj4" => $this->barangModel->stockjenis4(),
 				"sj5" => $this->barangModel->stockjenis5()
 			];
+
+			$nama = session('nama');
+			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
+				Hai <strong>'.$nama.'</strong>, Selamat datang di website <strong>INVENBAR</strong>...
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>');
+
 			return view('global/dashboard', $data);
 		} else {
 			return redirect()->to('/login');
