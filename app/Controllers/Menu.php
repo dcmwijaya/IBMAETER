@@ -503,6 +503,33 @@ class Menu extends BaseController
 		}
 	}
 
+	public function pdfprintBarang()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF BARANG | INVENBAR",
+				"item" => $this->barangModel->getItems()
+			];
+
+			return view('global/printBarang', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintSpesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/printSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	// ==================================== Highlights =========================================
 
 	public function absensiUser()
