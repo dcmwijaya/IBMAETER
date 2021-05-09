@@ -101,7 +101,7 @@
 									</button>
 									<div class="dropdown-menu dm-export">
 										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/wordspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
 										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
