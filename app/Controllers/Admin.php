@@ -331,7 +331,21 @@ class Admin extends BaseController
 				$data = [
 					"user" => $this->adminModel->getUser(),
 				];
-				return view('admin/upload', $data);
+				if (isset($_POST["image"])) {
+					$tempdir = "img/temp_upload/";
+					if (!file_exists($tempdir)) {
+						mkdir($tempdir);
+					}
+					$data = $_POST["image"];
+					$image_array_1 = explode(";", $data);
+					$image_array_2 = explode(",", $image_array_1[1]);
+					$data = base64_decode($image_array_2[1]);
+					$imageName = $tempdir . time() . '.png';
+
+					file_put_contents($imageName, $data);
+					// unlink($imageName);
+					// echo '<img src="' . base_url() . '/' . $imageName . '" class="img-thumbnail img-preview"' . 'alt="image preview"' . ' style="max-height: 370px; "/>';
+				}
 			} else {
 				return redirect()->to('/dashboard');
 			}
