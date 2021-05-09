@@ -3,9 +3,9 @@
 <?php
 
 // Stok Berdasarkan Penyimpanan
-if (!empty($sc1)) { foreach ($sc1 as $vs1) { $sin[] = $vs1['stok'];	$sin1 = json_encode(json_decode($vs1['stok']));	} }
+if (!empty($sc1)) { 	foreach ($sc1 as $vs1) { $sin[] = $vs1['stok'];	$sin1 = json_encode(json_decode($vs1['stok']));	} }
 if (!empty($sc2)) {	foreach ($sc2 as $vs2) { $sin[] = $vs2['stok'];	$sin2 = json_encode(json_decode($vs2['stok']));	} }
-if (!empty($sc3)) { foreach ($sc3 as $vs3) { $sin[] = $vs3['stok'];	$sin3 = json_encode(json_decode($vs3['stok']));	} }
+if (!empty($sc3)) { 	foreach ($sc3 as $vs3) { $sin[] = $vs3['stok'];	$sin3 = json_encode(json_decode($vs3['stok']));	} }
 if (!empty($sc4)) {	foreach ($sc4 as $vs4) { $sin[] = $vs4['stok'];	$sin4 = json_encode(json_decode($vs4['stok']));	} }
 if (!empty($sc5)) {	foreach ($sc5 as $vs5) { $sin[] = $vs5['stok'];	$sin5 = json_encode(json_decode($vs5['stok']));	} }
 if (!empty($sc6)) {	foreach ($sc6 as $vs6) { $sin[] = $vs6['stok'];	$sin6 = json_encode(json_decode($vs6['stok']));	} }
@@ -38,8 +38,8 @@ if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
-						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;"></td>
-						<td width="85%" style="text-align: center;">
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-Invenbar"></td>
+						<td width="100%" colspan="4" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">INVENBAR INDONESIA</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
 							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
@@ -90,15 +90,32 @@ if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json
 							}
 						});
 					</script>
-				</div>
+				</div><br>
 
-				<div class="bawah-laporan" style="float:right;margin-top:80px;margin-right:20px;">
-					<h5 style="margin-bottom: 30px;">Founder Invenbar,</h5>
-					<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="height:150px;width:150px;margin-bottom:10px;">
-					<u>
-						<h6>Alfha Fierly Firdaus</h6>
-					</u>
-				</div>
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+					<tr>
+						<td width="70%" colspan="4" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<h4 style="margin-bottom: 30px;">
+								Founder Invenbar,
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="4" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;" height="30">
+							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="4" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<u>
+								<h5>Alfha Fierly Firdaus</h5>
+							</u>
+						</td>
+					</tr>
+				</table>
 			</section>
 		</div><br>
 	</main>
