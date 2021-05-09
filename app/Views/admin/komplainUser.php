@@ -24,19 +24,17 @@
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
-							<div class="btn-wrap d-flex">
-								<div class="flex-fill">
-									<div class="btn-group btn-group-toggle" data-toggle="buttons">
-										<button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-fw fa-file"></i> Export
-										</button>
-										<div class="dropdown-menu dm-export">
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/excelkomplain'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/dockomplain'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-											<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfkomplain'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
-										</div>
-										<a type="button" href="<?= base_url('Admin/pdfprintKomplain'); ?>" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+							<div class="flex-fill">
+								<div class="btn-group btn-wrap">
+									<button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-fw fa-file"></i> Export
+									</button>
+									<div class="dropdown-menu dm-export">
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/excelkomplain'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/dockomplain'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfkomplain'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
+									<a href="<?= base_url('Admin/pdfprintKomplain'); ?>" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 							</div>
 						</div>
