@@ -18,7 +18,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<button type="button" onclick="window.print()" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									<a type="button" href="<?= base_url('menu/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
 								</div>
 								<div class="flex-fill">
@@ -92,7 +92,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_spesifikasi"><i class="fas fa-plus fa-fw"></i> Tambah Spesifikasi</button>
-									<button type="button" onclick="" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
 								</div>
 								<div class="flex-fill">
