@@ -349,7 +349,11 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL KOMPLAIN | INVENBAR"
+					"title" => "EXCEL KOMPLAIN | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'komplain' => $this->komplainModel->getKomplain(),
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
 				];
 
 				return view('admin/exxlsKomplain', $data);
@@ -368,7 +372,11 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC KOMPLAIN | INVENBAR"
+					"title" => "DOC KOMPLAIN | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'komplain' => $this->komplainModel->getKomplain(),
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
 				];
 
 				return view('admin/exdocKomplain', $data);
@@ -387,7 +395,11 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF KOMPLAIN | INVENBAR"
+					"title" => "PDF KOMPLAIN | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'komplain' => $this->komplainModel->getKomplain(),
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
 				];
 
 				$html = view('admin/expdfKomplain', $data);
