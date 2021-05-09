@@ -329,12 +329,12 @@ class Menu extends BaseController
 	}
 
 
-	// ==================================== Export Data =========================================
+	// ==================================== Export & Print Data =========================================
 	public function excelbarang()
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Excel | INVENBAR",
+				"title" => "Excel BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -348,7 +348,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC | INVENBAR",
+				"title" => "DOC BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -362,7 +362,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF | INVENBAR",
+				"title" => "PDF BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -373,6 +373,51 @@ class Menu extends BaseController
 			$dompdf->setPaper('A4', 'potrait');
 			$dompdf->render();
 			$dompdf->stream('Tabel-Barang-Gudang-2021.pdf');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function excelspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "EXCEL SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/exxlsSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "DOC SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/exdocSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF SPESIFIKASI | INVENBAR"
+			];
+
+			$html = view('global/expdfSpesifikasi', $data);
+
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'potrait');
+			$dompdf->render();
+			$dompdf->stream('Tabel-Spesifikasi-Barang-2021.pdf');
 		} else {
 			return redirect()->to('/login');
 		}
