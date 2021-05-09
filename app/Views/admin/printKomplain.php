@@ -23,11 +23,6 @@
 	<!--Main layout-->
 	<main>
 		<div class="container pt-4">
-			<?php if (session()->getFlashdata('komenKomp')) : ?>
-				<div class="alert alert-success" role="alert">
-					<?= session()->getFlashdata('komenKomp'); ?>
-				</div>
-			<?php endif ?>
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
