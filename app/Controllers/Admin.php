@@ -558,7 +558,11 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF KOMPLAIN | INVENBAR"
+					"title" => "PDF KOMPLAIN | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'komplain' => $this->komplainModel->getKomplain(),
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
 				];
 
 				return view('admin/printKomplain', $data);
