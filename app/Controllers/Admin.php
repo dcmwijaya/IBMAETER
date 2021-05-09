@@ -256,6 +256,26 @@ class Admin extends BaseController
 		}
 	}
 
+	public function cropImage()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->adminModel->getUser(),
+				];
+				return view('admin/upload', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	// ======================= Export & Print Data ========================
+
 	public function exceluser()
 	{
 		// seleksi login
@@ -263,7 +283,7 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Excel | INVENBAR",
+					"title" => "EXCEL USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 				];
 
@@ -283,7 +303,7 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC | INVENBAR",
+					"title" => "DOC USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 				];
 
@@ -303,7 +323,7 @@ class Admin extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF | INVENBAR",
+					"title" => "PDF USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 				];
 
@@ -322,16 +342,264 @@ class Admin extends BaseController
 		}
 	}
 
-	public function cropImage()
+	public function excelkomplain()
 	{
 		// seleksi login
 		if (session('uid') != null) {
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
+					"title" => "EXCEL KOMPLAIN | INVENBAR"
+				];
+
+				return view('admin/exxlsKomplain', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function dockomplain()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "DOC KOMPLAIN | INVENBAR"
+				];
+
+				return view('admin/exdocKomplain', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfkomplain()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF KOMPLAIN | INVENBAR"
+				];
+
+				$html = view('admin/expdfKomplain', $data);
+
+				$dompdf = new Dompdf();
+				$dompdf->loadHtml($html);
+				$dompdf->setPaper('A4', 'potrait');
+				$dompdf->render();
+				$dompdf->stream('Data-Komplain.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function excelabsensi()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "EXCEL ABSENSI | INVENBAR"
+				];
+
+				return view('admin/exxlsAbsensi', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docabsensi()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "DOC ABSENSI | INVENBAR"
+				];
+
+				return view('admin/exdocAbsensi', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfabsensi()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF ABSENSI | INVENBAR"
+				];
+
+				$html = view('admin/expdfAbsensi', $data);
+
+				$dompdf = new Dompdf();
+				$dompdf->loadHtml($html);
+				$dompdf->setPaper('A4', 'potrait');
+				$dompdf->render();
+				$dompdf->stream('Data-Absensi.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function excelaktivitas()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "EXCEL AKTIVITAS | INVENBAR"
+				];
+
+				return view('admin/exxlsAktivitas', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docaktivitas()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "DOC AKTIVITAS | INVENBAR"
+				];
+
+				return view('admin/exdocAktivitas', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfaktivitas()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF AKTIVITAS | INVENBAR"
+				];
+
+				$html = view('admin/expdfAktivitas', $data);
+
+				$dompdf = new Dompdf();
+				$dompdf->loadHtml($html);
+				$dompdf->setPaper('A4', 'potrait');
+				$dompdf->render();
+				$dompdf->stream('Data-Aktivitas.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintUser()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 				];
-				return view('admin/upload', $data);
+
+				return view('admin/printUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintKomplain()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF KOMPLAIN | INVENBAR"
+				];
+
+				return view('admin/printKomplain', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintAktivitas()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF AKTIVITAS | INVENBAR"
+				];
+
+				return view('admin/printAktivitas', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintAbsensi()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF Absensi | INVENBAR"
+				];
+
+				return view('admin/printAbsensi', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
