@@ -280,7 +280,6 @@ class Admin extends BaseController
 					// unlink($imageName);
 					// echo '<img src="' . base_url() . '/' . $imageName . '" class="img-thumbnail img-preview"' . 'alt="image preview"' . ' style="max-height: 370px; "/>';
 				}
-				return view('admin/upload', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
