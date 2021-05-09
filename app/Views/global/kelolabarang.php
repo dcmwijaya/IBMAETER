@@ -26,9 +26,9 @@
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
@@ -100,9 +100,9 @@
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/wordspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
