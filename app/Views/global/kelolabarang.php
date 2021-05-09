@@ -18,7 +18,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<button type="button" onclick="window.print()" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									<a type="button" href="<?= base_url('menu/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
 								</div>
 								<div class="flex-fill">
@@ -26,9 +26,9 @@
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
@@ -92,7 +92,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_spesifikasi"><i class="fas fa-plus fa-fw"></i> Tambah Spesifikasi</button>
-									<button type="button" onclick="" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</button>
+									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
 								</div>
 								<div class="flex-fill">
@@ -100,9 +100,9 @@
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Export Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Export Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url(''); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Export Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>

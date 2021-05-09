@@ -329,12 +329,12 @@ class Menu extends BaseController
 	}
 
 
-	// ==================================== Export Data =========================================
+	// ==================================== Export & Print Data =========================================
 	public function excelbarang()
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Excel | INVENBAR",
+				"title" => "Excel BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -348,7 +348,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC | INVENBAR",
+				"title" => "DOC BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -362,7 +362,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF | INVENBAR",
+				"title" => "PDF BARANG | INVENBAR",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -373,6 +373,158 @@ class Menu extends BaseController
 			$dompdf->setPaper('A4', 'potrait');
 			$dompdf->render();
 			$dompdf->stream('Tabel-Barang-Gudang-2021.pdf');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function excelspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "EXCEL SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/exxlsSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "DOC SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/exdocSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfspesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF SPESIFIKASI | INVENBAR"
+			];
+
+			$html = view('global/expdfSpesifikasi', $data);
+
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'potrait');
+			$dompdf->render();
+			$dompdf->stream('Tabel-Spesifikasi-Barang-2021.pdf');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart1()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-1 | INVENBAR",
+				"class" => $this->barangModel->invenclass(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7()
+			];
+
+			return view('global/printChart1', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart2()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-2 | INVENBAR",
+				"class" => $this->barangModel->invenclass(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7()
+			];
+
+			return view('global/printChart2', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart3()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-3 | INVENBAR",
+				"category" => $this->barangModel->jenis(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
+			];
+
+			return view('global/printChart3', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfchart4()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF CHART-4 | INVENBAR",
+				"category" => $this->barangModel->jenis(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
+			];
+
+			return view('global/printChart4', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintBarang()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF BARANG | INVENBAR",
+				"item" => $this->barangModel->getItems()
+			];
+
+			return view('global/printBarang', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintSpesifikasi()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF SPESIFIKASI | INVENBAR"
+			];
+
+			return view('global/printSpesifikasi', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -433,6 +585,15 @@ class Menu extends BaseController
 				"sj4" => $this->barangModel->stockjenis4(),
 				"sj5" => $this->barangModel->stockjenis5()
 			];
+
+			$nama = session('nama');
+			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
+				Hai <strong>'.$nama.'</strong>, Selamat datang di website <strong>INVENBAR</strong>...
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>');
+
 			return view('global/dashboard', $data);
 		} else {
 			return redirect()->to('/login');
