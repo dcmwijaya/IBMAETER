@@ -364,6 +364,15 @@
 			// Set data to Form decline
 			$('#dec-nomor').val(noKomp);
 		});
+
+		// get Bukti Image
+		$('.btn-img-item').on('click', function() {
+			// get img from tabel
+			const img = $(this).data('img');
+
+			// Set img to modal
+			$('#gambarBukti img').attr('src', img);
+		});
 	});
 </script>
 
