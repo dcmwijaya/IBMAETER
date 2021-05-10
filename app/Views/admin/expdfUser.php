@@ -5,7 +5,7 @@
 
 <body>
 	<!--Main layout-->
-	<main style="margin-top: 58px">
+	<main>
 		<div class="container pt-4">
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
@@ -19,7 +19,7 @@
 					</tr>
 				</table>
 
-				<div class="card">
+				<div class="card" style="margin-top: 58px">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
 							<center><strong>Tabel Data User</strong></center>
