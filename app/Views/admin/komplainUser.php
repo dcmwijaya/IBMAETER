@@ -186,8 +186,8 @@
 									<?php if ($arc['foto_arsipKomp'] == "-") : ?>
 										<b class="center">-</b>
 									<?php else : ?>
-										<button type="button" class="btn btn-sm btn-img-item" data-img="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" data-toggle="modal" data-target="#gambarBukti">
-											<img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
+										<button type="button" class="btn btn-sm btn-img-item" data-img="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" data-toggle="modal" data-target="#gambarBukti">
+											<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
 										</button>
 									<?php endif; ?>
 								</td>
