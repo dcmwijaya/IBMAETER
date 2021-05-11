@@ -35,6 +35,9 @@
 										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfkomplain'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 									<a href="<?= base_url('Admin/pdfprintKomplain'); ?>" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<button type="button" class="btn active btn-secondary btn-sm shadow-sm p-2 rounded-right" data-toggle="modal" data-target="#Arsip">
+										<i class="fas fa-check fa-fw"></i>Arsip Komplain
+									</button>
 								</div>
 							</div>
 						</div>
@@ -61,9 +64,9 @@
 													<?php if ($k['foto_komplain'] == "-") : ?>
 														<b class="center">-</b>
 													<?php else : ?>
-														<a href="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" target="_blank">
+														<button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" data-toggle="modal" data-target="#gambarBukti">
 															<img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
-														</a>
+														</button>
 													<?php endif; ?>
 												</td>
 												<td><?= $k['waktu_komplain']; ?></td>
@@ -71,30 +74,6 @@
 													<div class="btn-group" role="group" aria-label="inoutcom">
 														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
 														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $k['no_komplain']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
-													</div>
-												</td>
-											</tr>
-										<?php endforeach; ?>
-										<!-- data arsip komplain -->
-										<?php foreach ($arsipKomp as $arc) : ?>
-											<tr>
-												<td><?= $arc['email_arsipKomp']; ?></td>
-												<td><?= $arc['judul_arsipKomp']; ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $arc['isi_arsipKomp']; ?></td>
-												<td>
-													<?php if ($arc['foto_arsipKomp'] == "-") : ?>
-														<b class="center">-</b>
-													<?php else : ?>
-														<a href="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" target="_blank">
-															<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
-														</a>
-													<?php endif; ?>
-												</td>
-												<td><?= $arc['waktu_arsipKomp']; ?></td>
-												<td>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" disabled><i class="fas fa-check fa-fw"></i>Accept</button>
-														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" disabled><i class="fas fa-times fa-fw"></i>Decline</button>
 													</div>
 												</td>
 											</tr>
@@ -169,6 +148,83 @@
 					</div>
 				</form>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Arsip Modal -->
+<div class="modal fade" id="Arsip" tabindex="-1" aria-labelledby="ArsipLabel" aria-hidden="true">
+	<div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title" id="ArsipLabel">Arsip Komplain</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<table id="table_komplain" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
+					<thead style="border-bottom: 1px solid #dfdfdf;">
+						<tr>
+							<th>Email</th>
+							<th>Perihal Komplain</th>
+							<th>Kendala</th>
+							<th>Bukti</th>
+							<th>Waktu Komplain</th>
+							<th>Status</th>
+							<th>Waktu Respon</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- data arsip komplain -->
+						<?php foreach ($arsipKomp as $arc) : ?>
+							<tr>
+								<td><?= $arc['email_arsipKomp']; ?></td>
+								<td><?= $arc['judul_arsipKomp']; ?></td>
+								<td style="<?= $tdStyle; ?>"><?= $arc['isi_arsipKomp']; ?></td>
+								<td>
+									<?php if ($arc['foto_arsipKomp'] == "-") : ?>
+										<b class="center">-</b>
+									<?php else : ?>
+										<button type="button" class="btn btn-sm btn-img-item" data-img="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" data-toggle="modal" data-target="#gambarBukti">
+											<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
+										</button>
+									<?php endif; ?>
+								</td>
+								<td><?= $arc['waktu_arsipKomp']; ?></td>
+								<td>
+									<?php if ($arc['status_arsipKomp'] == 'accepted') : ?>
+										<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded"><i class="fas fa-check fa-fw"></i> Diterima</button>
+									<?php else : ?>
+										<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded"><i class="fas fa-times fa-fw"></i> Ditolak</button>
+									<?php endif; ?>
+								</td>
+								<td><?= $arc['commented_at']; ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Gambar Modal -->
+<div class="modal fade" id="gambarBukti" aria-hidden="true" aria-labelledby="gambarBuktiLabel" tabindex="-1">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="gambarBuktiLabel">Bukti Screenshot</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img width="750px" height="auto">
+			</div>
+			<!-- <div class="modal-footer">
+				<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+			</div> -->
 		</div>
 	</div>
 </div>
