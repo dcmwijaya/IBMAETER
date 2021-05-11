@@ -320,6 +320,13 @@
 						$('#uploadimageModal').modal('hide');
 						html = '<img src="' + response + '" class="img-thumbnail img-preview" alt="image preview" style="max-height: 370px; " />';
 						$('#show-add-img').html(html);
+						//Membuat FORM by JavaScript
+						var formData = new FormData();
+						var file = response;
+						//Cek Dulu, Apakah Gambarnya sudah dipilih
+						if (file != null) {
+							formData.append('picture', file);
+						}
 					}
 				});
 			})

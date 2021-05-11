@@ -132,7 +132,7 @@ class Admin extends BaseController
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
-				dd($data);
+				// dd($data);
 				$this->adminModel->addUser($data);
 				session()->setFlashdata('pesan', '<div class="notif-success">
 				Data Berhasil Ditambahkan!
@@ -275,8 +275,8 @@ class Admin extends BaseController
 					$image_array_2 = explode(",", $image_array_1[1]);
 					$data = base64_decode($image_array_2[1]);
 					$imageName = $tempdir . time() . '.png';
-
 					file_put_contents($imageName, $data);
+
 					// unlink($imageName);
 					// echo '<img src="' . base_url() . '/' . $imageName . '" class="img-thumbnail img-preview"' . 'alt="image preview"' . ' style="max-height: 370px; "/>';
 				}
