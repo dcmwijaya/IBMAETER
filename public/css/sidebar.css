@@ -61,7 +61,7 @@ a:focus {
 
 #sidebar-body {
   position: relative;
-  height: 145vh;
+  height: 150vh;
   overflow: visible;
   box-shadow: 0 2px 0 #2c2f38;
 }

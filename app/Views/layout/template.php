@@ -98,6 +98,11 @@
 			scrollCollapse: true,
 			paging: false
 		});
+		$('#table_perizinan').DataTable({
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false
+		});
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -179,8 +184,9 @@
 			const id = $(this).data('id');
 			const nama = $(this).data('nama');
 			// Set data to Form masuk
-			$('#itemIn #itemInId').val(id);
+			// $('#itemIn #itemInId').val(id);
 			$('#itemIn #itemInNama').text(nama);
+			$('#itemIn #itemInNamaPost').val(nama);
 		});
 
 		// get Keluar Product
@@ -189,8 +195,9 @@
 			const id = $(this).data('id');
 			const nama = $(this).data('nama');
 			// Set data to Form keluar
-			$('#itemOut #itemOutId').val(id);
+			// $('#itemOut #itemOutId').val(id);
 			$('#itemOut #itemOutNama').text(nama);
+			$('#itemOut #itemOutNamaPost').val(nama);
 		});
 	});
 </script>

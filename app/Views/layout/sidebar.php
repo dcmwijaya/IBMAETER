@@ -42,6 +42,9 @@
 										<a href="<?= base_url('Admin/Datauser') ?>" class="<?= ($CurrentMenu == 'data_user') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-users fa-fw me-3"></i><span>Data Pekerja</span>
 										</a>
+										<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+											<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
+										</a>
 										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
 										</a>

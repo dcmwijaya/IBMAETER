@@ -31,23 +31,6 @@ class Barang_Model extends Model
         return $query;
     }
 
-    public function IncomeItem($data, $id)
-    {
-        $query = $this->db->table('detail_in')->insert($data);
-        return $query;
-    }
-    public function OutcomeItem($data, $id)
-    {
-        $query = $this->db->table('detail_out')->insert($data);
-        return $query;
-    }
-
-    public function LogItem($data)
-    {
-        $query = $this->db->table('log')->insert($data);
-        return $query;
-    }
-
     // ============================ View Chart =============================//
     public function stockclass1()
     {

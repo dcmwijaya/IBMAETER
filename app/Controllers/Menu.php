@@ -7,6 +7,7 @@ use App\Models\Pengumuman_Model;
 use App\Models\userModel;
 use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
+use App\Models\Log_Model;
 use Dompdf\Dompdf;
 
 class Menu extends BaseController
@@ -23,6 +24,7 @@ class Menu extends BaseController
 	protected $newsModel;
 	protected $komplainModel;
 	protected $arsipKompModel;
+	protected $Log_Model;
 
 	public function __construct()
 	{
@@ -34,6 +36,7 @@ class Menu extends BaseController
 		$this->newsModel = new Pengumuman_Model();
 		$this->komplainModel = new Komplain_Model();
 		$this->arsipKompModel = new ArsipKomp_Model();
+		$this->LogModel = new Log_Model();
 	}
 
 	//========================= Dashboard Index()=====================
@@ -62,6 +65,7 @@ class Menu extends BaseController
 				"CurrentMenu" => "kelolabarang",
 				"info" => $this->newsModel->showTask(),
 				"item" => $this->barangModel->getItems(),
+				"log_item" => $this->LogModel->ReadLogItem(),
 				'user' => $this->userModel->getUserId(session('uid'))
 			];
 			return view('global/kelolabarang', $data);
@@ -114,49 +118,40 @@ class Menu extends BaseController
 		}
 	}
 
-	public function Income_item()
+	public function Income_item() // perlu fitur tahapan acc
 	{
 		if (session('uid') != null) {
-			$id = $this->request->getPost('id_item');
-			if ($id != 0) { // if gk guna
-				$data = array(
-					'jumlah_in' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_in'), ENT_QUOTES)),
-					'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_item'), ENT_QUOTES))
-				);
-				$this->barangModel->IncomeItem($data, $id);
-			}
+			// $id = $this->request->getPost('id_item');
 			$data = array(
+				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
-				'status' => str_replace("'", "", htmlspecialchars('Masuk', ENT_QUOTES)),
-				'uid' => str_replace("'", "", htmlspecialchars(session('role'), ENT_QUOTES)),
+				'nama_barang' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_barang'), ENT_QUOTES)),
+				'request' => str_replace("'", "", htmlspecialchars('Masuk', ENT_QUOTES)),
+				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
+				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_in'), ENT_QUOTES)),
 				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
-
-			$this->barangModel->LogItem($data);
+			$this->LogModel->Add_Log_Item($data);
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
 	}
 
-	public function Outcome_item()
+	public function Outcome_item() // perlu fitur tahapan acc
 	{
 		if (session('uid') != null) {
-			$id = $this->request->getPost('id_item');
-			if ($id != 0) { // if gk guna
-				$data = array(
-					'jumlah_out' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_out'), ENT_QUOTES)),
-					'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_item'), ENT_QUOTES))
-				);
-				$this->barangModel->OutcomeItem($data, $id);
-			}
+			// $id = $this->request->getPost('id_item');
 			$data = array(
+				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
-				'status' => str_replace("'", "", htmlspecialchars('Keluar', ENT_QUOTES)),
-				'uid' => str_replace("'", "", htmlspecialchars(session('role'), ENT_QUOTES)),
+				'nama_barang' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_barang'), ENT_QUOTES)),
+				'request' => str_replace("'", "", htmlspecialchars('Keluar', ENT_QUOTES)),
+				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
+				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_out'), ENT_QUOTES)),
 				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
 			);
-			$this->barangModel->LogItem($data);
+			$this->LogModel->Add_Log_Item($data);
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -588,7 +583,7 @@ class Menu extends BaseController
 
 			$nama = session('nama');
 			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
-				Hai <strong>'.$nama.'</strong>, Selamat datang di website <strong>INVENBAR</strong>...
+				Hai <strong>' . $nama . '</strong>, Selamat datang di website <strong>INVENBAR</strong>...
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

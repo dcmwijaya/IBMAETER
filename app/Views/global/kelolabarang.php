@@ -5,6 +5,7 @@
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
+		<!-- data item -->
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">
@@ -79,11 +80,12 @@
 				</div>
 			</div>
 		</section>
+		<!-- status permintaan -->
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>Spesifikasi Barang Gudang</strong>
+						<strong>Status Perizinan Barang Masuk/Keluar</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -91,9 +93,76 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_spesifikasi"><i class="fas fa-plus fa-fw"></i> Tambah Spesifikasi</button>
 									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
-
+								</div>
+								<div class="flex-fill">
+									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-fw fa-file"></i> Export
+									</button>
+									<div class="dropdown-menu dm-export">
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
+									<thead>
+										<tr>
+											<th>Waktu</th>
+											<th>Pekerja</th>
+											<th>Barang</th>
+											<th>Request</th>
+											<th>Stok</th>
+											<th>Status</th>
+											<th>Keterangan</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach ($log_item as $log) : ?>
+											<tr>
+												<td><?= $log['tgl']; ?></td>
+												<td><?= $log['nama_pekerja']; ?></td>
+												<td><?= $log['nama_barang']; ?></td>
+												<td><?= $log['request']; ?></td>
+												<td><?= $log['ubah_stok']; ?></td>
+												<td>
+													<?php if ($log['status'] == 'Diterima') : ?>
+														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-check fa-fw"></i>Diterima</button>
+													<?php elseif ($log['status'] == 'Ditolak') : ?>
+														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right"><i class="fas fa-times fa-fw"></i>DiTolak</button>
+													<?php else : ?>
+														<button type="button" class="btn btn-warning btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-spinner fa-fw"></i>Proses...</button>
+													<?php endif; ?>
+												</td>
+												<td><?= $log['ket']; ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- detail item -->
+		<section class="mb-4">
+			<div class="card">
+				<div class="card-header text-center py-3">
+					<h5 class="mb-0 text-center">
+						<strong>Spesifikasi Barang Didalam Gudang</strong>
+					</h5>
+				</div>
+				<div class="card-body pt-1">
+					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row my-3">
+							<div class="d-flex">
+								<div class="flex-fill mr-auto">
+									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,274 +182,33 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Id Barang</th>
-											<th>Harga /Item (Rp)</th>
-											<th>Berat /Item (Gram)</th>
+											<th>Barang</th>
+											<th>Kode Barang</th>
+											<th>Harga/Item (Rp)</th>
+											<th>Berat/Item (Kg)</th>
 											<th>Supplier</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>SBR-1</td>
-											<td>1000</td>
-											<td>200</td>
-											<td>Bobby</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>SBR-2</td>
-											<td>2000</td>
-											<td>300</td>
-											<td>Deddy</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>SBR-3</td>
-											<td>1200</td>
-											<td>250</td>
-											<td>Lily</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>SBR-4</td>
-											<td>1500</td>
-											<td>150</td>
-											<td>Keilya</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>SBR-5</td>
-											<td>1200</td>
-											<td>220</td>
-											<td>Joni</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>SBR-6</td>
-											<td>1800</td>
-											<td>350</td>
-											<td>Jenny</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>7</td>
-											<td>SBR-7</td>
-											<td>1250</td>
-											<td>280</td>
-											<td>Keisha</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>SBR-8</td>
-											<td>3000</td>
-											<td>500</td>
-											<td>Biebie</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>9</td>
-											<td>SBR-9</td>
-											<td>2750</td>
-											<td>380</td>
-											<td>Pinkie</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>10</td>
-											<td>SBR-10</td>
-											<td>3200</td>
-											<td>600</td>
-											<td>Blackie</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>11</td>
-											<td>SBR-11</td>
-											<td>1000</td>
-											<td>200</td>
-											<td>Birdie</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>12</td>
-											<td>SBR-12</td>
-											<td>2000</td>
-											<td>300</td>
-											<td>Hokage</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>13</td>
-											<td>SBR-13</td>
-											<td>1200</td>
-											<td>250</td>
-											<td>Guru Domba</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>14</td>
-											<td>SBR-14</td>
-											<td>1500</td>
-											<td>150</td>
-											<td>Ilya</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>15</td>
-											<td>SBR-15</td>
-											<td>1200</td>
-											<td>220</td>
-											<td>Nero</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>16</td>
-											<td>SBR-16</td>
-											<td>1800</td>
-											<td>350</td>
-											<td>Tohka</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>17</td>
-											<td>SBR-17</td>
-											<td>1250</td>
-											<td>280</td>
-											<td>Kuro Sensei</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>18</td>
-											<td>SBR-18</td>
-											<td>3000</td>
-											<td>500</td>
-											<td>Kirito</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>19</td>
-											<td>SBR-19</td>
-											<td>2750</td>
-											<td>380</td>
-											<td>Asuna</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>20</td>
-											<td>SBR-20</td>
-											<td>3200</td>
-											<td>600</td>
-											<td>Yely Yordan</td>
-											<td>
-												<div class="btn-group" role="group" aria-label="inoutcom">
-													<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="" data-nama="" data-stok="" data-jenis="" data-penyimpanan="" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-													<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="" data-nama="" data-toggle="modal" data-target="#Delete_spesifikasi"><i class="fas fa-trash fa-fw"></i></button>
-												</div>
-											</td>
-										</tr>
+										<?php $no = 1; ?>
+										<?php foreach ($item as $b) : ?>
+											<tr>
+												<td><?= $no ?></td>
+												<td><?= $b['nama_item'] ?></td>
+												<td><?= $b['kode_barang']; ?></td>
+												<td><?= $b['harga']; ?></td>
+												<td><?= $b['berat']; ?></td>
+												<td>Kasih Trigger select where id_supplier</td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-warning btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
+														<button type="button" class="btn btn-danger btn-sm detl-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+													</div>
+												</td>
+											</tr>
+											<?php $no++; ?>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>
@@ -651,7 +479,7 @@
 						<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" id="itemInId" class="form-control" name="id_item">
+						<input type="hidden" id="itemInNamaPost" class="form-control" name="nama_barang">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Masukkan</button>
 					</div>
@@ -694,7 +522,7 @@
 						<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" id="itemOutId" class="form-control" name="id_item">
+						<input type="hidden" id="itemOutNamaPost" class="form-control" name="nama_barang">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-success"><i class="fas fa-fw fa-check"></i> Keluarkan</button>
 					</div>
