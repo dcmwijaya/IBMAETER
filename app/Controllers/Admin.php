@@ -8,6 +8,7 @@ use App\Models\Pengumuman_Model;
 use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
+use App\Models\Absensi_Model;
 use Dompdf\Dompdf;
 
 class Admin extends BaseController
@@ -25,6 +26,7 @@ class Admin extends BaseController
 	protected $komplainModel;
 	protected $arsipKompModel;
 	protected $Log_Model;
+	protected $absensiModel;
 
 	public function __construct()
 	{
@@ -37,6 +39,7 @@ class Admin extends BaseController
 		$this->komplainModel = new Komplain_Model();
 		$this->arsipKompModel = new ArsipKomp_Model();
 		$this->LogModel = new Log_Model();
+		$this->absensiModel = new Absensi_Model();
 	}
 
 	public function index()
@@ -723,7 +726,8 @@ class Admin extends BaseController
 					"title" => "Aktivitas User | INVENBAR",
 					"CurrentMenu" => "logUser",
 					"info" => $this->newsModel->showTask(),
-					"user" => $this->adminModel->getUser()
+					"user" => $this->adminModel->getUser(),
+					'absensi' => $this->absensiModel->getAbsen()
 				];
 				return view('admin/logUser', $data);
 			} else {

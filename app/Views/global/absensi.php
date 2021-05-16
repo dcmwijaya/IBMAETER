@@ -42,12 +42,16 @@
 													<label for="status_absen">
 														<i class="fas fa-file-signature fa-fw me-1"></i>
 														<b>Status :</b>
-														<span><small>Belum Absensi</small></span>
+														<?php if ($absensi == false) : ?>
+															<span><small>Belum Absensi</small></span>
+														<?php else : ?>
+															<span><small>Sudah Absensi</small></span>
+														<?php endif; ?>
 													</label>
 												</div>
 												<div class="my-4">
 													<input type="hidden" class="form-control" value="" name="id_absen">
-													<button type="submit" class="btn btn-success btn-komplain col-sm-12 p-4">
+													<button type="submit" class="btn btn-success btn-komplain col-sm-12 p-4" <?= ($absensi == false) ? "" : "disabled"; ?>>
 														<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-3"></i>Absensi Sekarang</p>
 													</button>
 												</div>

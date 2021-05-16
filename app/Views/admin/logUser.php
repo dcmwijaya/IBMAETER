@@ -40,36 +40,13 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>saber.datealive@gmail.com</td>
-											<td>Truancy</td>
-											<td>2021/4/26 11:32:11 AM</td>
-										</tr>
-										<tr>
-											<td>kuro911@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/26 11:36:15 AM</td>
-										</tr>
-										<tr>
-											<td>genshin_keqing@gmail.com</td>
-											<td>Truancy</td>
-											<td>2021/4/27 11:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>kuro.sensei99@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 07:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>rungkutgakure@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 09:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>bagindahokage@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 11:37:16 AM</td>
-										</tr>
+										<?php foreach ($absensi as $abs) : ?>
+											<tr>
+												<td><?= $abs['email_absen']; ?></td>
+												<td><?= $abs['absen']; ?></td>
+												<td><?= $abs['waktu_absen']; ?></td>
+											</tr>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>

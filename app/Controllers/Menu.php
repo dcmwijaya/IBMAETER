@@ -8,6 +8,7 @@ use App\Models\userModel;
 use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
+use App\Models\Absensi_Model;
 use Dompdf\Dompdf;
 
 class Menu extends BaseController
@@ -25,6 +26,7 @@ class Menu extends BaseController
 	protected $komplainModel;
 	protected $arsipKompModel;
 	protected $Log_Model;
+	protected $absensiModel;
 
 	public function __construct()
 	{
@@ -37,6 +39,7 @@ class Menu extends BaseController
 		$this->komplainModel = new Komplain_Model();
 		$this->arsipKompModel = new ArsipKomp_Model();
 		$this->LogModel = new Log_Model();
+		$this->absensiModel = new Absensi_Model();
 	}
 
 	//========================= Dashboard Index()=====================
@@ -534,9 +537,11 @@ class Menu extends BaseController
 				"title" => "Absensi Pekerja | INVENBAR",
 				"CurrentMenu" => "absensi",
 				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d"))
 			];
-			return view('global/absensi', $data);
+			// return view('global/absensi', $data);
+			dd($data['absensi']);
 		} else {
 			return redirect()->to('/login');
 		}
