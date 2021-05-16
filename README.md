@@ -70,7 +70,7 @@ $php spark serve
 3. Lalu buka file XAMP (php.ini) -> hapus semicolon (;) didepan extension=intl ->save
 4. Extract file yang di download tadi -> Copy & Paste isi folder -> XAMP (htdocs) -> masuk kedalam folder invenbar-ci4 -> Replace
 5. Run Server
-6. email admin : saber.genshin@gmail.com, password admin : diluc-senpai
+6. Login Admin (email : billy@gantx.com, password : Admin123) / Login User (email : erwin1@gmail.com, Password : User123)
 7. Selesai, selamat menikmati
 
 <br>

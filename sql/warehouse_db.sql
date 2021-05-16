@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: May 16, 2021 at 09:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
+=======
+-- Waktu pembuatan: 16 Bulan Mei 2021 pada 14.37
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 7.4.15
+>>>>>>> c50b749d6a6a2ee9a0602865b63c31932be1ea97
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +30,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -36,7 +42,7 @@ CREATE TABLE `absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`id_absen`, `uid_absen`, `email_absen`, `absen`, `waktu_absen`) VALUES
@@ -46,7 +52,7 @@ INSERT INTO `absensi` (`id_absen`, `uid_absen`, `email_absen`, `absen`, `waktu_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alur_barang`
+-- Struktur dari tabel `alur_barang`
 --
 
 CREATE TABLE `alur_barang` (
@@ -61,7 +67,7 @@ CREATE TABLE `alur_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `alur_barang`
+-- Dumping data untuk tabel `alur_barang`
 --
 
 INSERT INTO `alur_barang` (`no_log`, `nama_pekerja`, `tgl`, `nama_barang`, `request`, `status`, `ubah_stok`, `ket`) VALUES
@@ -69,14 +75,26 @@ INSERT INTO `alur_barang` (`no_log`, `nama_pekerja`, `tgl`, `nama_barang`, `requ
 (27, 'Billy Gate', '2021-05-16 06:29:43', 'Mentari SimCard', 'Keluar', 'Diterima', 20, 'Why'),
 (28, 'Billy Gate', '2021-05-16 07:09:09', 'Antangin JRG', 'Masuk', 'Diterima', 40, '-'),
 (29, 'Billy Gate', '2021-05-15 21:41:00', 'So Clean 320ml', 'Masuk', 'Pending', 38, 'Perlu ditambah Supplier'),
+<<<<<<< HEAD
 (31, 'Billy Gate', '2021-05-16 06:25:42', 'Soda Gembira 210ml', 'Masuk', 'Diterima', 6, 'Save Palestina'),
 (32, 'Billy Gate', '2021-05-16 06:52:42', 'Dodo Mainanmu', 'Masuk', 'Ditolak', 13, 'Admin : Billy Gate\r\nBensin Abis'),
 (36, 'Billy Gate', '2021-05-16 07:11:35', 'Mixin 210ml', 'Masuk', 'Diterima', 46, 'We Stand With Palestine!'),
 (37, 'Billy Gate', '2021-05-16 19:10:00', 'Madu Kuat 210ml', 'Masuk', 'Pending', 100, '-'),
 (38, 'Billy Gate', '2021-05-16 07:33:23', 'Minyak Pijat 210ml', 'Keluar', 'Diterima', 20, '-');
+=======
+(30, 'Billy Gate', '2021-05-15 21:42:00', 'Sabun Mandieh', 'Masuk', 'Pending', 100, 'Untuk Mengubah Jumlah Stok perlu ACC dari Admin terlebih dahulu'),
+(31, 'Billy Gate', '2021-05-11 22:00:00', 'Soda Gembira 210ml', 'Masuk', 'Pending', 6, 'sss'),
+(32, 'Billy Gate', '2021-05-16 16:36:00', 'Sabun Mandieh', 'Keluar', 'Pending', 20, 'Test'),
+(33, 'Billy Gate', '2021-05-16 16:37:00', 'Sabun Mandieh', 'Keluar', 'Pending', 100, 'Mantap Lurr'),
+(34, 'Billy Gate', '2021-05-16 16:37:00', 'Sabun Mandieh', 'Masuk', 'Pending', 300, 'Uji Masuk'),
+(35, 'Billy Gate', '2021-05-16 16:38:00', 'So Clean 320ml', 'Masuk', 'Pending', 100, 'Uji'),
+(36, 'Billy Gate', '2021-05-16 16:38:00', 'So Clean 320ml', 'Keluar', 'Pending', 100, 'Uji'),
+(37, 'Erwin Edit', '2021-05-16 17:00:00', 'Sabun Mandieh', 'Masuk', 'Pending', 100, 'Cobaa ya'),
+(38, 'Erwin Edit', '2021-05-21 17:00:00', 'Sabun Mandieh', 'Keluar', 'Pending', 50, 'Woww');
+>>>>>>> c50b749d6a6a2ee9a0602865b63c31932be1ea97
 
 --
--- Triggers `alur_barang`
+-- Trigger `alur_barang`
 --
 DELIMITER $$
 CREATE TRIGGER `stok_dinamis` AFTER UPDATE ON `alur_barang` FOR EACH ROW BEGIN
@@ -94,7 +112,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `arsip_komplain`
+-- Struktur dari tabel `arsip_komplain`
 --
 
 CREATE TABLE `arsip_komplain` (
@@ -111,7 +129,7 @@ CREATE TABLE `arsip_komplain` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `arsip_komplain`
+-- Dumping data untuk tabel `arsip_komplain`
 --
 
 INSERT INTO `arsip_komplain` (`no_arsipKomp`, `uid_arsipKomp`, `email_arsipKomp`, `judul_arsipKomp`, `isi_arsipKomp`, `foto_arsipKomp`, `waktu_arsipKomp`, `status_arsipKomp`, `comment_arsipKomp`, `commented_at`) VALUES
@@ -122,7 +140,7 @@ INSERT INTO `arsip_komplain` (`no_arsipKomp`, `uid_arsipKomp`, `email_arsipKomp`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Struktur dari tabel `item`
 --
 
 CREATE TABLE `item` (
@@ -138,10 +156,11 @@ CREATE TABLE `item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `item`
+-- Dumping data untuk tabel `item`
 --
 
 INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`, `jenis`, `penyimpanan`, `harga`, `berat`) VALUES
+<<<<<<< HEAD
 (1, 1, 'B034343', 'Sabun Mandieh', 34, 'Cair', 'B', 8000, 320),
 (2, 2, 'A044344', 'Antangin JRG', 105, 'Minyak', 'A', 4500, 200),
 (3, 4, 'D014345', 'Sikat WC ARG Medium', 44, 'Padat', 'D', 15000, 500),
@@ -161,11 +180,32 @@ INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`
 (27, 5, 'D044359', 'Minyak Pijat 210ml', 60, 'Minyak', 'D', 7800, 250),
 (28, 6, 'A014360', 'El Perfume de cologne 150ml', 22, 'Padat', 'A', 89000, 300),
 (30, 1, 'E014361', 'Adem Sari 10gr', 20, 'Padat', 'E', 2500, 24);
+=======
+(1, 0, 'C123S43', 'Sabun Mandieh', 150, 'Cair', 'B', 8000, 1),
+(2, 0, '', 'Antangin JRG', 65, 'Minyak', 'A', 0, 200),
+(3, 0, '', 'sikat wc', 44, 'Padat', 'D', 0, 1.2),
+(4, 0, '', 'Pepsodent 102gr', 44, 'Cair', 'A', 0, 0),
+(5, 0, '', 'Dodo Mainanmu', 22, 'Padat', 'C', 0, 0),
+(8, 0, '', 'Mentari SimCard', 80, 'Padat', 'A', 0, 0),
+(9, 0, '', 'Solonensi Ajaib', 33, 'Cair', 'C', 0, 0),
+(10, 0, '', 'Bearbrando 210ml', 22, 'Cair', 'B', 0, 0),
+(15, 0, '', 'So Clean 320ml', 50, 'Cair', 'C', 0, 0),
+(16, 0, '', 'Betadine', 30, 'Cair', 'B', 0, 0),
+(17, 0, '', 'Baterai ABC 80gr', 33, 'Padat', 'B', 0, 0),
+(21, 0, '', 'Sikat Gigih', 44, 'Mudah Terbakar', 'F', 0, 0),
+(22, 0, '', 'Dodo Sakti', 44, 'Minyak', 'D', 0, 0),
+(23, 0, '', 'Mixin 210ml', 12, 'Cair', 'C', 0, 0),
+(24, 0, '', 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C', 0, 0),
+(26, 0, '', 'Soda Gembira 210ml', 39, 'Cair', 'D', 0, 0),
+(27, 0, '', 'Minyak Pijat 210ml', 100, 'Minyak', 'D', 0, 0),
+(28, 0, '', '&lt;div class=&quot;btn btn-success&quot;&gt;&lt;/div&gt;', 22, 'Padat', 'A', 0, 0),
+(30, 0, '', 'Adem Sari 10gr', 20, 'Padat', 'E', 0, 0);
+>>>>>>> c50b749d6a6a2ee9a0602865b63c31932be1ea97
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komplain`
+-- Struktur dari tabel `komplain`
 --
 
 CREATE TABLE `komplain` (
@@ -179,7 +219,7 @@ CREATE TABLE `komplain` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `komplain`
+-- Dumping data untuk tabel `komplain`
 --
 
 INSERT INTO `komplain` (`no_komplain`, `uid_komplain`, `email_komplain`, `judul_komplain`, `isi_komplain`, `foto_komplain`, `waktu_komplain`) VALUES
@@ -190,7 +230,7 @@ INSERT INTO `komplain` (`no_komplain`, `uid_komplain`, `email_komplain`, `judul_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengumuman`
+-- Struktur dari tabel `pengumuman`
 --
 
 CREATE TABLE `pengumuman` (
@@ -201,16 +241,20 @@ CREATE TABLE `pengumuman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengumuman`
+-- Dumping data untuk tabel `pengumuman`
 --
 
 INSERT INTO `pengumuman` (`id`, `judul`, `isi`, `foto`) VALUES
+<<<<<<< HEAD
 (1, 'Jadwal Supplier Masuk Mei 2025', '1. pt indah\r\n2. pt makmur\r\n3. pt sentosa\r\n4. EAST\r\n\r\n', 'image.jpg');
+=======
+(1, 'Jadwal Supplier Masuk Mei 2027', 'Kuliii Bangunan', 'image.jpg');
+>>>>>>> c50b749d6a6a2ee9a0602865b63c31932be1ea97
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Struktur dari tabel `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -221,7 +265,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `supplier`
+-- Dumping data untuk tabel `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_telp`, `alamat`) VALUES
@@ -235,7 +279,7 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_telp`, `alamat`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -249,7 +293,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`, `department`) VALUES
@@ -266,7 +310,7 @@ INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`, `depa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_activity`
+-- Struktur dari tabel `user_activity`
 --
 
 CREATE TABLE `user_activity` (
@@ -281,102 +325,102 @@ CREATE TABLE `user_activity` (
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absen`);
 
 --
--- Indexes for table `alur_barang`
+-- Indeks untuk tabel `alur_barang`
 --
 ALTER TABLE `alur_barang`
   ADD PRIMARY KEY (`no_log`);
 
 --
--- Indexes for table `arsip_komplain`
+-- Indeks untuk tabel `arsip_komplain`
 --
 ALTER TABLE `arsip_komplain`
   ADD PRIMARY KEY (`no_arsipKomp`);
 
 --
--- Indexes for table `item`
+-- Indeks untuk tabel `item`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id_item`);
 
 --
--- Indexes for table `komplain`
+-- Indeks untuk tabel `komplain`
 --
 ALTER TABLE `komplain`
   ADD PRIMARY KEY (`no_komplain`);
 
 --
--- Indexes for table `pengumuman`
+-- Indeks untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `supplier`
+-- Indeks untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`uid`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `user_activity`
+-- Indeks untuk tabel `user_activity`
 --
 ALTER TABLE `user_activity`
   ADD PRIMARY KEY (`id_aktivitas`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   MODIFY `id_absen` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `alur_barang`
+-- AUTO_INCREMENT untuk tabel `alur_barang`
 --
 ALTER TABLE `alur_barang`
   MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `item`
+-- AUTO_INCREMENT untuk tabel `item`
 --
 ALTER TABLE `item`
   MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `pengumuman`
+-- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- AUTO_INCREMENT for table `user_activity`
+-- AUTO_INCREMENT untuk tabel `user_activity`
 --
 ALTER TABLE `user_activity`
   MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT;
