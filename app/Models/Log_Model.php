@@ -23,4 +23,10 @@ class Log_Model extends Model
         $query = $this->db->table('alur_barang')->insert($data);
         return $query;
     }
+
+    public function updateLogItem($data, $no_log)
+    {
+        $query = $this->db->table('alur_barang')->update($data, array('no_log' => $no_log));
+        return $query;
+    }
 }

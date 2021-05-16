@@ -2,6 +2,10 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
+
+<!-- style for td -->
+<?php $tdStyle = "white-space: -moz-pre-wrap !important; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; white-space: -webkit-pre-wrap; word-break: break-word; white-space: normal;" ?>
+
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
@@ -44,7 +48,9 @@
 											<th>Stok</th>
 											<th>Jenis</th>
 											<th>Room</th>
-											<th>Aksi</th>
+											<?php if (session('role') == 0) : ?>
+												<th>Aksi</th>
+											<?php endif; ?>
 											<th>Kirim</th>
 										</tr>
 									</thead>
@@ -53,16 +59,18 @@
 										<?php foreach ($item as $b) : ?>
 											<tr>
 												<td><?= $no ?></td>
-												<td><?= $b['nama_item'] ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $b['nama_item'] ?></td>
 												<td><?= $b['stok']; ?></td>
 												<td><?= $b['jenis']; ?></td>
 												<td><?= $b['penyimpanan']; ?></td>
-												<td>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-														<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
-													</div>
-												</td>
+												<?php if (session('role') == 0) : ?>
+													<td>
+														<div class="btn-group" role="group" aria-label="upordel">
+															<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
+															<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+														</div>
+													</td>
+												<?php endif; ?>
 												<td>
 													<div class="btn-group" role="group" aria-label="inoutcom">
 														<button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemIn"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
@@ -124,21 +132,21 @@
 									<tbody>
 										<?php foreach ($log_item as $log) : ?>
 											<tr>
-												<td><?= $log['tgl']; ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
 												<td><?= $log['nama_pekerja']; ?></td>
-												<td><?= $log['nama_barang']; ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
 												<td><?= $log['request']; ?></td>
 												<td><?= $log['ubah_stok']; ?></td>
 												<td>
 													<?php if ($log['status'] == 'Diterima') : ?>
-														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-check fa-fw"></i>Diterima</button>
+														<span class="py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>
 													<?php elseif ($log['status'] == 'Ditolak') : ?>
-														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right"><i class="fas fa-times fa-fw"></i>DiTolak</button>
+														<span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>
 													<?php else : ?>
-														<button type="button" class="btn btn-warning btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-spinner fa-fw"></i>Proses...</button>
+														<span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;background-color: orange;"><i class="fas fa-spinner fa-fw mr-1"></i>PROSES...</span>
 													<?php endif; ?>
 												</td>
-												<td><?= $log['ket']; ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $log['ket']; ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</tbody>
@@ -185,9 +193,11 @@
 											<th>Barang</th>
 											<th>Kode Barang</th>
 											<th>Harga/Item (Rp)</th>
-											<th>Berat/Item (Kg)</th>
-											<th>Supplier</th>
-											<th>Aksi</th>
+											<th>Berat/Item (gr)</th>
+											<th>Nama Supplier</th>
+											<?php if (session('role') == 0) : ?>
+												<th>Aksi</th>
+											<?php endif; ?>
 										</tr>
 									</thead>
 									<tbody>
@@ -195,17 +205,19 @@
 										<?php foreach ($item as $b) : ?>
 											<tr>
 												<td><?= $no ?></td>
-												<td><?= $b['nama_item'] ?></td>
+												<td style="<?= $tdStyle; ?>"><?= $b['nama_item'] ?></td>
 												<td><?= $b['kode_barang']; ?></td>
 												<td><?= $b['harga']; ?></td>
 												<td><?= $b['berat']; ?></td>
-												<td>Kasih Trigger select where id_supplier</td>
-												<td>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-warning btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-														<button type="button" class="btn btn-danger btn-sm detl-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
-													</div>
-												</td>
+												<td style="<?= $tdStyle; ?>">Kasih Trigger select where id_supplier</td>
+												<?php if (session('role') == 0) : ?>
+													<td>
+														<div class="btn-group" role="group" aria-label="inoutcom">
+															<button type="button" class="btn btn-warning btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
+															<button type="button" class="btn btn-danger btn-sm detl-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+														</div>
+													</td>
+												<?php endif; ?>
 											</tr>
 											<?php $no++; ?>
 										<?php endforeach; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2021 at 04:02 PM
+-- Generation Time: May 16, 2021 at 09:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -54,7 +54,7 @@ CREATE TABLE `alur_barang` (
   `nama_pekerja` varchar(50) NOT NULL,
   `tgl` datetime NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
-  `request` enum('Masuk','Keluar') NOT NULL,
+  `request` enum('Masuk','Keluar') NOT NULL COMMENT 'Awas dengan trigger!',
   `status` enum('Pending','Diterima','Ditolak') NOT NULL,
   `ubah_stok` int(11) NOT NULL,
   `ket` varchar(255) DEFAULT NULL
@@ -66,17 +66,20 @@ CREATE TABLE `alur_barang` (
 
 INSERT INTO `alur_barang` (`no_log`, `nama_pekerja`, `tgl`, `nama_barang`, `request`, `status`, `ubah_stok`, `ket`) VALUES
 (26, 'Billy Gate', '2021-05-15 21:38:00', 'Antangin JRG', 'Masuk', 'Diterima', 14, 'PPP'),
-(27, 'Billy Gate', '2021-05-15 21:39:00', 'Mentari SimCard', 'Keluar', 'Ditolak', 20, 'SS'),
-(28, 'Billy Gate', '2021-05-15 21:40:00', 'Antangin JRG', 'Masuk', 'Pending', 40, 'A'),
+(27, 'Billy Gate', '2021-05-16 06:29:43', 'Mentari SimCard', 'Keluar', 'Diterima', 20, 'Why'),
+(28, 'Billy Gate', '2021-05-16 07:09:09', 'Antangin JRG', 'Masuk', 'Diterima', 40, '-'),
 (29, 'Billy Gate', '2021-05-15 21:41:00', 'So Clean 320ml', 'Masuk', 'Pending', 38, 'Perlu ditambah Supplier'),
-(30, 'Billy Gate', '2021-05-15 21:42:00', 'Sabun Mandieh', 'Masuk', 'Pending', 100, 'Untuk Mengubah Jumlah Stok perlu ACC dari Admin terlebih dahulu'),
-(31, 'Billy Gate', '2021-05-11 22:00:00', 'Soda Gembira 210ml', 'Masuk', 'Pending', 6, 'sss');
+(31, 'Billy Gate', '2021-05-16 06:25:42', 'Soda Gembira 210ml', 'Masuk', 'Diterima', 6, 'Save Palestina'),
+(32, 'Billy Gate', '2021-05-16 06:52:42', 'Dodo Mainanmu', 'Masuk', 'Ditolak', 13, 'Admin : Billy Gate\r\nBensin Abis'),
+(36, 'Billy Gate', '2021-05-16 07:11:35', 'Mixin 210ml', 'Masuk', 'Diterima', 46, 'We Stand With Palestine!'),
+(37, 'Billy Gate', '2021-05-16 19:10:00', 'Madu Kuat 210ml', 'Masuk', 'Pending', 100, '-'),
+(38, 'Billy Gate', '2021-05-16 07:33:23', 'Minyak Pijat 210ml', 'Keluar', 'Diterima', 20, '-');
 
 --
 -- Triggers `alur_barang`
 --
 DELIMITER $$
-CREATE TRIGGER `stok_dinamis` AFTER INSERT ON `alur_barang` FOR EACH ROW BEGIN
+CREATE TRIGGER `stok_dinamis` AFTER UPDATE ON `alur_barang` FOR EACH ROW BEGIN
 IF (new.`request`="Masuk") THEN
 	UPDATE `item` SET `item`.`stok` = `item`.`stok` + new.`ubah_stok`
 	WHERE `item`.`nama_item` = new.`nama_barang`;
@@ -125,10 +128,10 @@ INSERT INTO `arsip_komplain` (`no_arsipKomp`, `uid_arsipKomp`, `email_arsipKomp`
 CREATE TABLE `item` (
   `id_item` int(4) NOT NULL,
   `id_supplier` int(11) NOT NULL,
-  `kode_barang` text NOT NULL COMMENT '[1] = no kategori \r\n[2]~[4] = no alfabet tempat penyimpanan\r\n[5]~[8] = no produksi',
+  `kode_barang` text NOT NULL COMMENT '[1]~ = alfabet tempat penyimpanan \r\n[2]~[3] = no Kategori\r\n[4]~[8] = no produksi',
   `nama_item` varchar(99) NOT NULL,
   `stok` int(4) NOT NULL,
-  `jenis` varchar(25) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
   `penyimpanan` varchar(50) NOT NULL,
   `harga` int(11) NOT NULL COMMENT 'IDR only',
   `berat` float NOT NULL COMMENT 'gr/item'
@@ -139,25 +142,25 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`, `jenis`, `penyimpanan`, `harga`, `berat`) VALUES
-(1, 0, 'C123S43', 'Sabun Mandieh', 134, 'Cair', 'B', 8000, 1),
-(2, 0, '', 'Antangin JRG', 65, 'Minyak', 'A', 0, 200),
-(3, 0, '', 'sikat wc', 44, 'Padat', 'D', 0, 1.2),
-(4, 0, '', 'Pepsodent 102gr', 44, 'Cair', 'A', 0, 0),
-(5, 0, '', 'Dodo Mainanmu', 22, 'Padat', 'C', 0, 0),
-(8, 0, '', 'Mentari SimCard', 80, 'Padat', 'A', 0, 0),
-(9, 0, '', 'Solonensi Ajaib', 33, 'Cair', 'C', 0, 0),
-(10, 0, '', 'Bearbrando 210ml', 22, 'Cair', 'B', 0, 0),
-(15, 0, '', 'So Clean 320ml', 50, 'Cair', 'C', 0, 0),
-(16, 0, '', 'Betadine', 30, 'Cair', 'B', 0, 0),
-(17, 0, '', 'Baterai ABC 80gr', 33, 'Padat', 'B', 0, 0),
-(21, 0, '', 'Sikat Gigih', 44, 'Mudah Terbakar', 'F', 0, 0),
-(22, 0, '', 'Dodo Sakti', 44, 'Minyak', 'D', 0, 0),
-(23, 0, '', 'Mixin 210ml', 12, 'Cair', 'C', 0, 0),
-(24, 0, '', 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C', 0, 0),
-(26, 0, '', 'Soda Gembira 210ml', 39, 'Cair', 'D', 0, 0),
-(27, 0, '', 'Minyak Pijat 210ml', 100, 'Minyak', 'D', 0, 0),
-(28, 0, '', '&lt;div class=&quot;btn btn-success&quot;&gt;&lt;/div&gt;', 22, 'Padat', 'A', 0, 0),
-(30, 0, '', 'Adem Sari 10gr', 20, 'Padat', 'E', 0, 0);
+(1, 1, 'B034343', 'Sabun Mandieh', 34, 'Cair', 'B', 8000, 320),
+(2, 2, 'A044344', 'Antangin JRG', 105, 'Minyak', 'A', 4500, 200),
+(3, 4, 'D014345', 'Sikat WC ARG Medium', 44, 'Padat', 'D', 15000, 500),
+(4, 1, 'A034346', 'Pepsodent 220gr', 44, 'Cair', 'A', 12000, 220),
+(5, 2, 'C014347', 'Dodo Mainanmu', 48, 'Padat', 'C', 32000, 300),
+(8, 3, 'A014348', 'Mentari SimCard 20GB/Bulan', 80, 'Padat', 'A', 80000, 100),
+(9, 2, 'C034349', 'Solonensi Ajaib Herbal', 33, 'Cair', 'C', 4000, 120),
+(10, 2, 'B034350', 'Bearbrando 210ml', 22, 'Cair', 'B', 7500, 220),
+(15, 4, 'C034351', 'So Clean 320ml', 50, 'Cair', 'C', 14000, 370),
+(16, 4, 'B034352', 'Betadine 60ml', 3, 'Cair', 'B', 8000, 120),
+(17, 3, 'B014353', 'Baterai ABC 80gr', 12, 'Padat', 'B', 12000, 40),
+(21, 1, 'F024354', 'Sikat Gigi B', 44, 'Mudah Terbakar', 'F', 8000, 135),
+(22, 3, 'D014355', 'Coklat Atlantis S', 44, 'Padat', 'D', 5000, 158),
+(23, 5, 'C034356', 'Mixin 210ml', 58, 'Cair', 'C', 65000, 197),
+(24, 5, 'C024357', 'Madu Kuat 210ml', 115, 'Mudah Terbakar', 'C', 25000, 400),
+(26, 5, 'D034358', 'Soda Gembira 210ml', 39, 'Cair', 'D', 10000, 550),
+(27, 5, 'D044359', 'Minyak Pijat 210ml', 60, 'Minyak', 'D', 7800, 250),
+(28, 6, 'A014360', 'El Perfume de cologne 150ml', 22, 'Padat', 'A', 89000, 300),
+(30, 1, 'E014361', 'Adem Sari 10gr', 20, 'Padat', 'E', 2500, 24);
 
 -- --------------------------------------------------------
 
@@ -202,7 +205,7 @@ CREATE TABLE `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id`, `judul`, `isi`, `foto`) VALUES
-(1, 'Jadwal Supplier Masuk Mei 2027', '1. pt indah\r\n2. pt makmur\r\n3. pt sentosa\r\n\r\n', 'image.jpg');
+(1, 'Jadwal Supplier Masuk Mei 2025', '1. pt indah\r\n2. pt makmur\r\n3. pt sentosa\r\n4. EAST\r\n\r\n', 'image.jpg');
 
 -- --------------------------------------------------------
 
@@ -223,7 +226,11 @@ CREATE TABLE `supplier` (
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_telp`, `alamat`) VALUES
 (1, 'Pt. Unileper', '081222320000', 'Jl. Kemayoran Baru kec. Salatiga Jakarta Barat'),
-(2, 'Pt. Snakku', '0822222222', 'Jl. Selamat Jalan kec. Barong Kota Air');
+(2, 'Pt. Snakku', '0822222222', 'Jl. Selamat Jalan kec. Barong Kota Air'),
+(3, 'Pt. Entahlah ', '081222320001', 'jl. dummy master22, kec. fake, kota Mastah2'),
+(4, 'Pt. NgAB tbk', '081222320002', 'jl. dummy master33, kec. fake, kota Mastah3'),
+(5, 'Pt. Biasakanlah tbk', '081222320003', 'jl. dummy master44, kec. fake, kota Mastah4'),
+(6, 'Pt. Membagongkan', '081222320004', 'jl. dummy master55, kec. fake, kota Mastah5');
 
 -- --------------------------------------------------------
 
@@ -237,21 +244,24 @@ CREATE TABLE `user` (
   `email` varchar(99) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` int(1) NOT NULL,
-  `picture` varchar(256) NOT NULL
+  `picture` varchar(256) NOT NULL,
+  `department` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`) VALUES
-(1, 'Admin Zero', 'saber.genshin@gmail.com', '$2y$10$QXi1weaBbKVPYI4/0pyAiuFpv9cB7dFOhHAhjU4HLCdOHSpyG/ZP.', 0, 'venti.jpg'),
-(8, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 'keqing.jpg'),
-(29, 'Billy Gate', 'billy@gantx.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 0, '1618827218_5cf23f7330b26292409a.jpg'),
-(30, 'Erwin Edit', 'erwin1@gmail.com', '$2y$10$OVgNatqNiBN1Vd2xulVwyeg3Hv0jtvFZvkXpWwd4JFeficiGCThYW', 1, 'erwin.jpg'),
-(41, 'Makinami', 'makinami@gmail.com', '$2y$10$z7jEnwBvnj4/DBS.gU3f3.zgEiWXTfXZgU2Rs9/8dSiP6jX8q5IEe', 1, 'default.jpg'),
-(47, 'Einstein', 'einstein@gmail.com', '$2y$10$sYRrHcjM3yD/Xzxj5IRZuO2QdZUALmYA9RT6ZkdLQxZewPsT3Pvbu', 1, '1619253568_e98842a3575c1d1b80b1.jpg'),
-(53, '1234567', 'xcc@gmail.com', '$2y$10$RAe.OW6IAoNnIWBkXvMbAeHTbX8rHGCPIUl5esD2OZclnlT8DSMwu', 1, '1620637324_7184a42cf35bfe43875e.jpg');
+INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`, `department`) VALUES
+(1, 'Admin Zero', 'saber.genshin@gmail.com', '$2y$10$QXi1weaBbKVPYI4/0pyAiuFpv9cB7dFOhHAhjU4HLCdOHSpyG/ZP.', 0, 'venti.jpg', 'Information Technology'),
+(8, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 'keqing.jpg', 'Dokumentasi Aset'),
+(22, 'Daemon Yukata', 'yukatadae@gmail.com', '$2y$10$XNRdXAxp7x8XXSGZWMs8Se9kvQPNnI63FVu3zQMO2mDo0fNbqa/gG', 0, 'default.jpg', 'Warehouse'),
+(29, 'Billy Gate', 'billy@gantx.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 0, '1618827218_5cf23f7330b26292409a.jpg', 'Human Resource'),
+(30, 'Erwin Edit', 'erwin1@gmail.com', '$2y$10$ejFPqAjB/GTlLSjqA323NO5bBYk/SlyUswJOAPh6Ojp16zSiEXtdO', 1, 'erwin.jpg', 'Inventarisasi Aset'),
+(41, 'Makinami', 'makinami@gmail.com', '$2y$10$z7jEnwBvnj4/DBS.gU3f3.zgEiWXTfXZgU2Rs9/8dSiP6jX8q5IEe', 1, 'default.jpg', 'Spesifikasi Aset'),
+(47, 'Einstein', 'einstein@gmail.com', '$2y$10$qkWqu1ODqi.744EeV3Re3OqBtLYnH8wxD4csHrJEylRU1jp.Ppgqi', 1, '1621160514_e284552c0c826a53b21a.jpg', 'Dokumentasi Aset'),
+(53, '1234567', 'xcc@gmail.com', '$2y$10$RAe.OW6IAoNnIWBkXvMbAeHTbX8rHGCPIUl5esD2OZclnlT8DSMwu', 1, 'default.jpg', 'Information Technology'),
+(69, 'Alfha Fierly Firdaus', 'alfhaff@invenbar.ac.id', '$2y$10$eNqNZPl9poDdVMwN2c1XFeCWN2PeCTnFS8GoYQTO8YJnd6YlVvQhe', 0, 'default.jpg', 'Founder');
 
 -- --------------------------------------------------------
 
@@ -339,7 +349,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `alur_barang`
 --
 ALTER TABLE `alur_barang`
-  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -357,13 +367,13 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `user_activity`

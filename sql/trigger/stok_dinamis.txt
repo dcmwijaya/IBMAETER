@@ -1,0 +1,10 @@
+CREATE TRIGGER `stok_dinamis` AFTER INSERT ON `alur_barang`
+ FOR EACH ROW BEGIN
+IF (new.`request`="Masuk") THEN
+	UPDATE `item` SET `item`.`stok` = `item`.`stok` + new.`ubah_stok`
+	WHERE `item`.`nama_item` = new.`nama_barang`;
+ELSE
+UPDATE `item` SET `item`.`stok` = `item`.`stok` - new.`ubah_stok`
+	WHERE `item`.`nama_item` = new.`nama_barang`;
+    END IF;
+    END

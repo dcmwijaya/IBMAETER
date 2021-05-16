@@ -101,7 +101,10 @@
 		$('#table_perizinan').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
-			paging: false
+			paging: false,
+			"order": [
+				[0, "desc"]
+			]
 		});
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
@@ -358,16 +361,18 @@
 	// }
 </script>
 
-<!-- arsip komplain -->
+<!-- arsip komplain dan perizinan -->
 <script>
 	$(document).ready(function() {
-		// get Accept Komplain
+		// get Accept Komplain dan perizinan 
 		$('.btn-acc-item').on('click', function() {
 			// get data from button accept
 			const noKomp = $(this).data('no');
+			const reqs = $(this).data('reqs');
 
 			// Set data to Form accept
 			$('#acc-nomor').val(noKomp);
+			$('#acc-reqs').val(reqs);
 		});
 
 		// get Decline Komplain

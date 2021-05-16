@@ -668,6 +668,53 @@ class Admin extends BaseController
 		}
 	}
 
+	public function AksiPerizinan()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				if (!$this->validate([
+					'komen' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'Komen tidak boleh lebih dari 256 huruf & karakter.']
+					]
+				])) {
+					session()->setFlashdata('komenPerz', '<div class="notif-failed">Perizinan Barang Gagal !</div>');
+					return redirect()->to('/Admin/Perizinan')->withInput();
+				}
+
+				// mengambil data
+				$no_log = $this->request->getPost('no_log');
+				$reqs = $this->request->getPost('reqs');
+				$status = $this->request->getPost('status');
+				$ket = $this->request->getPost('komen');
+
+				// jika komen kosong
+				if ($ket == null) {
+					$ket = "-";
+				}
+
+				$data = [
+					'request' => str_replace("'", "", htmlspecialchars($reqs, ENT_QUOTES)),
+					'status' => str_replace("'", "", htmlspecialchars($status, ENT_QUOTES)),
+					'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES)),
+					'tgl' => date("Y-m-d h:i:sa")
+				];
+
+				// upload tabel 'arsip_komplain'
+				$this->LogModel->updateLogItem($data, $no_log);
+
+				session()->setFlashdata('komenPerz', '<div class="notif-success">Perizinan Barang Berhasil !</div>');
+				return redirect()->to('/Admin/Perizinan');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	// ======================= Edit Pengumuman ========================
 
 	public function Adminpengumuman()

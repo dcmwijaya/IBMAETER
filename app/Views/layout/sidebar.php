@@ -43,7 +43,11 @@
 											<i class="fas fa-users fa-fw me-3"></i><span>Data Pekerja</span>
 										</a>
 										<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
+											<div class="notifs">
+												<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
+												<span class="badge badge-danger px-1 ml-1">4</span>
+												<span class="sr-only">unread messages</span>
+											</div>
 										</a>
 										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
@@ -52,7 +56,11 @@
 											<i class="fas fa-book-reader fa-fw me-3"></i><span>Aktivitas User</span>
 										</a>
 										<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
+											<div class="notifs">
+												<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
+												<span class="badge badge-danger px-1 ml-1">1</span>
+												<span class="sr-only">unread messages</span>
+											</div>
 										</a>
 									</div>
 								</div>
@@ -76,7 +84,11 @@
 											<i class="fas fa-clipboard fa-fw me-3"></i><span>Absensi Pekerja</span>
 										</a>
 										<a href="<?= base_url('Menu/Pengumuman') ?>" class="<?= ($CurrentMenu == 'pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
+											<div class="notifs">
+												<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
+												<span class="badge badge-danger px-1 ml-1">1</span>
+												<span class="sr-only">unread messages</span>
+											</div>
 										</a>
 										<a href="<?= base_url('Menu/LaporanBulanan') ?>" class="<?= ($CurrentMenu == 'laporanBulanan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-print fa-fw me-3"></i><span>Laporan Bulanan</span>

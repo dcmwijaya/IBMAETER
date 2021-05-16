@@ -9,9 +9,21 @@
 <!--Main layout-->
 <main class="bg-dark">
     <div class="container pt-4">
-        <?php if (session()->getFlashdata('komenKomp')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?= session()->getFlashdata('komenKomp'); ?>
+        <?php if (session()->getFlashdata('komenPerz')) : ?>
+            <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+                <div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
+                    <div class="toast-header bg-dark text-light">
+                        <img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
+                        <strong class="mr-auto">INVENBAR CI-4</strong>
+                        <small>Baru Saja</small>
+                        <button type="button" class="ml-2 mb-1 close text-light" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('komenPerz'); ?>
+                    </div>
+                </div>
             </div>
         <?php endif ?>
         <section class="mb-4">
@@ -39,7 +51,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <table id="table_komplain" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
+                                <table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
                                     <thead>
                                         <tr>
                                             <th>Waktu</th>
@@ -55,26 +67,32 @@
                                     <tbody>
                                         <?php foreach ($log_item as $log) : ?>
                                             <tr>
-                                                <td><?= $log['tgl']; ?></td>
+                                                <td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
                                                 <td><?= $log['nama_pekerja']; ?></td>
-                                                <td><?= $log['nama_barang']; ?></td>
+                                                <td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
                                                 <td><?= $log['request']; ?></td>
                                                 <td><?= $log['ubah_stok']; ?></td>
                                                 <td>
                                                     <?php if ($log['status'] == 'Diterima') : ?>
-                                                        <div type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-check fa-fw"></i>Diterima</div>
+                                                        <span class=" py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>
                                                     <?php elseif ($log['status'] == 'Ditolak') : ?>
-                                                        <button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right"><i class="fas fa-times fa-fw"></i>DiTolak</button>
+                                                        <span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>
                                                     <?php else : ?>
-                                                        <button type="button" class="btn btn-warning btn-sm btn-acc-item px-2 rounded-left"><i class="fas fa-spinner fa-fw"></i>Proses...</button>
+                                                        <span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;background-color: orange;"><i class="fas fa-spinner fa-fw mr-1"></i>PENDING</span>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td><?= $log['ket']; ?></td>
+                                                <td style="<?= $tdStyle; ?>"><?= $log['ket']; ?></td>
                                                 <td>
-                                                    <div class="btn-group" role="group" aria-label="inoutcom">
-                                                        <button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
-                                                        <button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
-                                                    </div>
+                                                    <?php if ($log['status'] == 'Pending') : ?>
+                                                        <div class="btn-group" role="group" aria-label="inoutcom">
+                                                            <button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
+                                                        </div>
+                                                    <?php else : ?>
+                                                        <div class="info-progress">
+                                                            <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -82,6 +100,9 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <small><b>*NB :</b> jika terdapat <b style="color: red;">kesalahan</b> dalam melakukan perizinan, mohon untuk melakukan <b style="color: sandybrown;">permintaan</b> perizinan ulang dari menu kelola barang.</small>
                     </div>
                 </div>
         </section>
@@ -99,7 +120,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('Admin/arsipKomplain'); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="acc_komentar">Komentar</label>
@@ -109,8 +130,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" id="acc-nomor" name="no_komplain">
-                        <input type="hidden" id="status" name="status" value="accepted">
+                        <input type="hidden" id="acc-nomor" name="no_log">
+                        <input type="hidden" id="acc-stok" name="ubah_stok">
+                        <input type="hidden" id="acc-reqs" name="reqs">
+                        <input type="hidden" id="accepted" name="status" value="Diterima">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
                     </div>
@@ -131,7 +154,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('Admin/arsipKomplain'); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="rjc_komentar">Komentar</label>
@@ -141,8 +164,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" id="dec-nomor" name="no_komplain">
-                        <input type="hidden" id="status" name="status" value="rejected">
+                        <input type="hidden" id="dec-nomor" name="no_log">
+                        <input type="hidden" id="rejected" name="status" value="Ditolak">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Setuju & Selesai</button>
                     </div>
