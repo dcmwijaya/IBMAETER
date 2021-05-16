@@ -71,6 +71,7 @@ foreach ($us as $usc) {
 											<th>Foto</th>
 											<th>Nama User</th>
 											<th>E-mail</th>
+											<th>Department</th>
 											<th>Role</th>
 											<th>Aksi</th>
 										</tr>
@@ -83,6 +84,7 @@ foreach ($us as $usc) {
 												<td><img width="100" src="<?= base_url('../img/user') . "/" .  $u['picture']; ?> " alt=""></td>
 												<td><?= $u['nama']; ?></td>
 												<td><?= $u['email']; ?></td>
+												<td><?= $u['department']; ?></td>
 												<td><?= ($u['role'] == 0) ? 'Admin' : 'Pekerja' ?></td>
 												<td>
 													<div class="btn-group" role="group" aria-label="user_action">
