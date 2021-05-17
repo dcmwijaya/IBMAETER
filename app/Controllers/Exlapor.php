@@ -63,7 +63,7 @@ class Exlapor extends BaseController
 					"user" => $this->adminModel->getUser(),
 				];
 
-				return view('admin/exxlsUser', $data);
+				return view('admin/export/exxlsUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -83,7 +83,7 @@ class Exlapor extends BaseController
 					"user" => $this->adminModel->getUser(),
 				];
 
-				return view('admin/exdocUser', $data);
+				return view('admin/export/exdocUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -103,7 +103,7 @@ class Exlapor extends BaseController
 					"user" => $this->adminModel->getUser(),
 				];
 
-				$html = view('admin/expdfUser', $data);
+				$html = view('admin/export/expdfUser', $data);
 
 				$dompdf = new Dompdf();
 				$dompdf->loadHtml($html);
@@ -132,7 +132,7 @@ class Exlapor extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 
-				return view('admin/exxlsKomplain', $data);
+				return view('admin/export/exxlsKomplain', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -155,7 +155,7 @@ class Exlapor extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 
-				return view('admin/exdocKomplain', $data);
+				return view('admin/export/exdocKomplain', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -178,7 +178,7 @@ class Exlapor extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 
-				$html = view('admin/expdfKomplain', $data);
+				$html = view('admin/export/expdfKomplain', $data);
 
 				$dompdf = new Dompdf();
 				$dompdf->loadHtml($html);
@@ -203,7 +203,7 @@ class Exlapor extends BaseController
 					"title" => "EXCEL ABSENSI | INVENBAR"
 				];
 
-				return view('admin/exxlsAbsensi', $data);
+				return view('admin/export/exxlsAbsensi', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -222,7 +222,7 @@ class Exlapor extends BaseController
 					"title" => "DOC ABSENSI | INVENBAR"
 				];
 
-				return view('admin/exdocAbsensi', $data);
+				return view('admin/export/exdocAbsensi', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -241,7 +241,7 @@ class Exlapor extends BaseController
 					"title" => "PDF ABSENSI | INVENBAR"
 				];
 
-				$html = view('admin/expdfAbsensi', $data);
+				$html = view('admin/export/expdfAbsensi', $data);
 
 				$dompdf = new Dompdf();
 				$dompdf->loadHtml($html);
@@ -266,7 +266,7 @@ class Exlapor extends BaseController
 					"title" => "EXCEL AKTIVITAS | INVENBAR"
 				];
 
-				return view('admin/exxlsAktivitas', $data);
+				return view('admin/export/exxlsAktivitas', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -285,7 +285,7 @@ class Exlapor extends BaseController
 					"title" => "DOC AKTIVITAS | INVENBAR"
 				];
 
-				return view('admin/exdocAktivitas', $data);
+				return view('admin/export/exdocAktivitas', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -304,7 +304,7 @@ class Exlapor extends BaseController
 					"title" => "PDF AKTIVITAS | INVENBAR"
 				];
 
-				$html = view('admin/expdfAktivitas', $data);
+				$html = view('admin/export/expdfAktivitas', $data);
 
 				$dompdf = new Dompdf();
 				$dompdf->loadHtml($html);
@@ -329,7 +329,7 @@ class Exlapor extends BaseController
 					"title" => "PDF USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 				];
-				return view('admin/printUser', $data);
+				return view('admin/print/printUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -352,7 +352,7 @@ class Exlapor extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 
-				return view('admin/printKomplain', $data);
+				return view('admin/print/printKomplain', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -371,7 +371,7 @@ class Exlapor extends BaseController
 					"title" => "PDF AKTIVITAS | INVENBAR"
 				];
 
-				return view('admin/printAktivitas', $data);
+				return view('admin/print/printAktivitas', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -390,7 +390,7 @@ class Exlapor extends BaseController
 					"title" => "PDF Absensi | INVENBAR"
 				];
 
-				return view('admin/printAbsensi', $data);
+				return view('admin/print/printAbsensi', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -412,7 +412,7 @@ class Exlapor extends BaseController
 				"item" => $this->barangModel->getItems()
 			];
 
-			return view('global/exxlsBarang', $data);
+			return view('global/export/exxlsBarang', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -426,7 +426,7 @@ class Exlapor extends BaseController
 				"item" => $this->barangModel->getItems()
 			];
 
-			return view('global/exdocBarang', $data);
+			return view('global/export/exdocBarang', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -440,7 +440,7 @@ class Exlapor extends BaseController
 				"item" => $this->barangModel->getItems()
 			];
 
-			$html = view('global/expdfBarang', $data);
+			$html = view('global/export/expdfBarang', $data);
 
 			$dompdf = new Dompdf();
 			$dompdf->loadHtml($html);
@@ -459,7 +459,7 @@ class Exlapor extends BaseController
 				"title" => "EXCEL SPESIFIKASI | INVENBAR"
 			];
 
-			return view('global/exxlsSpesifikasi', $data);
+			return view('global/export/exxlsSpesifikasi', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -472,7 +472,7 @@ class Exlapor extends BaseController
 				"title" => "DOC SPESIFIKASI | INVENBAR"
 			];
 
-			return view('global/exdocSpesifikasi', $data);
+			return view('global/export/exdocSpesifikasi', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -485,7 +485,7 @@ class Exlapor extends BaseController
 				"title" => "PDF SPESIFIKASI | INVENBAR"
 			];
 
-			$html = view('global/expdfSpesifikasi', $data);
+			$html = view('global/export/expdfSpesifikasi', $data);
 
 			$dompdf = new Dompdf();
 			$dompdf->loadHtml($html);
@@ -512,7 +512,7 @@ class Exlapor extends BaseController
 				"sc7" => $this->barangModel->stockclass7()
 			];
 
-			return view('global/printChart1', $data);
+			return view('global/print/printChart1', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -533,7 +533,7 @@ class Exlapor extends BaseController
 				"sc7" => $this->barangModel->stockclass7()
 			];
 
-			return view('global/printChart2', $data);
+			return view('global/print/printChart2', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -552,7 +552,7 @@ class Exlapor extends BaseController
 				"sj5" => $this->barangModel->stockjenis5()
 			];
 
-			return view('global/printChart3', $data);
+			return view('global/print/printChart3', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -571,7 +571,7 @@ class Exlapor extends BaseController
 				"sj5" => $this->barangModel->stockjenis5()
 			];
 
-			return view('global/printChart4', $data);
+			return view('global/print/printChart4', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -585,7 +585,7 @@ class Exlapor extends BaseController
 				"item" => $this->barangModel->getItems()
 			];
 
-			return view('global/printBarang', $data);
+			return view('global/print/printBarang', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -598,7 +598,7 @@ class Exlapor extends BaseController
 				"title" => "PDF SPESIFIKASI | INVENBAR"
 			];
 
-			return view('global/printSpesifikasi', $data);
+			return view('global/print/printSpesifikasi', $data);
 		} else {
 			return redirect()->to('/login');
 		}

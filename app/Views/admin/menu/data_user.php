@@ -72,6 +72,7 @@ foreach ($us as $usc) {
 											<th>Nama User</th>
 											<th>E-mail</th>
 											<th>Department</th>
+											<th>Gender</th>
 											<th>Role</th>
 											<th>Aksi</th>
 										</tr>
@@ -85,6 +86,7 @@ foreach ($us as $usc) {
 												<td><?= $u['nama']; ?></td>
 												<td><?= $u['email']; ?></td>
 												<td><?= $u['department']; ?></td>
+												<td>Male/Female</td>
 												<td><?= ($u['role'] == 0) ? 'Admin' : 'Pekerja' ?></td>
 												<td>
 													<div class="btn-group" role="group" aria-label="user_action">

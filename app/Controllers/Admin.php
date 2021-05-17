@@ -61,7 +61,7 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					"us" => $this->adminModel->countUser()
 				];
-				return view('admin/data_user', $data);
+				return view('admin/menu/data_user', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -313,7 +313,7 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'validation' => \Config\Services::Validation()
 				];
-				return view('admin/perizinan', $data);
+				return view('admin/menu/perizinan', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -387,7 +387,7 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'validation' => \Config\Services::Validation()
 				];
-				return view('admin/pengumuman', $data);
+				return view('admin/menu/pengumuman', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -434,7 +434,7 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'absensi' => $this->absensiModel->getAbsen()
 				];
-				return view('admin/logUser', $data);
+				return view('admin/menu/logUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -462,7 +462,7 @@ class Admin extends BaseController
 					'arsipKomp' => $this->arsipKompModel->getAll(),
 					'validation' => \Config\Services::Validation()
 				];
-				return view('admin/komplainUser', $data);
+				return view('admin/menu/komplainUser', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
