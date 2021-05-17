@@ -48,16 +48,16 @@ foreach ($us as $usc) {
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_user"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
-									<a type="button" href="<?= base_url('Admin/pdfprintUser'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<a type="button" href="<?= base_url('exlapor/pdfprintUser'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/exceluser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i> Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/docuser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i> Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('Admin/pdfuser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i> Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/exceluser'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i> Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/docuser'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i> Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/pdfuser'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i> Pdf</a>
 									</div>
 								</div>
 							</div>

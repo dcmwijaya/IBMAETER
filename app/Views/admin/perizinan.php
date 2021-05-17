@@ -42,10 +42,10 @@
                                         <i class="fas fa-fw fa-file"></i> Export
                                     </button>
                                     <div class="dropdown-menu dm-export">
-                                        <a class="dropdown-item dm-export-item" href="<?= base_url('Admin/excelkomplain'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-                                        <a class="dropdown-item dm-export-item" href="<?= base_url('Admin/dockomplain'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+                                        <a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="xls" onclick="return false;"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+                                        <a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="doc" onclick="return false;"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
                                     </div>
-                                    <a href="<?= base_url('Admin/pdfprintKomplain'); ?>" id="item_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+                                    <a href="<?= base_url('exlapor/#'); ?>" id="item_pdf" onclick="return false;" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
                                 </div>
                             </div>
                         </div>

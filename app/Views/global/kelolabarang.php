@@ -23,7 +23,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
-									<a type="button" href="<?= base_url('menu/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<a type="button" href="<?= base_url('exlapor/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
 								</div>
 								<div class="flex-fill">
@@ -31,9 +31,9 @@
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/excelbarang'); ?>" id="xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/docbarang'); ?>" id="doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/pdfbarang'); ?>" id="pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
@@ -101,16 +101,16 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<a type="button" href="<?= base_url('exlapor/#'); ?>" id="izin_pdf" onclick="return false;" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_xls" onclick="return false;"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_doc" onclick="return false;"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_pdf" onclick="return false;"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
@@ -170,16 +170,16 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<a type="button" href="<?= base_url('menu/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<a type="button" href="<?= base_url('exlapor/pdfprintSpesifikasi'); ?>" id="spesifikasi_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('menu/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/excelspesifikasi'); ?>" id="spesifikasi_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/docspesifikasi'); ?>" id="spesifikasi_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/pdfspesifikasi'); ?>" id="spesifikasi_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
