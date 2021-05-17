@@ -45,7 +45,7 @@
 										<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<div class="notifs">
 												<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
-												<span class="badge badge-danger px-1 ml-1">4</span>
+												<span class="badge badge-danger px-1 ml-1"><?= ($log_notifs > 0) ? $log_notifs : ''; ?></span>
 												<span class="sr-only">unread messages</span>
 											</div>
 										</a>
@@ -58,7 +58,7 @@
 										<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<div class="notifs">
 												<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
-												<span class="badge badge-danger px-1 ml-1">1</span>
+												<span class="badge badge-danger px-1 ml-1"><?= ($komplain_notifs > 0) ? $komplain_notifs : ''; ?></span>
 												<span class="sr-only">unread messages</span>
 											</div>
 										</a>

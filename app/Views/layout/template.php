@@ -364,24 +364,62 @@
 <!-- arsip komplain dan perizinan -->
 <script>
 	$(document).ready(function() {
+		<?php
+		$masukSpan = '<span class="py-2 badge badge-success" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-down fa-fw mr-1"></i>';
+		$keluarSpan = '<span class="py-2 badge badge-danger" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-up fa-fw mr-1"></i>';
+		?>
 		// get Accept Komplain dan perizinan 
 		$('.btn-acc-item').on('click', function() {
 			// get data from button accept
 			const noKomp = $(this).data('no');
+			// perzinaan
 			const reqs = $(this).data('reqs');
+			const nama = $(this).data('nama');
+			const stok = $(this).data('stok');
+			const pekerja = $(this).data('pekerja');
+			const tgl = $(this).data('tgl');
+			const ket = $(this).data('ket');
 
 			// Set data to Form accept
 			$('#acc-nomor').val(noKomp);
 			$('#acc-reqs').val(reqs);
+			$('#Accept #TerimaNama').val(nama);
+			if (reqs == "Masuk") {
+				$("#Accept #TerimaReqs").html(`<?= $masukSpan ?> ${reqs}</span>`);
+			} else {
+				$("#Accept #TerimaReqs").html(`<?= $keluarSpan ?> ${reqs}</span>`);
+			}
+			$('#Accept #TerimaUbahStok').val(stok);
+			$('#Accept #TerimaPekerja').val(pekerja);
+			$('#Accept #TerimaTgl').val(tgl);
+			$('#Accept #TerimaKet').val(ket);
 		});
 
-		// get Decline Komplain
+		// get Decline Komplain dan perizinan
 		$('.btn-rjc-item').on('click', function() {
 			// get data from button accept
 			const noKomp = $(this).data('no');
+			//perzinaan
+			const reqs = $(this).data('reqs');
+			const nama = $(this).data('nama');
+			const stok = $(this).data('stok');
+			const pekerja = $(this).data('pekerja');
+			const tgl = $(this).data('tgl');
+			const ket = $(this).data('ket');
 
 			// Set data to Form decline
 			$('#dec-nomor').val(noKomp);
+			$('#dec-reqs').val(reqs);
+			$('#Rejected #TolakNama').text(nama);
+			if (reqs == "Masuk") {
+				$("#Rejected #TolakReqs").html(`<?= $masukSpan ?> ${reqs}</span>`);
+			} else {
+				$("#Rejected #TolakReqs").html(`<?= $keluarSpan ?> ${reqs}</span>`);
+			}
+			$('#Rejected #TolakUbahStok').text(stok);
+			$('#Rejected #TolakPekerja').val(pekerja);
+			$('#Rejected #TolakTgl').val(tgl);
+			$('#Rejected #TolakKet').val(ket);
 		});
 
 		// get Bukti Image

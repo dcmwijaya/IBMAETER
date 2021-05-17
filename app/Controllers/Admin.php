@@ -58,6 +58,8 @@ class Admin extends BaseController
 					'validation' => \Config\Services::validation(),
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					"us" => $this->adminModel->countUser()
 				];
 				return view('admin/data_user', $data);
@@ -657,6 +659,8 @@ class Admin extends BaseController
 					'komplain' => $this->komplainModel->getKomplain(),
 					'arsipKomp' => $this->arsipKompModel->getAll(),
 					"log_item" => $this->LogModel->ReadLogItem(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/perizinan', $data);
@@ -695,6 +699,10 @@ class Admin extends BaseController
 					$ket = "-";
 				}
 
+				// if ($status == "Ditolak") {
+				// 	$reqs = $reqs . '_F';
+				// }
+
 				$data = [
 					'request' => str_replace("'", "", htmlspecialchars($reqs, ENT_QUOTES)),
 					'status' => str_replace("'", "", htmlspecialchars($status, ENT_QUOTES)),
@@ -729,6 +737,8 @@ class Admin extends BaseController
 					"CurrentMenu" => "edit_pengumuman",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/pengumuman', $data);
@@ -774,6 +784,8 @@ class Admin extends BaseController
 					"CurrentMenu" => "logUser",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'absensi' => $this->absensiModel->getAbsen()
 				];
 				return view('admin/logUser', $data);
@@ -798,6 +810,8 @@ class Admin extends BaseController
 					"CurrentMenu" => "komplainUser",
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'komplain' => $this->komplainModel->getKomplain(),
 					'arsipKomp' => $this->arsipKompModel->getAll(),
 					'validation' => \Config\Services::Validation()

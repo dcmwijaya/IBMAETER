@@ -69,7 +69,9 @@ class Menu extends BaseController
 				"info" => $this->newsModel->showTask(),
 				"item" => $this->barangModel->getItems(),
 				"log_item" => $this->LogModel->ReadLogItem(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/kelolabarang', $data);
 		} else {
@@ -125,6 +127,13 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			// $id = $this->request->getPost('id_item');
+			$ket = $this->request->getPost('ket');
+
+			// jika komen kosong
+			if ($ket == null) {
+				$ket = "-";
+			}
+
 			$data = array(
 				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
@@ -132,7 +141,7 @@ class Menu extends BaseController
 				'request' => str_replace("'", "", htmlspecialchars('Masuk', ENT_QUOTES)),
 				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
 				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_in'), ENT_QUOTES)),
-				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
+				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
 			return redirect()->to('kelolabarang');
@@ -145,6 +154,13 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			// $id = $this->request->getPost('id_item');
+			$ket = $this->request->getPost('ket');
+
+			// jika komen kosong
+			if ($ket == null) {
+				$ket = "-";
+			}
+
 			$data = array(
 				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
@@ -152,7 +168,7 @@ class Menu extends BaseController
 				'request' => str_replace("'", "", htmlspecialchars('Keluar', ENT_QUOTES)),
 				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
 				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_out'), ENT_QUOTES)),
-				'ket' => str_replace("'", "", htmlspecialchars($this->request->getPost('ket'), ENT_QUOTES))
+				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
 			return redirect()->to('kelolabarang');
@@ -169,7 +185,9 @@ class Menu extends BaseController
 				"title" => "Pengumuman | INVENBAR",
 				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/user_pengumuman.php', $data);
 		} else {
@@ -185,7 +203,9 @@ class Menu extends BaseController
 				"title" => "My Profile | INVENBAR",
 				"CurrentMenu" => "profakun",
 				'user' => $this->userModel->getUser($email),
-				"info" => $this->newsModel->showTask()
+				"info" => $this->newsModel->showTask(),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/myprofile', $data);
 		} else {
@@ -203,7 +223,9 @@ class Menu extends BaseController
 				"CurrentMenu" => "profedit",
 				"info" => $this->newsModel->showTask(),
 				'validation' => \Config\Services::Validation(),
-				'user' => $this->userModel->getUserId($uid)
+				'user' => $this->userModel->getUserId($uid),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/editprofile', $data);
 		} else {
@@ -538,6 +560,8 @@ class Menu extends BaseController
 				"CurrentMenu" => "absensi",
 				"info" => $this->newsModel->showTask(),
 				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d"))
 			];
 			// return view('global/absensi', $data);
@@ -554,7 +578,9 @@ class Menu extends BaseController
 				"title" => "Cetak Laporan | INVENBAR",
 				"CurrentMenu" => "laporanBulanan",
 				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/laporanBulanan', $data);
 		} else {
@@ -570,6 +596,8 @@ class Menu extends BaseController
 				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
 				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				"class" => $this->barangModel->invenclass(),
 				"category" => $this->barangModel->jenis(),
 				"sc1" => $this->barangModel->stockclass1(),
@@ -608,7 +636,9 @@ class Menu extends BaseController
 				"CurrentMenu" => "pengaduan",
 				"info" => $this->newsModel->showTask(),
 				'validation' => \Config\Services::Validation(),
-				'user' => $this->userModel->getUserId(session('uid'))
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
 			return view('global/pengaduan', $data);
 		} else {

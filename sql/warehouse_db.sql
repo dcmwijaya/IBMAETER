@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2021 at 09:09 PM
+-- Generation Time: May 17, 2021 at 06:44 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -68,24 +68,36 @@ INSERT INTO `alur_barang` (`no_log`, `nama_pekerja`, `tgl`, `nama_barang`, `requ
 (26, 'Billy Gate', '2021-05-15 21:38:00', 'Antangin JRG', 'Masuk', 'Diterima', 14, 'PPP'),
 (27, 'Billy Gate', '2021-05-16 06:29:43', 'Mentari SimCard', 'Keluar', 'Diterima', 20, 'Why'),
 (28, 'Billy Gate', '2021-05-16 07:09:09', 'Antangin JRG', 'Masuk', 'Diterima', 40, '-'),
-(29, 'Billy Gate', '2021-05-15 21:41:00', 'So Clean 320ml', 'Masuk', 'Pending', 38, 'Perlu ditambah Supplier'),
 (31, 'Billy Gate', '2021-05-16 06:25:42', 'Soda Gembira 210ml', 'Masuk', 'Diterima', 6, 'Save Palestina'),
 (32, 'Billy Gate', '2021-05-16 06:52:42', 'Dodo Mainanmu', 'Masuk', 'Ditolak', 13, 'Admin : Billy Gate\r\nBensin Abis'),
 (36, 'Billy Gate', '2021-05-16 07:11:35', 'Mixin 210ml', 'Masuk', 'Diterima', 46, 'We Stand With Palestine!'),
-(37, 'Billy Gate', '2021-05-16 19:10:00', 'Madu Kuat 210ml', 'Masuk', 'Pending', 100, '-'),
-(38, 'Billy Gate', '2021-05-16 07:33:23', 'Minyak Pijat 210ml', 'Keluar', 'Diterima', 20, '-');
+(38, 'Billy Gate', '2021-05-16 07:33:23', 'Minyak Pijat 210ml', 'Keluar', 'Diterima', 20, '-'),
+(39, 'Billy Gate', '2021-05-17 02:24:50', 'So Clean 320ml', 'Masuk', 'Diterima', 100, 'Tes Count Notifs Berhasil\r\n'),
+(42, 'Billy Gate', '2021-05-17 02:35:01', 'Betadine 60ml', 'Masuk', 'Diterima', 100, 'Cek'),
+(43, 'Billy Gate', '2021-05-17 02:38:13', 'So Clean 320ml', 'Keluar', 'Ditolak', 21, '-'),
+(44, 'Billy Gate', '2021-05-17 02:39:07', 'Betadine 60ml', 'Keluar', 'Ditolak', 22, '-'),
+(46, 'Billy Gate', '2021-05-17 02:56:35', 'Adem Sari 10gr', 'Masuk', 'Diterima', 500, 'cek trigger acc=&gt;masuk'),
+(47, 'Billy Gate', '2021-05-17 02:57:25', 'Mentari SimCard 20GB/Bulan', 'Masuk', 'Ditolak', 500, 'cek trigger dec=&gt;masuk\r\n'),
+(48, 'Billy Gate', '2021-05-17 14:53:00', 'Sabun Mandieh', 'Masuk', 'Pending', 98, 'cek cek'),
+(49, 'Billy Gate', '2021-05-17 04:48:53', 'Baterai ABC 80gr', 'Masuk', 'Diterima', 98, '-'),
+(50, 'Billy Gate', '2021-05-17 03:08:27', 'Mentari SimCard 20GB/Bulan', 'Masuk', 'Diterima', 500, 'cek trigger acc=&gt;masuk'),
+(51, 'Billy Gate', '2021-05-17 03:06:29', 'Adem Sari 10gr', 'Keluar', 'Diterima', 30, 'cek trigger acc=&gt;keluar'),
+(52, 'Billy Gate', '2021-05-17 03:07:21', 'Minyak Pijat 210ml', 'Keluar', 'Ditolak', 30, 'cek trigger dec=&gt;keluar'),
+(53, 'Billy Gate', '2021-05-17 15:51:00', 'Antangin JRG', 'Keluar', 'Pending', 22, '-');
 
 --
 -- Triggers `alur_barang`
 --
 DELIMITER $$
 CREATE TRIGGER `stok_dinamis` AFTER UPDATE ON `alur_barang` FOR EACH ROW BEGIN
+IF(new.`status`="Diterima") THEN
 IF (new.`request`="Masuk") THEN
 	UPDATE `item` SET `item`.`stok` = `item`.`stok` + new.`ubah_stok`
 	WHERE `item`.`nama_item` = new.`nama_barang`;
-ELSE
+ELSEIF(new.`request`="Keluar") THEN
 UPDATE `item` SET `item`.`stok` = `item`.`stok` - new.`ubah_stok`
 	WHERE `item`.`nama_item` = new.`nama_barang`;
+    END IF;
     END IF;
     END
 $$
@@ -147,20 +159,20 @@ INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`
 (3, 4, 'D014345', 'Sikat WC ARG Medium', 44, 'Padat', 'D', 15000, 500),
 (4, 1, 'A034346', 'Pepsodent 220gr', 44, 'Cair', 'A', 12000, 220),
 (5, 2, 'C014347', 'Dodo Mainanmu', 48, 'Padat', 'C', 32000, 300),
-(8, 3, 'A014348', 'Mentari SimCard 20GB/Bulan', 80, 'Padat', 'A', 80000, 100),
+(8, 3, 'A014348', 'Mentari SimCard 20GB/Bulan', 280, 'Padat', 'A', 80000, 100),
 (9, 2, 'C034349', 'Solonensi Ajaib Herbal', 33, 'Cair', 'C', 4000, 120),
 (10, 2, 'B034350', 'Bearbrando 210ml', 22, 'Cair', 'B', 7500, 220),
-(15, 4, 'C034351', 'So Clean 320ml', 50, 'Cair', 'C', 14000, 370),
-(16, 4, 'B034352', 'Betadine 60ml', 3, 'Cair', 'B', 8000, 120),
-(17, 3, 'B014353', 'Baterai ABC 80gr', 12, 'Padat', 'B', 12000, 40),
+(15, 4, 'C034351', 'So Clean 320ml', 70, 'Cair', 'C', 14000, 370),
+(16, 4, 'B034352', 'Betadine 60ml', 81, 'Cair', 'B', 8000, 120),
+(17, 3, 'B014353', 'Baterai ABC 80gr', 110, 'Padat', 'B', 12000, 40),
 (21, 1, 'F024354', 'Sikat Gigi B', 44, 'Mudah Terbakar', 'F', 8000, 135),
 (22, 3, 'D014355', 'Coklat Atlantis S', 44, 'Padat', 'D', 5000, 158),
 (23, 5, 'C034356', 'Mixin 210ml', 58, 'Cair', 'C', 65000, 197),
-(24, 5, 'C024357', 'Madu Kuat 210ml', 115, 'Mudah Terbakar', 'C', 25000, 400),
+(24, 5, 'C024357', 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C', 25000, 400),
 (26, 5, 'D034358', 'Soda Gembira 210ml', 39, 'Cair', 'D', 10000, 550),
 (27, 5, 'D044359', 'Minyak Pijat 210ml', 60, 'Minyak', 'D', 7800, 250),
 (28, 6, 'A014360', 'El Perfume de cologne 150ml', 22, 'Padat', 'A', 89000, 300),
-(30, 1, 'E014361', 'Adem Sari 10gr', 20, 'Padat', 'E', 2500, 24);
+(30, 1, 'E014361', 'Adem Sari 10gr', 269, 'Padat', 'E', 2500, 24);
 
 -- --------------------------------------------------------
 
@@ -254,7 +266,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`, `department`) VALUES
 (1, 'Admin Zero', 'saber.genshin@gmail.com', '$2y$10$QXi1weaBbKVPYI4/0pyAiuFpv9cB7dFOhHAhjU4HLCdOHSpyG/ZP.', 0, 'venti.jpg', 'Information Technology'),
-(8, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 'keqing.jpg', 'Dokumentasi Aset'),
+(8, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$WGSFqmKE91Tj5J9XD9zWl.a66QuWLozOrXJdE80gFrQxjwfXlG2q6', 0, 'keqing.jpg', 'Dokumentasi Aset'),
 (22, 'Daemon Yukata', 'yukatadae@gmail.com', '$2y$10$XNRdXAxp7x8XXSGZWMs8Se9kvQPNnI63FVu3zQMO2mDo0fNbqa/gG', 0, 'default.jpg', 'Warehouse'),
 (29, 'Billy Gate', 'billy@gantx.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 0, '1618827218_5cf23f7330b26292409a.jpg', 'Human Resource'),
 (30, 'Erwin Edit', 'erwin1@gmail.com', '$2y$10$ejFPqAjB/GTlLSjqA323NO5bBYk/SlyUswJOAPh6Ojp16zSiEXtdO', 1, 'erwin.jpg', 'Inventarisasi Aset'),
@@ -349,7 +361,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `alur_barang`
 --
 ALTER TABLE `alur_barang`
-  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `item`

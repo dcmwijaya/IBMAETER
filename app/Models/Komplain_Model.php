@@ -16,4 +16,11 @@ class Komplain_Model extends Model
         }
         return $this->where(['no_komplain' => $no])->first();
     }
+
+    public function notifsKomplain()
+    {
+        $builder = $this->db->table('komplain');
+        $query = $builder->countAllResults();
+        return $query;
+    }
 }
