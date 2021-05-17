@@ -168,7 +168,7 @@ if (!empty($sj5)) {
 								<i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Room
 								<a class="menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h list"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="<?= base_url('menu/pdfchart1') ?>">Print Chart-1</a>
+									<a class="dropdown-item" href="<?= base_url('exlapor/pdfchart1') ?>">Print Chart-1</a>
 								</div>
 							</div>
 							<div class="card-body content-dashboard">
@@ -215,7 +215,7 @@ if (!empty($sj5)) {
 								<i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Room
 								<a class="menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h list"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="<?= base_url('menu/pdfchart2') ?>">Print Chart-2</a>
+									<a class="dropdown-item" href="<?= base_url('exlapor/pdfchart2') ?>">Print Chart-2</a>
 								</div>
 							</div>
 							<div class="card-body content-dashboard">
@@ -264,7 +264,7 @@ if (!empty($sj5)) {
 								<i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Jenis
 								<a class="menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h list"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="<?= base_url('menu/pdfchart3') ?>">Print Chart-3</a>
+									<a class="dropdown-item" href="<?= base_url('exlapor/pdfchart3') ?>">Print Chart-3</a>
 								</div>
 							</div>
 							<div class="card-body content-dashboard">
@@ -311,7 +311,7 @@ if (!empty($sj5)) {
 								<i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Jenis
 								<a class="menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h list"></i></a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="<?= base_url('menu/pdfchart4') ?>">Print Chart-4</a>
+									<a class="dropdown-item" href="<?= base_url('exlapor/pdfchart4') ?>">Print Chart-4</a>
 								</div>
 							</div>
 							<div class="card-body content-dashboard">
