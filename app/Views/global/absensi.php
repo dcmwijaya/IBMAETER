@@ -23,19 +23,20 @@
 									</div>
 									<div class="col-md-6" id="absensi-user">
 										<div class=" card-body event-description">
-											<form action=" <?= base_url('/Menu/absensiUser'); ?>" method="POST" enctype="multipart/form-data">
+											<form action="<?= ($absensi == false) ? base_url('/menu/absen') : ""; ?>" method="POST" enctype="multipart/form-data">
+												<?= csrf_field(); ?>
 												<div class="form-group absensi-content">
 													<label for="nama_user">
 														<i class="fas fa-user-tie fa-fw me-1"></i>
 														<b>Nama User :</b>
-														<span><small>Ariana Grande</small></span>
+														<span><small><?= $user['nama']; ?></small></span>
 													</label>
 												</div>
 												<div class="form-group absensi-content">
 													<label for="email_user">
 														<i class="fas fa-envelope-open-text fa-fw me-1"></i>
 														<b>Email :</b>
-														<span><small>grande.ariana@gmail.com</small></span>
+														<span><small><?= $user['email']; ?></small></span>
 													</label>
 												</div>
 												<div class="form-group absensi-content">
@@ -50,7 +51,7 @@
 													</label>
 												</div>
 												<div class="my-4">
-													<input type="hidden" class="form-control" value="" name="id_absen">
+													<input type="hidden" class="form-control" value="<?= ($absensi == false) ? $user['email'] : ""; ?>" name="email_absen">
 													<button type="submit" class="btn btn-success btn-komplain col-sm-12 p-4" <?= ($absensi == false) ? "" : "disabled"; ?>>
 														<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-3"></i>Absensi Sekarang</p>
 													</button>

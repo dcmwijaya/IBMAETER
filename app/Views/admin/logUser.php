@@ -43,8 +43,8 @@
 										<?php foreach ($absensi as $abs) : ?>
 											<tr>
 												<td><?= $abs['email_absen']; ?></td>
-												<td><?= $abs['absen']; ?></td>
-												<td><?= $abs['waktu_absen']; ?></td>
+												<td><?= $abs['status_absen']; ?></td>
+												<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</tbody>
