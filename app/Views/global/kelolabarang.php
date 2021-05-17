@@ -204,14 +204,14 @@
 									</thead>
 									<tbody>
 										<?php $no = 1; ?>
-										<?php foreach ($item as $b) : ?>
+										<?php foreach ($spec as $b) : ?>
 											<tr>
 												<td><?= $no ?></td>
 												<td style="<?= $tdStyle; ?>"><?= $b['nama_item'] ?></td>
 												<td><?= $b['kode_barang']; ?></td>
 												<td><?= $b['harga']; ?></td>
 												<td><?= $b['berat']; ?></td>
-												<td style="<?= $tdStyle; ?>">Kasih Trigger select where id_supplier</td>
+												<td style="<?= $tdStyle; ?>"><?= $b['nama_supplier']; ?></td>
 												<?php if (session('role') == 0) : ?>
 													<td>
 														<div class="btn-group" role="group" aria-label="inoutcom">

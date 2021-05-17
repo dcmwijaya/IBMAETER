@@ -31,6 +31,15 @@ class Barang_Model extends Model
         return $query;
     }
 
+    public function joinSupplier()
+    {
+        $builder = $this->db->table('item');
+        $builder->select('*');
+        $builder->join('supplier', 'supplier.id_supplier = item.id_supplier');
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
     // ============================ View Chart =============================//
     public function stockclass1()
     {
