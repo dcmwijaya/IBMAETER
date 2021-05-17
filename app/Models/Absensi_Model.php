@@ -7,7 +7,8 @@ use CodeIgniter\Model;
 class Absensi_Model extends Model
 {
     protected $table = 'absensi';
-    protected $allowedFields = ['uid_absen', 'email_absen', 'absen', 'waktu_absen'];
+    protected $primaryKey = 'id_absen';
+    protected $allowedFields = ['uid_absen', 'email_absen', 'status_absen', 'tgl_absen', 'waktu_absen'];
 
     public function getAbsen($uid = false, $date = false)
     {
@@ -24,6 +25,6 @@ class Absensi_Model extends Model
 
     public function getStatus($uid, $date)
     {
-        return $this->where(['uid_absen' => $uid, 'waktu_absen' => $date])->first();
+        return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date])->first();
     }
 }

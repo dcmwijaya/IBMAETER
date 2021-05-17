@@ -363,11 +363,34 @@ class Menu extends BaseController
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d"))
 			];
-			// return view('global/absensi', $data);
-			dd($data['absensi']);
+			return view('global/absensi', $data);
 		} else {
 			return redirect()->to('/login');
 		}
+	}
+
+	public function absen()
+	{
+		$time = date("h:i:sa");
+		$uid = session('uid');
+
+		// jika waktu lebih dari setengah 8 maka dihitung terlambat
+		if ($time >= "07:30:05") {
+			$status = "Late";
+		} else {
+			// jika tidak terlambat maka akan tercatat 'Attendance'
+			$status = "Attendance";
+		}
+
+		$this->absensiModel->insert([
+			'uid_absen' => $uid,
+			'email_absen' => str_replace("'", "", htmlspecialchars($this->request->getVar('email_absen'), ENT_QUOTES)),
+			'status_absen' => $status,
+			'tgl_absen' => date("Y-m-d"),
+			'waktu_absen' => $time
+		]);
+
+		return redirect()->to('/dashboard');
 	}
 
 	public function LaporanBulanan()
