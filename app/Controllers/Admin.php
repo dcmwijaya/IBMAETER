@@ -346,12 +346,8 @@ class Admin extends BaseController
 
 				// jika komen kosong
 				if ($ket == null) {
-					$ket = "-";
+					$ket = "Tanpa Detail Konteks";
 				}
-
-				// if ($status == "Ditolak") {
-				// 	$reqs = $reqs . '_F';
-				// }
 
 				$data = [
 					'request' => str_replace("'", "", htmlspecialchars($reqs, ENT_QUOTES)),
@@ -497,7 +493,7 @@ class Admin extends BaseController
 
 				// jika komen kosong
 				if ($komen == null) {
-					$komen = "-";
+					$komen = "Terverifikasi!";
 				}
 
 				$komplain = $this->komplainModel->getKomplain($no_komp);

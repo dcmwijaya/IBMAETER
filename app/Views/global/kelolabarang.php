@@ -122,9 +122,9 @@
 								<table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
 									<thead>
 										<tr>
-											<th>Waktu</th>
-											<th>Pekerja</th>
-											<th>Barang</th>
+											<th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
+											<th><i class="fas fa-fw fa-users"></i> Pekerja</th>
+											<th><i class="fas fa-fw fa-box"></i> Barang</th>
 											<th>Request</th>
 											<th>Stok</th>
 											<th>Status</th>
@@ -137,8 +137,21 @@
 												<td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
 												<td><?= $log['nama_pekerja']; ?></td>
 												<td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
-												<td><?= $log['request']; ?></td>
-												<td><?= $log['ubah_stok']; ?></td>
+												<td>
+													<?php if ($log['request'] == "Masuk") : ?>
+														<?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-up " style="color: #06a647 !important; font-size: 18px;"></i>'; ?>
+													<?php else : ?>
+														<?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-down" style="color: #d53651 !important; font-size: 18px;"></i>'; ?>
+													<?php endif; ?>
+												</td>
+												<td style="width: 75px;">
+													<div class="stok text-center bg-dark text-light py-1 rounded">
+														<?= $log['ubah_stok']; ?>
+													</div>
+													<div class="progress mt-2">
+														<div class="progress-bar bg-info" role="progressbar" style="width: <?= $log['ubah_stok']; ?>%" aria-valuenow="<?= $log['ubah_stok']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</td>
 												<td>
 													<?php if ($log['status'] == 'Diterima') : ?>
 														<span class="py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>
@@ -192,7 +205,7 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Barang</th>
+											<th>Nama Barang</th>
 											<th>Kode Barang</th>
 											<th>Harga/Item (Rp)</th>
 											<th>Berat/Item (gr)</th>
@@ -215,8 +228,8 @@
 												<?php if (session('role') == 0) : ?>
 													<td>
 														<div class="btn-group" role="group" aria-label="inoutcom">
-															<button type="button" class="btn btn-warning btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-															<button type="button" class="btn btn-danger btn-sm detl-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+															<button type="button" class="btn btn-dark btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-kode="<?= $b['kode_barang']; ?>" data-harga="<?= $b['harga']; ?>" data-berat="<?= $b['berat']; ?>" data-supplier="<?= $b['nama_supplier']; ?>" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
+															<button type="button" style="background-color: #1687b3;" class="btn text-light btn-sm detl-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-kode="<?= $b['kode_barang']; ?>" data-harga="<?= $b['harga']; ?>" data-berat="<?= $b['berat']; ?>" data-supplier="<?= $b['nama_supplier']; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Detail_spesifikasi"><i class="fas fa-file-alt fa-fw"></i></button>
 														</div>
 													</td>
 												<?php endif; ?>
@@ -228,76 +241,48 @@
 							</div>
 						</div>
 					</div>
+					<small><b>*Untuk Kode barang : </b><span style="color:crimson;"><strong>[1] =</strong></span> alfabet tempat penyimpanan, <span style="color:steelblue;"><strong>[2]~[3] =</strong></span> no Kategori, <span style="color: green;"><strong>[4]~[8] =</strong></span> no produksi</small>
 				</div>
 			</div>
 		</section>
 	</div><br>
 </main>
 
-<!-- Tambah Spesifikasi Modal -->
-<div class="modal fade" id="Tambah_spesifikasi" tabindex="-1" aria-labelledby="Tambah_spesifikasiLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="Tambah_spesifikasiLabel">Tambah Barang Baru </h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form action="<?= base_url('Menu/kelolabarang'); ?>" method="POST" enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="id_sp_barang">Id Barang</label>
-						<input type="text" class="form-control" id="id_sp_barang" placeholder="Tuliskan id barang baru" name="id_sp_item">
-					</div>
-					<div class="form-group">
-						<label for="harga_sp_barang">Harga Barang</label>
-						<input type="number" class="form-control" id="harga_sp_barang" placeholder="Tuliskan harga barang baru" name="harga_sp_item">
-					</div>
-					<div class="form-group">
-						<label for="berat_sp_barang">Berat Barang</label>
-						<input type="text" class="form-control" id="berat_sp_barang" placeholder="Tuliskan berat barang baru" name="berat_sp_item">
-					</div>
-					<div class="form-group">
-						<label for="supplier_sp_barang">Supplier</label>
-						<input type="number" class="form-control" id="supplier_sp_barang" placeholder="Tuliskan supplier barang baru" name="supplier_sp_item">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Tambah Spesifikasi</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- Edit Spesifikasi Modal -->
 <div class="modal fade" id="Edit_spesifikasi" tabindex="-1" aria-labelledby="Edit_spesifikasiLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="Edit_spesifikasiLabel">Edit Spesifikasi Barang "<strong><span id="edit_spesifikasi_item"></span></strong>"</h5>
+			<div class="modal-header bg-dark text-light">
+				<h5 class="modal-title" id="Edit_spesifikasiLabel">Edit Spesifikasi Barang "<strong><span id="edit_spesifikasi_nama" style="color: gold !important;"></span></strong>"</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
 				<form action="<?= base_url('Menu/kelolabarang'); ?>" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="edit_sp_harga">Edit Harga Barang</label>
-						<input type="number" class="form-control" id="edit_sp_harga" placeholder="Tuliskan harga barang baru" name="edit_sp_item_harga">
+						<label for="edit_sp_kode">Kode Barang</label>
+						<input type="text" class="form-control" id="edit_sp_kode" placeholder="Edit Kode Barang..." name="sp_kode">
+						<small><b>*</b> Harus sesuai kode Barang !</small>
 					</div>
 					<div class="form-group">
-						<label for="edit_sp_berat">Edit Berat Barang</label>
-						<input type="text" class="form-control" id="edit_sp_berat" placeholder="Tuliskan berat barang baru" name="edit_sp_item_berat">
+						<label for="edit_sp_harga">Harga/item (Rp)</label>
+						<input type="number" class="form-control" id="edit_sp_harga" placeholder="Edit berat Barang..." name="sp_harga">
 					</div>
 					<div class="form-group">
-						<label for="edit_sp_supplier">Edit Supplier</label>
-						<input type="number" class="form-control" id="edit_sp_supplier" placeholder="Tuliskan supplier barang baru" name="edit_sp_item_supplier">
+						<label for="edit_sp_berat">Berat/item (gr)</label>
+						<input type="number" class="form-control" id="edit_sp_berat" placeholder="Edit berat Barang..." name="sp_berat">
+					</div>
+					<div class="form-group">
+						<label for="edit_sp_supplier">Dikirim oleh Supplier</label>
+						<select class="form-control" id="edit_sp_supplier" name="sp_supplier">
+							<?php foreach ($supplier as $s) :  ?>
+								<option><?= $s['nama_supplier']; ?></option>
+							<?php endforeach; ?>
+						</select>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" name="edit_id_spesifikasi" id="edit_id_spesifikasi">
+						<input type="hidden" name="sp_id_item" id="edit_sp_id_item">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-warning"><i class="fas fa-fw fa-check"></i> Simpan</button>
 					</div>
@@ -308,24 +293,61 @@
 </div>
 
 <!-- Delete Spesifikasi Modal -->
-<div class="modal fade" id="Delete_spesifikasi" tabindex="-1" aria-labelledby="Delete_spesifikasiLabel" aria-hidden="true">
-	<div class="modal-dialog">
+<div class="modal fade" id="Detail_spesifikasi" tabindex="-1" aria-labelledby="Detail_spesifikasiLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="Delete_spesifikasiLabel">Hapus Spesifikasi Barang</h5>
+			<div class="modal-header text-light" style="background-color: #199ac5 !important;">
+				<h5 class="modal-title" id="Detail_spesifikasiLabel"><i class="fas fa-fw fa-folder-open text-light"></i> Detail Spesifikasi Barang</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				Apakah Anda Yakin ingin menghapus spesifikasi barang "<strong><span id="delete_sp_item"></span></strong>" ?
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label for="detail_nama" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Nama Barang</label>
+							<input type="text" class="famebg form-control" id="detail_nama" name="detail_nama" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_stok" class="font-weight-bold"><i class="fas fa-fw fa-cubes"></i> Stok Barang Saat Ini</label>
+							<input type="number" class="famebg form-control" id="detail_stok" name="detail_stok" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_jenis" class="font-weight-bold"><i class="fas fa-fw fa-th-list"></i> Jenis Barang</label>
+							<input type="text" class="famebg form-control" id="detail_jenis" name="detail_jenis" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_penyimpanan" class="font-weight-bold"><i class="fas fa-fw fa-thumbtack"></i> Kelompok Gudang</label>
+							<input type="text" class="famebg form-control" id="detail_penyimpanan" name="detail_penyimpanan" readonly>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label for="detail_kode" class="font-weight-bold"><i class="fas fa-fw fa-tag"></i> Kode Barang</label>
+							<input type="text" class="famebg form-control" id="detail_kode" name="detail_kode" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_harga" class="font-weight-bold"><i class="fas fa-fw fa-comment-dollar"></i> Harga Barang Saat Ini</label>
+							<input type="number" class="famebg form-control" id="detail_harga" name="detail_harga" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_berat" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Berat Barang</label>
+							<input type="text" class="famebg form-control" id="detail_berat" name="detail_berat" readonly>
+						</div>
+						<div class="form-group">
+							<label for="detail_supplier" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Pensuplai Barang</label>
+							<input type="text" class="famebg form-control" id="detail_supplier" name="detail_supplier" readonly>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<form action="<?= base_url('Menu/kelolabarang'); ?>" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="id_item" id="delete_id_sp_item">
-					<button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-					<button type="submit" class="btn btn-danger"><i class="fas fa-fw fa-check"></i> Hapus</button>
-				</form>
+				<!-- <form action="<?= base_url('Menu/kelolabarang'); ?>" method="POST" enctype="multipart/form-data"> -->
+				<input type="hidden" name="detail_item" id="detail_item">
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
+				<button type="button" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</button>
+				<!-- </form> -->
 			</div>
 		</div>
 	</div>
@@ -362,7 +384,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="penyimpanan">Kelompok Kamar</label>
+						<label for="penyimpanan">Tempat Gudang</label>
 						<select class="form-control" id="penyimpanan" name="penyimpanan">
 							<option>A</option>
 							<option>B</option>
@@ -414,7 +436,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="edit_penyimpanan">Kelompok Kamar</label>
+						<label for="edit_penyimpanan">Tempat Gudang</label>
 						<select class="form-control" id="edit_penyimpanan" name="penyimpanan">
 							<option>A</option>
 							<option>B</option>

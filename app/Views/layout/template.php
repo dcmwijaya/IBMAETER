@@ -64,7 +64,8 @@
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
 <!-- stepwizard -->
 <!-- <script src="<?= base_url('../vendor/stepwizard/script.js') ?>"></script> -->
-<!-- malhiu scrollbar plugin -->
+
+<!-------------------------------------------------- Config malhiu scrollbar plugin -------------------------------------------------->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
 <script src="<?= base_url('../vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js') ?>"></script>
 <script>
@@ -79,7 +80,7 @@
 	})(jQuery);
 </script>
 
-<!-- datatables -->
+<!-------------------------------------------------- Config datatables -------------------------------------------------->
 <script type="text/javascript" src="<?= base_url('../vendor/DataTables/js/jquery.dataTables.js') ?>"></script>
 <script>
 	$(document).ready(function() {
@@ -124,9 +125,8 @@
 		$('.toast').toast('show');
 	});
 </script>
-<!-- Custom scripts -->
 
-<!-- sidebar -->
+<!-------------------------------------------------- Config Sidebar -------------------------------------------------->
 <script>
 	$(document).ready(function() {
 		$("#sidebarCollapse").on('click', function(e) {
@@ -147,7 +147,7 @@
 	});
 </script>
 
-<!-- Catch Data for Dashboard -->
+<!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <script>
 	$(document).ready(function() {
 
@@ -202,10 +202,52 @@
 			$('#itemOut #itemOutNama').text(nama);
 			$('#itemOut #itemOutNamaPost').val(nama);
 		});
+
+		// get Edit Spesifikasi
+		$('.detl-edit-item').on('click', function() {
+			// get data from button edit spec
+			const id = $(this).data('id');
+			const nama = $(this).data('nama');
+			const kode = $(this).data('kode');
+			const harga = $(this).data('harga');
+			const berat = $(this).data('berat');
+			const supplier = $(this).data('supplier');
+			// Set data to Form edit spec
+			// $('#itemOut #itemOutId').val(id);
+			$('#Edit_spesifikasi #edit_spesifikasi_nama').text(nama);
+			$('#Edit_spesifikasi #edit_sp_kode').val(kode);
+			$('#Edit_spesifikasi #edit_sp_harga').val(harga);
+			$('#Edit_spesifikasi #edit_sp_berat').val(berat);
+			$('#Edit_spesifikasi #edit_sp_supplier').val(supplier);
+			$('#Edit_spesifikasi #edit_sp_id_item').val(id);
+		});
+		$('.detl-item').on('click', function() {
+			// get data from button keluar
+			const id = $(this).data('id');
+			const nama = $(this).data('nama');
+			const stok = $(this).data('stok');
+			const jenis = $(this).data('jenis');
+			const penyimpanan = $(this).data('penyimpanan');
+			const kode = $(this).data('kode');
+			const harga = $(this).data('harga');
+			const berat = $(this).data('berat');
+			const supplier = $(this).data('supplier');
+
+			// get detail spesifikasi
+			$('#Detail_spesifikasi #detail_nama').val(nama);
+			$('#Detail_spesifikasi #detail_stok').val(stok);
+			$('#Detail_spesifikasi #detail_jenis').val(jenis);
+			$('#Detail_spesifikasi #detail_penyimpanan').val(penyimpanan);
+			$('#Detail_spesifikasi #detail_kode').val(kode);
+			$('#Detail_spesifikasi #detail_harga').val(harga);
+			$('#Detail_spesifikasi #detail_berat').val(berat);
+			$('#Detail_spesifikasi #detail_supplier').val(supplier);
+			$('#Detail_spesifikasi #detail_id').val(id);
+		})
 	});
 </script>
 
-<!-- Catch Data for Data User -->
+<!-------------------------------------------------- Catch Data for Data User -------------------------------------------------->
 <script>
 	function previewEditImg() {
 
@@ -256,7 +298,7 @@
 </script>
 
 
-<!-- edit pengumuman -->
+<!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
 	$(document).ready(function() {
 		// clear input field
@@ -284,7 +326,7 @@
 	}
 </script>
 
-<!-- croppie js -->
+<!-------------------------------------------------- Config croppie js -------------------------------------------------->
 <script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
 <script>
 	$(document).ready(function() { // OVERLOAD MODAL
@@ -343,25 +385,9 @@
 		});
 
 	});
-
-	// function previewAddImg() {
-
-	// 	const add_img = document.querySelector('#add_img');
-	// 	const label_add_img = document.querySelector('.label-img-input');
-	// 	const preview_img = document.querySelector('.img-preview');
-
-	// 	label_add_img.textContent = add_img.files[0].name;
-
-	// 	const file_img = new FileReader();
-	// 	file_img.readAsDataURL(add_img.files[0]);
-
-	// 	file_img.onload = function(e) {
-	// 		preview_img.src = e.target.result;
-	// 	}
-	// }
 </script>
 
-<!-- arsip komplain dan perizinan -->
+<!-------------------------------------------------- Catch for Arsip komplain dan Perizinan -------------------------------------------------->
 <script>
 	$(document).ready(function() {
 		<?php

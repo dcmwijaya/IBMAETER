@@ -67,6 +67,7 @@ class Menu extends BaseController
 				"CurrentMenu" => "kelolabarang",
 				"info" => $this->newsModel->showTask(),
 				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier(),
 				"log_item" => $this->LogModel->ReadLogItem(),
 				'user' => $this->userModel->getUserId(session('uid')),

@@ -17,19 +17,23 @@
   text-transform: uppercase;
 }
 
-.btn-wrap{
-  margin-top: 30px; 
+.btn-wrap {
+  margin-top: 30px;
   margin-bottom: -50px;
 }
 
-.absensiCount{
+.absensiCount {
   margin-top: 25px;
   font-size: 14px;
 }
 
-.userVCount{
+.userVCount {
   margin-top: 25px;
   font-size: 14px;
+}
+
+.famebg {
+  background-color: #cccccc85 !important;
 }
 
 @media (max-width: 768px) {
@@ -37,15 +41,15 @@
     margin: 8px 0px 0px 0px;
     padding: 0 28px;
   }
-  .btn-wrap{
+  .btn-wrap {
     margin-bottom: 20px;
   }
-  .absensiCount{
+  .absensiCount {
     line-height: 20px;
     display: grid;
     place-items: center;
   }
-  .userVCount{
+  .userVCount {
     line-height: 20px;
     display: grid;
     place-items: center;
