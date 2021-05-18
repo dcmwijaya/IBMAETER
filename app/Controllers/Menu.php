@@ -74,7 +74,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/kelolabarang', $data);
+			return view('global/menu/kelolabarang', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -237,7 +237,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/user_pengumuman.php', $data);
+			return view('global/menu/user_pengumuman.php', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -255,7 +255,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/myprofile', $data);
+			return view('global/menu/myprofile', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -275,7 +275,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/editprofile', $data);
+			return view('global/menu/editprofile', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -410,7 +410,7 @@ class Menu extends BaseController
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d"))
 			];
-			return view('global/absensi', $data);
+			return view('global/menu/absensi', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -451,7 +451,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/laporanBulanan', $data);
+			return view('global/menu/laporanBulanan', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -491,7 +491,7 @@ class Menu extends BaseController
 				</button>
 			</div>');
 
-			return view('global/dashboard', $data);
+			return view('global/menu/dashboard', $data);
 		} else {
 			return redirect()->to('/login');
 		}
@@ -509,7 +509,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
-			return view('global/pengaduan', $data);
+			return view('global/menu/pengaduan', $data);
 		} else {
 			return redirect()->to('/login');
 		}
