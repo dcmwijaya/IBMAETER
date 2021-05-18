@@ -151,6 +151,16 @@
 <script>
 	$(document).ready(function() {
 
+		$('#Tambah_item .jenis-barang').change(function() {
+			$('#Tambah_item .kode2').val($(this).val());
+			$('#Tambah_item .hkode2').val($('#Tambah_item .kode2').val())
+		});
+
+		$('#Tambah_item .penyimpanan').change(function() {
+			$('#Tambah_item .kode1').val($(this).val());
+			$('#Tambah_item .hkode1').val($('#Tambah_item .kode1').val())
+		});
+
 		// get Edit Product
 		$('.btn-edit-item').on('click', function() {
 			// get data from button edit
@@ -212,15 +222,32 @@
 			const harga = $(this).data('harga');
 			const berat = $(this).data('berat');
 			const supplier = $(this).data('supplier');
+
 			// Set data to Form edit spec
-			// $('#itemOut #itemOutId').val(id);
 			$('#Edit_spesifikasi #edit_spesifikasi_nama').text(nama);
 			$('#Edit_spesifikasi #edit_sp_kode').val(kode);
 			$('#Edit_spesifikasi #edit_sp_harga').val(harga);
 			$('#Edit_spesifikasi #edit_sp_berat').val(berat);
-			$('#Edit_spesifikasi #edit_sp_supplier').val(supplier);
+			const selectsupplier = $('#selectsupplier');
+			if (supplier != null) {
+				if (supplier == 1) {
+					selectsupplier.val(1).change();
+				} else if (supplier == 2) {
+					selectsupplier.val(2).change();
+				} else if (supplier == 3) {
+					selectsupplier.val(3).change();
+				} else if (supplier == 4) {
+					selectsupplier.val(4).change();
+				} else if (supplier == 5) {
+					selectsupplier.val(5).change();
+				} else if (supplier == 6) {
+					selectsupplier.val(6).change();
+				}
+			}
 			$('#Edit_spesifikasi #edit_sp_id_item').val(id);
 		});
+
+		//get detail spec
 		$('.detl-item').on('click', function() {
 			// get data from button keluar
 			const id = $(this).data('id');

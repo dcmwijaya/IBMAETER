@@ -43,7 +43,7 @@ class Barang_Model extends Model
     {
         $builder = $this->db->table('item');
         $builder->select('*');
-        $builder->join('supplier', 'supplier.id_supplier = item.id_supplier');
+        $builder->join('supplier', 'supplier.id_supplier = item.id_supplier', 'left');
         $query = $builder->get()->getResultArray();
         return $query;
     }

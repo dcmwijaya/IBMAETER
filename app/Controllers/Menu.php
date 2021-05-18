@@ -83,11 +83,41 @@ class Menu extends BaseController
 	public function Add_item()
 	{
 		if (session('uid') != null) {
+			// cek input kode
+			$k1 = $this->request->getPost('kode1');
+			if ($k1 == null) {
+				$k1 = "XX";
+			}
+			$k2 = $this->request->getPost('kode2');
+			if ($k2 == !null) {
+				if ($k2 == "Padat") {
+					$k2 = "01";
+				} elseif ($k2 == "Cair") {
+					$k2 = "02";
+				} elseif ($k2 == "Mudah Terbakar") {
+					$k2 = "03";
+				} elseif ($k2 == "Minyak") {
+					$k2 = "04";
+				} elseif ($k2 == "Daging") {
+					$k2 = "05";
+				} else {
+					$k2 = "06";
+				}
+			} else {
+				$k2 = "XX";
+			}
+			$k3 = $this->request->getPost('kode3');
+			$kode = $k1 . $k2 . $k3;
+
 			$data = array(
 				'nama_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_item'), ENT_QUOTES)),
 				'stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('stok'), ENT_QUOTES)),
 				'jenis' => str_replace("'", "", htmlspecialchars($this->request->getPost('jenis'), ENT_QUOTES)),
-				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
+				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES)),
+				'kode_barang' => str_replace("'", "", htmlspecialchars($kode, ENT_QUOTES)),
+				'harga' => str_replace("'", "", htmlspecialchars($this->request->getPost('harga'), ENT_QUOTES)),
+				'berat' => str_replace("'", "", htmlspecialchars($this->request->getPost('berat'), ENT_QUOTES)),
+				'id_supplier' => str_replace("'", "", htmlspecialchars($this->request->getPost('supplier'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
 			return redirect()->to('kelolabarang');
@@ -172,6 +202,23 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
+			return redirect()->to('kelolabarang');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditSpecItem()
+	{
+		if (session('uid') != null) {
+			$id = $this->request->getPost('sp_id_item');
+			$data = array(
+				'kode_barang' => str_replace("'", "", htmlspecialchars($this->request->getPost('sp_kode'), ENT_QUOTES)),
+				'harga' => str_replace("'", "", htmlspecialchars($this->request->getPost('sp_harga'), ENT_QUOTES)),
+				'berat' => str_replace("'", "", htmlspecialchars($this->request->getPost('sp_berat'), ENT_QUOTES)),
+				'id_supplier' => str_replace("'", "", htmlspecialchars($this->request->getPost('sp_supplier'), ENT_QUOTES))
+			);
+			$this->barangModel->updateItem($data, $id);
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
