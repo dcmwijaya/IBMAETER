@@ -62,24 +62,6 @@ $tdStyle = "white-space: -moz-pre-wrap !important; white-space: -pre-wrap; white
 												<td><?= $k['waktu_komplain']; ?></td>
 											</tr>
 										<?php endforeach; ?>
-										<!-- data arsip komplain -->
-										<?php foreach ($arsipKomp as $arc) : ?>
-											<tr>
-												<td><?= $arc['email_arsipKomp']; ?></td>
-												<td><?= $arc['judul_arsipKomp']; ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $arc['isi_arsipKomp']; ?></td>
-												<td>
-													<?php if ($arc['foto_arsipKomp'] == "-") : ?>
-														<b class="center">-</b>
-													<?php else : ?>
-														<a href="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" target="_blank">
-															<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
-														</a>
-													<?php endif; ?>
-												</td>
-												<td><?= $arc['waktu_arsipKomp']; ?></td>
-											</tr>
-										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>

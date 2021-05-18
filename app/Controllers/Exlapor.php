@@ -61,6 +61,7 @@ class Exlapor extends BaseController
 				$data = [
 					"title" => "EXCEL USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
+					"us" => $this->adminModel->countUser()
 				];
 
 				return view('admin/export/exxlsUser', $data);
@@ -81,6 +82,7 @@ class Exlapor extends BaseController
 				$data = [
 					"title" => "DOC USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
+					"us" => $this->adminModel->countUser()
 				];
 
 				return view('admin/export/exdocUser', $data);
@@ -101,6 +103,7 @@ class Exlapor extends BaseController
 				$data = [
 					"title" => "PDF USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
+					"us" => $this->adminModel->countUser()
 				];
 
 				$html = view('admin/export/expdfUser', $data);
@@ -128,8 +131,6 @@ class Exlapor extends BaseController
 					"title" => "EXCEL KOMPLAIN | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
-					'arsipKomp' => $this->arsipKompModel->getAll(),
-					'validation' => \Config\Services::Validation()
 				];
 
 				return view('admin/export/exxlsKomplain', $data);
@@ -151,8 +152,6 @@ class Exlapor extends BaseController
 					"title" => "DOC KOMPLAIN | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
-					'arsipKomp' => $this->arsipKompModel->getAll(),
-					'validation' => \Config\Services::Validation()
 				];
 
 				return view('admin/export/exdocKomplain', $data);
@@ -174,8 +173,6 @@ class Exlapor extends BaseController
 					"title" => "PDF KOMPLAIN | INVENBAR",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
-					'arsipKomp' => $this->arsipKompModel->getAll(),
-					'validation' => \Config\Services::Validation()
 				];
 
 				$html = view('admin/export/expdfKomplain', $data);
@@ -200,7 +197,11 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL ABSENSI | INVENBAR"
+					"title" => "EXCEL ABSENSI | INVENBAR",
+					'user' => $this->userModel->getUserId(session('uid')),
+					"absensi" => $this->absensiModel->getAbsen(),
+					"countWorked" => $this->absensiModel->countWorked(),
+					"countNotWorked" => $this->absensiModel->countNotWorked()
 				];
 
 				return view('admin/export/exxlsAbsensi', $data);
@@ -219,7 +220,11 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC ABSENSI | INVENBAR"
+					"title" => "DOC ABSENSI | INVENBAR",
+					'user' => $this->userModel->getUserId(session('uid')),
+					"absensi" => $this->absensiModel->getAbsen(),
+					"countWorked" => $this->absensiModel->countWorked(),
+					"countNotWorked" => $this->absensiModel->countNotWorked()
 				];
 
 				return view('admin/export/exdocAbsensi', $data);
@@ -238,7 +243,11 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF ABSENSI | INVENBAR"
+					"title" => "PDF ABSENSI | INVENBAR",
+					'user' => $this->userModel->getUserId(session('uid')),
+					"absensi" => $this->absensiModel->getAbsen(),
+					"countWorked" => $this->absensiModel->countWorked(),
+					"countNotWorked" => $this->absensiModel->countNotWorked()
 				];
 
 				$html = view('admin/export/expdfAbsensi', $data);
@@ -319,6 +328,78 @@ class Exlapor extends BaseController
 		}
 	}
 
+	public function excelizin()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "EXCEL PERIZINAN | INVENBAR",
+					"log_item" => $this->LogModel->ReadLogItem(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				];
+
+				return view('admin/export/exxlsIzin', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docizin()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "DOC PERIZINAN | INVENBAR",
+					"log_item" => $this->LogModel->ReadLogItem(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				];
+
+				return view('admin/export/exdocIzin', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfizin()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF PERIZINAN | INVENBAR",
+					"log_item" => $this->LogModel->ReadLogItem(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				];
+
+				$html = view('admin/export/expdfIzin', $data);
+
+				$dompdf = new Dompdf();
+				$dompdf->loadHtml($html);
+				$dompdf->setPaper('A4', 'potrait');
+				$dompdf->render();
+				$dompdf->stream('Data-Perizinan.pdf');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	public function pdfprintUser()
 	{
 		// seleksi login
@@ -328,6 +409,7 @@ class Exlapor extends BaseController
 				$data = [
 					"title" => "PDF USER | INVENBAR",
 					"user" => $this->adminModel->getUser(),
+					"us" => $this->adminModel->countUser()
 				];
 				return view('admin/print/printUser', $data);
 			} else {
@@ -347,9 +429,7 @@ class Exlapor extends BaseController
 				$data = [
 					"title" => "PDF KOMPLAIN | INVENBAR",
 					"user" => $this->adminModel->getUser(),
-					'komplain' => $this->komplainModel->getKomplain(),
-					'arsipKomp' => $this->arsipKompModel->getAll(),
-					'validation' => \Config\Services::Validation()
+					'komplain' => $this->komplainModel->getKomplain()
 				];
 
 				return view('admin/print/printKomplain', $data);
@@ -387,10 +467,36 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF Absensi | INVENBAR"
+					"title" => "PDF Absensi | INVENBAR",
+					'user' => $this->userModel->getUserId(session('uid')),
+					"absensi" => $this->absensiModel->getAbsen(),
+					"countWorked" => $this->absensiModel->countWorked(),
+					"countNotWorked" => $this->absensiModel->countNotWorked()
 				];
 
 				return view('admin/print/printAbsensi', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintIzin()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$data = [
+					"title" => "PDF PERIZINAN | INVENBAR",
+					"log_item" => $this->LogModel->ReadLogItem(),
+					"log_notifs" => $this->LogModel->notifsLog(),
+					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				];
+
+				return view('admin/print/printIzin', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -456,7 +562,10 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "EXCEL SPESIFIKASI | INVENBAR"
+				"title" => "EXCEL SPESIFIKASI | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier()
 			];
 
 			return view('global/export/exxlsSpesifikasi', $data);
@@ -469,7 +578,10 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC SPESIFIKASI | INVENBAR"
+				"title" => "DOC SPESIFIKASI | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier()
 			];
 
 			return view('global/export/exdocSpesifikasi', $data);
@@ -482,7 +594,10 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF SPESIFIKASI | INVENBAR"
+				"title" => "PDF SPESIFIKASI | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier()
 			];
 
 			$html = view('global/export/expdfSpesifikasi', $data);
@@ -492,6 +607,63 @@ class Exlapor extends BaseController
 			$dompdf->setPaper('A4', 'potrait');
 			$dompdf->render();
 			$dompdf->stream('Tabel-Spesifikasi-Barang-2021.pdf');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function excelstatizin()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "EXCEL STATUS PERIZINAN | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier(),
+				"log_item" => $this->LogModel->ReadLogItem(),
+			];
+
+			return view('global/export/exxlsStatizin', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function docstatizin()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "DOC STATUS PERIZINAN | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier(),
+				"log_item" => $this->LogModel->ReadLogItem(),
+			];
+
+			return view('global/export/exdocStatizin', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfstatizin()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF STATUS PERIZINAN | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier(),
+				"log_item" => $this->LogModel->ReadLogItem(),
+			];
+
+			$html = view('global/export/expdfStatizin', $data);
+
+			$dompdf = new Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'potrait');
+			$dompdf->render();
+			$dompdf->stream('Status-Perizinan.pdf');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -595,10 +767,30 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF SPESIFIKASI | INVENBAR"
+				"title" => "PDF SPESIFIKASI | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier()
 			];
 
 			return view('global/print/printSpesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintStatizin()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF STATUS PERIZINAN | INVENBAR",
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier(),
+				"log_item" => $this->LogModel->ReadLogItem(),
+			];
+
+			return view('global/print/printStatizin', $data);
 		} else {
 			return redirect()->to('/login');
 		}

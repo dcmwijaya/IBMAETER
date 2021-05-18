@@ -1,3 +1,23 @@
+<?php
+
+foreach ($countWorked as $wc) {
+	if ($countWorked != null) {
+		$workedCount = $wc['uid_absen'];
+	} else {
+		$workedCount = 0;
+	}
+}
+
+foreach ($countNotWorked as $nwc) {
+	if ($countNotWorked != null) {
+		$notworkedCount = $nwc['uid_absen'];
+	} else {
+		$notworkedCount = 0;
+	}
+}
+
+?>
+
 <!doctype html>
 <html lang="id">
 
@@ -50,43 +70,20 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>saber.datealive@gmail.com</td>
-											<td>Truancy</td>
-											<td>2021/4/26 11:32:11 AM</td>
-										</tr>
-										<tr>
-											<td>kuro911@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/26 11:36:15 AM</td>
-										</tr>
-										<tr>
-											<td>genshin_keqing@gmail.com</td>
-											<td>Truancy</td>
-											<td>2021/4/27 11:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>kuro.sensei99@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 07:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>rungkutgakure@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 09:37:16 AM</td>
-										</tr>
-										<tr>
-											<td>bagindahokage@gmail.com</td>
-											<td>Attendance</td>
-											<td>2021/4/28 11:37:16 AM</td>
-										</tr>
+										<?php foreach ($absensi as $abs) : ?>
+											<tr>
+												<td><?= $abs['email_absen']; ?></td>
+												<td><?= $abs['status_absen']; ?></td>
+												<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
+											</tr>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>
 						</div>
 						<p class="absensiCount" style="margin-top:20px;">
-							Jumlah pekerja hadir saat ini : 4<br>
-							Jumlah pekerja bolos saat ini : 2
+							Jumlah pekerja hadir saat ini : <?= $workedCount; ?> <br>
+							Jumlah pekerja bolos saat ini : <?= $notworkedCount; ?>
 						</p>
 					</div>
 				</div><br>

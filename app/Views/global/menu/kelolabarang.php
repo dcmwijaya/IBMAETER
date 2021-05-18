@@ -104,16 +104,16 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<a type="button" href="<?= base_url('exlapor/#'); ?>" id="izin_pdf" onclick="return false;" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<a type="button" href="<?= base_url('exlapor/pdfprintStatizin'); ?>" id="pstatizin_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_xls" onclick="return false;"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_doc" onclick="return false;"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="izin_pdf" onclick="return false;"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/excelstatizin'); ?>" id="statizin_xls"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/docstatizin'); ?>" id="statizin_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
+										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/pdfstatizin'); ?>" id="statizin_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
 									</div>
 								</div>
 							</div>
