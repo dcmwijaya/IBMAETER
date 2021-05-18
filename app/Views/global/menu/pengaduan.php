@@ -41,7 +41,7 @@
 												<div class="form-group">
 													<label for="isi_komplain"><b>Isi Komplain</b></label>
 													<small class="text-muted"><span style="color: red;">*</span> Maksimal 256 huruf</small>
-													<textarea class="col-sm-12 p-2 <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" id="isi_komplain" rows="6" name="isi" placeholder="Sampaikan isi komplain..."><?= (old('isi')) ? old('isi') : ""; ?></textarea>
+													<textarea class="col-sm-12 p-2 <?= ($validation->hasError('isi')) ? 'is-invalid' : ''; ?>" id="isi_komplain" rows="3" name="isi" placeholder="Sampaikan isi komplain..."><?= (old('isi')) ? old('isi') : ""; ?></textarea>
 													<div class="invalid-feedback">
 														<?= $validation->getError('isi'); ?>
 													</div>
