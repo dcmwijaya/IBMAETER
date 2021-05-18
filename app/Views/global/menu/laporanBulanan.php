@@ -19,7 +19,7 @@
 							<div class="info-card card mb-3 bg-light">
 								<div class="row no-gutters">
 									<div class="col-md-5" id="img-laporanbulanan">
-										<img src="<?= base_url("img/LaporanBulanan.jpg"); ?>" class="card-img" alt="img-1">
+										<img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1">
 									</div>
 									<div class="col-md-6" id="laporanbulanan-user">
 										<div class=" card-body event-description">
