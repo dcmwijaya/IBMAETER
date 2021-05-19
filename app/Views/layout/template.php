@@ -80,6 +80,17 @@
 	})(jQuery);
 </script>
 
+<!-------------------------------------------------- Config Login ---------------------------------------------------------------->
+<script>
+	// $(document).ready(function() {
+	// 	$('#alert-login').ready(function() {
+	// 		setTimeout({
+	// 			$('#alert-login').remove();
+	// 		}), 45000;
+	// 	})
+	// });
+</script>
+
 <!-------------------------------------------------- Config datatables -------------------------------------------------->
 <script type="text/javascript" src="<?= base_url('../vendor/DataTables/js/jquery.dataTables.js') ?>"></script>
 <script>

@@ -10,7 +10,12 @@ class Pengumuman_Model extends Model
 
     public function showTask()
     {
-        return $this->findAll();
+        // return $this->findAll();
+        $builder = $this->db->table('pengumuman');
+        $builder->select('*');
+        $builder->join('user', 'user.uid = pengumuman.uid', 'left');
+        $query = $builder->get()->getResultArray();
+        return $query;
     }
 
     public function showInfo()

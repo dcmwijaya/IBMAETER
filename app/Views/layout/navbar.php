@@ -29,7 +29,7 @@
 								<div class="container">
 									<div class="row">
 										<div class="col-12 dropdown-list-image text-center">
-											<img class="rounded-lg" style="max-width: 450px; max-height: 200px;" src="<?= base_url('../img/' . $i['foto']); ?>" alt="">
+											<img class="rounded-lg" style="max-width: 450px; max-height: 200px;" src="<?= base_url('../img/brand2.jpg'); ?>" alt="">
 											<div class="status-indicator bg-success"></div>
 										</div>
 									</div>

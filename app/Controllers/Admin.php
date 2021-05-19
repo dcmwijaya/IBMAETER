@@ -384,6 +384,7 @@ class Admin extends BaseController
 					"info" => $this->newsModel->showTask(),
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
+					"log_item" => $this->LogModel->ReadLogItem(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					'validation' => \Config\Services::Validation()
 				];
