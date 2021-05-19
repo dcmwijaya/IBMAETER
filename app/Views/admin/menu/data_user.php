@@ -178,7 +178,7 @@ foreach ($us as $usc) {
 						<div class="form-group">
 							<label for="department_user">Department</label>
 							<select class="form-control <?= ($validation->hasError('department')) ? 'is-invalid' : ''; ?>" id="tambah_department" name="department">
-								<option value="Founder/Ceo/Direktur">Founder/Ceo/Direktur</option>
+								<option value="Dewan Direksi">Dewan Direksi</option>
 								<option value="Human Resource">Human Resource</option>
 								<option value="Information Technology">Information Technology</option>
 								<option value="Spesifikasi Aset">Spesifikasi Aset</option>
