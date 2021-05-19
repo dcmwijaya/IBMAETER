@@ -397,7 +397,7 @@ class Admin extends BaseController
 		}
 	}
 
-	// ======================= Edit Pengumuman ========================
+	// ============================================== Edit Pengumuman ===============================================
 
 	public function Adminpengumuman()
 	{
@@ -416,6 +416,24 @@ class Admin extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/menu/pengumuman', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function ShowPengumuman()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$data['table_pengumuman'] = $this->newsModel->showTask();
+				// echo json_encode($data);
+				return view('admin/pengumuman_part/list_pengumuman', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -444,6 +462,7 @@ class Admin extends BaseController
 					return redirect()->to('/Admin/Perizinan')->withInput();
 				}
 
+				// AJAX
 				$data = array(
 					'waktu' => date("Y-m-d h:i:sa"),
 					'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
@@ -452,7 +471,7 @@ class Admin extends BaseController
 				);
 				$this->newsModel->addInfo($data);
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Menambahkan Pengumuman !</div>');
-				return redirect()->to('Adminpengumuman');
+				// return redirect()->to('Adminpengumuman'); Di GANTI AJAX
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -483,6 +502,7 @@ class Admin extends BaseController
 
 				$id = $this->request->getPost('id_pengumuman');
 				$data = array(
+					'id_pengumuman' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_pengumuman'), ENT_QUOTES)),
 					'waktu' => date("Y-m-d h:i:sa"),
 					'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
 					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
@@ -490,7 +510,7 @@ class Admin extends BaseController
 				);
 				$this->newsModel->editInfo($data, $id);
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Mengedit Pengumuman !</div>');
-				return redirect()->to('Adminpengumuman');
+				// return redirect()->to('Adminpengumuman'); DIGANTI AJAX
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -499,7 +519,7 @@ class Admin extends BaseController
 		}
 	}
 
-	// ==================================== Aktivitas User =========================================
+	// =========================================================== Aktivitas User ================================================================
 
 	public function LogUser()
 	{
@@ -527,7 +547,7 @@ class Admin extends BaseController
 		}
 	}
 
-	// ==================================== Komplen dari User =========================================
+	// =========================================================== Komplen dari User ================================================================
 
 	public function Complain()
 	{

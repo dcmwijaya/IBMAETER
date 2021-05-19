@@ -118,6 +118,14 @@
 				[0, "desc"]
 			]
 		});
+		$('#table_pengumuman').DataTable({
+			scrollY: '100vh',
+			scrollCollapse: true,
+			paging: false,
+			"order": [
+				[0, "desc"]
+			]
+		});
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -338,7 +346,91 @@
 
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
+	function listPengumuman() {
+		$.ajax({
+			url: '<?= base_url('Admin/ShowPengumuman'); ?>',
+			beforeSend: function(f) {
+				$('#listPengumuman').html('Loading...');
+			},
+			success: function(data) {
+				$('#listPengumuman').html(data);
+			}
+		});
+	}
+
+	let SaveType;
+
+	function showTambahmodal() {
+		$('#Tambah_Pengumuman').modal('show');
+	}
+
+	// $(document).on("submit", "form", function(e) {
+	$('#Tambah_Form').submit('click', function(e) {
+		e.preventDefault();
+		const Judul = $('#tambah_judul').val();
+		const Isi = $('#tambah_isi').val();
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/TambahPengumuman'); ?>",
+			data: {
+				judul: Judul,
+				isi: Isi
+			},
+			success: function(data) {
+				$('#tambah_judul').val("");
+				$('#tambah_isi').val("");
+				$('#Tambah_Pengumuman').modal('hide');
+				listPengumuman();
+			}
+		});
+		return false;
+	});
+
+	function showEditmodal() {
+		SaveType = "Edit";
+		$.ajax({
+
+		})
+		$('#Edit_Pengumuman').modal('show');
+	}
+
+	$('#Edit_Form').submit('click', function(e) {
+		e.preventDefault();
+		const Judul = $('#edit_judul').val();
+		const Isi = $('#edit_isi').val();
+		const id_pengumuman = $('#edit_id').val();
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/EditPengumuman'); ?>",
+			// beforeSend: function(data) {},
+			data: {
+				id_pengumuman: id_pengumuman,
+				judul: Judul,
+				isi: Isi
+			},
+			success: function(data) {
+				$('#edit_judul').val("");
+				$('#edit_isi').val("");
+				$('#edit_id').val("");
+				$('#Edit_Pengumuman').modal('hide');
+				listPengumuman();
+			}
+		});
+		return false;
+	});
+	// 	return false;
+	// });
+
+
+
 	$(document).ready(function() {
+		// load list data
+		listPengumuman();
+		// setTimeout(function() {
+		// 	alert('ahoy!');
+		// }, 1500);
+
+
 		// get Edit Spesifikasi
 		$('.edit-pengumuman').on('click', function() {
 			// get data from button edit spec
