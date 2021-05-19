@@ -73,7 +73,7 @@
 														(Kosong)
 													<?php endif; ?>
 												</td>
-												<td>
+												<td style="<?= $tdStyle; ?>">
 													<?php $awal  = date_create($p['waktu']);
 													$akhir = date_create(); // waktu sekarang
 													$diff  = date_diff($awal, $akhir);
@@ -86,19 +86,20 @@
 													?>
 													<?php if ($year >= 1) : ?>
 														<span class=" py-2 badge badge-dark" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i><?= $year; ?> tahun yang lalu</span>
-													<?php elseif ($month >= 12) : ?>
-														<?php if ($day <= 7) : ?>
-															<span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $day; ?> hari yang lalu</span>
-														<?php endif; ?>
+													<?php endif; ?>
+													<?php if ($diff->m <= 12 && $diff->m !== 0) : ?>
 														<span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i><?= $month; ?> bulan yang lalu </span>
 													<?php endif; ?>
-													<?php if ($hour <= 24) : ?>
+													<?php if ($diff->d <= 7 && $diff->d !== 0) : ?>
+														<span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $day; ?> hari yang lalu</span>
+													<?php endif; ?>
+													<?php if ($diff->h <= 24 && $diff->h !== 0) : ?>
 														<span class="py-2 badge badge-primary" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $hour; ?> jam yang lalu</span>
 													<?php endif; ?>
-													<?php if ($minute <= 60) : ?>
+													<?php if ($diff->i <= 60 && $diff->i !== 0) : ?>
 														<span class="py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $minute; ?> menit yang lalu</span>
 													<?php endif; ?>
-													<?php if ($year <= 1 && $month <= 12 && $day <= 7 && $hour <= 24 && $minute <= 60 && $second = 60) : ?>
+													<?php if ($diff->s <= 60 && $diff->i !== 0) : ?>
 														<span class="py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $second; ?> detik yang lalu</span>
 													<?php endif; ?>
 												</td>
