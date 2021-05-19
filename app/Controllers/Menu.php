@@ -480,7 +480,27 @@ class Menu extends BaseController
 				"sj2" => $this->barangModel->stockjenis2(),
 				"sj3" => $this->barangModel->stockjenis3(),
 				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5()
+				"sj5" => $this->barangModel->stockjenis5(),
+				"cc1" => $this->barangModel->costclassA(),
+				"cc2" => $this->barangModel->costclassB(),
+				"cc3" => $this->barangModel->costclassC(),
+				"cc4" => $this->barangModel->costclassD(),
+				"cc5" => $this->barangModel->costclassE(),
+				"cc6" => $this->barangModel->costclassF(),
+				"cc7" => $this->barangModel->costclassG(),
+				"cw1" => $this->barangModel->weightclassA(),
+				"cw2" => $this->barangModel->weightclassB(),
+				"cw3" => $this->barangModel->weightclassC(),
+				"cw4" => $this->barangModel->weightclassD(),
+				"cw5" => $this->barangModel->weightclassE(),
+				"cw6" => $this->barangModel->weightclassF(),
+				"cw7" => $this->barangModel->weightclassG(),
+				"cf" => $this->userModel->countFemale(),
+				"cm" => $this->userModel->countMale(),
+				"inc" => $this->LogModel->stockIncome(),
+				"otc" => $this->LogModel->stockOutcome(),
+				"cin" => $this->LogModel->countIncome(),
+				"cout" => $this->LogModel->countOutcome()
 			];
 
 			$nama = session('nama');

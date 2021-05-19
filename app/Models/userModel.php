@@ -22,4 +22,14 @@ class userModel extends Model
     {
         return $this->where(['uid' => $uid])->first();
     }
+
+    public function countFemale()
+    {
+        return $this->db->table('user')->selectCount('gender')->where('gender', 'Female')->get()->getResultArray();
+    }
+
+    public function countMale()
+    {
+        return $this->db->table('user')->selectCount('gender')->where('gender', 'Male')->get()->getResultArray();
+    }
 }
