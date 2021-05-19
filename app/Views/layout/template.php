@@ -116,7 +116,11 @@
 			paging: false,
 			"order": [
 				[0, "desc"]
-			]
+			],
+			"bPaginate": false,
+			"bInfo": false,
+			"bFilter": false,
+			"bLengthChange": false,
 		});
 		$('#table_pengumuman').DataTable({
 			scrollY: '100vh',
@@ -390,7 +394,7 @@
 				$('#Pengumuman_Icon').addClass("fa-folder-open");
 				$('#Pengumuman_Header').removeClass("bg-softblue");
 				$('#Pengumuman_Header').addClass("bg-dark");
-				$('#Modal_Title').text(' Edit Pengumuman AJAX');
+				$('#Modal_Title').text(' Edit Pengumuman');
 				console.log("EDIT PENDING SENT...");
 			},
 			success: function(data) {
@@ -436,38 +440,6 @@
 		})
 	}
 
-
-
-
-	// $('#Edit_Form').submit('click', function(e) {
-	// 	e.preventDefault();
-	// 	const Judul = $('#edit_judul').val();
-	// 	const Isi = $('#edit_isi').val();
-	// 	const id_pengumuman = $('#edit_id').val();
-	// 	$.ajax({
-	// 		type: "POST",
-	// 		url: "<?= base_url('Admin/EditPengumuman'); ?>",
-	// 		// beforeSend: function(data) {},
-	// 		data: {
-	// 			id_pengumuman: id_pengumuman,
-	// 			judul: Judul,
-	// 			isi: Isi
-	// 		},
-	// 		success: function(data) {
-	// 			$('#edit_judul').val("");
-	// 			$('#edit_isi').val("");
-	// 			$('#edit_id').val("");
-	// 			$('#Edit_Pengumuman').modal('hide');
-	// 			listPengumuman();
-	// 		}
-	// 	});
-	// 	return false;
-	// });
-	// 	return false;
-	// });
-
-
-
 	$(document).ready(function() {
 		// load list data
 		listPengumuman();
@@ -486,20 +458,20 @@
 		const waktu = $(this).data('waktu');
 
 		// Set data to Form edit spec
-		$('#Edit_Pengumuman #edit_id').val(id);
-		$('#Edit_Pengumuman #edit_judul').val(judul);
-		$('#Edit_Pengumuman #edit_isi').text(isi);
-		$('#Edit_Pengumuman #edit_waktu').val(waktu);
+		$('#edit_id').val(id);
+		$('#edit_judul').val(judul);
+		$('#edit_isi').text(isi);
+		$('#edit_waktu').val(waktu);
 		// $('#Edit_Pengumuman #edit_uid').val(uid);
 		// });
 
 		// clear input field
 		$('.info-clear').on('click', function() {
 			// Set data to Form input
-			$('#Tambah_Pengumuman #tambah_judul').val("");
-			$('#Tambah_Pengumuman #tambah_isi').text("");
-			$('#Edit_Pengumuman #edit_judul').val("");
-			$('#Edit_Pengumuman #edit_isi').text("");
+			$('#tambah_judul').val("");
+			$('#tambah_isi').text("");
+			$('#edit_judul').val("");
+			$('#edit_isi').text("");
 		});
 	});
 </script>

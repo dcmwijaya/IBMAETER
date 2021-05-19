@@ -56,6 +56,7 @@
 								<table id="table_pengumuman" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
 									<thead>
 										<tr>
+											<!-- ######################### DATATABLES GAGAL SORTING -->
 											<th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
 											<th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th>
 											<th><i class="fas fa-fw fa-info"></i> Admin</th>
@@ -79,64 +80,6 @@
 		</section>
 	</div>
 </main>
-
-<!-- Tambah Pengumuman Modal -->
-<form id="Tambah_Form" method="POST" enctype="multipart/form-data">
-	<div class="modal fade tambah_modal" id="Tambah_Pengumuman" tabindex="-1" aria-labelledby="Tambah_PengumumanLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header text-light" style="background-color: #199ac5 !important;">
-					<h5 class="modal-title" id="Tambah_PengumumanLabel"><i class="fas fa-fw fa-folder-plus text-light"></i> Tambah Pengumuman</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true" class="text-light">&times;</span>
-					</button>
-				</div>
-				<?= csrf_field(); ?>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-sm-8">
-							<div class="form-group">
-								<label for="tambah_judul"><i class="fas fa-fw fa-info"></i><b> Judul Pengumuman</b></label>
-								<input type="text" class="form-control" id="tambah_judul" placeholder="Tambah Judul..." name="judul" required>
-								<small><b>*</b> Harus sesuai judul Barang !</small>
-							</div>
-							<div class="form-group">
-								<label for="tambah_isi"><i class="fas fa-fw fa-comment-dots"></i><b> Isi Pengumuman</b></label>
-								<textarea class="form-control" id="tambah_isi" rows="6" name="isi" placeholder="Sampaikan isi pengumuman...&#10;" required></textarea>
-								<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
-							</div>
-						</div>
-						<div class="col-sm-4 border-left p-4">
-							<div class="form-group">
-								<button type="button" class="btn btn-danger btn-block info-clear p-2"><i class="fas fa-fw fa-trash"></i> Kosongkan</button>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" id="Tambah_data" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Simpan</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-<!-- Edit Pengumuman Modal -->
-<div class="modal fade" id="Edit_Pengumuman" tabindex="-1" aria-labelledby="Edit_PengumumanLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header bg-dark text-light">
-				<h5 class="modal-title" id="Edit_PengumumanLabel"><i class="fas fa-fw fa-folder-open text-light"></i><span id="Form_Title"> Edit Pengumuman</span></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true" class="text-light">&times;</span>
-				</button>
-			</div>
-			<form id="Edit_Form_Body" method="POST" enctype="multipart/form-data">
-
-			</form>
-		</div>
-	</div>
-</div>
 
 <!-- Main Pengumuman Modal -->
 <div class="modal fade" id="Pengumuman_Modal" tabindex="-1" aria-labelledby="Pengumuman_ModalLabel" aria-hidden="true">
