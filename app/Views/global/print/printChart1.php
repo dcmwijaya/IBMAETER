@@ -2,14 +2,12 @@
 
 <?php
 
-// Stok Berdasarkan Penyimpanan
-if (!empty($sc1)) { 	foreach ($sc1 as $vs1) { $sin[] = $vs1['stok'];	$sin1 = json_encode(json_decode($vs1['stok']));	} }
-if (!empty($sc2)) {	foreach ($sc2 as $vs2) { $sin[] = $vs2['stok'];	$sin2 = json_encode(json_decode($vs2['stok']));	} }
-if (!empty($sc3)) { 	foreach ($sc3 as $vs3) { $sin[] = $vs3['stok'];	$sin3 = json_encode(json_decode($vs3['stok']));	} }
-if (!empty($sc4)) {	foreach ($sc4 as $vs4) { $sin[] = $vs4['stok'];	$sin4 = json_encode(json_decode($vs4['stok']));	} }
-if (!empty($sc5)) {	foreach ($sc5 as $vs5) { $sin[] = $vs5['stok'];	$sin5 = json_encode(json_decode($vs5['stok']));	} }
-if (!empty($sc6)) {	foreach ($sc6 as $vs6) { $sin[] = $vs6['stok'];	$sin6 = json_encode(json_decode($vs6['stok']));	} }
-if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json_encode(json_decode($vs7['stok']));	} }
+// Stok Berdasarkan Jenis
+if (!empty($sj1)) {	foreach ($sj1 as $vj1) { $sct[] = $vj1['stok'];	$sct1 = json_encode(json_decode($vj1['stok']));	} }
+if (!empty($sj2)) {	foreach ($sj2 as $vj2) { $sct[] = $vj2['stok'];	$sct2 = json_encode(json_decode($vj2['stok']));	} }
+if (!empty($sj3)) {	foreach ($sj3 as $vj3) { $sct[] = $vj3['stok'];	$sct3 = json_encode(json_decode($vj3['stok']));	} }
+if (!empty($sj4)) {	foreach ($sj4 as $vj4) { $sct[] = $vj4['stok'];	$sct4 = json_encode(json_decode($vj4['stok'])); } }
+if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json_encode(json_decode($vj5['stok']));	} }
 
 ?>
 
@@ -51,7 +49,7 @@ if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json
 
 				<div class="card" style="margin-top:50px;">
 					<div class="card-header text-center">
-						<h5><i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Room</h5>
+						<h5><i class="fas fa-dolly-flatbed fa-fw me-1"></i>Category Item</h5>
 					</div>
 					<div class="card-body">
 						<canvas class="chartPie" id="ChartPie" style="margin:0 auto;place-items:center;margin-left:-8%;margin-right:-20%;"></canvas>
@@ -61,19 +59,19 @@ if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json
 						var ChartDonuts = new Chart(ctx, {
 							type: 'pie',
 							data: {
-								labels: ["A = <?= $sin1; ?>", "B = <?= $sin2; ?>", "C = <?= $sin3; ?>", "D = <?= $sin4; ?>", "E = <?= $sin5; ?>", "F = <?= $sin6; ?>", "G = <?= $sin7; ?>"],
+								labels: ["Cair = <?= $sct1; ?>", "Minyak = <?= $sct2; ?>", "Mudah Terbakar = <?= $sct3; ?>", "Padat = <?= $sct4; ?>", "Daging = <?= $sct5; ?>"],
 								datasets: [{
-									label: 'R-Barang',
-									data: <?= json_encode($sin); ?>,
+									label: 'J-Barang',
+									data: <?= json_encode($sct); ?>,
 									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)',
-										'rgba(255, 94, 0, 0.2)','rgba(127, 253, 125, 0.2)',
-										'rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)','rgba(175, 222, 225, 0.2)'
+										'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
+										'rgba(255, 94, 0, 0.2)', 'rgba(127, 253, 125, 0.2)',
+										'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(175, 222, 225, 0.2)'
 									],
 									borderColor: [
-										'rgba(255, 0, 0, 1)','rgba(25, 0, 255, 1)',
-										'rgba(170, 25, 150, 1)','rgba(0, 90, 163, 1)',
-										'rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)','rgba(153, 50, 155, 1)'
+										'rgba(255, 0, 0, 1)', 'rgba(25, 0, 255, 1)',
+										'rgba(170, 25, 150, 1)', 'rgba(0, 90, 163, 1)',
+										'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(153, 50, 155, 1)'
 									],
 									borderWidth: 1,
 								}, ],
@@ -121,8 +119,12 @@ if (!empty($sc7)) {	foreach ($sc7 as $vs7) { $sin[] = $vs7['stok'];	$sin7 = json
 	</main>
 
 	<script>
-		setTimeout(function() {	window.print();	}, 1000);
-		window.onafterprint = function() { window.location.href = "<?= base_url('menu/dashboard') ?>"; }
+		setTimeout(function() {
+			window.print();
+		}, 1000);
+		window.onafterprint = function() {
+			window.location.href = "<?= base_url('menu/dashboard') ?>";
+		}
 	</script>
 </body>
 
