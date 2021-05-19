@@ -408,7 +408,8 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d"))
+				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d")),
+				'validation' => \Config\Services::Validation()
 			];
 			return view('global/menu/absensi', $data);
 		} else {
@@ -418,26 +419,68 @@ class Menu extends BaseController
 
 	public function absen()
 	{
-		$time = date("h:i:sa");
-		$uid = session('uid');
+		// jika valdiasi tidakk lolos maka redirect ke halaman edit
+		if (!$this->validate([
+			'alasanIzin' => [
+				'rules' => 'required',
+				'errors' => ['required' => 'Alasan izin harus diisi.']
+			],
+			'foto' => [
+				'rules' => 'max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					'max_size' => 'Ukuran gambar maksimal 5MB',
+					'is_image' => 'Bukti izin harus berupa gambar.',
+					'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+					'mime_in' => '{field} harus berekstensi .jpg, .jpeg, atau .png'
+				]
+			]
+		])) {
+			return redirect()->to('/Menu/absensiUser')->withInput();
+		}
 
-		// jika waktu lebih dari setengah 8 maka dihitung terlambat
-		if ($time >= "07:30:05") {
-			$status = "Late";
+		$time = date("H:i:s");
+		$uid = session('uid');
+		$buktiFoto = $this->request->getFile('foto'); // mengambil file gambar
+		$buktiIzin = "-";
+		$alasanIzin = "-";
+
+		// jika melakukan perizinan
+		if ($this->request->getVar('alasanIzin') != null) {
+			// mengambil alasan izin
+			$alasanIzin = $this->request->getVar('alasanIzin');
+			// set status absen menjadi izin
+			$status = "Izin";
+			// generate nama random
+			$buktiIzin = $buktiFoto->getRandomName();
+			// upload gambar
+			$buktiFoto->move('img/bukti_absen', $buktiIzin);
 		} else {
-			// jika tidak terlambat maka akan tercatat 'Attendance'
-			$status = "Attendance";
+			// jika waktu lebih dari setengah 8 maka dihitung terlambat
+			if ($time >= "07:30:05") {
+				// jika melewati jam kerja (4 sore) maka dihitung tidak bekerja
+				if ($time >= "16:15:05") {
+					$status = "Tidak Bekerja";
+				} else {
+					$status = "Terlambat";
+				}
+			} else {
+				// jika tidak terlambat maka akan tercatat 'Hadir'
+				$status = "Hadir";
+			}
 		}
 
 		$this->absensiModel->insert([
 			'uid_absen' => $uid,
 			'email_absen' => str_replace("'", "", htmlspecialchars($this->request->getVar('email_absen'), ENT_QUOTES)),
 			'status_absen' => $status,
+			'alasan_izin' => $alasanIzin,
+			'bukti_izin' => $buktiIzin,
 			'tgl_absen' => date("Y-m-d"),
 			'waktu_absen' => $time
 		]);
 
-		return redirect()->to('/dashboard');
+		// BERI FLASH DATA!!!!
+		return redirect()->to('/Menu/absensiUser');
 	}
 
 	public function LaporanBulanan()
