@@ -399,7 +399,7 @@ class Admin extends BaseController
 
 	// ============================================== Edit Pengumuman ===============================================
 
-	public function Adminpengumuman()
+	public function Adminpengumuman() // Base Page
 	{
 		// seleksi no login
 		if (session('uid') != null) {
@@ -424,7 +424,7 @@ class Admin extends BaseController
 		}
 	}
 
-	public function ShowPengumuman()
+	public function ShowPengumuman() // Show Master Data Pengumuman
 	{
 		// seleksi no login
 		if (session('uid') != null) {
@@ -442,7 +442,23 @@ class Admin extends BaseController
 		}
 	}
 
-	public function TambahPengumuman()
+	public function TambahPengumuman_Form() // Tambah Form Modal
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				return view('admin/pengumuman_part/tambah_form');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function TambahPengumuman() // Action 
 	{
 		// seleksi no login
 		if (session('uid') != null) {
@@ -480,7 +496,41 @@ class Admin extends BaseController
 		}
 	}
 
-	public function EditPengumuman()
+	public function EditPengumuman_Form() // Edit Form Modal
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				return view('admin/pengumuman_part/edit_form');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function GetIdPengumuman() // Pick id_pengumuman
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$id = $this->request->getPost('id_pengumuman');
+				$data = $this->newsModel->getIdPengumuman($id);
+				echo json_encode($data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditPengumuman() // Action
 	{
 		// seleksi no login
 		if (session('uid') != null) {
@@ -518,40 +568,6 @@ class Admin extends BaseController
 		}
 	}
 
-	public function EditPengumuman_Form()
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// seleksi role pengguna
-			if (session('role') == 0) {
-				// AJAX
-				// echo json_encode($data);
-				return view('admin/pengumuman_part/edit_form');
-			} else {
-				return redirect()->to('/dashboard');
-			}
-		} else {
-			return redirect()->to('/login');
-		}
-	}
-
-	public function GetIdPengumuman()
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// seleksi role pengguna
-			if (session('role') == 0) {
-				// AJAX
-				$id = $this->request->getPost('id_pengumuman');
-				$data = $this->newsModel->getIdPengumuman($id);
-				echo json_encode($data);
-			} else {
-				return redirect()->to('/dashboard');
-			}
-		} else {
-			return redirect()->to('/login');
-		}
-	}
 
 	// =========================================================== Aktivitas User ================================================================
 

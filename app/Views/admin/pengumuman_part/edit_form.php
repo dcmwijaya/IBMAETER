@@ -3,9 +3,8 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="form-group">
-                <label for="edit_judul"><i class="fas fa-fw fa-info"></i><b> Judul Pengumuman</b></label>
+                <label for="edit_judul"><i class="fas fa-fw fa-thumbtack"></i><b> Judul Pengumuman</b></label>
                 <input type="text" class="form-control" id="edit_judul" placeholder="Edit Judul..." name="judul" required>
-                <small><b>*</b> Harus sesuai judul Barang !</small>
             </div>
             <div class="form-group">
                 <label for="edit_isi"><i class="fas fa-fw fa-comment-dots"></i><b> Isi Pengumuman</b></label>

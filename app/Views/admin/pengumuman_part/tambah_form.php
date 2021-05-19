@@ -3,9 +3,8 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="form-group">
-                <label for="tambah_judul"><i class="fas fa-fw fa-info"></i><b> Judul Pengumuman</b></label>
+                <label for="tambah_judul"><i class="fas fa-fw fa-thumbtack"></i><b> Judul Pengumuman</b></label>
                 <input type="text" class="form-control" id="tambah_judul" placeholder="Tambah Judul..." name="judul" required>
-                <small><b>*</b> Harus sesuai judul Barang !</small>
             </div>
             <div class="form-group">
                 <label for="tambah_isi"><i class="fas fa-fw fa-comment-dots"></i><b> Isi Pengumuman</b></label>
@@ -22,5 +21,5 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-    <button type="submit" id="Tambah_data" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Simpan</button>
+    <button type="submit" id="Tambah_data" class="btn btn-primary" onclick="Simpan()"><i class="fas fa-fw fa-check"></i> Simpan</button>
 </div>

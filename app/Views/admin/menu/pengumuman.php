@@ -138,4 +138,21 @@
 	</div>
 </div>
 
+<!-- Main Pengumuman Modal -->
+<div class="modal fade" id="Pengumuman_Modal" tabindex="-1" aria-labelledby="Pengumuman_ModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div id="Pengumuman_Header" class="modal-header bg-dark text-light">
+				<h5 class="modal-title" id="Pengumuman_ModalLabel"><i id="Pengumuman_Icon" class="fas fa-fw fa-folder-open text-light"></i><span id="Modal_Title"> Edit Pengumuman</span></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" class="text-light">&times;</span>
+				</button>
+			</div>
+			<form id="Pengumuman_Form" method="POST" enctype="multipart/form-data">
+
+			</form>
+		</div>
+	</div>
+</div>
+
 <?= $this->endSection() ?>

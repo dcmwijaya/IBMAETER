@@ -358,48 +358,43 @@
 		});
 	}
 
-	let SaveType; // Tumbal Operan
+	let SaveType; // Tumbal Operan :'v
 
 	function showTambahmodal() {
 		SaveType = "Tambah";
-		$('#Tambah_Pengumuman').modal('show');
-		const Judul = $('#tambah_judul').val();
-		const Isi = $('#tambah_isi').val();
+		$('#Pengumuman_Modal').modal('show');
 		$.ajax({
 			type: "POST",
-			url: "<?= base_url('Admin/TambahPengumuman'); ?>",
+			url: "<?= base_url('Admin/TambahPengumuman_Form'); ?>",
 			beforeSend: function(data) {
-				console.log('TAMBAH SENT..');
-			},
-			data: {
-				judul: Judul,
-				isi: Isi
+				$('#Pengumuman_Icon').removeClass("fa-folder-open");
+				$('#Pengumuman_Icon').addClass("fa-folder-plus");
+				$('#Pengumuman_Header').removeClass("bg-dark");
+				$('#Pengumuman_Header').addClass("bg-softblue");
+				$('#Modal_Title').text(' Tambah Pengumuman');
+				console.log('TAMBAH PENDING SENT...');
 			},
 			success: function(data) {
-				$('#tambah_judul').val("");
-				$('#tambah_isi').val("");
-				$('#Tambah_Pengumuman').modal('hide');
-				listPengumuman();
+				$('#Pengumuman_Form').html(data);
 			}
 		});
 	}
 
-	// $(document).on("submit", "form", function(e) {
-	// $('#Tambah_Form').submit('click', function(e) {
-	// 	e.preventDefault();
-	// });
-
 	function showEditmodal(id) {
 		SaveType = "Edit";
-		$('#Edit_Pengumuman').modal('show');
+		$('#Pengumuman_Modal').modal('show');
 		$.ajax({
 			url: "<?= base_url('Admin/EditPengumuman_Form'); ?>",
 			beforeSend: function(data) {
-				$('#Edit_Pengumuman #Form_Title').text(' Edit Pengumuman AJAX');
-				console.log("EDIT SENT...");
+				$('#Pengumuman_Icon').removeClass("fa-folder-plus");
+				$('#Pengumuman_Icon').addClass("fa-folder-open");
+				$('#Pengumuman_Header').removeClass("bg-softblue");
+				$('#Pengumuman_Header').addClass("bg-dark");
+				$('#Modal_Title').text(' Edit Pengumuman AJAX');
+				console.log("EDIT PENDING SENT...");
 			},
 			success: function(data) {
-				$('#Edit_Form_Body').html(data);
+				$('#Pengumuman_Form').html(data);
 				$.ajax({
 					url: '<?= base_url('Admin/GetIdPengumuman'); ?>',
 					data: {
@@ -418,7 +413,7 @@
 	}
 
 	function Simpan() {
-		$('#Edit_Pengumuman').modal('hide');
+		$('#Pengumuman_Modal').modal('hide');
 		$(this).submit('click', function(e) {
 			e.preventDefault();
 			let url;
@@ -433,7 +428,7 @@
 					console.log("DATA SENT SUCCESSFULLY !");
 				},
 				type: "POST",
-				data: $('#Edit_Form_Body').serialize(), //sementara EDIT
+				data: $('#Pengumuman_Form').serialize(), //sementara EDIT
 				success: function(data) {
 					listPengumuman();
 				}

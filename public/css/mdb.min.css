@@ -81,6 +81,12 @@ body {
   outline: 0 !important;
 }
 
+/* custom */
+.bg-softblue {
+  background-color: #199ac5 !important;
+}
+/*  */
+
 #content {
   overflow-x: auto;
 }
