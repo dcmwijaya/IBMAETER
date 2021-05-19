@@ -27,4 +27,12 @@ class Absensi_Model extends Model
     {
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date])->first();
     }
+
+    public function countWorked(){
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen','Attendance')->get()->getResultArray();
+    }
+
+    public function countNotWorked(){
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen','Late')->get()->getResultArray();
+    }
 }

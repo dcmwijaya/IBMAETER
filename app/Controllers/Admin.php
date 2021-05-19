@@ -79,7 +79,7 @@ class Admin extends BaseController
 					'user' => [
 						'rules' => 'max_length[60]',
 						'errors' => [
-							'max_length' => 'nama huruf haurs lebih kecil dari 60 karakter'
+							'max_length' => 'nama huruf harus lebih kecil dari 60 karakter'
 						]
 					],
 					'email' => [
@@ -93,13 +93,25 @@ class Admin extends BaseController
 						'rules' => 'min_length[7]|max_length[24]',
 						'errors' => [
 							'min_length' => 'Password harus lebih besar dari 7 karakter',
-							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
+							'max_length' => 'Password harus lebih kecil dari 24 karakter'
 						]
 					],
 					'confirm_password' => [
 						'rules' => 'matches[password]',
 						'errors' => [
 							'matches' => 'input Password tidak sama !'
+						]
+					],
+					'gender' => [
+						'rules' => 'max_length[24]',
+						'errors' => [
+							'max_length' => 'input gender maksimal 24 karakter'
+						]
+					],
+					'department' => [
+						'rules' => 'max_length[24]',
+						'errors' => [
+							'max_length' => 'input department maksimal 24 karakter'
 						]
 					],
 					'role' => [
@@ -136,6 +148,8 @@ class Admin extends BaseController
 					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => password_hash($password, PASSWORD_DEFAULT),
+					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
+					'department' => str_replace("'", "", htmlspecialchars($this->request->getPost('department'), ENT_QUOTES)),
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
@@ -170,6 +184,18 @@ class Admin extends BaseController
 						'rules' => 'valid_email',
 						'errors' => [
 							'valid_email' => 'E-mail User harus sesuai format email'
+						]
+					],
+					'gender' => [
+						'rules' => 'max_length[24]',
+						'errors' => [
+							'max_length' => 'input gender maksimal 24 karakter'
+						]
+					],
+					'department' => [
+						'rules' => 'max_length[24]',
+						'errors' => [
+							'max_length' => 'input department maksimal 24 karakter'
 						]
 					],
 					'role' => [
@@ -227,6 +253,8 @@ class Admin extends BaseController
 					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => $pass,
+					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
+					'department' => str_replace("'", "", htmlspecialchars($this->request->getPost('department'), ENT_QUOTES)),
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
@@ -433,7 +461,9 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-					'absensi' => $this->absensiModel->getAbsen()
+					'absensi' => $this->absensiModel->getAbsen(),
+					"countWorked" => $this->absensiModel->countWorked(),
+					"countNotWorked" => $this->absensiModel->countNotWorked()
 				];
 				return view('admin/menu/logUser', $data);
 			} else {

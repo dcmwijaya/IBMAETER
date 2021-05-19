@@ -86,7 +86,7 @@ foreach ($us as $usc) {
 												<td><?= $u['nama']; ?></td>
 												<td><?= $u['email']; ?></td>
 												<td><?= $u['department']; ?></td>
-												<td>Male/Female</td>
+												<td><?= $u['gender']; ?></td>
 												<td><?= ($u['role'] == 0) ? 'Admin' : 'Pekerja' ?></td>
 												<td>
 													<div class="btn-group" role="group" aria-label="user_action">
@@ -166,6 +166,31 @@ foreach ($us as $usc) {
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="gender_user">Gender</label>
+							<select class="form-control <?= ($validation->hasError('gender')) ? 'is-invalid' : ''; ?>" id="tambah_gender" name="gender">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+							<div class="invalid-feedback">
+								<?= $validation->getError('gender'); ?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="department_user">Department</label>
+							<select class="form-control <?= ($validation->hasError('department')) ? 'is-invalid' : ''; ?>" id="tambah_department" name="department">
+								<option value="Dewan Direksi">Dewan Direksi</option>
+								<option value="Human Resource">Human Resource</option>
+								<option value="Information Technology">Information Technology</option>
+								<option value="Spesifikasi Aset">Spesifikasi Aset</option>
+								<option value="Dokumentasi Aset">Dokumentasi Aset</option>
+								<option value="Inventarisasi Aset">Inventarisasi Aset</option>
+								<option value="Warehouse">Warehouse</option>
+							</select>
+							<div class="invalid-feedback">
+								<?= $validation->getError('department'); ?>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="jenis_user">Role</label>
 							<select class="form-control <?= ($validation->hasError('role')) ? 'is-invalid' : ''; ?>" id="tambah_jenis_user" name="role">
 								<option value="1">User</option>
@@ -225,6 +250,31 @@ foreach ($us as $usc) {
 							<input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="edit_email_user" name="email" required value="<?= (old('email')); ?>">
 							<div class=" invalid-feedback">
 								<?= $validation->getError('email'); ?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="gender_user">Gender</label>
+							<select class="form-control <?= ($validation->hasError('gender')) ? 'is-invalid' : ''; ?>" id="edit_gender" name="gender">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+							<div class="invalid-feedback">
+								<?= $validation->getError('gender'); ?>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="department_user">Department</label>
+							<select class="form-control <?= ($validation->hasError('department')) ? 'is-invalid' : ''; ?>" id="edit_department" name="department">
+								<option value="Dewan Direksi">Dewan Direksi</option>
+								<option value="Human Resource">Human Resource</option>
+								<option value="Information Technology">Information Technology</option>
+								<option value="Spesifikasi Aset">Spesifikasi Aset</option>
+								<option value="Dokumentasi Aset">Dokumentasi Aset</option>
+								<option value="Inventarisasi Aset">Inventarisasi Aset</option>
+								<option value="Warehouse">Warehouse</option>
+							</select>
+							<div class="invalid-feedback">
+								<?= $validation->getError('department'); ?>
 							</div>
 						</div>
 						<div class="form-group">

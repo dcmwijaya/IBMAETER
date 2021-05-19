@@ -2,6 +2,27 @@
 
 <?= $this->section('content') ?>
 <link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
+
+<?php
+
+foreach ($countWorked as $wc) {
+	if ($countWorked != null) {
+		$workedCount = $wc['uid_absen'];
+	} else {
+		$workedCount = 0;
+	}
+}
+
+foreach ($countNotWorked as $nwc) {
+	if ($countNotWorked != null) {
+		$notworkedCount = $nwc['uid_absen'];
+	} else {
+		$notworkedCount = 0;
+	}
+}
+
+?>
+
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
@@ -52,8 +73,8 @@
 							</div>
 						</div>
 						<p class="absensiCount">
-							Jumlah pekerja hadir saat ini : 4<br>
-							Jumlah pekerja bolos saat ini : 2
+							Jumlah pekerja hadir saat ini : <?= $workedCount; ?> <br>
+							Jumlah pekerja bolos saat ini : <?= $notworkedCount; ?>
 						</p>
 					</div>
 				</div>
