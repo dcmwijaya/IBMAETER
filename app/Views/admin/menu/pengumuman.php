@@ -57,7 +57,7 @@
 									<thead>
 										<tr>
 											<th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
-											<th><i class="fas fa-fw fa-info"></i> Status</th>
+											<th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th>
 											<th><i class="fas fa-fw fa-info"></i> Admin</th>
 											<th><i class="fas fa-fw fa-users"></i> Judul</th>
 											<th><i class="fas fa-fw fa-box"></i> Isi Pengumuman</th>
@@ -126,41 +126,13 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header bg-dark text-light">
-				<h5 class="modal-title" id="Edit_PengumumanLabel"><i class="fas fa-fw fa-folder-open text-light"></i> Edit Pengumuman</h5>
+				<h5 class="modal-title" id="Edit_PengumumanLabel"><i class="fas fa-fw fa-folder-open text-light"></i><span id="Form_Title"> Edit Pengumuman</span></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
-			<form action="<?= base_url('Admin/EditPengumuman'); ?>" method="POST" enctype="multipart/form-data">
-				<?= csrf_field(); ?>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-sm-8">
-							<div class="form-group">
-								<label for="edit_judul"><i class="fas fa-fw fa-info"></i><b> Judul Pengumuman</b></label>
-								<input type="text" class="form-control" id="edit_judul" placeholder="Edit Judul..." name="judul" required>
-								<small><b>*</b> Harus sesuai judul Barang !</small>
-							</div>
-							<div class="form-group">
-								<label for="edit_isi"><i class="fas fa-fw fa-comment-dots"></i><b> Isi Pengumuman</b></label>
-								<textarea class="form-control" id="edit_isi" rows="6" name="isi" placeholder="Sampaikan isi pengumuman...&#10;" required></textarea>
-								<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
-							</div>
-						</div>
-						<div class="col-sm-4 border-left p-4">
-							<div class="form-group">
-								<button type="button" class="btn btn-danger btn-block info-clear p-2"><i class="fas fa-fw fa-trash"></i> Kosongkan</button>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="id_pengumuman" id="edit_id">
-						<input type="hidden" name="uid" id="edit_uid">
-						<input type="hidden" name="waktu" id="edit_waktu">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Simpan</button>
-					</div>
-				</div>
+			<form id="Edit_Form_Body" method="POST" enctype="multipart/form-data">
+
 			</form>
 		</div>
 	</div>

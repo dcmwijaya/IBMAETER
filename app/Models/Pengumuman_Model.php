@@ -23,6 +23,14 @@ class Pengumuman_Model extends Model
         return $this->findAll();
     }
 
+    public function getIdPengumuman($id = false)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_pengumuman' => $id])->first();
+    }
+
     public function addInfo($data)
     {
         $query = $this->db->table('pengumuman')->insert($data);

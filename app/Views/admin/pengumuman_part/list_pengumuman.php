@@ -65,7 +65,7 @@
             <?php if (session('role') == 0) : ?>
                 <td>
                     <div class="btn-group" role="group" aria-label="inoutcom">
-                        <button type="button" class="btn btn-dark btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" data-judul="<?= $p["judul"]; ?>" data-isi="<?= $p['isi']; ?>" data-uid="<?= $p['uid']; ?>" data-waktu="<?= $p['waktu']; ?>"><i class="fas fa-edit fa-fw"></i></button>
+                        <button type="button" class="btn btn-dark btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" onclick="showEditmodal(<?= $p['id_pengumuman']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
                         <button type="button" class="btn btn-success text-light btn-sm detl-pengumuman px-2 rounded-right" data-id="<?= $p['id_pengumuman']; ?>" data-judul="<?= $p["judul"]; ?>" data-isi="<?= $p['isi']; ?>" data-uid="<?= $p['uid']; ?>" data-waktu="<?= $p['waktu']; ?>" data-toggle="modal" data-target="#Detail_Pengumuman"><i class="fas fa-print fa-fw"></i></button>
                     </div>
                 </td>

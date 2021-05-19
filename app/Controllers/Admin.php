@@ -502,7 +502,6 @@ class Admin extends BaseController
 
 				$id = $this->request->getPost('id_pengumuman');
 				$data = array(
-					'id_pengumuman' => str_replace("'", "", htmlspecialchars($this->request->getPost('id_pengumuman'), ENT_QUOTES)),
 					'waktu' => date("Y-m-d h:i:sa"),
 					'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
 					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
@@ -511,6 +510,41 @@ class Admin extends BaseController
 				$this->newsModel->editInfo($data, $id);
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Mengedit Pengumuman !</div>');
 				// return redirect()->to('Adminpengumuman'); DIGANTI AJAX
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditPengumuman_Form()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				// echo json_encode($data);
+				return view('admin/pengumuman_part/edit_form');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function GetIdPengumuman()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$id = $this->request->getPost('id_pengumuman');
+				$data = $this->newsModel->getIdPengumuman($id);
+				echo json_encode($data);
 			} else {
 				return redirect()->to('/dashboard');
 			}

@@ -358,20 +358,19 @@
 		});
 	}
 
-	let SaveType;
+	let SaveType; // Tumbal Operan
 
 	function showTambahmodal() {
+		SaveType = "Tambah";
 		$('#Tambah_Pengumuman').modal('show');
-	}
-
-	// $(document).on("submit", "form", function(e) {
-	$('#Tambah_Form').submit('click', function(e) {
-		e.preventDefault();
 		const Judul = $('#tambah_judul').val();
 		const Isi = $('#tambah_isi').val();
 		$.ajax({
 			type: "POST",
 			url: "<?= base_url('Admin/TambahPengumuman'); ?>",
+			beforeSend: function(data) {
+				console.log('TAMBAH SENT..');
+			},
 			data: {
 				judul: Judul,
 				isi: Isi
@@ -383,41 +382,92 @@
 				listPengumuman();
 			}
 		});
-		return false;
-	});
-
-	function showEditmodal() {
-		SaveType = "Edit";
-		$.ajax({
-
-		})
-		$('#Edit_Pengumuman').modal('show');
 	}
 
-	$('#Edit_Form').submit('click', function(e) {
-		e.preventDefault();
-		const Judul = $('#edit_judul').val();
-		const Isi = $('#edit_isi').val();
-		const id_pengumuman = $('#edit_id').val();
+	// $(document).on("submit", "form", function(e) {
+	// $('#Tambah_Form').submit('click', function(e) {
+	// 	e.preventDefault();
+	// });
+
+	function showEditmodal(id) {
+		SaveType = "Edit";
+		$('#Edit_Pengumuman').modal('show');
 		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/EditPengumuman'); ?>",
-			// beforeSend: function(data) {},
-			data: {
-				id_pengumuman: id_pengumuman,
-				judul: Judul,
-				isi: Isi
+			url: "<?= base_url('Admin/EditPengumuman_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Edit_Pengumuman #Form_Title').text(' Edit Pengumuman AJAX');
+				console.log("EDIT SENT...");
 			},
 			success: function(data) {
-				$('#edit_judul').val("");
-				$('#edit_isi').val("");
-				$('#edit_id').val("");
-				$('#Edit_Pengumuman').modal('hide');
-				listPengumuman();
+				$('#Edit_Form_Body').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetIdPengumuman'); ?>',
+					data: {
+						"id_pengumuman": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="id_pengumuman"]').val(data.id_pengumuman);
+						$('[name="judul"]').val(data.judul);
+						$('[name="isi"]').text(data.isi);
+					}
+				});
 			}
 		});
-		return false;
-	});
+	}
+
+	function Simpan() {
+		$('#Edit_Pengumuman').modal('hide');
+		$(this).submit('click', function(e) {
+			e.preventDefault();
+			let url;
+			if (SaveType == "Tambah") {
+				url = "<?= base_url('Admin/TambahPengumuman'); ?>";
+			} else if (SaveType == "Edit") {
+				url = "<?= base_url('Admin/EditPengumuman'); ?>";
+			}
+			$.ajax({
+				url: url,
+				beforeSend: function(data) {
+					console.log("DATA SENT SUCCESSFULLY !");
+				},
+				type: "POST",
+				data: $('#Edit_Form_Body').serialize(), //sementara EDIT
+				success: function(data) {
+					listPengumuman();
+				}
+			});
+		})
+	}
+
+
+
+
+	// $('#Edit_Form').submit('click', function(e) {
+	// 	e.preventDefault();
+	// 	const Judul = $('#edit_judul').val();
+	// 	const Isi = $('#edit_isi').val();
+	// 	const id_pengumuman = $('#edit_id').val();
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "<?= base_url('Admin/EditPengumuman'); ?>",
+	// 		// beforeSend: function(data) {},
+	// 		data: {
+	// 			id_pengumuman: id_pengumuman,
+	// 			judul: Judul,
+	// 			isi: Isi
+	// 		},
+	// 		success: function(data) {
+	// 			$('#edit_judul').val("");
+	// 			$('#edit_isi').val("");
+	// 			$('#edit_id').val("");
+	// 			$('#Edit_Pengumuman').modal('hide');
+	// 			listPengumuman();
+	// 		}
+	// 	});
+	// 	return false;
+	// });
 	// 	return false;
 	// });
 
@@ -432,21 +482,21 @@
 
 
 		// get Edit Spesifikasi
-		$('.edit-pengumuman').on('click', function() {
-			// get data from button edit spec
-			const id = $(this).data('id');
-			const uid = $(this).data('uid');
-			const judul = $(this).data('judul');
-			const isi = $(this).data('isi');
-			const waktu = $(this).data('waktu');
+		// $('.edit-pengumuman').on('click', function() {
+		// get data from button edit spec
+		const id = $(this).data('id');
+		const uid = $(this).data('uid');
+		const judul = $(this).data('judul');
+		const isi = $(this).data('isi');
+		const waktu = $(this).data('waktu');
 
-			// Set data to Form edit spec
-			$('#Edit_Pengumuman #edit_id').val(id);
-			$('#Edit_Pengumuman #edit_judul').val(judul);
-			$('#Edit_Pengumuman #edit_isi').text(isi);
-			$('#Edit_Pengumuman #edit_waktu').val(waktu);
-			// $('#Edit_Pengumuman #edit_uid').val(uid);
-		});
+		// Set data to Form edit spec
+		$('#Edit_Pengumuman #edit_id').val(id);
+		$('#Edit_Pengumuman #edit_judul').val(judul);
+		$('#Edit_Pengumuman #edit_isi').text(isi);
+		$('#Edit_Pengumuman #edit_waktu').val(waktu);
+		// $('#Edit_Pengumuman #edit_uid').val(uid);
+		// });
 
 		// clear input field
 		$('.info-clear').on('click', function() {
