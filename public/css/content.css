@@ -19,7 +19,8 @@
 
 .btn-wrap {
   margin-top: 30px;
-  margin-bottom: -50px;
+  margin-bottom: -65px;
+  z-index: 2;
 }
 
 .absensiCount {

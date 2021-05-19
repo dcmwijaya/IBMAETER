@@ -23,9 +23,15 @@ class Pengumuman_Model extends Model
         return $this->findAll();
     }
 
+    public function addInfo($data)
+    {
+        $query = $this->db->table('pengumuman')->insert($data);
+        return $query;
+    }
+
     public function editInfo($data, $id)
     {
-        $query = $this->db->table('pengumuman')->update($data, array('id' => $id));
+        $query = $this->db->table('pengumuman')->update($data, array('id_pengumuman' => $id));
         return $query;
     }
 }

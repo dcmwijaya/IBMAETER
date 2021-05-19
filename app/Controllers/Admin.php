@@ -405,7 +405,6 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
-				// $info2 = new Admin_Model();
 				$data = [
 					"title" => "Edit Pengumuman | INVENBAR",
 					"CurrentMenu" => "edit_pengumuman",
@@ -425,18 +424,72 @@ class Admin extends BaseController
 		}
 	}
 
-	public function editpengumuman() // Emtahlah kenapa ini infinity redirect trus????
+	public function TambahPengumuman()
 	{
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
-				$id = $this->request->getPost('id_info');
+				if (!$this->validate([
+					'judul' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'judul tidak boleh lebih dari 256 huruf & karakter.']
+					],
+					'isi' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'isi tidak boleh lebih dari 256 huruf & karakter.']
+					],
+				])) {
+					session()->setFlashdata('Pengumuman', '<div class="notif-failed">Gagal Menambahkan Pengumuman !</div>');
+					return redirect()->to('/Admin/Perizinan')->withInput();
+				}
+
 				$data = array(
+					'waktu' => date("Y-m-d h:i:sa"),
+					'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
+					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
+					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
+				);
+				$this->newsModel->addInfo($data);
+				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Menambahkan Pengumuman !</div>');
+				return redirect()->to('Adminpengumuman');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditPengumuman()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				if (!$this->validate([
+					'judul' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'judul tidak boleh lebih dari 256 huruf & karakter.']
+					],
+					'isi' => [
+						'rules' => 'max_length[256]',
+						'errors' => ['max_length' => 'isi tidak boleh lebih dari 256 huruf & karakter.']
+					],
+				])) {
+					session()->setFlashdata('Pengumuman', '<div class="notif-failed">Gagal Mengedit Pengumuman !</div>');
+					return redirect()->to('/Admin/Perizinan')->withInput();
+				}
+
+				$id = $this->request->getPost('id_pengumuman');
+				$data = array(
+					'waktu' => date("Y-m-d h:i:sa"),
+					'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
 					'judul' => str_replace("'", "", htmlspecialchars($this->request->getPost('judul'), ENT_QUOTES)),
 					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
 				);
 				$this->newsModel->editInfo($data, $id);
+				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Mengedit Pengumuman !</div>');
 				return redirect()->to('Adminpengumuman');
 			} else {
 				return redirect()->to('/dashboard');

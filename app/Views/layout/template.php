@@ -339,11 +339,30 @@
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
 	$(document).ready(function() {
+		// get Edit Spesifikasi
+		$('.edit-pengumuman').on('click', function() {
+			// get data from button edit spec
+			const id = $(this).data('id');
+			const uid = $(this).data('uid');
+			const judul = $(this).data('judul');
+			const isi = $(this).data('isi');
+			const waktu = $(this).data('waktu');
+
+			// Set data to Form edit spec
+			$('#Edit_Pengumuman #edit_id').val(id);
+			$('#Edit_Pengumuman #edit_judul').val(judul);
+			$('#Edit_Pengumuman #edit_isi').text(isi);
+			$('#Edit_Pengumuman #edit_waktu').val(waktu);
+			// $('#Edit_Pengumuman #edit_uid').val(uid);
+		});
+
 		// clear input field
 		$('.info-clear').on('click', function() {
 			// Set data to Form input
-			$('#info-maker #edit_judul_info').val("");
-			$('#info-maker #edit_isi_info').text("");
+			$('#Tambah_Pengumuman #tambah_judul').val("");
+			$('#Tambah_Pengumuman #tambah_isi').text("");
+			$('#Edit_Pengumuman #edit_judul').val("");
+			$('#Edit_Pengumuman #edit_isi').text("");
 		});
 	});
 </script>
