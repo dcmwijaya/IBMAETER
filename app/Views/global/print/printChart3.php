@@ -2,12 +2,9 @@
 
 <?php
 
-// Stok Berdasarkan Jenis
-if (!empty($sj1)) {	foreach ($sj1 as $vj1) { $sct[] = $vj1['stok'];	$sct1 = json_encode(json_decode($vj1['stok']));	} }
-if (!empty($sj2)) {	foreach ($sj2 as $vj2) { $sct[] = $vj2['stok'];	$sct2 = json_encode(json_decode($vj2['stok']));	} }
-if (!empty($sj3)) {	foreach ($sj3 as $vj3) { $sct[] = $vj3['stok'];	$sct3 = json_encode(json_decode($vj3['stok']));	} }
-if (!empty($sj4)) {	foreach ($sj4 as $vj4) { $sct[] = $vj4['stok'];	$sct4 = json_encode(json_decode($vj4['stok'])); } }
-if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json_encode(json_decode($vj5['stok']));	} }
+// ====================================== In/Out Stock ====================================== //
+if (!empty($inc)) {	foreach ($inc as $vic) { $icot1[] = $vic['ubah_stok']; $inout1 = json_encode(json_decode($vic['ubah_stok'])); }}
+if (!empty($otc)) {	foreach ($otc as $vot) { $icot2[] = $vot['ubah_stok']; $inout2 = json_encode(json_decode($vot['ubah_stok'])); }}
 
 ?>
 
@@ -49,7 +46,7 @@ if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json
 
 				<div class="card" style="margin-top:50px;">
 					<div class="card-header text-center">
-						<h5><i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Jenis</h5>
+						<h5><i class="fas fa-exchange-alt fa-fw me-1"></i>Inventory Stock In-Out</h5>
 					</div>
 					<div class="card-body">
 						<canvas class="chartLine" id="ChartLine" style="margin:0 auto;place-items:center;padding-left:-8%;padding-right:16%;"></canvas>
@@ -59,22 +56,42 @@ if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json
 						var ChartLine = new Chart(ctx, {
 							type: 'line',
 							data: {
-								labels: ["Cair = <?= $sct1; ?>", "Minyak = <?= $sct2; ?>", "Mudah Terbakar = <?= $sct3; ?>", "Padat = <?= $sct4; ?>", "Daging = <?= $sct5; ?>"],
+								labels: [
+									'', '', '', '', '', '', '', '', '', '',
+									'', '', '', '', '', '', '', '', '', '',
+									'', '', '', '', '', '', '', '', '', ''
+								],
 								datasets: [{
-									label: 'J-Barang',
-									data: <?= json_encode($sct); ?>,
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)',
-										'rgba(255, 94, 0, 0.2)','rgba(127, 253, 125, 0.2)',
-										'rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)','rgba(175, 222, 225, 0.2)'
-									],
-									borderColor: [
-										'rgba(255, 0, 0, 1)','rgba(25, 0, 255, 1)',
-										'rgba(170, 25, 150, 1)','rgba(0, 90, 163, 1)',
-										'rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)','rgba(153, 50, 155, 1)'
-									],
-									borderWidth: 1,
-								}, ],
+										label: 'Approved Income Item',
+										data: <?= json_encode($icot1); ?>,
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 0.2)',
+											'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 0.2)',
+											'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 0.2)'
+										],
+										borderColor: [
+											'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)',
+											'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)',
+											'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)'
+										],
+										borderWidth: 1,
+									},
+									{
+										label: 'Approved Outcome Item',
+										data: <?= json_encode($icot2); ?>,
+										backgroundColor: [
+											'rgba(127, 253, 125, 0.2)', 'rgba(127, 253, 125, 0.2)',
+											'rgba(127, 253, 125, 0.2)', 'rgba(127, 253, 125, 0.2)',
+											'rgba(127, 253, 125, 0.2)', 'rgba(127, 253, 125, 0.2)', 'rgba(127, 253, 125, 0.2)'
+										],
+										borderColor: [
+											'rgba(0, 90, 163, 1)', 'rgba(0, 90, 163, 1)',
+											'rgba(0, 90, 163, 1)', 'rgba(0, 90, 163, 1)',
+											'rgba(0, 90, 163, 1)', 'rgba(0, 90, 163, 1)', 'rgba(0, 90, 163, 1)'
+										],
+										borderWidth: 1,
+									}
+								],
 							},
 							options: {
 								scales: {

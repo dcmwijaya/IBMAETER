@@ -57,7 +57,10 @@ foreach ($countNotWorked as $nwc) {
 										<tr>
 											<th>Email</th>
 											<th>Status Absensi</th>
+											<th>Alasan Izin</th>
+											<th>Bukti Izin</th>
 											<th>Waktu</th>
+											<th>Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -65,7 +68,24 @@ foreach ($countNotWorked as $nwc) {
 											<tr>
 												<td><?= $abs['email_absen']; ?></td>
 												<td><?= $abs['status_absen']; ?></td>
+												<?php if ($abs['bukti_izin'] == "-") : ?>
+													<td><b><?= $abs['alasan_izin']; ?></b></td>
+													<td><b><?= $abs['bukti_izin']; ?></b></td>
+												<?php else : ?>
+													<td><?= $abs['alasan_izin']; ?></td>
+													<td>
+														<button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" data-toggle="modal" data-target="#gambarBukti">
+															<img src="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" width="150" height="auto">
+														</button>
+													</td>
+												<?php endif; ?>
 												<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
+												<td>
+													<div class="btn-group" role="group" aria-label="inoutcom">
+														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
+														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
+													</div>
+												</td>
 											</tr>
 										<?php endforeach; ?>
 									</tbody>
@@ -219,5 +239,25 @@ foreach ($countNotWorked as $nwc) {
 		</section>
 	</div><br>
 </main>
+
+<!-- Gambar Modal -->
+<div class="modal fade" id="gambarBukti" aria-hidden="true" aria-labelledby="gambarBuktiLabel" tabindex="-1">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="gambarBuktiLabel">Bukti Screenshot</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img width="750px" height="auto">
+			</div>
+			<!-- <div class="modal-footer">
+				<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+			</div> -->
+		</div>
+	</div>
+</div>
 
 <?= $this->endSection() ?>

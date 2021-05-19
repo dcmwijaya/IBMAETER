@@ -2,12 +2,9 @@
 
 <?php
 
-// Stok Berdasarkan Jenis
-if (!empty($sj1)) {	foreach ($sj1 as $vj1) { $sct[] = $vj1['stok'];	$sct1 = json_encode(json_decode($vj1['stok']));	} }
-if (!empty($sj2)) {	foreach ($sj2 as $vj2) { $sct[] = $vj2['stok'];	$sct2 = json_encode(json_decode($vj2['stok']));	} }
-if (!empty($sj3)) {	foreach ($sj3 as $vj3) { $sct[] = $vj3['stok'];	$sct3 = json_encode(json_decode($vj3['stok']));	} }
-if (!empty($sj4)) {	foreach ($sj4 as $vj4) { $sct[] = $vj4['stok'];	$sct4 = json_encode(json_decode($vj4['stok'])); } }
-if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json_encode(json_decode($vj5['stok']));	} }
+// ====================================== Gender Employees ====================================== //
+if (!empty($cf)) {	foreach ($cf as $cfv) {	$cfm[] = $cfv['gender']; $cfm1 = json_encode(json_decode($cfv['gender'])); }}
+if (!empty($cm)) {	foreach ($cm as $cmv) {	$cfm[] = $cmv['gender']; $cfm2 = json_encode(json_decode($cmv['gender'])); }}
 
 ?>
 
@@ -49,7 +46,7 @@ if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json
 
 				<div class="card" style="margin-top:50px;">
 					<div class="card-header text-center">
-						<h5><i class="fas fa-cubes fa-fw me-1"></i>Chart Stok Berdasarkan Jenis</h5>
+						<h5><i class="fas fa-laptop-house fa-fw me-1"></i>Gender Employees</h5>
 					</div>
 					<div class="card-body">
 						<canvas class="chartDonuts" id="ChartDonuts" style="margin:0 auto;place-items:center;margin-left:-8%;margin-right:-20%;"></canvas>
@@ -59,19 +56,14 @@ if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json
 						var ChartDonuts = new Chart(ctx, {
 							type: 'doughnut',
 							data: {
-								labels: ["Cair = <?= $sct1; ?>", "Minyak = <?= $sct2; ?>", "Mudah Terbakar = <?= $sct3; ?>", "Padat = <?= $sct4; ?>", "Daging = <?= $sct5; ?>"],
+								labels: ["Female = <?= $cfm1; ?>","Male = <?= $cfm2; ?>"],
 								datasets: [{
-									label: 'J-Barang',
-									data: <?= json_encode($sct); ?>,
+									data: <?= json_encode($cfm); ?>,
 									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)',
-										'rgba(255, 94, 0, 0.2)','rgba(127, 253, 125, 0.2)',
-										'rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)','rgba(175, 222, 225, 0.2)'
+										'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'
 									],
 									borderColor: [
-										'rgba(255, 0, 0, 1)','rgba(25, 0, 255, 1)',
-										'rgba(170, 25, 150, 1)','rgba(0, 90, 163, 1)',
-										'rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)','rgba(153, 50, 155, 1)'
+										'rgba(255, 0, 0, 1)', 'rgba(25, 0, 255, 1)'
 									],
 									borderWidth: 1,
 								}, ],
@@ -83,7 +75,8 @@ if (!empty($sj5)) {	foreach ($sj5 as $vj5) { $sct[] = $vj5['stok'];	$sct5 = json
 									}
 								},
 								legend: {
-									display: true, position: "bottom",
+									display: true,
+									position: "bottom",
 								}
 							}
 						});

@@ -674,14 +674,11 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF CHART-1 | INVENBAR",
-				"class" => $this->barangModel->invenclass(),
-				"sc1" => $this->barangModel->stockclass1(),
-				"sc2" => $this->barangModel->stockclass2(),
-				"sc3" => $this->barangModel->stockclass3(),
-				"sc4" => $this->barangModel->stockclass4(),
-				"sc5" => $this->barangModel->stockclass5(),
-				"sc6" => $this->barangModel->stockclass6(),
-				"sc7" => $this->barangModel->stockclass7()
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5()
 			];
 
 			return view('global/print/printChart1', $data);
@@ -695,14 +692,27 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF CHART-2 | INVENBAR",
-				"class" => $this->barangModel->invenclass(),
 				"sc1" => $this->barangModel->stockclass1(),
 				"sc2" => $this->barangModel->stockclass2(),
 				"sc3" => $this->barangModel->stockclass3(),
 				"sc4" => $this->barangModel->stockclass4(),
 				"sc5" => $this->barangModel->stockclass5(),
 				"sc6" => $this->barangModel->stockclass6(),
-				"sc7" => $this->barangModel->stockclass7()
+				"sc7" => $this->barangModel->stockclass7(),
+				"cc1" => $this->barangModel->costclassA(),
+				"cc2" => $this->barangModel->costclassB(),
+				"cc3" => $this->barangModel->costclassC(),
+				"cc4" => $this->barangModel->costclassD(),
+				"cc5" => $this->barangModel->costclassE(),
+				"cc6" => $this->barangModel->costclassF(),
+				"cc7" => $this->barangModel->costclassG(),
+				"cw1" => $this->barangModel->weightclassA(),
+				"cw2" => $this->barangModel->weightclassB(),
+				"cw3" => $this->barangModel->weightclassC(),
+				"cw4" => $this->barangModel->weightclassD(),
+				"cw5" => $this->barangModel->weightclassE(),
+				"cw6" => $this->barangModel->weightclassF(),
+				"cw7" => $this->barangModel->weightclassG()
 			];
 
 			return view('global/print/printChart2', $data);
@@ -716,12 +726,8 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF CHART-3 | INVENBAR",
-				"category" => $this->barangModel->jenis(),
-				"sj1" => $this->barangModel->stockjenis1(),
-				"sj2" => $this->barangModel->stockjenis2(),
-				"sj3" => $this->barangModel->stockjenis3(),
-				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5()
+				"inc" => $this->LogModel->stockIncome(),
+				"otc" => $this->LogModel->stockOutcome()
 			];
 
 			return view('global/print/printChart3', $data);
@@ -735,12 +741,8 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF CHART-4 | INVENBAR",
-				"category" => $this->barangModel->jenis(),
-				"sj1" => $this->barangModel->stockjenis1(),
-				"sj2" => $this->barangModel->stockjenis2(),
-				"sj3" => $this->barangModel->stockjenis3(),
-				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5()
+				"cf" => $this->userModel->countFemale(),
+				"cm" => $this->userModel->countMale()
 			];
 
 			return view('global/print/printChart4', $data);

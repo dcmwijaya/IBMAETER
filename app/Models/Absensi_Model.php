@@ -8,7 +8,7 @@ class Absensi_Model extends Model
 {
     protected $table = 'absensi';
     protected $primaryKey = 'id_absen';
-    protected $allowedFields = ['uid_absen', 'email_absen', 'status_absen', 'tgl_absen', 'waktu_absen'];
+    protected $allowedFields = ['uid_absen', 'email_absen', 'status_absen', 'alasan_izin', 'bukti_izin', 'tgl_absen', 'waktu_absen'];
 
     public function getAbsen($uid = false, $date = false)
     {
@@ -28,11 +28,13 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date])->first();
     }
 
-    public function countWorked(){
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen','Attendance')->get()->getResultArray();
+    public function countWorked()
+    {
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen', 'Hadir')->get()->getResultArray();
     }
 
-    public function countNotWorked(){
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen','Late')->get()->getResultArray();
+    public function countNotWorked()
+    {
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen', 'Terlambat')->get()->getResultArray();
     }
 }
