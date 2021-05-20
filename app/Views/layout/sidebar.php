@@ -86,7 +86,7 @@
 										<a href="<?= base_url('Menu/Pengumuman') ?>" class="<?= ($CurrentMenu == 'pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<div class="notifs">
 												<i class="fas fa-bell fa-fw me-3"></i><span>Pengumuman</span>
-												<span class="badge badge-danger px-1 ml-1">1</span>
+												<span class="badge badge-danger px-1 ml-1"><?= ($infoCV > 0) ? $infoCV : ''; ?></span>
 												<span class="sr-only">unread messages</span>
 											</div>
 										</a>

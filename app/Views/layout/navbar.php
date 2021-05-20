@@ -16,7 +16,7 @@
 						<div class="position-relative">
 							<i class="fas fa-bell fa-fw" style="font-size: 20px;">
 								<!-- Counter - Messages -->
-								<span class="custom-indicator badge-danger badge-counter"><?= $infoCV; ?></span>
+								<span class="custom-indicator badge-danger badge-counter"><?= ($infoCV > 0) ? $infoCV : ''; ?></span>
 							</i>
 						</div>
 					</a>

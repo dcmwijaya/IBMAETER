@@ -1,5 +1,10 @@
 /* ============================================== Navbar ===============================================*/
 
+.bg-softblue {
+  color: #fff;
+  background-color: #1fa8d6;
+}
+
 .dropdown .dropdown-menu.show {
   animation-name: dropdownAnimation;
   animation-duration: 0.25s;
