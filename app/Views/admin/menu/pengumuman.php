@@ -37,17 +37,10 @@
 				<div class="card-body">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
-							<button type="button" class="btn btn-dark" onclick="listPengumuman()">Reload</button>
 							<div class="flex-fill">
 								<div class="btn-group btn-wrap">
 									<button type="button" class="btn btn-primary btn-sm px-3 shadow-sm" onclick="showTambahmodal()"><i class="fas fa-plus-square fa-fw"></i> Tambah</button>
-									<button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<i class="fas fa-fw fa-file"></i> Export
-									</button>
-									<div class="dropdown-menu dm-export">
-										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="xls" onclick="return false;"><i class="fas fa-file-csv fa-fw me-2"></i>Excel</a>
-										<a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/#'); ?>" id="doc" onclick="return false;"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
-									</div>
+									<button type="button" class="btn btn-dark" onclick="listPengumuman()"><i class="fas fa-sync fa-fw"></i> Reload</button>
 								</div>
 							</div>
 						</div>
@@ -65,9 +58,7 @@
 											<th><i class="fas fa-fw fa-time"></i> Aksi</th>
 										</tr>
 									</thead>
-									<tbody id="listPengumuman">
-
-									</tbody>
+									<tbody id="listPengumuman"></tbody>
 								</table>
 							</div>
 						</div>
