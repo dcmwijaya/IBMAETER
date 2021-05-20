@@ -10,12 +10,13 @@ class Log_Model extends Model
     // protected $primaryKey = 'no_log';
     protected $allowedFields = ['no_log', 'uid', 'tgl', 'status', 'ket'];
 
-    public function ReadLogItem($no = false)
+    public function ReadLogItem()
     {
-        if ($no == false) {
-            return $this->findAll();
-        }
-        return $this->where(['no_komplain' => $no])->first();
+        $builder = $this->db->table('alur_barang');
+        $builder->select('*');
+        $builder->join('user', 'user.uid = alur_barang.uid', 'left');
+        $query = $builder->get()->getResultArray();
+        return $query;
     }
 
     public function Add_Log_Item($data)

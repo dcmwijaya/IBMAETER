@@ -21,8 +21,8 @@
 						</div>
 					</a>
 					<!-- Dropdown - Messages -->
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
-						<div class="dropdown-menu-header">
+					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0 shadow" aria-labelledby="alertsDropdown">
+						<div class="dropdown-menu-header bg-softblue">
 							<i class="fas fa-bell fa-fw"></i> <?= $infoCV; ?> Notifikasi Baru
 						</div>
 						<!-- VISIBILITY -->

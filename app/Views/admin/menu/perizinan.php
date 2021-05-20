@@ -69,7 +69,7 @@
                                         <?php foreach ($log_item as $log) : ?>
                                             <tr>
                                                 <td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
-                                                <td><?= $log['nama_pekerja']; ?></td>
+                                                <td><?= $log['nama']; ?></td>
                                                 <td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
                                                 <td>
                                                     <?php if ($log['request'] == "Masuk") : ?>
@@ -99,15 +99,15 @@
                                                 <td>
                                                     <?php if ($log['status'] == 'Pending') : ?>
                                                         <div class="btn-group shadow-sm" role="group" aria-label="inoutcom">
-                                                            <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama_pekerja']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Terima</button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama_pekerja']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Tolak</button>
+                                                            <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Terima</button>
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Tolak</button>
                                                         </div>
                                                     <?php else : ?>
                                                         <div class="info-progress">
                                                             <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
                                                             <?php if ($log['status'] == 'Diterima') : ?>
                                                                 <!-- NB : langsung buat pindah halaman bwt ngeprint -->
-                                                                <a type="button" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama_pekerja']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Print"><i class="fas fa-print fa-fw"></i></a>
+                                                                <a type="button" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Print"><i class="fas fa-print fa-fw"></i></a>
                                                             <?php endif; ?>
                                                         </div>
                                                     <?php endif; ?>

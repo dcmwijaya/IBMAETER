@@ -136,7 +136,7 @@
 										<?php foreach ($log_item as $log) : ?>
 											<tr>
 												<td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
-												<td><?= $log['nama_pekerja']; ?></td>
+												<td><?= $log['nama']; ?></td>
 												<td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
 												<td>
 													<?php if ($log['request'] == "Masuk") : ?>

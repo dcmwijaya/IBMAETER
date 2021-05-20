@@ -66,6 +66,8 @@ class Menu extends BaseController
 				"title" => "Kelola Barang | INVENBAR",
 				"CurrentMenu" => "kelolabarang",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier(),
@@ -229,13 +231,12 @@ class Menu extends BaseController
 	public function Pengumuman()
 	{
 		if (session('uid') != null) {
-			$uid = array('uid' => session('uid'));
 			$data = [
 				"title" => "Pengumuman | INVENBAR",
 				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
-				"infoV" => $this->newsModel->showExpVisibility(),
-				"infoCV" => $this->newsModel->CountExpVisibility($uid),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -255,6 +256,8 @@ class Menu extends BaseController
 				"CurrentMenu" => "profakun",
 				'user' => $this->userModel->getUser($email),
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 			];
@@ -273,6 +276,8 @@ class Menu extends BaseController
 				"title" => "Edit Profile | INVENBAR",
 				"CurrentMenu" => "profedit",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'validation' => \Config\Services::Validation(),
 				'user' => $this->userModel->getUserId($uid),
 				"log_notifs" => $this->LogModel->notifsLog(),
@@ -408,6 +413,8 @@ class Menu extends BaseController
 				"title" => "Absensi Pekerja | INVENBAR",
 				"CurrentMenu" => "absensi",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -528,6 +535,8 @@ class Menu extends BaseController
 				"title" => "Cetak Laporan | INVENBAR",
 				"CurrentMenu" => "laporanBulanan",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -547,6 +556,8 @@ class Menu extends BaseController
 				"title" => "Pengaduan | INVENBAR",
 				"CurrentMenu" => "pengaduan",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'validation' => \Config\Services::Validation(),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
@@ -650,7 +661,8 @@ class Menu extends BaseController
 				"title" => "Dashboard | INVENBAR",
 				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
-				"infoV" => $this->newsModel->showExpVisibility(),
+				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),

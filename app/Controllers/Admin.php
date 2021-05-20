@@ -59,6 +59,8 @@ class Admin extends BaseController
 					"CurrentMenu" => "data_user",
 					'validation' => \Config\Services::validation(),
 					"info" => $this->newsModel->showTask(),
+					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+					"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -336,6 +338,8 @@ class Admin extends BaseController
 					"title" => "Perizinan Barang | INVENBAR",
 					"CurrentMenu" => "perizinan",
 					"info" => $this->newsModel->showTask(),
+					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+					"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
 					'arsipKomp' => $this->arsipKompModel->getAll(),
@@ -412,6 +416,8 @@ class Admin extends BaseController
 					"title" => "Edit Pengumuman | INVENBAR",
 					"CurrentMenu" => "edit_pengumuman",
 					"info" => $this->newsModel->showTask(),
+					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+					"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"log_item" => $this->LogModel->ReadLogItem(),
@@ -600,6 +606,8 @@ class Admin extends BaseController
 					"title" => "Aktivitas User | INVENBAR",
 					"CurrentMenu" => "logUser",
 					"info" => $this->newsModel->showTask(),
+					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+					"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -677,6 +685,8 @@ class Admin extends BaseController
 					"title" => "Komplain Pekerja | INVENBAR",
 					"CurrentMenu" => "komplainUser",
 					"info" => $this->newsModel->showTask(),
+					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
+					"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
