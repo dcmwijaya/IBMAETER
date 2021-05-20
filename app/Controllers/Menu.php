@@ -409,6 +409,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d")),
+				'izin' => $this->absensiModel->getStatusIzin(session('uid'), date("Y-m-d")),
 				'validation' => \Config\Services::Validation()
 			];
 			return view('global/menu/absensi', $data);
@@ -419,19 +420,33 @@ class Menu extends BaseController
 
 	public function absen()
 	{
+		// jika mengajukan izin rules akan berlaku
+		if ($this->request->getVar('alasanIzin') != null) {
+			$rulesAlasanIzin = "required";
+			$rulesBuktiIzin = "required_with[foto,alasanIzin]|max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]";
+		} else {
+			$rulesAlasanIzin = "min_length[0]";
+			$rulesBuktiIzin = "min_length[0]";
+		}
+
 		// jika valdiasi tidakk lolos maka redirect ke halaman edit
 		if (!$this->validate([
 			'alasanIzin' => [
-				'rules' => 'required',
-				'errors' => ['required' => 'Alasan izin harus diisi.']
+				'rules' => $rulesAlasanIzin,
+				'errors' => [
+					'required' => 'Alasan izin harus diisi.',
+					'min_length' => 'Alasan izin harus diisi.'
+				]
 			],
 			'foto' => [
-				'rules' => 'max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'rules' => $rulesBuktiIzin,
 				'errors' => [
+					'required_with' => 'Bukti harus diisi.',
 					'max_size' => 'Ukuran gambar maksimal 5MB',
 					'is_image' => 'Bukti izin harus berupa gambar.',
 					'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-					'mime_in' => '{field} harus berekstensi .jpg, .jpeg, atau .png'
+					'mime_in' => '{field} harus berekstensi .jpg, .jpeg, atau .png',
+					'min_length' => 'Bukti harus diisi.'
 				]
 			]
 		])) {
@@ -443,6 +458,8 @@ class Menu extends BaseController
 		$buktiFoto = $this->request->getFile('foto'); // mengambil file gambar
 		$buktiIzin = "-";
 		$alasanIzin = "-";
+		$respon = "Masuk";
+		$tipePesan = "pesan";
 
 		// jika melakukan perizinan
 		if ($this->request->getVar('alasanIzin') != null) {
@@ -454,18 +471,30 @@ class Menu extends BaseController
 			$buktiIzin = $buktiFoto->getRandomName();
 			// upload gambar
 			$buktiFoto->move('img/bukti_absen', $buktiIzin);
+			// respon jika izin
+			$respon = "Pending";
+			// pesan FLASH
+			$pesanFlash = "Izin telah diajukan.";
 		} else {
 			// jika waktu lebih dari setengah 8 maka dihitung terlambat
 			if ($time >= "07:30:05") {
 				// jika melewati jam kerja (4 sore) maka dihitung tidak bekerja
 				if ($time >= "16:15:05") {
 					$status = "Tidak Bekerja";
+					// pesan flash
+					$pesanFlash = "Jam kerja telah terlewat, status absensi Anda hari ini adalah <b>Tidak Bekerja</b>.<br>Pengajuan izin tetap bisa dilakukan.";
+					$tipePesan = "alert";
 				} else {
 					$status = "Terlambat";
+					// pesan flash
+					$pesanFlash = "Jam toleransi keterlambatan telah terlewat, status absensi Anda hari ini adalah <b>Terlambat</b>.<br>Silahkan melakukan pengajuan izin jika terdapat perizinan.";
+					$tipePesan = "alert";
 				}
 			} else {
 				// jika tidak terlambat maka akan tercatat 'Hadir'
 				$status = "Hadir";
+				// pesan flash
+				$pesanFlash = "Absensi Berhasil Dilakukan.";
 			}
 		}
 
@@ -476,10 +505,14 @@ class Menu extends BaseController
 			'alasan_izin' => $alasanIzin,
 			'bukti_izin' => $buktiIzin,
 			'tgl_absen' => date("Y-m-d"),
-			'waktu_absen' => $time
+			'waktu_absen' => $time,
+			'respons' => $respon,
+			'komen_izin' => "-",
+			'waktu_komen' => null
 		]);
 
-		// BERI FLASH DATA!!!!
+		// Pesan FLASH
+		session()->setFlashdata($tipePesan, $pesanFlash);
 		return redirect()->to('/Menu/absensiUser');
 	}
 

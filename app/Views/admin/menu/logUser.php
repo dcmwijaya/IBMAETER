@@ -29,6 +29,16 @@ foreach ($countNotWorked as $nwc) {
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">
+					<?php if (session()->getFlashdata('pesan')) : ?>
+						<div class="alert alert-success" role="alert">
+							<h4><?= session()->getFlashdata('pesan'); ?></h4>
+						</div>
+					<?php endif ?>
+					<?php if (session()->getFlashdata('alert')) : ?>
+						<div class="alert alert-danger" role="alert">
+							<h4><?= session()->getFlashdata('alert'); ?></h4>
+						</div>
+					<?php endif ?>
 					<h5 class="mb-0 text-center">
 						<strong>ABSENSI USER</strong>
 					</h5>
@@ -81,10 +91,18 @@ foreach ($countNotWorked as $nwc) {
 												<?php endif; ?>
 												<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
 												<td>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Accept</button>
-														<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-no="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Decline</button>
-													</div>
+													<?php if ($abs['respons'] == "Pending") : ?>
+														<div class="btn-group" role="group" aria-label="inoutcom">
+															<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Terima"><i class="fas fa-check fa-fw"></i>Terima</button>
+															<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Tolak"><i class="fas fa-times fa-fw"></i>Tolak</button>
+														</div>
+													<?php elseif ($abs['respons'] == "Diterima") : ?>
+														<button type="button" class="btn btn-success btn-sm px-2 rounded" disabled><i class="fas fa-check fa-fw"></i>Diterima</button>
+													<?php elseif ($abs['respons'] == "Ditolak") : ?>
+														<button type="button" class="btn btn-danger btn-sm px-2 rounded" disabled><i class="fas fa-times fa-fw"></i>Ditolak</button>
+													<?php else : ?>
+														<button type="button" class="btn btn-secondary btn-sm px-2 rounded" disabled></i>Hadir</button>
+													<?php endif; ?>
 												</td>
 											</tr>
 										<?php endforeach; ?>
@@ -93,8 +111,8 @@ foreach ($countNotWorked as $nwc) {
 							</div>
 						</div>
 						<p class="absensiCount">
-							Jumlah pekerja hadir saat ini : <?= $workedCount; ?> <br>
-							Jumlah pekerja bolos saat ini : <?= $notworkedCount; ?>
+							Jumlah pekerja hadir hari ini : <?= $workedCount; ?> <br>
+							Jumlah pekerja tidak melakukan absen hari ini : <?= $totalWorker - $workedCount; ?>
 						</p>
 					</div>
 				</div>
@@ -256,6 +274,70 @@ foreach ($countNotWorked as $nwc) {
 			<!-- <div class="modal-footer">
 				<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
 			</div> -->
+		</div>
+	</div>
+</div>
+
+<!-- Accept Modal -->
+<div class="modal fade" id="Terima" tabindex="-1" aria-labelledby="TerimaIzinLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title" id="TerimaIzinLabel"><b>Izin Disetujui</b></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="<?= base_url('Admin/responIzin'); ?>" method="POST" enctype="multipart/form-data">
+					<?= csrf_field(); ?>
+					<div class="form-group">
+						<label for="acc_komentar">Komentar</label>
+						<textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
+						<div class="invalid-feedback">
+							<?= $validation->getError('komen'); ?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="acc-izin" name="id_absen" value="">
+						<input type="hidden" id="status" name="status_absen" value="Diterima">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Selesai</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="Tolak" tabindex="-1" aria-labelledby="TolakIzinLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title" id="TolakIzinLabel"><b>Izin Ditolak</b></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="<?= base_url('Admin/responIzin'); ?>" method="POST" enctype="multipart/form-data">
+					<?= csrf_field(); ?>
+					<div class="form-group">
+						<label for="acc_komentar">Komentar</label>
+						<textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
+						<div class="invalid-feedback">
+							<?= $validation->getError('komen'); ?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="dec-izin" name="id_absen" value="">
+						<input type="hidden" id="status" name="status_absen" value="Ditolak">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Selesai</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

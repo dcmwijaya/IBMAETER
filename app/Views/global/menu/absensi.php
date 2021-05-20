@@ -8,6 +8,16 @@
 	<div class="container pt-4">
 		<section class="mb-4">
 			<div class="card">
+				<?php if (session()->getFlashdata('pesan')) : ?>
+					<div class="alert alert-success" role="alert">
+						<h4><?= session()->getFlashdata('pesan'); ?></h4>
+					</div>
+				<?php endif ?>
+				<?php if (session()->getFlashdata('alert')) : ?>
+					<div class="alert alert-danger" role="alert">
+						<h4><?= session()->getFlashdata('alert'); ?></h4>
+					</div>
+				<?php endif ?>
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
 						<strong>ABSENSI PEKERJA</strong>
@@ -65,18 +75,18 @@
 																<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Absensi Sekarang</p>
 															</button>
 														</div>
-												<?php else : ?>
+													<?php else : ?>
 														<div class="my-4">
 															<button type="submit" class="btn btn-success btn-akhir-sesi p-3 btn-left" disabled>
 																<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Sesi Absen Berakhir</p>
 															</button>
 														</div>
-												<?php endif; ?>
-														<div class="my-4">
-															<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($absensi == false) ? "#Izin" : ""; ?>" <?= ($absensi == false) ? "" : "disabled"; ?>>
-																<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
-															</button>
-														</div>
+													<?php endif; ?>
+													<div class="my-4">
+														<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
+															<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
+														</button>
+													</div>
 													</div>
 											</form>
 										</div>

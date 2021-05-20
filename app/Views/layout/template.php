@@ -582,6 +582,8 @@
 		?>
 		// get Accept Komplain dan perizinan 
 		$('.btn-acc-item').on('click', function() {
+			// perizinan absensi
+			var idIzin = $(this).data('idizin');
 			// get data from button accept
 			const noKomp = $(this).data('no');
 			// perzinaan
@@ -593,6 +595,7 @@
 			const ket = $(this).data('ket');
 
 			// Set data to Form accept
+			$('#acc-izin').val(idIzin);
 			$('#acc-nomor').val(noKomp);
 			$('#acc-reqs').val(reqs);
 			$('#Accept #TerimaNama').val(nama);
@@ -609,6 +612,8 @@
 
 		// get Decline Komplain dan perizinan
 		$('.btn-rjc-item').on('click', function() {
+			// perizinan absensi
+			var idIzin = $(this).data('idizin');
 			// get data from button accept
 			const noKomp = $(this).data('no');
 			//perzinaan
@@ -620,6 +625,7 @@
 			const ket = $(this).data('ket');
 
 			// Set data to Form decline
+			$('#dec-izin').val(idIzin);
 			$('#dec-nomor').val(noKomp);
 			$('#dec-reqs').val(reqs);
 			$('#Rejected #TolakNama').text(nama);

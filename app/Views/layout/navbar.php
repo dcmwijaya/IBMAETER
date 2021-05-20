@@ -59,7 +59,7 @@
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item" href="<?= base_url('Menu/Profakun') . "/" . session('email') ?>"><i class="far fa-user-circle fa-fw me-3"></i>My profile</a></li>
 						<li><a class="dropdown-item" href="<?= base_url('Menu/Profedit') . "/" . session('uid') ?>"><i class="fas fa-users-cog fa-fw me-3"></i>Edit Profile</a></li>
-						<li><a class="dropdown-item" href="<?= base_url('Menu/Logout') ?>"><i class="fas fa-sign-out-alt fa-fw me-3"></i>Keluar Akun</a></li>
+						<li><a class="dropdown-item" href="<?= base_url('Menu/Logout') ?>" onclick="return confirm('Apakah Anda yakin ingin melakukan Logout?');"><i class="fas fa-sign-out-alt fa-fw me-3"></i>Keluar Akun</a></li>
 					</ul>
 				</li>
 			</ul>
