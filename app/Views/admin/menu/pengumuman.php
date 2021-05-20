@@ -36,30 +36,18 @@
 				</div>
 				<div class="card-body">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="">
+							<button type="button" class="btn btn-primary px-3 shadow-sm" onclick="showTambahmodal()"><i class="fas fa-plus-square fa-fw"></i> Tambah</button>
+							<button type="button" class="btn btn-dark shadow-sm" onclick="listPengumuman()"><i class="fas fa-sync fa-fw"></i> Reload</button>
+						</div>
 						<div class="row my-3">
 							<div class="flex-fill">
-								<div class="btn-group btn-wrap">
-									<button type="button" class="btn btn-primary btn-sm px-3 shadow-sm" onclick="showTambahmodal()"><i class="fas fa-plus-square fa-fw"></i> Tambah</button>
-									<button type="button" class="btn btn-dark" onclick="listPengumuman()"><i class="fas fa-sync fa-fw"></i> Reload</button>
-								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-								<table id="table_pengumuman" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-									<thead>
-										<tr>
-											<!-- ######################### DATATABLES GAGAL SORTING -->
-											<th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
-											<th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th>
-											<th><i class="fas fa-fw fa-info"></i> Admin</th>
-											<th><i class="fas fa-fw fa-users"></i> Judul</th>
-											<th><i class="fas fa-fw fa-box"></i> Isi Pengumuman</th>
-											<th><i class="fas fa-fw fa-time"></i> Aksi</th>
-										</tr>
-									</thead>
-									<tbody id="listPengumuman"></tbody>
-								</table>
+								<!-- Reload Table -->
+								<div id="Reload_AJAX"></div>
 							</div>
 						</div>
 					</div>

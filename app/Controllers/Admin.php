@@ -442,6 +442,22 @@ class Admin extends BaseController
 		}
 	}
 
+	public function BlankPengumuman_Form()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				return view('admin/pengumuman_part/blank_field');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	public function TambahPengumuman_Form() // Tambah Form Modal
 	{
 		// seleksi no login

@@ -118,14 +118,7 @@
 				[0, "desc"]
 			]
 		});
-		$('#table_pengumuman').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false,
-			"order": [
-				[0, "desc"]
-			]
-		});
+
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -346,14 +339,28 @@
 
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
+	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
+
 	function listPengumuman() {
 		$.ajax({
 			url: '<?= base_url('Admin/ShowPengumuman'); ?>',
 			beforeSend: function(f) {
-				$('#listPengumuman').html('Loading...');
+				$('#Reload_AJAX').html(sloading);
 			},
 			success: function(data) {
-				$('#listPengumuman').html(data);
+				$('#Reload_AJAX').html(data);
+				$('#table_pengumuman').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false,
+					"order": [
+						[0, "desc"]
+					],
+					"columnDefs": [{
+						"width": "20%",
+						"targets": 1
+					}]
+				});
 			}
 		});
 	}
@@ -412,30 +419,54 @@
 		});
 	}
 
-	function Simpan() {
+	// function Simpan() {
+	$("#Pengumuman_Form").submit('click', function() {
+		// e.preventDefault();
 		$('#Pengumuman_Modal').modal('hide');
-		$(this).submit('click', function(e) {
-			e.preventDefault();
-			let url;
-			if (SaveType == "Tambah") {
-				url = "<?= base_url('Admin/TambahPengumuman'); ?>";
-			} else if (SaveType == "Edit") {
-				url = "<?= base_url('Admin/EditPengumuman'); ?>";
+		let url;
+		if (SaveType == "Tambah") {
+			url = "<?= base_url('Admin/TambahPengumuman'); ?>";
+		} else if (SaveType == "Edit") {
+			url = "<?= base_url('Admin/EditPengumuman'); ?>";
+		}
+		$.ajax({
+			url: url,
+			beforeSend: function(data) {
+				console.log(data);
+			},
+			type: "POST",
+			data: $('#Pengumuman_Form').serialize(),
+			success: function(data) {
+				console.log("DATA SENT SUCCESSFULLY !");
+				$('#Pengumuman_Form').html(' ');
+				listPengumuman();
 			}
-			$.ajax({
-				url: url,
-				beforeSend: function(data) {
-					console.log("DATA SENT SUCCESSFULLY !");
-				},
-				type: "POST",
-				data: $('#Pengumuman_Form').serialize(), //sementara EDIT
-				success: function(data) {
-					listPengumuman();
-				}
-			});
-		})
+		});
+		return false;
+	})
+	// }
+
+	function infoClear() {
+		// Set data to Form input
+		let url = '<?= base_url('Admin/BlankPengumuman_Form'); ?>';
+		let jpholder;
+		if (SaveType == "Tambah") {
+			jpholder = "Tambah Judul Pengumuman...";
+		} else if (SaveType == "Edit") {
+			jpholder = "Edit Judul Pengumuman...";
+		}
+		$.ajax({
+			url: url,
+			type: "POST",
+			success: function(data) {
+				$('#PengumumanF_Input').html(data);
+				$('#pengumuman_judul').attr('placeholder', jpholder);
+			}
+		});
 	}
 
+
+	// Mungkin Dihapus
 	$(document).ready(function() {
 		// load list data
 		listPengumuman();
@@ -447,28 +478,21 @@
 		// get Edit Spesifikasi
 		// $('.edit-pengumuman').on('click', function() {
 		// get data from button edit spec
-		const id = $(this).data('id');
-		const uid = $(this).data('uid');
-		const judul = $(this).data('judul');
-		const isi = $(this).data('isi');
-		const waktu = $(this).data('waktu');
+		// const id = $(this).data('id');
+		// const uid = $(this).data('uid');
+		// const judul = $(this).data('judul');
+		// const isi = $(this).data('isi');
+		// const waktu = $(this).data('waktu');
 
 		// Set data to Form edit spec
-		$('#edit_id').val(id);
-		$('#edit_judul').val(judul);
-		$('#edit_isi').text(isi);
-		$('#edit_waktu').val(waktu);
+		// $('#edit_id').val(id);
+		// $('#edit_judul').val(judul);
+		// $('#edit_isi').text(isi);
+		// $('#edit_waktu').val(waktu);
 		// $('#Edit_Pengumuman #edit_uid').val(uid);
 		// });
 
 		// clear input field
-		$('.info-clear').on('click', function() {
-			// Set data to Form input
-			$('#tambah_judul').val("");
-			$('#tambah_isi').text("");
-			$('#edit_judul').val("");
-			$('#edit_isi').text("");
-		});
 	});
 </script>
 

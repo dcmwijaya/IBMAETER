@@ -211,20 +211,11 @@
 
 <!-- Gambar Modal -->
 <div class="modal fade" id="gambarBukti" aria-hidden="true" aria-labelledby="gambarBuktiLabel" tabindex="-1">
-	<div class="modal-dialog modal-lg modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="gambarBuktiLabel">Bukti Screenshot</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
+	<div class="modal-dialog modal-lg modal-dialog-centered bg-transparent">
+		<div class="modal-content bg-transparent">
+			<div class="modal-body bg-transparent">
 				<img width="750px" height="auto">
 			</div>
-			<!-- <div class="modal-footer">
-				<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
-			</div> -->
 		</div>
 	</div>
 </div>
