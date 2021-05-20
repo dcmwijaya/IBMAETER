@@ -15,6 +15,7 @@
 
 #absensi-user{
   padding-top: 5px;
+  padding-right: -180px;
 }
 
 #img-absensi{
@@ -30,12 +31,47 @@
 
 .absensi-content{
   font-size: 20px;  
-  line-height: 75px;
+  line-height: 60px;
 }
 
 .absensi-content span{
   padding-left: 10px;
   letter-spacing: 3px;
+}
+
+.group-tombol{
+  margin-top: 30px;
+  margin: 0 auto;
+}
+
+.btn-absensi{
+  margin-bottom: 20px;
+}
+
+.btn-absensi p{
+  font-size: 13px;
+}
+
+.btn-izin p{
+  font-size: 13px;
+}
+
+.btn-akhir-sesi{
+  margin-bottom: 20px;
+} 
+
+.btn-akhir-sesi p{
+  font-size: 13px;
+}
+
+.btn-left{
+  float: left;
+  width: 220px;
+}
+
+.btn-right{
+  float: right;
+  width: 220px;
 }
 
 #img-laporanbulanan{
@@ -68,4 +104,23 @@
   margin: 0 auto;
   font-size: 20px;
   font-weight: bold;
+}
+
+@media (max-width: 1265px) {
+  .btn-left{
+    float: left;
+    width: 220px;
+    margin-bottom: 20px;
+  }
+
+  .btn-right{
+    float: left;
+    width: 220px;
+  }
+}
+
+@media (max-width: 572px) {
+  .btn-absensi{
+    margin-bottom: 20px;
+  }
 }

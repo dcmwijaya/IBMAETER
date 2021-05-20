@@ -37,7 +37,7 @@
                     <div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
                         <div class="row my-3">
                             <div class="flex-fill">
-                                <div class="btn-group btn-wrap">
+                                <div class="btn-group btn-wrap" style="margin-bottom: 10px;">
                                     <button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-fw fa-file"></i> Export
                                     </button>

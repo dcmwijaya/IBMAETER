@@ -21,14 +21,18 @@
 				<div class="card-body mx-auto">
 					<div class="card mb-3" style="box-shadow: 0px 3px 5px 0px #a8a8a8;">
 						<div class="row no-gutters" style="max-width:800px;">
-							<div class="col-md-5 d-inline">
+							<div class="col-md-5 d-inline" style="padding:20px 30px 20px 30px;">
 								<img src="<?= base_url("/img/user") . "/" . $user['picture']; ?>" class="img-thumbnail img-preview" style="max-width:100%;max-height:100%;width:1000px;height:300px;display:flex;">
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-6" style="padding:20px 30px 20px 30px;">
 								<div class="card-body">
 									<p class="card-text"><b>Nama : </b><?= $user['nama']; ?></p>
-									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p><br>
+									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p>
+									<p class="card-text"><b>Department : </b><?= $user['department']; ?></p>
+									<p class="card-text"><b>Gender : </b><?= $user['gender']; ?></p><br>
+									<hr>
 									<h4 class="card-text"><b><?= ($user['role'] == 0) ? "ADMIN" : "PEKERJA" ?></b></h4>
+									<hr>
 								</div>
 							</div>
 						</div>
