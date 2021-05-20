@@ -40,8 +40,7 @@ class Log_Model extends Model
 
     public function stockIncome()
     {
-        $query = $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima');
-        return $query->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function stockOutcome()

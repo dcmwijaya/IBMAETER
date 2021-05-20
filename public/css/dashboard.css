@@ -31,15 +31,51 @@
 }
 
 .chart3-dashboard .content-dashboard{
-    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
+    background: linear-gradient(-45deg, rgba(234, 0, 255, 0.2),rgba(120, 255, 108, 0.4));
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 10px;   
 }
 
 .chart4-dashboard .content-dashboard{
-    background: linear-gradient(-45deg,rgba(100, 0, 25, 0.3), rgba(24, 150, 253, 0.4));
+    background: linear-gradient(-45deg, rgba(234, 0, 255, 0.2),rgba(120, 255, 108, 0.4));
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 10px;   
+}
+
+.container-chart1{
+    margin:0 auto;
+    width: 260px;
+    height: 320px;    
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
+}
+
+.container-chart2{    
+    margin:0 auto;
+    width: 500px;
+    height: 320px;    
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
+}
+
+.container-chart3{    
+    margin:0 auto;
+    width: 500px;
+    height: 320px;    
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
+}
+
+.container-chart4{
+    margin:0 auto;
+    width: 260px;
+    height: 320px;    
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    background: linear-gradient(-45deg, rgba(0, 255, 170, 0.2),rgba(0, 140, 255, 0.4));
 }
 
 .title-card-1, .title-card-2{
