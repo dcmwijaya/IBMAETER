@@ -379,7 +379,6 @@
 				$('#Pengumuman_Header').removeClass("bg-dark");
 				$('#Pengumuman_Header').addClass("bg-softblue");
 				$('#Modal_Title').text(' Tambah Pengumuman');
-				console.log('TAMBAH PENDING SENT...');
 			},
 			success: function(data) {
 				$('#Pengumuman_Form').html(data);
@@ -421,7 +420,7 @@
 
 	// function Simpan() {
 	$("#Pengumuman_Form").submit('click', function() {
-		// e.preventDefault();
+		// e.preventDefault(); tidak berhasil
 		$('#Pengumuman_Modal').modal('hide');
 		let url;
 		if (SaveType == "Tambah") {
@@ -431,13 +430,9 @@
 		}
 		$.ajax({
 			url: url,
-			beforeSend: function(data) {
-				console.log(data);
-			},
 			type: "POST",
 			data: $('#Pengumuman_Form').serialize(),
 			success: function(data) {
-				console.log("DATA SENT SUCCESSFULLY !");
 				$('#Pengumuman_Form').html(' ');
 				listPengumuman();
 			}
@@ -468,31 +463,8 @@
 
 	// Mungkin Dihapus
 	$(document).ready(function() {
-		// load list data
+		// load list data when document load
 		listPengumuman();
-		// setTimeout(function() {
-		// 	alert('ahoy!');
-		// }, 1500);
-
-
-		// get Edit Spesifikasi
-		// $('.edit-pengumuman').on('click', function() {
-		// get data from button edit spec
-		// const id = $(this).data('id');
-		// const uid = $(this).data('uid');
-		// const judul = $(this).data('judul');
-		// const isi = $(this).data('isi');
-		// const waktu = $(this).data('waktu');
-
-		// Set data to Form edit spec
-		// $('#edit_id').val(id);
-		// $('#edit_judul').val(judul);
-		// $('#edit_isi').text(isi);
-		// $('#edit_waktu').val(waktu);
-		// $('#Edit_Pengumuman #edit_uid').val(uid);
-		// });
-
-		// clear input field
 	});
 </script>
 

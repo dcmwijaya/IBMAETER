@@ -41,7 +41,7 @@ class Menu extends BaseController
 		$this->absensiModel = new Absensi_Model();
 	}
 
-	//========================= Dashboard Index()=====================
+	//================================================== Dashboard Index() ==============================================
 
 	public function Index()
 	{
@@ -52,7 +52,7 @@ class Menu extends BaseController
 		}
 	}
 
-	//========================= Logout ==============================
+	//================================================== Logout =======================================================
 	public function logout()
 	{
 		session()->destroy();
@@ -224,7 +224,7 @@ class Menu extends BaseController
 			return redirect()->to('/login');
 		}
 	}
-	// =============================== Pengumuman User ======================
+	// ======================================================== Pengumuman User ===============================================
 
 	public function Pengumuman()
 	{
@@ -243,7 +243,7 @@ class Menu extends BaseController
 		}
 	}
 
-	// ============================= Profile Akun ================================
+	// ====================================================== Profile Akun =========================================================
 	public function Profakun($email)
 	{
 		if (session('uid') != null) {
@@ -261,7 +261,7 @@ class Menu extends BaseController
 		}
 	}
 
-	// =================================== Profile Edit ====================================
+	// ============================================================ Profile Edit =============================================================
 
 	public function Profedit($uid)
 	{
@@ -396,7 +396,7 @@ class Menu extends BaseController
 		}
 	}
 
-	// ==================================== Highlights =========================================
+	// ============================================================= Absensi User ==================================================================
 
 	public function absensiUser()
 	{
@@ -483,6 +483,8 @@ class Menu extends BaseController
 		return redirect()->to('/Menu/absensiUser');
 	}
 
+	// ================================================== Laporan Bulanan ==================================================
+
 	public function LaporanBulanan()
 	{
 		if (session('uid') != null) {
@@ -500,65 +502,7 @@ class Menu extends BaseController
 		}
 	}
 
-	public function Dashboard()
-	{
-		if (session('uid') != null) {
-			$data = [
-				"title" => "Dashboard | INVENBAR",
-				"CurrentMenu" => "dashboard",
-				"info" => $this->newsModel->showTask(),
-				'user' => $this->userModel->getUserId(session('uid')),
-				"log_notifs" => $this->LogModel->notifsLog(),
-				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-				"class" => $this->barangModel->invenclass(),
-				"category" => $this->barangModel->jenis(),
-				"sc1" => $this->barangModel->stockclass1(),
-				"sc2" => $this->barangModel->stockclass2(),
-				"sc3" => $this->barangModel->stockclass3(),
-				"sc4" => $this->barangModel->stockclass4(),
-				"sc5" => $this->barangModel->stockclass5(),
-				"sc6" => $this->barangModel->stockclass6(),
-				"sc7" => $this->barangModel->stockclass7(),
-				"sj1" => $this->barangModel->stockjenis1(),
-				"sj2" => $this->barangModel->stockjenis2(),
-				"sj3" => $this->barangModel->stockjenis3(),
-				"sj4" => $this->barangModel->stockjenis4(),
-				"sj5" => $this->barangModel->stockjenis5(),
-				"cc1" => $this->barangModel->costclassA(),
-				"cc2" => $this->barangModel->costclassB(),
-				"cc3" => $this->barangModel->costclassC(),
-				"cc4" => $this->barangModel->costclassD(),
-				"cc5" => $this->barangModel->costclassE(),
-				"cc6" => $this->barangModel->costclassF(),
-				"cc7" => $this->barangModel->costclassG(),
-				"cw1" => $this->barangModel->weightclassA(),
-				"cw2" => $this->barangModel->weightclassB(),
-				"cw3" => $this->barangModel->weightclassC(),
-				"cw4" => $this->barangModel->weightclassD(),
-				"cw5" => $this->barangModel->weightclassE(),
-				"cw6" => $this->barangModel->weightclassF(),
-				"cw7" => $this->barangModel->weightclassG(),
-				"cf" => $this->userModel->countFemale(),
-				"cm" => $this->userModel->countMale(),
-				"inc" => $this->LogModel->stockIncome(),
-				"otc" => $this->LogModel->stockOutcome(),
-				"cin" => $this->LogModel->countIncome(),
-				"cout" => $this->LogModel->countOutcome()
-			];
-
-			$nama = session('nama');
-			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
-				Hai <strong>' . $nama . '</strong>, Selamat datang di website <strong>INVENBAR</strong>...
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>');
-
-			return view('global/menu/dashboard', $data);
-		} else {
-			return redirect()->to('/login');
-		}
-	}
+	//================================================== Pengaduan ==================================================
 
 	public function Pengaduan()
 	{
@@ -656,6 +600,68 @@ class Menu extends BaseController
 
 			session()->setFlashdata('pengaduanSukses', 'Pengaduan telah diterima, masalah sedang diselidiki.');
 			return redirect()->to('/Menu/pengaduan');
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	// ================================================== Dashboard Utama ==================================================
+
+	public function Dashboard()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "Dashboard | INVENBAR",
+				"CurrentMenu" => "dashboard",
+				"info" => $this->newsModel->showTask(),
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"class" => $this->barangModel->invenclass(),
+				"category" => $this->barangModel->jenis(),
+				"sc1" => $this->barangModel->stockclass1(),
+				"sc2" => $this->barangModel->stockclass2(),
+				"sc3" => $this->barangModel->stockclass3(),
+				"sc4" => $this->barangModel->stockclass4(),
+				"sc5" => $this->barangModel->stockclass5(),
+				"sc6" => $this->barangModel->stockclass6(),
+				"sc7" => $this->barangModel->stockclass7(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5(),
+				"cc1" => $this->barangModel->costclassA(),
+				"cc2" => $this->barangModel->costclassB(),
+				"cc3" => $this->barangModel->costclassC(),
+				"cc4" => $this->barangModel->costclassD(),
+				"cc5" => $this->barangModel->costclassE(),
+				"cc6" => $this->barangModel->costclassF(),
+				"cc7" => $this->barangModel->costclassG(),
+				"cw1" => $this->barangModel->weightclassA(),
+				"cw2" => $this->barangModel->weightclassB(),
+				"cw3" => $this->barangModel->weightclassC(),
+				"cw4" => $this->barangModel->weightclassD(),
+				"cw5" => $this->barangModel->weightclassE(),
+				"cw6" => $this->barangModel->weightclassF(),
+				"cw7" => $this->barangModel->weightclassG(),
+				"cf" => $this->userModel->countFemale(),
+				"cm" => $this->userModel->countMale(),
+				"inc" => $this->LogModel->stockIncome(),
+				"otc" => $this->LogModel->stockOutcome(),
+				"cin" => $this->LogModel->countIncome(),
+				"cout" => $this->LogModel->countOutcome()
+			];
+
+			$nama = session('nama');
+			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
+				Hai <strong>' . $nama . '</strong>, Selamat datang di website <strong>INVENBAR</strong>...
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>');
+
+			return view('global/menu/dashboard', $data);
 		} else {
 			return redirect()->to('/login');
 		}

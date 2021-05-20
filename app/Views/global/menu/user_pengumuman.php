@@ -6,16 +6,16 @@
 <main class="bg-dark">
     <div class="container py-4">
         <div class="row mb-4 mx-2">
-            <div class="card col-sm-8 mx-auto">
+            <div class="card col-sm-10 mx-auto">
                 <div class="card-header text-center py-3">
                     <h5 class="mb-0 text-center">
                         <strong>PENGUMUMAN</strong>
                     </h5>
                 </div>
+                <div class="card-body px-5 text-center">
+                    <img src="<?= base_url('../img/brand2.jpg') ?>" class="card-img-top" alt="judul pengumuman" style="max-width:450px;">
+                </div>
                 <?php foreach ($info as $i) : ?>
-                    <div class="card-body px-5 text-center">
-                        <img src="<?= base_url('../img/' . $i['foto']); ?>" class="card-img-top" alt="judul pengumuman" style="max-width:100%;max-height:100%;width:1000px;height:300px">
-                    </div>
                     <div class="card-body px-5">
                         <hr>
                         <h5 class="card-title"><strong><?= $i['judul']; ?></strong></h5>
