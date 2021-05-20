@@ -105,6 +105,10 @@
                                                     <?php else : ?>
                                                         <div class="info-progress">
                                                             <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
+                                                            <?php if ($log['status'] == 'Diterima') : ?>
+                                                                <!-- NB : langsung buat pindah halaman bwt ngeprint -->
+                                                                <a type="button" class="ml-2 btn btn-success text-light btn-sm btn-acc-item px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama_pekerja']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Print"><i class="fas fa-print fa-fw"></i></a>
+                                                            <?php endif; ?>
                                                         </div>
                                                     <?php endif; ?>
                                                 </td>

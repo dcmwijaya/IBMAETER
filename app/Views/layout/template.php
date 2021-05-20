@@ -116,11 +116,7 @@
 			paging: false,
 			"order": [
 				[0, "desc"]
-			],
-			"bPaginate": false,
-			"bInfo": false,
-			"bFilter": false,
-			"bLengthChange": false,
+			]
 		});
 		$('#table_pengumuman').DataTable({
 			scrollY: '100vh',
