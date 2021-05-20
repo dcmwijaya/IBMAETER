@@ -156,6 +156,21 @@ class Menu extends BaseController
 		}
 	}
 
+	// ------------------------------------------------------ Hal Perizinan ---------------------------------------------------------- 
+
+	public function ShowPerizinan() // Show Master Data Perizinan
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data["log_item"] = $this->LogModel->ReadLogItem();
+			// echo json_encode($data);
+			return view('global/barang_part/list_perizinan', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
 	public function Income_item() // perlu fitur tahapan acc
 	{
 		if (session('uid') != null) {

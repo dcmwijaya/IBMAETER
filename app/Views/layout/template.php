@@ -111,15 +111,6 @@
 			scrollCollapse: true,
 			paging: false
 		});
-		$('#table_perizinan').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false,
-			"order": [
-				[0, "desc"]
-			]
-		});
-
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -162,6 +153,25 @@
 
 <!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <script>
+	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
+
+	function listItem() {
+		$.ajax({
+			url: '<?= base_url('Menu/ShowItem'); ?>',
+			beforeSend: function(f) {
+				$('#Item_AJAX').html(sloading);
+			},
+			success: function(data) {
+				$('#Item_AJAX').html(data);
+				$('#table_item').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false
+				});
+			}
+		});
+	}
+
 	$(document).ready(function() {
 
 		$('#Tambah_item .jenis-barang').change(function() {
@@ -337,11 +347,31 @@
 	});
 </script>
 
+<!-------------------------------------------------- Catch For Perizinan-------------------------------------------------->
+<script>
+	function listPerizinan() {
+		$.ajax({
+			url: '<?= base_url('Menu/ShowPerizinan'); ?>',
+			beforeSend: function(f) {
+				$('#Perizinan_AJAX').html(sloading);
+			},
+			success: function(data) {
+				$('#Perizinan_AJAX').html(data);
+				$('#table_perizinan').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false,
+					"order": [
+						[0, "desc"]
+					]
+				});
+			}
+		});
+	}
+</script>
 
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
-	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
-
 	function listPengumuman() {
 		$.ajax({
 			url: '<?= base_url('Admin/ShowPengumuman'); ?>',
@@ -462,10 +492,11 @@
 	}
 
 
-	// Mungkin Dihapus
+	// Memulai Loading Page
 	$(document).ready(function() {
 		// load list data when document load
 		listPengumuman();
+		listPerizinan();
 	});
 </script>
 

@@ -36,8 +36,12 @@
                 <div class="card-body pt-1">
                     <div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
                         <div class="row my-3">
-                            <div class="flex-fill">
-                                <div class="btn-group btn-wrap" style="margin-bottom: 10px;">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <a href="<?= base_url('exlapor/pdfprintIzin'); ?>" id="pizin_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+                                    <button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
+                                </div>
+                                <div class="float-right">
                                     <button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-fw fa-file"></i> Export
                                     </button>
@@ -46,76 +50,13 @@
                                         <a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/docizin'); ?>" id="izin_doc"><i class="fas fa-file-word fa-fw me-2"></i>Word</a>
                                         <a class="dropdown-item dm-export-item" href="<?= base_url('exlapor/pdfizin'); ?>" id="izin_pdf"><i class="fas fa-file-pdf fa-fw me-2"></i>Pdf</a>
                                     </div>
-                                    <a href="<?= base_url('exlapor/pdfprintIzin'); ?>" id="pizin_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-                                    <thead>
-                                        <tr>
-                                            <th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
-                                            <th><i class="fas fa-fw fa-users"></i> Pekerja</th>
-                                            <th><i class="fas fa-fw fa-box"></i> Barang</th>
-                                            <th>Request</th>
-                                            <th>Stok</th>
-                                            <th>Status</th>
-                                            <th>Keterangan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($log_item as $log) : ?>
-                                            <tr>
-                                                <td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
-                                                <td><?= $log['nama']; ?></td>
-                                                <td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
-                                                <td>
-                                                    <?php if ($log['request'] == "Masuk") : ?>
-                                                        <?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-up " style="color: #06a647 !important; font-size: 18px;"></i>'; ?>
-                                                    <?php else : ?>
-                                                        <?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-down" style="color: #d53651 !important; font-size: 18px;"></i>'; ?>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td style="width: 75px;">
-                                                    <div class="stok text-center bg-dark text-light py-1 rounded">
-                                                        <?= $log['ubah_stok']; ?>
-                                                    </div>
-                                                    <div class="progress mt-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?= $log['ubah_stok']; ?>%" aria-valuenow="<?= $log['ubah_stok']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <?php if ($log['status'] == 'Diterima') : ?>
-                                                        <span class=" py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>
-                                                    <?php elseif ($log['status'] == 'Ditolak') : ?>
-                                                        <span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>
-                                                    <?php else : ?>
-                                                        <span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;background-color: orange;"><i class="fas fa-spinner fa-fw mr-1"></i>PENDING</span>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td style="<?= $tdStyle; ?>"><?= $log['ket']; ?></td>
-                                                <td>
-                                                    <?php if ($log['status'] == 'Pending') : ?>
-                                                        <div class="btn-group shadow-sm" role="group" aria-label="inoutcom">
-                                                            <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Terima</button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Tolak</button>
-                                                        </div>
-                                                    <?php else : ?>
-                                                        <div class="info-progress">
-                                                            <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
-                                                            <?php if ($log['status'] == 'Diterima') : ?>
-                                                                <!-- NB : langsung buat pindah halaman bwt ngeprint -->
-                                                                <a type="button" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_barang']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Print"><i class="fas fa-print fa-fw"></i></a>
-                                                            <?php endif; ?>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                <!-- Reload Table -->
+                                <div id="Perizinan_AJAX"></div>
                             </div>
                         </div>
                     </div>

@@ -41,8 +41,9 @@
 							</div>
 						</div>
 						<div class="tabel">
-							<!-- TH TABLE BERGANTUNG PADA CLASS UNTUK MENGHAPUS ROW -->
 							<div class="srow container-fluid">
+								<!-- Reload Table Barang -->
+								<div id="Item_AJAX"></div>
 								<table id="table_item" class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;">
 									<thead class="container-fluid" style="width:100%;">
 										<tr>
@@ -102,12 +103,13 @@
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
-							<div class="d-flex">
-								<div class="flex-fill mr-auto">
-									<a type="button" href="<?= base_url('exlapor/pdfprintStatizin'); ?>" id="pstatizin_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+							<div class="clearfix">
+								<div class="float-left">
+									<a type="button" href="<?= base_url('exlapor/pdfprintStatizin'); ?>" id="pstatizin_pdf" class="btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
+									<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
 								</div>
-								<div class="flex-fill">
-									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<div class="float-right">
+									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-fw fa-file"></i> Export
 									</button>
 									<div class="dropdown-menu dm-export">
@@ -120,53 +122,8 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-									<thead>
-										<tr>
-											<th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
-											<th><i class="fas fa-fw fa-users"></i> Pekerja</th>
-											<th><i class="fas fa-fw fa-box"></i> Barang</th>
-											<th>Request</th>
-											<th>Stok</th>
-											<th>Status</th>
-											<th>Keterangan</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach ($log_item as $log) : ?>
-											<tr>
-												<td style="<?= $tdStyle; ?>"><?= $log['tgl']; ?></td>
-												<td><?= $log['nama']; ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $log['nama_barang']; ?></td>
-												<td>
-													<?php if ($log['request'] == "Masuk") : ?>
-														<?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-up " style="color: #06a647 !important; font-size: 18px;"></i>'; ?>
-													<?php else : ?>
-														<?= $log['request'] . '<i class="fas fa-fw fa-long-arrow-alt-down" style="color: #d53651 !important; font-size: 18px;"></i>'; ?>
-													<?php endif; ?>
-												</td>
-												<td style="width: 75px;">
-													<div class="stok text-center bg-dark text-light py-1 rounded">
-														<?= $log['ubah_stok']; ?>
-													</div>
-													<div class="progress mt-2">
-														<div class="progress-bar bg-info" role="progressbar" style="width: <?= $log['ubah_stok']; ?>%" aria-valuenow="<?= $log['ubah_stok']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-													</div>
-												</td>
-												<td>
-													<?php if ($log['status'] == 'Diterima') : ?>
-														<span class="py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>
-													<?php elseif ($log['status'] == 'Ditolak') : ?>
-														<span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>
-													<?php else : ?>
-														<span class="py-2 badge badge-warning" style="font-weight: 500;font-size: 11px;background-color: orange;"><i class="fas fa-spinner fa-fw mr-1"></i>PROSES...</span>
-													<?php endif; ?>
-												</td>
-												<td style="<?= $tdStyle; ?>"><?= $log['ket']; ?></td>
-											</tr>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
+								<!-- Reload Table Perizinan -->
+								<div id="Perizinan_AJAX"></div>
 							</div>
 						</div>
 					</div>
@@ -202,6 +159,8 @@
 						</div>
 						<div class="row">
 							<div class="col">
+								<!-- Reload Table Spesifikasi -->
+								<div id="Spesifikasi_AJAX"></div>
 								<table id="table_spesifikasi" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
 									<thead>
 										<tr>
