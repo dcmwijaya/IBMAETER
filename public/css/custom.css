@@ -1,0 +1,68 @@
+/* ============================================== Navbar ===============================================*/
+
+.dropdown .dropdown-menu.show {
+  animation-name: dropdownAnimation;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+/* .navbar-nav .dropdown-menu {
+  position: static;
+  float: none;
+} */
+
+.notif-pengumuman .dropdown-menu-lg {
+  min-width: 20rem;
+  border-radius: 0 !important;
+}
+
+.notif-pengumuman .dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
+.notif-pengumuman .dropdown-menu-header {
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.notif-pengumuman .dropdown-menu-footer {
+  padding: 0.5rem;
+  text-align: center;
+  display: block;
+  font-size: 0.75rem;
+}
+
+.notif-pengumuman .custom-indicator {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  position: absolute;
+  top: -6px;
+  font-family: "Roboto";
+  right: -8px;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-nav .dropdown-menu-lg {
+    min-width: 100%;
+  }
+
+  .dropdown,
+  .dropleft,
+  .dropright,
+  .dropup {
+    position: inherit;
+  }
+}

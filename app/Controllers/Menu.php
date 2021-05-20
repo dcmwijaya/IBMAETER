@@ -229,10 +229,13 @@ class Menu extends BaseController
 	public function Pengumuman()
 	{
 		if (session('uid') != null) {
+			$uid = array('uid' => session('uid'));
 			$data = [
 				"title" => "Pengumuman | INVENBAR",
 				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(),
+				"infoCV" => $this->newsModel->CountExpVisibility($uid),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -647,6 +650,7 @@ class Menu extends BaseController
 				"title" => "Dashboard | INVENBAR",
 				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
+				"infoV" => $this->newsModel->showExpVisibility(),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),

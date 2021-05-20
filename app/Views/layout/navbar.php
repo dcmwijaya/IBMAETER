@@ -11,43 +11,49 @@
 			<!-- Right links -->
 			<ul class="navbar-nav ms-auto d-flex flex-row">
 				<!-- Nav Item - Messages -->
-				<li class="nav-item dropdown no-arrow d-flex align-items-center mx-3">
-					<a class="nav-link" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-bell fa-fw" style="font-size: 20px;">
-							<!-- Counter - Messages -->
-							<span class="custom-badge badge-danger badge-counter"><?= count($info); ?></span>
-						</i>
+				<li class="nav-item notif-pengumuman dropdown no-arrow d-flex align-items-center mx-3">
+					<a class="nav-link" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<div class="position-relative">
+							<i class="fas fa-bell fa-fw" style="font-size: 20px;">
+								<!-- Counter - Messages -->
+								<span class="custom-indicator badge-danger badge-counter"><?= $infoCV; ?></span>
+							</i>
+						</div>
 					</a>
 					<!-- Dropdown - Messages -->
-					<div id="pengumuman-navbar" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-						<h5 class="dropdown-header text-center pt-3 pb-0">
-							<strong>Pengumuman</strong>
-						</h5>
-						<hr>
-						<?php foreach ($info as $i) : ?>
-							<a class="dropdown-item d-flex align-items-center">
-								<div class="container">
-									<div class="row">
-										<div class="col-12 dropdown-list-image text-center">
-											<img class="rounded-lg" style="max-width: 450px; max-height: 200px;" src="<?= base_url('../img/brand2.jpg'); ?>" alt="">
-											<div class="status-indicator bg-success"></div>
+					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
+						<div class="dropdown-menu-header">
+							<i class="fas fa-bell fa-fw"></i> <?= $infoCV; ?> Notifikasi Baru
+						</div>
+						<!-- VISIBILITY -->
+						<div class="list-group">
+							<!-- Info Pengumuman Cluster -->
+							<?php foreach ($infoV as $p) : ?>
+								<a href="<?= base_url('Menu/Pengumuman/' . $p['id_pengumuman']); ?>" class="list-group-item border m-0">
+									<div class="row mx-auto align-items-center">
+										<div class="col-2">
+											<i class="fas fa-fw fa-users"></i>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 mt-3">
-											<div class="title py-2"><strong><?= $i['judul']; ?></strong></div>
-											<div class="text-truncate p-3 border">
-												<pre class="card-text" style="white-space: pre-wrap; word-wrap: break-word; font-family: inherit;"><?= $i['isi']; ?></pre>
+										<div class="col-10">
+											<div class="text-dark">
+												<span><?= $p['judul']; ?></span>
 											</div>
-											<hr>
-											<div class="small text-gray-500 text-center pt-0 pb-3"><strong>- @Admin -</strong></div>
+											<div class="text-muted small mt-1">
+												<span><?= $p['isi']; ?></span>
+											</div>
+											<div class="text-muted small mt-1">
+												<small><?= $p['waktu']; ?></small>
+											</div>
 										</div>
 									</div>
-								</div>
-							</a>
-						<?php endforeach; ?>
-						<!-- <a class=" dropdown-item text-center small text-gray-500" href="#">Read More Messages
-							</a> -->
+								</a>
+							<?php endforeach; ?>
+							<!-- Info Alur Barang Cluster -->
+							<!-- Info Komplain Cluster -->
+						</div>
+						<div class="dropdown-menu-footer">
+							<a href="<?= base_url('Menu/Pengumuman'); ?>" class="text-muted">Lihat Semua Pengumuman</a>
+						</div>
 					</div>
 				</li>
 

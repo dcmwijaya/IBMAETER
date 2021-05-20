@@ -37,6 +37,7 @@
 	<!-- <link rel="stylesheet" href="<?= base_url('../vendor/stepwizard/style.css') ?>"> -->
 
 	<!-- Custom styles -->
+	<link rel="stylesheet" href="<?= base_url('../css/custom.css') ?>" />
 	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
 </head>
 

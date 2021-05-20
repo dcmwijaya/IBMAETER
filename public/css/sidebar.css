@@ -141,23 +141,6 @@ ul ul a {
   text-align: justify;
 }
 
-.custom-badge {
-  display: inline-block;
-  padding: 2px 4px;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 5px;
-  font-family: "Roboto";
-  right: 0px;
-}
-
 #cfading {
   content: "";
   background-color: rgba(0, 0, 0, 0.4);
