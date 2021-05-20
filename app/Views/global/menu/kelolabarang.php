@@ -44,51 +44,10 @@
 							<div class="srow container-fluid">
 								<!-- Reload Table Barang -->
 								<div id="Item_AJAX"></div>
-								<table id="table_item" class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;">
-									<thead class="container-fluid" style="width:100%;">
-										<tr>
-											<th>No</th>
-											<th>Nama Barang</th>
-											<th>Stok</th>
-											<th>Jenis</th>
-											<th>Room</th>
-											<?php if (session('role') == 0) : ?>
-												<th>Aksi</th>
-											<?php endif; ?>
-											<th>Kirim</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php $no = 1; ?>
-										<?php foreach ($item as $b) : ?>
-											<tr>
-												<td><?= $no ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $b['nama_item'] ?></td>
-												<td><?= $b['stok']; ?></td>
-												<td><?= $b['jenis']; ?></td>
-												<td><?= $b['penyimpanan']; ?></td>
-												<?php if (session('role') == 0) : ?>
-													<td>
-														<div class="btn-group" role="group" aria-label="upordel">
-															<button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-															<button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
-														</div>
-													</td>
-												<?php endif; ?>
-												<td>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemIn"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
-														<button type="button" style="background-color:#37af06" class="btn text-light btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemOut"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
-													</div>
-												</td>
-											</tr>
-											<?php $no++; ?>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
 							</div>
 						</div>
 					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listItem()"><i class="fas fa-sync fa-fw"></i></button>
 				</div>
 			</div>
 		</section>
@@ -106,7 +65,6 @@
 							<div class="clearfix">
 								<div class="float-left">
 									<a type="button" href="<?= base_url('exlapor/pdfprintStatizin'); ?>" id="pstatizin_pdf" class="btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
-									<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
 								</div>
 								<div class="float-right">
 									<button type="button" class="btn btn-dark dropdown-toggle shadow-sm p-2" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,6 +85,7 @@
 							</div>
 						</div>
 					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
 				</div>
 			</div>
 		</section>
@@ -161,70 +120,10 @@
 							<div class="col">
 								<!-- Reload Table Spesifikasi -->
 								<div id="Spesifikasi_AJAX"></div>
-								<table id="table_spesifikasi" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-									<thead>
-										<tr>
-											<th>No</th>
-											<th>Nama Barang</th>
-											<th>Kode Barang</th>
-											<th>Harga/Item (Rp)</th>
-											<th>Berat/Item (gr)</th>
-											<th>Nama Supplier</th>
-											<?php if (session('role') == 0) : ?>
-												<th>Aksi</th>
-											<?php endif; ?>
-										</tr>
-									</thead>
-									<tbody>
-										<?php $no = 1; ?>
-										<?php foreach ($spec as $b) : ?>
-											<tr>
-												<td><?= $no ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $b['nama_item'] ?></td>
-												<td>
-													<?php if ($b['kode_barang'] != null) : ?>
-														<?= $b['kode_barang']; ?>
-													<?php else : ?>
-														<span class="font-weight-bold text-danger">(Kosong)</span>
-													<?php endif; ?>
-												</td>
-												<td>
-													<?php if ($b['harga'] != 0) : ?>
-														<?= $b['harga']; ?>
-													<?php else : ?>
-														<span class="font-weight-bold text-danger">(Kosong)</span>
-													<?php endif; ?>
-												</td>
-												<td>
-													<?php if ($b['berat'] != 0) : ?>
-														<?= $b['berat']; ?>
-													<?php else : ?>
-														<span class="font-weight-bold text-danger">(Kosong)</span>
-													<?php endif; ?>
-												</td>
-												<td style="<?= $tdStyle; ?>">
-													<?php if ($b['nama_supplier'] != null) : ?>
-														<?= $b['nama_supplier']; ?>
-													<?php else : ?>
-														<span class="font-weight-bold text-danger">(Kosong)</span>
-													<?php endif; ?>
-												</td>
-												<?php if (session('role') == 0) : ?>
-													<td>
-														<div class="btn-group" role="group" aria-label="inoutcom">
-															<button type="button" class="btn btn-dark btn-sm detl-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-kode="<?= $b['kode_barang']; ?>" data-harga="<?= $b['harga']; ?>" data-berat="<?= $b['berat']; ?>" data-supplier="<?= $b['id_supplier']; ?>" data-toggle="modal" data-target="#Edit_spesifikasi"><i class="fas fa-edit fa-fw"></i></button>
-															<button type="button" style="background-color: #1687b3;" class="btn text-light btn-sm detl-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-kode="<?= $b['kode_barang']; ?>" data-harga="<?= $b['harga']; ?>" data-berat="<?= $b['berat']; ?>" data-supplier="<?= $b['nama_supplier']; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Detail_spesifikasi"><i class="fas fa-file-alt fa-fw"></i></button>
-														</div>
-													</td>
-												<?php endif; ?>
-											</tr>
-											<?php $no++; ?>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
 							</div>
 						</div>
 					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listSpesifikasi()"><i class="fas fa-sync fa-fw"></i></button>
 					<small><b>*Untuk Kode barang : </b><span style="color:crimson;"><strong>[1] =</strong></span> alfabet tempat penyimpanan, <span style="color:steelblue;"><strong>[2]~[3] =</strong></span> no urutan Kategori, <span style="color: green;"><strong>[4]~[8] =</strong></span> no produksi</small>
 				</div>
 			</div>

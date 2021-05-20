@@ -101,16 +101,6 @@
 			scrollCollapse: true,
 			paging: false
 		});
-		$('#table_item').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false
-		});
-		$('#table_spesifikasi').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false
-		});
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -164,6 +154,23 @@
 			success: function(data) {
 				$('#Item_AJAX').html(data);
 				$('#table_item').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false
+				});
+			}
+		});
+	}
+
+	function listSpesifikasi() {
+		$.ajax({
+			url: '<?= base_url('Menu/ShowSpesifikasi'); ?>',
+			beforeSend: function(f) {
+				$('#Spesifikasi_AJAX').html(sloading);
+			},
+			success: function(data) {
+				$('#Spesifikasi_AJAX').html(data);
+				$('#table_spesifikasi').DataTable({
 					scrollY: '100vh',
 					scrollCollapse: true,
 					paging: false
@@ -495,8 +502,10 @@
 	// Memulai Loading Page
 	$(document).ready(function() {
 		// load list data when document load
-		listPengumuman();
+		listItem()
 		listPerizinan();
+		listSpesifikasi()
+		listPengumuman();
 	});
 </script>
 

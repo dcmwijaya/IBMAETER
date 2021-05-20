@@ -59,6 +59,8 @@ class Menu extends BaseController
 		return redirect()->to('/login');
 	}
 
+
+	//================================================== Kelola Barang ==================================================
 	public function kelolaBarang()
 	{
 		if (session('uid') != null) {
@@ -68,10 +70,9 @@ class Menu extends BaseController
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
-				"item" => $this->barangModel->getItems(),
+				// "item" => $this->barangModel->getItems(), GANTI AJAX
 				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
-				"log_item" => $this->LogModel->ReadLogItem(),
+				// "spec" => $this->barangModel->joinSupplier(),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
@@ -79,6 +80,32 @@ class Menu extends BaseController
 			return view('global/menu/kelolabarang', $data);
 		} else {
 			return redirect()->to('/login');
+		}
+	}
+
+	public function ShowItem() // Show Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data["item"] = $this->barangModel->getItems();
+			// echo json_encode($data);
+			return view('global/barang_part/list_item', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function ShowSpesifikasi() // Show Master Data Spesifikasi
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data["spec"] = $this->barangModel->joinSupplier();
+			// echo json_encode($data);
+			return view('global/barang_part/list_spesifikasi', $data);
+		} else {
+			return redirect()->to('/dashboard');
 		}
 	}
 
