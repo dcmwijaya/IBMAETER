@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Barang_Model;
 use App\Models\Admin_Model;
+use App\Models\userModel;
 use App\Models\Pengumuman_Model;
 use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
@@ -20,6 +21,7 @@ class Admin extends BaseController
 	protected $request; // Menghilangkan alert getPost()
 	protected $session;
 	protected $adminModel;
+	protected $userModel;
 	protected $barangModel;
 	protected $newsModel;
 	protected $komplainModel;
@@ -33,6 +35,7 @@ class Admin extends BaseController
 		$this->session->start();
 
 		$this->adminModel = new Admin_Model();
+		$this->userModel = new userModel();
 		$this->barangModel = new Barang_Model();
 		$this->newsModel = new Pengumuman_Model();
 		$this->komplainModel = new Komplain_Model();
@@ -600,11 +603,60 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					'validation' => \Config\Services::Validation(),
 					'absensi' => $this->absensiModel->getAbsen(),
 					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked()
+					"countNotWorked" => $this->absensiModel->countNotWorked(),
+					'totalWorker' => $this->userModel->countAllResults()
 				];
 				return view('admin/menu/logUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function responIzin()
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// validasi
+				if (!$this->validate([
+					'komen' => [
+						'rules' => 'min_length[0]|max_length[99]',
+						'errors' => ['max_length' => 'Komen tidak boleh lebih dari 99 huruf & karakter.', 'min_length' => 'Komen']
+					]
+				])) {
+					return redirect()->to('/Admin/LogUser')->withInput();
+				}
+
+				$id = $this->request->getPost('id_absen');
+				$status = $this->request->getPost('status_absen');
+				$komen = $this->request->getPost('komen');
+
+				if ($komen == null) {
+					if ($status == "Diterima") {
+						$komen = "Terverifikasi!";
+					} elseif ($status == "Ditolak") {
+						$komen = "Izin tidak diterima";
+					} else {
+						session()->setFlashdata('alert', '<h4>Terjadi maslah pada bagian <b>komentar</b>.</h4>');
+						return redirect()->to('/Admin/LogUser')->withInput();
+					}
+				}
+
+				$this->absensiModel->update($id, [
+					'respons' => $status,
+					'komen_izin' => $komen,
+					'waktu_komen' => date("Y-m-d H:i:s", time())
+				]);
+
+				session()->setFlashdata('pesan', '<h4>Pesan Terkirim.</h4>');
+				return redirect()->to('/Admin/LogUser');
 			} else {
 				return redirect()->to('/dashboard');
 			}

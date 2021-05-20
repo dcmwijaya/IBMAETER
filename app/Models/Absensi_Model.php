@@ -8,7 +8,7 @@ class Absensi_Model extends Model
 {
     protected $table = 'absensi';
     protected $primaryKey = 'id_absen';
-    protected $allowedFields = ['uid_absen', 'email_absen', 'status_absen', 'alasan_izin', 'bukti_izin', 'tgl_absen', 'waktu_absen'];
+    protected $allowedFields = ['uid_absen', 'email_absen', 'status_absen', 'alasan_izin', 'bukti_izin', 'tgl_absen', 'waktu_absen', 'respons', 'komen_izin', 'waktu_komen'];
 
     public function getAbsen($uid = false, $date = false)
     {
@@ -28,13 +28,18 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date])->first();
     }
 
+    public function getStatusIzin($uid, $date)
+    {
+        return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date, 'status_absen' => "Izin"])->first();
+    }
+
     public function countWorked()
     {
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen', 'Hadir')->get()->getResultArray();
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Hadir"])->get()->getResultArray();
     }
 
     public function countNotWorked()
     {
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where('status_absen', 'Terlambat')->get()->getResultArray();
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Terlambat"])->get()->getResultArray();
     }
 }

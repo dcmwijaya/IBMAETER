@@ -114,7 +114,7 @@
 										<a href="<?= base_url('Menu/Profedit') . "/" . session('uid') ?>" class="<?= ($CurrentMenu == 'profedit') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-user-cog fa-fw me-3"></i><span>Edit Profile</span>
 										</a>
-										<a href="<?= base_url('Menu/logout') ?>" class="list-group-item list-group-item-action py-2 ripple">
+										<a href="<?= base_url('Menu/logout') ?>" class="list-group-item list-group-item-action py-2 ripple" onclick="return confirm('Apakah Anda yakin ingin melakukan Logout?');">
 											<i class="fas fa-sign-out-alt fa-fw me-3"></i><span>Keluar Akun</span>
 										</a>
 									</div>
