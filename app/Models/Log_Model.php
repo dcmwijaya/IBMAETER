@@ -60,4 +60,10 @@ class Log_Model extends Model
     {
         return $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
+
+    public function NotaItem($id)
+    {
+        $builder = $this->db->table('alur_barang')->select('*')->join('user', 'user.uid = alur_barang.uid');
+        return $builder->where('alur_barang.no_log', $id)->get()->getResultArray();
+    }
 }

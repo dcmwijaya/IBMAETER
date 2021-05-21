@@ -42,50 +42,97 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table style="font-size: 14px; width:100%;" border="1">
-									<thead>
-										<tr>
-											<th>Waktu</th>
-											<th>Pekerja</th>
-											<th>Barang</th>
-											<th>Request</th>
-											<th>Stok</th>
-											<th>Status</th>
-											<th>Keterangan</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach ($log_item as $log) : ?>
+								<?php if (session('role') == 0) : ?>
+									<table style="font-size: 14px; width:100%;" border="1">
+										<thead>
 											<tr>
-												<td><?= $log['tgl']; ?></td>
-												<td><?= $log['nama_pekerja']; ?></td>
-												<td><?= $log['nama_barang']; ?></td>
-												<td>
-													<?php if ($log['request'] == "Masuk") : ?>
-														<?= $log['request']; ?>
-													<?php else : ?>
-														<?= $log['request']; ?>
-													<?php endif; ?>
-												</td>
-												<td style="width: 75px;">
-													<?= $log['ubah_stok']; ?>
-												</td>
-												<td>
-													<?php
-													if ($log['status'] == 'Diterima') {
-														echo "DITERIMA";
-													} elseif ($log['status'] == 'Ditolak') {
-														echo "DITOLAK";
-													} else {
-														echo "PROSES";
-													}
-													?>
-												</td>
-												<td><?= $log['ket']; ?></td>
+												<th>Waktu</th>
+												<th>Pekerja</th>
+												<th>Barang</th>
+												<th>Request</th>
+												<th>Stok</th>
+												<th>Status</th>
+												<th>Keterangan</th>
 											</tr>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
+										</thead>
+										<tbody>
+											<?php foreach ($log_item as $log) : ?>
+												<tr>
+													<td><?= $log['tgl']; ?></td>
+													<td><?= $log['nama']; ?></td>
+													<td><?= $log['nama_barang']; ?></td>
+													<td>
+														<?php if ($log['request'] == "Masuk") : ?>
+															<?= $log['request']; ?>
+														<?php else : ?>
+															<?= $log['request']; ?>
+														<?php endif; ?>
+													</td>
+													<td style="width: 75px;">
+														<?= $log['ubah_stok']; ?>
+													</td>
+													<td>
+														<?php
+														if ($log['status'] == 'Diterima') {
+															echo "DITERIMA";
+														} elseif ($log['status'] == 'Ditolak') {
+															echo "DITOLAK";
+														} else {
+															echo "PROSES";
+														}
+														?>
+													</td>
+													<td><?= $log['ket']; ?></td>
+												</tr>
+											<?php endforeach; ?>
+										</tbody>
+									</table>
+									<!-- for pekerja -->
+								<?php else : ?>
+									<table style="font-size: 14px; width:100%;" border="1">
+										<thead>
+											<tr>
+												<th>Waktu</th>
+												<th>Pekerja</th>
+												<th>Barang</th>
+												<th>Request</th>
+												<th>Stok</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($log_item as $log) : ?>
+												<tr>
+													<td><?= $log['tgl']; ?></td>
+													<td><?= $log['nama']; ?></td>
+													<td><?= $log['nama_barang']; ?></td>
+													<td>
+														<?php if ($log['request'] == "Masuk") : ?>
+															<?= $log['request']; ?>
+														<?php else : ?>
+															<?= $log['request']; ?>
+														<?php endif; ?>
+													</td>
+													<td style="width: 75px;">
+														<?= $log['ubah_stok']; ?>
+													</td>
+													<td>
+														<?php
+														if ($log['status'] == 'Diterima') {
+															echo "DITERIMA";
+														} elseif ($log['status'] == 'Ditolak') {
+															echo "DITOLAK";
+														} else {
+															echo "PENDING";
+														}
+														?>
+													</td>
+													<td><?= $log['ket']; ?></td>
+												</tr>
+											<?php endforeach; ?>
+										</tbody>
+									</table>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -93,22 +140,24 @@
 
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
-						<td width="70%" colspan="6" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;">
+						<td colspan="4" style="text-align: center;">
+							<p style="text-align: left;">*Bukti Tanda Terima Income-Outcome Stock Barang, <br>Harap disimpan baik-baik</p>
+						</td>
+						<td colspan="2" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
 								Founder Invenbar,
 							</h4>
 						</td>
 					</tr>
 					<tr>
-						<td width="70%" colspan="6" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;" height="30">
+						<td colspan="4" style="text-align: center;"></td>
+						<td colspan="2" width="30%" style="text-align: right;" height="30">
 							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
 						</td>
 					</tr>
 					<tr>
-						<td width="70%" colspan="6" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;">
+						<td colspan="4" style="text-align: center;"></td>
+						<td colspan="2" width="30%" style="text-align: right;">
 							<u>
 								<h5>Alfha Fierly Firdaus</h5>
 							</u>
