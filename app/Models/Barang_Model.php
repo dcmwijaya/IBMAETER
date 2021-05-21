@@ -191,4 +191,19 @@ class Barang_Model extends Model
     {
         return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'G')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
+
+    public function sumStock()
+    {
+        return $this->db->table('item')->selectSum('stok')->get()->getResultArray();
+    }
+
+    public function sumCost()
+    {
+        return $this->db->table('item')->selectSum('harga')->get()->getResultArray();
+    }
+
+    public function sumWeight()
+    {
+        return $this->db->table('item')->selectSum('berat')->get()->getResultArray();
+    }
 }

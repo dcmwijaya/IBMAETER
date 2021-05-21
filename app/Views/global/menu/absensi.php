@@ -51,9 +51,16 @@
 												</div>
 												<div class="form-group absensi-content">
 													<label for="email_user">
-														<i class="fas fa-envelope-open-text fa-fw me-1"></i>
+														<i class="fas fa-laptop-house fa-fw me-1"></i>
 														<b>Department:</b>
 														<span><small><?= $user['department']; ?></small></span>
+													</label>
+												</div>
+												<div class="form-group absensi-content">
+													<label for="email_user">
+														<i class="fas fa-venus-mars fa-fw me-1"></i>
+														<b>Gender:</b>
+														<span><small><?= $user['gender']; ?></small></span>
 													</label>
 												</div>
 												<?php if (date("H:i:s") <= "16:15:05") : ?>
@@ -86,7 +93,6 @@
 														<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
 															<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
 														</button>
-													</div>
 													</div>
 											</form>
 										</div>

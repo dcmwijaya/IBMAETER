@@ -4,6 +4,7 @@
 <head></head>
 
 <body>
+	<!--Main layout-->
 	<main>
 		<div class="container pt-4">
 			<section class="mb-4">
@@ -21,56 +22,103 @@
 				<div class="card" style="margin-top: 58px">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Tabel Status Perizinan Barang Masuk/Keluar</strong></center>
+							<center><strong>Tabel Status Perizinan Barang</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table style="font-size: 14px; width:100%;" border="1">
-									<thead>
-										<tr>
-											<th>Waktu</th>
-											<th>Pekerja</th>
-											<th>Barang</th>
-											<th>Request</th>
-											<th>Stok</th>
-											<th>Status</th>
-											<th>Keterangan</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach ($log_item as $log) : ?>
+								<?php if (session('role') == 0) : ?>
+									<table style="font-size: 14px; width:100%;" border="1">
+										<thead>
 											<tr>
-												<td><?= $log['tgl']; ?></td>
-												<td><?= $log['nama_pekerja']; ?></td>
-												<td><?= $log['nama_barang']; ?></td>
-												<td>
-													<?php if ($log['request'] == "Masuk") : ?>
-														<?= $log['request']; ?>
-													<?php else : ?>
-														<?= $log['request']; ?>
-													<?php endif; ?>
-												</td>
-												<td style="width: 75px;">
-													<?= $log['ubah_stok']; ?>
-												</td>
-												<td>
-													<?php
-													if ($log['status'] == 'Diterima') {
-														echo "DITERIMA";
-													} elseif ($log['status'] == 'Ditolak') {
-														echo "DITOLAK";
-													} else {
-														echo "PROSES";
-													}
-													?>
-												</td>
-												<td><?= $log['ket']; ?></td>
+												<th>Waktu</th>
+												<th>Pekerja</th>
+												<th>Barang</th>
+												<th>Request</th>
+												<th>Stok</th>
+												<th>Status</th>
+												<th>Keterangan</th>
 											</tr>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
+										</thead>
+										<tbody>
+											<?php foreach ($log_item as $log) : ?>
+												<tr>
+													<td><?= $log['tgl']; ?></td>
+													<td><?= $log['nama']; ?></td>
+													<td><?= $log['nama_item']; ?></td>
+													<td>
+														<?php if ($log['request'] == "Masuk") : ?>
+															<?= $log['request']; ?>
+														<?php else : ?>
+															<?= $log['request']; ?>
+														<?php endif; ?>
+													</td>
+													<td style="width: 75px;">
+														<?= $log['ubah_stok']; ?>
+													</td>
+													<td>
+														<?php
+														if ($log['status'] == 'Diterima') {
+															echo "DITERIMA";
+														} elseif ($log['status'] == 'Ditolak') {
+															echo "DITOLAK";
+														} else {
+															echo "PENDING";
+														}
+														?>
+													</td>
+													<td><?= $log['ket']; ?></td>
+												</tr>
+											<?php endforeach; ?>
+										</tbody>
+									</table>
+									<!-- for pekerja -->
+								<?php else : ?>
+									<table style="font-size: 14px; width:100%;" border="1">
+										<thead>
+											<tr>
+												<th>Waktu</th>
+												<th>Pekerja</th>
+												<th>Barang</th>
+												<th>Request</th>
+												<th>Stok</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($log_item as $log) : ?>
+												<tr>
+													<td><?= $log['tgl']; ?></td>
+													<td><?= $log['nama']; ?></td>
+													<td><?= $log['nama_barang']; ?></td>
+													<td>
+														<?php if ($log['request'] == "Masuk") : ?>
+															<?= $log['request']; ?>
+														<?php else : ?>
+															<?= $log['request']; ?>
+														<?php endif; ?>
+													</td>
+													<td style="width: 75px;">
+														<?= $log['ubah_stok']; ?>
+													</td>
+													<td>
+														<?php
+														if ($log['status'] == 'Diterima') {
+															echo "DITERIMA";
+														} elseif ($log['status'] == 'Ditolak') {
+															echo "DITOLAK";
+														} else {
+															echo "PROSES";
+														}
+														?>
+													</td>
+													<td><?= $log['ket']; ?></td>
+												</tr>
+											<?php endforeach; ?>
+										</tbody>
+									</table>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>

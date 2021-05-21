@@ -32,11 +32,11 @@
 													<label for="ItemTime_after" class="font-weight-bold">Date After</label>
 													<input type="datetime-local" class="form-control" value="" id="Time_after" name="tgl_after" required>
 												</div>
-												<div class="my-4 laporan-button">
+												<div class="laporan-button" style="margin-top:100px;">
 													<input type="hidden" class="form-control" value="" name="id_absen">
-													<button type="submit" class="btn btn-success btn-komplain col-sm-12 p-4">
+													<a href="<?= base_url('exlapor/pdfprintBulanan'); ?>" type="submit" class="btn btn-success btn-komplain col-sm-12 p-4">
 														<p class="text-center ntombol"><i class="fas fa-print fa-fw me-3"></i>Cetak Laporan Bulanan</p>
-													</button>
+													</a>
 												</div>
 											</form>
 										</div>

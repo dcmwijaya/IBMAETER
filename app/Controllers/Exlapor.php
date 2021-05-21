@@ -46,11 +46,11 @@ class Exlapor extends BaseController
 		$this->absensiModel = new Absensi_Model();
 	}
 
-  
-  
-  // =========================================================================================================
+
+
+	// =========================================================================================================
 	// ======================================== Export & Print Data Admin ======================================
-  // =========================================================================================================
+	// =========================================================================================================
 
 	public function exceluser()
 	{
@@ -525,11 +525,11 @@ class Exlapor extends BaseController
 		}
 	}
 
-  
-  
-  // =========================================================================================================
+
+
+	// =========================================================================================================
 	// ==================================== Export & Print Data Global =========================================
-  // =========================================================================================================
+	// =========================================================================================================
 	public function excelbarang()
 	{
 		if (session('uid') != null) {
@@ -637,10 +637,9 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "EXCEL STATUS PERIZINAN | INVENBAR",
-				"item" => $this->barangModel->getItems(),
-				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
 				"log_item" => $this->LogModel->ReadLogItem(),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain()
 			];
 
 			return view('global/export/exxlsStatizin', $data);
@@ -654,10 +653,9 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "DOC STATUS PERIZINAN | INVENBAR",
-				"item" => $this->barangModel->getItems(),
-				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
 				"log_item" => $this->LogModel->ReadLogItem(),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain()
 			];
 
 			return view('global/export/exdocStatizin', $data);
@@ -671,10 +669,9 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF STATUS PERIZINAN | INVENBAR",
-				"item" => $this->barangModel->getItems(),
-				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
 				"log_item" => $this->LogModel->ReadLogItem(),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain()
 			];
 
 			$html = view('global/export/expdfStatizin', $data);
@@ -724,13 +721,39 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			$data = [
 				"title" => "PDF STATUS PERIZINAN | INVENBAR",
+				"log_item" => $this->LogModel->ReadLogItem()
+			];
+
+			return view('global/print/printStatizin', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintBulanan()
+	{
+		if (session('uid') != null) {
+			$data = [
+				"title" => "PDF DETAIL LAPORAN BULANAN | INVENBAR",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier(),
 				"log_item" => $this->LogModel->ReadLogItem(),
+				"cf" => $this->userModel->countFemale(),
+				"cm" => $this->userModel->countMale(),
+				"scin" => $this->LogModel->sumIncome(),
+				"scout" => $this->LogModel->sumOutcome(),
+				"sj1" => $this->barangModel->stockjenis1(),
+				"sj2" => $this->barangModel->stockjenis2(),
+				"sj3" => $this->barangModel->stockjenis3(),
+				"sj4" => $this->barangModel->stockjenis4(),
+				"sj5" => $this->barangModel->stockjenis5(),
+				"sst" => $this->barangModel->sumStock(),
+				"swh" => $this->barangModel->sumWeight(),
+				"sco" => $this->barangModel->sumCost()
 			];
 
-			return view('global/print/printStatizin', $data);
+			return view('global/print/printBulanan', $data);
 		} else {
 			return redirect()->to('/login');
 		}
