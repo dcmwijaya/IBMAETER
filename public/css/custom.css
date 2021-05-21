@@ -2,7 +2,8 @@
 
 .bg-softblue {
   color: #fff;
-  background-color: #1fa8d6;
+  background-color: #199ac5 !important;
+  /* background-color: #1fa8d6; */
 }
 
 .dropdown .dropdown-menu.show {

@@ -8,9 +8,12 @@ class Barang_Model extends Model
 {
     protected $table = 'item';
 
-    public function getItems()
+    public function getItems($id = false)
     {
-        return $this->findAll();
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_item' => $id])->first();
     }
 
     public function addItem($data)

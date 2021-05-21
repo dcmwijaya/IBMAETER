@@ -127,6 +127,12 @@
 			e.stopPropagation();
 			$("#fading").toggleClass('fading');
 			$("#sidebar").toggleClass('active');
+			setTimeout(function() {
+				listItem()
+				listPerizinan();
+				listSpesifikasi()
+				listPengumuman();
+			}, 1000);
 		});
 		$('#sidebar').click(function(e) {
 			e.stopPropagation();
@@ -144,7 +150,10 @@
 <!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <script>
 	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
+	let ItemSaveType;
+	// let ItemUrl;
 
+	//......................................... Kelola Barang Master Data Load .........................................
 	function listItem() {
 		$.ajax({
 			url: '<?= base_url('Menu/ShowItem'); ?>',
@@ -179,37 +188,168 @@
 		});
 	}
 
+
+	//......................................... kelola barang Modal.........................................
+	function ItemTambahmodal() {
+		ItemSaveType = "Tambah";
+		$('#Item_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/TambahItem_Form'); ?>",
+			beforeSend: function(data) {
+				$('.modal-dialog').removeClass("modal-lg");
+				$('.modal-dialog').removeClass("modal-delete");
+				$('.modal-dialog').addClass("modal-xl");
+				$('#Item_Header').removeClass("bg-warning");
+				$('#Item_Header').removeClass("bg-danger");
+				$('#Item_Header').addClass("bg-softblue");
+				$('#Item_Label').html('<i class="fas fa-fw fa-plus-square"></i>  Tambah Barang Baru');
+			},
+			success: function(data) {
+				$('#Item_Form').html(data);
+				PairingKodeBarang();
+				// KENDALA KODE BARANG
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function ItemEditmodal(id) {
+		ItemSaveType = "Edit";
+		$('#Item_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/EditItem_Form'); ?>",
+			beforeSend: function(data) {
+				$('.modal-dialog').removeClass("modal-xl");
+				$('.modal-dialog').removeClass("modal-delete");
+				$('.modal-dialog').addClass("modal-lg");
+				$('#Item_Header').removeClass("bg-softblue");
+				$('#Item_Header').removeClass("bg-danger");
+				$('#Item_Header').addClass("bg-warning");
+				$('#Item_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Barang');
+			},
+			success: function(data) {
+				$('#Item_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="id_item"]').val(data.id_item);
+						$('[name="nama_item"]').val(data.nama_item);
+						$('[name="stok"]').val(data.stok);
+						$('[name="jenis"]').val(data.jenis).trigger('change');
+						$('[name="penyimpanan"]').val(data.penyimpanan).trigger('change');
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function ItemDeletemodal(id) {
+		ItemSaveType = "Delete";
+		$('#Item_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/DeleteItem_Form'); ?>",
+			beforeSend: function(data) {
+				$('.modal-dialog').removeClass("modal-xl");
+				$('.modal-dialog').removeClass("modal-lg");
+				$('.modal-dialog').addClass("modal-delete");
+				$('#Item_Header').removeClass("bg-softblue");
+				$('#Item_Header').removeClass("bg-warning");
+				$('#Item_Header').addClass("bg-danger");
+				$('#Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang');
+			},
+			success: function(data) {
+				$('#Item_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="id_item"]').val(data.id_item);
+						$('#delete_nama_item').html(data.nama_item);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	// ......................................... Aksi Submit Item.............................................
+	$("#Item_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#Item_Modal').modal('hide');
+		let ItemUrl;
+		if (ItemSaveType == "Tambah") {
+			ItemUrl = "<?= base_url('/Menu/Add_item'); ?>";
+		} else if (ItemSaveType == "Edit") {
+			ItemUrl = "<?= base_url('/Menu/Edit_item'); ?>";
+		} else if (ItemSaveType == "Delete") {
+			ItemUrl = "<?= base_url('/Menu/Delete_item'); ?>";
+		}
+		$.ajax({
+			url: ItemUrl,
+			type: "POST",
+			data: $('#Item_Form').serialize(),
+			success: function(data) {
+				$('#Item_Form').html(' ');
+				listItem();
+				listSpesifikasi();
+			}
+		});
+		return false;
+	})
+
+	//......................................... Custom Item Function().........................................
+	function PairingKodeBarang() {
+		$('#Tambah_Section .jenis-barang').change(function() {
+			$('#Tambah_Section .kode2').val($(this).val());
+			$('#Tambah_Section .hkode2').val($('#Tambah_Section .kode2').val())
+		});
+
+		$('#Tambah_Section .penyimpanan').change(function() {
+			$('#Tambah_Section .kode1').val($(this).val());
+			$('#Tambah_Section .hkode1').val($('#Tambah_Section .kode1').val())
+		});
+	}
 	$(document).ready(function() {
 
-		$('#Tambah_item .jenis-barang').change(function() {
-			$('#Tambah_item .kode2').val($(this).val());
-			$('#Tambah_item .hkode2').val($('#Tambah_item .kode2').val())
-		});
-
-		$('#Tambah_item .penyimpanan').change(function() {
-			$('#Tambah_item .kode1').val($(this).val());
-			$('#Tambah_item .hkode1').val($('#Tambah_item .kode1').val())
-		});
 
 		// get Edit Product
-		$('.btn-edit-item').on('click', function() {
-			// get data from button edit
-			const id = $(this).data('id');
-			const nama = $(this).data('nama');
-			const stok = $(this).data('stok');
-			const jenis = $(this).data('jenis');
-			const penyimpanan = $(this).data('penyimpanan');
-			// Set data to Form Edit
-			$('#Edit_item #edit_id_item').val(id);
-			$('#Edit_item #edit_nama_barang').val(nama);
-			$('#Edit_item #edit2_nama_item').text(nama);
-			$('#Edit_item #edit_stok_barang').val(stok);
-			$('#Edit_item #edit_jenis_barang').val(jenis).trigger('change');
-			$('#Edit_item #edit_penyimpanan').val(penyimpanan).trigger('change');
-			// Call Modal Edit
-			// $('#editModal').modal('show');
-			// $("#edit-item-form").attr("action", `${id}`);
-		});
+		// $('.btn-edit-item').on('click', function() {
+		// 	// get data from button edit
+		// 	const id = $(this).data('id');
+		// 	const nama = $(this).data('nama');
+		// 	const stok = $(this).data('stok');
+		// 	const jenis = $(this).data('jenis');
+		// 	const penyimpanan = $(this).data('penyimpanan');
+		// 	// Set data to Form Edit
+		// 	$('#Edit_item #edit_id_item').val(id);
+		// 	$('#Edit_item #edit_nama_barang').val(nama);
+		// 	$('#Edit_item #edit2_nama_item').text(nama);
+		// 	$('#Edit_item #edit_stok_barang').val(stok);
+		// 	$('#Edit_item #edit_jenis_barang').val(jenis).trigger('change');
+		// 	$('#Edit_item #edit_penyimpanan').val(penyimpanan).trigger('change');
+		// 	// Call Modal Edit
+		// 	// $('#editModal').modal('show');
+		// 	// $("#edit-item-form").attr("action", `${id}`);
+		// });
 
 		// get Delete Product
 		$('.btn-delete-item').on('click', function() {
@@ -403,10 +543,10 @@
 		});
 	}
 
-	let SaveType; // Tumbal Operan :'v
+	let PengumumanSaveType; // Tumbal Operan :'v
 
 	function showTambahmodal() {
-		SaveType = "Tambah";
+		PengumumanSaveType = "Tambah";
 		$('#Pengumuman_Modal').modal('show');
 		$.ajax({
 			type: "POST",
@@ -425,7 +565,7 @@
 	}
 
 	function showEditmodal(id) {
-		SaveType = "Edit";
+		PengumumanSaveType = "Edit";
 		$('#Pengumuman_Modal').modal('show');
 		$.ajax({
 			url: "<?= base_url('Admin/EditPengumuman_Form'); ?>",
@@ -435,7 +575,7 @@
 				$('#Pengumuman_Header').removeClass("bg-softblue");
 				$('#Pengumuman_Header').addClass("bg-dark");
 				$('#Modal_Title').text(' Edit Pengumuman');
-				console.log("EDIT PENDING SENT...");
+				// console.log("EDIT PENDING SENT...");
 			},
 			success: function(data) {
 				$('#Pengumuman_Form').html(data);
@@ -461,9 +601,9 @@
 		// e.preventDefault(); tidak berhasil
 		$('#Pengumuman_Modal').modal('hide');
 		let url;
-		if (SaveType == "Tambah") {
+		if (PengumumanSaveType == "Tambah") {
 			url = "<?= base_url('Admin/TambahPengumuman'); ?>";
-		} else if (SaveType == "Edit") {
+		} else if (PengumumanSaveType == "Edit") {
 			url = "<?= base_url('Admin/EditPengumuman'); ?>";
 		}
 		$.ajax({
@@ -483,9 +623,9 @@
 		// Set data to Form input
 		let url = '<?= base_url('Admin/BlankPengumuman_Form'); ?>';
 		let jpholder;
-		if (SaveType == "Tambah") {
+		if (PengumumanSaveType == "Tambah") {
 			jpholder = "Tambah Judul Pengumuman...";
-		} else if (SaveType == "Edit") {
+		} else if (PengumumanSaveType == "Edit") {
 			jpholder = "Edit Judul Pengumuman...";
 		}
 		$.ajax({
@@ -499,7 +639,7 @@
 	}
 
 
-	// Memulai Loading Page
+	// Memulai Loading Page dengan AJAX
 	$(document).ready(function() {
 		// load list data when document load
 		listItem()

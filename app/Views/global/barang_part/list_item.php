@@ -27,15 +27,15 @@
                 <?php if (session('role') == 0) : ?>
                     <td>
                         <div class="btn-group" role="group" aria-label="upordel">
-                            <button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-stok="<?= $b['stok']; ?>" data-jenis="<?= $b['jenis']; ?>" data-penyimpanan="<?= $b['penyimpanan']; ?>" data-toggle="modal" data-target="#Edit_item"><i class="fas fa-edit fa-fw"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#Delete_item"><i class="fas fa-trash fa-fw"></i></button>
+                            <button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" onclick="ItemEditmodal(<?= $b['id_item']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm btn-delete-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" onclick="ItemDeletemodal(<?= $b['id_item']; ?>)"><i class="fas fa-trash fa-fw"></i></button>
                         </div>
                     </td>
                 <?php endif; ?>
                 <td>
                     <div class="btn-group" role="group" aria-label="inoutcom">
-                        <button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemIn"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
-                        <button type="button" style="background-color:#37af06" class="btn text-light btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" data-nama="<?= $b["nama_item"]; ?>" data-toggle="modal" data-target="#itemOut"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
+                        <button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
+                        <button type="button" style="background-color:#37af06" class="btn text-light btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
                     </div>
                 </td>
             </tr>

@@ -23,7 +23,7 @@
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
 									<?php if (session('role') == 0) : ?>
-										<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" data-toggle="modal" data-target="#Tambah_item"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
+										<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" onclick="ItemTambahmodal()"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
 									<?php endif; ?>
 									<a type="button" href="<?= base_url('exlapor/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 
@@ -40,14 +40,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="tabel">
-							<div class="srow container-fluid">
+						<div class="row">
+							<div class="col">
 								<!-- Reload Table Barang -->
 								<div id="Item_AJAX"></div>
 							</div>
 						</div>
 					</div>
-					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listItem()"><i class="fas fa-sync fa-fw"></i></button>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listItem()"><i class="fas fa-redo-alt fa-fw"></i></button>
 				</div>
 			</div>
 		</section>
@@ -85,7 +85,7 @@
 							</div>
 						</div>
 					</div>
-					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-redo-alt fa-fw"></i></button>
 				</div>
 			</div>
 		</section>
@@ -123,7 +123,7 @@
 							</div>
 						</div>
 					</div>
-					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listSpesifikasi()"><i class="fas fa-sync fa-fw"></i></button>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listSpesifikasi()"><i class="fas fa-redo-alt fa-fw"></i></button>
 					<small><b>*Untuk Kode barang : </b><span style="color:crimson;"><strong>[1] =</strong></span> alfabet tempat penyimpanan, <span style="color:steelblue;"><strong>[2]~[3] =</strong></span> no urutan Kategori, <span style="color: green;"><strong>[4]~[8] =</strong></span> no produksi</small>
 				</div>
 			</div>
@@ -250,116 +250,17 @@
 	</div>
 </div>
 
-<!-- Tambah Barang Modal -->
-<div class="modal fade" id="Tambah_item" tabindex="-1" aria-labelledby="Tambah_itemLabel" aria-hidden="true">
+<!-- Item Barang Modal -->
+<div class="modal fade" id="Item_Modal" tabindex="-1" aria-labelledby="Item_Label" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
-			<div class="modal-header text-light" style="background-color: #199ac5 !important;">
-				<h5 class="modal-title" id="Tambah_itemLabel"><i class="fas fa-fw fa-folder-plus"></i> Tambah Barang Baru </h5>
+			<div class="modal-header text-light" id="Item_Header">
+				<h5 class="modal-title font-weight-bold" id="Item_Label"> Modal Item</h5>
 				<button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="<?= base_url('/Menu/Add_item'); ?>" method="POST" enctype="multipart/form-data">
-				<div class="modal-body">
-					<div class="row">
-						<!-- bagian kanan -->
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="nama_barang"><i class="fas fa-fw fa-box"></i> Nama Barang</label>
-								<input type="text" class="form-control" id="nama_barang" placeholder="Tuliskan Nama barang baru" name="nama_item" required>
-							</div>
-							<div class="form-group">
-								<label for="stok_barang"><i class="fas fa-fw fa-cubes"></i> Stok Barang</label>
-								<input type="number" class="form-control" id="stok_barang" placeholder="Tuliskan Stok barang baru" name="stok">
-							</div>
-							<div class="form-group">
-								<label for="jenis_barang"><i class="fas fa-fw fa-th-list"></i> Jenis Barang</label>
-								<select class="form-control jenis-barang" id="jenis_barang" name="jenis">
-									<option>Padat</option>
-									<option>Cair</option>
-									<option>Mudah Terbakar</option>
-									<option>Minyak</option>
-									<option>Daging</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="penyimpanan"><i class="fas fa-fw fa-thumbtack"></i> Tempat Gudang</label>
-								<select class="form-control penyimpanan" id="penyimpanan" name="penyimpanan">
-									<option>A</option>
-									<option>B</option>
-									<option>C</option>
-									<option>D</option>
-									<option>E</option>
-									<option>F</option>
-									<option>G</option>
-								</select>
-							</div>
-						</div>
-						<!-- bagian kanan -->
-						<div class="col-sm-6" style="border-left: outset;">
-							<div class="form-group">
-								<label for="tambah_kode"><i class="fas fa-fw fa-tag"></i> Kode Barang</label>
-								<div class="row pb-1">
-									<div class="col-sm-2">
-										<small><b>Tempat</b></small>
-										<select class="form-control kode1" id="tambah_kode1" disabled>
-											<option>A</option>
-											<option>B</option>
-											<option>C</option>
-											<option>D</option>
-											<option>E</option>
-											<option>F</option>
-											<option>G</option>
-										</select>
-										<input type="hidden" class="hkode1" name="kode1">
-									</div>
-									/
-									<div class="col-sm-4">
-										<small><b>Kategori Jenis</b></small>
-										<select class="form-control kode2" id="tambah_kode2" disabled>
-											<option>Padat</option>
-											<option>Cair</option>
-											<option>Mudah Terbakar</option>
-											<option>Minyak</option>
-											<option>Daging</option>
-										</select>
-										<input type="hidden" class="hkode2" name="kode2">
-									</div>
-									/
-									<div class="col-sm-5">
-										<small><b>No. Seri</b></small>
-										<input type="number" class="form-control" id="tambah_kode3" placeholder="No. Seri Kode..." name="kode3" required>
-									</div>
-								</div>
-								<small class=""><b>*</b> Sesuai Format kode Barang</small>
-								<hr class="mb-0">
-							</div>
-							<div class="form-group">
-								<label for="tambah_harga"><i class="fas fa-fw fa-money-bill-wave-alt"></i> Harga/item (Rp)</label>
-								<input type="number" class="form-control" id="tambah_harga" placeholder="Tambah berat Barang..." name="harga">
-							</div>
-							<div class="form-group">
-								<label for="tambah_berat"><i class="fas fa-fw fa-dolly-flatbed"></i> Berat/item (gram)</label>
-								<input type="number" class="form-control" id="tambah_berat" placeholder="Tambah berat Barang..." name="berat">
-							</div>
-							<div class="form-group">
-								<label for="tambah_supplier"><i class="fas fa-fw fa-id-card-alt"></i> Dikirim oleh Supplier</label>
-								<select class="form-control" id="tambah_supplier" name="supplier">
-									<?php $sp = 1; ?>
-									<?php foreach ($supplier as $s) :  ?>
-										<option value="<?= $sp; ?>"><?= $s['nama_supplier']; ?></option>
-										<?php $sp++; ?>
-									<?php endforeach; ?>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-					<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Tambah Barang</button>
-				</div>
+			<form id="Item_Form" method="POST" enctype="multipart/form-data">
 			</form>
 		</div>
 	</div>
@@ -375,45 +276,9 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form action="<?= base_url('/Menu/Edit_item'); ?>" method="POST" enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="edit_nama_barang">Nama Barang</label>
-						<input type="text" class="form-control" id="edit_nama_barang" name="nama_item">
-					</div>
-					<div class="form-group">
-						<label for="edit_stok_barang">Stok Barang</label>
-						<input type="number" class="form-control" id="edit_stok_barang" name="stok">
-					</div>
-					<div class="form-group">
-						<label for="edit_jenis_barang">Jenis Barang</label>
-						<select class="form-control" id="edit_jenis_barang" name="jenis">
-							<option>Padat</option>
-							<option>Cair</option>
-							<option>Mudah Terbakar</option>
-							<option>Minyak</option>
-							<option>Daging</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="edit_penyimpanan">Tempat Gudang</label>
-						<select class="form-control" id="edit_penyimpanan" name="penyimpanan">
-							<option>A</option>
-							<option>B</option>
-							<option>C</option>
-							<option>D</option>
-							<option>E</option>
-							<option>F</option>
-							<option>G</option>
-						</select>
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="id_item" id="edit_id_item">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" class="btn btn-warning"><i class="fas fa-fw fa-check"></i> Simpan</button>
-					</div>
-				</form>
-			</div>
+			<form method="POST" enctype="multipart/form-data">
+
+			</form>
 		</div>
 	</div>
 </div>
@@ -428,16 +293,9 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				Apakah Anda Yakin ingin menghapus barang "<strong><span id="delete_nama_item"></span></strong>" ?
-			</div>
-			<div class="modal-footer">
-				<form action="<?= base_url('/Menu/Delete_item'); ?>" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="id_item" id="delete_id_item">
-					<button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-					<button type="submit" class="btn btn-danger"><i class="fas fa-fw fa-check"></i> Hapus</button>
-				</form>
-			</div>
+			<form action="" method="POST" enctype="multipart/form-data">
+
+			</form>
 		</div>
 	</div>
 </div>

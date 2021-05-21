@@ -109,6 +109,68 @@ class Menu extends BaseController
 		}
 	}
 
+	// ....................................... Item Form .....................................
+
+	public function TambahItem_Form() // Form Tambah Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				// "item" => $this->barangModel->getItems(), 
+				"supplier" => $this->barangModel->viewSuppliers(),
+			];
+			return view('global/barang_part/tambah_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function EditItem_Form() // Form Edit Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"item" => $this->barangModel->getItems(),
+			];
+			return view('global/barang_part/edit_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function DeleteItem_Form() // Form Delete Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"item" => $this->barangModel->getItems(),
+			];
+			return view('global/barang_part/delete_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function GetIDItem() // Form Edit Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$id = $this->request->getPost('id_item');
+			$data = $this->barangModel->getItems($id);
+			echo json_encode($data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+
+
+	// .......................................... Item Action ........................................
+
 	public function Add_item()
 	{
 		if (session('uid') != null) {
