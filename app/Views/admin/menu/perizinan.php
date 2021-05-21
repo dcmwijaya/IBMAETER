@@ -39,7 +39,6 @@
                             <div class="clearfix">
                                 <div class="float-left">
                                     <a href="<?= base_url('exlapor/pdfprintIzin'); ?>" id="pizin_pdf" class="btn active btn-success btn-sm shadow-sm p-2"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
-                                    <button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-sync fa-fw"></i></button>
                                 </div>
                                 <div class="float-right">
                                     <button type="button" class="btn active btn-dark dropdown-toggle btn-sm shadow-sm p-2" style="float:right;" onclick="return false;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,100 +62,24 @@
                     <div class="container">
                         <small><b>*NB :</b> jika terdapat <b style="color: red;">kesalahan</b> dalam melakukan perizinan, mohon untuk melakukan <b style="color: sandybrown;">permintaan</b> perizinan ulang dari menu kelola barang.</small>
                     </div>
+                    <button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPerizinan()"><i class="fas fa-redo-alt fa-fw"></i></button>
                 </div>
         </section>
     </div><br>
 </main>
 
-<!-- Accept Modal -->
-<div class="modal fade" id="Accept" tabindex="-1" aria-labelledby="AcceptLabel" aria-hidden="true">
+<!-- Perizinan Modal -->
+<div class="modal fade" id="Perizinan_Modal" tabindex="-1" aria-labelledby="PerizinanLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="AcceptLabel"><b style="color: green;">Terima</b> Izin Barang </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div class="modal-header text-light" id="Perizinan_Header">
+                <h5 class="modal-title" id="Perizinan_Label"> Perizinan Barang</h5>
+                <button type="button" class="close modal-dissmis" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="text-light">&times;</span>
                 </button>
             </div>
-            <div class="modal-body pt-1">
-                <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
-                    <?= csrf_field(); ?>
-                    <div class="row">
-                        <!-- part 1 -->
-                        <div class="col-sm-6 px-4">
-                            <div class="form-group">
-                                <i class="fas fa-fw fa-clipboard-list" style="color:green;"></i> <small>Berikut detail permintaan perizinan yang diajukan oleh pekerja</small>
-                                <hr class="mt-0 mb-2">
-                                <label for="TerimaNama"><strong>Nama Barang</strong></label>
-                                <input type="text" class="form-control" id="TerimaNama" readonly>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <label for="TerimaUbahStok" class="col-sm-4 col-form-label py-0"><strong>Stok</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="number" readonly class="form-control text-center" id="TerimaUbahStok">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <label class="my-0 col-sm-5"><strong>Request</strong> </label>
-                                        <span class="col-sm-5" id="TerimaReqs"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <label for="TerimaPekerja" class="col-sm-4 col-form-label py-0"><strong>Nama Pekerja</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="TerimaPekerja" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <label for="TerimaTgl" class="col-sm-4 col-form-label py-0"><strong>Tanggal & Waktu</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="TerimaTgl" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <textarea class="col-sm-12" id="TerimaKet" rows="4" readonly></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- part 2 -->
-                        <div class="col-6 pt-1">
-                            <div class="form-group row">
-                                <h5><i class="fas fa-fw fa-pen-square" style="color:green;"></i> Kelola Perizinan</h5>
-                            </div>
-                            <hr class="mt-0 mb-2">
-                            <div class="form-group">
-                                <label for="acc_komentar"><strong>Tambahkan Komentar</strong></label>
-                                <textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda bila perlu" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('komen'); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" id="acc-nomor" name="no_log">
-                        <input type="hidden" id="acc-stok" name="ubah_stok">
-                        <input type="hidden" id="acc-reqs" name="reqs">
-                        <input type="hidden" id="accepted" name="status" value="Diterima">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Terima</button>
-                    </div>
-                </form>
-            </div>
+            <form id="Perizinan_Form" method="POST" enctype="multipart/form-data">
+            </form>
         </div>
     </div>
 </div>
@@ -171,84 +94,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body pt-1">
-                <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
-                    <?= csrf_field(); ?>
-                    <div class="row">
-                        <!-- part 1 -->
-                        <div class="col-sm-6 px-4">
-                            <div class="form-group">
-                                <i class="fas fa-fw fa-paperclip" style="color:crimson;"></i> <small>Berikut detail permintaan perizinan yang diajukan oleh pekerja</small>
-                                <hr class="mt-0 mb-2">
-                                <label for="TolakNama"><strong>Nama Barang</strong></label>
-                                <input type="text" class="form-control" id="TolakNama" readonly>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <label for="TolakUbahStok" class="col-sm-4 col-form-label py-0"><strong>Stok</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="number" readonly class="form-control text-center" id="TolakUbahStok">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <label class="my-0 col-sm-5"><strong>Request</strong> </label>
-                                        <span class="col-sm-5" id="TolakReqs"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <label for="TolakPekerja" class="col-sm-4 col-form-label py-0"><strong>Nama Pekerja</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="TolakPekerja" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <label for="TolakTgl" class="col-sm-4 col-form-label py-0"><strong>Tanggal & Waktu</strong></label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="TolakTgl" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <textarea class="col-sm-12" id="TolakKet" rows="4" readonly></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- part 2 -->
-                        <div class="col-6 pt-1">
-                            <div class="form-group row">
-                                <h5><i class="fas fa-fw fa-pen-square" style="color:crimson;"></i> Kelola Perizinan</h5>
-                            </div>
-                            <hr class="mt-0 mb-2">
-                            <div class="form-group">
-                                <label for="acc_komentar"><strong>Tambahkan Komentar</strong></label>
-                                <textarea class="col-sm-12 p-2 <?= ($validation->hasError('komen')) ? 'is-invalid' : ''; ?>" id="acc_komentar" name="komen" placeholder="Tuliskan Komentar Anda bila perlu" value="<?= (old('komen')) ? old('komen') : ""; ?>"></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('komen'); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" id="dec-nomor" name="no_log">
-                        <input type="hidden" id="rejected" name="status" value="Ditolak">
-                        <input type="hidden" id="dec-reqs" name="reqs">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Tolak</button>
-                    </div>
-                </form>
-            </div>
+            <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
+
+            </form>
         </div>
     </div>
 </div>

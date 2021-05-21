@@ -50,18 +50,16 @@
                     <td>
                         <?php if ($log['status'] == 'Pending') : ?>
                             <div class="btn-group shadow-sm" role="group" aria-label="inoutcom">
-                                <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_item']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Accept"><i class="fas fa-check fa-fw"></i>Terima</button>
-                                <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_item']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Rejected"><i class="fas fa-times fa-fw"></i>Tolak</button>
+                                <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" onclick="AcceptPerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-check fa-fw"></i>Terima</button>
+                                <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" onclick="DeclinePerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-times fa-fw"></i>Tolak</button>
                             </div>
                         <?php else : ?>
                             <div class="info-progress">
                                 <form action="<?= base_url('exlapor/pdfprintNotaizin/'); ?>" method="POST" enctype="multipart/form-data">
                                     <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
                                     <?php if ($log['status'] == 'Diterima') : ?>
-                                        <!-- NB : langsung buat pindah halaman bwt ngeprint -->
                                         <input type="hidden" name="no_log" id="print_no_log" value="<?= $log['no_log']; ?>">
                                         <button type="submit" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left"><i class="fas fa-print fa-fw"></i></button>
-                                        <!-- <a type="button" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" data-nama="<?= $log['nama_item']; ?>" data-stok="<?= $log['ubah_stok']; ?>" data-reqs="<?= $log['request']; ?>" data-pekerja="<?= $log['nama']; ?>" data-tgl="<?= $log['tgl']; ?>" data-ket="<?= $log['ket']; ?>" data-toggle="modal" data-target="#Print"><i class="fas fa-print fa-fw"></i></a> -->
                                     <?php endif; ?>
                                 </form>
                             </div>

@@ -10,6 +10,20 @@ class Log_Model extends Model
     // protected $primaryKey = 'no_log';
     protected $allowedFields = ['no_log', 'uid', 'tgl', 'status', 'ket'];
 
+    public function getIdPerizinan($no_log = false)
+    {
+        if ($no_log == false) {
+            return $this->findAll();
+        }
+        $builder = $this->db->table('alur_barang');
+        $builder->select('*');
+        $builder->join('user', 'user.uid = alur_barang.uid', 'left');
+        $builder->join('item', 'item.id_item = alur_barang.id_item', 'left');
+        $builder->where(['no_log' => $no_log]);
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
     public function ReadLogItem()
     {
         $builder = $this->db->table('alur_barang');

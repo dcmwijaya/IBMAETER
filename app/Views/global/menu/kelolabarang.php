@@ -250,21 +250,6 @@
 	</div>
 </div>
 
-<!-- Item Barang Modal -->
-<div class="modal fade" id="Item_Modal" tabindex="-1" aria-labelledby="Item_Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-			<div class="modal-header text-light" id="Item_Header">
-				<h5 class="modal-title font-weight-bold" id="Item_Label"> Modal Item</h5>
-				<button type="button" class="close text-light modal-dissmis" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form id="Item_Form" method="POST" enctype="multipart/form-data">
-			</form>
-		</div>
-	</div>
-</div>
 
 <!-- In/Out Item -->
 <div class="modal fade" id="InOut_Modal" tabindex="-1" aria-labelledby="InOut_Label" aria-hidden="true">
@@ -281,23 +266,23 @@
 	</div>
 </div>
 
-<!-- Outcome Item -->
-<div class="modal fade" id="itemOut" tabindex="-1" aria-labelledby="In_itemLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="In_itemLabel">Keluar Data barang "<strong><span id="itemOutNama"></span></strong>"</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form action="<?= base_url('/Menu/Outcome_item'); ?>" method="POST" enctype="multipart/form-data">
-
+<!-- FOR ADMIN SECTION -->
+<?php if (session('uid') == 0) : ?>
+	<!-- Item Barang Modal -->
+	<div class="modal fade" id="Item_Modal" tabindex="-1" aria-labelledby="Item_Label" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header text-light" id="Item_Header">
+					<h5 class="modal-title font-weight-bold" id="Item_Label"> Modal Item</h5>
+					<button type="button" class="close text-light modal-dissmis" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="Item_Form" method="POST" enctype="multipart/form-data">
 				</form>
 			</div>
 		</div>
 	</div>
-</div>
+<?php endif; ?>
 
 <?= $this->endSection() ?>

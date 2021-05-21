@@ -417,29 +417,6 @@
 		});
 	}
 	$(document).ready(function() {
-
-		// get Masuk Product
-		$('.btn-in-item').on('click', function() {
-			// get data from button masuk
-			const id = $(this).data('id');
-			const nama = $(this).data('nama');
-			// Set data to Form masuk
-			// $('#itemIn #itemInId').val(id);
-			$('#itemIn #itemInNama').text(nama);
-			$('#itemIn #itemInNamaPost').val(nama);
-		});
-
-		// get Keluar Product
-		$('.btn-out-item').on('click', function() {
-			// get data from button keluar
-			const id = $(this).data('id');
-			const nama = $(this).data('nama');
-			// Set data to Form keluar
-			// $('#itemOut #itemOutId').val(id);
-			$('#itemOut #itemOutNama').text(nama);
-			$('#itemOut #itemOutNamaPost').val(nama);
-		});
-
 		// get Edit Spesifikasi
 		$('.detl-edit-item').on('click', function() {
 			// get data from button edit spec
@@ -572,6 +549,97 @@
 			}
 		});
 	}
+
+	function AcceptPerizinan(id) {
+		$('#Perizinan_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/AcceptPerizinan_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-kingucrimson");
+				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-softgreen");
+				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-dolly-flatbed"></i>  Terima Izin Data Barang Masuk');
+			},
+			success: function(data) {
+				$('#Perizinan_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetPerizinan'); ?>',
+					data: {
+						"no_log": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						var parsed = JSON.parse(JSON.stringify(data));
+						alert(parsed);
+						$('[name="perizinan_no_log"]').val(data.no_log);
+						$('[name="perizinan_nama"]').val(parsed.nama_item);
+						$('[name="perizinan_stok"]').val(parsed.ubah_stok);
+						$('[name="perizinan_pekerja"]').val(data.nama);
+						$('[name="perizinan_waktu"]').val(data.tgl);
+						$('[name="perizinan_ket"]').text(data.ket);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function DeclinePerizinan(id) {
+		$('#Perizinan_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/DeclinePerizinan_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-softgreen");
+				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-kingucrimson");
+				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-dolly-flatbed" style="transform: rotateY(180deg);"></i>  Tolak Izin Data Barang Masuk');
+			},
+			success: function(data) {
+				$('#Perizinan_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetPerizinan'); ?>',
+					data: {
+						"no_log": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						var parsed = JSON.parse(JSON.stringify(data));
+						alert(parsed);
+						$('[name="perizinan_no_log"]').val(data.no_log);
+						$('[name="perizinan_nama"]').val(parsed.nama_item);
+						$('[name="perizinan_stok"]').val(parsed.ubah_stok);
+						$('[name="perizinan_pekerja"]').val(data.nama);
+						$('[name="perizinan_waktu"]').val(data.tgl);
+						$('[name="perizinan_ket"]').text(data.ket);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	// Aksi perizinan
+	$("#Perizinan_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#Perizinan_Modal').modal('hide');
+		let PerizinanUrl = "<?= base_url('Admin/AksiPerizinan'); ?>";
+		$.ajax({
+			url: PerizinanUrl,
+			type: "POST",
+			data: $('#Perizinan_Form').serialize(),
+			success: function(data) {
+				$('#Perizinan_Form').html(' ');
+				listPerizinan();
+			}
+		});
+		return false;
+	})
 </script>
 
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->

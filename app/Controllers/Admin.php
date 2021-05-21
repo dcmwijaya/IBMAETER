@@ -49,6 +49,8 @@ class Admin extends BaseController
 		return redirect()->to('/Menu/Datauser');
 	}
 
+	//============================================== Data User Section ==============================================
+
 	public function Datauser()
 	{
 		// seleksi login
@@ -328,7 +330,7 @@ class Admin extends BaseController
 		}
 	}
 
-	// ======================= Perizinan Barang ========================
+	// ============================================== Perizinan Barang ===============================================
 	public function Perizinan()
 	{
 		// seleksi login
@@ -349,6 +351,64 @@ class Admin extends BaseController
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/menu/perizinan', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	//----------------------------------- form Perizinan -----------------------------------
+
+	public function AcceptPerizinan_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"log_item" => $this->LogModel->ReadLogItem(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/perizinan_part/accept_modal', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function DeclinePerizinan_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"log_item" => $this->LogModel->ReadLogItem(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/perizinan_part/decline_modal', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	//----------------------------------- Perizinan Action -----------------------------------
+
+	public function GetPerizinan() // Pick id_Perizinan
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$no_log = $this->request->getPost('no_log');
+				$data = $this->LogModel->getIdPerizinan($no_log);
+				echo json_encode($data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -451,6 +511,39 @@ class Admin extends BaseController
 		}
 	}
 
+	// ----------------------------------- Form Pengumuman Section -----------------------------------
+
+	public function TambahPengumuman_Form() // Tambah Form Modal
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				return view('admin/pengumuman_part/tambah_form');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditPengumuman_Form() // Edit Form Modal
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				return view('admin/pengumuman_part/edit_form');
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
 	public function BlankPengumuman_Form()
 	{
 		// seleksi no login
@@ -467,14 +560,17 @@ class Admin extends BaseController
 		}
 	}
 
-	public function TambahPengumuman_Form() // Tambah Form Modal
+	// ----------------------------------- Edit Pengumuman Action -----------------------------------
+	public function GetIdPengumuman() // Pick id_pengumuman
 	{
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				// AJAX
-				return view('admin/pengumuman_part/tambah_form');
+				$id = $this->request->getPost('id_pengumuman');
+				$data = $this->newsModel->getIdPengumuman($id);
+				echo json_encode($data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -513,40 +609,6 @@ class Admin extends BaseController
 				$this->newsModel->addInfo($data);
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Menambahkan Pengumuman !</div>');
 				// return redirect()->to('Adminpengumuman'); Di GANTI AJAX
-			} else {
-				return redirect()->to('/dashboard');
-			}
-		} else {
-			return redirect()->to('/login');
-		}
-	}
-
-	public function EditPengumuman_Form() // Edit Form Modal
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// seleksi role pengguna
-			if (session('role') == 0) {
-				// AJAX
-				return view('admin/pengumuman_part/edit_form');
-			} else {
-				return redirect()->to('/dashboard');
-			}
-		} else {
-			return redirect()->to('/login');
-		}
-	}
-
-	public function GetIdPengumuman() // Pick id_pengumuman
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// seleksi role pengguna
-			if (session('role') == 0) {
-				// AJAX
-				$id = $this->request->getPost('id_pengumuman');
-				$data = $this->newsModel->getIdPengumuman($id);
-				echo json_encode($data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
