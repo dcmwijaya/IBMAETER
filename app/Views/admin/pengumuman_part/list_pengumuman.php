@@ -3,14 +3,14 @@
     <?php $tdStyle = "white-space: -moz-pre-wrap !important; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; white-space: -webkit-pre-wrap; word-break: break-word; white-space: normal;" ?>
     <table id="table_pengumuman" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
         <thead>
-            <tr>
+            <tr style="text-align: left;">
                 <!-- ######################### DATATABLES GAGAL SORTING -->
                 <th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
                 <th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th>
                 <th><i class="fas fa-fw fa-info"></i> Admin</th>
                 <th><i class="fas fa-fw fa-users"></i> Judul</th>
                 <th><i class="fas fa-fw fa-box"></i> Isi Pengumuman</th>
-                <th><i class="fas fa-fw fa-time"></i> Aksi</th>
+                <th><i class="fas fa-fw fa-location-arrow"></i> Aksi</th>
             </tr>
         </thead>
         <?php foreach ($table_pengumuman as $p) : ?>
@@ -76,8 +76,7 @@
                 <?php if (session('role') == 0) : ?>
                     <td>
                         <div class="btn-group" role="group" aria-label="inoutcom">
-                            <button type="button" class="btn btn-dark btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" onclick="showEditmodal(<?= $p['id_pengumuman']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
-                            <button type="button" class="btn btn-success text-light btn-sm detl-pengumuman px-2 rounded-right" data-id="<?= $p['id_pengumuman']; ?>" data-judul="<?= $p["judul"]; ?>" data-isi="<?= $p['isi']; ?>" data-uid="<?= $p['uid']; ?>" data-waktu="<?= $p['waktu']; ?>" data-toggle="modal" data-target="#Detail_Pengumuman"><i class="fas fa-print fa-fw"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" onclick="deletePengumuman(<?= $p['id_pengumuman']; ?>)"><i class="fas fa-trash fa-fw me-1"></i>Hapus</button>
                         </div>
                     </td>
                 <?php endif; ?>

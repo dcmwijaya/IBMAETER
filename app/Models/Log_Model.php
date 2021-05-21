@@ -42,23 +42,32 @@ class Log_Model extends Model
 
     public function stockIncome()
     {
-        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->get()->getResultArray();
     }
 
     public function stockOutcome()
     {
-        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Keluar')->get()->getResultArray();
     }
 
     public function countIncome()
     {
-        $query = $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima');
-        return $query->get()->getResultArray();
+        return  $this->db->table('alur_barang')->selectCount('ubah_stok')->get()->getResultArray();
     }
 
     public function countOutcome()
     {
-        return $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->selectCount('ubah_stok')->get()->getResultArray();
+    }
+
+    public function sumIncome()
+    {
+        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->get()->getResultArray();
+    }
+
+    public function sumOutcome()
+    {
+        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->get()->getResultArray();
     }
 
     public function NotaItem($id)

@@ -60,7 +60,7 @@
 												<tr>
 													<td><?= $log['tgl']; ?></td>
 													<td><?= $log['nama']; ?></td>
-													<td><?= $log['nama_barang']; ?></td>
+													<td><?= $log['nama_item']; ?></td>
 													<td>
 														<?php if ($log['request'] == "Masuk") : ?>
 															<?= $log['request']; ?>
@@ -169,7 +169,7 @@
 	<script>
 		window.print();
 		window.onafterprint = function() {
-			window.location.href = "<?= base_url('admin/perizinan') ?>";
+			window.location.href = "<?= base_url('menu/kelolabarang') ?>";
 		}
 	</script>
 </body>
