@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 10:32 PM
+-- Generation Time: May 21, 2021 at 07:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alur_barang` (
   `no_log` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `tgl` datetime NOT NULL,
-  `nama_barang` varchar(50) NOT NULL,
   `request` enum('Masuk','Keluar') NOT NULL COMMENT 'Awas dengan trigger!',
   `status` enum('Pending','Diterima','Ditolak') NOT NULL,
   `ubah_stok` int(11) NOT NULL,
@@ -42,19 +42,14 @@ CREATE TABLE `alur_barang` (
 -- Dumping data for table `alur_barang`
 --
 
-INSERT INTO `alur_barang` (`no_log`, `uid`, `tgl`, `nama_barang`, `request`, `status`, `ubah_stok`, `ket`) VALUES
-(8, 41, '2021-05-17 02:57:25', 'Mentari SimCard 20GB/Bulan', 'Masuk', 'Ditolak', 500, 'cek trigger dec=&gt;masuk\r\n'),
-(31, 29, '2021-05-16 06:25:42', 'Soda Gembira 210ml', 'Masuk', 'Diterima', 6, 'Save Palestina'),
-(32, 29, '2021-05-16 06:52:42', 'Dodo Mainanmu', 'Masuk', 'Ditolak', 13, 'Admin : Billy Gate\r\nBensin Abis'),
-(36, 29, '2021-05-16 07:11:35', 'Mixin 210ml', 'Masuk', 'Diterima', 46, 'We Stand With Palestine!'),
-(39, 8, '2021-05-17 02:24:50', 'So Clean 320ml', 'Masuk', 'Diterima', 100, 'Tes Count Notifs Berhasil\r\n'),
-(46, 8, '2021-05-17 02:56:35', 'Adem Sari 10gr', 'Masuk', 'Diterima', 500, 'cek trigger acc=&gt;masuk'),
-(51, 8, '2021-05-17 03:06:29', 'Adem Sari 10gr', 'Keluar', 'Diterima', 30, 'cek trigger acc=&gt;keluar'),
-(52, 30, '2021-05-17 03:07:21', 'Minyak Pijat 210ml', 'Keluar', 'Ditolak', 30, 'cek trigger dec=&gt;keluar'),
-(54, 30, '2021-05-17 08:07:57', 'Madu Kuat 210ml', 'Masuk', 'Diterima', 55, 'Terverifikasi !'),
-(55, 41, '2021-05-17 18:53:00', 'Mentari SimCard 20GB/Bulan', 'Keluar', 'Pending', 20, 'FF'),
-(56, 30, '2021-05-17 18:56:00', 'El Perfume de cologne 150ml', 'Masuk', 'Pending', 60, 'Tolak Impresialisme'),
-(57, 41, '2021-05-17 20:02:00', 'Bearbrando 210ml', 'Masuk', 'Pending', 92, 'Cek Pekerja');
+INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status`, `ubah_stok`, `ket`) VALUES
+(59, 22, 53, '2021-05-21 19:41:00', 'Masuk', 'Pending', 11, 'ddf'),
+(60, 22, 53, '2021-05-21 19:44:00', 'Masuk', 'Pending', 36, 'sdsd'),
+(61, 32, 53, '2021-05-21 19:47:00', 'Keluar', 'Pending', 27, 'SAF'),
+(62, 28, 53, '2021-05-21 19:47:00', 'Keluar', 'Pending', 3, 'asd'),
+(63, 24, 53, '2021-05-21 19:47:00', 'Masuk', 'Pending', 66, 'ASDASD'),
+(64, 31, 53, '2021-05-21 19:48:00', 'Masuk', 'Pending', 61, 'SD'),
+(65, 21, 53, '2021-05-21 19:53:00', 'Masuk', 'Pending', 20, 'Yahaha Hayoek :&#039;v');
 
 --
 -- Triggers `alur_barang`
@@ -92,7 +87,7 @@ ALTER TABLE `alur_barang`
 -- AUTO_INCREMENT for table `alur_barang`
 --
 ALTER TABLE `alur_barang`
-  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
