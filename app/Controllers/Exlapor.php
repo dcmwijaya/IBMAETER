@@ -491,12 +491,32 @@ class Exlapor extends BaseController
 			if (session('role') == 0) {
 				$data = [
 					"title" => "PDF PERIZINAN | INVENBAR",
-					"log_item" => $this->LogModel->ReadLogItem(),
-					"log_notifs" => $this->LogModel->notifsLog(),
-					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+					"log_item" => $this->LogModel->ReadLogItem()
 				];
 
 				return view('admin/print/printIzin', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function pdfprintNotaizin()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// jika user merupakan Admin
+			if (session('role') == 0) {
+				$id = $this->request->getPost('no_log');
+
+				$data = [
+					"title" => "NOTA PERIZINAN | INVENBAR",
+					"log_item" => $this->LogModel->NotaItem($id)
+				];
+
+				return view('admin/print/printNotaizin', $data);
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -711,23 +731,6 @@ class Exlapor extends BaseController
 			];
 
 			return view('global/print/printStatizin', $data);
-		} else {
-			return redirect()->to('/login');
-		}
-	}
-
-	public function pdfprintNotaizin()
-	{
-		if (session('uid') != null) {
-			$data = [
-				"title" => "PDF NOTA PERIZINAN | INVENBAR",
-				"item" => $this->barangModel->getItems(),
-				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
-				"log_item" => $this->LogModel->ReadLogItem(),
-			];
-
-			return view('global/print/printNotaizin', $data);
 		} else {
 			return redirect()->to('/login');
 		}
