@@ -6,6 +6,18 @@
   /* background-color: #1fa8d6; */
 }
 
+.bg-softgreen {
+  background-color: #37a249 !important;
+}
+
+.bg-kingucrimson {
+  background-color: #b44c5e !important;
+}
+
+.bg-nanas {
+  background-color: #d19000 !important;
+}
+
 .dropdown .dropdown-menu.show {
   animation-name: dropdownAnimation;
   animation-duration: 0.25s;

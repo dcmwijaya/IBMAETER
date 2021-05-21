@@ -15,6 +15,7 @@ class Log_Model extends Model
         $builder = $this->db->table('alur_barang');
         $builder->select('*');
         $builder->join('user', 'user.uid = alur_barang.uid', 'left');
+        $builder->join('item', 'item.id_item = alur_barang.id_item', 'left');
         $query = $builder->get()->getResultArray();
         return $query;
     }

@@ -151,7 +151,7 @@
 <script>
 	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
 	let ItemSaveType;
-	// let ItemUrl;
+	let InOutSaveType;
 
 	//......................................... Kelola Barang Master Data Load .........................................
 	function listItem() {
@@ -197,18 +197,17 @@
 			type: "POST",
 			url: "<?= base_url('Menu/TambahItem_Form'); ?>",
 			beforeSend: function(data) {
-				$('.modal-dialog').removeClass("modal-lg");
-				$('.modal-dialog').removeClass("modal-delete");
-				$('.modal-dialog').addClass("modal-xl");
-				$('#Item_Header').removeClass("bg-warning");
-				$('#Item_Header').removeClass("bg-danger");
-				$('#Item_Header').addClass("bg-softblue");
-				$('#Item_Label').html('<i class="fas fa-fw fa-plus-square"></i>  Tambah Barang Baru');
+				$('#Item_Modal .modal-dialog').removeClass("modal-lg");
+				$('#Item_Modal .modal-dialog').removeClass("modal-delete");
+				$('#Item_Modal .modal-dialog').addClass("modal-xl");
+				$('#Item_Modal #Item_Header').removeClass("bg-warning");
+				$('#Item_Modal #Item_Header').removeClass("bg-danger");
+				$('#Item_Modal #Item_Header').addClass("bg-softblue");
+				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-plus-square"></i>  Tambah Barang Baru');
 			},
 			success: function(data) {
 				$('#Item_Form').html(data);
 				PairingKodeBarang();
-				// KENDALA KODE BARANG
 			},
 			error: function(data) {
 				alert(data);
@@ -223,13 +222,13 @@
 			type: "POST",
 			url: "<?= base_url('Menu/EditItem_Form'); ?>",
 			beforeSend: function(data) {
-				$('.modal-dialog').removeClass("modal-xl");
-				$('.modal-dialog').removeClass("modal-delete");
-				$('.modal-dialog').addClass("modal-lg");
-				$('#Item_Header').removeClass("bg-softblue");
-				$('#Item_Header').removeClass("bg-danger");
-				$('#Item_Header').addClass("bg-warning");
-				$('#Item_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Barang');
+				$('#Item_Modal .modal-dialog').removeClass("modal-xl");
+				$('#Item_Modal .modal-dialog').removeClass("modal-delete");
+				$('#Item_Modal .modal-dialog').addClass("modal-lg");
+				$('#Item_Modal #Item_Header').removeClass("bg-softblue");
+				$('#Item_Modal #Item_Header').removeClass("bg-danger");
+				$('#Item_Modal #Item_Header').addClass("bg-warning");
+				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Barang');
 			},
 			success: function(data) {
 				$('#Item_Form').html(data);
@@ -262,13 +261,13 @@
 			type: "POST",
 			url: "<?= base_url('Menu/DeleteItem_Form'); ?>",
 			beforeSend: function(data) {
-				$('.modal-dialog').removeClass("modal-xl");
-				$('.modal-dialog').removeClass("modal-lg");
-				$('.modal-dialog').addClass("modal-delete");
-				$('#Item_Header').removeClass("bg-softblue");
-				$('#Item_Header').removeClass("bg-warning");
-				$('#Item_Header').addClass("bg-danger");
-				$('#Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang');
+				$('#Item_Modal .modal-dialog').removeClass("modal-xl");
+				$('#Item_Modal .modal-dialog').removeClass("modal-lg");
+				$('#Item_Modal .modal-dialog').addClass("modal-delete");
+				$('#Item_Modal #Item_Header').removeClass("bg-softblue");
+				$('#Item_Modal #Item_Header').removeClass("bg-warning");
+				$('#Item_Modal #Item_Header').addClass("bg-danger");
+				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang');
 			},
 			success: function(data) {
 				$('#Item_Form').html(data);
@@ -291,7 +290,7 @@
 		});
 	}
 
-	// ......................................... Aksi Submit Item.............................................
+	// ......................................... Aksi Submit Item Barang.............................................
 	$("#Item_Form").submit('click', function() {
 		// e.preventDefault(); tidak berhasil
 		$('#Item_Modal').modal('hide');
@@ -316,7 +315,96 @@
 		return false;
 	})
 
-	//......................................... Custom Item Function().........................................
+	// ......................................... InOut Barang .........................................
+	function InModal(id) {
+		InOutSaveType = "Masuk";
+		$('#InOut_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/InItem_Form'); ?>",
+			beforeSend: function(data) {
+				$('#InOut_Modal #InOut_Header').removeClass("bg-kingucrimson");
+				$('#InOut_Modal #InOut_Header').addClass("bg-softgreen");
+				$('#InOut_Modal #InOut_Label').html('<i class="fas fa-fw fa-dolly-flatbed"></i>  Tambah Data Barang Masuk');
+			},
+			success: function(data) {
+				$('#InOut_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="InOutItem_Name"]').val(data.nama_item);
+						$('[name="InOut_Id_Item"]').val(data.id_item);
+						$('[name="Live_Stock"]').val(data.stok);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function OutModal(id) {
+		InOutSaveType = "Keluar";
+		$('#InOut_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/OutItem_Form'); ?>",
+			beforeSend: function(data) {
+				$('#InOut_Modal #InOut_Header').removeClass("bg-softgreen");
+				$('#InOut_Modal #InOut_Header').addClass("bg-kingucrimson");
+				$('#InOut_Modal #InOut_Label').html('<i class="fas fa-fw fa-dolly-flatbed" style="transform: rotateY(180deg);"></i>  Tambah Data Barang Keluar');
+			},
+			success: function(data) {
+				$('#InOut_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="InOutItem_Name"]').val(data.nama_item);
+						$('[name="InOut_Id_Item"]').val(data.id_item);
+						$('[name="Live_Stock"]').val(data.stok);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+
+	$("#InOut_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#InOut_Modal').modal('hide');
+		let InOutUrl;
+		if (InOutSaveType == "Masuk") {
+			InOutUrl = "<?= base_url('/Menu/In_item'); ?>";
+		} else if (InOutSaveType == "Keluar") {
+			InOutUrl = "<?= base_url('/Menu/Out_item'); ?>";
+		}
+		$.ajax({
+			url: InOutUrl,
+			type: "POST",
+			data: $('#InOut_Form').serialize(),
+			success: function(data) {
+				$('#InOut_Form').html(' ');
+				listPerizinan();
+			}
+		});
+		return false;
+	})
+
+	//......................................... Custom Kelola Barang Function().........................................
 	function PairingKodeBarang() {
 		$('#Tambah_Section .jenis-barang').change(function() {
 			$('#Tambah_Section .kode2').val($(this).val());
@@ -329,37 +417,6 @@
 		});
 	}
 	$(document).ready(function() {
-
-
-		// get Edit Product
-		// $('.btn-edit-item').on('click', function() {
-		// 	// get data from button edit
-		// 	const id = $(this).data('id');
-		// 	const nama = $(this).data('nama');
-		// 	const stok = $(this).data('stok');
-		// 	const jenis = $(this).data('jenis');
-		// 	const penyimpanan = $(this).data('penyimpanan');
-		// 	// Set data to Form Edit
-		// 	$('#Edit_item #edit_id_item').val(id);
-		// 	$('#Edit_item #edit_nama_barang').val(nama);
-		// 	$('#Edit_item #edit2_nama_item').text(nama);
-		// 	$('#Edit_item #edit_stok_barang').val(stok);
-		// 	$('#Edit_item #edit_jenis_barang').val(jenis).trigger('change');
-		// 	$('#Edit_item #edit_penyimpanan').val(penyimpanan).trigger('change');
-		// 	// Call Modal Edit
-		// 	// $('#editModal').modal('show');
-		// 	// $("#edit-item-form").attr("action", `${id}`);
-		// });
-
-		// get Delete Product
-		$('.btn-delete-item').on('click', function() {
-			// get data from button delete
-			const id = $(this).data('id');
-			const nama = $(this).data('nama');
-			// Set data to Form delete
-			$('#Delete_item #delete_id_item').val(id);
-			$('#Delete_item #delete_nama_item').text(nama);
-		});
 
 		// get Masuk Product
 		$('.btn-in-item').on('click', function() {

@@ -167,6 +167,34 @@ class Menu extends BaseController
 		}
 	}
 
+	// .......................................... InOut Form..........................................
+	public function InItem_Form() // Form In Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"item" => $this->barangModel->getItems(),
+			];
+			return view('global/barang_part/in_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function OutItem_Form() // Form Out Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"item" => $this->barangModel->getItems(),
+			];
+			return view('global/barang_part/out_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
 
 
 	// .......................................... Item Action ........................................
@@ -260,7 +288,7 @@ class Menu extends BaseController
 		}
 	}
 
-	public function Income_item() // perlu fitur tahapan acc
+	public function In_item()
 	{
 		if (session('uid') != null) {
 			// $id = $this->request->getPost('id_item');
@@ -268,26 +296,26 @@ class Menu extends BaseController
 
 			// jika komen kosong
 			if ($ket == null) {
-				$ket = "-";
+				$ket = "(Tanpa Keterangan)";
 			}
 
 			$data = array(
-				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
+				'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
+				'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('InOut_Id_Item'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
-				'nama_barang' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_barang'), ENT_QUOTES)),
 				'request' => str_replace("'", "", htmlspecialchars('Masuk', ENT_QUOTES)),
 				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
 				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_in'), ENT_QUOTES)),
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
-			return redirect()->to('kelolabarang');
+			// return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
 	}
 
-	public function Outcome_item() // perlu fitur tahapan acc
+	public function Out_item()
 	{
 		if (session('uid') != null) {
 			// $id = $this->request->getPost('id_item');
@@ -295,20 +323,20 @@ class Menu extends BaseController
 
 			// jika komen kosong
 			if ($ket == null) {
-				$ket = "-";
+				$ket = "(Tanpa Keterangan)";
 			}
 
 			$data = array(
-				'nama_pekerja' => str_replace("'", "", htmlspecialchars(session('nama'), ENT_QUOTES)),
+				'uid' => str_replace("'", "", htmlspecialchars(session('uid'), ENT_QUOTES)),
+				'id_item' => str_replace("'", "", htmlspecialchars($this->request->getPost('InOut_Id_Item'), ENT_QUOTES)),
 				'tgl' => str_replace("'", "", htmlspecialchars($this->request->getPost('tgl'), ENT_QUOTES)),
-				'nama_barang' => str_replace("'", "", htmlspecialchars($this->request->getPost('nama_barang'), ENT_QUOTES)),
 				'request' => str_replace("'", "", htmlspecialchars('Keluar', ENT_QUOTES)),
 				'status' => str_replace("'", "", htmlspecialchars('Pending', ENT_QUOTES)),
 				'ubah_stok' => str_replace("'", "", htmlspecialchars($this->request->getPost('jumlah_out'), ENT_QUOTES)),
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
-			return redirect()->to('kelolabarang');
+			// return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}

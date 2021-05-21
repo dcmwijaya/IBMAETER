@@ -256,7 +256,7 @@
 		<div class="modal-content">
 			<div class="modal-header text-light" id="Item_Header">
 				<h5 class="modal-title font-weight-bold" id="Item_Label"> Modal Item</h5>
-				<button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close text-light modal-dissmis" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -266,79 +266,17 @@
 	</div>
 </div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="Edit_item" tabindex="-1" aria-labelledby="Edit_itemLabel" aria-hidden="true">
-	<div class="modal-dialog">
+<!-- In/Out Item -->
+<div class="modal fade" id="InOut_Modal" tabindex="-1" aria-labelledby="InOut_Label" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="Edit_itemLabel">Edit Data Barang "<strong><span id="edit2_nama_item"></span></strong>"</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+			<div class="modal-header text-light" id="InOut_Header">
+				<h5 class="modal-title font-weight-bold" id="InOut_Label"> Modal InOut</h5>
+				<button type="button" class="close modal-dissmis" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
-			<form method="POST" enctype="multipart/form-data">
-
-			</form>
-		</div>
-	</div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="Delete_item" tabindex="-1" aria-labelledby="Delete_itemLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="Delete_itemLabel">Hapus Data Barang</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form action="" method="POST" enctype="multipart/form-data">
-
-			</form>
-		</div>
-	</div>
-</div>
-
-<!-- Income Item -->
-<div class="modal fade" id="itemIn" tabindex="-1" aria-labelledby="In_itemLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="In_itemLabel">Masuk Data barang "<strong><span id="itemInNama"></span></strong>"</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form action="<?= base_url('/Menu/Income_item'); ?>" method="POST" enctype="multipart/form-data">
-					<div class="form-group mb-0">
-						<label for="InRange" class="font-weight-bold">Masukan Jumlah Stok Barang Yang <span style="color: #087098;">Masuk</span></label>
-						<script>
-							function updateRangeInput(elem) {
-								$(elem).next().val($(elem).val());
-							}
-						</script>
-						<input type="range" class="form-control-range" id="InRange" min="0" max="100" oninput="updateRangeInput(this)" style="cursor: pointer;">
-						<input type="number" class="text-center form-control my-3" name="jumlah_in" required autofocus>
-						<small class="text-muted"><span style="color: red;">*</span> Geser Slider</small>
-					</div>
-					<div class="form-group">
-						<label for="ItemTime" class="font-weight-bold">Date and time</label>
-						<input type="datetime-local" class="form-control" value="" id="ItemTime" name="tgl" required>
-					</div>
-					<div class="form-group">
-						<label for="InInfo"><b>Keterangan</b></label>
-						<textarea class="form-control" id="InInfo" rows="6" name="ket" placeholder="Sampaikan isi pengumuman bila perlu...&#10;"></textarea>
-						<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" id="itemInNamaPost" class="form-control" name="nama_barang">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Masukkan</button>
-					</div>
-				</form>
-			</div>
+			<form id="InOut_Form" method="POST" enctype="multipart/form-data"></form>
 		</div>
 	</div>
 </div>
@@ -355,31 +293,7 @@
 			</div>
 			<div class="modal-body">
 				<form action="<?= base_url('/Menu/Outcome_item'); ?>" method="POST" enctype="multipart/form-data">
-					<div class="form-group mb-0">
-						<label for="InRange" class="font-weight-bold">Masukan Jumlah Stok Barang Yang <span style="color: #028838;">Keluar</span></label>
-						<script>
-							function updateRangeInput(elem) {
-								$(elem).next().val($(elem).val());
-							}
-						</script>
-						<input type="range" class="form-control-range" id="OutRange" min="0" max="100" oninput="updateRangeInput(this)" style="cursor: pointer;">
-						<input type="number" class="text-center form-control my-3" name="jumlah_out" required autofocus>
-						<small class="text-muted"><span style="color: red;">*</span> Geser Slider</small>
-					</div>
-					<div class="form-group">
-						<label for="ItemTime2" class="font-weight-bold">Date and time</label>
-						<input type="datetime-local" class="form-control" value="" id="ItemTime2" name="tgl" required>
-					</div>
-					<div class="form-group">
-						<label for="InInfo2"><b>Keterangan</b></label>
-						<textarea class="form-control" id="InInfo2" rows="6" name="ket" placeholder="Sampaikan isi pengumuman bila perlu...&#10;"></textarea>
-						<small class="text-muted"><span style="color: red;">*</span> Maksimal 254 huruf</small>
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" id="itemOutNamaPost" class="form-control" name="nama_barang">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-						<button type="submit" class="btn btn-success"><i class="fas fa-fw fa-check"></i> Keluarkan</button>
-					</div>
+
 				</form>
 			</div>
 		</div>
