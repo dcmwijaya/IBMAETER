@@ -33,13 +33,18 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date, 'status_absen' => "Izin"])->first();
     }
 
-    public function countWorked()
+    public function countPresent()
     {
         return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Hadir"])->get()->getResultArray();
     }
 
-    public function countNotWorked()
+    public function countLate()
     {
         return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Terlambat"])->get()->getResultArray();
+    }
+
+    public function countPermission()
+    {
+        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Izin"])->get()->getResultArray();
     }
 }

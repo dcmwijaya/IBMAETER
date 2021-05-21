@@ -34,7 +34,7 @@
 												</div>
 												<div class="laporan-button" style="margin-top:100px;">
 													<input type="hidden" class="form-control" value="" name="id_absen">
-													<a href="<?= base_url('exlapor/pdfprintBulanan'); ?>" type="submit" class="btn btn-success btn-komplain col-sm-12 p-4">
+													<a href="<?= base_url('exlapor/pdfprintBulanan'); ?>" type="submit" class="btn btn-success col-sm-12 p-4">
 														<p class="text-center ntombol"><i class="fas fa-print fa-fw me-3"></i>Cetak Laporan Bulanan</p>
 													</a>
 												</div>

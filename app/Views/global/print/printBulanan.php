@@ -5,6 +5,8 @@ if (!empty($sst)) {
 	foreach ($sst as $vs) {
 		$svt = intval($vs['stok']);
 	}
+} else {
+	$svt = 0;
 }
 
 // ====================================== Total Stok Berdasarkan Jenis ====================================== //
@@ -12,26 +14,36 @@ if (!empty($sj1)) {
 	foreach ($sj1 as $vj1) {
 		$sct1 = intval($vj1['stok']);
 	}
+} else {
+	$sct1 = 0;
 }
 if (!empty($sj2)) {
 	foreach ($sj2 as $vj2) {
 		$sct2 = intval($vj2['stok']);
 	}
+} else {
+	$sct2 = 0;
 }
 if (!empty($sj3)) {
 	foreach ($sj3 as $vj3) {
 		$sct3 = intval($vj3['stok']);
 	}
+} else {
+	$sct3 = 0;
 }
 if (!empty($sj4)) {
 	foreach ($sj4 as $vj4) {
 		$sct4 = intval($vj4['stok']);
 	}
+} else {
+	$sct4 = 0;
 }
 if (!empty($sj5)) {
 	foreach ($sj5 as $vj5) {
 		$sct5 = intval($vj5['stok']);
 	}
+} else {
+	$sct5 = 0;
 }
 
 // ====================================== Total Cost Barang ====================================== //
@@ -39,6 +51,8 @@ if (!empty($sco)) {
 	foreach ($sco as $vc) {
 		$svc = intval($vc['harga']);
 	}
+} else {
+	$svc = 0;
 }
 
 // ====================================== Total Weight Barang ====================================== //
@@ -46,6 +60,8 @@ if (!empty($swh)) {
 	foreach ($swh as $vw) {
 		$svw = intval($vw['berat']);
 	}
+} else {
+	$svw = 0;
 }
 
 // ====================================== Total Gender Employees ====================================== //
@@ -53,11 +69,15 @@ if (!empty($cf)) {
 	foreach ($cf as $cfv) {
 		$cfm1 = intval($cfv['gender']);
 	}
+} else {
+	$cfm1 = 0;
 }
 if (!empty($cm)) {
 	foreach ($cm as $cmv) {
 		$cfm2 = intval($cmv['gender']);
 	}
+} else {
+	$cfm2 = 0;
 }
 
 // ====================================== Total Income-Outcome Item ====================================== //
@@ -65,12 +85,43 @@ if (!empty($scin)) {
 	foreach ($scin as $cn) {
 		$tcin = intval($cn['ubah_stok']);
 	}
+} else {
+	$tcin = 0;
 }
 if (!empty($scout)) {
 	foreach ($scout as $ct) {
 		$tcout = intval($ct['ubah_stok']);
 	}
+} else {
+	$tcout = 0;
 }
+
+// ====================================== Total Absensi ====================================== //
+foreach ($countPresent as $wc) {
+	if ($countPresent != null) {
+		$presentCount = intval($wc['uid_absen']);
+	} else {
+		$presentCount = 0;
+	}
+}
+
+foreach ($countLate as $nwc) {
+	if ($countLate != null) {
+		$lateCount = intval($nwc['uid_absen']);
+	} else {
+		$lateCount = 0;
+	}
+}
+
+foreach ($countPermission as $cp) {
+	if ($countPermission != null) {
+		$permissionCount = intval($cp['uid_absen']);
+	} else {
+		$permissionCount = 0;
+	}
+}
+
+$truantedCount = $totalUser - $presentCount;
 
 ?>
 
@@ -90,6 +141,7 @@ if (!empty($scout)) {
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
 	<link rel="stylesheet" href="<?= base_url('../vendor/bootstrap-4.0.0/dist/css/bootstrap.min.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('fontawesome/css/all.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('css/menukhusus.css') ?>">
 </head>
 
 <body>
@@ -112,7 +164,7 @@ if (!empty($scout)) {
 				</table>
 
 
-				<div class="card" style="margin-top: 58px">
+				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
 							<center><strong>Brief Information Invenbar</strong></center>
@@ -121,96 +173,104 @@ if (!empty($scout)) {
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
-									<thead>
-										<tr style="text-align: center;">
-											<!-- kolom kiri -->
+								<table class="display nowrap" border="1">
+									<thead style="text-align: center;">
+										<tr>
 											<th colspan="5">Total Category Item</th>
-											<!-- kolom kanan -->
-											<th colspan="3">Total Inventory Room</th>
 										</tr>
 										<tr>
-											<!-- kolom kiri -->
-											<th>Cair</th>
-											<th>Minyak</th>
-											<th>Mudah Terbakar</th>
-											<th>Padat</th>
-											<th>Daging</th>
-											<!-- kolom kanan -->
-											<th>Stock Item</th>
-											<th>Weight Item</th>
-											<th>Cost Item</th>
+											<th colspan="1">Cair</th>
+											<th colspan="1">Minyak</th>
+											<th colspan="1">Mudah Terbakar</th>
+											<th colspan="1">Padat</th>
+											<th colspan="1">Daging</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr colspan="2" style="text-align: left;">
-											<!-- kolom kiri -->
-											<td><?= json_encode($sct1); ?></td>
-											<td><?= json_encode($sct2); ?></td>
-											<td><?= json_encode($sct3); ?></td>
-											<td><?= json_encode($sct4); ?></td>
-											<td><?= json_encode($sct5); ?></td>
-											<!-- kolom kanan -->
-											<td><?= json_encode($svt); ?></td>
-											<td><?= json_encode($svw); ?></td>
-											<td><?= json_encode($svc); ?></td>
+										<tr>
+											<td colspan="1"><?= json_encode($sct1); ?></td>
+											<td colspan="1"><?= json_encode($sct2); ?></td>
+											<td colspan="1"><?= json_encode($sct3); ?></td>
+											<td colspan="1"><?= json_encode($sct4); ?></td>
+											<td colspan="1"><?= json_encode($sct5); ?></td>
 										</tr>
 									</tbody>
-								</table>
-								<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
-									<thead>
+									<thead style="text-align: center;">
 										<tr>
-											<th colspan="8" style="height: 20px;"></th>
-										</tr>
-										<tr style="text-align: center;">
-											<!-- kolom kiri -->
-											<th colspan="2">Total Inventory Stock In-Out</th>
-											<!-- kolom kanan -->
-											<th colspan="2">Total Gender Employees</th>
+											<th colspan="5" style="height: 20px;"></th>
 										</tr>
 										<tr>
-											<!-- kolom kiri -->
-											<th>Approve Income Item</th>
-											<th>Approve Outcome Item</th>
-											<!-- kolom kanan -->
-											<th>Female</th>
-											<th>Male</th>
+											<th colspan="5">Total Inventory Room</th>
+										</tr>
+										<tr>
+											<th colspan="2">Stock Item</th>
+											<th colspan="1">Weight Item</th>
+											<th colspan="2">Cost Item</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr colspan="2" style="text-align: left;">
-											<!-- kolom kiri -->
-											<td><?= json_encode($tcin); ?></td>
-											<td><?= json_encode($tcout); ?></td>
-											<!-- kolom kanan -->
-											<td><?= json_encode($cfm1); ?></td>
-											<td><?= json_encode($cfm2); ?></td>
+									<tbody style="text-align: center;">
+										<tr>
+											<td colspan="2"><?= json_encode($svt); ?></td>
+											<td colspan="1"><?= json_encode($svw); ?></td>
+											<td colspan="2"><?= json_encode($svc); ?></td>
 										</tr>
 									</tbody>
-								</table>
-								<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
-									<thead>
+									<thead style="text-align: center;">
 										<tr>
-											<th colspan="8" style="height: 20px;"></th>
-										</tr>
-										<tr style="text-align: center;">
-											<th colspan="4">Absensi Pekerja</th>
+											<th colspan="5" style="height: 20px;"></th>
 										</tr>
 										<tr>
-											<th>Hadir</th>
-											<th>Terlambat</th>
-											<th>Ijin</th>
-											<th>Tidak Hadir</th>
+											<th colspan="5">Total Inventory Stock In-Out</th>
+										</tr>
+										<tr>
+											<th colspan="3">Approve Income Item</th>
+											<th colspan="2">Approve Outcome Item</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr colspan="2" style="text-align: left;">
-											<!-- kolom kiri -->
-											<td>Dummy</td>
-											<td>Dummy</td>
-											<!-- kolom kanan -->
-											<td>Dummy</td>
-											<td>Dummy</td>
+									<tbody style="text-align: center;">
+										<tr>
+											<td colspan="3"><?= json_encode($tcin); ?></td>
+											<td colspan="2"><?= json_encode($tcout); ?></td>
+										</tr>
+									</tbody>
+									<thead style="text-align: center;">
+										<tr>
+											<th colspan="5" style="height: 20px;"></th>
+										</tr>
+										<tr>
+											<th colspan="5">Total Gender Employees</th>
+										</tr>
+										<tr>
+											<th colspan="3">Female</th>
+											<th colspan="2">Male</th>
+										</tr>
+									</thead>
+									<tbody style="text-align: center;">
+										<tr>
+											<td colspan="3"><?= json_encode($cfm1); ?></td>
+											<td colspan="2"><?= json_encode($cfm2); ?></td>
+										</tr>
+									</tbody>
+									<thead style="text-align: center;">
+										<tr>
+											<th colspan="5" style="height: 20px;"></th>
+										</tr>
+										<tr>
+											<th colspan="5">Absensi Pekerja</th>
+										</tr>
+										<tr>
+											<th colspan="2">Hadir</th>
+											<th colspan="1">Terlambat</th>
+											<th colspan="1">Ijin</th>
+											<th colspan="2">Tidak Hadir</th>
+										</tr>
+									</thead>
+									<tbody style="text-align: center;">
+										<tr>
+											<td colspan="2"><?= json_encode($presentCount); ?></td>
+											<td colspan="1"><?= json_encode($lateCount); ?></td>
+											<td colspan="1"><?= json_encode($permissionCount); ?></td>
+											<td colspan="2"><?= json_encode($truantedCount); ?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -219,8 +279,47 @@ if (!empty($scout)) {
 					</div>
 				</div><br>
 
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<h4 style="margin-bottom: 30px;">
+								Founder Invenbar,
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;" height="30">
+							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<u>
+								<h5>Alfha Fierly Firdaus</h5>
+							</u>
+						</td>
+					</tr>
+				</table>
 
-				<div class="card" style="margin-top: 10px">
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-before:always;">
+					<tr>
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-Invenbar"></td>
+						<td width="100%" colspan="6" style="text-align: center;">
+							<div style="font-size: 13pt; font-weight: bold;">
+								<h3 class="mb-0 text-center">
+									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
+								</h3><br>INVENBAR INDONESIA
+							</div>
+							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+						</td>
+					</tr>
+				</table>
+
+				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
 							<center><strong>Barang Gudang Invenbar</strong></center>
@@ -229,7 +328,7 @@ if (!empty($scout)) {
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap" style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
+								<table class="display nowrap" border="1">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -258,8 +357,47 @@ if (!empty($scout)) {
 					</div>
 				</div><br>
 
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<h4 style="margin-bottom: 30px;">
+								Founder Invenbar,
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;" height="30">
+							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<u>
+								<h5>Alfha Fierly Firdaus</h5>
+							</u>
+						</td>
+					</tr>
+				</table>
 
-				<div class="card" style="margin-top: 10px">
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-before:always;">
+					<tr>
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-Invenbar"></td>
+						<td width="100%" colspan="6" style="text-align: center;">
+							<div style="font-size: 13pt; font-weight: bold;">
+								<h3 class="mb-0 text-center">
+									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
+								</h3><br>INVENBAR INDONESIA
+							</div>
+							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+						</td>
+					</tr>
+				</table>
+
+				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
 							<center><strong>Spesifikasi Barang Gudang Invenbar</strong></center>
@@ -268,7 +406,7 @@ if (!empty($scout)) {
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
+								<table class="display nowrap" border="1">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -331,8 +469,47 @@ if (!empty($scout)) {
 					</div>
 				</div><br>
 
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<h4 style="margin-bottom: 30px;">
+								Founder Invenbar,
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;" height="30">
+							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
+						</td>
+					</tr>
+					<tr>
+						<td width="70%" colspan="6" style="text-align: center;"></td>
+						<td width="30%" style="text-align: right;">
+							<u>
+								<h5>Alfha Fierly Firdaus</h5>
+							</u>
+						</td>
+					</tr>
+				</table>
 
-				<div class="card" style="margin-top: 10px">
+				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-before:always;">
+					<tr>
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-Invenbar"></td>
+						<td width="100%" colspan="6" style="text-align: center;">
+							<div style="font-size: 13pt; font-weight: bold;">
+								<h3 class="mb-0 text-center">
+									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
+								</h3><br>INVENBAR INDONESIA
+							</div>
+							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+						</td>
+					</tr>
+				</table>
+
+				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
 							<center><strong>Perizinan Income-Outcome Barang Invenbar</strong></center>
@@ -342,7 +519,7 @@ if (!empty($scout)) {
 						<div class="row">
 							<div class="col">
 								<?php if (session('role') == 0) : ?>
-									<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
+									<table class="display nowrap" border="1">
 										<thead>
 											<tr>
 												<th>Waktu</th>
@@ -388,7 +565,7 @@ if (!empty($scout)) {
 									</table>
 									<!-- for pekerja -->
 								<?php else : ?>
-									<table class="display nowrap " style="font-size: 14px; width:100% !important; overflow-x:auto;" border="1">
+									<table class="display nowrap" border="1">
 										<thead>
 											<tr>
 												<th>Waktu</th>

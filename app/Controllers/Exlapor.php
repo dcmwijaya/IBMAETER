@@ -750,7 +750,11 @@ class Exlapor extends BaseController
 				"sj5" => $this->barangModel->stockjenis5(),
 				"sst" => $this->barangModel->sumStock(),
 				"swh" => $this->barangModel->sumWeight(),
-				"sco" => $this->barangModel->sumCost()
+				"sco" => $this->barangModel->sumCost(),
+				"countPresent" => $this->absensiModel->countPresent(),
+				"countLate" => $this->absensiModel->countLate(),
+				"countPermission" => $this->absensiModel->countPermission(),
+				"totalUser" => $this->userModel->countUser()
 			];
 
 			return view('global/print/printBulanan', $data);

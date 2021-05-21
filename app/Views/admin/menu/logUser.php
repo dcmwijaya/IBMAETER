@@ -5,19 +5,27 @@
 
 <?php
 
-foreach ($countWorked as $wc) {
-	if ($countWorked != null) {
-		$workedCount = $wc['uid_absen'];
+foreach ($countPresent as $wc) {
+	if ($countPresent != null) {
+		$presentCount = $wc['uid_absen'];
 	} else {
-		$workedCount = 0;
+		$presentCount = 0;
 	}
 }
 
-foreach ($countNotWorked as $nwc) {
-	if ($countNotWorked != null) {
-		$notworkedCount = $nwc['uid_absen'];
+foreach ($countLate as $nwc) {
+	if ($countLate != null) {
+		$lateCount = $nwc['uid_absen'];
 	} else {
-		$notworkedCount = 0;
+		$lateCount = 0;
+	}
+}
+
+foreach ($countPermission as $cp) {
+	if ($countPermission != null) {
+		$permissionCount = $cp['uid_absen'];
+	} else {
+		$permissionCount = 0;
 	}
 }
 
@@ -111,8 +119,10 @@ foreach ($countNotWorked as $nwc) {
 							</div>
 						</div>
 						<p class="absensiCount">
-							Jumlah pekerja hadir hari ini : <?= $workedCount; ?> <br>
-							Jumlah pekerja tidak melakukan absen hari ini : <?= $totalWorker - $workedCount; ?>
+							Jumlah pekerja hadir : <?= $presentCount; ?> <br>
+							Jumlah pekerja terlambat : <?= $lateCount; ?> <br>
+							Jumlah pekerja ijin : <?= $permissionCount; ?> <br>
+							Jumlah pekerja tidak hadir : <?= $totalUser - $presentCount; ?>
 						</p>
 					</div>
 				</div>
