@@ -429,7 +429,7 @@ class Menu extends BaseController
 
 	public function profUpdate($uid)
 	{
-		// dd($this->request->getFile('foto')->getName());
+		$aktivitas = session('nama') . " melakukan Edit Profil.";
 		$dataUser = $this->userModel->getUserId($uid);
 
 		// jika seleksi inputan email
@@ -529,6 +529,13 @@ class Menu extends BaseController
 				'picture' => $namaFoto
 			]);
 
+			// insert user aktivity saat melakukan edit profil
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => $uid,
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			session()->setFlashdata('pesan', 'Data berhasil diubah');
 			$this->session->set('nama', $inputNama); // ganti session nama
 			$this->session->set('email', $inputEmail); // ganti session email
@@ -572,9 +579,11 @@ class Menu extends BaseController
 		if ($this->request->getVar('alasanIzin') != null) {
 			$rulesAlasanIzin = "required";
 			$rulesBuktiIzin = "required_with[foto,alasanIzin]|max_size[foto,5120]|is_image[foto]|max_dims[foto],3500,3500]|mime_in[foto,image/jpg,image/jpeg,image/png]";
+			$aktivitas = session('nama') . " melakukan Pengajuan Izin.";
 		} else {
 			$rulesAlasanIzin = "min_length[0]";
 			$rulesBuktiIzin = "min_length[0]";
+			$aktivitas = session('nama') . " melakukan Absensi.";
 		}
 
 		// jika valdiasi tidakk lolos maka redirect ke halaman edit
@@ -657,6 +666,13 @@ class Menu extends BaseController
 			'respons' => $respon,
 			'komen_izin' => "-",
 			'waktu_komen' => null
+		]);
+
+		// insert user aktivity saat melakukan absensi
+		$this->userActivityModel->insert([
+			'uid_aktivitas' => $uid,
+			'aktivitas' => $aktivitas,
+			'waktu_aktivitas' => date("Y-m-d H:i:s")
 		]);
 
 		// Pesan FLASH
