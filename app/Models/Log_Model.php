@@ -16,7 +16,7 @@ class Log_Model extends Model
             return $this->findAll();
         }
         $builder = $this->db->table('alur_barang');
-        $builder->select('*');
+        $builder->select('berat, harga, item.id_item, id_supplier, jenis, ket, kode_barang, nama, nama_item, no_log, penyimpanan, request, role, status, stok, tgl, ubah_stok, user.uid, uid_alur_admin');
         $builder->join('user', 'user.uid = alur_barang.uid', 'left');
         $builder->join('item', 'item.id_item = alur_barang.id_item', 'left');
         $builder->where(['no_log' => $no_log]);

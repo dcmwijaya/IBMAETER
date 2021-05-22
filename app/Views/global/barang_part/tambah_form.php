@@ -81,13 +81,10 @@
                 <input type="number" class="form-control" id="tambah_berat" placeholder="Tambah berat Barang..." name="berat">
             </div>
             <div class="form-group">
-                <label for="tambah_supplier"><i class="fas fa-fw fa-id-card-alt"></i> Dikirim oleh Supplier</label>
-                <select class="form-control" id="tambah_supplier" name="supplier">
-                    <?php $sp = 1; ?>
-                    <?php foreach ($supplier as $s) :  ?>
-                        <option value="<?= $sp; ?>"><?= $s['nama_supplier']; ?></option>
-                        <?php $sp++; ?>
-                    <?php endforeach; ?>
+                <label for="tambah_supplier"><i class="fas fa-fw fa-id-card-alt"></i> Nama Supplier</label>
+                <select class="form-control" id="tambah_supplierr" name="supplier">
+                    <option value="0">(Tidak Ada)</option>
+
                 </select>
             </div>
         </div>

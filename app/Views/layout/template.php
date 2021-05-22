@@ -149,8 +149,10 @@
 
 <!-- Config Modal -->
 <script>
-	$('.modal-dismiss').click(function() {
-		$('#Perizinan_Modal').modal('hide');
+	$(document).ready(function() {
+		$('.modal-dismiss').click(function() {
+			$('#Perizinan_Modal').modal('hide');
+		});
 	});
 </script>
 
@@ -215,6 +217,20 @@
 			success: function(data) {
 				$('#Item_Form').html(data);
 				PairingKodeBarang();
+				let Supplierku = data.id_supplier;
+				$.ajax({
+					url: '<?= base_url('Menu/GetSupplier'); ?>',
+					data: {
+						"id_supplier": Supplierku
+					},
+					type: "POST",
+					success: function(supplier) {
+						$('[name="supplier"]').html(supplier);
+					},
+					error: function(data) {
+						alert('AJAX Supplier Part Error :(');
+					}
+				});
 			},
 			error: function(data) {
 				alert(data);
@@ -274,7 +290,7 @@
 				$('#Item_Modal #Item_Header').removeClass("bg-softblue");
 				$('#Item_Modal #Item_Header').removeClass("bg-warning");
 				$('#Item_Modal #Item_Header').addClass("bg-danger");
-				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang');
+				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang Dengan Nama ');
 			},
 			success: function(data) {
 				$('#Item_Form').html(data);
@@ -316,12 +332,15 @@
 			success: function(data) {
 				$('#Item_Form').html(' ');
 				listItem();
+				listPerizinan();
 				listSpesifikasi();
 			}
 		});
 		return false;
 	})
-
+</script>
+<!-- ================= InOut Barang -->
+<script>
 	// ......................................... InOut Barang .........................................
 	function InModal(id) {
 		InOutSaveType = "Masuk";
@@ -410,7 +429,137 @@
 		});
 		return false;
 	})
+</script>
+<!-- =============== Spesifikasi Barang-->
+<script>
+	//......................................... Spesifikasi Barang .........................................
 
+	function SpecDetailmodal(id) {
+		$('#Spec_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/DetailSpec_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Spec_Modal .modal-dialog').removeClass("modal-lg");
+				$('#Spec_Modal .modal-dialog').addClass("modal-xl");
+				$('#Spec_Modal #Spec_Header').removeClass("bg-dark");
+				$('#Spec_Modal #Spec_Header').addClass("bg-softblue");
+				$('#Spec_Modal #Spec_Label').html('<i class="fas fa-fw fa-folder-open"></i> Detail Spesifikasi Barang');
+			},
+			success: function(data) {
+				$('#Spec_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="id_item"]').val(data.id_item);
+						$('[name="detail_nama"]').val(data.nama_item);
+						$('[name="detail_stok"]').val(data.stok);
+						$('[name="detail_jenis"]').val(data.jenis);
+						$('[name="detail_penyimpanan"]').val(data.penyimpanan);
+						$('[name="detail_kode"]').val(data.kode_barang);
+						$('[name="detail_harga"]').val(data.harga);
+						$('[name="detail_berat"]').val(data.berat);
+						let Supplierku = data.id_supplier;
+						$.ajax({
+							url: '<?= base_url('Menu/GetSupplier'); ?>',
+							data: {
+								"id_supplier": Supplierku
+							},
+							type: "POST",
+							success: function(supplier) {
+								$('[name="detail_supplier"]').html(supplier);
+							},
+							error: function(data) {
+								alert('AJAX Supplier Part Error :(');
+							}
+						});
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function SpecEditmodal(id) {
+		$('#Spec_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Menu/EditSpec_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Spec_Modal .modal-dialog').removeClass("modal-xl");
+				$('#Spec_Modal .modal-dialog').addClass("modal-lg");
+				$('#Spec_Modal #Spec_Header').removeClass("bg-softblue");
+				$('#Spec_Modal #Spec_Header').addClass("bg-dark");
+				$('#Spec_Modal #Spec_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Spesifikasi Barang');
+			},
+			success: function(data) {
+				$('#Spec_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Menu/GetIDItem'); ?>',
+					data: {
+						"id_item": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="sp_nama"]').val(data.nama_item);
+						$('[name="sp_id_item"]').val(data.id_item);
+						$('[name="sp_kode"]').val(data.kode_barang);
+						$('[name="sp_harga"]').val(data.harga);
+						$('[name="sp_berat"]').val(data.berat);
+						// $('[name="sp_supplier"]').val(data.penyimpanan).trigger('change');
+						let Supplierku = data.id_supplier;
+						$.ajax({
+							url: '<?= base_url('Menu/GetSupplier'); ?>',
+							data: {
+								"id_supplier": Supplierku
+							},
+							type: "POST",
+							success: function(supplier) {
+								$('[name="sp_supplier"]').html(supplier);
+							},
+							error: function(data) {
+								alert('AJAX Supplier Part Error :(');
+							}
+						});
+					}
+				});
+			},
+			error: function(data) {
+				alert('AJAX Error :(');
+			}
+
+		});
+	}
+
+	// ......................................... Aksi spesifikasi barang.........................................
+	$("#Spec_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#Spec_Modal').modal('hide');
+		let ItemUrl = '<?= base_url('Menu/EditSpecItem'); ?>';
+		$.ajax({
+			url: ItemUrl,
+			type: "POST",
+			data: $('#Spec_Form').serialize(),
+			success: function(data) {
+				$('#Spec_Form').html(' ');
+				listSpesifikasi();
+				listItem();
+				listPerizinan();
+			}
+		});
+		return false;
+	})
+</script>
+<!-- ============== -->
+<script>
 	//......................................... Custom Kelola Barang Function().........................................
 	function PairingKodeBarang() {
 		$('#Tambah_Section .jenis-barang').change(function() {
@@ -458,6 +607,9 @@
 			$('#Edit_spesifikasi #edit_sp_id_item').val(id);
 		});
 
+	});
+
+	function detlBarang(id) {
 		//get detail spec
 		$('.detl-item').on('click', function() {
 			// get data from button keluar
@@ -482,7 +634,7 @@
 			$('#Detail_spesifikasi #detail_supplier').val(supplier);
 			$('#Detail_spesifikasi #detail_id').val(id);
 		})
-	});
+	}
 </script>
 
 <!-------------------------------------------------- Catch Data for Data User -------------------------------------------------->
@@ -647,6 +799,7 @@
 			success: function(data) {
 				$('#Perizinan_Form').html(' ');
 				listPerizinan();
+				listItem();
 			},
 			error: function(data) {
 				alert('Operasi Ajax Gagal :(');

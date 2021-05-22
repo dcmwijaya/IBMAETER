@@ -34,12 +34,20 @@ class Barang_Model extends Model
         return $query;
     }
 
-    public function viewSuppliers()
+    public function viewSuppliers($id = false)
     {
+        if ($id == false) {
+            $builder = $this->db->table('supplier');
+            $builder->select('*');
+            $builder->orderBy('nama_supplier', 'ASC');
+            $query = $builder->get()->getResult();
+            return $query;
+        }
         $builder = $this->db->table('supplier');
-        $builder->select('*');
-        $query = $builder->get();
-        return $query->getResultArray();
+        $builder->select('id_supplier, nama_supplier');
+        $builder->orderBy('nama_supplier', 'ASC');
+        $query = $builder->where(['id_supplier' => $id]);
+        return $query->get()->getResult();
     }
 
     public function joinSupplier()

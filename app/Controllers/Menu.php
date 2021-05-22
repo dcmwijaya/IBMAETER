@@ -71,7 +71,7 @@ class Menu extends BaseController
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				// "item" => $this->barangModel->getItems(), GANTI AJAX
-				"supplier" => $this->barangModel->viewSuppliers(),
+				// "supplier" => $this->barangModel->viewSuppliers(),
 				// "spec" => $this->barangModel->joinSupplier(),
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
@@ -91,6 +91,20 @@ class Menu extends BaseController
 			$data["item"] = $this->barangModel->getItems();
 			// echo json_encode($data);
 			return view('global/barang_part/list_item', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	// *** ADMIN CAN ACCESSS
+	public function ShowPerizinan() // Show Master Data Perizinan
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data["log_item"] = $this->LogModel->ReadLogItem();
+			// echo json_encode($data);
+			return view('admin/perizinan_part/list_perizinan', $data);
 		} else {
 			return redirect()->to('/dashboard');
 		}
@@ -154,19 +168,6 @@ class Menu extends BaseController
 		}
 	}
 
-	public function GetIDItem() // Form Edit Master Data Item
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// AJAX
-			$id = $this->request->getPost('id_item');
-			$data = $this->barangModel->getItems($id);
-			echo json_encode($data);
-		} else {
-			return redirect()->to('/dashboard');
-		}
-	}
-
 	// .......................................... InOut Form..........................................
 	public function InItem_Form() // Form In Master Data Item
 	{
@@ -196,6 +197,75 @@ class Menu extends BaseController
 		}
 	}
 
+	//.... Perizinan form are in controler admin
+
+	// .......................................... Spesifikasi Form..........................................
+	public function EditSpec_Form() // Edit Form In Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"spec" => $this->barangModel->joinSupplier(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+			];
+			return view('global/barang_part/edit_spec_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function DetailSpec_Form() // Detail Form In Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				"spec" => $this->barangModel->joinSupplier(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+			];
+			return view('global/barang_part/detail_spec_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	// .......................................... Get Data form ..........................................
+	public function GetIDItem() // Form Edit Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$id = $this->request->getPost('id_item');
+			$data = $this->barangModel->getItems($id);
+			echo json_encode($data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function GetSupplier() // Form Edit Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$id = $this->request->getPost('id_supplier');
+			$suppliers = $this->barangModel->viewSuppliers();
+			$data = '';
+			$data .= '<option value="">(Tidak Ada)</option>';
+			foreach ($suppliers as $s) {
+				if ($s->id_supplier == $id) {
+					$selected = "selected";
+				} else {
+					$selected = "";
+				}
+				$data .= "<option class='checksupplier' value='$s->id_supplier' $selected>$s->nama_supplier</option>";
+			}
+			echo $data;
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
 
 	// .......................................... Item Action ........................................
 
@@ -273,21 +343,7 @@ class Menu extends BaseController
 		}
 	}
 
-	// ------------------------------------------------------ Hal Perizinan ---------------------------------------------------------- 
-
-	// ADMIN CAN ACCESSS
-	public function ShowPerizinan() // Show Master Data Perizinan
-	{
-		// seleksi no login
-		if (session('uid') != null) {
-			// AJAX
-			$data["log_item"] = $this->LogModel->ReadLogItem();
-			// echo json_encode($data);
-			return view('admin/perizinan_part/list_perizinan', $data);
-		} else {
-			return redirect()->to('/dashboard');
-		}
-	}
+	// ---------------------- Aksi In/Out ---------------------------
 
 	public function In_item()
 	{
@@ -342,6 +398,8 @@ class Menu extends BaseController
 			return redirect()->to('/login');
 		}
 	}
+
+	// --------------------------- Aksi Spesifikasi Item ---------------------------
 
 	public function EditSpecItem()
 	{
