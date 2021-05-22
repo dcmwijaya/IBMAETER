@@ -84,21 +84,4 @@
     </div>
 </div>
 
-<!-- Rejected Modal -->
-<div class="modal fade" id="Rejected" tabindex="-1" aria-labelledby="RejectedLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="RejectedLabel"><b style="color: red;">Tolak</b> Izin Barang</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('Admin/AksiPerizinan'); ?>" method="POST" enctype="multipart/form-data">
-
-            </form>
-        </div>
-    </div>
-</div>
-
 <?= $this->endSection() ?>

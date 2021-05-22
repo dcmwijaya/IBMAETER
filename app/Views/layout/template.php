@@ -147,6 +147,13 @@
 	});
 </script>
 
+<!-- Config Modal -->
+<script>
+	$('.modal-dismiss').click(function() {
+		$('#Perizinan_Modal').modal('hide');
+	});
+</script>
+
 <!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <script>
 	let sloading = '<div class="spinner-border spinner-border-sm text-info" role="status"><span class="sr-only">&emsp;&ensp; Loading...</span></div> Loading Data...'
@@ -558,7 +565,7 @@
 			beforeSend: function(data) {
 				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-kingucrimson");
 				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-softgreen");
-				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-dolly-flatbed"></i>  Terima Izin Data Barang Masuk');
+				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Izin Data Barang Masuk');
 			},
 			success: function(data) {
 				$('#Perizinan_Form').html(data);
@@ -570,19 +577,21 @@
 					type: "POST",
 					dataType: "JSON",
 					success: function(data) {
-						var parsed = JSON.parse(JSON.stringify(data));
-						alert(parsed);
-						$('[name="perizinan_no_log"]').val(data.no_log);
-						$('[name="perizinan_nama"]').val(parsed.nama_item);
-						$('[name="perizinan_stok"]').val(parsed.ubah_stok);
-						$('[name="perizinan_pekerja"]').val(data.nama);
-						$('[name="perizinan_waktu"]').val(data.tgl);
-						$('[name="perizinan_ket"]').text(data.ket);
+						// var parsed = JSON.parse(JSON.stringify(data));
+						$('[name="perizinan_no_log"]').val(data[0].no_log);
+						$('[name="perizinan_nama"]').val(data[0].nama_item);
+						$('[name="perizinan_stok"]').val(data[0].ubah_stok);
+						RequestBarangType(data[0].request);
+						$('[name="perizinan_room"]').val(data[0].penyimpanan);
+						$('[name="perizinan_jenis"]').val(data[0].jenis);
+						$('[name="perizinan_pekerja"]').val(data[0].nama);
+						$('[name="perizinan_waktu"]').val(data[0].tgl);
+						$('[name="perizinan_ket"]').text(data[0].ket);
 					}
 				});
 			},
 			error: function(data) {
-				alert(data);
+				alert(' Operasi AJAX Gagal :(');
 			}
 		});
 	}
@@ -595,7 +604,7 @@
 			beforeSend: function(data) {
 				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-softgreen");
 				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-kingucrimson");
-				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-dolly-flatbed" style="transform: rotateY(180deg);"></i>  Tolak Izin Data Barang Masuk');
+				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-window-close" style="transform: rotateY(180deg);"></i>  Tolak Izin Data Barang Masuk');
 			},
 			success: function(data) {
 				$('#Perizinan_Form').html(data);
@@ -608,18 +617,20 @@
 					dataType: "JSON",
 					success: function(data) {
 						var parsed = JSON.parse(JSON.stringify(data));
-						alert(parsed);
-						$('[name="perizinan_no_log"]').val(data.no_log);
-						$('[name="perizinan_nama"]').val(parsed.nama_item);
-						$('[name="perizinan_stok"]').val(parsed.ubah_stok);
-						$('[name="perizinan_pekerja"]').val(data.nama);
-						$('[name="perizinan_waktu"]').val(data.tgl);
-						$('[name="perizinan_ket"]').text(data.ket);
+						$('[name="perizinan_no_log"]').val(data[0].no_log);
+						$('[name="perizinan_nama"]').val(data[0].nama_item);
+						$('[name="perizinan_stok"]').val(data[0].ubah_stok);
+						RequestBarangType(data[0].request);
+						$('[name="perizinan_room"]').val(data[0].penyimpanan);
+						$('[name="perizinan_jenis"]').val(data[0].jenis);
+						$('[name="perizinan_pekerja"]').val(data[0].nama);
+						$('[name="perizinan_waktu"]').val(data[0].tgl);
+						$('[name="perizinan_ket"]').text(data[0].ket);
 					}
 				});
 			},
 			error: function(data) {
-				alert(data);
+				alert('Operasi Ajax Gagal :(');
 			}
 		});
 	}
@@ -636,12 +647,24 @@
 			success: function(data) {
 				$('#Perizinan_Form').html(' ');
 				listPerizinan();
+			},
+			error: function(data) {
+				alert('Operasi Ajax Gagal :(');
 			}
 		});
 		return false;
 	})
-</script>
 
+
+	// ..........................Custom Function Perizinan.........................>
+	function RequestBarangType(reqType) {
+		if (reqType == "Masuk") {
+			$('#RequestType').html(`<span class="py-2 badge badge-success" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-up text-light"></i> ${reqType}</span>`);
+		} else {
+			$('#RequestType').html(`<span class="py-2 badge badge-danger" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-down text-light"></i> ${reqType}</span>`);
+		}
+	}
+</script>
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
 	function listPengumuman() {

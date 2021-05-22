@@ -434,28 +434,30 @@ class Admin extends BaseController
 				}
 
 				// mengambil data
-				$no_log = $this->request->getPost('no_log');
-				$reqs = $this->request->getPost('reqs');
-				$status = $this->request->getPost('status');
-				$ket = $this->request->getPost('komen');
+				$no_log = $this->request->getPost('perizinan_no_log');
+				// $id_item = $this->request->getPost('perizinan_id_item'); sudah diganti dengan trigger sql
+				$status = $this->request->getPost('perizinan_status');
+				$ket = $this->request->getPost('perizinan_komen');
 
 				// jika komen kosong
 				if ($ket == null) {
-					$ket = "Tanpa Detail Konteks";
+					$ket = "Terverifikasi !";
 				}
 
+				// Belum Ada fitur Rekam siapa admin yang memproses request
 				$data = [
-					'request' => str_replace("'", "", htmlspecialchars($reqs, ENT_QUOTES)),
 					'status' => str_replace("'", "", htmlspecialchars($status, ENT_QUOTES)),
 					'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES)),
-					'tgl' => date("Y-m-d h:i:sa")
+					'tgl' => date("Y-m-d h:i:sa"),
+					'uid_alur_admin' => session('uid')
 				];
 
 				// upload tabel 'arsip_komplain'
 				$this->LogModel->updateLogItem($data, $no_log);
+				var_dump($data);
 
 				session()->setFlashdata('komenPerz', '<div class="notif-success">Perizinan Barang Berhasil !</div>');
-				return redirect()->to('/Admin/Perizinan');
+				// return redirect()->to('/Admin/Perizinan');
 			} else {
 				return redirect()->to('/dashboard');
 			}

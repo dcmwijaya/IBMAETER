@@ -275,6 +275,7 @@ class Menu extends BaseController
 
 	// ------------------------------------------------------ Hal Perizinan ---------------------------------------------------------- 
 
+	// ADMIN CAN ACCESSS
 	public function ShowPerizinan() // Show Master Data Perizinan
 	{
 		// seleksi no login
@@ -282,7 +283,7 @@ class Menu extends BaseController
 			// AJAX
 			$data["log_item"] = $this->LogModel->ReadLogItem();
 			// echo json_encode($data);
-			return view('global/barang_part/list_perizinan', $data);
+			return view('admin/perizinan_part/list_perizinan', $data);
 		} else {
 			return redirect()->to('/dashboard');
 		}
