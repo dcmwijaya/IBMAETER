@@ -675,11 +675,12 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-					'validation' => \Config\Services::Validation(),
-					'absensi' => $this->absensiModel->getAbsen(),
-					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked(),
-					'totalWorker' => $this->userModel->countAllResults()
+					"validation" => \Config\Services::Validation(),
+					"absensi" => $this->absensiModel->getAbsen(),
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
+					"totalUser" => $this->userModel->countUser()
 				];
 				return view('admin/menu/logUser', $data);
 			} else {

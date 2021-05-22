@@ -52,66 +52,6 @@ class Barang_Model extends Model
     }
 
     // ============================ View Chart =============================//
-    public function stockclass1()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'A')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass2()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'B')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass3()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'C')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass4()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'D')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass5()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'E')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass6()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'F')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockclass7()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'G')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
-    }
-
-    public function stockjenis1()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Cair')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
-    }
-
-    public function stockjenis2()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Minyak')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
-    }
-
-    public function stockjenis3()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Mudah Terbakar')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
-    }
-
-    public function stockjenis4()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Padat')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
-    }
-
-    public function stockjenis5()
-    {
-        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Daging')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
-    }
-
     public function invenclass()
     {
         return $this->db->table('item')->select('penyimpanan')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
@@ -122,74 +62,134 @@ class Barang_Model extends Model
         return $this->db->table('item')->select('jenis')->distinct()->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassA()
+    public function stockjenis1()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'A')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Cair')->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassB()
+    public function stockjenis2()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'B')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Minyak')->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassC()
+    public function stockjenis3()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'C')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Mudah Terbakar')->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassD()
+    public function stockjenis4()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'D')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Padat')->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassE()
+    public function stockjenis5()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'E')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('jenis', 'Daging')->orderBy('jenis, jenis ASC')->get()->getResultArray();
     }
 
-    public function costclassF()
+    public function stockclass1()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'F')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'A')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
-    public function costclassG()
+    public function stockclass2()
     {
-        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'G')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'B')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function stockclass3()
+    {
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'C')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function stockclass4()
+    {
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'D')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function stockclass5()
+    {
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'E')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function stockclass6()
+    {
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'F')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function stockclass7()
+    {
+        return $this->db->table('item')->selectSum('stok')->where('penyimpanan', 'G')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassA()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'A')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'A')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassB()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'B')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'B')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassC()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'C')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'C')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassD()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'D')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'D')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassE()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'E')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'E')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassF()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'F')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'F')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function weightclassG()
     {
-        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'G')->distinct()->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+        return $this->db->table('item')->selectSum('berat')->where('penyimpanan', 'G')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassA()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'A')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassB()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'B')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassC()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'C')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassD()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'D')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassE()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'E')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassF()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'F')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
+    }
+
+    public function costclassG()
+    {
+        return $this->db->table('item')->selectSum('harga')->where('penyimpanan', 'G')->orderBy('penyimpanan, penyimpanan ASC')->get()->getResultArray();
     }
 
     public function sumStock()
