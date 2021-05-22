@@ -10,36 +10,50 @@ if (!empty($sc1)) {
 	foreach ($sc1 as $vs1) {
 		$sin[] = intval($vs1['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc2)) {
 	foreach ($sc2 as $vs2) {
 		$sin[] = intval($vs2['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc3)) {
 	foreach ($sc3 as $vs3) {
 		$sin[] = intval($vs3['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc4)) {
 	foreach ($sc4 as $vs4) {
 		$sin[] = intval($vs4['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc5)) {
 	foreach ($sc5 as $vs5) {
 		$sin[] = intval($vs5['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc6)) {
 	foreach ($sc6 as $vs6) {
 		$sin[] = intval($vs6['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 if (!empty($sc7)) {
 	foreach ($sc7 as $vs7) {
 		$sin[] = intval($vs7['stok']);
 	}
+} else {
+	$sin[] = null;
 }
 
 // ====================================== Stok Berdasarkan Jenis ====================================== //
@@ -47,26 +61,36 @@ if (!empty($sj1)) {
 	foreach ($sj1 as $vj1) {
 		$sct1 = intval($vj1['stok']);
 	}
+} else {
+	$sct1 = 0;
 }
 if (!empty($sj2)) {
 	foreach ($sj2 as $vj2) {
 		$sct2 = intval($vj2['stok']);
 	}
+} else {
+	$sct2 = 0;
 }
 if (!empty($sj3)) {
 	foreach ($sj3 as $vj3) {
 		$sct3 = intval($vj3['stok']);
 	}
+} else {
+	$sct3 = 0;
 }
 if (!empty($sj4)) {
 	foreach ($sj4 as $vj4) {
 		$sct4 = intval($vj4['stok']);
 	}
+} else {
+	$sct4 = 0;
 }
 if (!empty($sj5)) {
 	foreach ($sj5 as $vj5) {
 		$sct5 = intval($vj5['stok']);
 	}
+} else {
+	$sct5 = 0;
 }
 
 // ====================================== Cost Barang ====================================== //
@@ -74,36 +98,50 @@ if (!empty($cc1)) {
 	foreach ($cc1 as $vc1) {
 		$scs[] = intval($vc1['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc2)) {
 	foreach ($cc2 as $vc2) {
 		$scs[] = intval($vc2['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc3)) {
 	foreach ($cc3 as $vc3) {
 		$scs[] = intval($vc3['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc4)) {
 	foreach ($cc4 as $vc4) {
 		$scs[] = intval($vc4['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc5)) {
 	foreach ($cc5 as $vc5) {
 		$scs[] = intval($vc5['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc6)) {
 	foreach ($cc6 as $vc6) {
 		$scs[] = intval($vc6['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 if (!empty($cc7)) {
 	foreach ($cc7 as $vc7) {
 		$scs[] = intval($vc7['harga']);
 	}
+} else {
+	$scs[] = null;
 }
 
 // ====================================== Weight Barang ====================================== //
@@ -111,36 +149,50 @@ if (!empty($cw1)) {
 	foreach ($cw1 as $vw1) {
 		$swg[] = intval($vw1['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw2)) {
 	foreach ($cw2 as $vw2) {
 		$swg[] = intval($vw2['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw3)) {
 	foreach ($cw3 as $vw3) {
 		$swg[] = intval($vw3['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw4)) {
 	foreach ($cw4 as $vw4) {
 		$swg[] = intval($vw4['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw5)) {
 	foreach ($cw5 as $vw5) {
 		$swg[] = intval($vw5['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw6)) {
 	foreach ($cw6 as $vw6) {
 		$swg[] = intval($vw6['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 if (!empty($cw7)) {
 	foreach ($cw7 as $vw7) {
 		$swg[] = intval($vw7['berat']);
 	}
+} else {
+	$swg[] = null;
 }
 
 // ====================================== Gender Employees ====================================== //
@@ -148,11 +200,15 @@ if (!empty($cf)) {
 	foreach ($cf as $cfv) {
 		$cfm1 = intval($cfv['gender']);
 	}
+} else {
+	$cfm1 = 0;
 }
 if (!empty($cm)) {
 	foreach ($cm as $cmv) {
 		$cfm2 = intval($cmv['gender']);
 	}
+} else {
+	$cfm2 = 0;
 }
 
 // ====================================== In/Out Stock ====================================== //
@@ -160,11 +216,15 @@ if (!empty($inc)) {
 	foreach ($inc as $vic) {
 		$icot1[] = intval($vic['ubah_stok']);
 	}
+} else {
+	$icot1[] = null;
 }
 if (!empty($otc)) {
 	foreach ($otc as $vot) {
 		$icot2[] = intval($vot['ubah_stok']);
 	}
+} else {
+	$icot2[] = null;
 }
 
 ?>
