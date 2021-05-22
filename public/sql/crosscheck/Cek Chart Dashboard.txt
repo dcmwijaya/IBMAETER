@@ -1,0 +1,75 @@
+//Untuk cek jenis item
+SELECT jenis AS Jenis, SUM(stok) AS Stok_Jenis FROM item WHERE jenis = "Cair"
+UNION ALL
+SELECT jenis AS Jenis, SUM(stok) AS Stok_Jenis FROM item WHERE jenis = "Minyak"
+UNION ALL
+SELECT jenis AS Jenis, SUM(stok) AS Stok_Jenis FROM item WHERE jenis = "Mudah Terbakar"
+UNION ALL
+SELECT jenis AS Jenis, SUM(stok) AS Stok_Jenis FROM item WHERE jenis = "Padat"
+UNION ALL
+SELECT jenis AS Jenis, SUM(stok) AS Stok_Jenis FROM item WHERE jenis = "Daging"
+GROUP BY jenis;
+
+//Untuk cek stok penyimpanan A-G
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "A"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "B"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "C"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "D"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "E"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "F"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(stok) AS StokA_G FROM item WHERE penyimpanan = "G"
+GROUP BY penyimpanan;
+
+//Untuk cek berat penyimpanan A-G
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "A"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "B"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "C"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "D"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "E"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "F"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(berat) AS BeratA_G FROM item WHERE penyimpanan = "G"
+GROUP BY penyimpanan;
+
+//Untuk cek harga penyimpanan A-G
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "A"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "B"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "C"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "D"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "E"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "F"
+UNION ALL
+SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "G"
+GROUP BY penyimpanan;
+
+//Untuk cek income stok
+SELECT ubah_stok AS Acc_Stok_Income FROM alur_barang WHERE request = "Masuk" AND status = "Diterima"
+GROUP BY ubah_stok;
+
+//Untuk cek outcome stok
+SELECT ubah_stok AS Acc_Stok_Outcome FROM alur_barang WHERE request = "Keluar" AND status = "Diterima"
+GROUP BY ubah_stok;
+
+//Untuk cek gender male
+SELECT COUNT(gender) AS Jml_Pria FROM user WHERE gender = "Male"
+GROUP BY gender;
+
+//Untuk cek gender female
+SELECT COUNT(gender) AS Jml_Wanita FROM user WHERE gender = "Female"
+GROUP BY gender;
