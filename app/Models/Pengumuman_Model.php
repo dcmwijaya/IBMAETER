@@ -7,13 +7,14 @@ use CodeIgniter\Model;
 class Pengumuman_Model extends Model
 {
     protected $table = 'pengumuman';
+    protected $allowedFields = ['id_pengumuman', 'waktu', 'judul', 'isi', 'uid'];
 
     public function showTask()
     {
         // return $this->findAll();
         $builder = $this->db->table('pengumuman');
         $builder->select('*');
-        $builder->join('user', 'user.uid = pengumuman.uid', 'left');
+        $builder->join('user', 'user.uid = pengumuman.uid', 'left')->limit(3);
         $query = $builder->get()->getResultArray();
         return $query;
     }

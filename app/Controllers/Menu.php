@@ -364,6 +364,8 @@ class Menu extends BaseController
 	public function Pengumuman()
 	{
 		if (session('uid') != null) {
+			$curpage = $this->request->getVar('page_pengumuman') ? $this->request->getVar('page_pengumuman') : 1;
+
 			$data = [
 				"title" => "Pengumuman | INVENBAR",
 				"CurrentMenu" => "pengumuman",
@@ -373,6 +375,9 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"pengumuman" => $this->newsModel->paginate(3, 'pengumuman'),
+				"pager" => $this->newsModel->pager,
+				"curpage" => $curpage
 			];
 			return view('global/menu/user_pengumuman.php', $data);
 		} else {
