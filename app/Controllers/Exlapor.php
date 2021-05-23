@@ -10,6 +10,7 @@ use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
 use App\Models\Absensi_Model;
+use App\Models\userActivity_Model;
 use Dompdf\Dompdf;
 
 
@@ -30,6 +31,7 @@ class Exlapor extends BaseController
 	protected $arsipKompModel;
 	protected $Log_Model;
 	protected $absensiModel;
+	protected $userActivityModel;
 
 	public function __construct()
 	{
@@ -44,6 +46,7 @@ class Exlapor extends BaseController
 		$this->arsipKompModel = new ArsipKomp_Model();
 		$this->LogModel = new Log_Model();
 		$this->absensiModel = new Absensi_Model();
+		$this->userActivityModel = new userActivity_Model();
 	}
 
 
@@ -756,6 +759,14 @@ class Exlapor extends BaseController
 				"countPermission" => $this->absensiModel->countPermission(),
 				"totalUser" => $this->userModel->countUser()
 			];
+
+			$aktivitas = session('nama') . " mencetak Laporan Bulanan";
+			// insert user aktivity saat melakukan input stok masuk item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
 
 			return view('global/print/printBulanan', $data);
 		} else {

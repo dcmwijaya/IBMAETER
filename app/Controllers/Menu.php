@@ -468,7 +468,7 @@ class Menu extends BaseController
 			);
 			$this->barangModel->updateItem($data, $id);
 
-			$aktivitas = session('nama') . " mengubah spesifikasi Barang berkode : " . $data['id_item'] . ", sebajumlah : " . $data['ubah_stok'];
+			$aktivitas = session('nama') . " mengubah spesifikasi Barang berkode : " . $data['kode_barang'];
 			// insert user aktivity saat melakukan input stok masuk item/barang
 			$this->userActivityModel->insert([
 				'uid_aktivitas' => session('uid'),
