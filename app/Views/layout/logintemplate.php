@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="<?= base_url('css/loginstyle.css') ?>">
 </head>
 
-<body>
+<body class="login-body">
 	<?= $this->include('layout/loginnavbar'); ?>
 	<?= $this->include('layout/tentang'); ?>
 	<?= $this->renderSection('logincontent'); ?>
