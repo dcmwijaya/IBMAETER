@@ -9,6 +9,7 @@ use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
 use App\Models\Absensi_Model;
+use App\Models\userActivity_Model;
 
 class Menu extends BaseController
 {
@@ -26,6 +27,7 @@ class Menu extends BaseController
 	protected $arsipKompModel;
 	protected $Log_Model;
 	protected $absensiModel;
+	protected $userActivityModel;
 
 	public function __construct()
 	{
@@ -39,6 +41,7 @@ class Menu extends BaseController
 		$this->arsipKompModel = new ArsipKomp_Model();
 		$this->LogModel = new Log_Model();
 		$this->absensiModel = new Absensi_Model();
+		$this->userActivityModel = new userActivity_Model();
 	}
 
 	//================================================== Dashboard Index() ==============================================
@@ -55,6 +58,13 @@ class Menu extends BaseController
 	//================================================== Logout =======================================================
 	public function logout()
 	{
+		$aktivitas = session('nama') . " melakukan Logout.";
+		// insert user aktivity saat melakukan logout
+		$this->userActivityModel->insert([
+			'uid_aktivitas' => session('uid'),
+			'aktivitas' => $aktivitas,
+			'waktu_aktivitas' => date("Y-m-d H:i:s")
+		]);
 		session()->destroy();
 		return redirect()->to('/login');
 	}
@@ -456,6 +466,7 @@ class Menu extends BaseController
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'aktivitas' => $this->userActivityModel->getActivity(session('uid'))
 			];
 			return view('global/menu/myprofile', $data);
 		} else {

@@ -15,7 +15,7 @@ class userActivity_Model extends Model
         if ($uid == false) {
             return $this->findAll();
         } else {
-            return $this->where(['uid_absen' => $uid])->findAll();
+            return $this->where(['uid_aktivitas' => $uid])->findAll();
         }
     }
 

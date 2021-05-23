@@ -10,6 +10,7 @@ use App\Models\Komplain_Model;
 use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
 use App\Models\Absensi_Model;
+use App\Models\userActivity_Model;
 
 class Admin extends BaseController
 {
@@ -28,6 +29,7 @@ class Admin extends BaseController
 	protected $arsipKompModel;
 	protected $Log_Model;
 	protected $absensiModel;
+	protected $userActivityModel;
 
 	public function __construct()
 	{
@@ -42,6 +44,7 @@ class Admin extends BaseController
 		$this->arsipKompModel = new ArsipKomp_Model();
 		$this->LogModel = new Log_Model();
 		$this->absensiModel = new Absensi_Model();
+		$this->userActivityModel = new userActivity_Model();
 	}
 
 	public function index()
@@ -680,7 +683,8 @@ class Admin extends BaseController
 					"countPresent" => $this->absensiModel->countPresent(),
 					"countLate" => $this->absensiModel->countLate(),
 					"countPermission" => $this->absensiModel->countPermission(),
-					"totalUser" => $this->userModel->countUser()
+					"totalUser" => $this->userModel->countUser(),
+					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 				return view('admin/menu/logUser', $data);
 			} else {
