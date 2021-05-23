@@ -744,7 +744,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Cetak Laporan | INVENBAR",
+				"title" => "Laporan Bulanan | INVENBAR",
 				"CurrentMenu" => "laporanBulanan",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
