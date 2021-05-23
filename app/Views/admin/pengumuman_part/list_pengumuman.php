@@ -76,7 +76,7 @@
                 <?php if (session('role') == 0) : ?>
                     <td>
                         <div class="btn-group" role="group" aria-label="inoutcom">
-                            <button type="button" class="btn btn-danger btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" onclick="deletePengumuman(<?= $p['id_pengumuman']; ?>)"><i class="fas fa-trash fa-fw me-1"></i>Hapus</button>
+                            <button type="button" class="btn btn-danger btn-sm edit-pengumuman px-2 rounded-left" data-id="<?= $p['id_pengumuman']; ?>" onclick="showDeleteModal(<?= $p['id_pengumuman']; ?>)"><i class="fas fa-trash fa-fw me-1"></i>Hapus</button>
                         </div>
                     </td>
                 <?php endif; ?>

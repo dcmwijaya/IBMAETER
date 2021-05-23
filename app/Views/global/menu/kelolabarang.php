@@ -131,7 +131,7 @@
 	</div><br>
 </main>
 
-<!-- In/Out Item -->
+<!-- In/Out Item Modal -->
 <div class="modal fade" id="InOut_Modal" tabindex="-1" aria-labelledby="InOut_Label" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
@@ -146,7 +146,7 @@
 	</div>
 </div>
 
-<!-- Edit Spesifikasi Modal -->
+<!-- Spesifikasi Item Modal -->
 <div class="modal fade" id="Spec_Modal" tabindex="-1" aria-labelledby="Spec_Label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

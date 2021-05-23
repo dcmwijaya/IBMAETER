@@ -10,9 +10,7 @@
             <th>Harga/Item (Rp)</th>
             <th>Berat/Item (gr)</th>
             <th>Nama Supplier</th>
-            <?php if (session('role') == 0) : ?>
-                <th>Aksi</th>
-            <?php endif; ?>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>

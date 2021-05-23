@@ -66,4 +66,10 @@ class Pengumuman_Model extends Model
         $query = $this->db->table('pengumuman')->update($data, array('id_pengumuman' => $id));
         return $query;
     }
+
+    // public function deleteInfo($id)
+    // {
+    //     $query = $this->db->table('pengumuman')->delete(array('id_pengumuman' => $id));
+    //     return $query;
+    // }
 }

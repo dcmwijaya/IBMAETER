@@ -29,17 +29,25 @@ body {
   background: #555;
 }
 
-.login-body{
-  background: linear-gradient(180deg,
-    rgba(29, 180, 215, 1),
-    rgba(16, 113, 191, 1)
+.login-body {
+  background: rgb(29, 180, 215);
+  background-image: -moz-linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
   );
-  background-size: 100% 100%;
-  -webkit-animation: ignielGradient 12s ease infinite;
-  -moz-animation: ignielGradient 12s ease infinite;
-  animation: ignielGradient 12s ease infinite;
-  background-repeat: no-repeat;
-  padding: 10px 10px 10px 10px;
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(29, 180, 215, 1) 0%,
+    rgba(16, 113, 191, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1db4d7",endColorstr="#1071bf",GradientType=1);
+  background-size: cover;
 }
 
 a,
@@ -52,7 +60,7 @@ a:focus {
 
 /* card login */
 .bg-login-image {
-  background: url("/img/brands.jpg");
+  background: url("../img/brand.jpg");
   background-position: center;
   background-size: cover;
 }

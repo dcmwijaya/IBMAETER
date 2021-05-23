@@ -197,147 +197,148 @@
 		});
 	}
 
-
-	//......................................... kelola barang Modal.........................................
-	function ItemTambahmodal() {
-		ItemSaveType = "Tambah";
-		$('#Item_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Menu/TambahItem_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Item_Modal .modal-dialog').removeClass("modal-lg");
-				$('#Item_Modal .modal-dialog').removeClass("modal-delete");
-				$('#Item_Modal .modal-dialog').addClass("modal-xl");
-				$('#Item_Modal #Item_Header').removeClass("bg-warning");
-				$('#Item_Modal #Item_Header').removeClass("bg-danger");
-				$('#Item_Modal #Item_Header').addClass("bg-softblue");
-				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-plus-square"></i>  Tambah Barang Baru');
-			},
-			success: function(data) {
-				$('#Item_Form').html(data);
-				PairingKodeBarang();
-				let Supplierku = data.id_supplier;
-				$.ajax({
-					url: '<?= base_url('Menu/GetSupplier'); ?>',
-					data: {
-						"id_supplier": Supplierku
-					},
-					type: "POST",
-					success: function(supplier) {
-						$('[name="supplier"]').html(supplier);
-					},
-					error: function(data) {
-						alert('AJAX Supplier Part Error :(');
-					}
-				});
-			},
-			error: function(data) {
-				alert(data);
-			}
-		});
-	}
-
-	function ItemEditmodal(id) {
-		ItemSaveType = "Edit";
-		$('#Item_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Menu/EditItem_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Item_Modal .modal-dialog').removeClass("modal-xl");
-				$('#Item_Modal .modal-dialog').removeClass("modal-delete");
-				$('#Item_Modal .modal-dialog').addClass("modal-lg");
-				$('#Item_Modal #Item_Header').removeClass("bg-softblue");
-				$('#Item_Modal #Item_Header').removeClass("bg-danger");
-				$('#Item_Modal #Item_Header').addClass("bg-warning");
-				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Barang');
-			},
-			success: function(data) {
-				$('#Item_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Menu/GetIDItem'); ?>',
-					data: {
-						"id_item": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						$('[name="id_item"]').val(data.id_item);
-						$('[name="nama_item"]').val(data.nama_item);
-						$('[name="stok"]').val(data.stok);
-						$('[name="jenis"]').val(data.jenis).trigger('change');
-						$('[name="penyimpanan"]').val(data.penyimpanan).trigger('change');
-					}
-				});
-			},
-			error: function(data) {
-				alert(data);
-			}
-		});
-	}
-
-	function ItemDeletemodal(id) {
-		ItemSaveType = "Delete";
-		$('#Item_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Menu/DeleteItem_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Item_Modal .modal-dialog').removeClass("modal-xl");
-				$('#Item_Modal .modal-dialog').removeClass("modal-lg");
-				$('#Item_Modal .modal-dialog').addClass("modal-delete");
-				$('#Item_Modal #Item_Header').removeClass("bg-softblue");
-				$('#Item_Modal #Item_Header').removeClass("bg-warning");
-				$('#Item_Modal #Item_Header').addClass("bg-danger");
-				$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang Dengan Nama ');
-			},
-			success: function(data) {
-				$('#Item_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Menu/GetIDItem'); ?>',
-					data: {
-						"id_item": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						$('[name="id_item"]').val(data.id_item);
-						$('#delete_nama_item').html(data.nama_item);
-					}
-				});
-			},
-			error: function(data) {
-				alert(data);
-			}
-		});
-	}
-
-	// ......................................... Aksi Submit Item Barang.............................................
-	$("#Item_Form").submit('click', function() {
-		// e.preventDefault(); tidak berhasil
-		$('#Item_Modal').modal('hide');
-		let ItemUrl;
-		if (ItemSaveType == "Tambah") {
-			ItemUrl = "<?= base_url('/Menu/Add_item'); ?>";
-		} else if (ItemSaveType == "Edit") {
-			ItemUrl = "<?= base_url('/Menu/Edit_item'); ?>";
-		} else if (ItemSaveType == "Delete") {
-			ItemUrl = "<?= base_url('/Menu/Delete_item'); ?>";
+	<?php if (session('role') == 0) : ?>
+		//......................................... kelola barang Modal.........................................
+		function ItemTambahmodal() {
+			ItemSaveType = "Tambah";
+			$('#Item_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Menu/TambahItem_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Item_Modal .modal-dialog').removeClass("modal-lg");
+					$('#Item_Modal .modal-dialog').removeClass("modal-delete");
+					$('#Item_Modal .modal-dialog').addClass("modal-xl");
+					$('#Item_Modal #Item_Header').removeClass("bg-warning");
+					$('#Item_Modal #Item_Header').removeClass("bg-danger");
+					$('#Item_Modal #Item_Header').addClass("bg-softblue");
+					$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-plus-square"></i>  Tambah Barang Baru');
+				},
+				success: function(data) {
+					$('#Item_Form').html(data);
+					PairingKodeBarang();
+					let Supplierku = data.id_supplier;
+					$.ajax({
+						url: '<?= base_url('Menu/GetSupplier'); ?>',
+						data: {
+							"id_supplier": Supplierku
+						},
+						type: "POST",
+						success: function(supplier) {
+							$('[name="supplier"]').html(supplier);
+						},
+						error: function(data) {
+							alert('AJAX Supplier Part Error :(');
+						}
+					});
+				},
+				error: function(data) {
+					alert(data);
+				}
+			});
 		}
-		$.ajax({
-			url: ItemUrl,
-			type: "POST",
-			data: $('#Item_Form').serialize(),
-			success: function(data) {
-				$('#Item_Form').html(' ');
-				listItem();
-				listPerizinan();
-				listSpesifikasi();
+
+		function ItemEditmodal(id) {
+			ItemSaveType = "Edit";
+			$('#Item_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Menu/EditItem_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Item_Modal .modal-dialog').removeClass("modal-xl");
+					$('#Item_Modal .modal-dialog').removeClass("modal-delete");
+					$('#Item_Modal .modal-dialog').addClass("modal-lg");
+					$('#Item_Modal #Item_Header').removeClass("bg-softblue");
+					$('#Item_Modal #Item_Header').removeClass("bg-danger");
+					$('#Item_Modal #Item_Header').addClass("bg-warning");
+					$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Barang');
+				},
+				success: function(data) {
+					$('#Item_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Menu/GetIDItem'); ?>',
+						data: {
+							"id_item": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							$('[name="id_item"]').val(data.id_item);
+							$('[name="nama_item"]').val(data.nama_item);
+							$('[name="stok"]').val(data.stok);
+							$('[name="jenis"]').val(data.jenis).trigger('change');
+							$('[name="penyimpanan"]').val(data.penyimpanan).trigger('change');
+						}
+					});
+				},
+				error: function(data) {
+					alert(data);
+				}
+			});
+		}
+
+		function ItemDeletemodal(id) {
+			ItemSaveType = "Delete";
+			$('#Item_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Menu/DeleteItem_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Item_Modal .modal-dialog').removeClass("modal-xl");
+					$('#Item_Modal .modal-dialog').removeClass("modal-lg");
+					$('#Item_Modal .modal-dialog').addClass("modal-delete");
+					$('#Item_Modal #Item_Header').removeClass("bg-softblue");
+					$('#Item_Modal #Item_Header').removeClass("bg-warning");
+					$('#Item_Modal #Item_Header').addClass("bg-danger");
+					$('#Item_Modal #Item_Label').html('<i class="fas fa-fw fa-minus-square"></i> Hapus Barang Dengan Nama ');
+				},
+				success: function(data) {
+					$('#Item_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Menu/GetIDItem'); ?>',
+						data: {
+							"id_item": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							$('[name="id_item"]').val(data.id_item);
+							$('#delete_nama_item').html(data.nama_item);
+						}
+					});
+				},
+				error: function(data) {
+					alert(data);
+				}
+			});
+		}
+
+		// ......................................... Aksi Submit Item Barang.............................................
+		$("#Item_Form").submit('click', function() {
+			// e.preventDefault(); tidak berhasil
+			$('#Item_Modal').modal('hide');
+			let ItemUrl;
+			if (ItemSaveType == "Tambah") {
+				ItemUrl = "<?= base_url('/Menu/Add_item'); ?>";
+			} else if (ItemSaveType == "Edit") {
+				ItemUrl = "<?= base_url('/Menu/Edit_item'); ?>";
+			} else if (ItemSaveType == "Delete") {
+				ItemUrl = "<?= base_url('/Menu/Delete_item'); ?>";
 			}
-		});
-		return false;
-	})
+			$.ajax({
+				url: ItemUrl,
+				type: "POST",
+				data: $('#Item_Form').serialize(),
+				success: function(data) {
+					$('#Item_Form').html(' ');
+					listItem();
+					listPerizinan();
+					listSpesifikasi();
+				}
+			});
+			return false;
+		})
+	<?php endif; ?>
 </script>
 <!-- ================= InOut Barang -->
 <script>
@@ -487,76 +488,80 @@
 		});
 	}
 
-	function SpecEditmodal(id) {
-		$('#Spec_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Menu/EditSpec_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Spec_Modal .modal-dialog').removeClass("modal-xl");
-				$('#Spec_Modal .modal-dialog').addClass("modal-lg");
-				$('#Spec_Modal #Spec_Header').removeClass("bg-softblue");
-				$('#Spec_Modal #Spec_Header').addClass("bg-dark");
-				$('#Spec_Modal #Spec_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Spesifikasi Barang');
-			},
-			success: function(data) {
-				$('#Spec_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Menu/GetIDItem'); ?>',
-					data: {
-						"id_item": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						$('[name="sp_nama"]').val(data.nama_item);
-						$('[name="sp_id_item"]').val(data.id_item);
-						$('[name="sp_kode"]').val(data.kode_barang);
-						$('[name="sp_harga"]').val(data.harga);
-						$('[name="sp_berat"]').val(data.berat);
-						// $('[name="sp_supplier"]').val(data.penyimpanan).trigger('change');
-						let Supplierku = data.id_supplier;
-						$.ajax({
-							url: '<?= base_url('Menu/GetSupplier'); ?>',
-							data: {
-								"id_supplier": Supplierku
-							},
-							type: "POST",
-							success: function(supplier) {
-								$('[name="sp_supplier"]').html(supplier);
-							},
-							error: function(data) {
-								alert('AJAX Supplier Part Error :(');
-							}
-						});
-					}
-				});
-			},
-			error: function(data) {
-				alert('AJAX Error :(');
-			}
+	// Role User Checker
+	<?php if (session('role') == 0) : ?>
 
-		});
-	}
+		function SpecEditmodal(id) {
+			$('#Spec_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Menu/EditSpec_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Spec_Modal .modal-dialog').removeClass("modal-xl");
+					$('#Spec_Modal .modal-dialog').addClass("modal-lg");
+					$('#Spec_Modal #Spec_Header').removeClass("bg-softblue");
+					$('#Spec_Modal #Spec_Header').addClass("bg-dark");
+					$('#Spec_Modal #Spec_Label').html('<i class="fas fa-fw fa-edit"></i> Edit Spesifikasi Barang');
+				},
+				success: function(data) {
+					$('#Spec_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Menu/GetIDItem'); ?>',
+						data: {
+							"id_item": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							$('[name="sp_nama"]').val(data.nama_item);
+							$('[name="sp_id_item"]').val(data.id_item);
+							$('[name="sp_kode"]').val(data.kode_barang);
+							$('[name="sp_harga"]').val(data.harga);
+							$('[name="sp_berat"]').val(data.berat);
+							// $('[name="sp_supplier"]').val(data.penyimpanan).trigger('change');
+							let Supplierku = data.id_supplier;
+							$.ajax({
+								url: '<?= base_url('Menu/GetSupplier'); ?>',
+								data: {
+									"id_supplier": Supplierku
+								},
+								type: "POST",
+								success: function(supplier) {
+									$('[name="sp_supplier"]').html(supplier);
+								},
+								error: function(data) {
+									alert('AJAX Supplier Part Error :(');
+								}
+							});
+						}
+					});
+				},
+				error: function(data) {
+					alert('AJAX Error :(');
+				}
 
-	// ......................................... Aksi spesifikasi barang.........................................
-	$("#Spec_Form").submit('click', function() {
-		// e.preventDefault(); tidak berhasil
-		$('#Spec_Modal').modal('hide');
-		let ItemUrl = '<?= base_url('Menu/EditSpecItem'); ?>';
-		$.ajax({
-			url: ItemUrl,
-			type: "POST",
-			data: $('#Spec_Form').serialize(),
-			success: function(data) {
-				$('#Spec_Form').html(' ');
-				listSpesifikasi();
-				listItem();
-				listPerizinan();
-			}
-		});
-		return false;
-	})
+			});
+		}
+
+		// ......................................... Aksi spesifikasi barang.........................................
+		$("#Spec_Form").submit('click', function() {
+			// e.preventDefault(); tidak berhasil
+			$('#Spec_Modal').modal('hide');
+			let ItemUrl = '<?= base_url('Menu/EditSpecItem'); ?>';
+			$.ajax({
+				url: ItemUrl,
+				type: "POST",
+				data: $('#Spec_Form').serialize(),
+				success: function(data) {
+					$('#Spec_Form').html(' ');
+					listSpesifikasi();
+					listItem();
+					listPerizinan();
+				}
+			});
+			return false;
+		})
+	<?php endif; ?>
 </script>
 <!-- ============== -->
 <script>
@@ -709,114 +714,117 @@
 		});
 	}
 
-	function AcceptPerizinan(id) {
-		$('#Perizinan_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/AcceptPerizinan_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-kingucrimson");
-				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-softgreen");
-				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Izin Data Barang Masuk');
-			},
-			success: function(data) {
-				$('#Perizinan_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetPerizinan'); ?>',
-					data: {
-						"no_log": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						// var parsed = JSON.parse(JSON.stringify(data));
-						$('[name="perizinan_no_log"]').val(data[0].no_log);
-						$('[name="perizinan_nama"]').val(data[0].nama_item);
-						$('[name="perizinan_stok"]').val(data[0].ubah_stok);
-						RequestBarangType(data[0].request);
-						$('[name="perizinan_room"]').val(data[0].penyimpanan);
-						$('[name="perizinan_jenis"]').val(data[0].jenis);
-						$('[name="perizinan_pekerja"]').val(data[0].nama);
-						$('[name="perizinan_waktu"]').val(data[0].tgl);
-						$('[name="perizinan_ket"]').text(data[0].ket);
-					}
-				});
-			},
-			error: function(data) {
-				alert(' Operasi AJAX Gagal :(');
-			}
-		});
-	}
+	<?php if (session('role') == 0) : ?>
 
-	function DeclinePerizinan(id) {
-		$('#Perizinan_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/DeclinePerizinan_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-softgreen");
-				$('#Perizinan_Modal #Perizinan_Header').addClass("bg-kingucrimson");
-				$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-window-close" style="transform: rotateY(180deg);"></i>  Tolak Izin Data Barang Masuk');
-			},
-			success: function(data) {
-				$('#Perizinan_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetPerizinan'); ?>',
-					data: {
-						"no_log": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						var parsed = JSON.parse(JSON.stringify(data));
-						$('[name="perizinan_no_log"]').val(data[0].no_log);
-						$('[name="perizinan_nama"]').val(data[0].nama_item);
-						$('[name="perizinan_stok"]').val(data[0].ubah_stok);
-						RequestBarangType(data[0].request);
-						$('[name="perizinan_room"]').val(data[0].penyimpanan);
-						$('[name="perizinan_jenis"]').val(data[0].jenis);
-						$('[name="perizinan_pekerja"]').val(data[0].nama);
-						$('[name="perizinan_waktu"]').val(data[0].tgl);
-						$('[name="perizinan_ket"]').text(data[0].ket);
-					}
-				});
-			},
-			error: function(data) {
-				alert('Operasi Ajax Gagal :(');
-			}
-		});
-	}
-
-	// Aksi perizinan
-	$("#Perizinan_Form").submit('click', function() {
-		// e.preventDefault(); tidak berhasil
-		$('#Perizinan_Modal').modal('hide');
-		let PerizinanUrl = "<?= base_url('Admin/AksiPerizinan'); ?>";
-		$.ajax({
-			url: PerizinanUrl,
-			type: "POST",
-			data: $('#Perizinan_Form').serialize(),
-			success: function(data) {
-				$('#Perizinan_Form').html(' ');
-				listPerizinan();
-				listItem();
-			},
-			error: function(data) {
-				alert('Operasi Ajax Gagal :(');
-			}
-		});
-		return false;
-	})
-
-
-	// ..........................Custom Function Perizinan.........................>
-	function RequestBarangType(reqType) {
-		if (reqType == "Masuk") {
-			$('#RequestType').html(`<span class="py-2 badge badge-success" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-up text-light"></i> ${reqType}</span>`);
-		} else {
-			$('#RequestType').html(`<span class="py-2 badge badge-danger" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-down text-light"></i> ${reqType}</span>`);
+		function AcceptPerizinan(id) {
+			$('#Perizinan_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Admin/AcceptPerizinan_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-kingucrimson");
+					$('#Perizinan_Modal #Perizinan_Header').addClass("bg-softgreen");
+					$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Izin Data Barang Masuk');
+				},
+				success: function(data) {
+					$('#Perizinan_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Admin/GetPerizinan'); ?>',
+						data: {
+							"no_log": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							// var parsed = JSON.parse(JSON.stringify(data));
+							$('[name="perizinan_no_log"]').val(data[0].no_log);
+							$('[name="perizinan_nama"]').val(data[0].nama_item);
+							$('[name="perizinan_stok"]').val(data[0].ubah_stok);
+							RequestBarangType(data[0].request);
+							$('[name="perizinan_room"]').val(data[0].penyimpanan);
+							$('[name="perizinan_jenis"]').val(data[0].jenis);
+							$('[name="perizinan_pekerja"]').val(data[0].nama);
+							$('[name="perizinan_waktu"]').val(data[0].tgl);
+							$('[name="perizinan_ket"]').text(data[0].ket);
+						}
+					});
+				},
+				error: function(data) {
+					alert(' Operasi AJAX Gagal :(');
+				}
+			});
 		}
-	}
+
+		function DeclinePerizinan(id) {
+			$('#Perizinan_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Admin/DeclinePerizinan_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Perizinan_Modal #Perizinan_Header').removeClass("bg-softgreen");
+					$('#Perizinan_Modal #Perizinan_Header').addClass("bg-kingucrimson");
+					$('#Perizinan_Modal #Perizinan_Label').html('<i class="fas fa-fw fa-window-close" style="transform: rotateY(180deg);"></i>  Tolak Izin Data Barang Masuk');
+				},
+				success: function(data) {
+					$('#Perizinan_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Admin/GetPerizinan'); ?>',
+						data: {
+							"no_log": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							var parsed = JSON.parse(JSON.stringify(data));
+							$('[name="perizinan_no_log"]').val(data[0].no_log);
+							$('[name="perizinan_nama"]').val(data[0].nama_item);
+							$('[name="perizinan_stok"]').val(data[0].ubah_stok);
+							RequestBarangType(data[0].request);
+							$('[name="perizinan_room"]').val(data[0].penyimpanan);
+							$('[name="perizinan_jenis"]').val(data[0].jenis);
+							$('[name="perizinan_pekerja"]').val(data[0].nama);
+							$('[name="perizinan_waktu"]').val(data[0].tgl);
+							$('[name="perizinan_ket"]').text(data[0].ket);
+						}
+					});
+				},
+				error: function(data) {
+					alert('Operasi Ajax Gagal :(');
+				}
+			});
+		}
+
+		// Aksi perizinan
+		$("#Perizinan_Form").submit('click', function() {
+			// e.preventDefault(); tidak berhasil
+			$('#Perizinan_Modal').modal('hide');
+			let PerizinanUrl = "<?= base_url('Admin/AksiPerizinan'); ?>";
+			$.ajax({
+				url: PerizinanUrl,
+				type: "POST",
+				data: $('#Perizinan_Form').serialize(),
+				success: function(data) {
+					$('#Perizinan_Form').html(' ');
+					listPerizinan();
+					listItem();
+				},
+				error: function(data) {
+					alert('Operasi Ajax Gagal :(');
+				}
+			});
+			return false;
+		})
+
+
+		// ..........................Custom Function Perizinan.........................>
+		function RequestBarangType(reqType) {
+			if (reqType == "Masuk") {
+				$('#RequestType').html(`<span class="py-2 badge badge-success" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-up text-light"></i> ${reqType}</span>`);
+			} else {
+				$('#RequestType').html(`<span class="py-2 badge badge-danger" style="font-size: 15px;"><i class="fas fa-fw fa-long-arrow-alt-down text-light"></i> ${reqType}</span>`);
+			}
+		}
+	<?php endif; ?>
 </script>
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
 <script>
@@ -865,18 +873,17 @@
 		});
 	}
 
-	function showEditmodal(id) {
-		PengumumanSaveType = "Edit";
+	function showDeleteModal(id) {
+		PengumumanSaveType = "Delete";
 		$('#Pengumuman_Modal').modal('show');
 		$.ajax({
-			url: "<?= base_url('Admin/EditPengumuman_Form'); ?>",
+			url: "<?= base_url('Admin/DeletePengumuman_Form'); ?>",
 			beforeSend: function(data) {
 				$('#Pengumuman_Icon').removeClass("fa-folder-plus");
 				$('#Pengumuman_Icon').addClass("fa-folder-open");
 				$('#Pengumuman_Header').removeClass("bg-softblue");
 				$('#Pengumuman_Header').addClass("bg-dark");
-				$('#Modal_Title').text(' Edit Pengumuman');
-				// console.log("EDIT PENDING SENT...");
+				$('#Modal_Title').text(' Hapus Pengumuman');
 			},
 			success: function(data) {
 				$('#Pengumuman_Form').html(data);
@@ -897,15 +904,14 @@
 		});
 	}
 
-	// function Simpan() {
 	$("#Pengumuman_Form").submit('click', function() {
 		// e.preventDefault(); tidak berhasil
 		$('#Pengumuman_Modal').modal('hide');
 		let url;
 		if (PengumumanSaveType == "Tambah") {
 			url = "<?= base_url('Admin/TambahPengumuman'); ?>";
-		} else if (PengumumanSaveType == "Edit") {
-			url = "<?= base_url('Admin/EditPengumuman'); ?>";
+		} else if (PengumumanSaveType == "Delete") {
+			url = "<?= base_url('Admin/DeletePengumuman'); ?>";
 		}
 		$.ajax({
 			url: url,
@@ -918,7 +924,6 @@
 		});
 		return false;
 	})
-	// }
 
 	function infoClear() {
 		// Set data to Form input
