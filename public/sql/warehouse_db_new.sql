@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Bulan Mei 2021 pada 21.14
+-- Waktu pembuatan: 23 Bulan Mei 2021 pada 14.14
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -56,7 +56,9 @@ INSERT INTO `absensi` (`id_absen`, `uid_absen`, `email_absen`, `status_absen`, `
 (18, 69, 'alfhaff@invenbar.ac.id', 'Izin', 'kesiangan', '1621497689_827a29249e1f5145af5d.png', '2021-05-20', '15:01:29', 'Ditolak', '-', NULL),
 (19, 69, 'alfhaff@invenbar.ac.id', 'Hadir', '-', '-', '2021-05-21', '00:53:03', 'Masuk', '-', NULL),
 (20, 29, 'billy@gantx.com', 'Terlambat', '-', '-', '2021-05-21', '12:14:41', 'Masuk', '-', NULL),
-(21, 73, 'tasyamufida@gmail.com', 'Izin', 'Mohon maaf sebelumnya laptop saya sedang ada masal', '1621605805_fc85a5aa96e4dc08263d.jpg', '2021-05-21', '21:03:24', 'Pending', '-', NULL);
+(21, 73, 'tasyamufida@gmail.com', 'Izin', 'Mohon maaf sebelumnya laptop saya sedang ada masal', '1621605805_fc85a5aa96e4dc08263d.jpg', '2021-05-21', '21:03:24', 'Diterima', 'Ok ijin diterima', '2021-05-22 10:57:35'),
+(22, 73, 'tasyamufida@gmail.com', 'Hadir', '-', '-', '2021-05-22', '02:12:19', 'Masuk', '-', NULL),
+(23, 1, 'adeline@gmail.com', 'Terlambat', '-', '-', '2021-05-22', '15:09:47', 'Masuk', '-', NULL);
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,11 @@ INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status
 (62, 28, 53, '2021-05-21 19:47:00', 'Keluar', 'Pending', 3, 'asd'),
 (63, 24, 53, '2021-05-21 19:47:00', 'Masuk', 'Pending', 66, 'ASDASD'),
 (64, 31, 53, '2021-05-21 19:48:00', 'Masuk', 'Pending', 61, 'SD'),
-(65, 21, 53, '2021-05-21 19:53:00', 'Masuk', 'Pending', 20, 'Yahaha Hayoek :&#039;v');
+(65, 21, 53, '2021-05-21 19:53:00', 'Masuk', 'Pending', 20, 'Yahaha Hayoek :&#039;v'),
+(0, 32, 73, '2021-05-22 22:27:00', 'Masuk', 'Pending', 30, 'Wkwkwkkkk.....'),
+(0, 1, 73, '2021-05-22 22:37:00', 'Keluar', 'Pending', 30, 'Keluar'),
+(0, 1, 41, '2021-05-22 23:32:00', 'Masuk', 'Pending', 16, 'Sabun Mandi Masuk 16 Boss'),
+(0, 15, 41, '2021-05-22 23:33:00', 'Keluar', 'Pending', 20, 'So Clean Keluar 20 boss, barang tak layak pakai.');
 
 -- --------------------------------------------------------
 
@@ -157,7 +163,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`, `jenis`, `penyimpanan`, `harga`, `berat`) VALUES
-(1, 2, 'C123S43', 'Sabun Mandieh', 150, 'Cair', 'B', 8000, 1),
+(1, 1, 'C123S43', 'Sabun Mandi', 150, 'Cair', 'C', 8000, 1),
 (2, 0, 'G123S32', 'Antangin JRG', 65, 'Minyak', 'A', 300, 20),
 (3, 0, '', 'sikat wc', 44, 'Padat', 'D', 0, 1.2),
 (4, 0, '', 'Pepsodent 102gr', 44, 'Cair', 'A', 0, 0),
@@ -322,16 +328,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `picture`, `department`, `gender`) VALUES
-(1, 'Admin Zero', 'saber.genshin@gmail.com', '$2y$10$QXi1weaBbKVPYI4/0pyAiuFpv9cB7dFOhHAhjU4HLCdOHSpyG/ZP.', 0, 'venti.jpg', 'Information Technology', 'Female'),
+(1, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$mGZwaegr6mQkD03k1KBLoeXoeRvm2JVr3jEs2WWZopUCZIyGnlO7O', 0, 'adeline.jpg', 'Information Technology', 'Female'),
 (8, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 'keqing.jpg', 'Dokumentasi Aset', 'Male'),
-(22, 'Daemon Yukata', 'yukatadae@gmail.com', '$2y$10$XNRdXAxp7x8XXSGZWMs8Se9kvQPNnI63FVu3zQMO2mDo0fNbqa/gG', 0, 'default.jpg', 'Warehouse', 'Male'),
+(22, 'Daemon Yukata', 'yukatadae@gmail.com', '$2y$10$XNRdXAxp7x8XXSGZWMs8Se9kvQPNnI63FVu3zQMO2mDo0fNbqa/gG', 0, 'yukata.jpg', 'Warehouse', 'Male'),
 (29, 'Billy Gate', 'billy@gantx.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 0, '1618827218_5cf23f7330b26292409a.jpg', 'Human Resource', 'Male'),
 (30, 'Erwin Edith', 'erwin1@gmail.com', '$2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 'erwin.jpg', 'Inventarisasi Aset', 'Male'),
-(41, 'Makinami', 'makinami@gmail.com', '$2y$10$z7jEnwBvnj4/DBS.gU3f3.zgEiWXTfXZgU2Rs9/8dSiP6jX8q5IEe', 1, 'default.jpg', 'Spesifikasi Aset', 'Female'),
+(41, 'Makinami', 'makinami@gmail.com', '$2y$10$bs0KTnI2k1M8BMw8onU8C.frt28siCF5talRoKMTjotz4kOehkFSG', 1, 'makinami.jpg', 'Spesifikasi Aset', 'Female'),
 (47, 'Einstein', 'einstein@gmail.com', '$2y$10$qkWqu1ODqi.744EeV3Re3OqBtLYnH8wxD4csHrJEylRU1jp.Ppgqi', 1, '1621160514_e284552c0c826a53b21a.jpg', 'Dokumentasi Aset', 'Male'),
-(53, 'Serline Claudya', 'xcc@gmail.com', '$2y$10$GqnmRfhmMhmEGud.MsyAC.I7.tg.JhRTxwoZ.biwgSgECIaW5La/C', 1, 'default.jpg', 'Information Technology', 'Female'),
+(53, 'Serline Claudya', 'serline@gmail.com', '$2y$10$ba3UBtfBOTOH5eDquRNZsOIBiYgOVq83WDbb2CXE3WhjJy.kAzTN.', 1, 'serline.jpg', 'Information Technology', 'Female'),
 (69, 'Alfha Fierly Firdaus', 'alfhaff@invenbar.ac.id', '$2y$10$wc851oFM4IwkxFJayGWyLuWuu4e2HImDwVaPD6MlWKUGnqp8u0eVG', 0, 'alfha.jpg', 'Dewan Direksi', 'Male'),
-(73, 'Tasya Anastasya Mufida', 'tasyamufida@gmail.com', '$2y$10$lWgQ/EmPhz1G5vo.QXEAm.n8ac.21PZUgZV0zx4Tks2zASTH5TTya', 0, 'default.jpg', 'Dewan Direksi', 'Female');
+(73, 'Tasya Anastasya Mufida', 'tasyamufida@gmail.com', '$2y$10$lWgQ/EmPhz1G5vo.QXEAm.n8ac.21PZUgZV0zx4Tks2zASTH5TTya', 0, 'tasyamufida.jpg', 'Dewan Direksi', 'Female');
 
 -- --------------------------------------------------------
 
@@ -425,7 +431,7 @@ ALTER TABLE `user_activity`
 -- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absen` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_absen` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `alur_barang_visibility`
@@ -437,7 +443,7 @@ ALTER TABLE `alur_barang_visibility`
 -- AUTO_INCREMENT untuk tabel `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `komplain_visibility`
