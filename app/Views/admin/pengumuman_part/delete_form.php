@@ -21,6 +21,6 @@
 </div>
 <div class="modal-footer">
     <input type="hidden" name="id_pengumuman" id="edit_id">
-    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-    <button type="submit" id="Tambah_data" class="btn btn-primary"><i class="fas fa-fw fa-check"></i> Simpan</button>
+    <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+    <button type="submit" id="Tambah_data" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i> Hapus</button>
 </div>

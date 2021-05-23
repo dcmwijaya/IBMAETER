@@ -9,19 +9,17 @@ class Pengumuman_Model extends Model
     protected $table = 'pengumuman';
     protected $allowedFields = ['id_pengumuman', 'waktu', 'judul', 'isi', 'uid'];
 
-    public function showTask()
+    public function showTask() // buat tampilin master data tabel pengumuman
     {
-        // return $this->findAll();
         $builder = $this->db->table('pengumuman');
         $builder->select('*');
-        $builder->join('user', 'user.uid = pengumuman.uid', 'left')->limit(3);
+        $builder->join('user', 'user.uid = pengumuman.uid', 'left');
         $query = $builder->get()->getResultArray();
         return $query;
     }
 
-    public function showExpVisibility()
+    public function showExpVisibility() // buat tampilin user experience
     {
-        // return $this->findAll();
         $look = array('status' => 'Belum Dilihat');
         $builder = $this->db->table('pengumuman_visibility');
         $builder->select('*');
@@ -32,7 +30,7 @@ class Pengumuman_Model extends Model
         return $query;
     }
 
-    public function CountExpVisibility($uid)
+    public function CountExpVisibility($uid) // count jumlah pengumuman
     {
         $look = array('status' => 'Belum Dilihat');
         $builder = $this->db->table('pengumuman_visibility');
@@ -67,9 +65,9 @@ class Pengumuman_Model extends Model
         return $query;
     }
 
-    // public function deleteInfo($id)
-    // {
-    //     $query = $this->db->table('pengumuman')->delete(array('id_pengumuman' => $id));
-    //     return $query;
-    // }
+    public function deleteInfo($id)
+    {
+        $query = $this->db->table('pengumuman')->delete(array('id_pengumuman' => $id));
+        return $query;
+    }
 }
