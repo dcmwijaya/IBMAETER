@@ -319,6 +319,15 @@ class Menu extends BaseController
 				'id_supplier' => str_replace("'", "", htmlspecialchars($this->request->getPost('supplier'), ENT_QUOTES))
 			);
 			$this->barangModel->addItem($data);
+
+			$aktivitas = session('nama') . " melakukan Penambahan Barang " . $data['nama_item'];
+			// insert user aktivity saat melakukan tambah item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -336,6 +345,15 @@ class Menu extends BaseController
 				'penyimpanan' => str_replace("'", "", htmlspecialchars($this->request->getPost('penyimpanan'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
+
+			$aktivitas = session('nama') . " melakukan Perubahan pada Barang " . $data['nama_item'] . ", dengan ID barang : " . $id;
+			// insert user aktivity saat melakukan edit item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -347,6 +365,15 @@ class Menu extends BaseController
 		if (session('uid') != null) {
 			$id = $this->request->getPost('id_item');
 			$this->barangModel->deleteItem($id);
+
+			$aktivitas = session('nama') . " menghapus Barang dengan ID barang : " . $id;
+			// insert user aktivity saat melakukan edit item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -376,6 +403,15 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
+
+			$aktivitas = session('nama') . " menambah stok Barang dengan ID : " . $data['id_item'] . ", sejumlah : " . $data['ubah_stok'];
+			// insert user aktivity saat melakukan input stok masuk item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			// return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -403,6 +439,15 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
+
+			$aktivitas = session('nama') . " melaukan Pengeluaran stok Barang dengan ID : " . $data['id_item'] . ", sejumlah : " . $data['ubah_stok'];
+			// insert user aktivity saat melakukan input stok masuk item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			// return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -422,6 +467,15 @@ class Menu extends BaseController
 				'id_supplier' => str_replace("'", "", htmlspecialchars($this->request->getPost('sp_supplier'), ENT_QUOTES))
 			);
 			$this->barangModel->updateItem($data, $id);
+
+			$aktivitas = session('nama') . " mengubah spesifikasi Barang berkode : " . $data['id_item'] . ", sebajumlah : " . $data['ubah_stok'];
+			// insert user aktivity saat melakukan input stok masuk item/barang
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
+			]);
+
 			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
@@ -866,6 +920,14 @@ class Menu extends BaseController
 				'isi_komplain' => $isi,
 				'foto_komplain' => $namaFoto,
 				'waktu_komplain' => date("Y-m-d h:i:sa")
+			]);
+
+			$aktivitas = session('nama') . " mengajukan Komplain.";
+			// insert user aktivity saat melakukan pengaduan
+			$this->userActivityModel->insert([
+				'uid_aktivitas' => session('uid'),
+				'aktivitas' => $aktivitas,
+				'waktu_aktivitas' => date("Y-m-d H:i:s")
 			]);
 
 			session()->setFlashdata('pengaduanSukses', 'Pengaduan telah diterima, masalah sedang diselidiki.');

@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class Log_Model extends Model
 {
     protected $table = 'alur_barang';
-    // protected $primaryKey = 'no_log';
-    protected $allowedFields = ['no_log', 'uid', 'tgl', 'status', 'ket'];
+    protected $primaryKey = 'no_log';
+    protected $allowedFields = ['id_item', 'uid', 'tgl', 'request', 'status', 'ubah_stok', 'ket', 'uid_alur_admin'];
 
     public function getIdPerizinan($no_log = false)
     {
