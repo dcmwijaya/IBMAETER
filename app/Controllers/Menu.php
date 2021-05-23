@@ -376,7 +376,7 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
-			// return redirect()->to('kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -403,7 +403,7 @@ class Menu extends BaseController
 				'ket' => str_replace("'", "", htmlspecialchars($ket, ENT_QUOTES))
 			);
 			$this->LogModel->Add_Log_Item($data);
-			// return redirect()->to('kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
