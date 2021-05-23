@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\userModel;
+use App\Models\userActivity_Model;
 use PhpParser\Node\Expr\Isset_;
 
 class Auth extends BaseController
@@ -15,6 +16,7 @@ class Auth extends BaseController
     protected $request; // Menghilangkan alert getPost()
     protected $session;
     protected $userModel;
+    protected $userActivityModel;
 
     public function __construct()
     {
@@ -22,6 +24,7 @@ class Auth extends BaseController
         $this->session->start();
 
         $this->userModel = new userModel();
+        $this->userActivityModel = new userActivity_Model();
     }
 
 
@@ -61,7 +64,7 @@ class Auth extends BaseController
 
             // jika sudah 3 kali percobaan kirim pesan
             if (session('login_attemp') > 2) {
-                session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 30 detik untuk mencoba kembali.</b></p>');
+                session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 45 detik untuk mencoba kembali.</b></p>');
             }
 
             return view('auth/login', $data);
@@ -116,6 +119,15 @@ class Auth extends BaseController
             // jika password benar lanjut ke dasboard
             if (password_verify($password, $user['password'])) {
                 $this->session->set($user);
+
+                $aktivitas = session('nama') . " melakukan Login.";
+                // insert user aktivity saat melakukan login
+                $this->userActivityModel->insert([
+                    'uid_aktivitas' => session('uid'),
+                    'aktivitas' => $aktivitas,
+                    'waktu_aktivitas' => date("Y-m-d H:i:s")
+                ]);
+
 
                 unset($_SESSION["time_locked"]);
                 unset($_SESSION["login_attemp"]);

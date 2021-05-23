@@ -2,7 +2,7 @@
 
 <?= $this->section('logincontent') ?>
 
-<div class="container py-3">
+<div class="login-body py-3">
 	<!-- Outer Row -->
 	<div class="row justify-content-center py-5">
 		<div class="col-xl-10 col-lg-12 col-md-9" id="alert-login">
