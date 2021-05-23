@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Bulan Mei 2021 pada 14.14
+-- Waktu pembuatan: 23 Bulan Mei 2021 pada 19.02
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -74,25 +74,44 @@ CREATE TABLE `alur_barang` (
   `request` enum('Masuk','Keluar') NOT NULL COMMENT 'Awas dengan trigger!',
   `status` enum('Pending','Diterima','Ditolak') NOT NULL,
   `ubah_stok` int(11) NOT NULL,
-  `ket` varchar(255) DEFAULT NULL
+  `ket` varchar(255) DEFAULT NULL,
+  `uid_alur_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `alur_barang`
 --
 
-INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status`, `ubah_stok`, `ket`) VALUES
-(59, 22, 53, '2021-05-21 19:41:00', 'Masuk', 'Pending', 11, 'ddf'),
-(60, 22, 53, '2021-05-21 19:44:00', 'Masuk', 'Pending', 36, 'sdsd'),
-(61, 32, 53, '2021-05-21 19:47:00', 'Keluar', 'Pending', 27, 'SAF'),
-(62, 28, 53, '2021-05-21 19:47:00', 'Keluar', 'Pending', 3, 'asd'),
-(63, 24, 53, '2021-05-21 19:47:00', 'Masuk', 'Pending', 66, 'ASDASD'),
-(64, 31, 53, '2021-05-21 19:48:00', 'Masuk', 'Pending', 61, 'SD'),
-(65, 21, 53, '2021-05-21 19:53:00', 'Masuk', 'Pending', 20, 'Yahaha Hayoek :&#039;v'),
-(0, 32, 73, '2021-05-22 22:27:00', 'Masuk', 'Pending', 30, 'Wkwkwkkkk.....'),
-(0, 1, 73, '2021-05-22 22:37:00', 'Keluar', 'Pending', 30, 'Keluar'),
-(0, 1, 41, '2021-05-22 23:32:00', 'Masuk', 'Pending', 16, 'Sabun Mandi Masuk 16 Boss'),
-(0, 15, 41, '2021-05-22 23:33:00', 'Keluar', 'Pending', 20, 'So Clean Keluar 20 boss, barang tak layak pakai.');
+INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status`, `ubah_stok`, `ket`, `uid_alur_admin`) VALUES
+(5, 27, 29, '2021-05-23 03:22:24', 'Masuk', 'Diterima', 20, 'Terima aja deh kasihan gitu ntar nangis', 73),
+(6, 32, 73, '2021-05-23 03:18:43', 'Masuk', 'Diterima', 80, 'Ok', 73),
+(7, 26, 73, '2021-05-23 03:19:05', 'Keluar', 'Ditolak', 25, 'Gak logic', 73),
+(8, 3, 41, '2021-05-23 04:18:03', 'Keluar', 'Diterima', 20, 'Ok diterima', 73),
+(9, 21, 41, '2021-05-23 04:18:10', 'Keluar', 'Diterima', 10, 'Ok diterima', 73),
+(10, 15, 73, '2021-05-23 04:21:42', 'Masuk', 'Diterima', 100, 'Terverifikasi !', 73),
+(11, 9, 73, '2021-05-23 04:21:49', 'Masuk', 'Diterima', 20, 'Terverifikasi !', 73),
+(12, 2, 73, '2021-05-23 04:23:35', 'Keluar', 'Diterima', 10, 'Terverifikasi !', 73),
+(13, 15, 73, '2021-05-23 04:23:33', 'Keluar', 'Diterima', 50, 'Terverifikasi !', 73),
+(14, 22, 73, '2021-05-23 04:23:38', 'Keluar', 'Diterima', 10, 'Terverifikasi !', 73),
+(15, 3, 73, '2021-05-23 04:24:51', 'Masuk', 'Diterima', 100, 'Terverifikasi !', 73);
+
+--
+-- Trigger `alur_barang`
+--
+DELIMITER $$
+CREATE TRIGGER `stok_dinamis` AFTER UPDATE ON `alur_barang` FOR EACH ROW BEGIN
+IF (new.`status`="Diterima") THEN
+IF (new.`request`="Masuk") THEN
+	UPDATE `item` SET `item`.`stok` = `item`.`stok` + new.`ubah_stok`
+	WHERE `item`.`id_item` = new.`id_item`;
+ELSE
+UPDATE `item` SET `item`.`stok` = `item`.`stok` - new.`ubah_stok`
+	WHERE `item`.`id_item` = new.`id_item`;
+    END IF;
+    END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -135,8 +154,10 @@ CREATE TABLE `arsip_komplain` (
 INSERT INTO `arsip_komplain` (`no_arsipKomp`, `uid_arsipKomp`, `email_arsipKomp`, `judul_arsipKomp`, `isi_arsipKomp`, `foto_arsipKomp`, `waktu_arsipKomp`, `status_arsipKomp`, `comment_arsipKomp`, `commented_at`) VALUES
 ('K-020521-001-435', 1, 'saber.genshin@gmail.com', 'tes ke 3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad cupiditate at cum, recusandae maiores enim debitis similique et sapiente soluta, minus dolor. Temporibus, tempore. Id mollitia ex voluptate vero sunt.', '1619973275_831f9e7fe4ad87c90ade.png', '2021-05-02 11:34:35', 'rejected', 'Tidak layak', '2021-05-17 10:43:46'),
 ('K-020521-003-194', 3, 'erwin@gmail.com', 'Lembur bagai quda', 'permaslahan pada alur data dari manejer ke pegawai dan sebaliknya. bla bla bla.', '-', '2021-05-02 11:32:14', 'accepted', 'ss', '2021-05-06 07:18:33'),
+('K-020521-004-229', 4, 'billy@gantx.com', 'Fotonya menjadi blur', 'asda;sldkals aksdnalkdnal askdk', '-', '2021-05-02 10:56:34', 'accepted', 'ok siap', '2021-05-23 03:24:16'),
 ('K-060521-003-285', 3, 'erwin@gmail.com', 'tes arsip komplain 2', 'pengujian fitur arsip komplain nomor 2 dengan akun karyawan erwing.', '-', '2021-05-06 04:02:15', 'rejected', 'komplain ditolak. mohon ikuti tata cara penggunaan fitur agar fungsi bisa berjalan dengan benar', '2021-05-06 04:18:55'),
 ('K-060521-004-186', 4, 'billy@gantx.com', 'tes arsip komplain 1', 'pengujian fitur arsip komplain dari akun admin billy the kid.', '1620291388_6e1c76cd5a9168729744.png', '2021-05-06 03:56:28', 'accepted', 'komplain diterima. kami sedang memproses permasalahannya', '2021-05-06 04:09:26'),
+('K-060521-029-780', 29, 'billy@gantx.com', 'Jam ku hilang', 'Woy !', '1620303698_f811c1c18114110d8994.jpg', '2021-05-06 07:21:38', 'rejected', 'Salahnya dihilangin', '2021-05-23 03:24:30'),
 ('K-170521-030-601', 30, 'erwin1@gmail.com', 'Test Coyyy Komplain', 'Wowww', '1621268620_ed16810d501a62572fed.jpg', '2021-05-17 11:23:40', 'accepted', 'Wuwww', '2021-05-17 11:34:44'),
 ('K-180521-069-342', 69, 'alfhaff@invenbar.ac.id', 'Test', 'Woww', '1621321703_2fefa39830d044b07d6d.jpg', '2021-05-18 02:08:23', 'rejected', 'Test', '2021-05-18 02:08:41');
 
@@ -163,27 +184,27 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`, `jenis`, `penyimpanan`, `harga`, `berat`) VALUES
-(1, 1, 'C123S43', 'Sabun Mandi', 150, 'Cair', 'C', 8000, 1),
-(2, 0, 'G123S32', 'Antangin JRG', 65, 'Minyak', 'A', 300, 20),
-(3, 0, '', 'sikat wc', 44, 'Padat', 'D', 0, 1.2),
+(1, 2, 'C123S43', 'Sabun Mandi', 150, 'Cair', 'C', 8000, 1),
+(2, 0, 'G123S32', 'Antangin JRG', 55, 'Minyak', 'A', 300, 20),
+(3, 0, '', 'sikat wc', 124, 'Padat', 'D', 0, 1.2),
 (4, 0, '', 'Pepsodent 102gr', 44, 'Cair', 'A', 0, 0),
 (5, 0, '', 'Dodo Mainanmu', -3, 'Padat', 'C', 0, 0),
 (8, 0, '', 'Mentari SimCard', 80, 'Padat', 'A', 0, 0),
-(9, 0, '', 'Solonensi Ajaib', 33, 'Cair', 'C', 0, 0),
+(9, 0, '', 'Solonensi Ajaib', 53, 'Cair', 'C', 0, 0),
 (10, 0, '', 'Bearbrando 210ml', 22, 'Cair', 'B', 0, 0),
-(15, 0, '', 'So Clean 320ml', 82, 'Cair', 'C', 0, 0),
+(15, 0, '', 'So Clean 320ml', 132, 'Cair', 'C', 0, 0),
 (16, 0, '', 'Betadine', 30, 'Cair', 'B', 0, 0),
 (17, 0, '', 'Baterai ABC 80gr', 33, 'Padat', 'B', 0, 0),
-(21, 0, '', 'Sikat Gigih', 44, 'Mudah Terbakar', 'F', 0, 0),
-(22, 0, '', 'Dodo Sakti', 44, 'Minyak', 'D', 0, 0),
+(21, 0, '', 'Sikat Gigih', 34, 'Mudah Terbakar', 'F', 0, 0),
+(22, 0, '', 'Dodo Sakti', 34, 'Minyak', 'D', 0, 0),
 (23, 0, '', 'Mixin 210ml', 12, 'Cair', 'C', 0, 0),
 (24, 0, '', 'Madu Kuat 210ml', 15, 'Mudah Terbakar', 'C', 0, 0),
 (26, 0, '', 'Soda Gembira 210ml', 39, 'Cair', 'D', 0, 0),
-(27, 0, '', 'Minyak Pijat 210ml', 100, 'Minyak', 'D', 0, 0),
+(27, 0, '', 'Minyak Pijat 210ml', 120, 'Minyak', 'D', 0, 0),
 (28, 0, '', '&lt;div class=&quot;btn btn-success&quot;&gt;&lt;/div&gt;', 22, 'Padat', 'A', 0, 0),
 (30, 0, '', 'Adem Sari 10gr', 20, 'Padat', 'E', 0, 0),
 (31, 0, '', 'Sosis Sonice', 200, 'Daging', 'G', 0, 0),
-(32, 0, '', 'Karbol69', 100, 'Mudah Terbakar', 'F', 0, 0);
+(32, 0, '', 'Karbol69', 180, 'Mudah Terbakar', 'F', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -200,14 +221,6 @@ CREATE TABLE `komplain` (
   `foto_komplain` varchar(256) NOT NULL,
   `waktu_komplain` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data untuk tabel `komplain`
---
-
-INSERT INTO `komplain` (`no_komplain`, `uid_komplain`, `email_komplain`, `judul_komplain`, `isi_komplain`, `foto_komplain`, `waktu_komplain`) VALUES
-('K-020521-004-229', 4, 'billy@gantx.com', 'Fotonya menjadi blur', 'asda;sldkals aksdnalkdnal askdk', '-', '2021-05-02 10:56:34'),
-('K-060521-029-780', 29, 'billy@gantx.com', 'Jam ku hilang', 'Woy !', '1620303698_f811c1c18114110d8994.jpg', '2021-05-06 07:21:38');
 
 -- --------------------------------------------------------
 
@@ -353,6 +366,41 @@ CREATE TABLE `user_activity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data untuk tabel `user_activity`
+--
+
+INSERT INTO `user_activity` (`id_aktivitas`, `uid_aktivitas`, `aktivitas`, `waktu_aktivitas`) VALUES
+(1, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 14:29:03'),
+(2, 73, 'Tasya Anastasya Mufida melakukan Logout.', '2021-05-23 14:30:08'),
+(3, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 15:03:43'),
+(4, 73, 'Tasya Anastasya Mufida melakukan Logout.', '2021-05-23 15:15:04'),
+(5, 41, 'Makinami melakukan Login.', '2021-05-23 15:15:07'),
+(6, 41, 'Makinami melakukan Logout.', '2021-05-23 15:15:14'),
+(7, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 15:15:17'),
+(8, 73, 'Tasya Anastasya Mufida melakukan Logout.', '2021-05-23 15:34:04'),
+(9, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 15:34:06'),
+(10, 73, 'Tasya Anastasya Mufida melakukan Logout.', '2021-05-23 15:36:11'),
+(11, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 15:40:15'),
+(12, 73, 'Tasya Anastasya Mufida melakukan Logout.', '2021-05-23 15:50:03'),
+(13, 41, 'Makinami melakukan Login.', '2021-05-23 15:50:08'),
+(14, 41, 'Makinami melaukan Pengeluaran stok Barang dengan ID : 3, sejumlah : 20', '2021-05-23 16:17:16'),
+(15, 41, 'Makinami melaukan Pengeluaran stok Barang dengan ID : 21, sejumlah : 10', '2021-05-23 16:17:40'),
+(16, 41, 'Makinami melakukan Logout.', '2021-05-23 16:17:48'),
+(17, 73, 'Tasya Anastasya Mufida melakukan Login.', '2021-05-23 16:17:51'),
+(18, 73, 'Tasya Anastasya Mufida menambah stok Barang dengan ID : 15, sejumlah : 100', '2021-05-23 16:21:13'),
+(19, 73, 'Tasya Anastasya Mufida menambah stok Barang dengan ID : 9, sejumlah : 20', '2021-05-23 16:21:34'),
+(20, 73, 'Tasya Anastasya Mufida melaukan Pengeluaran stok Barang dengan ID : 2, sejumlah : 10', '2021-05-23 16:22:36'),
+(21, 73, 'Tasya Anastasya Mufida melaukan Pengeluaran stok Barang dengan ID : 15, sejumlah : 50', '2021-05-23 16:23:07'),
+(22, 73, 'Tasya Anastasya Mufida melaukan Pengeluaran stok Barang dengan ID : 22, sejumlah : 10', '2021-05-23 16:23:28'),
+(23, 73, 'Tasya Anastasya Mufida menambah stok Barang dengan ID : 3, sejumlah : 100', '2021-05-23 16:24:46'),
+(24, 41, 'Makinami melakukan Login.', '2021-05-23 16:50:25'),
+(25, 41, 'Makinami melakukan Logout.', '2021-05-23 16:53:48'),
+(26, 1, 'Adielya Moline melakukan Login.', '2021-05-23 16:53:52'),
+(27, 1, 'Adielya Moline mencetak Laporan Bulanan', '2021-05-23 16:54:27'),
+(28, 1, 'Adielya Moline melakukan Logout.', '2021-05-23 16:59:40'),
+(29, 22, 'Daemon Yukata melakukan Login.', '2021-05-23 16:59:46');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -361,6 +409,12 @@ CREATE TABLE `user_activity` (
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indeks untuk tabel `alur_barang`
+--
+ALTER TABLE `alur_barang`
+  ADD PRIMARY KEY (`no_log`);
 
 --
 -- Indeks untuk tabel `alur_barang_visibility`
@@ -434,6 +488,12 @@ ALTER TABLE `absensi`
   MODIFY `id_absen` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT untuk tabel `alur_barang`
+--
+ALTER TABLE `alur_barang`
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT untuk tabel `alur_barang_visibility`
 --
 ALTER TABLE `alur_barang_visibility`
@@ -443,7 +503,7 @@ ALTER TABLE `alur_barang_visibility`
 -- AUTO_INCREMENT untuk tabel `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `komplain_visibility`
@@ -479,7 +539,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
