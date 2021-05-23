@@ -60,7 +60,7 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Data User | INVENBAR",
+					"title" => "Data Pekerja | INVENBAR",
 					"CurrentMenu" => "data_user",
 					'validation' => \Config\Services::validation(),
 					"info" => $this->newsModel->showTask(),
