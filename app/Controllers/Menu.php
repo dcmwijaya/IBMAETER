@@ -412,7 +412,7 @@ class Menu extends BaseController
 				'waktu_aktivitas' => date("Y-m-d H:i:s")
 			]);
 
-			// return redirect()->to('kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -448,7 +448,7 @@ class Menu extends BaseController
 				'waktu_aktivitas' => date("Y-m-d H:i:s")
 			]);
 
-			// return redirect()->to('kelolabarang');
+			return redirect()->to('kelolabarang');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -468,7 +468,7 @@ class Menu extends BaseController
 			);
 			$this->barangModel->updateItem($data, $id);
 
-			$aktivitas = session('nama') . " mengubah spesifikasi Barang berkode : " . $data['kode_barang'];
+			$aktivitas = session('nama') . " mengubah spesifikasi Barang dengan ID : " . $id;
 			// insert user aktivity saat melakukan input stok masuk item/barang
 			$this->userActivityModel->insert([
 				'uid_aktivitas' => session('uid'),
