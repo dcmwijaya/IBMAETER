@@ -789,4 +789,26 @@ class Exlapor extends BaseController
 			return redirect()->to('/login');
 		}
 	}
+
+	public function pdfprintNotespesifikasi()
+	{
+		if (session('uid') != null) {
+			$id = $this->request->getPost('notaSpesifikasi');
+
+			$data = [
+				"title" => "NOTA SPESIFIKASI | INVENBAR",
+				"log_item" => $this->LogModel->ReadLogItem(),
+				"item" => $this->barangModel->getItems(),
+				"supplier" => $this->barangModel->viewSuppliers(),
+				"spec" => $this->barangModel->joinSupplier(),
+				'user' => $this->userModel->getUserId(session('uid')),
+				"log_notifs" => $this->LogModel->notifsLog(),
+				"komplain_notifs" => $this->komplainModel->notifsKomplain()
+			];
+
+			return view('global/print/printNotaspesifikasi', $data);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
 }

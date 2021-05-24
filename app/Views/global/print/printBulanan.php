@@ -173,7 +173,7 @@ $truantedCount = $totalUser - $presentCount;
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap" border="1">
+								<table style="font-size: 14px; width:100%;" border="1">
 									<thead style="text-align: center;">
 										<tr>
 											<th colspan="5">Total Category Item</th>
@@ -328,7 +328,7 @@ $truantedCount = $totalUser - $presentCount;
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap" border="1">
+								<table style="font-size: 14px; width:100%;" border="1">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -406,7 +406,7 @@ $truantedCount = $totalUser - $presentCount;
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
-								<table class="display nowrap" border="1">
+								<table style="font-size: 14px; width:100%;" border="1">
 									<thead>
 										<tr>
 											<th>No</th>
@@ -519,7 +519,7 @@ $truantedCount = $totalUser - $presentCount;
 						<div class="row">
 							<div class="col">
 								<?php if (session('role') == 0) : ?>
-									<table class="display nowrap" border="1">
+									<table style="font-size: 14px; width:100%;" border="1">
 										<thead>
 											<tr>
 												<th>Waktu</th>
@@ -565,7 +565,7 @@ $truantedCount = $totalUser - $presentCount;
 									</table>
 									<!-- for pekerja -->
 								<?php else : ?>
-									<table class="display nowrap" border="1">
+									<table style="font-size: 14px; width:100%;" border="1">
 										<thead>
 											<tr>
 												<th>Waktu</th>
