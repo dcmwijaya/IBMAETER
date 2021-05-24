@@ -168,6 +168,15 @@ class Admin extends BaseController
 				session()->setFlashdata('pesan', '<div class="notif-success">
 				Data Berhasil Ditambahkan!
 			  </div>');
+
+				$aktivitas = session('nama') . " menambahkan Akun baru dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan department : " . $data['department'] . " sebagai " . $data['role'];
+				// insert user aktivity saat menambahkan akun baru
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
@@ -178,7 +187,7 @@ class Admin extends BaseController
 	}
 
 	public function Edit_User() //<< tambahi untuk update session jika user ini sedang login
-	{
+	{							//<< ya gak guna ke user yg diubah soalnya session main di lokal browser, dan update sendiri klo si user login ulang
 		// seleksi login
 		if (session('uid') != null) {
 			// seleksi role pengguna
@@ -270,6 +279,15 @@ class Admin extends BaseController
 				);
 				$this->adminModel->updateUser($data, $id);
 				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
+
+				$aktivitas = session('nama') . " mengubah Akun dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan department : " . $data['department'] . " sebagai " . $data['role'];
+				// insert user aktivity saat mengubah akun baru
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
@@ -290,6 +308,15 @@ class Admin extends BaseController
 				if ($user['picture'] != 'default.jpg') {
 					unlink('img/user/' . $user['picture']); //hapus gambar jika nama file bukan default.jpg
 				}
+
+				$aktivitas = session('nama') . " menghapus Akun dengan nama : " . $user['nama'] . ", email : " . $user['email'] . ", dan department : " . $user['department'] . " sebagai " . $user['role'];
+				// insert user aktivity saat menghapus sebuah akun
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				$this->adminModel->deleteUser($id);
 				session()->setFlashdata('pesan', '<div class="notif-success">User Berhasil Di Hapus!</div>');
 				return redirect()->to('Datauser');
@@ -457,6 +484,15 @@ class Admin extends BaseController
 
 				// upload tabel 'arsip_komplain'
 				$this->LogModel->updateLogItem($data, $no_log);
+
+				$aktivitas = "Perizinan dengan nomor " . $no_log . ", " . $data['status'] . " oleh " . session('nama');
+				// insert user aktivity saat melakukan perizinan barang
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				var_dump($data);
 
 				session()->setFlashdata('komenPerz', '<div class="notif-success">Perizinan Barang Berhasil !</div>');
@@ -612,6 +648,15 @@ class Admin extends BaseController
 					'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
 				);
 				$this->newsModel->addInfo($data);
+
+				$aktivitas = session('nama') . " menambahkan pengumuman dengan judul <b>" . $data['judul'] . "</b>.";
+				// insert user aktivity saat menambahkan pengumuman
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Menambahkan Pengumuman !</div>');
 				// return redirect()->to('Adminpengumuman'); Di GANTI AJAX
 			} else {
@@ -636,6 +681,15 @@ class Admin extends BaseController
 				// 	'isi' => str_replace("'", "", htmlspecialchars($this->request->getPost('isi'), ENT_QUOTES))
 				// );
 				$this->newsModel->deleteInfo($id);
+
+				$aktivitas = session('nama') . " menghapus pengumuman dengan id pengumuman : " . $id . ".";
+				// insert user aktivity saat menambahkan pengumuman
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				session()->setFlashdata('Pengumuman', '<div class="notif-failed">Berhasil Mengedit Pengumuman !</div>');
 				// return redirect()->to('Adminpengumuman'); DIGANTI AJAX
 			} else {
@@ -951,7 +1005,20 @@ class Admin extends BaseController
 				// Update
 				$this->arsipKompModel->addArsip($data);
 				// Then Delet dis
-				$this->komplainModel->where('id_komplain', $id_komp)->delete();;
+				$this->komplainModel->where('id_komplain', $id_komp)->delete();
+
+				$statusAct = "menolak";
+				// jika statusnya diterima maka
+				if ($status == 'accepted') {
+					$statusAct = "menerima";
+				}
+				$aktivitas = session('nama') . $statusAct . " komplain pekerja dengan nomor komplain : " . $data['no_arsipKomp'] . ".";
+				// insert user aktivity saat menambahkan pengumuman
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
 
 				session()->setFlashdata('komenKomp', 'Pesan terkirim.');
 				return redirect()->to('/Admin/Complain');

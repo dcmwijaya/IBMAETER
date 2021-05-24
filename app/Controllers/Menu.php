@@ -922,7 +922,7 @@ class Menu extends BaseController
 				'waktu_komplain' => date("Y-m-d h:i:sa")
 			]);
 
-			$aktivitas = session('nama') . " mengajukan Komplain.";
+			$aktivitas = session('nama') . " mengajukan Komplain dengan nomor komplain : " . $no_komp . ".";
 			// insert user aktivity saat melakukan pengaduan
 			$this->userActivityModel->insert([
 				'uid_aktivitas' => session('uid'),
