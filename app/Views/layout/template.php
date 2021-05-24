@@ -1080,6 +1080,9 @@
 			$('#Rejected #TolakKet').val(ket);
 		});
 
+	});
+
+	function PreviewKomplainImage() {
 		// get Bukti Image
 		$('.btn-img-item').on('click', function() {
 			// get img from tabel
@@ -1088,7 +1091,7 @@
 			// Set img to modal
 			$('#gambarBukti img').attr('src', img);
 		});
-	});
+	}
 
 	function listKomplain() {
 		$.ajax({
@@ -1103,6 +1106,7 @@
 					scrollCollapse: true,
 					paging: false
 				});
+				PreviewKomplainImage()
 			}
 		});
 	}

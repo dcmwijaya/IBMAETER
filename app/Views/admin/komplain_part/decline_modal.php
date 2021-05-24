@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="Pekerja"><strong><i class="fas fa-fw fa-image"></i> Bukti Keluhan</strong></label>
             <button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/komplain/'); ?>" data-toggle="modal" data-target="#gambarBukti">
-                <img src="<?= base_url('../img/komplain/'); ?>" width="150" height="auto">
+                <img class="col-sm-12" src="<?= base_url('../img/komplain/'); ?>" width="150" height="auto">
             </button>
         </div>
     </div>
