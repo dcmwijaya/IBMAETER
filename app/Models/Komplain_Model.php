@@ -29,6 +29,11 @@ class Komplain_Model extends Model
         }
     }
 
+    public function getIdKomplain($id)
+    {
+        return $this->where(['id_komplain' => $id])->first();
+    }
+
     public function notifsKomplain()
     {
         $builder = $this->db->table('komplain');

@@ -47,10 +47,27 @@
 						</div>
 					</div>
 					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listKomplain()"><i class="fas fa-redo-alt fa-fw"></i></button>
-					<button type="button" class="btn active btn-secondary btn-sm shadow-sm p-2 rounded-right" data-toggle="modal" data-target="#Arsip">
-						<i class="fas fa-check fa-fw"></i>Arsip Komplain
-					</button>
 				</div>
+		</section>
+		<section class="mb-4">
+			<div class="card">
+				<div class="card-header text-center py-3">
+					<h5 class="mb-0 text-center">
+						<strong>ARSIP KOMPLAIN PEKERJA</strong>
+					</h5>
+				</div>
+				<div class="card-body pt-1">
+					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row">
+							<div class="col">
+								<!-- load tabel -->
+								<div id="KomplainArsip_AJAX"></div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listArsipKomplain()"><i class="fas fa-redo-alt fa-fw"></i></button>
+				</div>
+			</div>
 		</section>
 	</div><br>
 </main>
@@ -68,63 +85,6 @@
 			<form id="Komplain_Form" method="POST" enctype="multipart/form-data">
 
 			</form>
-		</div>
-	</div>
-</div>
-
-<!-- Arsip Modal -->
-<div class="modal fade" id="Arsip" tabindex="-1" aria-labelledby="ArsipLabel" aria-hidden="true">
-	<div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
-		<div class="modal-content">
-			<div class="modal-header bg-light">
-				<h5 class="modal-title" id="ArsipLabel">Arsip Komplain</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<table id="table_komplain" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
-					<thead style="border-bottom: 1px solid #dfdfdf;">
-						<tr>
-							<th>Email</th>
-							<th>Perihal Komplain</th>
-							<th>Kendala</th>
-							<th>Bukti</th>
-							<th>Waktu Komplain</th>
-							<th>Status</th>
-							<th>Waktu Respon</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- data arsip komplain -->
-						<?php foreach ($arsipKomp as $arc) : ?>
-							<tr>
-								<td><?= $arc['email_arsipKomp']; ?></td>
-								<td><?= $arc['judul_arsipKomp']; ?></td>
-								<td style="<?= $tdStyle; ?>"><?= $arc['isi_arsipKomp']; ?></td>
-								<td>
-									<?php if ($arc['foto_arsipKomp'] == "-") : ?>
-										<b class="center">-</b>
-									<?php else : ?>
-										<button type="button" class="btn btn-sm btn-img-item" data-img="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" data-toggle="modal" data-target="#gambarBukti">
-											<img src="<?= base_url('../img/komplain/' . $arc['foto_arsipKomp']); ?>" width="150" height="auto">
-										</button>
-									<?php endif; ?>
-								</td>
-								<td><?= $arc['waktu_arsipKomp']; ?></td>
-								<td>
-									<?php if ($arc['status_arsipKomp'] == 'accepted') : ?>
-										<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded"><i class="fas fa-check fa-fw"></i> Diterima</button>
-									<?php else : ?>
-										<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded"><i class="fas fa-times fa-fw"></i> Ditolak</button>
-									<?php endif; ?>
-								</td>
-								<td><?= $arc['commented_at']; ?></td>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
-			</div>
 		</div>
 	</div>
 </div>

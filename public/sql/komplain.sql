@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 11:13 AM
+-- Generation Time: May 24, 2021 at 03:49 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -42,11 +42,11 @@ CREATE TABLE `komplain` (
 --
 
 INSERT INTO `komplain` (`id_komplain`, `no_komplain`, `uid_komplain`, `judul_komplain`, `isi_komplain`, `foto_komplain`, `waktu_komplain`) VALUES
-(1, 'K-230521-029-666', 29, 'Keluh Kesah Pemain Homkei', 'Yahaha Komplen :v', '1621763502_61a4a7258d48b2d3eb9f.jpg', '2021-05-23 04:51:42'),
-(2, 'K-230521-029-920', 29, 'Test AJAX Pengaduan EA', 'TESTING', '1621763545_2885d3a409028cae129d.jpg', '2021-05-23 04:52:25'),
-(3, 'K-230521-029-769', 29, 'Uji COBA AJAX KOMPLEN', 'YAHAHAHA', '1621763582_3ccee010cb16bd3ee53e.jpg', '2021-05-23 04:53:02'),
-(4, 'K-230521-029-415', 29, 'Yahaha Hayoek :&#039;v', 'Tet', '1621763636_65496a52643a38e93cb2.jpg', '2021-05-23 04:53:56'),
-(5, 'K-230521-029-665', 29, 'Kita SPAM :V', 'Yahaha pengadoe :v', '1621763671_85466bb89e6ffa144109.jpg', '2021-05-23 04:54:31');
+(15, 'K-240521-008-576', 8, 'hehehe buoy :v', 'hehehe buoy :vhehehe buoy :vhehehe buoy :v', '1621842762_28fa3d81a3177f200e27.jpg', '2021-05-24 02:52:42'),
+(17, 'K-240521-008-109', 8, 'Awaokawokawokwak :v', 'hehehe buoy :vhehehe buoy :vhehehe buoy :vhehehe buoy :vhehehe buoy :v', '1621842834_aec6ae12cb9a34f9ea2a.jpg', '2021-05-24 02:53:54'),
+(18, 'K-240521-008-410', 8, 'Mantap ', 'hehehe buoy :vhehehe buoy :vhehehe buoy :v', '1621842869_fd9ff2f2a70c4e91fd55.jpg', '2021-05-24 02:54:29'),
+(19, 'K-240521-008-902', 8, 'OK', 'hehehe buoy :vhehehe buoy :vhehehe buoy :v', '1621842911_a47713ce5b189d2b1805.jpg', '2021-05-24 02:55:11'),
+(22, 'K-240521-047-909', 47, 'Patrick', 'Patrick Testing', '1621845785_bcc46d6976ff3609c297.jpg', '2021-05-24 03:43:05');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +66,7 @@ ALTER TABLE `komplain`
 -- AUTO_INCREMENT for table `komplain`
 --
 ALTER TABLE `komplain`
-  MODIFY `id_komplain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_komplain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

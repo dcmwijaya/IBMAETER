@@ -35,7 +35,7 @@
                                                 <div class="pengumuman-slide px-4">
                                                     <div class="pengumuman_header clearfix pb-4 px-7">
                                                         <h6 class="card-title text-muted float-left me-2">
-                                                            <button class="btn bg-softblue btn-sm float-right" type="button" data-toggle="collapse" data-target="#pengumuman<?= $c; ?>" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-fw fa-eye"></i></button>
+                                                            <button class="btn bg-softblue btn-sm float-right shadow-sm" type="button" data-toggle="collapse" data-target="#pengumuman<?= $c; ?>" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-fw fa-eye"></i></button>
                                                         </h6><strong><?= $i['judul']; ?></strong>
                                                     </div>
                                                     <div class="collapse px-7" id="pengumuman<?= $c; ?>">

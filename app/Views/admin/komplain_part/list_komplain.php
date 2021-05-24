@@ -24,7 +24,7 @@
                     <?php if ($k['foto_komplain'] == "-") : ?>
                         <b class="center">-</b>
                     <?php else : ?>
-                        <button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" data-toggle="modal" data-target="#gambarBukti">
+                        <button type="button" class="btn btn-sm btn-img-item px-2 shadow-sm" data-img="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" data-toggle="modal" data-target="#gambarBukti">
                             <img src="<?= base_url('../img/komplain/' . $k['foto_komplain']); ?>" width="150" height="auto">
                         </button>
                     <?php endif; ?>

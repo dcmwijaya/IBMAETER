@@ -746,7 +746,7 @@ class Admin extends BaseController
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					// 'komplain' => $this->komplainModel->getKomplain(),
-					'arsipKomp' => $this->arsipKompModel->getAll(),
+					// 'arsipKomp' => $this->arsipKompModel->getAll(),
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/menu/komplainUser', $data);
@@ -776,7 +776,43 @@ class Admin extends BaseController
 		}
 	}
 
+	public function ShowKomplainArsip() // Show Master Data Arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$data['arsipKomp'] = $this->arsipKompModel->getJoinUser();
+				// echo json_encode($data);
+				return view('admin/komplain_part/list_arsip', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	//----------------------------------- form Komplain -----------------------------------
+
+	public function DetailArsipKomplain_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					'arsipKomp' => $this->arsipKompModel->getAll(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/komplain_part/detail_modal', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
 
 	public function AcceptKomplain_Form()
 	{
@@ -834,6 +870,42 @@ class Admin extends BaseController
 		}
 	}
 
+	public function GetUidArsipKomplain() // Pick uid arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$id = $this->request->getPost("id_arsipKomp");
+				$data = $this->arsipKompModel->getIdArsipKomp($id);
+				echo json_encode($data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function GetAdminArsipKomplain() // Pick uid arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$id = $this->request->getPost("id_arsipKomp");
+				$data = $this->arsipKompModel->getUidAdminArsipKomp($id);
+				echo json_encode($data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	public function arsipKomplain()
 	{
 		// seleksi no login
@@ -841,7 +913,7 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				if (!$this->validate([
-					'komen' => [
+					'perizinan_komen' => [
 						'rules' => 'max_length[256]',
 						'errors' => ['max_length' => 'Komen tidak boleh lebih dari 256 huruf & karakter.']
 					]
@@ -850,32 +922,36 @@ class Admin extends BaseController
 				}
 
 				// mengambil data
+				$id_komp = $this->request->getPost('id_komplain');
 				$no_komp = $this->request->getPost('no_komplain');
 				$status = $this->request->getPost('status');
-				$komen = $this->request->getPost('komen');
+				$komen = $this->request->getPost('adminkomen_komplain');
 
 				// jika komen kosong
 				if ($komen == null) {
 					$komen = "Terverifikasi!";
 				}
 
-				$komplain = $this->komplainModel->getKomplain($no_komp);
+				$komplain = $this->komplainModel->getIdKomplain($id_komp);
 
-				// upload tabel 'arsip_komplain'
-				$this->arsipKompModel->insert([
+				// insert tabel 'komplain_arsip' then delet this
+				$data = [
 					'no_arsipKomp' => $no_komp,
-					'uid_arsipKomp' => $komplain['uid_komplain'],
-					'email_arsipKomp' => $komplain['email_komplain'],
+					'uid_arsipKomp' => intval($komplain['uid_komplain']),
 					'judul_arsipKomp' => $komplain['judul_komplain'],
 					'isi_arsipKomp' => $komplain['isi_komplain'],
 					'foto_arsipKomp' => $komplain['foto_komplain'],
 					'waktu_arsipKomp' => $komplain['waktu_komplain'],
+					'uid_arsipKomp_admin' => intval(session('uid')),
 					'status_arsipKomp' => $status,
 					'comment_arsipKomp' => str_replace("'", "", htmlspecialchars($komen, ENT_QUOTES)),
 					'commented_at' => date("Y-m-d h:i:sa")
-				]);
+				];
 
-				$this->komplainModel->where('no_komplain', $no_komp)->delete();;
+				// Update
+				$this->arsipKompModel->addArsip($data);
+				// Then Delet dis
+				$this->komplainModel->where('id_komplain', $id_komp)->delete();;
 
 				session()->setFlashdata('komenKomp', 'Pesan terkirim.');
 				return redirect()->to('/Admin/Complain');
