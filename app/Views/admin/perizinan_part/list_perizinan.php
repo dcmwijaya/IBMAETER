@@ -59,7 +59,7 @@
                                 <form action="<?= base_url('exlapor/pdfprintNotaizin/'); ?>" method="POST" enctype="multipart/form-data">
                                     <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
                                     <?php if ($log['status'] == 'Diterima') : ?>
-                                        <input type="hidden" name="no_log" value="<?= $log['no_log']; ?>">
+                                        <input type="hidden" name="notaIzin" value="<?= $log['no_log']; ?>">
                                         <button type="submit" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left"><i class="fas fa-print fa-fw"></i></button>
                                     <?php endif; ?>
                                 </form>
