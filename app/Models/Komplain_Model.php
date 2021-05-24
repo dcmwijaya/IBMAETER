@@ -7,14 +7,26 @@ use CodeIgniter\Model;
 class Komplain_Model extends Model
 {
     protected $table = 'komplain';
-    protected $allowedFields = ['no_komplain', 'uid_komplain', 'email_komplain', 'judul_komplain', 'isi_komplain', 'foto_komplain', 'waktu_komplain'];
+    protected $primaryKey = 'id_komplain';
+    protected $allowedFields = ['id_komplain', 'no_komplain', 'uid_komplain', 'judul_komplain', 'isi_komplain', 'foto_komplain', 'waktu_komplain'];
 
-    public function getKomplain($no = false)
+    public function getKomplain($id = false)
     {
-        if ($no == false) {
-            return $this->findAll();
+        if ($id == false) {
+            $builder = $this->db->table('komplain');
+            $builder->select('id_komplain, no_komplain, user.nama, judul_komplain, isi_komplain, foto_komplain, waktu_komplain');
+            $builder->join('user', 'user.uid = komplain.uid_komplain', 'left');
+            $query = $builder->get()->getResultArray();
+            return $query;
+        } else {
+            $builder = $this->db->table('komplain');
+            $builder->select('id_komplain, no_komplain, user.nama, judul_komplain, isi_komplain, foto_komplain, waktu_komplain');
+            $builder->join('user', 'user.uid = komplain.uid_komplain');
+            // $query = $builder->getWhere(['id_komplain' => $id]);
+            $builder->where(['id_komplain' => $id]);
+            $query = $builder->get()->getResultArray();
+            return $query;
         }
-        return $this->where(['no_komplain' => $no])->first();
     }
 
     public function notifsKomplain()

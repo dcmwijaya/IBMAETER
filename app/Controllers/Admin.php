@@ -745,11 +745,87 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-					'komplain' => $this->komplainModel->getKomplain(),
+					// 'komplain' => $this->komplainModel->getKomplain(),
 					'arsipKomp' => $this->arsipKompModel->getAll(),
 					'validation' => \Config\Services::Validation()
 				];
 				return view('admin/menu/komplainUser', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function ShowKomplain() // Show Master Data Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$data['komplain'] = $this->komplainModel->getKomplain();
+				// echo json_encode($data);
+				return view('admin/komplain_part/list_komplain', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	//----------------------------------- form Komplain -----------------------------------
+
+	public function AcceptKomplain_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					'komplain' => $this->komplainModel->getKomplain(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/komplain_part/accept_modal', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function DeclineKomplain_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					'komplain' => $this->komplainModel->getKomplain(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/komplain_part/decline_modal', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	//----------------------------------- Komplain Action -----------------------------------
+
+	public function GetIDKomplain() // Pick id_Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$id = $this->request->getPost("id_komplain");
+				$data = $this->komplainModel->getKomplain($id);
+				echo json_encode($data);
 			} else {
 				return redirect()->to('/dashboard');
 			}

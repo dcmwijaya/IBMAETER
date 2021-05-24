@@ -111,12 +111,9 @@
 			scrollCollapse: true,
 			paging: false
 		});
-		$('#table_komplain').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false
-		});
 		$('.toast').toast('show');
+		// load tables
+		listKomplain()
 	});
 </script>
 
@@ -563,7 +560,7 @@
 		})
 	<?php endif; ?>
 </script>
-<!-- ============== -->
+<!-- ============== custom kelola barang-->
 <script>
 	//......................................... Custom Kelola Barang Function().........................................
 	function PairingKodeBarang() {
@@ -691,6 +688,67 @@
 		});
 	});
 </script>
+<!--.......................... Config croppie js ..........................--->
+<script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
+<script>
+	$(document).ready(function() { // OVERLOAD MODAL
+
+		$image_crop = $('#image_demo').croppie({
+			enableExif: true,
+			viewport: {
+				width: 400,
+				height: 400,
+				type: 'square' //circle
+			},
+			boundary: {
+				width: 500,
+				height: 500
+			}
+		});
+
+		$('#add_img').on('change', function() {
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				$image_crop.croppie('bind', {
+					url: event.target.result
+				}).then(function() {
+					console.log('jQuery bind complete');
+				});
+			}
+			reader.readAsDataURL(this.files[0]);
+			$('#uploadimageModal').modal('show');
+		});
+
+		$('.crop_image').click(function(event) {
+			$image_crop.croppie('result', {
+				type: 'canvas',
+				size: 'viewport'
+			}).then(function(response) {
+				$.ajax({
+					url: "<?= base_url('Admin/cropImage'); ?>",
+					type: "POST",
+					data: {
+						"image": response
+					},
+					success: function(data) {
+						$('#uploadimageModal').modal('hide');
+						html = '<img src="' + response + '" class="img-thumbnail img-preview" alt="image preview" style="max-height: 370px; " />';
+						$('#show-add-img').html(html);
+						//Membuat FORM by JavaScript
+						var formData = new FormData();
+						var file = response;
+						//Cek Dulu, Apakah Gambarnya sudah dipilih
+						if (file != null) {
+							formData.append('picture', file);
+						}
+					}
+				});
+			})
+		});
+
+	});
+</script>
+
 
 <!-------------------------------------------------- Catch For Perizinan-------------------------------------------------->
 <script>
@@ -775,7 +833,7 @@
 						type: "POST",
 						dataType: "JSON",
 						success: function(data) {
-							var parsed = JSON.parse(JSON.stringify(data));
+							// var parsed = JSON.parse(JSON.stringify(data));
 							$('[name="perizinan_no_log"]').val(data[0].no_log);
 							$('[name="perizinan_nama"]').val(data[0].nama_item);
 							$('[name="perizinan_stok"]').val(data[0].ubah_stok);
@@ -955,91 +1013,14 @@
 	});
 </script>
 
-
-<!-- Script for preview picture on edit -->
-<script>
-	function imgPreview() {
-		const sampul = document.querySelector('#foto');
-		const imgPreview = document.querySelector('.img-preview');
-
-		const fileSampul = new FileReader();
-		fileSampul.readAsDataURL(sampul.files[0]);
-
-		fileSampul.onload = function(e) {
-			imgPreview.src = e.target.result;
-		}
-	}
-</script>
-
-<!-------------------------------------------------- Config croppie js -------------------------------------------------->
-<script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
-<script>
-	$(document).ready(function() { // OVERLOAD MODAL
-
-		$image_crop = $('#image_demo').croppie({
-			enableExif: true,
-			viewport: {
-				width: 400,
-				height: 400,
-				type: 'square' //circle
-			},
-			boundary: {
-				width: 500,
-				height: 500
-			}
-		});
-
-		$('#add_img').on('change', function() {
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				$image_crop.croppie('bind', {
-					url: event.target.result
-				}).then(function() {
-					console.log('jQuery bind complete');
-				});
-			}
-			reader.readAsDataURL(this.files[0]);
-			$('#uploadimageModal').modal('show');
-		});
-
-		$('.crop_image').click(function(event) {
-			$image_crop.croppie('result', {
-				type: 'canvas',
-				size: 'viewport'
-			}).then(function(response) {
-				$.ajax({
-					url: "<?= base_url('Admin/cropImage'); ?>",
-					type: "POST",
-					data: {
-						"image": response
-					},
-					success: function(data) {
-						$('#uploadimageModal').modal('hide');
-						html = '<img src="' + response + '" class="img-thumbnail img-preview" alt="image preview" style="max-height: 370px; " />';
-						$('#show-add-img').html(html);
-						//Membuat FORM by JavaScript
-						var formData = new FormData();
-						var file = response;
-						//Cek Dulu, Apakah Gambarnya sudah dipilih
-						if (file != null) {
-							formData.append('picture', file);
-						}
-					}
-				});
-			})
-		});
-
-	});
-</script>
-
-<!-------------------------------------------------- Catch for Arsip komplain dan Perizinan -------------------------------------------------->
+<!-------------------------------------------------- Catch for Arsip komp & komplain-------------------------------------------------->
 <script>
 	$(document).ready(function() {
 		<?php
 		$masukSpan = '<span class="py-2 badge badge-success" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-down fa-fw mr-1"></i>';
 		$keluarSpan = '<span class="py-2 badge badge-danger" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-up fa-fw mr-1"></i>';
 		?>
-		// get Accept Komplain dan perizinan 
+		// get Accept Komplain
 		$('.btn-acc-item').on('click', function() {
 			// perizinan absensi
 			var idIzin = $(this).data('idizin');
@@ -1069,7 +1050,7 @@
 			$('#Accept #TerimaKet').val(ket);
 		});
 
-		// get Decline Komplain dan perizinan
+		// get Decline Komplain 
 		$('.btn-rjc-item').on('click', function() {
 			// perizinan absensi
 			var idIzin = $(this).data('idizin');
@@ -1108,6 +1089,134 @@
 			$('#gambarBukti img').attr('src', img);
 		});
 	});
+
+	function listKomplain() {
+		$.ajax({
+			url: '<?= base_url('Admin/ShowKomplain'); ?>',
+			beforeSend: function(f) {
+				$('#Komplain_AJAX').html(sloading);
+			},
+			success: function(data) {
+				$('#Komplain_AJAX').html(data);
+				$('#table_komplain').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false
+				});
+			}
+		});
+	}
+
+	function AcceptKomplain(id) {
+		$('#Komplain_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/AcceptKomplain_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
+				$('#Komplain_Modal #Komplain_Header').addClass("bg-softgreen");
+				$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Keluhan');
+			},
+			success: function(data) {
+				$('#Komplain_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetIDKomplain'); ?>',
+					data: {
+						"id_komplain": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						var parsed = JSON.parse(JSON.stringify(data));
+						$('[name="id_komplain"]').val(data[0].id_komplain);
+						$('[name="no_komplain"]').val(data[0].no_komplain);
+						$('[name="nama_komplain"]').val(data[0].nama);
+						$('[name="isi_komplain"]').val(data[0].isi_komplain);
+						$('[name="email_komplain"]').val(data[0].email_komplain);
+						$('[name="judul_komplain"]').val(data[0].judul_komplain);
+						$('[name="waktu_komplain"]').val(data[0].waktu_komplain);
+					}
+				});
+			},
+			error: function(data) {
+				alert(' Operasi AJAX Gagal :(');
+			}
+		});
+	}
+
+	function DeclineKomplain(id) {
+		$('#Komplain_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/DeclineKomplain_Form'); ?>",
+			beforeSend: function(data) {
+				$('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
+				$('#Komplain_Modal #Komplain_Header').addClass("bg-kingucrimson");
+				$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-window-close"></i>  Tolak Keluhan');
+			},
+			success: function(data) {
+				$('#Komplain_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetIDKomplain'); ?>',
+					data: {
+						"id_komplain": id
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						var parsed = JSON.parse(JSON.stringify(data));
+						$('[name="id_komplain"]').val(data[0].id_komplain);
+						$('[name="no_komplain"]').val(data[0].no_komplain);
+						$('[name="nama_komplain"]').val(data[0].nama);
+						$('[name="isi_komplain"]').val(data[0].isi_komplain);
+						$('[name="email_komplain"]').val(data[0].email_komplain);
+						$('[name="judul_komplain"]').val(data[0].judul_komplain);
+						$('[name="waktu_komplain"]').val(data[0].waktu_komplain);
+					}
+				});
+			},
+			error: function(data) {
+				alert(' Operasi AJAX Gagal :(');
+			}
+		});
+	}
+
+
+	// Aksi perizinan
+	$("#Komplain_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#Komplain_Modal').modal('hide');
+		let KomplainUrl = "<?= base_url('Admin/arsipKomplain'); ?>";
+		$.ajax({
+			url: KomplainUrl,
+			type: "POST",
+			data: $('#Komplain_Form').serialize(),
+			success: function(data) {
+				$('#Komplain_Form').html(' ');
+				listKomplain();
+			},
+			error: function(data) {
+				alert('Operasi Ajax Gagal :(');
+			}
+		});
+		return false;
+	})
+</script>
+
+
+<!-------------------------------------------------- Catch for profile edit -------------------------------------------------->
+<script>
+	function imgPreview() {
+		const sampul = document.querySelector('#foto');
+		const imgPreview = document.querySelector('.img-preview');
+
+		const fileSampul = new FileReader();
+		fileSampul.readAsDataURL(sampul.files[0]);
+
+		fileSampul.onload = function(e) {
+			imgPreview.src = e.target.result;
+		}
+	}
 </script>
 
 </html>
