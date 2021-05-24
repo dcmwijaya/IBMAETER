@@ -48,19 +48,19 @@
 											<div class="row">
 												<div class="col-6">
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
+														<label for="notaizin_waktu" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['tgl']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
+														<label for="notaizin_pekerja" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['nama']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
+														<label for="notaizin_barang" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['nama_item']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
+														<label for="notaizin_request" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
 														<div class="alert alert-secondary" role="alert">
 															<?php if ($log['request'] == "Masuk") : ?>
 																<?= $log['request']; ?>
@@ -72,11 +72,11 @@
 												</div>
 												<div class="col-6">
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
+														<label for="notaizin_stok" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['ubah_stok']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
+														<label for="notaizin_status" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
 														<div class="alert alert-secondary" role="alert">
 															<?php
 															if ($log['status'] == 'Diterima') {
@@ -90,7 +90,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
+														<label for="notaizin_keterangan" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
 														<div class="alert alert-secondary" role="alert" style="height: 150px;"><?= $log['ket']; ?></div>
 													</div>
 												</div>
@@ -103,19 +103,19 @@
 											<div class="row">
 												<div class="col-6">
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
+														<label for="notaizin_waktu" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['tgl']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
+														<label for="notaizin_pekerja" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['nama']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
+														<label for="notaizin_barang" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['nama_item']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
+														<label for="notaizin_request" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
 														<div class="alert alert-secondary" role="alert">
 															<?php if ($log['request'] == "Masuk") : ?>
 																<?= $log['request']; ?>
@@ -127,11 +127,11 @@
 												</div>
 												<div class="col-6">
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
+														<label for="notaizin_stok" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
 														<div class="alert alert-secondary" role="alert"><?= $log['ubah_stok']; ?></div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
+														<label for="notaizin_status" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
 														<div class="alert alert-secondary" role="alert">
 															<?php
 															if ($log['status'] == 'Diterima') {
@@ -145,7 +145,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
+														<label for="notaizin_keterangan" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
 														<div class="alert alert-secondary" role="alert" style="height: 150px;"><?= $log['ket']; ?></div>
 													</div>
 												</div>
@@ -191,7 +191,7 @@
 	<script>
 		window.print();
 		window.onafterprint = function() {
-			window.location.href = "<?= base_url('admin/perizinan') ?>";
+			window.location.href = history.go(-1);
 		}
 	</script>
 </body>

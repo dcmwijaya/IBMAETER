@@ -47,9 +47,8 @@
 								<table style="font-size: 14px; width:100%;" border="1">
 									<thead>
 										<tr>
-											<th>Email</th>
+											<th>Pekerja</th>
 											<th>Perihal Komplain</th>
-											<th>Kendala</th>
 											<th>Bukti</th>
 											<th>Waktu Komplain</th>
 										</tr>
@@ -57,9 +56,8 @@
 									<tbody>
 										<?php foreach ($komplain as $k) : ?>
 											<tr>
-												<td><?= $k['email_komplain']; ?></td>
+												<td><?= $k['nama']; ?></td>
 												<td><?= $k['judul_komplain']; ?></td>
-												<td style="<?= $tdStyle; ?>"><?= $k['isi_komplain']; ?></td>
 												<td>
 													<?php if ($k['foto_komplain'] == "-") : ?>
 														<b class="center">-</b>

@@ -38,101 +38,22 @@ header('Content-Disposition: attachment; filename="Data-Aktivitas.xls"');
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>saber.datealive@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/26 11:31:10 AM</td>
-									</tr>
-									<tr>
-										<td>saber.datealive@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/26 11:32:11 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/26 11:33:12 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/menu/Absensi</td>
-										<td>2021/4/26 11:36:15 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/admin/Adminpengumuman</td>
-										<td>2021/4/26 11:34:13 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/admin/logUser</td>
-										<td>2021/4/26 11:35:14 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/admin/Datauser</td>
-										<td>2021/4/27 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>kuro911@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/27 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>genshin_keqing@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/27 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>genshin_keqing@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/27 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>kuro.sensei99@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/28 07:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>kuro.sensei99@gmail.com</td>
-										<td>http://localhost:8080/menu/Absensi</td>
-										<td>2021/4/28 07:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>kuro.sensei99@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/28 07:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>rungkutgakure@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/28 09:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>rungkutgakure@gmail.com</td>
-										<td>http://localhost:8080/menu/Absensi</td>
-										<td>2021/4/28 09:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>rungkutgakure@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/28 09:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>bagindahokage@gmail.com</td>
-										<td>http://localhost:8080/admin/login</td>
-										<td>2021/4/28 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>bagindahokage@gmail.com</td>
-										<td>http://localhost:8080/menu/Absensi</td>
-										<td>2021/4/28 11:37:16 AM</td>
-									</tr>
-									<tr>
-										<td>bagindahokage@gmail.com</td>
-										<td>http://localhost:8080/admin/Logout</td>
-										<td>2021/4/28 11:37:16 AM</td>
-									</tr>
+									<?php foreach ($aktivitas as $akt) : ?>
+										<tr>
+											<td>
+												<!-- ambil email :v -->
+												<?php
+												foreach ($user as $u) {
+													if ($u['uid'] == $akt['uid_aktivitas']) {
+														echo $u['email'];
+													}
+												}
+												?>
+											</td>
+											<td><?= $akt['aktivitas']; ?></td>
+											<td><?= $akt['waktu_aktivitas']; ?></td>
+										</tr>
+									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>

@@ -939,8 +939,11 @@ class Menu extends BaseController
 			var_dump($data);
 			die;
 
+
 			$this->komplainModel->insert($data);
-			$aktivitas = session('nama') . " mengajukan Komplain.";
+
+			$aktivitas = session('nama') . " mengajukan Komplain dengan nomor komplain : " . $no_komp . ".";
+
 			// insert user aktivity saat melakukan pengaduan
 			$this->userActivityModel->insert([
 				'uid_aktivitas' => session('uid'),
