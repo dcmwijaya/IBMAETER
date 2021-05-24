@@ -512,7 +512,7 @@ class Exlapor extends BaseController
 		if (session('uid') != null) {
 			// jika user merupakan Admin
 			if (session('role') == 0) {
-				$id = $this->request->getPost('no_log');
+				$id = $this->request->getPost('notaIzin');
 
 				$data = [
 					"title" => "NOTA PERIZINAN | INVENBAR",

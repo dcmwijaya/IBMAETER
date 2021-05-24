@@ -86,7 +86,10 @@ class Log_Model extends Model
 
     public function NotaItem($id)
     {
-        $builder = $this->db->table('alur_barang')->select('*')->join('user', 'user.uid = alur_barang.uid');
+        $builder = $this->db->table('alur_barang');
+        $builder->select('*');
+        $builder->join('user', 'user.uid = alur_barang.uid', 'left');
+        $builder->join('item', 'item.id_item = alur_barang.id_item', 'left');
         return $builder->where('alur_barang.no_log', $id)->get()->getResultArray();
     }
 }
