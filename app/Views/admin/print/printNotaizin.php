@@ -191,7 +191,7 @@
 	<script>
 		window.print();
 		window.onafterprint = function() {
-			window.location.href = "<?= base_url('admin/perizinan') ?>";
+			window.location.href = history.go(-1);
 		}
 	</script>
 </body>

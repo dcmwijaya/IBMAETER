@@ -203,8 +203,10 @@ class Exlapor extends BaseController
 					"title" => "EXCEL ABSENSI | INVENBAR",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked()
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
+					"totalUser" => $this->userModel->countUser()
 				];
 
 				return view('admin/export/exxlsAbsensi', $data);
@@ -226,8 +228,10 @@ class Exlapor extends BaseController
 					"title" => "DOC ABSENSI | INVENBAR",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked()
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
+					"totalUser" => $this->userModel->countUser()
 				];
 
 				return view('admin/export/exdocAbsensi', $data);
@@ -249,8 +253,10 @@ class Exlapor extends BaseController
 					"title" => "PDF ABSENSI | INVENBAR",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked()
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
+					"totalUser" => $this->userModel->countUser()
 				];
 
 				$html = view('admin/export/expdfAbsensi', $data);
@@ -275,7 +281,9 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL AKTIVITAS | INVENBAR"
+					"title" => "EXCEL AKTIVITAS | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 
 				return view('admin/export/exxlsAktivitas', $data);
@@ -294,7 +302,9 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC AKTIVITAS | INVENBAR"
+					"title" => "DOC AKTIVITAS | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 
 				return view('admin/export/exdocAktivitas', $data);
@@ -313,7 +323,9 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF AKTIVITAS | INVENBAR"
+					"title" => "PDF AKTIVITAS | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 
 				$html = view('admin/export/expdfAktivitas', $data);
@@ -451,7 +463,9 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF AKTIVITAS | INVENBAR"
+					"title" => "PDF AKTIVITAS | INVENBAR",
+					"user" => $this->adminModel->getUser(),
+					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 
 				return view('admin/print/printAktivitas', $data);
@@ -473,8 +487,10 @@ class Exlapor extends BaseController
 					"title" => "PDF Absensi | INVENBAR",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countWorked" => $this->absensiModel->countWorked(),
-					"countNotWorked" => $this->absensiModel->countNotWorked()
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
+					"totalUser" => $this->userModel->countUser()
 				];
 
 				return view('admin/print/printAbsensi', $data);
