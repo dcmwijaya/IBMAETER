@@ -846,6 +846,21 @@ class Menu extends BaseController
 		}
 	}
 
+	public function PengaduanForm() // Edit Form In Master Data Item
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$data = [
+				'validation' => \Config\Services::Validation(),
+				'user' => $this->userModel->getUserId(session('uid')),
+			];
+			return view('global/pengaduan_part/pengaduan_form', $data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
 	public function adukan()
 	{
 		if (session('uid') != null) {
@@ -912,7 +927,7 @@ class Menu extends BaseController
 			$inputEmail = str_replace("'", "", htmlspecialchars($this->request->getVar('email'), ENT_QUOTES));
 
 			// upload tabel 'komplain'
-			$this->komplainModel->insert([
+			$data = [
 				'no_komplain' => $no_komp,
 				'uid_komplain' => $uid,
 				'email_komplain' => $inputEmail,
@@ -920,8 +935,11 @@ class Menu extends BaseController
 				'isi_komplain' => $isi,
 				'foto_komplain' => $namaFoto,
 				'waktu_komplain' => date("Y-m-d h:i:sa")
-			]);
+			];
+			var_dump($data);
+			die;
 
+			$this->komplainModel->insert($data);
 			$aktivitas = session('nama') . " mengajukan Komplain.";
 			// insert user aktivity saat melakukan pengaduan
 			$this->userActivityModel->insert([

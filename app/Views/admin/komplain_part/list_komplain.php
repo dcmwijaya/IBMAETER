@@ -4,22 +4,19 @@
 <table id="table_komplain" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
     <thead>
         <tr>
-            <!-- <th>Kode Komplain</th> -->
+            <th>Waktu</th>
             <th>Pekerja</th>
             <th>Perihal Komplain</th>
-            <!-- <th>Kendala</th> -->
             <th>Bukti</th>
-            <th>Waktu Komplain</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($komplain as $k) : ?>
             <tr>
-                <!-- <td style="<?= $tdStyle; ?>"><?= $k['no_komplain']; ?></td> -->
+                <td style="<?= $tdStyle; ?>"><?= $k['waktu_komplain']; ?></td>
                 <td style="<?= $tdStyle; ?>"><?= $k['nama']; ?></td>
                 <td style="<?= $tdStyle; ?>"><?= $k['judul_komplain']; ?></td>
-                <!-- <td style="<?= $tdStyle; ?>"><?= $k['isi_komplain']; ?></td> -->
                 <td style="<?= $tdStyle; ?>">
                     <?php if ($k['foto_komplain'] == "-") : ?>
                         <b class="center">-</b>
@@ -29,7 +26,6 @@
                         </button>
                     <?php endif; ?>
                 </td>
-                <td style="<?= $tdStyle; ?>"><?= $k['waktu_komplain']; ?></td>
                 <td>
                     <div class="btn-group" role="group" aria-label="inoutcom">
                         <button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" onclick="AcceptKomplain(<?= $k['id_komplain']; ?>)"><i class="fas fa-check fa-fw"></i>Accept</button>

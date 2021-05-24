@@ -1,17 +1,17 @@
-.drop-zone{
-   padding: 10px;
-   height: 70px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   text-align: center;
-   font-family: 'Quicksand', sans-serif;
-   font-size: 500;
-   font-size: 20px;
-   cursor: pointer;
-   color: #cccccc;
-   border: 4px dashed #009578;
-   border-radius: 10px;
+.drop-zone {
+  padding: 10px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #cccccc;
+  border: 4px dashed #009578;
+  border-radius: 10px;
 }
 
 .drop-zone--over {
@@ -29,7 +29,8 @@
   overflow: hidden;
   background-color: #cccccc;
   background-size: cover;
-  position: relative;
+  position: absolute;
+  background-position: center;
 }
 
 .drop-zone__thumb::after {

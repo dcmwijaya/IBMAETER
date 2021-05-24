@@ -115,6 +115,7 @@
 		// load tables
 		listKomplain();
 		listArsipKomplain();
+		PengaduanForm();
 	});
 </script>
 
@@ -1016,285 +1017,264 @@
 
 <!-------------------------------------------------- Catch for Arsip komp & komplain-------------------------------------------------->
 <script>
-	$(document).ready(function() {
-		<?php
-		$masukSpan = '<span class="py-2 badge badge-success" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-down fa-fw mr-1"></i>';
-		$keluarSpan = '<span class="py-2 badge badge-danger" style="font-weight: 600;font-size: 12px;"><i class="fas fa-arrow-up fa-fw mr-1"></i>';
-		?>
-		// get Accept Komplain
-		$('.btn-acc-item').on('click', function() {
-			// perizinan absensi
-			var idIzin = $(this).data('idizin');
-			// get data from button accept
-			const noKomp = $(this).data('no');
-			// perzinaan
-			const reqs = $(this).data('reqs');
-			const nama = $(this).data('nama');
-			const stok = $(this).data('stok');
-			const pekerja = $(this).data('pekerja');
-			const tgl = $(this).data('tgl');
-			const ket = $(this).data('ket');
+	<?php if (session('role') == 0) : ?>
 
-			// Set data to Form accept
-			$('#acc-izin').val(idIzin);
-			$('#acc-nomor').val(noKomp);
-			$('#acc-reqs').val(reqs);
-			$('#Accept #TerimaNama').val(nama);
-			if (reqs == "Masuk") {
-				$("#Accept #TerimaReqs").html(`<?= $masukSpan ?> ${reqs}</span>`);
-			} else {
-				$("#Accept #TerimaReqs").html(`<?= $keluarSpan ?> ${reqs}</span>`);
-			}
-			$('#Accept #TerimaUbahStok').val(stok);
-			$('#Accept #TerimaPekerja').val(pekerja);
-			$('#Accept #TerimaTgl').val(tgl);
-			$('#Accept #TerimaKet').val(ket);
-		});
+		function listKomplain() {
+			$.ajax({
+				url: '<?= base_url('Admin/ShowKomplain'); ?>',
+				beforeSend: function(f) {
+					$('#Komplain_AJAX').html(sloading);
+				},
+				success: function(data) {
+					$('#Komplain_AJAX').html(data);
+					$('#table_komplain').DataTable({
+						scrollY: '100vh',
+						scrollCollapse: true,
+						paging: false,
+						"order": [
+							[0, "desc"]
+						]
+					});
+					PreviewKomplainImage();
+				}
+			});
+		}
 
-		// get Decline Komplain 
-		$('.btn-rjc-item').on('click', function() {
-			// perizinan absensi
-			var idIzin = $(this).data('idizin');
-			// get data from button accept
-			const noKomp = $(this).data('no');
-			//perzinaan
-			const reqs = $(this).data('reqs');
-			const nama = $(this).data('nama');
-			const stok = $(this).data('stok');
-			const pekerja = $(this).data('pekerja');
-			const tgl = $(this).data('tgl');
-			const ket = $(this).data('ket');
+		function listArsipKomplain() {
+			$.ajax({
+				url: '<?= base_url('Admin/ShowKomplainArsip'); ?>',
+				beforeSend: function(f) {
+					$('#KomplainArsip_AJAX').html(sloading);
+				},
+				success: function(data) {
+					$('#KomplainArsip_AJAX').html(data);
+					$('#table_komplainArsip').DataTable({
+						scrollY: '100vh',
+						scrollCollapse: true,
+						paging: false,
+						"order": [
+							[0, "desc"]
+						]
+					});
+					PreviewKomplainImage();
+				}
+			});
+		}
 
-			// Set data to Form decline
-			$('#dec-izin').val(idIzin);
-			$('#dec-nomor').val(noKomp);
-			$('#dec-reqs').val(reqs);
-			$('#Rejected #TolakNama').text(nama);
-			if (reqs == "Masuk") {
-				$("#Rejected #TolakReqs").html(`<?= $masukSpan ?> ${reqs}</span>`);
-			} else {
-				$("#Rejected #TolakReqs").html(`<?= $keluarSpan ?> ${reqs}</span>`);
-			}
-			$('#Rejected #TolakUbahStok').text(stok);
-			$('#Rejected #TolakPekerja').val(pekerja);
-			$('#Rejected #TolakTgl').val(tgl);
-			$('#Rejected #TolakKet').val(ket);
-		});
+		// .......................... Form Komplain ..........................
 
-	});
-
-	function PreviewKomplainImage() {
-		// get Bukti Image
-		$('.btn-img-item').on('click', function() {
-			// get img from tabel
-			const img = $(this).data('img');
-
-			// Set img to modal
-			$('#gambarBukti img').attr('src', img);
-			$('#Komplain_Modal').modal('hide');
-		});
-	}
-
-	function listKomplain() {
-		$.ajax({
-			url: '<?= base_url('Admin/ShowKomplain'); ?>',
-			beforeSend: function(f) {
-				$('#Komplain_AJAX').html(sloading);
-			},
-			success: function(data) {
-				$('#Komplain_AJAX').html(data);
-				$('#table_komplain').DataTable({
-					scrollY: '100vh',
-					scrollCollapse: true,
-					paging: false
-				});
-				PreviewKomplainImage();
-			}
-		});
-	}
-
-	function listArsipKomplain() {
-		$.ajax({
-			url: '<?= base_url('Admin/ShowKomplainArsip'); ?>',
-			beforeSend: function(f) {
-				$('#KomplainArsip_AJAX').html(sloading);
-			},
-			success: function(data) {
-				$('#KomplainArsip_AJAX').html(data);
-				$('#table_komplainArsip').DataTable({
-					scrollY: '100vh',
-					scrollCollapse: true,
-					paging: false
-				});
-				PreviewKomplainImage();
-			}
-		});
-	}
-
-	function DetailArsipKomplain(uid) {
-		$('#Komplain_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/DetailArsipKomplain_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
-				$('#Komplain_Modal #Komplain_Header').addClass("bg-nanas");
-				$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-archive"></i>  Detail Arsip Keluhan');
-			},
-			success: function(data) {
-				$('#Komplain_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetUidArsipKomplain'); ?>',
-					data: {
-						"id_arsipKomp": uid
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						var parsed = JSON.parse(JSON.stringify(data));
-						$('[name="id_komplain"]').val(data[0].id_arsipKomp);
-						$('[name="no_komplain"]').val(data[0].no_arsipKomp);
-						$('[name="nama_komplain"]').val(data[0].nama);
-						$('[name="isi_komplain"]').val(data[0].isi_arsipKomp);
-						$('[name="email_komplain"]').val(data[0].email_arsipKomp);
-						$('[name="judul_komplain"]').val(data[0].judul_arsipKomp);
-						$('[name="waktu_komplain"]').val(data[0].waktu_arsipKomp);
-						$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_arsipKomp + "");
-						$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_arsipKomp + "");
-						PreviewKomplainImage();
-						$.ajax({
-							url: '<?= base_url('Admin/GetAdminArsipKomplain'); ?>',
-							data: {
-								"id_arsipKomp": uid
-							},
-							type: "POST",
-							dataType: "JSON",
-							success: function(data) {
-								$('[name="admin_komplain"]').val(data[0].nama); //admin
-								$('[name="waktuAdmin_komplain"]').val(data[0].commented_at);
-								$('[name="admin_komplain"]').val(data[0].nama);
-								if (data[0].status_arsipKomp == "accepted") {
-									$('#statusVerifAdmin').html('<span class=" py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>');
-								} else if (data[0].status_arsipKomp == "rejected") {
-									$('#statusVerifAdmin').html('<span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>');
-								} else {
-									console.log('error admin status view');
+		function DetailArsipKomplain(uid) {
+			$('#Komplain_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Admin/DetailArsipKomplain_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
+					$('#Komplain_Modal #Komplain_Header').addClass("bg-nanas");
+					$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-archive"></i>  Detail Arsip Keluhan');
+				},
+				success: function(data) {
+					$('#Komplain_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Admin/GetUidArsipKomplain'); ?>',
+						data: {
+							"id_arsipKomp": uid
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							var parsed = JSON.parse(JSON.stringify(data));
+							$('[name="id_komplain"]').val(data[0].id_arsipKomp);
+							$('[name="no_komplain"]').val(data[0].no_arsipKomp);
+							$('[name="nama_komplain"]').val(data[0].nama);
+							$('[name="waktuPekerja_komplain"]').val(data[0].waktu_arsipKomp);
+							$('[name="isi_komplain"]').val(data[0].isi_arsipKomp);
+							$('[name="email_komplain"]').val(data[0].email_arsipKomp);
+							$('[name="judul_komplain"]').val(data[0].judul_arsipKomp);
+							$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_arsipKomp + "");
+							$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_arsipKomp + "");
+							PreviewKomplainImage();
+							$.ajax({
+								url: '<?= base_url('Admin/GetAdminArsipKomplain'); ?>',
+								data: {
+									"id_arsipKomp": uid
+								},
+								type: "POST",
+								dataType: "JSON",
+								success: function(data) {
+									$('[name="admin_komplain"]').val(data[0].nama); //admin
+									$('[name="waktuAdmin_komplain"]').val(data[0].commented_at);
+									$('[name="admin_komplain"]').val(data[0].nama);
+									if (data[0].status_arsipKomp == "accepted") {
+										$('#statusVerifAdmin').html('<span class=" py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>DITERIMA</span>');
+									} else if (data[0].status_arsipKomp == "rejected") {
+										$('#statusVerifAdmin').html('<span class="py-2 badge badge-danger" style="font-weight: 500;font-size: 11px;"><i class="fas fa-times fa-fw mr-1"></i>DITOLAK </span>');
+									} else {
+										console.log('error admin status view');
+									}
+									$('[name="adminkomen_komplain"]').val(data[0].comment_arsipKomp);
+								},
+								error: function(data) {
+									alert(' Operasi JOIN Show Admin AJAX Gagal :(');
 								}
-								$('[name="adminkomen_komplain"]').val(data[0].comment_arsipKomp);
-							},
-							error: function(data) {
-								alert(' Operasi JOIN Show Admin AJAX Gagal :(');
-							}
-						});
-					},
-					error: function(data) {
-						alert(' Operasi Detail Arsip AJAX Gagal :(');
-					}
-				});
-			},
-			error: function(data) {
-				alert(' Operasi AJAX Gagal :(');
-			}
-		});
-	}
+							});
+						},
+						error: function(data) {
+							alert(' Operasi Detail Arsip AJAX Gagal :(');
+						}
+					});
+				},
+				error: function(data) {
+					alert(' Operasi AJAX Gagal :(');
+				}
+			});
+		}
 
-	function AcceptKomplain(id) {
-		$('#Komplain_Modal').modal('show');
+		function AcceptKomplain(id) {
+			$('#Komplain_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Admin/AcceptKomplain_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
+					$('#Komplain_Modal #Komplain_Header').addClass("bg-softgreen");
+					$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Keluhan');
+				},
+				success: function(data) {
+					$('#Komplain_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Admin/GetIDKomplain'); ?>',
+						data: {
+							"id_komplain": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							var parsed = JSON.parse(JSON.stringify(data));
+							$('[name="id_komplain"]').val(data[0].id_komplain);
+							$('[name="no_komplain"]').val(data[0].no_komplain);
+							$('[name="nama_komplain"]').val(data[0].nama);
+							$('[name="waktuPekerja_komplain"]').val(data[0].waktu_komplain);
+							$('[name="isi_komplain"]').val(data[0].isi_komplain);
+							$('[name="email_komplain"]').val(data[0].email_komplain);
+							$('[name="judul_komplain"]').val(data[0].judul_komplain);
+							$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
+							$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
+							PreviewKomplainImage();
+						}
+					});
+				},
+				error: function(data) {
+					alert(' Operasi AJAX Gagal :(');
+				}
+			});
+		}
+
+		function DeclineKomplain(id) {
+			$('#Komplain_Modal').modal('show');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('Admin/DeclineKomplain_Form'); ?>",
+				beforeSend: function(data) {
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
+					$('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
+					$('#Komplain_Modal #Komplain_Header').addClass("bg-kingucrimson");
+					$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-window-close"></i>  Tolak Keluhan');
+				},
+				success: function(data) {
+					$('#Komplain_Form').html(data);
+					$.ajax({
+						url: '<?= base_url('Admin/GetIDKomplain'); ?>',
+						data: {
+							"id_komplain": id
+						},
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							var parsed = JSON.parse(JSON.stringify(data));
+							$('[name="id_komplain"]').val(data[0].id_komplain);
+							$('[name="no_komplain"]').val(data[0].no_komplain);
+							$('[name="nama_komplain"]').val(data[0].nama);
+							$('[name="waktuPekerja_komplain"]').val(data[0].waktu_komplain);
+							$('[name="isi_komplain"]').val(data[0].isi_komplain);
+							$('[name="email_komplain"]').val(data[0].email_komplain);
+							$('[name="judul_komplain"]').val(data[0].judul_komplain);
+							$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
+							$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
+							PreviewKomplainImage();
+						}
+					});
+				},
+				error: function(data) {
+					alert(' Operasi AJAX Gagal :(');
+				}
+			});
+		}
+
+		// ..........................Aksi Komplain..........................
+		$("#Komplain_Form").submit('click', function() {
+			// e.preventDefault(); tidak berhasil
+			$('#Komplain_Modal').modal('hide');
+			let KomplainUrl = "<?= base_url('Admin/arsipKomplain'); ?>";
+			$.ajax({
+				url: KomplainUrl,
+				type: "POST",
+				data: $('#Komplain_Form').serialize(),
+				success: function(data) {
+					$('#Komplain_Form').html(' ');
+					listKomplain();
+					listArsipKomplain();
+				},
+				error: function(data) {
+					alert('Operasi Ajax Gagal :(');
+				}
+			});
+			return false;
+		})
+
+		// .......................... Custom Function Komplain ..........................
+
+		function PreviewKomplainImage() {
+			// get Bukti Image
+			$('.btn-img-item').on('click', function() {
+				// get img from tabel
+				const img = $(this).data('img');
+
+				// Set img to modal
+				$('#gambarBukti img').attr('src', img);
+				$('#Komplain_Modal').modal('hide');
+			});
+		}
+	<?php endif; ?>
+</script>
+
+<!-------------------------------------------------- Catch for Pengaduan -------------------------------------------------->
+<script>
+	function PengaduanForm() {
+		// $('#Komplain_Modal').modal('show');
 		$.ajax({
 			type: "POST",
-			url: "<?= base_url('Admin/AcceptKomplain_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
-				$('#Komplain_Modal #Komplain_Header').addClass("bg-softgreen");
-				$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Keluhan');
-			},
+			url: "<?= base_url('Menu/PengaduanForm'); ?>",
 			success: function(data) {
-				$('#Komplain_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetIDKomplain'); ?>',
-					data: {
-						"id_komplain": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						var parsed = JSON.parse(JSON.stringify(data));
-						$('[name="id_komplain"]').val(data[0].id_komplain);
-						$('[name="no_komplain"]').val(data[0].no_komplain);
-						$('[name="nama_komplain"]').val(data[0].nama);
-						$('[name="isi_komplain"]').val(data[0].isi_komplain);
-						$('[name="email_komplain"]').val(data[0].email_komplain);
-						$('[name="judul_komplain"]').val(data[0].judul_komplain);
-						$('[name="waktu_komplain"]').val(data[0].waktu_komplain);
-						$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
-						$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
-						PreviewKomplainImage();
-					}
-				});
+				$('#Pengaduan_Form').html(data);
 			},
 			error: function(data) {
 				alert(' Operasi AJAX Gagal :(');
 			}
 		});
 	}
-
-	function DeclineKomplain(id) {
-		$('#Komplain_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/DeclineKomplain_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
-				$('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
-				$('#Komplain_Modal #Komplain_Header').addClass("bg-kingucrimson");
-				$('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-window-close"></i>  Tolak Keluhan');
-			},
-			success: function(data) {
-				$('#Komplain_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetIDKomplain'); ?>',
-					data: {
-						"id_komplain": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						var parsed = JSON.parse(JSON.stringify(data));
-						$('[name="id_komplain"]').val(data[0].id_komplain);
-						$('[name="no_komplain"]').val(data[0].no_komplain);
-						$('[name="nama_komplain"]').val(data[0].nama);
-						$('[name="isi_komplain"]').val(data[0].isi_komplain);
-						$('[name="email_komplain"]').val(data[0].email_komplain);
-						$('[name="judul_komplain"]').val(data[0].judul_komplain);
-						$('[name="waktu_komplain"]').val(data[0].waktu_komplain);
-						$("#Komplain_Image").attr("src", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
-						$("#Komplain_SRCIMG").attr("data-img", "<?= base_url('../img/komplain'); ?>/" + data[0].foto_komplain + "");
-						PreviewKomplainImage();
-					}
-				});
-			},
-			error: function(data) {
-				alert(' Operasi AJAX Gagal :(');
-			}
-		});
-	}
-
-
-	// Aksi perizinan
-	$("#Komplain_Form").submit('click', function() {
+	// ..........................Aksi Pengaduan..........................
+	$("#Pengaduan_Form").submit('click', function() {
 		// e.preventDefault(); tidak berhasil
-		$('#Komplain_Modal').modal('hide');
-		let KomplainUrl = "<?= base_url('Admin/arsipKomplain'); ?>";
 		$.ajax({
-			url: KomplainUrl,
+			url: "<?= base_url('Menu/adukan'); ?>",
 			type: "POST",
-			data: $('#Komplain_Form').serialize(),
+			data: $('#Pengaduan_Form').serialize(),
 			success: function(data) {
-				$('#Komplain_Form').html(' ');
-				listKomplain();
-				listArsipKomplain();
+				console.log(data);
+				// $('#Pengaduan_Form').html(' ');
 			},
 			error: function(data) {
 				alert('Operasi Ajax Gagal :(');
@@ -1303,6 +1283,7 @@
 		return false;
 	})
 </script>
+
 
 
 <!-------------------------------------------------- Catch for profile edit -------------------------------------------------->

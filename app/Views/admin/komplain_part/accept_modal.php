@@ -8,6 +8,10 @@
             <label for="Nama"><strong><i class="fas fa-fw fa-user"></i> Nama Pekerja</strong></label>
             <input type="text" class="form-control" id="Nama" name="nama_komplain" readonly>
         </div>
+        <div class="form-group">
+            <label for="waktuPekerjaKomplain"><strong><i class="fas fa-fw fa-calendar-alt"></i> Waktu Pengaduan</strong></label>
+            <input type="text" name="waktuPekerja_komplain" readonly class="form-control" id="waktuPekerjaKomplain">
+        </div>
         <hr>
         <div class="form-group">
             <label for="Room"><strong><i class="fas fa-fw fa-hashtag"></i> Perihal Keluhan</strong></label>
