@@ -43,95 +43,115 @@
 						<div class="row">
 							<div class="col">
 								<?php if (session('role') == 0) : ?>
-									<table style="font-size: 14px; width:100%;" border="1">
-										<thead>
-											<tr>
-												<th>Waktu</th>
-												<th>Pekerja</th>
-												<th>Barang</th>
-												<th>Request</th>
-												<th>Stok</th>
-												<th>Status</th>
-												<th>Keterangan</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php foreach ($log_item as $log) : ?>
-												<tr>
-													<td><?= $log['tgl']; ?></td>
-													<td><?= $log['nama']; ?></td>
-													<td><?= $log['nama_item']; ?></td>
-													<td>
-														<?php if ($log['request'] == "Masuk") : ?>
-															<?= $log['request']; ?>
-														<?php else : ?>
-															<?= $log['request']; ?>
-														<?php endif; ?>
-													</td>
-													<td style="width: 75px;">
-														<?= $log['ubah_stok']; ?>
-													</td>
-													<td>
-														<?php
-														if ($log['status'] == 'Diterima') {
-															echo "DITERIMA";
-														} elseif ($log['status'] == 'Ditolak') {
-															echo "DITOLAK";
-														} else {
-															echo "PROSES";
-														}
-														?>
-													</td>
-													<td><?= $log['ket']; ?></td>
-												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-									<!-- for pekerja -->
+									<?php foreach ($log_item as $log) : ?>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['tgl']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['nama']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['nama_item']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
+														<div class="alert alert-secondary" role="alert">
+															<?php if ($log['request'] == "Masuk") : ?>
+																<?= $log['request']; ?>
+															<?php else : ?>
+																<?= $log['request']; ?>
+															<?php endif; ?>
+														</div>
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['ubah_stok']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
+														<div class="alert alert-secondary" role="alert">
+															<?php
+															if ($log['status'] == 'Diterima') {
+																echo "DITERIMA";
+															} elseif ($log['status'] == 'Ditolak') {
+																echo "DITOLAK";
+															} else {
+																echo "PROSES";
+															}
+															?>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
+														<div class="alert alert-secondary" role="alert" style="height: 150px;"><?= $log['ket']; ?></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<?php endforeach; ?>
 								<?php else : ?>
-									<table style="font-size: 14px; width:100%;" border="1">
-										<thead>
-											<tr>
-												<th>Waktu</th>
-												<th>Pekerja</th>
-												<th>Barang</th>
-												<th>Request</th>
-												<th>Stok</th>
-												<th>Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php foreach ($log_item as $log) : ?>
-												<tr>
-													<td><?= $log['tgl']; ?></td>
-													<td><?= $log['nama']; ?></td>
-													<td><?= $log['nama_item']; ?></td>
-													<td>
-														<?php if ($log['request'] == "Masuk") : ?>
-															<?= $log['request']; ?>
-														<?php else : ?>
-															<?= $log['request']; ?>
-														<?php endif; ?>
-													</td>
-													<td style="width: 75px;">
-														<?= $log['ubah_stok']; ?>
-													</td>
-													<td>
-														<?php
-														if ($log['status'] == 'Diterima') {
-															echo "DITERIMA";
-														} elseif ($log['status'] == 'Ditolak') {
-															echo "DITOLAK";
-														} else {
-															echo "PENDING";
-														}
-														?>
-													</td>
-													<td><?= $log['ket']; ?></td>
-												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
+									<?php foreach ($log_item as $log) : ?>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt"></i> Waktu</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['tgl']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-users"></i> Pekerja</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['nama']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-box"></i> Barang</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['nama_item']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-exchange-alt"></i> Request</label>
+														<div class="alert alert-secondary" role="alert">
+															<?php if ($log['request'] == "Masuk") : ?>
+																<?= $log['request']; ?>
+															<?php else : ?>
+																<?= $log['request']; ?>
+															<?php endif; ?>
+														</div>
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-dolly-flatbed"></i> Stok</label>
+														<div class="alert alert-secondary" role="alert"><?= $log['ubah_stok']; ?></div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-tags"></i> Status</label>
+														<div class="alert alert-secondary" role="alert">
+															<?php
+															if ($log['status'] == 'Diterima') {
+																echo "DITERIMA";
+															} elseif ($log['status'] == 'Ditolak') {
+																echo "DITOLAK";
+															} else {
+																echo "PROSES";
+															}
+															?>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="waktu_izin" class="font-weight-bold"><i class="fas fa-fw fa-file-signature"></i> Keterangan</label>
+														<div class="alert alert-secondary" role="alert" style="height: 150px;"><?= $log['ket']; ?></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<?php endforeach; ?>
 								<?php endif; ?>
 							</div>
 						</div>
