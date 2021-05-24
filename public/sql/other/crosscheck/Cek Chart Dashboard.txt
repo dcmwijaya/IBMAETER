@@ -58,18 +58,13 @@ UNION ALL
 SELECT penyimpanan AS Room, SUM(harga) AS HargaA_G FROM item WHERE penyimpanan = "G"
 GROUP BY penyimpanan;
 
-//Untuk cek income stok
-SELECT ubah_stok AS Acc_Stok_Income FROM alur_barang WHERE request = "Masuk" AND status = "Diterima"
-GROUP BY ubah_stok;
+//Untuk cek income-outcome stok
+SELECT request, ubah_stok AS Acc_Stok FROM alur_barang WHERE ubah_stok AND status = "Diterima" AND request = "Masuk"
+UNION ALL
+SELECT request, ubah_stok AS Acc_Stok FROM alur_barang WHERE ubah_stok AND status = "Diterima" AND request = "Keluar";
 
-//Untuk cek outcome stok
-SELECT ubah_stok AS Acc_Stok_Outcome FROM alur_barang WHERE request = "Keluar" AND status = "Diterima"
-GROUP BY ubah_stok;
-
-//Untuk cek gender male
-SELECT COUNT(gender) AS Jml_Pria FROM user WHERE gender = "Male"
-GROUP BY gender;
-
-//Untuk cek gender female
-SELECT COUNT(gender) AS Jml_Wanita FROM user WHERE gender = "Female"
+//Untuk cek gender male dan female
+SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Male"
+UNION ALL
+SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Female"
 GROUP BY gender;

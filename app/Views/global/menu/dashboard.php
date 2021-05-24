@@ -231,11 +231,7 @@ if (!empty($otc)) {
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/highcharts-3d.js"></script>
 
 <!--Main layout-->
 <main class="bg-dark">
@@ -322,21 +318,22 @@ if (!empty($otc)) {
 								<i class="fas fa-dolly-flatbed fa-fw me-1"></i>Category Item
 							</div>
 							<div class="card-body content-dashboard">
-								<div id="ChartPie" class="container-chart1"></div>
+								<div id="SCircle" class="container-chart1"></div>
 							</div>
 							<script>
-								Highcharts.chart('ChartPie', {
+								Highcharts.chart('SCircle', {
 									chart: {
 										plotBackgroundColor: null,
-										plotBorderWidth: null,
-										plotShadow: false,
-										type: 'pie'
+										plotBorderWidth: 0,
+										plotShadow: false
 									},
 									title: {
-										text: ''
+										text: '',
 									},
 									tooltip: {
-										pointFormat: '{series.name}: <b>{point.y}</b>'
+										headerFormat: '',
+										pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+											'Total: <b>{point.y}</b><br/>'
 									},
 									accessibility: {
 										point: {
@@ -350,32 +347,19 @@ if (!empty($otc)) {
 											dataLabels: {
 												enabled: false
 											},
-											showInLegend: true
+											showInLegend: true,
+											size: '118%'
 										}
 									},
 									series: [{
-										name: 'Total',
-										colorByPoint: true,
-										data: [{
-												name: 'Cair',
-												y: <?= json_encode($sct1); ?>
-											},
-											{
-												name: 'Minyak',
-												y: <?= json_encode($sct2); ?>
-											},
-											{
-												name: 'Mudah Terbakar',
-												y: <?= json_encode($sct3); ?>
-											},
-											{
-												name: 'Padat',
-												y: <?= json_encode($sct4); ?>
-											},
-											{
-												name: 'Daging',
-												y: <?= json_encode($sct5); ?>
-											}
+										type: 'pie',
+										innerSize: '50%',
+										data: [
+											['Cair', <?= json_encode($sct1); ?>],
+											['Minyak', <?= json_encode($sct2); ?>],
+											['Mudah Terbakar', <?= json_encode($sct3); ?>],
+											['Padat', <?= json_encode($sct4); ?>],
+											['Daging', <?= json_encode($sct5); ?>]
 										]
 									}]
 								});
@@ -498,21 +482,24 @@ if (!empty($otc)) {
 								<i class="fas fa-laptop-house fa-fw me-1"></i>Gender Employees
 							</div>
 							<div class="card-body content-dashboard">
-								<div id="ChartDonuts" class="container-chart4"></div>
+								<div id="ChartPie" class="container-chart4"></div>
 							</div>
 							<script>
-								Highcharts.chart('ChartDonuts', {
+								Highcharts.chart('ChartPie', {
 									chart: {
-										type: 'pie',
-										options3d: {
-											enabled: true,
-											alpha: 45
-										}
+										plotBackgroundColor: null,
+										plotBorderWidth: null,
+										plotShadow: false,
+										type: 'pie'
 									},
 									plotOptions: {
 										pie: {
-											innerSize: 100,
-											depth: 45
+											allowPointSelect: true,
+											cursor: 'pointer',
+											dataLabels: {
+												enabled: false
+											},
+											showInLegend: true
 										}
 									},
 									title: {
@@ -524,9 +511,6 @@ if (!empty($otc)) {
 											'Total: <b>{point.y}</b><br/>'
 									},
 									series: [{
-										minPointSize: 10,
-										innerSize: '50%',
-										zMin: 0,
 										name: 'Total Gender',
 										data: [{
 											name: 'Female',

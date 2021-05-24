@@ -61,7 +61,7 @@ class Log_Model extends Model
 
     public function stockOutcome()
     {
-        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function countIncome()
@@ -71,7 +71,7 @@ class Log_Model extends Model
 
     public function countOutcome()
     {
-        return $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function sumIncome()
@@ -81,7 +81,7 @@ class Log_Model extends Model
 
     public function sumOutcome()
     {
-        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function NotaItem($id)
