@@ -317,7 +317,7 @@ if (!empty($otc)) {
 							<div class="card-header title-card-1">
 								<i class="fas fa-dolly-flatbed fa-fw me-1"></i>Category Item
 							</div>
-							<div class="card-body content-dashboard">
+							<div class="row card-body content-dashboard">
 								<div id="SCircle" class="container-chart1"></div>
 							</div>
 							<script>
@@ -369,7 +369,7 @@ if (!empty($otc)) {
 							<div class="card-header title-card-1">
 								<i class="fas fa-cubes fa-fw me-1"></i>Inventory Room
 							</div>
-							<div class="card-body content-dashboard">
+							<div class="row card-body content-dashboard">
 								<div id="ChartBar" class="container-chart2"></div>
 							</div>
 							<script>
@@ -439,7 +439,7 @@ if (!empty($otc)) {
 								<i class="fas fa-exchange-alt fa-fw me-1"></i>Inventory Stock In-Out
 							</div>
 
-							<div class="card-body content-dashboard">
+							<div class="row card-body content-dashboard">
 								<div id="ChartLine" class="container-chart3"></div>
 							</div>
 							<script>
@@ -481,7 +481,7 @@ if (!empty($otc)) {
 							<div class="card-header title-card-2">
 								<i class="fas fa-laptop-house fa-fw me-1"></i>Gender Employees
 							</div>
-							<div class="card-body content-dashboard">
+							<div class="row card-body content-dashboard">
 								<div id="ChartPie" class="container-chart4"></div>
 							</div>
 							<script>
