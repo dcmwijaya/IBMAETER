@@ -16,7 +16,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>PENGADUAN</strong>
+						<strong><i class="fas fa-fw fa-balance-scale"></i> PENGADUAN</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1 bg-light">
@@ -27,7 +27,7 @@
 
 								</form>
 							</div>
-							<img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1">
+							<!-- <img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1"> -->
 						</div>
 					</div>
 				</div>

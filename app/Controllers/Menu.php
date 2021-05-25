@@ -936,8 +936,8 @@ class Menu extends BaseController
 				'foto_komplain' => $namaFoto,
 				'waktu_komplain' => date("Y-m-d h:i:sa")
 			];
-			var_dump($data);
-			die;
+			// var_dump($data);
+			// die;
 
 
 			$this->komplainModel->insert($data);

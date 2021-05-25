@@ -44,6 +44,6 @@
 <div class="modal-footer">
     <input type="hidden" name="detail_item" id="detail_item">
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
-    <input type="hidden" name="notaSpesifikasi" id="notaSpesifikasi">
-    <button type="submit" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</button>
+    <!-- <input type="hidden" name="notaSpesifikasi" id="notaSpesifikasi"> -->
+    <button type="submit" class="btn btn-success" id="detail_nota" onclick=""><i class="fas fa-fw fa-print"></i> Print</button>
 </div>
