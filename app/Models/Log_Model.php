@@ -56,12 +56,12 @@ class Log_Model extends Model
 
     public function stockIncome()
     {
-        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('*')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function stockOutcome()
     {
-        return $this->db->table('alur_barang')->select('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
+        return $this->db->table('alur_barang')->select('*')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
 
     public function countIncome()
