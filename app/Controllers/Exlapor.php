@@ -62,7 +62,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL USER | INVENBAR",
+					"title" => "EXCEL USER | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					"us" => $this->adminModel->countUser()
 				];
@@ -83,7 +83,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC USER | INVENBAR",
+					"title" => "DOC USER | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					"us" => $this->adminModel->countUser()
 				];
@@ -104,7 +104,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF USER | INVENBAR",
+					"title" => "PDF USER | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					"us" => $this->adminModel->countUser()
 				];
@@ -131,7 +131,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL KOMPLAIN | INVENBAR",
+					"title" => "EXCEL KOMPLAIN | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
 				];
@@ -152,7 +152,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC KOMPLAIN | INVENBAR",
+					"title" => "DOC KOMPLAIN | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
 				];
@@ -173,7 +173,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF KOMPLAIN | INVENBAR",
+					"title" => "PDF KOMPLAIN | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain(),
 				];
@@ -200,7 +200,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL ABSENSI | INVENBAR",
+					"title" => "EXCEL ABSENSI | IBMAETER",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
 					"countPresent" => $this->absensiModel->countPresent(),
@@ -225,7 +225,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC ABSENSI | INVENBAR",
+					"title" => "DOC ABSENSI | IBMAETER",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
 					"countPresent" => $this->absensiModel->countPresent(),
@@ -250,7 +250,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF ABSENSI | INVENBAR",
+					"title" => "PDF ABSENSI | IBMAETER",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
 					"countPresent" => $this->absensiModel->countPresent(),
@@ -281,7 +281,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL AKTIVITAS | INVENBAR",
+					"title" => "EXCEL AKTIVITAS | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
@@ -302,7 +302,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC AKTIVITAS | INVENBAR",
+					"title" => "DOC AKTIVITAS | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
@@ -323,7 +323,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF AKTIVITAS | INVENBAR",
+					"title" => "PDF AKTIVITAS | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
@@ -350,7 +350,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "EXCEL PERIZINAN | INVENBAR",
+					"title" => "EXCEL PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -372,7 +372,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "DOC PERIZINAN | INVENBAR",
+					"title" => "DOC PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -394,7 +394,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF PERIZINAN | INVENBAR",
+					"title" => "PDF PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -422,7 +422,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF USER | INVENBAR",
+					"title" => "PDF USER | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					"us" => $this->adminModel->countUser()
 				];
@@ -442,7 +442,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF KOMPLAIN | INVENBAR",
+					"title" => "PDF KOMPLAIN | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'komplain' => $this->komplainModel->getKomplain()
 				];
@@ -463,7 +463,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF AKTIVITAS | INVENBAR",
+					"title" => "PDF AKTIVITAS | IBMAETER",
 					"user" => $this->adminModel->getUser(),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
@@ -484,7 +484,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF Absensi | INVENBAR",
+					"title" => "PDF Absensi | IBMAETER",
 					'user' => $this->userModel->getUserId(session('uid')),
 					"absensi" => $this->absensiModel->getAbsen(),
 					"countPresent" => $this->absensiModel->countPresent(),
@@ -509,7 +509,7 @@ class Exlapor extends BaseController
 			// jika user merupakan Admin
 			if (session('role') == 0) {
 				$data = [
-					"title" => "PDF PERIZINAN | INVENBAR",
+					"title" => "PDF PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem()
 				];
 
@@ -531,7 +531,7 @@ class Exlapor extends BaseController
 				$id = $this->request->getPost('notaIzin');
 
 				$data = [
-					"title" => "NOTA PERIZINAN | INVENBAR",
+					"title" => "NOTA PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->NotaItem($id)
 				];
 
@@ -553,7 +553,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Excel BARANG | INVENBAR",
+				"title" => "Excel BARANG | IBMAETER",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -567,7 +567,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC BARANG | INVENBAR",
+				"title" => "DOC BARANG | IBMAETER",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -581,7 +581,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF BARANG | INVENBAR",
+				"title" => "PDF BARANG | IBMAETER",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -601,7 +601,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "EXCEL SPESIFIKASI | INVENBAR",
+				"title" => "EXCEL SPESIFIKASI | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier()
@@ -617,7 +617,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC SPESIFIKASI | INVENBAR",
+				"title" => "DOC SPESIFIKASI | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier()
@@ -633,7 +633,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF SPESIFIKASI | INVENBAR",
+				"title" => "PDF SPESIFIKASI | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier()
@@ -655,7 +655,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "EXCEL STATUS PERIZINAN | INVENBAR",
+				"title" => "EXCEL STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -671,7 +671,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "DOC STATUS PERIZINAN | INVENBAR",
+				"title" => "DOC STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -687,7 +687,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF STATUS PERIZINAN | INVENBAR",
+				"title" => "PDF STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain()
@@ -709,7 +709,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF BARANG | INVENBAR",
+				"title" => "PDF BARANG | IBMAETER",
 				"item" => $this->barangModel->getItems()
 			];
 
@@ -723,7 +723,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF SPESIFIKASI | INVENBAR",
+				"title" => "PDF SPESIFIKASI | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier()
@@ -739,7 +739,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF STATUS PERIZINAN | INVENBAR",
+				"title" => "PDF STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem()
 			];
 
@@ -753,7 +753,7 @@ class Exlapor extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "PDF DETAIL LAPORAN BULANAN | INVENBAR",
+				"title" => "PDF DETAIL LAPORAN BULANAN | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier(),
@@ -796,7 +796,7 @@ class Exlapor extends BaseController
 			$id = $this->request->getPost('notaSpesifikasi');
 
 			$data = [
-				"title" => "NOTA DETAIL SPESIFIKASI | INVENBAR",
+				"title" => "NOTA DETAIL SPESIFIKASI | IBMAETER",
 				"spec" => $this->barangModel->notaDetail($id),
 			];
 

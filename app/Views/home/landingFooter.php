@@ -19,18 +19,18 @@ $pesan = "" . $mail . "?view=cm&fs=1&tf=1&to=" . $emailtujuan . "&subject?&su=" 
             <div class="row">
 
                 <div class="f1-content col-lg-3 col-md-6 footer-contact">
-                    <h3>INVENBAR</h3>
+                    <h3>IBMAETER</h3>
                     <p>
-                        Website Inventaris Barang Gudang<br><br>
+                        Inventaris Barang Gudang dan Manajemen Pekerja Terpadu<br><br>
                         <strong>Phone:</strong> (+62)838-3747-1292<br>
-                        <strong>Email:</strong> invenbar@invweb.ac.id<br>
+                        <strong>Email:</strong> ibmaeter@ibweb.ac.id<br>
                     </p>
                 </div>
                 <hr class="line">
                 <div class="f2-content f-kolom col-lg-3 col-md-6 footer-links">
                     <h4>NETWORK</h4>
                     <ul>
-                        <li><a href="<?= base_url("home/InfoHome"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Invenbar Info</a></li>
+                        <li><a href="<?= base_url("home/InfoHome"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Ibmaeter Info</a></li>
                         <li><a href="<?= base_url("home/Partnership"); ?>"><i class="fas fa-caret-right fa-fw me-1" style="color: #001158;"></i>Partnership</a></li>
                     </ul>
                 </div>
@@ -61,10 +61,10 @@ $pesan = "" . $mail . "?view=cm&fs=1&tf=1&to=" . $emailtujuan . "&subject?&su=" 
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; 2021 <strong><span>Invenbar</span></strong>. All Rights Reserved
+            &copy; 2021 <strong><span>Ibmaeter</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <strong>kelompok-5</strong>
+            Designed by <strong>Ibmaeter Production</strong>
         </div>
     </div>
 

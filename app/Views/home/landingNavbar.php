@@ -7,7 +7,7 @@
                <!-- Navbar brand -->
                <a class="navbar-brand">
                    <img class="mr-3 d-inline-block align-top" src="<?= base_url('../img/icon/favicon-32x32.png') ?>" width="30" height="30" alt="Logo Brand">
-                   INVENBAR
+                   IBMAETER
                </a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                    <i class="fas fa-fw fa-bars"></i>

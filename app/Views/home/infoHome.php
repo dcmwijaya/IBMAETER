@@ -11,15 +11,15 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="custom-header header-wrapper text-center">
-						<h3>INVENBAR INFO</h3>
+						<h3>IBMAETER INFO</h3>
 					</div>
 					<hr class="solid"><br>
 				</div>
 			</div>
 			<div class="info-card card mb-3 bg-light">
-				<div class="row no-gutters">
+				<div class="row no-gutters info-wrap">
 					<div class="col-md-5">
-						<img src="<?= base_url("img/home/dashboard.jpg"); ?>" class="card-img" alt="img-1">
+						<img src="<?= base_url("img/home/info.jpg"); ?>" class="card-img img-info" alt="img-1">
 					</div>
 					<div class="col-md-7">
 						<div class="card-body event-description">
@@ -34,9 +34,9 @@
 				</div>
 			</div><br><br>
 			<div class="info-card card mb-3 bg-light">
-				<div class="row no-gutters">
+				<div class="row no-gutters info-wrap">
 					<div class="col-md-5">
-						<img src="<?= base_url("img/home/dashboard.jpg"); ?>" class="card-img" alt="img-1">
+						<img src="<?= base_url("img/home/info.jpg"); ?>" class="card-img img-info" alt="img-1">
 					</div>
 					<div class="col-md-7">
 						<div class="card-body event-description">
@@ -51,9 +51,9 @@
 				</div>
 			</div><br><br>
 			<div class="info-card card mb-3 bg-light">
-				<div class="row no-gutters">
+				<div class="row no-gutters info-wrap">
 					<div class="col-md-5">
-						<img src="<?= base_url("img/home/dashboard.jpg"); ?>" class="card-img" alt="img-1">
+						<img src="<?= base_url("img/home/info.jpg"); ?>" class="card-img img-info" alt="img-1">
 					</div>
 					<div class="col-md-7">
 						<div class="card-body event-description">

@@ -49,7 +49,7 @@
 
 	<footer class="py-5 bg-light mt-auto" style="font-family: 'Roboto';">
 		<div class="container">
-			<p class="m-0 text-center text-dark"><a class="text-dark" type="button" data-toggle="modal" data-target="#TentangModal"><img class="mr-1" src="<?= base_url('img/icon/favicon-32x32.png') ?>" alt=""> Inventory Barang Gudang - Kelompok 5 Framework C 2021</a></p>
+			<p class="m-0 text-center text-dark"><a class="text-dark" type="button" data-toggle="modal" data-target="#TentangModal"><img class="mr-1" src="<?= base_url('img/icon/favicon-32x32.png') ?>" alt=""> Ibmaeter (Inventaris Barang Gudang dan Manajemen Pekerja Terpadu)</a></p>
 		</div>
 	</footer>
 	</div> <!-- END wrapper pembungkus body from sidebar.php-->

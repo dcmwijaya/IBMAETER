@@ -47,7 +47,7 @@ class Auth extends BaseController
             return redirect()->to('/dashboard');
         } else {
             $data = [
-                "title" => "Login | INVENBAR",
+                "title" => "Login | IBMAETER",
                 "validation" => \Config\Services::Validation()
             ];
 

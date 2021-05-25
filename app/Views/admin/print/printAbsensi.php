@@ -51,11 +51,11 @@ foreach ($countPermission as $cp) {
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
-						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-Invenbar"></td>
+						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-IB"></td>
 						<td width="100%" colspan="5" style="text-align: center;">
-							<div style="font-size: 13pt; font-weight: bold;">INVENBAR INDONESIA</div>
-							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
-							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+							<div style="font-size: 13pt; font-weight: bold;">IBMAETER INDONESIA</div>
+							<div style="font-weight: 200;">Website Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : ibmaeter@ibweb.ac.id</div>
 						</td>
 					</tr>
 				</table>
@@ -131,7 +131,7 @@ foreach ($countPermission as $cp) {
 						<td width="70%" colspan="5" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
-								Founder Invenbar,
+								Founder Ibmaeter,
 							</h4>
 						</td>
 					</tr>

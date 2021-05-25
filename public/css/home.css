@@ -24,7 +24,34 @@ body{
 }
 
 .card-img-top{
-  height: 320px;
+  height: 350px;
+  border-radius: 20px;
+}
+
+.c-main{
+  border: 2px grey solid;
+  border-radius: 25px;
+  padding: 5px 5px 5px 5px;
+}
+
+.c-main h4{
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.c-main p{
+  font-size: 15px;
+}
+
+.c-body .img-fluid{
+  height: 200px;    
+  width: 100%;
+  border-radius: 10px;  
+  margin-bottom: 40px;
+}
+
+.card-wrap{
+  margin-bottom: 30px;
 }
 
 .con-article .card{
@@ -58,7 +85,7 @@ body{
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
-  background: rgba(251, 255, 255, 0.76);
+  background-image: linear-gradient(rgb(71, 187, 255), rgb(185, 229, 255));
 }
 
 #footer .footer-top .footer-contact {
@@ -221,6 +248,8 @@ body{
   max-width: 1000px;
   margin:0 auto;
   border-radius: 20px;
+  border: 2px blue solid;
+  padding: 15px 15px 15px 25px;
 }
 
 .info-card .card-title{
@@ -232,9 +261,10 @@ body{
   max-height: 100%;
   width: 1920px;
   height: 260px;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 28px;
+}
+
+.img-info{
+  border-radius: 20px;
 }
 
 .event-description{

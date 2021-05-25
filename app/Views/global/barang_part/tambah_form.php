@@ -74,7 +74,7 @@
             </div>
             <div class="form-group">
                 <label for="tambah_harga"><i class="fas fa-fw fa-money-bill-wave-alt"></i> Harga/item (Rp)</label>
-                <input type="number" class="form-control" id="tambah_harga" placeholder="Tambah berat Barang..." name="harga">
+                <input type="number" class="form-control" id="tambah_harga" placeholder="Tambah harga Barang..." name="harga">
             </div>
             <div class="form-group">
                 <label for="tambah_berat"><i class="fas fa-fw fa-dolly-flatbed"></i> Berat/item (gram)</label>

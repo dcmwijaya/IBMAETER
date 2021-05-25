@@ -18,7 +18,7 @@
                             <div class="info-card mb-3">
                                 <div class="row no-gutters">
                                     <div class="col-md-5 mt-4" id="img-laporanbulanan">
-                                        <img src="<?= base_url('../img/brand2.jpg') ?>" class="card-img-top" alt="judul pengumuman" style="width:100%;max-width:350px;border-radius:10px;">
+                                        <img src="<?= base_url('../img/brand.jpg') ?>" class="card-img-top" alt="judul pengumuman" style="width:100%;max-width:350px;border-radius:10px;height:250px;">
 
                                         <br>
                                         <div class="row" role="group" aria-label="pagination" style="margin-top:30px;width:100%;">

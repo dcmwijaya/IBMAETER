@@ -581,7 +581,7 @@ $truantedCount = $totalUser - $presentCount;
 												<tr>
 													<td><?= $log['tgl']; ?></td>
 													<td><?= $log['nama']; ?></td>
-													<td><?= $log['nama_barang']; ?></td>
+													<td><?= $log['nama_item']; ?></td>
 													<td>
 														<?php if ($log['request'] == "Masuk") : ?>
 															<?= $log['request']; ?>

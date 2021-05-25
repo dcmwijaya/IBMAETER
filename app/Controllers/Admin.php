@@ -60,7 +60,7 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Data Pekerja | INVENBAR",
+					"title" => "Data Pekerja | IBMAETER",
 					"CurrentMenu" => "data_user",
 					'validation' => \Config\Services::validation(),
 					"info" => $this->newsModel->showTask(),
@@ -367,7 +367,7 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Perizinan Barang | INVENBAR",
+					"title" => "Perizinan Barang | IBMAETER",
 					"CurrentMenu" => "perizinan",
 					"info" => $this->newsModel->showTask(),
 					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -514,7 +514,7 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Edit Pengumuman | INVENBAR",
+					"title" => "Edit Pengumuman | IBMAETER",
 					"CurrentMenu" => "edit_pengumuman",
 					"info" => $this->newsModel->showTask(),
 					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -710,7 +710,7 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Aktivitas User | INVENBAR",
+					"title" => "Aktivitas User | IBMAETER",
 					"CurrentMenu" => "logUser",
 					"info" => $this->newsModel->showTask(),
 					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -791,7 +791,7 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				$data = [
-					"title" => "Komplain Pekerja | INVENBAR",
+					"title" => "Komplain Pekerja | IBMAETER",
 					"CurrentMenu" => "komplainUser",
 					"info" => $this->newsModel->showTask(),
 					"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown

@@ -3,7 +3,7 @@
 		<div class="container p-0">
 			<a class="navbar-brand">
 				<img class="mr-3 d-inline-block align-top" src="<?= base_url('../img/icon/favicon-32x32.png') ?>" width="30" height="30" alt="Logo Brand">
-				INVENBAR
+				IBMAETER
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fas fa-fw fa-bars"></i>
@@ -16,8 +16,8 @@
 					</li>
 					<?php
 					$mail = "https://mail.google.com/mail/";
-					$emailtujuan = "invenbar@invweb.ac.id";
-					$subject = "HUBUNGI ADMIN INVENBAR";
+					$emailtujuan = "ibmaeter@ibweb.ac.id";
+					$subject = "HUBUNGI ADMIN IBMAETER";
 					$enter = "%0A%0A%0A";
 					$pg1 = "[Tuliskan pesan anda disini]";
 					$pg2 = "Dengan ini, saya menyatakan bahwa saya menghubungi admin tanpa paksaan siapapun serta dalam keadaan sadar.";

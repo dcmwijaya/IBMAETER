@@ -67,7 +67,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="link-text text-center">
-							<p class="small">Framework C Kelompok 5 - Created at 2021</p>
+							<p class="small">Ibmaeter Production - Created at 2021</p>
 						</div>
 					</div>
 				</form>

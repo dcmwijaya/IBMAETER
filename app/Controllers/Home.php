@@ -44,7 +44,7 @@ class Home extends BaseController
         // seleksi login
         if (session('role') == 0) {
             $data = [
-                "title" => "Home | INVENBAR",
+                "title" => "Home | IBMAETER",
                 'validation' => \Config\Services::validation(),
                 "info" => $this->newsModel->showTask(),
                 "user" => $this->adminModel->getUser()
@@ -60,7 +60,7 @@ class Home extends BaseController
         // seleksi login
         if (session('role') == 0) {
             $data = [
-                "title" => "Invenbar Info | INVENBAR"
+                "title" => "Ibmaeter Info | IBMAETER"
             ];
             return view('home/infoHome', $data);
         } else {
@@ -73,7 +73,7 @@ class Home extends BaseController
         // seleksi login
         if (session('role') == 0) {
             $data = [
-                "title" => "Partnership | INVENBAR"
+                "title" => "Partnership | IBMAETER"
             ];
             return view('home/partnership', $data);
         } else {
@@ -86,7 +86,7 @@ class Home extends BaseController
         // seleksi login
         if (session('role') == 0) {
             $data = [
-                "title" => "Kebijakan Privasi | INVENBAR"
+                "title" => "Kebijakan Privasi | IBMAETER"
             ];
             return view('home/kebijakanPrivasi', $data);
         } else {
@@ -99,7 +99,7 @@ class Home extends BaseController
         // seleksi login
         if (session('role') == 0) {
             $data = [
-                "title" => "Waspada Penipuan | INVENBAR"
+                "title" => "Waspada Penipuan | IBMAETER"
             ];
             return view('home/waspadaPenipuan', $data);
         } else {

@@ -75,7 +75,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Kelola Barang | INVENBAR",
+				"title" => "Kelola Barang | IBMAETER",
 				"CurrentMenu" => "kelolabarang",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -489,7 +489,7 @@ class Menu extends BaseController
 			$curpage = $this->request->getVar('page_pengumuman') ? $this->request->getVar('page_pengumuman') : 1;
 
 			$data = [
-				"title" => "Pengumuman | INVENBAR",
+				"title" => "Pengumuman | IBMAETER",
 				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -512,7 +512,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "My Profile | INVENBAR",
+				"title" => "My Profile | IBMAETER",
 				"CurrentMenu" => "profakun",
 				'user' => $this->userModel->getUser($email),
 				"info" => $this->newsModel->showTask(),
@@ -534,7 +534,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Edit Profile | INVENBAR",
+				"title" => "Edit Profile | IBMAETER",
 				"CurrentMenu" => "profedit",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -678,7 +678,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Absensi Pekerja | INVENBAR",
+				"title" => "Absensi Pekerja | IBMAETER",
 				"CurrentMenu" => "absensi",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -809,7 +809,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Laporan Bulanan | INVENBAR",
+				"title" => "Laporan Bulanan | IBMAETER",
 				"CurrentMenu" => "laporanBulanan",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -830,7 +830,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Pengaduan | INVENBAR",
+				"title" => "Pengaduan | IBMAETER",
 				"CurrentMenu" => "pengaduan",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -964,7 +964,7 @@ class Menu extends BaseController
 	{
 		if (session('uid') != null) {
 			$data = [
-				"title" => "Dashboard | INVENBAR",
+				"title" => "Dashboard | IBMAETER",
 				"CurrentMenu" => "dashboard",
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
@@ -1010,7 +1010,7 @@ class Menu extends BaseController
 
 			$nama = session('nama');
 			session()->setFlashdata('msg', '<div class="alert alert-success alert-dismissible fade show success-login" role="alert">
-				Hai <strong>' . $nama . '</strong>, Selamat datang di website <strong>INVENBAR</strong>...
+				Hai <strong>' . $nama . '</strong>, Selamat datang di website <strong>IBMAETER</strong>, selamat bekerja...
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
