@@ -59,6 +59,16 @@ class Barang_Model extends Model
         return $query;
     }
 
+    public function notaDetail($id)
+    {
+        $builder = $this->db->table('item');
+        $builder->select('*');
+        $builder->join('supplier', 'supplier.id_supplier = item.id_supplier', 'left');
+        $builder->where('id_item', 10);
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
     // ============================ View Chart =============================//
     public function invenclass()
     {

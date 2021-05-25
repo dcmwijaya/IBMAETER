@@ -45,5 +45,5 @@
     <input type="hidden" name="detail_item" id="detail_item">
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
     <input type="hidden" name="notaSpesifikasi" id="notaSpesifikasi">
-    <button type="submit" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</button>
+    <a href="<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>" type="submit" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</a>
 </div>

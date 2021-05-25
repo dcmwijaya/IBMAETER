@@ -790,20 +790,14 @@ class Exlapor extends BaseController
 		}
 	}
 
-	public function pdfprintNotespesifikasi()
+	public function pdfprintNotaspesifikasi()
 	{
 		if (session('uid') != null) {
 			$id = $this->request->getPost('notaSpesifikasi');
 
 			$data = [
-				"title" => "NOTA SPESIFIKASI | INVENBAR",
-				"log_item" => $this->LogModel->ReadLogItem(),
-				"item" => $this->barangModel->getItems(),
-				"supplier" => $this->barangModel->viewSuppliers(),
-				"spec" => $this->barangModel->joinSupplier(),
-				'user' => $this->userModel->getUserId(session('uid')),
-				"log_notifs" => $this->LogModel->notifsLog(),
-				"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				"title" => "NOTA DETAIL SPESIFIKASI | INVENBAR",
+				"spec" => $this->barangModel->notaDetail($id),
 			];
 
 			return view('global/print/printNotaspesifikasi', $data);

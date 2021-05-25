@@ -36,7 +36,7 @@
 				<div class="card" style="margin-top: 58px">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Nota Perizinan Barang</strong></center>
+							<center><strong>Nota Detail Spesifikasi Barang</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
