@@ -16,7 +16,7 @@
                    <span class="navbar-text mr-auto"></span>
                    <ul class="navbar-nav ">
                        <li class="nav-item active">
-                           <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                           <a href="<?= base_url("home") ?>" class="nav-link">Home</a>
                        </li>
                        <li class="nav-item active">
                            <a href="<?= session('uid') == null ? base_url("login") : base_url("/Menu/dashboard") ?>" class="nav-link"><?= session('uid') == null ? 'Masuk' : 'Dashboard' ?></a>

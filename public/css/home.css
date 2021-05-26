@@ -13,14 +13,17 @@ body{
 .mulai {
   color: #0211f1;
   font-weight: bold;
-  border: 6px #0211f1;
-  border-style: inset;
+  border: 4px #010b92 inset;
+  background-image: linear-gradient(rgb(71, 187, 255), rgb(185, 229, 255));
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
 }
 
 .mulai:hover {
   color: #001158;
-  border: 6px #001158;
-  border-style: inset;
+  border: 4px #05052bbb inset;
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
 }
 
 .card-img-top{
@@ -32,6 +35,7 @@ body{
   border: 2px grey solid;
   border-radius: 25px;
   padding: 5px 5px 5px 5px;
+  background-image: linear-gradient(rgb(55, 81, 126), rgb(146, 233, 255));
 }
 
 .c-main h4{
@@ -50,16 +54,16 @@ body{
   margin-bottom: 40px;
 }
 
+#nav-kebijakan li.active a, #nav-partnership li.active a, #nav-waspada li.active a {
+  background-color: blue;
+}
+
+.kebijakan-wrap section, .partnership-wrap section, .waspadapenipuan-wrap section{
+  padding: 10px 10px 10px 10px;
+}
+
 .card-wrap{
   margin-bottom: 30px;
-}
-
-.con-article .card{
-  height: 400px;
-}
-
-.con-article .card a{
-  margin-top: 20px;
 }
 
 .article{

@@ -42,21 +42,21 @@
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/login.jpg"); ?>">
-                                                <h4 class="card-title">Login</h4>
+                                                <h4 class="card-title"><i class="fas fa-sign-in-alt fa-fw me-2"></i>LOGIN</h4>
                                                 <p class="card-text">merupakan sebuah menu yang berfungsi sebagai alat identifikasi akun pekerja atau admin untuk masuk ke dalam sistem.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/dashboard.jpg"); ?>">
-                                                <h4 class="card-title">DASHBOARD</h4>
+                                                <h4 class="card-title"><i class="fas fa-house-user fa-fw me-2"></i>DASHBOARD</h4>
                                                 <p class="card-text">merupakan sebuah menu yang memiliki manfaat yaitu dapat memberikan informasi dengan mudah dan ringkas pada satu halaman.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/kelbarang-1.jpg"); ?>">
-                                                <h4 class="card-title">MANAJEMEN BARANG</h4>
+                                                <h4 class="card-title"><i class="fas fa-box fa-fw me-2"></i>MANAJEMEN BARANG</h4>
                                                 <p class="card-text">merupakan sebuah isi dari menu kelola barang yang tersedia sebagai sarana untuk mengelola barang.</p>
                                             </div>
                                         </div>
@@ -68,21 +68,21 @@
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/kelbarang-2.jpg"); ?>">
-                                                <h4 class="card-title">STATUS PERIZINAN BARANG</h4>
+                                                <h4 class="card-title"><i class="fas fa-clipboard-list fa-fw me-2"></i>STATUS PERIZINAN BARANG</h4>
                                                 <p class="card-text">merupakan sebuah isi dari menu kelola barang yang tersedia sebagai sarana untuk melihat status perizinan stok barang masuk / keluar.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/kelbarang-3.jpg"); ?>">
-                                                <h4 class="card-title">SPESIFIKASI BARANG</h4>
+                                                <h4 class="card-title"><i class="fas fa-box fa-fw me-2"></i>SPESIFIKASI BARANG</h4>
                                                 <p class="card-text">merupakan sebuah isi dari menu kelola barang yang tersedia sebagai sarana untuk meninjau spesifikasi barang dan supplier.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/userabsensi.jpg"); ?>">
-                                                <h4 class="card-title">ABSENSI PEKERJA</h4>
+                                                <h4 class="card-title"><i class="fas fa-clipboard fa-fw me-2"></i>ABSENSI PEKERJA</h4>
                                                 <p class="card-text">merupakan sebuah menu yang berfungsi untuk mendata kehadiran setiap pengguna website.</p>
                                             </div>
                                         </div>
@@ -94,21 +94,21 @@
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/pengumuman.jpg"); ?>">
-                                                <h4 class="card-title">PENGUMUMAN</h4>
+                                                <h4 class="card-title"><i class="fas fa-bell fa-fw me-2"></i>PENGUMUMAN</h4>
                                                 <p class="card-text">merupakan sebuah menu yang dibuat bertujuan agar pekerja dapat mengetahui informasi dari Admin.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/laporanbulanan.jpg"); ?>">
-                                                <h4 class="card-title">LAPORAN BULANAN</h4>
+                                                <h4 class="card-title"><i class="fas fa-print fa-fw me-2"></i>LAPORAN BULANAN</h4>
                                                 <p class="card-text">merupakan sebuah menu yang berfungsi untuk cetak laporan bulanan.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/pengaduan.jpg"); ?>">
-                                                <h4 class="card-title">PENGADUAN</h4>
+                                                <h4 class="card-title"><i class="fas fa-comment-dots fa-fw me-2"></i>PENGADUAN</h4>
                                                 <p class="card-text">merupakan sebuah menu yang berfungsi untuk menginformasikan langsung kepada admin terkait kendala yang ada.</p>
                                             </div>
                                         </div>
@@ -120,21 +120,21 @@
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/admindatauser.jpg"); ?>">
-                                                <h4 class="card-title">DATA PEKERJA</h4>
+                                                <h4 class="card-title"><i class="fas fa-users fa-fw me-2"></i>DATA PEKERJA</h4>
                                                 <p class="card-text">merupakan sebuah menu yang hanya dapat diakses oleh admin untuk mengelola data pekerja.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/adminperizinan.jpg"); ?>">
-                                                <h4 class="card-title">PERIZINAN BARANG</h4>
+                                                <h4 class="card-title"><i class="fas fa-clipboard-list fa-fw me-2"></i>PERIZINAN BARANG</h4>
                                                 <p class="card-text">merupakan sebuah menu yang hanya dapat diakses oleh admin untuk mengelola perizinan barang keluar / masuk.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/adminpengumuman.jpg"); ?>">
-                                                <h4 class="card-title">EDIT PENGUMUMAN</h4>
+                                                <h4 class="card-title"><i class="fas fa-bullhorn fa-fw me-2"></i>EDIT PENGUMUMAN</h4>
                                                 <p class="card-text">merupakan sebuah menu yang hanya dapat diakses oleh admin untuk mengelola pengumuman.</p>
                                             </div>
                                         </div>
@@ -146,21 +146,21 @@
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/adminabsensi.jpg"); ?>">
-                                                <h4 class="card-title">ABSENSI USER</h4>
+                                                <h4 class="card-title"><i class="fas fa-clipboard fa-fw me-2"></i>ABSENSI USER</h4>
                                                 <p class="card-text">merupakan sebuah isi dari menu aktivitas user yang hanya dapat diakses oleh admin untuk mengelola absensi pekerja.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/adminaktivitas.jpg"); ?>">
-                                                <h4 class="card-title">AKTIVITAS USER</h4>
+                                                <h4 class="card-title"><i class="fas fa-book-reader fa-fw me-2"></i>AKTIVITAS USER</h4>
                                                 <p class="card-text">merupakan sebuah isi dari menu aktivitas user yang hanya dapat diakses oleh admin untuk mengawasi kegiatan setiap pekerja pada website secara realtime.</p>
                                             </div>
                                         </div>
                                         <div class="card c-main col-md-4">
                                             <div class="card-body c-body">
                                                 <img class="img-fluid" alt="100%x280" src="<?= base_url("img/home/adminkomplain.jpg"); ?>">
-                                                <h4 class="card-title">KOMPLAIN PEKERJA & ARSIP</h4>
+                                                <h4 class="card-title"><i class="fas fa-gavel fa-fw me-2"></i>KOMPLAIN PEKERJA & ARSIP</h4>
                                                 <p class="card-text">merupakan sebuah menu yang hanya dapat diakses oleh admin untuk mengelola komplain dari setiap pekerja dan mengarsipkannya.</p>
                                             </div>
                                         </div>
