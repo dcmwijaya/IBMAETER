@@ -793,11 +793,11 @@ class Exlapor extends BaseController
 	public function pdfprintNotaspesifikasi()
 	{
 		if (session('uid') != null) {
-			$id = $this->request->getPost('notaSpesifikasi');
+			$id = $this->request->getPost('print_nota');
 
 			$data = [
 				"title" => "NOTA DETAIL SPESIFIKASI | IBMAETER",
-				"spec" => $this->barangModel->notaDetail($id),
+				"spec" => $this->barangModel->notaDetail($id)
 			];
 
 			return view('global/print/printNotaspesifikasi', $data);

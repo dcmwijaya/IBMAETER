@@ -44,6 +44,5 @@
 <div class="modal-footer">
     <input type="hidden" name="detail_item" id="detail_item">
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
-    <!-- <input type="hidden" name="notaSpesifikasi" id="notaSpesifikasi"> -->
-    <a href="<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>" id="detail_nota" type="submit" onclick="" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</a>
+    <button id="detail_nota" name="print_nota" type=" button" onclick="" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</button>
 </div>
