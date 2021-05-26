@@ -476,6 +476,19 @@
 								alert('AJAX Supplier Part Error :(');
 							}
 						});
+						$.ajax({
+							url: '<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>',
+							data: {
+								"id_item": data.id_item
+							},
+							type: "POST",
+							success: function(id) {
+								$('[name="print_nota"]').html(id);
+							},
+							error: function(data) {
+								alert('AJAX Supplier Part Error :(');
+							}
+						});
 					}
 				});
 			},
