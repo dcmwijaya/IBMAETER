@@ -6,8 +6,8 @@
 ![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
 ![MySQL](https://img.shields.io/badge/-MySQL-tosca.svg?style=flat&logo=mysql&logoColor=white)
 
-# WEB-INVENTARIS-BARANG-CODEIGNITER-4
-<b>Website inventaris barang dengan menggunakan framework Codeigniter 4</b>
+# Ibmaeter-Ci4
+<b>Website inventaris barang gudang dan manajemen pekerja terpadu dengan menggunakan framework Codeigniter 4</b>
 <p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C</p>
 
 <br>
@@ -47,15 +47,15 @@ localhost/phpmyadmin/
 <br>
 
 ## Install Codeigniter Melalui Composer
-Install Codeigniter 4 dengan nama invenbar-ci4 melalui gitbash arahkan pada htdocs
+Install Codeigniter 4 dengan nama ibmaeter-ci4 melalui gitbash arahkan pada htdocs
 ```bash
-composer create-project codeigniter4/appstarter invenbar-ci4
+composer create-project codeigniter4/appstarter ibmaeter-ci4
 ```
 
 <br>
 
 ## Run Server
-1. Pastikan masih berada di dalam folder invenbar-ci4 -> Klik kanan pilih gitbash lalu ketikkan :
+1. Pastikan masih berada di dalam folder ibmaeter-ci4 -> Klik kanan pilih gitbash lalu ketikkan :
 ```bash
 $php spark serve
 ```
@@ -64,13 +64,21 @@ $php spark serve
 
 <br>
 
+## Akun untuk login
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | kukun@gmail.com | Admin123 |
+| Pekerja | erwin1@gmail.com | User123 |
+
+<br>
+
 ## Cara Menjalankan Web Secara Local
 1. Download repository ini
 2. Environment pastikan semua telah dilakukan -> Install Codeigniter 4 melalui gitbash
 3. Lalu buka file XAMP (php.ini) -> hapus semicolon (;) didepan extension=intl ->save
-4. Extract file yang di download tadi -> Copy & Paste isi folder -> XAMP (htdocs) -> masuk kedalam folder invenbar-ci4 -> Replace
+4. Extract file yang di download tadi -> Copy & Paste isi folder yang di download tadi ke -> XAMP (htdocs) -> masuk kedalam folder ibmaeter-ci4 / jika belum ada buat dulu foldernya
 5. Run Server
-6. Login Admin (email : billy@gantx.com, password : Admin123) / Login User (email : erwin1@gmail.com, Password : User123)
+6. Login akun
 7. Selesai, selamat menikmati
 
 <br>
