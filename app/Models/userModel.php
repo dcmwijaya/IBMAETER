@@ -10,12 +10,46 @@ class userModel extends Model
     protected $primaryKey = 'uid';
     protected $allowedFields = ['nama', 'email', 'password', 'role', 'picture'];
 
+
     public function getUser($email = false)
     {
         if ($email == false) {
             return $this->findAll();
         }
         return $this->where(['email' => $email])->first();
+    }
+
+    public function getJoinDivisionUser($uid = false)
+    {
+        if ($uid == false) {
+            $builder = $this->db->table('user');
+            $builder->select('*');
+            $builder->join('user_divisi', 'user_divisi.id_divisi = user.divisi_user', 'left');
+            $query = $builder->get()->getResultArray();
+            return $query;
+        }
+        $builder = $this->db->table('user');
+        $builder->select('*');
+        $builder->join('user_divisi', 'user_divisi.id_divisi = user.divisi_user', 'left');
+        $builder->where(['uid' => $uid]);
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
+    public function viewDivisionUser($id = false)
+    {
+        if ($id == false) {
+            $builder = $this->db->table('user_divisi');
+            $builder->select('*');
+            $builder->orderBy('id_divisi', 'ASC');
+            $query = $builder->get()->getResult();
+            return $query;
+        }
+        $builder = $this->db->table('user_divisi');
+        $builder->select('id_divisi, nama_divisi');
+        $builder->orderBy('nama_divisi', 'ASC');
+        $query = $builder->where(['id_divisi' => $id]);
+        return $query->get()->getResult();
     }
 
     public function getUserId($uid)

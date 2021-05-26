@@ -33,11 +33,12 @@
 	<!-- croppie -->
 	<link rel="stylesheet" href="<?= base_url('../vendor/croppie/croppie.css') ?>">
 
-	<!-- stepwizard -->
-	<!-- <link rel="stylesheet" href="<?= base_url('../vendor/stepwizard/style.css') ?>"> -->
+	<!-- SmartWizard -->
+	<link rel="stylesheet" href="<?= base_url('../vendor/SmartWizard/dist/css/smart_wizard.min.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('../vendor/SmartWizard/dist/css/smart_wizard_all.min.css') ?>">
 
 	<!-- Custom styles -->
-	<link rel="stylesheet" href="<?= base_url('../css/custom.css') ?>" />
+	<link rel=" stylesheet" href="<?= base_url('../css/custom.css') ?>" />
 	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
 </head>
 
@@ -55,7 +56,7 @@
 	</div> <!-- END wrapper pembungkus body from sidebar.php-->
 </body>
 
-<!------------------------ JavaScript ------------------------>
+<!------------------------ JavaScript Vendors------------------------>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../vendor/jquery/jquery.slim.min.js"></script>
 <!-- Bootsrap MDB -->
@@ -63,8 +64,8 @@
 <!-- Bootsrap 4.0.0 JS -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-<!-- stepwizard -->
-<!-- <script src="<?= base_url('../vendor/stepwizard/script.js') ?>"></script> -->
+<!-- SmartWizard JS -->
+<script src="<?= base_url('../vendor/SmartWizard/dist/js/jquery.smartWizard.min.js') ?>" defer></script>
 
 <!-------------------------------------------------- Config malhiu scrollbar plugin -------------------------------------------------->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
@@ -96,11 +97,6 @@
 <script type="text/javascript" src="<?= base_url('../vendor/DataTables/js/jquery.dataTables.js') ?>"></script>
 <script>
 	$(document).ready(function() {
-		$('#table_user').DataTable({
-			scrollY: '100vh',
-			scrollCollapse: true,
-			paging: false
-		});
 		$('#table_absensi').DataTable({
 			scrollY: '100vh',
 			scrollCollapse: true,
@@ -115,6 +111,7 @@
 		// load tables
 		listKomplain();
 		listArsipKomplain();
+		listUser();
 		// PengaduanForm();
 	});
 </script>
@@ -659,37 +656,233 @@
 			preview_img.src = e.target.result;
 		}
 	}
+
+	function previewAddImg() {
+		const add_img = document.querySelector('#add_img');
+		const label_add_img = document.querySelector('.label-img-input');
+		const preview_img = document.querySelector('.img-preview');
+		label_add_img.textContent = add_img.files[0].name;
+		const file_img = new FileReader();
+		file_img.readAsDataURL(add_img.files[0]);
+		file_img.onload = function(e) {
+			preview_img.src = e.target.result;
+		}
+	}
 	$(document).ready(function() {
 
 		// get Edit User
-		$('.btn-edit-user').on('click', function() {
-			// get data from button edit
-			const uid = $(this).data('uid');
-			const nama = $(this).data('nama');
-			const email = $(this).data('email');
-			const password = $(this).data('password');
-			const urole = $(this).data('urole');
-			const picture = $(this).data('picture');
-			// Set data to Form Edit
-			$('#Edit_user #edit_nama_user').val(nama);
-			$('#Edit_user #edit_email_user').val(email);
-			$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
-			$('#Edit_user .edit-img-preview').attr("src", `<?= base_url('../img/user'); ?>/${picture}`);
-			$('#Edit_user #old_image').val(picture);
-			$('#Edit_user #old_password').val(password);
-			$('#Edit_user #edit_user_id').val(uid);
-		});
+		// $('.btn-edit-user').on('click', function() {
+		// 	// get data from button edit
+		// 	const uid = $(this).data('uid');
+		// 	const nama = $(this).data('nama');
+		// 	const email = $(this).data('email');
+		// 	const password = $(this).data('password');
+		// 	const urole = $(this).data('urole');
+		// 	const picture = $(this).data('picture');
+		// 	// Set data to Form Edit
+		// 	$('#Edit_user #edit_nama_user').val(nama);
+		// 	$('#Edit_user #edit_email_user').val(email);
+		// 	$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
+		// 	$('#Edit_user .edit-img-preview').attr("src", `<?= base_url('../img/user'); ?>/${picture}`);
+		// 	$('#Edit_user #old_image').val(picture);
+		// 	$('#Edit_user #old_password').val(password);
+		// 	$('#Edit_user #edit_user_id').val(uid);
+		// });
 
-		// get Delete User
-		$('.btn-delete-user').on('click', function() {
-			// get data from button delete
-			const uid = $(this).data('uid');
-			const nama = $(this).data('nama');
-			// Set data to Form delete
-			$('#Delete_user #delete_user_id').val(uid);
-			$('#Delete_user #delete_nama_user').text(nama);
-		});
+		// // get Delete User
+		// $('.btn-delete-user').on('click', function() {
+		// 	// get data from button delete
+		// 	const uid = $(this).data('uid');
+		// 	const nama = $(this).data('nama');
+		// 	// Set data to Form delete
+		// 	$('#Delete_user #delete_user_id').val(uid);
+		// 	$('#Delete_user #delete_nama_user').text(nama);
+		// });
 	});
+
+	let UserSaveType;
+
+	function listUser() {
+		$.ajax({
+			url: '<?= base_url('Admin/ShowUsers'); ?>',
+			beforeSend: function(f) {
+				$('#User_AJAX').html(sloading);
+			},
+			success: function(data) {
+				$('#User_AJAX').html(data);
+				$('#table_user').DataTable({
+					scrollY: '100vh',
+					scrollCollapse: true,
+					paging: false
+				});
+				// previewEditImg();
+			}
+		});
+	}
+
+	function TambahUserModal() {
+		UserSaveType = "Tambah";
+		$('#User_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/TambahUser_Form'); ?>",
+			beforeSend: function(data) {
+				$('#User_Modal #User_Header').removeClass("bg-warning");
+				$('#User_Modal #User_Header').removeClass("bg-danger");
+				$('#User_Modal #User_Header').addClass("bg-softblue");
+				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-plus mr-2"></i>  Tambah User Baru');
+			},
+			success: function(data) {
+				$('#User_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetDivision'); ?>',
+					type: "POST",
+					success: function(data) {
+						$('[name="division"]').html(data);
+						previewAddImg();
+					},
+					error: function(data) {
+						alert('AJAX Division Part Error :(');
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function EditUserModal(uid) {
+		UserSaveType = "Edit";
+		$('#User_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/EditUser_Form'); ?>",
+			beforeSend: function(data) {
+				$('#User_Modal #User_Header').removeClass("bg-softblue");
+				$('#User_Modal #User_Header').removeClass("bg-danger");
+				$('#User_Modal #User_Header').addClass("bg-warning");
+				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-edit mr-2"></i> Edit User');
+			},
+			success: function(data) {
+				$('#User_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetUidUser'); ?>',
+					data: {
+						"uid": uid
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="user_id"]').val(data[0].uid);
+						$('[name="user"]').val(data[0].nama);
+						$('[name="email"]').val(data[0].email);
+						// $('[name="password"]').val(data[0].stok);
+						$('[name="ttl"]').val(data[0].tanggal_lahir);
+						$('[name="gender"]').val(data[0].gender).trigger('change');
+						let Division = data[0].id_divisi;
+						$.ajax({
+							url: '<?= base_url('Admin/GetDivision'); ?>',
+							data: {
+								"id_divisi": Division
+							},
+							type: "POST",
+							success: function(division) {
+								$('[name="division"]').html(division);
+							},
+							error: function(data) {
+								alert('AJAX Division Part Error :(');
+							}
+						});
+						$('[name="role"]').val(data[0].role).trigger('change');
+						// $('[name="add_img"]').val(data[0].picture);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+
+	function DeleteUserModal(uid) {
+		UserSaveType = "Hapus";
+		$('#User_Modal').modal('show');
+		$.ajax({
+			type: "POST",
+			url: "<?= base_url('Admin/HapusUser_Form'); ?>",
+			beforeSend: function(data) {
+				$('#User_Modal #User_Header').removeClass("bg-softblue");
+				$('#User_Modal #User_Header').removeClass("bg-warning");
+				$('#User_Modal #User_Header').addClass("bg-danger");
+				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-times mr-2"></i> Hapus User');
+			},
+			success: function(data) {
+				$('#User_Form').html(data);
+				$.ajax({
+					url: '<?= base_url('Admin/GetUidUser'); ?>',
+					data: {
+						"uid": uid
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function(data) {
+						$('[name="user_id"]').val(data[0].uid);
+						$('[name="user"]').val(data[0].nama);
+						$('[name="email"]').val(data[0].email);
+						$('[name="ttl"]').val(data[0].tanggal_lahir);
+						$('[name="gender"]').val(data[0].gender).trigger('change');
+						let Division = data[0].id_divisi;
+						$.ajax({
+							url: '<?= base_url('Admin/GetDivision'); ?>',
+							data: {
+								"id_divisi": Division
+							},
+							type: "POST",
+							success: function(division) {
+								$('[name="division"]').html(division);
+							},
+							error: function(data) {
+								alert('AJAX Division Part Error :(');
+							}
+						});
+						$('[name="role"]').val(data[0].role).trigger('change');
+						// $('[name="add_img"]').val(data[0].picture);
+					}
+				});
+			},
+			error: function(data) {
+				alert(data);
+			}
+		});
+	}
+	// ......................................... Aksi Data User.........................................
+	$("#User_Form").submit('click', function() {
+		// e.preventDefault(); tidak berhasil
+		$('#User_Modal').modal('hide');
+		let UserUrl;
+		if (UserSaveType == "Tambah") {
+			UserUrl = '<?= base_url('/Admin/Add_user'); ?>';
+		} else if (UserSaveType = "Edit") {
+			UserUrl = '<?= base_url('/Admin/Edit_user'); ?>';
+		} else if (UserSaveType = "Hapus") {
+			UserUrl = '<?= base_url('/Admin/Delete_user'); ?>';
+		}
+		$.ajax({
+			url: UserUrl,
+			type: "POST",
+			data: new FormData(this),
+			processData: false,
+			contentType: false,
+			cache: false,
+			async: false,
+			success: function(data) {
+				$('#User_Form').html(' ');
+				listUser();
+			}
+		});
+		return false;
+	})
 </script>
 <!--.......................... Config croppie js ..........................--->
 <script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>

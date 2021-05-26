@@ -80,6 +80,140 @@ class Admin extends BaseController
 		}
 	}
 
+	public function ShowUsers()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->userModel->getJoinDivisionUser(),
+					'validation' => \Config\Services::validation(),
+				];
+				return view('admin/data_user_part/list_user', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	// ----------------------------------- form Data User -----------------------------------
+	public function TambahUser_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->userModel->getJoinDivisionUser(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/data_user_part/tambah_form', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function EditUser_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->userModel->getJoinDivisionUser(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/data_user_part/edit_form', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function HapusUser_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->userModel->getJoinDivisionUser(),
+					'validation' => \Config\Services::Validation()
+				];
+				return view('admin/data_user_part/delete_form', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function DetailUser_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$data = [
+					"user" => $this->userModel->getJoinDivisionUser(),
+				];
+				return view('admin/data_user_part/detail_form', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+	// ----------------------------------- Aksi Data User -----------------------------------
+	public function GetUidUser() // Pick uid
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (session('role') == 0) {
+				// AJAX
+				$uid = $this->request->getPost('uid');
+				$data = $this->userModel->getJoinDivisionUser($uid);
+				echo json_encode($data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function GetDivision()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$id = $this->request->getPost('id_divisi');
+				$division = $this->userModel->viewDivisionUser();
+				$data = '';
+				// $data .= '<option value="">(Tidak Ada)</option>';
+				foreach ($division as $s) {
+					if ($s->id_divisi == $id) {
+						$selected = "selected";
+					} else {
+						$selected = "";
+					}
+					$data .= "<option class='checksupplier' value='$s->id_divisi' $selected>$s->nama_divisi</option>";
+				}
+				return $data;
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	public function Add_User()
 	{
 		// seleksi login
@@ -118,10 +252,10 @@ class Admin extends BaseController
 							'max_length' => 'input gender maksimal 24 karakter'
 						]
 					],
-					'department' => [
+					'division' => [
 						'rules' => 'max_length[24]',
 						'errors' => [
-							'max_length' => 'input department maksimal 24 karakter'
+							'max_length' => 'input division maksimal 24 karakter'
 						]
 					],
 					'role' => [
@@ -159,8 +293,9 @@ class Admin extends BaseController
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => password_hash($password, PASSWORD_DEFAULT),
 					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
-					'department' => str_replace("'", "", htmlspecialchars($this->request->getPost('department'), ENT_QUOTES)),
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
+					'divisi_user' => str_replace("'", "", htmlspecialchars($this->request->getPost('division'), ENT_QUOTES)),
+					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
 				// dd($data);
@@ -169,7 +304,7 @@ class Admin extends BaseController
 				Data Berhasil Ditambahkan!
 			  </div>');
 
-				$aktivitas = session('nama') . " menambahkan Akun baru dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan department : " . $data['department'] . " sebagai " . $data['role'];
+				$aktivitas = session('nama') . " menambahkan Akun baru dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan divisi : " . $data['divisi_user'] . " sebagai " . $data['role'];
 				// insert user aktivity saat menambahkan akun baru
 				$this->userActivityModel->insert([
 					'uid_aktivitas' => session('uid'),
@@ -211,10 +346,10 @@ class Admin extends BaseController
 							'max_length' => 'input gender maksimal 24 karakter'
 						]
 					],
-					'department' => [
+					'division' => [
 						'rules' => 'max_length[24]',
 						'errors' => [
-							'max_length' => 'input department maksimal 24 karakter'
+							'max_length' => 'input division maksimal 24 karakter'
 						]
 					],
 					'role' => [
@@ -273,14 +408,15 @@ class Admin extends BaseController
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => $pass,
 					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
-					'department' => str_replace("'", "", htmlspecialchars($this->request->getPost('department'), ENT_QUOTES)),
 					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
+					'divisi_user' => str_replace("'", "", htmlspecialchars($this->request->getPost('division'), ENT_QUOTES)),
+					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
 				$this->adminModel->updateUser($data, $id);
 				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
 
-				$aktivitas = session('nama') . " mengubah Akun dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan department : " . $data['department'] . " sebagai " . $data['role'];
+				$aktivitas = session('nama') . " mengubah Akun dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan divisi : " . $data['divisi_user'] . " sebagai " . $data['role'];
 				// insert user aktivity saat mengubah akun baru
 				$this->userActivityModel->insert([
 					'uid_aktivitas' => session('uid'),
@@ -309,7 +445,7 @@ class Admin extends BaseController
 					unlink('img/user/' . $user['picture']); //hapus gambar jika nama file bukan default.jpg
 				}
 
-				$aktivitas = session('nama') . " menghapus Akun dengan nama : " . $user['nama'] . ", email : " . $user['email'] . ", dan department : " . $user['department'] . " sebagai " . $user['role'];
+				$aktivitas = session('nama') . " menghapus Akun dengan nama : " . $user['nama'] . ", email : " . $user['email'] . ", dan divisi : " . $user['divisi_user'] . " sebagai " . $user['role'];
 				// insert user aktivity saat menghapus sebuah akun
 				$this->userActivityModel->insert([
 					'uid_aktivitas' => session('uid'),
