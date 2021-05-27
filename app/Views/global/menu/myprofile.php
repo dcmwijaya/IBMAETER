@@ -28,7 +28,7 @@
 								<div class="card-body">
 									<p class="card-text"><b>Nama : </b><?= $user['nama']; ?></p>
 									<p class="card-text"><b>Email : </b><?= $user['email']; ?></p>
-									<p class="card-text"><b>Department : </b><?= $user['department']; ?></p>
+									<p class="card-text"><b>Department : </b><?= $divisi['nama_divisi']; ?></p>
 									<p class="card-text"><b>Gender : </b><?= $user['gender']; ?></p><br>
 									<hr>
 									<h4 class="card-text"><b><?= ($user['role'] == 0) ? "ADMIN" : "KARYAWAN" ?></b></h4>

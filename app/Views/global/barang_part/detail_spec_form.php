@@ -42,7 +42,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <!-- <input type="hidden" name="detail_item" id="detail_item"> -->
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
-    <button id="detail_nota" name="print_nota" type=" button" onclick="" class="btn btn-success"><i class="fas fa-fw fa-print"></i> Print</button>
 </div>

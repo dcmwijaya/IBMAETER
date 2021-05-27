@@ -752,16 +752,21 @@ class Exlapor extends BaseController
 	public function pdfprintBulanan()
 	{
 		if (session('uid') != null) {
+			$limitBawah = $this->request->getVar('tgl_before');
+			$limitAtas = $this->request->getVar('tgl_after');
+
+			// echo $limitBawah . " - " . $limitAtas;
+
 			$data = [
 				"title" => "PDF DETAIL LAPORAN BULANAN | IBMAETER",
 				"item" => $this->barangModel->getItems(),
 				"supplier" => $this->barangModel->viewSuppliers(),
 				"spec" => $this->barangModel->joinSupplier(),
-				"log_item" => $this->LogModel->ReadLogItem(),
+				"log_item" => $this->LogModel->ReadLogItem($limitBawah, $limitAtas),
 				"cf" => $this->userModel->countFemale(),
 				"cm" => $this->userModel->countMale(),
-				"scin" => $this->LogModel->sumIncome(),
-				"scout" => $this->LogModel->sumOutcome(),
+				"scin" => $this->LogModel->sumIncome($limitBawah, $limitAtas),
+				"scout" => $this->LogModel->sumOutcome($limitBawah, $limitAtas),
 				"sj1" => $this->barangModel->stockjenis1(),
 				"sj2" => $this->barangModel->stockjenis2(),
 				"sj3" => $this->barangModel->stockjenis3(),
@@ -770,10 +775,10 @@ class Exlapor extends BaseController
 				"sst" => $this->barangModel->sumStock(),
 				"swh" => $this->barangModel->sumWeight(),
 				"sco" => $this->barangModel->sumCost(),
-				"countPresent" => $this->absensiModel->countPresent(),
-				"countLate" => $this->absensiModel->countLate(),
-				"countPermission" => $this->absensiModel->countPermission(),
-				"totalUser" => $this->userModel->countUser()
+				"countPresent" => $this->absensiModel->countPresent($limitBawah, $limitAtas),
+				"countLate" => $this->absensiModel->countLate($limitBawah, $limitAtas),
+				"countPermission" => $this->absensiModel->countPermission($limitBawah, $limitAtas),
+				"totalAbsensi" => $this->absensiModel->countAllResults()
 			];
 
 			$aktivitas = session('nama') . " mencetak Laporan Bulanan";

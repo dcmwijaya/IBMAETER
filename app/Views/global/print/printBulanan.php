@@ -121,7 +121,7 @@ foreach ($countPermission as $cp) {
 	}
 }
 
-$truantedCount = $totalUser - $presentCount;
+$truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 
 ?>
 
@@ -262,7 +262,7 @@ $truantedCount = $totalUser - $presentCount;
 											<th colspan="2">Hadir</th>
 											<th colspan="1">Terlambat</th>
 											<th colspan="1">Ijin</th>
-											<th colspan="2">Tidak Hadir</th>
+											<th colspan="2">Tidak Ada Keterangan</th>
 										</tr>
 									</thead>
 									<tbody style="text-align: center;">
@@ -538,25 +538,13 @@ $truantedCount = $totalUser - $presentCount;
 													<td><?= $log['nama']; ?></td>
 													<td><?= $log['nama_item']; ?></td>
 													<td>
-														<?php if ($log['request'] == "Masuk") : ?>
-															<?= $log['request']; ?>
-														<?php else : ?>
-															<?= $log['request']; ?>
-														<?php endif; ?>
+														<?= $log['request']; ?>
 													</td>
 													<td style="width: 75px;">
 														<?= $log['ubah_stok']; ?>
 													</td>
 													<td>
-														<?php
-														if ($log['status'] == 'Diterima') {
-															echo "DITERIMA";
-														} elseif ($log['status'] == 'Ditolak') {
-															echo "DITOLAK";
-														} else {
-															echo "PENDING";
-														}
-														?>
+														<?= strtoupper($log['status']); ?>
 													</td>
 													<td><?= $log['ket']; ?></td>
 												</tr>
@@ -583,25 +571,13 @@ $truantedCount = $totalUser - $presentCount;
 													<td><?= $log['nama']; ?></td>
 													<td><?= $log['nama_item']; ?></td>
 													<td>
-														<?php if ($log['request'] == "Masuk") : ?>
-															<?= $log['request']; ?>
-														<?php else : ?>
-															<?= $log['request']; ?>
-														<?php endif; ?>
+														<?= $log['request']; ?>
 													</td>
 													<td style="width: 75px;">
 														<?= $log['ubah_stok']; ?>
 													</td>
 													<td>
-														<?php
-														if ($log['status'] == 'Diterima') {
-															echo "DITERIMA";
-														} elseif ($log['status'] == 'Ditolak') {
-															echo "DITOLAK";
-														} else {
-															echo "PROSES";
-														}
-														?>
+														<?= strtoupper($log['status']); ?>
 													</td>
 													<td><?= $log['ket']; ?></td>
 												</tr>

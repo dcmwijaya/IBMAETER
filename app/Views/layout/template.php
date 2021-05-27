@@ -461,7 +461,6 @@
 						$('[name="detail_kode"]').val(data.kode_barang);
 						$('[name="detail_harga"]').val(data.harga);
 						$('[name="detail_berat"]').val(data.berat);
-						$('#Spec_Form #detail_nota').attr("onclick", `PrintNota(${data.id_item})`);
 						let Supplierku = data.id_supplier;
 						$.ajax({
 							url: '<?= base_url('Menu/GetSupplier'); ?>',
@@ -483,33 +482,6 @@
 				alert(data);
 			}
 		});
-	}
-
-	function PrintNota(id_item) {
-		let newpage;
-		// $.ajax({
-		// 	url: '<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>',
-		// 	data: {
-		// 		"print_nota": id_item
-		// 	},
-		// 	type: "POST",
-		// 	success: function(id) {
-		// 		newpage = id;
-		// 		window.open('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', 'popUpWindow', 'height=400, width=650, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
-		// 	},
-		// 	error: function(data) {
-		// 		alert('AJAX Supplier Part Error :(');
-		// 	}
-		// });
-		// $.post('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', {
-		// 	print_nota: id_item
-		// }, function(result) {
-		// 	newpage = result;
-		// 	window.open('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', 'popUpWindow', 'height=400, width=650, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
-		// });
-		// if (window.opener && !window.opener.closed) {
-		// 	document.write(window.opener.newpage);
-		// }
 	}
 
 	// Role User Checker
