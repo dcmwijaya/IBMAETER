@@ -10,7 +10,7 @@
             </div>
             <input type="hidden" id="crop-result" name="add_imgs" value="sd">
             <div id="add-input-file">
-                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="add_img" onchange="previewAddImg()">
+                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="add_img">
                 <label class="custom-file-label label-img-input" for="add_img"><i class="fas fa-fw fa-camera mr-2"></i>Pilih Gambar</label>
             </div>
         </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="form-group">
             <label for="division_user" class="font-weight-bold"><i class="fas fa-fw fa-user-tie mr-2"></i>Divisi</label>
-            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="division">
+            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="division" disabled="disabled">
             </select>
             <div class="invalid-feedback">
                 <?= $validation->getError('division'); ?>

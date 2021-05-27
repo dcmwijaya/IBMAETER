@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 09:07 PM
+-- Generation Time: May 27, 2021 at 06:35 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -30,24 +30,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `user_divisi` (
   `id_divisi` int(11) NOT NULL,
   `nama_divisi` varchar(35) NOT NULL,
-  `kode_divisi` varchar(35) NOT NULL
+  `kode_divisi` varchar(35) NOT NULL,
+  `role_divisi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_divisi`
 --
 
-INSERT INTO `user_divisi` (`id_divisi`, `nama_divisi`, `kode_divisi`) VALUES
-(1, 'Dewan Direksi', 'DIR'),
-(2, 'Manager Gudang', 'MNG'),
-(3, 'Humas Gudang', 'HMS'),
-(4, 'Pengadaan Barang', 'PGD'),
-(5, 'Stacker Barang', 'STR'),
-(6, 'Receiving Barang', 'RCV'),
-(7, 'Checker Barang', 'CHK'),
-(8, 'Dispatcher Barang', 'DSP'),
-(9, 'Picker Barang', 'PCK'),
-(10, 'IT Staff', 'ITS');
+INSERT INTO `user_divisi` (`id_divisi`, `nama_divisi`, `kode_divisi`, `role_divisi`) VALUES
+(1, 'Dewan Direksi', 'DIR', 0),
+(2, 'Manager Gudang', 'MNG', 0),
+(3, 'Humas Gudang', 'HMS', 0),
+(4, 'Pengadaan Barang', 'PGD', 0),
+(5, 'Stacker Barang', 'STR', 1),
+(6, 'Receiving Barang', 'RCV', 1),
+(7, 'Checker Barang', 'CHK', 1),
+(8, 'Dispatcher Barang', 'DSP', 1),
+(9, 'Picker Barang', 'PCK', 1),
+(10, 'IT Staff', 'ITS', 0);
 
 --
 -- Indexes for dumped tables

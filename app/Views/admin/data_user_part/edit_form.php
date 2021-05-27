@@ -2,15 +2,15 @@
 <div class="modal-body row">
     <div class="col-sm-6">
         <div class="show-img text-center mb-2" id="show-add-img" style="height: 370px;">
-            <img class="img-thumbnail img-preview" src="<?= base_url('../img/user/default.jpg'); ?>" alt="image preview" style="max-height: 370px; ">
+            <img class="img-thumbnail img-preview" id="show_edit_img" src="<?= base_url('../img/user/default.jpg'); ?>" alt="image preview" style="max-height: 370px; ">
         </div>
         <div class="custom-file" style="padding-bottom: 22px; margin-bottom: 20px;">
             <div class="invalid-feedback m-2">
                 <?= $validation->getError('add_img'); ?>
             </div>
-            <input type="hidden" id="crop-result" name="add_imgs" value="sd">
+            <input type="hidden" id="crop-result" name="crop_img">
             <div id="add-input-file">
-                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="new_img" onchange="previewAddImg()">
+                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="new_img">
                 <label class="custom-file-label label-img-input" for="add_img"><i class="fas fa-fw fa-camera mr-2"></i>Pilih Gambar</label>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="invalid-feedback">
                 <?= $validation->getError('password'); ?>
             </div>
-            <small>bisa dikosongkan</small>
+            <small class="font-weight-bold">*Kosongkan jika tidak diubah</small>
         </div>
         <div class="form-group">
             <label for="gender_user" class="font-weight-bold"><i class="fas fa-fw fa-restroom mr-2"></i>Gender</label>
@@ -64,7 +64,7 @@
         </div>
         <div class="form-group">
             <label for="division_user" class="font-weight-bold"><i class="fas fa-fw fa-user-tie mr-2"></i>Divisi</label>
-            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="new_division">
+            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="new_division" disabled="disabled">
             </select>
             <div class="invalid-feedback">
                 <?= $validation->getError('division'); ?>
@@ -73,7 +73,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <input type="hidden" name="user_id" id="user_id">
-    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-    <button type="submit" class="btn btn-warning"><i class="fas fa-fw fa-user-plus"></i> Edit User</button>
+    <input type="hidden" id="user_id" name="user_id">
+    <button type="button" class="btn btn-danger shadow-sm" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+    <button type="submit" class="btn btn-warning shadow-sm"><i class="fas fa-fw fa-user-plus"></i> Edit User</button>
 </div>

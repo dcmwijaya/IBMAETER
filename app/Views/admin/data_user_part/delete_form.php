@@ -1,9 +1,12 @@
 <?= csrf_field(); ?>
 <div class="modal-body row">
-    Apakah Anda Yakin anda ingin menghapus "<strong><span id="delete_nama_user"></span></strong>" ?
-    <div class="col-sm-6">
+    <div class="col-sm-12 mb-2">
+        <h6 class="font-weight-bold text-center"><i class="fas fa-fw fa-exclamation-triangle mr-2 text-danger"></i>Apakah Anda Yakin anda ingin menghapus user ini ?</h6>
+    </div>
+    <hr>
+    <div class="col-sm-4 border-left">
         <div class="show-img text-center mb-2" id="show-add-img" style="height: 370px;">
-            <img class="img-thumbnail img-preview disabled" src="<?= base_url('../img/user/default.jpg'); ?>" alt="image preview" style="max-height: 370px; ">
+            <img class="img-thumbnail img-preview disabled" id="show_edit_img" src="<?= base_url('../img/user/default.jpg'); ?>" alt="image preview" style="max-height: 350px; ">
         </div>
         <div class="custom-file" style="padding-bottom: 22px; margin-bottom: 20px;">
             <div class="invalid-feedback m-2">
@@ -12,7 +15,7 @@
             <input type="hidden" id="crop-result" name="add_imgs" value="sd">
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4 border-left">
         <div class="form-group">
             <label for="nama_user" class="font-weight-bold"><i class="fas fa-fw fa-user-tag mr-2"></i>Nama User</label>
             <input type="text" class="form-control disabled" id="nama_user" name="user" readonly>
@@ -25,6 +28,8 @@
             <label for="ttl" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt mr-2"></i>Tanggal Lahir</label>
             <input type="date" class="form-control disabled" value="" id="ttl" name="ttl" readonly>
         </div>
+    </div>
+    <div class="col-sm-4 border-left">
         <div class="form-group">
             <label for="gender_user" class="font-weight-bold"><i class="fas fa-fw fa-restroom mr-2"></i>Gender</label>
             <select class="form-control disabled" id="gender" name="gender" readonly disabled>
@@ -49,5 +54,5 @@
 <div class="modal-footer">
     <input type="hidden" name="user_id" id="user_id">
     <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
-    <button type="submit" class="btn btn-danger"><i class="fas fa-fw fa-user-minus"></i> Hapus User</button>
+    <button type="submit" class="btn btn-danger"><i class="fas fa-fw fa-user-minus mr-2"></i>Hapus User</button>
 </div>

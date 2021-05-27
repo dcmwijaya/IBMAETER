@@ -668,35 +668,22 @@
 
 <!-------------------------------------------------- Catch Data for Data User -------------------------------------------------->
 <script>
-	function previewEditImg() {
-
-		const edit_img = document.querySelector('#add_img');
-		const label_edit_img = document.querySelector('.label-img-input');
-		const preview_img = document.querySelector('.img-preview');
-
-		label_edit_img.textContent = edit_img.files[0].name;
-
-		const file_img = new FileReader();
-		file_img.readAsDataURL(edit_img.files[0]);
-
-		file_img.onload = function(e) {
-			preview_img.src = e.target.result;
-		}
-	}
-
-	function previewAddImg() {
-		const add_img = document.querySelector('#add_img');
-		const label_add_img = document.querySelector('.label-img-input');
-		const preview_img = document.querySelector('.img-preview');
-		label_add_img.textContent = add_img.files[0].name;
-		const file_img = new FileReader();
-		file_img.readAsDataURL(add_img.files[0]);
-		file_img.onload = function(e) {
-			preview_img.src = e.target.result;
-		}
-	}
 	$(document).ready(function() {
+		function previewEditImg() {
 
+			const edit_img = document.querySelector('#add_img');
+			const label_edit_img = document.querySelector('.label-img-input');
+			const preview_img = document.querySelector('.img-preview');
+
+			label_edit_img.textContent = edit_img.files[0].name;
+
+			const file_img = new FileReader();
+
+			file_img.readAsDataURL(edit_img.files[0]);
+			file_img.onload = function(e) {
+				preview_img.src = e.target.result;
+			}
+		}
 		// get Edit User
 		// $('.btn-edit-user').on('click', function() {
 		// 	// get data from button edit
@@ -755,21 +742,68 @@
 			url: "<?= base_url('Admin/TambahUser_Form'); ?>",
 			beforeSend: function(data) {
 				$('#User_Modal #User_Header').removeClass("bg-warning");
-				$('#User_Modal #User_Header').removeClass("bg-danger");
+				$('#User_Modal #User_Header').removeClass("bg-kingucrimson");
 				$('#User_Modal #User_Header').addClass("bg-softblue");
 				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-plus mr-2"></i>  Tambah User Baru');
 			},
 			success: function(data) {
 				$('#User_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetDivision'); ?>',
-					type: "POST",
-					success: function(data) {
-						$('[name="division"]').html(data);
-						previewAddImg();
-					},
-					error: function(data) {
-						alert('AJAX Division Part Error :(');
+
+				function selectPekerja() {
+					$.ajax({
+						url: '<?= base_url('Admin/GetRoleDivision'); ?>',
+						data: {
+							role_divisi: 1
+						},
+						type: "POST",
+						success: function(data) {
+							$('[name="division"]').html(data);
+						},
+						error: function(data) {
+							alert('AJAX Division Part Error :(');
+						}
+					});
+					$("#User_Modal #division").prop("disabled", false);
+
+				}
+				selectPekerja();
+				// fungsi select
+				$("#User_Modal #jenis_user").change(function() {
+					$(this).css("background-color", "rgb(240 240 255)");
+					if ($('#User_Modal #jenis_user').val() == 1) {
+						// alert('pekerja');
+						selectPekerja();
+					} else if ($('#User_Modal #jenis_user').val() == 0) {
+						// alert('admin');
+						$.ajax({
+							url: '<?= base_url('Admin/GetRoleDivision'); ?>',
+							data: {
+								role_divisi: 0
+							},
+							type: "POST",
+							success: function(data) {
+								$('[name="division"]').html(data);
+							},
+							error: function(data) {
+								alert('AJAX Division Part Error :(');
+							}
+						});
+						$("#User_Modal #division").prop("disabled", false);
+					}
+				});
+				// image function
+				$('#add_img').change(function() {
+					const add_img = document.querySelector('#add_img');
+					const label_add_img = document.querySelector('.label-img-input');
+					const preview_img = document.querySelector('.img-preview');
+
+					label_add_img.textContent = add_img.files[0].name;
+
+					const file_img = new FileReader();
+
+					file_img.readAsDataURL(add_img.files[0]);
+					file_img.onload = function(e) {
+						preview_img.src = e.target.result;
 					}
 				});
 			},
@@ -787,7 +821,7 @@
 			url: "<?= base_url('Admin/EditUser_Form'); ?>",
 			beforeSend: function(data) {
 				$('#User_Modal #User_Header').removeClass("bg-softblue");
-				$('#User_Modal #User_Header').removeClass("bg-danger");
+				$('#User_Modal #User_Header').removeClass("bg-kingucrimson");
 				$('#User_Modal #User_Header').addClass("bg-warning");
 				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-edit mr-2"></i> Edit User');
 			},
@@ -821,8 +855,60 @@
 							}
 						});
 						$('[name="new_role"]').val(data[0].role).trigger('change');
-						// $('[name="add_img"]').val(data[0].picture);
-						previewEditImg();
+						$('#User_Modal #show_edit_img').attr("src", `<?= base_url('../img/user') ?>/${data[0].picture}`);
+						$('#User_Modal .label-img-input').text(data[0].picture);
+
+						// fungsi select
+						$("#User_Modal #jenis_user").change(function() {
+							$('#division').html(' ');
+							$(this).css("background-color", "rgb(240 240 255)");
+							if ($('#User_Modal #jenis_user').val() == 1) {
+								$.ajax({
+									url: '<?= base_url('Admin/GetRoleDivision'); ?>',
+									data: {
+										role_divisi: 1
+									},
+									type: "POST",
+									success: function(data) {
+										$('[name="new_division"]').html(data);
+									},
+									error: function(data) {
+										alert('AJAX Division Part Error :(');
+									}
+								});
+								$("#User_Modal #division").prop("disabled", false);
+							} else if ($('#User_Modal #jenis_user').val() == 0) {
+								$.ajax({
+									url: '<?= base_url('Admin/GetRoleDivision'); ?>',
+									data: {
+										role_divisi: 0
+									},
+									type: "POST",
+									success: function(data) {
+										$('[name="new_division"]').html(data);
+									},
+									error: function(data) {
+										alert('AJAX Division Part Error :(');
+									}
+								});
+								$("#User_Modal #division").prop("disabled", false);
+							}
+						});
+						// image preview
+						$('#add_img').change(function() {
+							const edit_img = document.querySelector('#add_img');
+							const label_edit_img = document.querySelector('.label-img-input');
+							const preview_img = document.querySelector('.img-preview');
+
+							label_edit_img.textContent = edit_img.files[0].name;
+
+							const file_img = new FileReader();
+
+							file_img.readAsDataURL(edit_img.files[0]);
+							file_img.onload = function(e) {
+								preview_img.src = e.target.result;
+							}
+						});
 					}
 				});
 			},
@@ -841,7 +927,7 @@
 			beforeSend: function(data) {
 				$('#User_Modal #User_Header').removeClass("bg-softblue");
 				$('#User_Modal #User_Header').removeClass("bg-warning");
-				$('#User_Modal #User_Header').addClass("bg-danger");
+				$('#User_Modal #User_Header').addClass("bg-kingucrimson");
 				$('#User_Modal #User_Label').html('<i class="fas fa-fw fa-user-times mr-2"></i> Hapus User');
 			},
 			success: function(data) {
@@ -859,6 +945,8 @@
 						$('[name="email"]').val(data[0].email);
 						$('[name="ttl"]').val(data[0].tanggal_lahir);
 						$('[name="gender"]').val(data[0].gender).trigger('change');
+						$('#User_Modal #show_edit_img').attr("src", `<?= base_url('../img/user') ?>/${data[0].picture}`);
+						$('[name="role"]').val(data[0].role).trigger('change');
 						let Division = data[0].id_divisi;
 						$.ajax({
 							url: '<?= base_url('Admin/GetDivision'); ?>',
@@ -873,8 +961,6 @@
 								alert('AJAX Division Part Error :(');
 							}
 						});
-						$('[name="role"]').val(data[0].role).trigger('change');
-						// $('[name="add_img"]').val(data[0].picture);
 					}
 				});
 			},
@@ -884,16 +970,16 @@
 		});
 	}
 	// ......................................... Aksi Data User.........................................
-	$("#User_Form").submit('click', function() {
-		// e.preventDefault(); tidak berhasil
+	$("#User_Form").submit('click', function(e) {
+		e.preventDefault();
 		$('#User_Modal').modal('hide');
 		let UserUrl;
 		if (UserSaveType == "Tambah") {
-			UserUrl = '<?= base_url('/Admin/Add_user'); ?>';
-		} else if (UserSaveType = "Edit") {
-			UserUrl = '<?= base_url('/Admin/Edit_user'); ?>';
-		} else if (UserSaveType = "Hapus") {
-			UserUrl = '<?= base_url('/Admin/Delete_user'); ?>';
+			UserUrl = '<?= base_url('Admin/Add_user'); ?>';
+		} else if (UserSaveType == "Edit") {
+			UserUrl = '<?= base_url('Admin/Edit_user'); ?>';
+		} else if (UserSaveType == "Hapus") {
+			UserUrl = '<?= base_url('Admin/Delete_user'); ?>';
 		}
 		$.ajax({
 			url: UserUrl,
@@ -908,7 +994,7 @@
 				listUser();
 			}
 		});
-		return false;
+		// return false;
 	})
 </script>
 <!--.......................... Config croppie js ..........................--->

@@ -197,6 +197,7 @@ class Admin extends BaseController
 				$division = $this->userModel->viewDivisionUser();
 				$data = '';
 				// $data .= '<option value="">(Tidak Ada)</option>';
+
 				foreach ($division as $s) {
 					if ($s->id_divisi == $id) {
 						$selected = "selected";
@@ -204,6 +205,45 @@ class Admin extends BaseController
 						$selected = "";
 					}
 					$data .= "<option class='checksupplier' value='$s->id_divisi' $selected>$s->nama_divisi</option>";
+				}
+				return $data;
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function GetRoleDivision()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			if (session('role') == 0) {
+				$id = $this->request->getPost('id_divisi');
+				$roleDivision = $this->request->getPost('role_divisi');
+				$data = '';
+				// $data .= '<option value="">(Tidak Ada)</option>';
+				if ($roleDivision == 0) {
+					$division = $this->userModel->RoleDivisionUser($roleDivision);
+					foreach ($division as $s) {
+						if ($s->id_divisi == $id) {
+							$selected = "selected";
+						} else {
+							$selected = "";
+						}
+						$data .= "<option class='checksupplier' value='$s->id_divisi' $selected>$s->nama_divisi</option>";
+					}
+				} else if ($roleDivision == 1) {
+					$division = $this->userModel->RoleDivisionUser($roleDivision);
+					foreach ($division as $s) {
+						if ($s->id_divisi == $id) {
+							$selected = "selected";
+						} else {
+							$selected = "";
+						}
+						$data .= "<option class='checksupplier' value='$s->id_divisi' $selected>$s->nama_divisi</option>";
+					}
 				}
 				return $data;
 			} else {
@@ -253,9 +293,9 @@ class Admin extends BaseController
 						]
 					],
 					'division' => [
-						'rules' => 'max_length[24]',
+						'rules' => 'alpha_numeric',
 						'errors' => [
-							'max_length' => 'input division maksimal 24 karakter'
+							'alpha_numeric' => 'input division invalid !'
 						]
 					],
 					'role' => [
@@ -293,8 +333,8 @@ class Admin extends BaseController
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => password_hash($password, PASSWORD_DEFAULT),
 					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
-					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
-					'divisi_user' => str_replace("'", "", htmlspecialchars($this->request->getPost('division'), ENT_QUOTES)),
+					'role' => intval($this->request->getPost('role')),
+					'divisi_user' => intval($this->request->getPost('division')),
 					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
@@ -323,6 +363,7 @@ class Admin extends BaseController
 
 	public function Edit_User() //<< tambahi untuk update session jika user ini sedang login
 	{							//<< ya gak guna ke user yg diubah soalnya session main di lokal browser, dan update sendiri klo si user login ulang
+		//<< kata siapa session harus di update lewat login?
 		// seleksi login
 		if (session('uid') != null) {
 			// seleksi role pengguna
@@ -340,16 +381,17 @@ class Admin extends BaseController
 							'valid_email' => 'E-mail User harus sesuai format email'
 						]
 					],
+					'new_password' => [
+						'rules' => 'permit_empty|min_length[7]|max_length[24]',
+						'errors' => [
+							'min_length' => 'Password harus lebih besar dari 7 karakter',
+							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
+						]
+					],
 					'new_gender' => [
 						'rules' => 'max_length[24]',
 						'errors' => [
 							'max_length' => 'input gender maksimal 24 karakter'
-						]
-					],
-					'new_division' => [
-						'rules' => 'max_length[24]',
-						'errors' => [
-							'max_length' => 'input division maksimal 24 karakter'
 						]
 					],
 					'new_role' => [
@@ -358,11 +400,10 @@ class Admin extends BaseController
 							'alpha_numeric' => 'input harus angka'
 						]
 					],
-					'new_password' => [
-						'rules' => 'permit_empty|min_length[7]|max_length[24]',
+					'new_division' => [
+						'rules' => 'alpha_numeric',
 						'errors' => [
-							'min_length' => 'Password harus lebih besar dari 7 karakter',
-							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
+							'alpha_numeric' => 'input division Invalid !'
 						]
 					],
 					// 'edit_img' => [
@@ -391,10 +432,12 @@ class Admin extends BaseController
 					// jika nama foto lama bukan default.jpg
 					if ($fileImg->getName() != "default.jpg") {
 						//hapus gambar lama
-						unlink('img/user/' . $this->request->getVar('old_image'));
+						unlink('img/user/' . $getUid['picture']);
 					}
 				}
 
+				// var_dump($fileImg);
+				// die;
 
 				$old_password = $getUid['password'];
 				$new_password = $this->request->getPost('new_password');
@@ -415,8 +458,6 @@ class Admin extends BaseController
 					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
-				var_dump($data);
-				die;
 				$this->adminModel->updateUser($data, $id);
 				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
 
