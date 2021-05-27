@@ -6,8 +6,6 @@ use CodeIgniter\Model;
 
 class Admin_Model extends Model
 {
-    // protected $table = 'pengumuman';
-
     protected $table = 'user';
     protected $primaryKey = 'uid';
     protected $allowedFields = ['nama', 'email', 'password', 'role', 'picture'];

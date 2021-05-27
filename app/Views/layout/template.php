@@ -501,15 +501,15 @@
 		// 		alert('AJAX Supplier Part Error :(');
 		// 	}
 		// });
-		$.post('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', {
-			print_nota: id_item
-		}, function(result) {
-			newpage = result;
-			window.open('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', 'popUpWindow', 'height=400, width=650, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
-		});
-		if (window.opener && !window.opener.closed) {
-			document.write(window.opener.newpage);
-		}
+		// $.post('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', {
+		// 	print_nota: id_item
+		// }, function(result) {
+		// 	newpage = result;
+		// 	window.open('<?= base_url('exlapor/pdfprintNotaspesifikasi'); ?>', 'popUpWindow', 'height=400, width=650, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+		// });
+		// if (window.opener && !window.opener.closed) {
+		// 	document.write(window.opener.newpage);
+		// }
 	}
 
 	// Role User Checker
@@ -670,9 +670,9 @@
 <script>
 	function previewEditImg() {
 
-		const edit_img = document.querySelector('#edit_img');
-		const label_edit_img = document.querySelector('.label-img-edit');
-		const preview_img = document.querySelector('.edit-img-preview');
+		const edit_img = document.querySelector('#add_img');
+		const label_edit_img = document.querySelector('.label-img-input');
+		const preview_img = document.querySelector('.img-preview');
 
 		label_edit_img.textContent = edit_img.files[0].name;
 
@@ -802,11 +802,10 @@
 					dataType: "JSON",
 					success: function(data) {
 						$('[name="user_id"]').val(data[0].uid);
-						$('[name="user"]').val(data[0].nama);
-						$('[name="email"]').val(data[0].email);
-						// $('[name="password"]').val(data[0].stok);
-						$('[name="ttl"]').val(data[0].tanggal_lahir);
-						$('[name="gender"]').val(data[0].gender).trigger('change');
+						$('[name="new_nama"]').val(data[0].nama);
+						$('[name="new_email"]').val(data[0].email);
+						$('[name="new_ttl"]').val(data[0].tanggal_lahir);
+						$('[name="new_gender"]').val(data[0].gender).trigger('change');
 						let Division = data[0].id_divisi;
 						$.ajax({
 							url: '<?= base_url('Admin/GetDivision'); ?>',
@@ -815,14 +814,15 @@
 							},
 							type: "POST",
 							success: function(division) {
-								$('[name="division"]').html(division);
+								$('[name="new_division"]').html(division);
 							},
 							error: function(data) {
 								alert('AJAX Division Part Error :(');
 							}
 						});
-						$('[name="role"]').val(data[0].role).trigger('change');
+						$('[name="new_role"]').val(data[0].role).trigger('change');
 						// $('[name="add_img"]').val(data[0].picture);
+						previewEditImg();
 					}
 				});
 			},

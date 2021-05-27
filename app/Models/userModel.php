@@ -23,13 +23,13 @@ class userModel extends Model
     {
         if ($uid == false) {
             $builder = $this->db->table('user');
-            $builder->select('*');
+            $builder->select('user.uid, user.email, user.divisi_user, user.gender, user.nama, user.picture, user.role, user.tanggal_lahir, id_divisi, nama_divisi, kode_divisi');
             $builder->join('user_divisi', 'user_divisi.id_divisi = user.divisi_user', 'left');
             $query = $builder->get()->getResultArray();
             return $query;
         }
         $builder = $this->db->table('user');
-        $builder->select('*');
+        $builder->select('user.uid, user.email, user.divisi_user, user.gender, user.nama, user.picture, user.role, user.tanggal_lahir, id_divisi, nama_divisi, kode_divisi');
         $builder->join('user_divisi', 'user_divisi.id_divisi = user.divisi_user', 'left');
         $builder->where(['uid' => $uid]);
         $query = $builder->get()->getResultArray();

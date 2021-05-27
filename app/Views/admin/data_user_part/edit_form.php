@@ -10,7 +10,7 @@
             </div>
             <input type="hidden" id="crop-result" name="add_imgs" value="sd">
             <div id="add-input-file">
-                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="add_img" onchange="previewAddImg()">
+                <input type="file" class="custom-file-input <?= ($validation->hasError('add_img')) ? 'is-invalid' : ''; ?>" id="add_img" name="new_img" onchange="previewAddImg()">
                 <label class="custom-file-label label-img-input" for="add_img"><i class="fas fa-fw fa-camera mr-2"></i>Pilih Gambar</label>
             </div>
         </div>
@@ -18,39 +18,33 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label for="nama_user" class="font-weight-bold"><i class="fas fa-fw fa-user-tag mr-2"></i>Nama User</label>
-            <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama_user" placeholder="Tuliskan Nama User..." name="user" required value="<?= (old('user')); ?>">
+            <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama_user" placeholder="Tuliskan Nama User..." name="new_nama" required value="<?= (old('user')); ?>">
             <div class=" invalid-feedback">
                 <?= $validation->getError('nama'); ?>
             </div>
         </div>
         <div class="form-group">
             <label for="email_user" class="font-weight-bold"><i class="fas fa-fw fa-envelope mr-2"></i>E-mail</label>
-            <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email_user" placeholder="Tuliskan E-mail User..." name="email" required value="<?= (old('email')); ?>">
+            <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email_user" placeholder="Tuliskan E-mail User..." name="new_email" required value="<?= (old('email')); ?>">
             <div class="invalid-feedback">
                 <?= $validation->getError('email'); ?>
             </div>
         </div>
         <div class="form-group">
             <label for="ttl" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt mr-2"></i>Tanggal Lahir</label>
-            <input type="date" class="form-control" value="" id="ttl" name="ttl" required>
+            <input type="date" class="form-control" value="" id="ttl" name="new_ttl" required>
         </div>
         <div class="form-group">
-            <label for="password" class="font-weight-bold"><i class="fas fa-fw fa-key mr-2"></i>Password</label>
-            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" placeholder="Tuliskan Password User..." name="password" required autocomplete="off">
+            <label for="password" class="font-weight-bold"><i class="fas fa-fw fa-key mr-2"></i>Password Baru</label>
+            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" placeholder="Tuliskan Password User..." name="new_password" autocomplete="off">
             <div class="invalid-feedback">
                 <?= $validation->getError('password'); ?>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="password2" class="font-weight-bold"><i class="fas fa-fw fa-unlock-alt mr-2"></i>Konfirmasi Password</label>
-            <input type="password" class="form-control <?= ($validation->hasError('confirm_password')) ? 'is-invalid' : ''; ?>" id="password2" placeholder="konfirmasi Password User..." name="confirm_password" required autocomplete="off">
-            <div class="invalid-feedback">
-                <?= $validation->getError('confirm_password'); ?>
-            </div>
+            <small>bisa dikosongkan</small>
         </div>
         <div class="form-group">
             <label for="gender_user" class="font-weight-bold"><i class="fas fa-fw fa-restroom mr-2"></i>Gender</label>
-            <select class="form-control <?= ($validation->hasError('gender')) ? 'is-invalid' : ''; ?>" id="gender" name="gender">
+            <select class="form-control <?= ($validation->hasError('gender')) ? 'is-invalid' : ''; ?>" id="gender" name="new_gender">
                 <option value="Laki-laki"><i class="fas fa-fw fa-female"></i> Laki-laki</option>
                 <option value="Perempuan"><i class="fas fa-fw fa-male"></i> Perempuan</option>
             </select>
@@ -60,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="jenis_user" class="font-weight-bold"><i class="fas fa-fw fa-user-lock mr-2"></i> Role</label>
-            <select class="form-control <?= ($validation->hasError('role')) ? 'is-invalid' : ''; ?>" id="jenis_user" name="role">
+            <select class="form-control <?= ($validation->hasError('role')) ? 'is-invalid' : ''; ?>" id="jenis_user" name="new_role">
                 <option value="1">User (Pekerja)</option>
                 <option value="0">Admin</option>
             </select>
@@ -70,7 +64,7 @@
         </div>
         <div class="form-group">
             <label for="division_user" class="font-weight-bold"><i class="fas fa-fw fa-user-tie mr-2"></i>Divisi</label>
-            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="division">
+            <select class="form-control <?= ($validation->hasError('division')) ? 'is-invalid' : ''; ?>" id="division" name="new_division">
             </select>
             <div class="invalid-feedback">
                 <?= $validation->getError('division'); ?>

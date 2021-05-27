@@ -328,31 +328,31 @@ class Admin extends BaseController
 			// seleksi role pengguna
 			if (session('role') == 0) {
 				if (!$this->validate([
-					'nama' => [
+					'new_nama' => [
 						'rules' => 'max_length[60]',
 						'errors' => [
 							'max_length' => 'nama huruf haurs lebih kecil dari 60 karakter'
 						]
 					],
-					'email' => [
+					'new_email' => [
 						'rules' => 'valid_email',
 						'errors' => [
 							'valid_email' => 'E-mail User harus sesuai format email'
 						]
 					],
-					'gender' => [
+					'new_gender' => [
 						'rules' => 'max_length[24]',
 						'errors' => [
 							'max_length' => 'input gender maksimal 24 karakter'
 						]
 					],
-					'division' => [
+					'new_division' => [
 						'rules' => 'max_length[24]',
 						'errors' => [
 							'max_length' => 'input division maksimal 24 karakter'
 						]
 					],
-					'role' => [
+					'new_role' => [
 						'rules' => 'alpha_numeric',
 						'errors' => [
 							'alpha_numeric' => 'input harus angka'
@@ -365,24 +365,26 @@ class Admin extends BaseController
 							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
 						]
 					],
-					'edit_img' => [
-						'rules' => 'max_size[edit_img,5120]|is_image[edit_img]|max_dims[edit_img],3500,3500]|mime_in[edit_img,image/jpg,image/jpeg,image/png]',
-						'errors' => [
-							'max_size' => 'Ukuran Gambar melebihi 5MB !', //<<<< Masalah
-							'is_image' => 'File bukan gambar !',
-							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-							'mime_in' => 'Format file harus jpg/jpeg/png !'
-						]
-					]
+					// 'edit_img' => [
+					// 	'rules' => 'max_size[edit_img,5120]|is_image[edit_img]|max_dims[edit_img],3500,3500]|mime_in[edit_img,image/jpg,image/jpeg,image/png]',
+					// 	'errors' => [
+					// 		'max_size' => 'Ukuran Gambar melebihi 5MB !', //<<<< Masalah
+					// 		'is_image' => 'File bukan gambar !',
+					// 		'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+					// 		'mime_in' => 'Format file harus jpg/jpeg/png !'
+					// 	]
+					// ]
 				])) {
 					session()->setFlashdata('pesan', '<div class="notif-failed">Data Gagal Di Update!</div>');
 					return redirect()->to('Datauser')->withInput();
 				}
+				$id = $this->request->getPost('user_id');
+				$getUid = $this->userModel->getUserId($id);
 
-				$fileImg = $this->request->getFile('edit_img');
+				$fileImg = $this->request->getFile('new_img');
 				// cek gambar apakah tetap gambar lama
 				if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
-					$namaImg = $this->request->getPost('old_image');
+					$namaImg = $getUid['picture'];
 				} else {
 					$namaImg = $fileImg->getRandomName(); // mengambil nama file Random
 					$fileImg->move('img/user', $namaImg); // move gambar to img folder
@@ -393,8 +395,8 @@ class Admin extends BaseController
 					}
 				}
 
-				$id = $this->request->getPost('user_id');
-				$old_password = $this->request->getPost('old_password');
+
+				$old_password = $getUid['password'];
 				$new_password = $this->request->getPost('new_password');
 				//If the password IS NOT '' or 0 or '0' or NULL
 				if (!empty($new_password)) {
@@ -404,15 +406,17 @@ class Admin extends BaseController
 				}
 
 				$data = array(
-					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
-					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
+					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_nama'), ENT_QUOTES)),
+					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_email'), ENT_QUOTES)),
 					'password' => $pass,
-					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
-					'role' => str_replace("'", "", htmlspecialchars($this->request->getPost('role'), ENT_QUOTES)),
-					'divisi_user' => str_replace("'", "", htmlspecialchars($this->request->getPost('division'), ENT_QUOTES)),
-					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
+					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_gender'), ENT_QUOTES)),
+					'role' => intval($this->request->getPost('new_role')),
+					'divisi_user' => intval($this->request->getPost('new_division')),
+					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
+				var_dump($data);
+				die;
 				$this->adminModel->updateUser($data, $id);
 				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
 
