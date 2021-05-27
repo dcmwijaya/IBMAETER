@@ -33,18 +33,48 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date, 'status_absen' => "Izin"])->first();
     }
 
-    public function countPresent()
+    public function countPresent($bawah = null, $atas = null)
     {
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Hadir"])->get()->getResultArray();
+        // menghitung jumlah hadir dari tabel absensi
+        // query utama : 'status_absen' = "Hadir"
+        if ($bawah == null and $atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Hadir"])->get()->getResultArray();
+        } elseif ($bawah == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Hadir", 'tgl_absen <=' => $atas])->get()->getResultArray();
+        } elseif ($atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Hadir", 'tgl_absen >=' => $bawah])->get()->getResultArray();
+        } else {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Hadir", 'tgl_absen >=' => $bawah, 'tgl_absen <=' => $atas])->get()->getResultArray();
+        }
     }
 
-    public function countLate()
+    public function countLate($bawah = null, $atas = null)
     {
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Terlambat"])->get()->getResultArray();
+        // menghitung jumlah hadir tapi terlambat dari tabel absensi
+        // query utama : 'status_absen' = "Terlambat"
+        if ($bawah == null and $atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Terlambat"])->get()->getResultArray();
+        } elseif ($bawah == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Terlambat", 'tgl_absen <=' => $atas])->get()->getResultArray();
+        } elseif ($atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Terlambat", 'tgl_absen >=' => $bawah])->get()->getResultArray();
+        } else {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Terlambat", 'tgl_absen >=' => $bawah, 'tgl_absen <=' => $atas])->get()->getResultArray();
+        }
     }
 
-    public function countPermission()
+    public function countPermission($bawah = null, $atas = null)
     {
-        return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Izin"])->get()->getResultArray();
+        // menghitung jumlah izin dari tabel absensi
+        // query utama : 'status_absen' = "Izin" AND 'respons' = "Diterima"
+        if ($bawah == null and $atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Izin", 'respons' => "Diterima"])->get()->getResultArray();
+        } elseif ($bawah == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Izin", 'respons' => "Diterima", 'tgl_absen <=' => $atas])->get()->getResultArray();
+        } elseif ($atas == null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Izin", 'respons' => "Diterima", 'tgl_absen >=' => $bawah])->get()->getResultArray();
+        } else {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Izin", 'respons' => "Diterima", 'tgl_absen >=' => $bawah, 'tgl_absen <=' => $atas])->get()->getResultArray();
+        }
     }
 }

@@ -23,20 +23,20 @@
 									</div>
 									<div class="col-md-6" id="laporanbulanan-user">
 										<div class=" card-body event-description">
-											<form action=" <?= base_url('/Menu/LaporanBulanan'); ?>" method="POST" enctype="multipart/form-data">
+											<form action=" <?= base_url('exlapor/pdfprintBulanan'); ?>" method="POST" enctype="multipart/form-data">
 												<div class="form-group laporanbulanan-content">
-													<label for="ItemTime_before" class="font-weight-bold">Date Before</label>
-													<input type="datetime-local" class="form-control" value="" id="Time_before" name="tgl_before" required>
+													<label for="ItemTime_before" class="font-weight-bold">Tanggal Awal</label>
+													<input type="date" class="form-control" id="Time_before" name="tgl_before" required>
 												</div>
 												<div class="form-group laporanbulanan-content">
-													<label for="ItemTime_after" class="font-weight-bold">Date After</label>
-													<input type="datetime-local" class="form-control" value="" id="Time_after" name="tgl_after" required>
+													<label for="ItemTime_after" class="font-weight-bold">Tanggal Akhir</label>
+													<input type="date" class="form-control" id="Time_after" name="tgl_after" required>
 												</div>
-												<div class="laporan-button" style="margin-top:100px;">
+												<div class="laporan-button" style="margin-top:50px;">
 													<input type="hidden" class="form-control" value="" name="id_absen">
-													<a href="<?= base_url('exlapor/pdfprintBulanan'); ?>" type="submit" class="btn btn-success col-sm-12 p-4">
+													<button type="submit" class="btn btn-success col-sm-12 p-4">
 														<p class="text-center ntombol"><i class="fas fa-print fa-fw me-3"></i>Cetak Laporan Bulanan</p>
-													</a>
+													</button>
 												</div>
 											</form>
 										</div>

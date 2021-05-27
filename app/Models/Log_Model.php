@@ -24,12 +24,25 @@ class Log_Model extends Model
         return $query;
     }
 
-    public function ReadLogItem()
+    public function ReadLogItem($mulai = null, $akhir = null)
     {
+        if ($mulai != null and $akhir != null) {
+            $where = ['tgl >=' => $mulai, 'tgl <=' => $akhir];
+        } elseif ($mulai != null) {
+            $where = ['tgl <=' => $akhir];
+        } elseif ($akhir != null) {
+            $where = ['tgl >=' => $mulai];
+        } else {
+            $where = null;
+        }
+
         $builder = $this->db->table('alur_barang');
         $builder->select('*');
         $builder->join('user', 'user.uid = alur_barang.uid', 'left');
         $builder->join('item', 'item.id_item = alur_barang.id_item', 'left');
+        if ($where != null) {
+            $builder->where($where);
+        }
         $query = $builder->get()->getResultArray();
         return $query;
     }
@@ -74,14 +87,30 @@ class Log_Model extends Model
         return $this->db->table('alur_barang')->selectCount('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
     }
 
-    public function sumIncome()
+    public function sumIncome($bawah = null, $atas = null)
     {
-        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        if ($bawah == null and $atas == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->get()->getResultArray();
+        } elseif ($bawah == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->where('tgl <=', $atas)->get()->getResultArray();
+        } elseif ($atas == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->where('tgl >=', $bawah)->get()->getResultArray();
+        } else {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Masuk')->where('status', 'Diterima')->where('tgl >=', $bawah)->where('tgl <=', $atas)->get()->getResultArray();
+        }
     }
 
-    public function sumOutcome()
+    public function sumOutcome($bawah = null, $atas = null)
     {
-        return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
+        if ($bawah == null and $atas == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->get()->getResultArray();
+        } elseif ($bawah == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->where('tgl <=', $atas)->get()->getResultArray();
+        } elseif ($atas == null) {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->where('tgl >=', $bawah)->get()->getResultArray();
+        } else {
+            return $this->db->table('alur_barang')->selectSum('ubah_stok')->where('request', 'Keluar')->where('status', 'Diterima')->where('tgl >=', $bawah)->where('tgl <=', $atas)->get()->getResultArray();
+        }
     }
 
     public function NotaItem($id)
