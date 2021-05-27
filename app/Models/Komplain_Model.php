@@ -18,15 +18,13 @@ class Komplain_Model extends Model
             $builder->join('user', 'user.uid = komplain.uid_komplain', 'left');
             $query = $builder->get()->getResultArray();
             return $query;
-        } else {
-            $builder = $this->db->table('komplain');
-            $builder->select('id_komplain, no_komplain, user.nama, judul_komplain, isi_komplain, foto_komplain, waktu_komplain');
-            $builder->join('user', 'user.uid = komplain.uid_komplain');
-            // $query = $builder->getWhere(['id_komplain' => $id]);
-            $builder->where(['id_komplain' => $id]);
-            $query = $builder->get()->getResultArray();
-            return $query;
         }
+        $builder = $this->db->table('komplain');
+        $builder->select('id_komplain, no_komplain, user.nama, judul_komplain, isi_komplain, foto_komplain, waktu_komplain');
+        $builder->join('user', 'user.uid = komplain.uid_komplain');
+        $builder->where(['id_komplain' => $id]);
+        $query = $builder->get()->getResultArray();
+        return $query;
     }
 
     public function getIdKomplain($id)

@@ -52,8 +52,9 @@
 												<div class="form-group absensi-content">
 													<label for="email_user">
 														<i class="fas fa-laptop-house fa-fw me-1"></i>
-														<b>Department:</b>
-														<span><small><?= $user['department']; ?></small></span>
+														<b>Divisi Pekerja:</b>
+														<!-- perlu di join -->
+														<span><small><?= $user_division['nama_divisi']; ?></small></span>
 													</label>
 												</div>
 												<div class="form-group absensi-content">
