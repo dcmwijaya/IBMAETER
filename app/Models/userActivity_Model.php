@@ -18,9 +18,4 @@ class userActivity_Model extends Model
             return $this->where(['uid_aktivitas' => $uid])->findAll();
         }
     }
-
-    // public function getStatus($uid, $date)
-    // {
-    //     return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date])->first();
-    // }
 }

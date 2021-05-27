@@ -10,6 +10,7 @@ use App\Models\ArsipKomp_Model;
 use App\Models\Log_Model;
 use App\Models\Absensi_Model;
 use App\Models\userActivity_Model;
+use App\Models\userDivisi_Model;
 
 class Menu extends BaseController
 {
@@ -28,6 +29,7 @@ class Menu extends BaseController
 	protected $Log_Model;
 	protected $absensiModel;
 	protected $userActivityModel;
+	protected $userDivisiModel;
 
 	public function __construct()
 	{
@@ -42,6 +44,7 @@ class Menu extends BaseController
 		$this->LogModel = new Log_Model();
 		$this->absensiModel = new Absensi_Model();
 		$this->userActivityModel = new userActivity_Model();
+		$this->userDivisiModel = new userDivisi_Model();
 	}
 
 	//================================================== Dashboard Index() ==============================================
@@ -520,7 +523,8 @@ class Menu extends BaseController
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
-				'aktivitas' => $this->userActivityModel->getActivity(session('uid'))
+				'aktivitas' => $this->userActivityModel->getActivity(session('uid')),
+				'divisi' => $this->userDivisiModel->getDivisi(session('divisi_user'))
 			];
 			return view('global/menu/myprofile', $data);
 		} else {
