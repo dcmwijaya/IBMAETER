@@ -84,13 +84,16 @@
 
 <!-------------------------------------------------- Config Login ---------------------------------------------------------------->
 <script>
-	// $(document).ready(function() {
-	// 	$('#alert-login').ready(function() {
-	// 		setTimeout({
-	// 			$('#alert-login').remove();
-	// 		}), 45000;
-	// 	})
-	// });
+	$(document).ready(function() {
+		$('#btn_ban-login').on('click', function() {
+			setTimeout(function() { // mulai timeout selama 45 detik
+				document.getElementById("ban-login").remove();
+				document.getElementById("btn_ban-login").disabled = false;
+				// $('#ban-login').remove();
+				// $('#btn_ban-login').removeProp()
+			}, 45000);
+		})
+	});
 </script>
 
 <!-------------------------------------------------- Config datatables -------------------------------------------------->

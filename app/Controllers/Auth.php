@@ -63,9 +63,9 @@ class Auth extends BaseController
             }
 
             // jika sudah 3 kali percobaan kirim pesan
-            if (session('login_attemp') > 2) {
-                session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 45 detik untuk mencoba kembali.</b></p>');
-            }
+            // if (session('login_attemp') > 2) {
+            //     session()->setFlashdata('locked', '<p><b>Percobaan login mencapai batas. Mohon tunggu 45 detik untuk mencoba kembali.</b></p>');
+            // }
 
             return view('auth/login', $data);
         }

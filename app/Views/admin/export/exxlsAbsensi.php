@@ -82,12 +82,9 @@ foreach ($countPermission as $cp) {
 											<?php endif; ?>
 											<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
 											<td>
-												<?php if ($abs['respons'] == "Pending") : ?>
-													<div class="btn-group" role="group" aria-label="inoutcom">
-														<div class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Terima"><i class="fas fa-check fa-fw"></i>Terima</div>
-														<div class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Tolak"><i class="fas fa-times fa-fw"></i>Tolak</div>
-													</div>
-												<?php elseif ($abs['respons'] == "Diterima") :
+												<?php if ($abs['respons'] == "Pending") :
+													echo "Pending";
+												elseif ($abs['respons'] == "Diterima") :
 													echo "Diterima";
 												elseif ($abs['respons'] == "Ditolak") :
 													echo "Ditolak";
