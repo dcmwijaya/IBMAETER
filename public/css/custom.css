@@ -73,6 +73,14 @@
   right: -8px;
 }
 
+#add_img {
+  overflow-x: clip;
+}
+
+.mbc12 {
+  margin-bottom: 12px;
+}
+
 @media (max-width: 575.98px) {
   .navbar-nav .dropdown-menu-lg {
     min-width: 100%;

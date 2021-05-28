@@ -628,7 +628,9 @@ class Menu extends BaseController
 			// jika nama foto lama bukan default.jpg
 			if ($fileFoto->getName() != "default.jpg") {
 				//hapus gambar lama
-				unlink('img/user/' . $this->request->getVar('fotoLama'));
+				if ($this->request->getVar('fotoLama') !== "default.jpg") {
+					unlink('img/user/' . $this->request->getVar('fotoLama'));
+				}
 			}
 		}
 

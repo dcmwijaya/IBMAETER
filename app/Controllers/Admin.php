@@ -254,70 +254,103 @@ class Admin extends BaseController
 		}
 	}
 
+	public function validate_form()
+	{
+	}
+
 	public function Add_User()
 	{
 		// seleksi login
 		if (session('uid') != null) {
 			if (session('role') == 0) {
-				if (!$this->validate([ //passing validate
+				$validation = \Config\Services::Validation();
+				$rules = [ //passing validate
 					'user' => [
-						'rules' => 'max_length[60]',
+						'rules' => 'required|max_length[60]',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'max_length' => 'nama huruf harus lebih kecil dari 60 karakter'
 						]
 					],
 					'email' => [
-						'rules' => 'valid_email|is_unique[user.email]',
+						'rules' => 'required|valid_email|is_unique[user.email]',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'valid_email' => 'E-mail User harus sesuai format email',
 							'is_unique' => '{field} sudah terdaftar'
 						]
 					],
-					'password' => [
-						'rules' => 'min_length[7]|max_length[24]',
+					'ttl' => [
+						'rules' => 'required|valid_date',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
+							'valid_date' => 'Masukan TTL Salah !'
+						]
+					],
+					'password' => [
+						'rules' => 'required|min_length[7]|max_length[24]',
+						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'min_length' => 'Password harus lebih besar dari 7 karakter',
 							'max_length' => 'Password harus lebih kecil dari 24 karakter'
 						]
 					],
 					'confirm_password' => [
-						'rules' => 'matches[password]',
+						'rules' => 'required|matches[password]',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'matches' => 'input Password tidak sama !'
 						]
 					],
 					'gender' => [
-						'rules' => 'max_length[24]',
+						'rules' => 'required|max_length[24]',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'max_length' => 'input gender maksimal 24 karakter'
 						]
 					],
 					'division' => [
-						'rules' => 'alpha_numeric',
+						'rules' => 'required|alpha_numeric',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'alpha_numeric' => 'input division invalid !'
 						]
 					],
 					'role' => [
-						'rules' => 'alpha_numeric',
+						'rules' => 'required|alpha_numeric',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'alpha_numeric' => 'input harus angka'
 						]
 					],
-					// 'add_img' => [
-					// 	'rules' => 'max_size[add_img,5120]|is_image[add_img]|max_dims[add_img],3500,3500]|mime_in[add_img,image/jpg,image/jpeg,image/png]',
-					// 	'errors' => [
-					// 		'max_size' => 'Ukuran Gambar melebihi 5MB !',
-					// 		'is_image' => 'File bukan gambar !',
-					// 		'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
-					// 		'mime_in' => 'Format file harus jpg/jpeg/png !'
-					// 	]
-					// ]
-				])) {
-					session()->setFlashdata('pesan', '<div class="notif-failed">Data Gagal Ditambahkan!</div>');
-					return redirect()->to('Datauser')->withInput();
+					'add_img' => [
+						'rules' => 'max_size[add_img,4096]|is_image[add_img]|max_dims[add_img,3500,3500]|ext_in[add_img,png,jpg,jpeg]',
+						'errors' => [
+							'max_size' => 'File gambar tidak boleh lebih dari 4MB !',
+							'is_image' => 'File bukan gambar !',
+							'max_dims' => 'Dimensi File tidak boleh melebihi 3500 x 3500 !',
+							'ext_in' => 'Format file harus jpg/jpeg/png !'
+						]
+					]
+				];
+				if (!$this->validate($rules)) {
+					$response = [
+						'success' => false,
+						'msg' => '<div class="notif-failed">Data Gagal Ditambahkan!</div>',
+						// get error
+						'user' => $validation->getError('user'),
+						'email' => $validation->getError('email'),
+						'password' => $validation->getError('password'),
+						'confirm_password' => $validation->getError('confirm_password'),
+						'ttl' => $validation->getError('ttl'),
+						'gender' => $validation->getError('gender'),
+						'role' => $validation->getError('role'),
+						'division' => $validation->getError('division'),
+						'add_img' => $validation->getError('add_img'),
+					];
+					return $this->response->setJSON($response);
 				}
-
+				// -----------------------
 				$fileImg = $this->request->getFile('add_img'); // ambil gambar
 				if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
 					$namaImg = 'default.jpg';
@@ -328,7 +361,6 @@ class Admin extends BaseController
 
 				$password = $this->request->getPost('password');
 				$data = array(
-
 					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
 					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => password_hash($password, PASSWORD_DEFAULT),
@@ -338,11 +370,6 @@ class Admin extends BaseController
 					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
-				// dd($data);
-				$this->adminModel->addUser($data);
-				session()->setFlashdata('pesan', '<div class="notif-success">
-				Data Berhasil Ditambahkan!
-			  </div>');
 
 				$aktivitas = session('nama') . " menambahkan Akun baru dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan divisi : " . $data['divisi_user'] . " sebagai " . $data['role'];
 				// insert user aktivity saat menambahkan akun baru
@@ -352,53 +379,25 @@ class Admin extends BaseController
 					'waktu_aktivitas' => date("Y-m-d H:i:s")
 				]);
 
-				return redirect()->to('Datauser');
+				if ($this->adminModel->addUser($data)) {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-success">Data Berhasil Ditambahkan!</div>',
+					];
+				} else {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-failed">Data Gagal Ditambahkan!</div>',
+					];
+				}
+				return $this->response->setJSON($response);
+				// return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
 			}
 		} else {
 			return redirect()->to('/login');
 		}
-	}
-
-	public function Edit_TEST()
-	{
-		$id = $this->request->getPost('user_id');
-		$getUid = $this->userModel->getUserId($id);
-
-		$fileImg = $this->request->getFile('new_img');
-		// cek gambar apakah tetap gambar lama
-		if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
-			$namaImg = $getUid['picture'];
-		} else {
-			$namaImg = $fileImg->getRandomName(); // mengambil nama file Random
-			$fileImg->move('img/user/', $namaImg); // move gambar to img folder
-			// jika nama foto lama bukan default.jpg
-			if ($fileImg->getName() != "default.jpg") {
-				//hapus gambar lama
-				unlink('img/user/' . $getUid['picture']);
-			}
-		}
-		$old_password = $getUid['password'];
-		$new_password = $this->request->getPost('new_password');
-		//If the password IS NOT '' or 0 or '0' or NULL
-		if (!empty($new_password)) {
-			$pass = password_hash($new_password, PASSWORD_DEFAULT);
-		} else {
-			$pass = $old_password;
-		}
-
-		$data = array(
-			'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_nama'), ENT_QUOTES)),
-			'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_email'), ENT_QUOTES)),
-			'password' => $pass,
-			'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_gender'), ENT_QUOTES)),
-			'role' => intval($this->request->getPost('new_role')),
-			'divisi_user' => intval($this->request->getPost('new_division')),
-			'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_ttl'), ENT_QUOTES)),
-			'picture' => $namaImg
-		);
-		echo json_encode($data);
 	}
 
 	public function Edit_User() //<< tambahi untuk update session jika user ini sedang login
@@ -479,7 +478,9 @@ class Admin extends BaseController
 					// jika nama foto lama bukan default.jpg
 					if ($fileImg->getName() != "default.jpg") {
 						//hapus gambar lama
-						unlink('img/user/' . $getUid['picture']);
+						if ($getUid['picture'] !== "default.jpg") {
+							unlink('img/user/' . $getUid['picture']);
+						}
 					}
 				}
 

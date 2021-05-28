@@ -25,23 +25,7 @@ foreach ($us as $usc) {
 						<strong>DATA USER</strong>
 					</h5>
 				</div>
-				<?php if (session()->getFlashdata('pesan')) : ?>
-					<div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
-						<div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
-							<div class="toast-header bg-dark text-light">
-								<img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
-								<strong class="mr-auto">INVENBAR CI-4</strong>
-								<small>Baru Saja</small>
-								<button type="button" class="ml-2 mb-1 close text-light" data-dismiss="toast" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="toast-body">
-								<?= session()->getFlashdata('pesan'); ?>
-							</div>
-						</div>
-					</div>
-				<?php endif; ?>
+				<div id="toast_alert"></div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
@@ -82,8 +66,8 @@ foreach ($us as $usc) {
 		<div class="modal-content">
 			<div class="modal-header text-light" id="User_Header">
 				<h5 class="modal-title" id="User_Label">User Modal </h5>
-				<button type="button text-light" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close btn-modal-close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
 			<form id="User_Form" method="POST" enctype="multipart/form-data">

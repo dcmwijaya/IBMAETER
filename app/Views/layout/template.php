@@ -637,51 +637,12 @@
 
 <!-------------------------------------------------- Catch Data for Data User -------------------------------------------------->
 <script>
-	$(document).ready(function() {
-		function previewEditImg() {
-
-			const edit_img = document.querySelector('#add_img');
-			const label_edit_img = document.querySelector('.label-img-input');
-			const preview_img = document.querySelector('.img-preview');
-
-			label_edit_img.textContent = edit_img.files[0].name;
-
-			const file_img = new FileReader();
-
-			file_img.readAsDataURL(edit_img.files[0]);
-			file_img.onload = function(e) {
-				preview_img.src = e.target.result;
-			}
-		}
-		// get Edit User
-		// $('.btn-edit-user').on('click', function() {
-		// 	// get data from button edit
-		// 	const uid = $(this).data('uid');
-		// 	const nama = $(this).data('nama');
-		// 	const email = $(this).data('email');
-		// 	const password = $(this).data('password');
-		// 	const urole = $(this).data('urole');
-		// 	const picture = $(this).data('picture');
-		// 	// Set data to Form Edit
-		// 	$('#Edit_user #edit_nama_user').val(nama);
-		// 	$('#Edit_user #edit_email_user').val(email);
-		// 	$('#Edit_user #edit_jenis_user').val(urole).trigger('change');
-		// 	$('#Edit_user .edit-img-preview').attr("src", `<?= base_url('../img/user'); ?>/${picture}`);
-		// 	$('#Edit_user #old_image').val(picture);
-		// 	$('#Edit_user #old_password').val(password);
-		// 	$('#Edit_user #edit_user_id').val(uid);
-		// });
-
-		// // get Delete User
-		// $('.btn-delete-user').on('click', function() {
-		// 	// get data from button delete
-		// 	const uid = $(this).data('uid');
-		// 	const nama = $(this).data('nama');
-		// 	// Set data to Form delete
-		// 	$('#Delete_user #delete_user_id').val(uid);
-		// 	$('#Delete_user #delete_nama_user').text(nama);
-		// });
-	});
+	function UserModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#User_Modal').modal("hide");
+			$('#User_Form').html('');
+		});
+	}
 
 	let UserSaveType;
 
@@ -775,6 +736,7 @@
 						preview_img.src = e.target.result;
 					}
 				});
+				UserModalClose();
 			},
 			error: function(data) {
 				alert(data);
@@ -783,8 +745,8 @@
 	}
 
 	function EditUserModal(uid) {
-		UserSaveType = "Edit";
 		$('#User_Modal').modal('show');
+		UserSaveType = "Edit";
 		$.ajax({
 			type: "POST",
 			url: "<?= base_url('Admin/EditUser_Form'); ?>",
@@ -878,6 +840,7 @@
 								preview_img.src = e.target.result;
 							}
 						});
+						UserModalClose();
 					}
 				});
 			},
@@ -932,6 +895,7 @@
 						});
 					}
 				});
+				UserModalClose();
 			},
 			error: function(data) {
 				alert(data);
@@ -941,7 +905,6 @@
 	// ......................................... Aksi Data User.........................................
 	$("#User_Form").submit('click', function(e) {
 		e.preventDefault();
-		$('#User_Modal').modal('hide');
 		let UserUrl;
 		if (UserSaveType == "Tambah") {
 			UserUrl = '<?= base_url('Admin/Add_user'); ?>';
@@ -959,8 +922,69 @@
 			cache: false,
 			async: false,
 			success: function(data) {
-				$('#User_Form').html(' ');
 				listUser();
+				$('#toast_alert').html(`
+				<div class="position-fixed bottom-0 right-0 p-3" style="z-index: 1500; right: 0; bottom: 0;">
+				<div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
+				<div class="toast-header bg-dark text-light">
+					<img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
+					<strong class="mr-auto">INVENBAR CI-4</strong>
+						<small>Baru Saja</small>
+						<button type="button" class="ml-2 mb-1 close text-light" data-dismiss="toast" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+							<div class="toast-body">${data.msg}
+						</div>
+					</div>
+				</div>
+				`);
+				$('.toast').toast('show');
+				// set invalid
+				if (data.success == false) {
+					if (data.user != "") {
+						$('[name="user"]').addClass("is-invalid");
+						$('#error_nama').html(data.user);
+					}
+					if (data.email != "") {
+						$('[name="email"]').addClass("is-invalid");
+						$('#error_email').html(data.email);
+					}
+					if (data.password != "") {
+						$('[name="password"]').addClass("is-invalid");
+						$('#error_password').html(data.password);
+					}
+					if (data.confirm_password != "") {
+						$('[name="confirm_password"]').addClass("is-invalid");
+						$('#error_confirm_password').html(data.confirm_password);
+					}
+					if (data.ttl != "") {
+						$('[name="ttl"]').addClass("is-invalid");
+						$('#error_ttl').html(data.ttl);
+					}
+					if (data.gender != "") {
+						$('[name="gender"]').addClass("is-invalid");
+						$('#error_gender').html(data.gender);
+					}
+					if (data.division != "") {
+						$('[name="division"]').addClass("is-invalid");
+						$('#error_division').html(data.division);
+					}
+					if (data.role != "") {
+						$('[name="role"]').addClass("is-invalid");
+						$('#error_role').html(data.role);
+					}
+					if (data.add_img != "") {
+						$('[name="add_img"]').addClass("is-invalid");
+						$('#error_add_img').html(data.add_img);
+					}
+				} else {
+					$('#User_Modal').modal('hide');
+					$('#User_Form').html(' ');
+				}
+			},
+			error: function(data) {
+				alert('Ajax gagal :(');
 			}
 		});
 		// return false;
