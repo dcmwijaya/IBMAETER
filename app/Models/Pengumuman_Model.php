@@ -25,7 +25,7 @@ class Pengumuman_Model extends Model
         $builder->select('*');
         $builder->join('pengumuman', 'pengumuman.id_pengumuman = pengumuman_visibility.id_pengumuman');
         $builder->join('user', 'user.uid = pengumuman_visibility.uid');
-        $builder->where($look);
+        $builder->where(session('uid'), $look);
         $query = $builder->get()->getResultArray();
         return $query;
     }

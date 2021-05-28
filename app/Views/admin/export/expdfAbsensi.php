@@ -38,8 +38,7 @@ foreach ($countPermission as $cp) {
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
-						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-IB"></td>
-						<td width="100%" colspan="5" style="text-align: center;">
+						<td width="100%" colspan="6" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">IBMAETER INDONESIA</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</div>
 							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : ibmaeter@ibweb.ac.id</div>
@@ -62,7 +61,6 @@ foreach ($countPermission as $cp) {
 											<th>Email</th>
 											<th>Status Absensi</th>
 											<th>Alasan Izin</th>
-											<th>Bukti Izin</th>
 											<th>Waktu</th>
 											<th>Aksi</th>
 										</tr>
@@ -74,14 +72,8 @@ foreach ($countPermission as $cp) {
 												<td><?= $abs['status_absen']; ?></td>
 												<?php if ($abs['bukti_izin'] == "-") : ?>
 													<td><b><?= $abs['alasan_izin']; ?></b></td>
-													<td><b><?= $abs['bukti_izin']; ?></b></td>
 												<?php else : ?>
 													<td><?= $abs['alasan_izin']; ?></td>
-													<td>
-														<button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" data-toggle="modal" data-target="#gambarBukti">
-															<img src="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" width="150" height="auto">
-														</button>
-													</td>
 												<?php endif; ?>
 												<td><?= $abs['tgl_absen'] . ", " . $abs['waktu_absen']; ?></td>
 												<td>
@@ -108,26 +100,15 @@ foreach ($countPermission as $cp) {
 							Jumlah pekerja tidak hadir : <?= $totalUser - $presentCount; ?>
 						</p>
 					</div>
-				</div><br>
+				</div>
 
-				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
+				<table width="100%">
 					<tr>
 						<td width="70%" colspan="5" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
 								Founder Ibmaeter,
 							</h4>
-						</td>
-					</tr>
-					<tr>
-						<td width="70%" colspan="5" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;" height="30">
-							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
-						</td>
-					</tr>
-					<tr>
-						<td width="70%" colspan="5" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;">
 							<u>
 								<h5>Alfha Fierly Firdaus</h5>
 							</u>

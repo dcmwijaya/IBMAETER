@@ -17,18 +17,9 @@
                         <div class="row">
                             <div class="info-card mb-3">
                                 <div class="row no-gutters">
-                                    <div class="col-md-5 mt-4" id="img-laporanbulanan">
-                                        <img src="<?= base_url('../img/brand.jpg') ?>" class="card-img-top" alt="judul pengumuman" style="width:100%;max-width:350px;border-radius:10px;height:250px;">
-
-                                        <br>
-                                        <div class="row" role="group" aria-label="pagination" style="margin-top:30px;width:100%;">
-                                            <?= $pager->links('pengumuman', 'pengumuman_pagination') ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-7" id="laporanbulanan-user">
+                                    <div class="col-md-12" id="laporanbulanan-user">
                                         <div class=" card-body event-description">
-                                            <?php $c = 1 + (3 * ($curpage - 1)); ?>
+                                            <?php $c = 1; ?>
                                             <?php foreach ($info as $i) : ?>
 
                                                 <hr>
