@@ -34,8 +34,7 @@ class Pengumuman_Model extends Model
     {
         $look = array('status' => 'Belum Dilihat');
         $builder = $this->db->table('pengumuman_visibility');
-        $builder->where($uid);
-        $builder->where($look);
+        $builder->where($uid, $look);
         $query = $builder->countAllResults();
         return $query;
     }
