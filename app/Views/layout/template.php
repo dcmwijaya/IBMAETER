@@ -33,10 +33,6 @@
 	<!-- croppie -->
 	<link rel="stylesheet" href="<?= base_url('../vendor/croppie/croppie.css') ?>">
 
-	<!-- SmartWizard -->
-	<link rel="stylesheet" href="<?= base_url('../vendor/SmartWizard/dist/css/smart_wizard.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('../vendor/SmartWizard/dist/css/smart_wizard_all.min.css') ?>">
-
 	<!-- Custom styles -->
 	<link rel=" stylesheet" href="<?= base_url('../css/custom.css') ?>" />
 	<link rel="stylesheet" href="<?= base_url('../css/sidebar.css') ?>" />
@@ -64,8 +60,6 @@
 <!-- Bootsrap 4.0.0 JS -->
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/assets/js/vendor/popper.min.js') ?>"></script>
 <script src="<?= base_url('../vendor/bootstrap-4.0.0/dist/js/bootstrap.min.js') ?>"></script><!-- jQuery Custom Scroller CDN -->
-<!-- SmartWizard JS -->
-<script src="<?= base_url('../vendor/SmartWizard/dist/js/jquery.smartWizard.min.js') ?>" defer></script>
 
 <!-------------------------------------------------- Config malhiu scrollbar plugin -------------------------------------------------->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- malihu depedensi-->
