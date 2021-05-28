@@ -24,7 +24,6 @@ foreach ($us as $usc) {
 			<section class="mb-4">
 				<table width="100%" style="vertical-align: middle; font-size: 12pt; color: #000000;page-break-inside:avoid">
 					<tr>
-						<td width="15%" style="text-align: right;"><img src="<?= base_url('../img/icon/favicon-32x32.png') ?>" style="width:4em;height:4em;" alt="Logo-IB"></td>
 						<td width="100%" colspan="5" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">IBMAETER INDONESIA</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</div>
@@ -60,7 +59,7 @@ foreach ($us as $usc) {
 												<td><?= $no ?></td>
 												<td><?= $u['nama']; ?></td>
 												<td><?= $u['email']; ?></td>
-												<td><?= $u['department']; ?></td>
+												<td><?= $u['nama_divisi']; ?></td>
 												<td><?= $u['gender']; ?></td>
 												<td>
 													<?php
@@ -89,17 +88,6 @@ foreach ($us as $usc) {
 							<h4 style="margin-bottom: 30px;">
 								Founder Ibmaeter,
 							</h4>
-						</td>
-					</tr>
-					<tr>
-						<td width="70%" colspan="5" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;" height="30">
-							<img src="<?= base_url('../img/TTD_FOUNDER.png') ?>" style="float:right;margin-bottom:10px;width:10em;height:6em;" alt="TTD-Founder">
-						</td>
-					</tr>
-					<tr>
-						<td width="70%" colspan="5" style="text-align: center;"></td>
-						<td width="30%" style="text-align: right;">
 							<u>
 								<h5>Alfha Fierly Firdaus</h5>
 							</u>

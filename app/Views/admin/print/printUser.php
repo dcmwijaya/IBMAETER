@@ -72,7 +72,7 @@ foreach ($us as $usc) {
 												<td><?= $no ?></td>
 												<td><?= $u['nama']; ?></td>
 												<td><?= $u['email']; ?></td>
-												<td><?= $u['department']; ?></td>
+												<td><?= $u['nama_divisi']; ?></td>
 												<td><?= $u['gender']; ?></td>
 												<td>
 													<?php

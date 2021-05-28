@@ -63,7 +63,7 @@ class Exlapor extends BaseController
 			if (session('role') == 0) {
 				$data = [
 					"title" => "EXCEL USER | IBMAETER",
-					"user" => $this->adminModel->getUser(),
+					"user" => $this->userModel->getJoinDivisionUser(),
 					"us" => $this->adminModel->countUser()
 				];
 
@@ -84,7 +84,7 @@ class Exlapor extends BaseController
 			if (session('role') == 0) {
 				$data = [
 					"title" => "DOC USER | IBMAETER",
-					"user" => $this->adminModel->getUser(),
+					"user" => $this->userModel->getJoinDivisionUser(),
 					"us" => $this->adminModel->countUser()
 				];
 
@@ -105,7 +105,7 @@ class Exlapor extends BaseController
 			if (session('role') == 0) {
 				$data = [
 					"title" => "PDF USER | IBMAETER",
-					"user" => $this->adminModel->getUser(),
+					"user" => $this->userModel->getJoinDivisionUser(),
 					"us" => $this->adminModel->countUser()
 				];
 
@@ -423,7 +423,7 @@ class Exlapor extends BaseController
 			if (session('role') == 0) {
 				$data = [
 					"title" => "PDF USER | IBMAETER",
-					"user" => $this->adminModel->getUser(),
+					"user" => $this->userModel->getJoinDivisionUser(),
 					"us" => $this->adminModel->countUser()
 				];
 				return view('admin/print/printUser', $data);

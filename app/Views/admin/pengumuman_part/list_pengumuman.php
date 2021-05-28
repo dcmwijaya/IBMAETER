@@ -6,7 +6,7 @@
             <tr style="text-align: left;">
                 <!-- ######################### DATATABLES GAGAL SORTING -->
                 <th><i class="fas fa-fw fa-calendar-alt"></i> Waktu</th>
-                <th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th>
+                <!-- <th class="bg-danger text-light"><i class="fas fa-fw fa-info"></i> Status</th> -->
                 <th><i class="fas fa-fw fa-info"></i> Admin</th>
                 <th><i class="fas fa-fw fa-users"></i> Judul</th>
                 <th><i class="fas fa-fw fa-box"></i> Isi Pengumuman</th>
@@ -22,7 +22,7 @@
                         (Kosong)
                     <?php endif; ?>
                 </td>
-                <td style="<?= $tdStyle; ?>">
+                <!-- <td style="<?= $tdStyle; ?>">
                     <?php $awal  = date_create($p['waktu']);
                     $akhir = date_create(); // waktu sekarang
                     $diff  = date_diff($awal, $akhir);
@@ -51,7 +51,7 @@
                     <?php if ($diff->s <= 60 && $diff->i !== 0) : ?>
                         <span class="py-2 badge badge-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-spinner fa-fw mr-1"></i><?= $second; ?> yang lalu</span>
                     <?php endif; ?>
-                </td>
+                </td> -->
                 <td style="<?= $tdStyle; ?>">
                     <?php if ($p['nama'] == !null) : ?>
                         <?= $p['nama']; ?>

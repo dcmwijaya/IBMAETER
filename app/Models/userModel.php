@@ -73,11 +73,11 @@ class userModel extends Model
 
     public function countFemale()
     {
-        return $this->db->table('user')->selectCount('gender')->where('gender', 'Female')->get()->getResultArray();
+        return $this->db->table('user')->selectCount('gender')->where('gender', 'Perempuan')->get()->getResultArray();
     }
 
     public function countMale()
     {
-        return $this->db->table('user')->selectCount('gender')->where('gender', 'Male')->get()->getResultArray();
+        return $this->db->table('user')->selectCount('gender')->where('gender', 'Laki-Laki')->get()->getResultArray();
     }
 }
