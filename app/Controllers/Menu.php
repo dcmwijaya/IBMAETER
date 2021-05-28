@@ -518,6 +518,7 @@ class Menu extends BaseController
 				"title" => "My Profile | IBMAETER",
 				"CurrentMenu" => "profakun",
 				'user' => $this->userModel->getUser($email),
+				'divisi' => $this->userDivisiModel->getDivisi(session('divisi_user')),
 				"info" => $this->newsModel->showTask(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
