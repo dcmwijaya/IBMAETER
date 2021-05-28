@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="ttl" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt mr-2"></i>Tanggal Lahir</label>
-            <input type="date" class="form-control" value="" id="ttl" name="new_ttl" required>
+            <input type="date" class="form-control" id="ttl" name="new_ttl" required>
         </div>
         <div class="form-group">
             <label for="password" class="font-weight-bold"><i class="fas fa-fw fa-key mr-2"></i>Password Baru</label>
@@ -69,6 +69,7 @@
             <div class="invalid-feedback">
                 <?= $validation->getError('division'); ?>
             </div>
+            <!-- <input type="hidden" id="division_id" name="division_id"> -->
         </div>
     </div>
 </div>
