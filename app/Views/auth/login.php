@@ -2,12 +2,23 @@
 
 <?= $this->section('logincontent') ?>
 
+<!-- banned login selama 45 detik -->
+<script>
+	function banTimeout() {
+		setTimeout(function() { // mulai timeout selama 45 detik
+			document.getElementById("ban-login").remove();
+			document.getElementById("btn_ban-login").disabled = false;
+			// $('#btn_ban-login').removeProp()
+		}, 45000);
+	}
+</script>
+
 <div class="container py-3">
 	<!-- Outer Row -->
 	<div class="row justify-content-center py-5">
 		<div class="col-xl-10 col-lg-12 col-md-9" id="alert-login">
 			<?php if (session()->getFlashdata('locked')) : ?>
-				<div class="alert alert-danger py-1 m-0" role="alert">
+				<div class="alert alert-danger py-1 m-0" role="alert" id="ban-login">
 					<?= session()->getFlashdata('locked'); ?>
 				</div>
 			<?php endif ?>
@@ -45,17 +56,26 @@
 												} else {
 													# jika session 'time_locked' belum pernah dibuat
 													$_SESSION['time_locked'] = time();	// tandai waktu terblokir
-												}
-												$state = "disabled";
-											} else {
-												$state = "";
-											}
-										} else {
-											$state = "";
-										} ?>
-										<button type="submit" class="btn btn-primary btn-user btn-block" <?= $state; ?>>
-											Login
-										</button>
+												} ?>
+												<!-- $state = "disabled"; -->
+												<button type="submit" class="btn btn-primary btn-user btn-block" id="btn_ban-login" disabled>
+													Login
+												</button>
+												<script type="text/javascript">
+													banTimeout();
+												</script>
+											<?php	} else { ?>
+												<!-- $state = ""; -->
+												<button type="submit" class="btn btn-primary btn-user btn-block" id="btn_ban-login">
+													Login
+												</button>
+											<?php	}
+										} else { ?>
+											<!-- $state = ""; -->
+											<button type="submit" class="btn btn-primary btn-user btn-block" id="btn_ban-login">
+												Login
+											</button>
+										<?php } ?>
 									</div>
 									<hr>
 									<div class="text-center">
