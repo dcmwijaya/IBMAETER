@@ -687,7 +687,7 @@ class Menu extends BaseController
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),
-				'user_division' => $this->userDivisiModel->getJoinUserDivision(1),
+				'user_division' => $this->userDivisiModel->getDivisi(session('divisi_user')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d")),
