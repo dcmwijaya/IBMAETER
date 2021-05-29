@@ -19,6 +19,7 @@
                 $(".btn-toast-close").on("click", function() {
                     $('.toast').toast('hide');
                 });
+                $(`#statusIndicator${id_pengumuman}`).html('<span class="ml-4 py-1 badge bg-success" style="font-weight: 500;font-size: 11px;"><i class="fas fa-check fa-fw mr-1"></i>Sudah Dilihat</span>');
                 $.ajax({
                     url: '<?= base_url('Menu/CountDilihat'); ?>',
                     type: "POST",

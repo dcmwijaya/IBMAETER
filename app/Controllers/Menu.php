@@ -495,6 +495,7 @@ class Menu extends BaseController
 				"title" => "Pengumuman | IBMAETER",
 				"CurrentMenu" => "pengumuman",
 				"info" => $this->newsModel->showTask(),
+				"infoJoinV" => $this->newsModel->JoinVisibility(),
 				"infoV" => $this->newsModel->showExpVisibility(), // isi pengumuman dropdown
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				'user' => $this->userModel->getUserId(session('uid')),

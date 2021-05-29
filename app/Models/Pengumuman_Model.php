@@ -65,6 +65,19 @@ class Pengumuman_Model extends Model
 
     // pengumuman section
 
+    public function JoinVisibility() // buat tampilin pengumuman 
+    {
+        // $look = array('status' => );
+        $builder = $this->db->table('pengumuman');
+        $builder->select('pengumuman.id_pengumuman, pengumuman.waktu, pengumuman.judul, pengumuman.isi, pengumuman.uid, user.nama, pengumuman_visibility.status');
+        $builder->join('user', 'user.uid = pengumuman.uid');
+        $builder->join('pengumuman_visibility', 'pengumuman_visibility.id_pengumuman = pengumuman.id_pengumuman');
+        $builder->where('pengumuman_visibility.uid', session('uid'));
+        // $builder->where('status', 'Belum Dilihat');
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
     public function showInfo()
     {
         return $this->findAll();
