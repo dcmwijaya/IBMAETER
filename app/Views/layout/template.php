@@ -150,14 +150,60 @@
 	});
 </script>
 
-<!-- Config Modal -->
+
+<!-------------------------------------------------- Config Cancel/Close Button -------------------------------------------------->
 <script>
-	$(document).ready(function() {
-		$('.modal-dismiss').click(function() {
-			$('#Perizinan_Modal').modal('hide');
+	function UserModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#User_Modal').modal("hide");
+			$('#User_Form').html('');
 		});
-	});
+	}
+
+	function BarangModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Item_Modal').modal("hide");
+			$('#Item_Form').html('');
+		});
+	}
+
+	function PerizinanModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Perizinan_Modal').modal("hide");
+			$('#Perizinan_Form').html('');
+		});
+	}
+
+	function InOutModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#InOut_Modal').modal("hide");
+			$('#InOut_Form').html('');
+		});
+	}
+
+	function SpesifikasiModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Spec_Modal').modal("hide");
+			$('#Spec_Form').html('');
+		});
+	}
+
+	function KomplainModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Komplain_Modal').modal("hide");
+			$('#Komplain_Form').html('');
+		});
+	}
+
+	function PengumumanModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Pengumuman_Modal').modal("hide");
+			$('#Pengumuman_Form').html('');
+		});
+	}
 </script>
+
+
 
 <!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <script>
@@ -234,6 +280,7 @@
 							alert('AJAX Supplier Part Error :(');
 						}
 					});
+					BarangModalClose();
 				},
 				error: function(data) {
 					alert(data);
@@ -273,6 +320,7 @@
 							$('[name="penyimpanan"]').val(data.penyimpanan).trigger('change');
 						}
 					});
+					BarangModalClose();
 				},
 				error: function(data) {
 					alert(data);
@@ -309,6 +357,7 @@
 							$('#delete_nama_item').html(data.nama_item);
 						}
 					});
+					BarangModalClose();
 				},
 				error: function(data) {
 					alert(data);
@@ -372,6 +421,7 @@
 						$('[name="Live_Stock"]').val(data.stok);
 					}
 				});
+				InOutModalClose();
 			},
 			error: function(data) {
 				alert(data);
@@ -405,6 +455,7 @@
 						$('[name="Live_Stock"]').val(data.stok);
 					}
 				});
+				InOutModalClose();
 			},
 			error: function(data) {
 				alert(data);
@@ -484,6 +535,7 @@
 						});
 					}
 				});
+				SpesifikasiModalClose();
 			},
 			error: function(data) {
 				alert(data);
@@ -538,6 +590,7 @@
 							});
 						}
 					});
+					SpesifikasiModalClose();
 				},
 				error: function(data) {
 					alert('AJAX Error :(');
@@ -647,13 +700,6 @@
 
 <!-------------------------------------------------- Catch Data for Data User -------------------------------------------------->
 <script>
-	function UserModalClose() {
-		$(".btn-modal-close").on("click", function() {
-			$('#User_Modal').modal("hide");
-			$('#User_Form').html('');
-		});
-	}
-
 	let UserSaveType;
 
 	function listUser() {
@@ -1159,6 +1205,7 @@
 							$('[name="perizinan_ket"]').text(data[0].ket);
 						}
 					});
+					PerizinanModalClose();
 				},
 				error: function(data) {
 					alert(' Operasi AJAX Gagal :(');
@@ -1198,6 +1245,7 @@
 							$('[name="perizinan_ket"]').text(data[0].ket);
 						}
 					});
+					PerizinanModalClose();
 				},
 				error: function(data) {
 					alert('Operasi Ajax Gagal :(');
@@ -1280,8 +1328,12 @@
 			},
 			success: function(data) {
 				$('#Pengumuman_Form').html(data);
+			},
+			error: function(data) {
+				alert(data);
 			}
 		});
+		PengumumanModalClose();
 	}
 
 	function showDeleteModal(id) {
@@ -1311,6 +1363,7 @@
 						$('[name="isi"]').text(data.isi);
 					}
 				});
+				PengumumanModalClose();
 			}
 		});
 	}
@@ -1506,6 +1559,7 @@
 							PreviewKomplainImage();
 						}
 					});
+					KomplainModalClose();
 				},
 				error: function(data) {
 					alert(' Operasi AJAX Gagal :(');
@@ -1547,6 +1601,7 @@
 							PreviewKomplainImage();
 						}
 					});
+					KomplainModalClose();
 				},
 				error: function(data) {
 					alert(' Operasi AJAX Gagal :(');

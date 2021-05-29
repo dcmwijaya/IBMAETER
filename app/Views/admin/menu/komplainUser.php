@@ -78,7 +78,7 @@
 		<div class="modal-content">
 			<div class="modal-header text-light" id="Komplain_Header">
 				<h5 class="modal-title" id="Komplain_Label">Komplain Modal</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span class="text-light" aria-hidden="true">&times;</span>
 				</button>
 			</div>
