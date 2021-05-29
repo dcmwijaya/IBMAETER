@@ -54,7 +54,7 @@
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
                     $('#Komplain_Modal #Komplain_Header').addClass("bg-nanas");
-                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-archive"></i>  Detail Arsip Keluhan');
+                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-archive"></i> Detail Arsip Keluhan');
                 },
                 success: function(data) {
                     $('#Komplain_Form').html(data);
@@ -122,7 +122,7 @@
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-kingucrimson");
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
                     $('#Komplain_Modal #Komplain_Header').addClass("bg-softgreen");
-                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-check-square"></i>  Terima Keluhan');
+                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-check-square"></i> Terima Keluhan');
                 },
                 success: function(data) {
                     $('#Komplain_Form').html(data);
@@ -147,6 +147,7 @@
                             PreviewKomplainImage();
                         }
                     });
+                    KomplainModalClose();
                 },
                 error: function(data) {
                     alert(' Operasi AJAX Gagal :(');
@@ -163,7 +164,7 @@
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-softgreen");
                     $('#Komplain_Modal #Komplain_Header').removeClass("bg-nanas");
                     $('#Komplain_Modal #Komplain_Header').addClass("bg-kingucrimson");
-                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-window-close"></i>  Tolak Keluhan');
+                    $('#Komplain_Modal #Komplain_Label').html('<i class="fas fa-fw fa-window-close"></i> Tolak Keluhan');
                 },
                 success: function(data) {
                     $('#Komplain_Form').html(data);
@@ -188,6 +189,7 @@
                             PreviewKomplainImage();
                         }
                     });
+                    KomplainModalClose();
                 },
                 error: function(data) {
                     alert(' Operasi AJAX Gagal :(');

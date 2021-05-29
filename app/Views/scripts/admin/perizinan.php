@@ -53,6 +53,7 @@
                             $('[name="perizinan_ket"]').text(data[0].ket);
                         }
                     });
+                    PerizinanModalClose();
                 },
                 error: function(data) {
                     alert(' Operasi AJAX Gagal :(');
@@ -92,6 +93,7 @@
                             $('[name="perizinan_ket"]').text(data[0].ket);
                         }
                     });
+                    PerizinanModalClose();
                 },
                 error: function(data) {
                     alert('Operasi Ajax Gagal :(');

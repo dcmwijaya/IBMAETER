@@ -194,7 +194,7 @@ foreach ($countPermission as $cp) {
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="buktiIzinLabel">Bukti Screenshot</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -211,7 +211,7 @@ foreach ($countPermission as $cp) {
 		<div class="modal-content">
 			<div class="modal-header bg-light">
 				<h5 class="modal-title" id="TerimaIzinLabel"><b>Izin Disetujui</b></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -228,7 +228,7 @@ foreach ($countPermission as $cp) {
 					<div class="modal-footer">
 						<input type="hidden" id="acc-izin" name="id_absen" value="">
 						<input type="hidden" id="status" name="status_absen" value="Diterima">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+						<button type="button" class="btn btn-danger modal-dismiss btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Selesai</button>
 					</div>
 				</form>
@@ -243,7 +243,7 @@ foreach ($countPermission as $cp) {
 		<div class="modal-content">
 			<div class="modal-header bg-light">
 				<h5 class="modal-title" id="TolakIzinLabel"><b>Izin Ditolak</b></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -260,7 +260,7 @@ foreach ($countPermission as $cp) {
 					<div class="modal-footer">
 						<input type="hidden" id="dec-izin" name="id_absen" value="">
 						<input type="hidden" id="status" name="status_absen" value="Ditolak">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+						<button type="button" class="btn btn-danger modal-dismiss btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
 						<button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Selesai</button>
 					</div>
 				</form>

@@ -16,7 +16,7 @@
                         <img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
                         <strong class="mr-auto">INVENBAR CI-4</strong>
                         <small>Baru Saja</small>
-                        <button type="button" class="ml-2 mb-1 close text-light" data-dismiss="toast" aria-label="Close">
+                        <button type="button" class="ml-2 mb-1 close text-light modal-dismiss btn-modal-close" data-dismiss="toast" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -74,7 +74,7 @@
         <div class="modal-content">
             <div class="modal-header text-light" id="Perizinan_Header">
                 <h5 class="modal-title" id="Perizinan_Label"> Perizinan Barang</h5>
-                <button type="button" class="close modal-dissmis" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close modal-dissmis modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="text-light">&times;</span>
                 </button>
             </div>

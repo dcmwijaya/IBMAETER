@@ -72,6 +72,7 @@
                             alert('AJAX Supplier Part Error :(');
                         }
                     });
+                    BarangModalClose();
                 },
                 error: function(data) {
                     alert(data);
@@ -111,6 +112,7 @@
                             $('[name="penyimpanan"]').val(data.penyimpanan).trigger('change');
                         }
                     });
+                    BarangModalClose();
                 },
                 error: function(data) {
                     alert(data);
@@ -147,6 +149,7 @@
                             $('#delete_nama_item').html(data.nama_item);
                         }
                     });
+                    BarangModalClose();
                 },
                 error: function(data) {
                     alert(data);
@@ -210,6 +213,7 @@
                         $('[name="Live_Stock"]').val(data.stok);
                     }
                 });
+                InOutModalClose();
             },
             error: function(data) {
                 alert(data);
@@ -243,6 +247,7 @@
                         $('[name="Live_Stock"]').val(data.stok);
                     }
                 });
+                InOutModalClose();
             },
             error: function(data) {
                 alert(data);
@@ -322,6 +327,7 @@
                         });
                     }
                 });
+                SpesifikasiModalClose();
             },
             error: function(data) {
                 alert(data);
@@ -376,6 +382,7 @@
                             });
                         }
                     });
+                    SpesifikasiModalClose();
                 },
                 error: function(data) {
                     alert('AJAX Error :(');

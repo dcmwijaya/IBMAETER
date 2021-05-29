@@ -137,7 +137,7 @@
 		<div class="modal-content">
 			<div class="modal-header text-light" id="InOut_Header">
 				<h5 class="modal-title font-weight-bold" id="InOut_Label"> Modal InOut</h5>
-				<button type="button" class="close modal-dissmis" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
@@ -152,7 +152,7 @@
 		<div class="modal-content">
 			<div class="modal-header text-light" id="Spec_Header">
 				<h5 class="modal-title" id="Spec_Label"> Spesifikasi Modal</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true" class="text-light">&times;</span>
 				</button>
 			</div>
@@ -171,7 +171,7 @@
 			<div class="modal-content">
 				<div class="modal-header text-light" id="Item_Header">
 					<h5 class="modal-title font-weight-bold" id="Item_Label"> Modal Item</h5>
-					<button type="button" class="close text-light modal-dissmis" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close text-light modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -187,7 +187,7 @@
 			<div class="modal-content">
 				<div class="modal-header text-light" id="Perizinan_Header">
 					<h5 class="modal-title" id="Perizinan_Label"> Perizinan Barang</h5>
-					<button type="button" class="close modal-dissmis" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true" class="text-light">&times;</span>
 					</button>
 				</div>

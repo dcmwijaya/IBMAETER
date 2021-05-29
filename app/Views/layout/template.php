@@ -131,10 +131,16 @@
 			$("#fading").toggleClass('fading');
 			$("#sidebar").toggleClass('active');
 			setTimeout(function() {
+				// page data_user
+				listUser();
+				// page kelola_barang
 				listItem()
 				listPerizinan();
 				listSpesifikasi()
 				listPengumuman();
+				// page komplain
+				listKomplain();
+				listArsipKomplain();
 			}, 1000);
 		});
 		$('#sidebar').click(function(e) {
@@ -150,14 +156,60 @@
 	});
 </script>
 
-<!-- Config Modal -->
+
+<!-------------------------------------------------- Config Cancel/Close Button -------------------------------------------------->
 <script>
-	$(document).ready(function() {
-		$('.modal-dismiss').click(function() {
-			$('#Perizinan_Modal').modal('hide');
+	function UserModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#User_Modal').modal("hide");
+			$('#User_Form').html('');
 		});
-	});
+	}
+
+	function BarangModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Item_Modal').modal("hide");
+			$('#Item_Form').html('');
+		});
+	}
+
+	function PerizinanModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Perizinan_Modal').modal("hide");
+			$('#Perizinan_Form').html('');
+		});
+	}
+
+	function InOutModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#InOut_Modal').modal("hide");
+			$('#InOut_Form').html('');
+		});
+	}
+
+	function SpesifikasiModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Spec_Modal').modal("hide");
+			$('#Spec_Form').html('');
+		});
+	}
+
+	function KomplainModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Komplain_Modal').modal("hide");
+			$('#Komplain_Form').html('');
+		});
+	}
+
+	function PengumumanModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Pengumuman_Modal').modal("hide");
+			$('#Pengumuman_Form').html('');
+		});
+	}
 </script>
+
+
 
 <!-------------------------------------------------- Catch Data for Kelola Barang -------------------------------------------------->
 <?= $this->include('scripts/global/kelola_barang'); ?>
@@ -171,223 +223,18 @@
 <?= $this->include('scripts/admin/perizinan'); ?>
 
 <!-------------------------------------------------- Catch for edit pengumuman -------------------------------------------------->
-<script>
-	function listPengumuman() {
-		$.ajax({
-			url: '<?= base_url('Admin/ShowPengumuman'); ?>',
-			beforeSend: function(f) {
-				$('#Reload_AJAX').html(sloading);
-			},
-			success: function(data) {
-				$('#Reload_AJAX').html(data);
-				$('#table_pengumuman').DataTable({
-					scrollY: '100vh',
-					scrollCollapse: true,
-					paging: false,
-					"order": [
-						[0, "desc"]
-					],
-					"columnDefs": [{
-						"width": "20%",
-						"targets": 1
-					}]
-				});
-			}
-		});
-	}
-
-	let PengumumanSaveType; // Tumbal Operan :'v
-
-	function showTambahmodal() {
-		PengumumanSaveType = "Tambah";
-		$('#Pengumuman_Modal').modal('show');
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('Admin/TambahPengumuman_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Pengumuman_Icon').removeClass("fa-folder-open");
-				$('#Pengumuman_Icon').addClass("fa-folder-plus");
-				$('#Pengumuman_Header').removeClass("bg-dark");
-				$('#Pengumuman_Header').addClass("bg-softblue");
-				$('#Modal_Title').text(' Tambah Pengumuman');
-			},
-			success: function(data) {
-				$('#Pengumuman_Form').html(data);
-			}
-		});
-	}
-
-	function showDeleteModal(id) {
-		PengumumanSaveType = "Delete";
-		$('#Pengumuman_Modal').modal('show');
-		$.ajax({
-			url: "<?= base_url('Admin/DeletePengumuman_Form'); ?>",
-			beforeSend: function(data) {
-				$('#Pengumuman_Icon').removeClass("fa-folder-plus");
-				$('#Pengumuman_Icon').addClass("fa-folder-open");
-				$('#Pengumuman_Header').removeClass("bg-softblue");
-				$('#Pengumuman_Header').addClass("bg-dark");
-				$('#Modal_Title').text(' Hapus Pengumuman');
-			},
-			success: function(data) {
-				$('#Pengumuman_Form').html(data);
-				$.ajax({
-					url: '<?= base_url('Admin/GetIdPengumuman'); ?>',
-					data: {
-						"id_pengumuman": id
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function(data) {
-						$('[name="id_pengumuman"]').val(data.id_pengumuman);
-						$('[name="judul"]').val(data.judul);
-						$('[name="isi"]').text(data.isi);
-					}
-				});
-			}
-		});
-	}
-
-	$("#Pengumuman_Form").submit('click', function() {
-		// e.preventDefault(); tidak berhasil
-		$('#Pengumuman_Modal').modal('hide');
-		let url;
-		if (PengumumanSaveType == "Tambah") {
-			url = "<?= base_url('Admin/TambahPengumuman'); ?>";
-		} else if (PengumumanSaveType == "Delete") {
-			url = "<?= base_url('Admin/DeletePengumuman'); ?>";
-		}
-		$.ajax({
-			url: url,
-			type: "POST",
-			data: $('#Pengumuman_Form').serialize(),
-			success: function(data) {
-				$('#Pengumuman_Form').html(' ');
-				listPengumuman();
-			}
-		});
-		return false;
-	})
-
-	function infoClear() {
-		// Set data to Form input
-		let url = '<?= base_url('Admin/BlankPengumuman_Form'); ?>';
-		let jpholder;
-		if (PengumumanSaveType == "Tambah") {
-			jpholder = "Tambah Judul Pengumuman...";
-		} else if (PengumumanSaveType == "Edit") {
-			jpholder = "Edit Judul Pengumuman...";
-		}
-		$.ajax({
-			url: url,
-			type: "POST",
-			success: function(data) {
-				$('#PengumumanF_Input').html(data);
-				$('#pengumuman_judul').attr('placeholder', jpholder);
-			}
-		});
-	}
-</script>
+<?= $this->include('scripts/admin/edit_pengumuman'); ?>
 
 <!-------------------------------------------------- Catch for Arsip komp & komplain-------------------------------------------------->
 <?= $this->include('scripts/admin/komplain'); ?>
+
 <!-------------------------------------------------- Catch for Pengaduan -------------------------------------------------->
-<script>
-	$(document).ready(function() {
-		const PengaduanScript = "<?= base_url('../js/dragdrop.js'); ?>";
-
-		function PengaduanForm() {
-			// $('#Komplain_Modal').modal('show');
-			$.ajax({
-				url: "<?= base_url('Menu/PengaduanForm'); ?>",
-				type: "POST",
-				success: function(data) {
-					$('#Pengaduan_Form').html(data);
-					$.getScript(PengaduanScript);
-				},
-				error: function(data) {
-					alert(' Operasi AJAX Gagal :(');
-				}
-			});
-		}
-		PengaduanForm();
-
-		// ..........................Aksi Pengaduan..........................
-
-		$("#Pengaduan_Form").submit(function(e) {
-			e.preventDefault();
-			$.ajax({
-				url: "<?= base_url('Menu/adukan'); ?>",
-				type: "POST",
-				// data: $('#Pengaduan_Form').serialize(),
-				data: new FormData(this),
-				processData: false,
-				contentType: false,
-				cache: false,
-				async: false,
-				success: function(adukan) {
-					alert('Data Terkirim !');
-					// $('[name="judul"]').val('');
-					// $('[name="isi"]').val('');
-					// $('[name="foto"]').val(null);
-					// $('.drop-zone__thumb').attr('style', null);
-					PengaduanForm();
-				},
-				error: function(data) {
-					alert('Operasi Ajax Gagal :(');
-				}
-			});
-			// return false;
-		});
-	});
-</script>
+<?= $this->include('scripts/global/pengaduan'); ?>
 
 <!-------------------------------------------------- Catch for profile edit -------------------------------------------------->
-<script>
-	function imgPreview() {
-		const sampul = document.querySelector('#foto');
-		const imgPreview = document.querySelector('.img-preview');
-
-		const fileSampul = new FileReader();
-		fileSampul.readAsDataURL(sampul.files[0]);
-
-		fileSampul.onload = function(e) {
-			imgPreview.src = e.target.result;
-		}
-	}
-</script>
+<?= $this->include('scripts/global/profile_edit'); ?>
 
 <!------------------------------------------------ Catch for Perizinan Absensi ------------------------------------------------>
-<script>
-	$(document).ready(function() {
-		// get Accept Absensi
-		$('.btn-acc-izin').on('click', function() {
-			// mengambil data id_absen
-			var idIzin = $(this).data('idizin');
-
-			// Set data ke modal Form accept
-			$('#acc-izin').val(idIzin);
-		});
-
-		// get Decline Absensi 
-		$('.btn-rjc-izin').on('click', function() {
-			// mengambil data id_absen
-			var idIzin = $(this).data('idizin');
-
-			// Set data ke modal Form decline
-			$('#dec-izin').val(idIzin);
-		});
-
-		// get Bukti Image
-		$('.btn-img-izin').on('click', function() {
-			// get img from tabel
-			const img = $(this).data('img');
-
-			// Set img to modal
-			$('#buktiIzin img').attr('src', img);
-			// $('#Komplain_Modal').modal('hide');
-		});
-	});
-</script>
+<?= $this->include('scripts/admin/aktivitas'); ?>
 
 </html>
