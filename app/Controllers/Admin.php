@@ -1287,7 +1287,7 @@ class Admin extends BaseController
 				if ($status == 'accepted') {
 					$statusAct = "menerima";
 				}
-				$aktivitas = session('nama') . $statusAct . " komplain pekerja dengan nomor komplain : " . $data['no_arsipKomp'] . ".";
+				$aktivitas = session('nama') . " " . $statusAct . " komplain pekerja dengan nomor komplain : " . $data['no_arsipKomp'] . ".";
 				// insert user aktivity saat menambahkan pengumuman
 				$this->userActivityModel->insert([
 					'uid_aktivitas' => session('uid'),
