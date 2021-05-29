@@ -32,6 +32,6 @@
 </div>
 <div class="modal-footer">
     <input type="hidden" name="id_item" id="edit_id_item">
-    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+    <button type="button" class="btn btn-danger btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
     <button type="submit" class="btn btn-warning"><i class="fas fa-fw fa-check"></i> Simpan</button>
 </div>
