@@ -391,7 +391,6 @@ class Admin extends BaseController
 					];
 				}
 				return $this->response->setJSON($response);
-				// return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -400,9 +399,8 @@ class Admin extends BaseController
 		}
 	}
 
-	public function Edit_User() //<< tambahi untuk update session jika user ini sedang login
-	{							//<< ya gak guna ke user yg diubah soalnya session main di lokal browser, dan update sendiri klo si user login ulang
-		//<< kata siapa session harus di update lewat login?
+	public function Edit_User()
+	{
 		// seleksi login
 		if (session('uid') != null) {
 			// seleksi role pengguna
@@ -532,9 +530,6 @@ class Admin extends BaseController
 					'picture' => $namaImg
 				);
 				// Execution
-				// $this->adminModel->updateUser($data, $id);
-				// session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
-
 				$aktivitas = session('nama') . " mengubah Akun dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan divisi : " . $data['divisi_user'] . " sebagai " . $data['role'];
 				// insert user aktivity saat mengubah akun baru
 				$this->userActivityModel->insert([
@@ -554,8 +549,11 @@ class Admin extends BaseController
 						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Update Data User Gagal !</div>',
 					];
 				}
+
+				$user = $this->userModel->getUser(session('email'));
+				$this->session->set($user);
+
 				return $this->response->setJSON($response);
-				// return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
 			}
@@ -584,9 +582,18 @@ class Admin extends BaseController
 					'waktu_aktivitas' => date("Y-m-d H:i:s")
 				]);
 
-				$this->adminModel->deleteUser($id);
-				session()->setFlashdata('pesan', '<div class="notif-success">User Berhasil Di Hapus!</div>');
-				return redirect()->to('Datauser');
+				if ($this->adminModel->deleteUser($id)) {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Hapus Data User Berhasil !</div>',
+					];
+				} else {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Hapus Data User Gagal !</div>',
+					];
+				}
+				return $this->response->setJSON($response);
 			} else {
 				return redirect()->to('/dashboard');
 			}
