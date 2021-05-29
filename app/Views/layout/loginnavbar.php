@@ -11,8 +11,8 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 				<span class="navbar-text mr-auto"></span>
 				<ul class="navbar-nav ">
-					<li class="nav-item active">
-						<a href="<?= base_url('/') ?>" class="nav-link">Home <span class="sr-only">(current)</span></a>
+					<li class="nav-item active me-3">
+						<a href="<?= base_url('/') ?>" class="nav-link"><i class="fas fa-home fa-fw me-1"></i>Home <span class="sr-only">(current)</span></a>
 					</li>
 					<?php
 					$mail = "https://mail.google.com/mail/";
@@ -27,13 +27,13 @@
 
 					$pesan = "" . $mail . "?view=cm&fs=1&tf=1&to=" . $emailtujuan . "&subject?&su=" . $subject . "&body=" . $body;
 					?>
-					<li class="nav-item">
+					<li class="nav-item me-3">
 						<a class="nav-link reg" href="<?= $pesan; ?>" target="_blank" http-equiv="refresh" content="2">
-							Kontak
+							<i class="fas fa-phone-square fa-fw me-1"></i>Kontak
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" type="button" data-toggle="modal" data-target="#TentangModal">Tentang</a>
+					<li class="nav-item me-3">
+						<a class="nav-link" type="button" data-toggle="modal" data-target="#TentangModal"><i class="fas fa-star fa-fw me-1"></i>Tentang</a>
 					</li>
 				</ul>
 			</div>

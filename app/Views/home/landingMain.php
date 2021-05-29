@@ -2,31 +2,29 @@
 
 <?= $this->section('homecontent') ?>
 <!--Main layout-->
-<main class="pt-5">
+<main class="home-landing">
     <!--Main container-->
     <div class="container">
         <!--Grid row-->
         <div class="row">
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
+            <div class="intro col-md-6 mb-4">
                 <div class="view overlay z-depth-1-half">
-                    <img src="<?= base_url('img/home/b1.jpg') ?>" class="card-img-top" alt="gudang">
-                    <div class="mask rgba-white-light"></div>
+                    <h2>Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</h2>
+                    <hr>
+                    <p>Ibmaeter merupakan website yang dapat membantu anda dalam mengelola aktivitas inventaris barang gudang dan manajemen pekerja gudang. Fitur-fitur yang disediakan
+                        dapat mempertahankan performa bisnis anda dengan tetap pegang kendali penuh pada persediaan stok barang yang tersaji
+                        cepat dan real time. Dengan kemudahan yang didapatkan, jadikanlah Ibmaeter sebagai partner bisnis anda mulai dari sekarang...
+                    </p>
+                    <a href="<?= base_url("login"); ?>" class="btn mulai btn-info btn-lg shadow-sm" style="letter-spacing:3px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Mulai&nbsp;Inventaris</a>
                 </div>
             </div>
-            <div class="intro col-md-6 mb-4">
-                <h2>Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</h2>
-                <hr>
-                <p>Ibmaeter merupakan website yang dapat membantu anda dalam mengelola aktivitas inventaris barang gudang dan manajemen pekerja gudang. Fitur-fitur yang disediakan
-                    dapat mempertahankan performa bisnis anda dengan tetap pegang kendali penuh pada persediaan stok barang yang tersaji
-                    cepat dan real time. Dengan kemudahan yang didapatkan, jadikanlah Ibmaeter sebagai partner bisnis anda mulai dari sekarang...
-                </p>
-                <a href="<?= base_url("login"); ?>" class="btn mulai btn-info shadow-sm" style="letter-spacing:3px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Mulai&nbsp;Inventaris</a>
+            <div class="col-md-6 mb-4">
+                <img src="<?= base_url('img/Warehouse.jpg') ?>" class="card-img-top" alt="gudang">
             </div>
         </div><br><br>
 
         <!-- Atrikel -->
-        <section class="article" style="margin-bottom: 50px;">
+        <!-- <section class="article" style="margin-bottom: 50px;">
             <div class="artikel-slider-wrapper">
                 <div class="row">
                     <div class="col-12">
@@ -172,7 +170,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- END of Artikel -->
 
     </div>

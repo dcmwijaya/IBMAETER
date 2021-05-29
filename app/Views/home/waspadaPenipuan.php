@@ -2,7 +2,7 @@
 
 <?= $this->section('homecontent') ?>
 <!--Main layout-->
-<main class="pt-5">
+<main class="waspada-landing">
 	<!--Main container-->
 	<div class="container">
 
