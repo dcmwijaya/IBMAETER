@@ -49,6 +49,6 @@
     <input type="hidden" name="id_komplain">
     <input type="hidden" id="acc-nomor" name="no_komplain">
     <input type="hidden" id="dec-status" name="status" value="accepted">
-    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+    <button type="button" class="btn btn-danger btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
     <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Selesai</button>
 </div>

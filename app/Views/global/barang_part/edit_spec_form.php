@@ -35,7 +35,7 @@
     </div>
     <div class="modal-footer">
         <input type="hidden" name="sp_id_item">
-        <button type="button" class="btn btn-danger shadow-sm" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+        <button type="button" class="btn btn-danger btn-modal-close shadow-sm" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
         <button type="submit" class="btn btn-warning shadow-sm"><i class="fas fa-fw fa-check"></i> Simpan</button>
     </div>
 </div>

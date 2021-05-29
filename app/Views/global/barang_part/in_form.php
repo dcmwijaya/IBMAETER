@@ -49,7 +49,7 @@
     </div>
     <div class="modal-footer">
         <input type="hidden" id="InNamaPost" class="form-control" name="InOut_Id_Item">
-        <button type="button" class="btn btn-danger shadow-sm" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+        <button type="button" class="btn btn-danger btn-modal-close shadow-sm" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
         <button type="submit" class="btn btn-primary shadow-sm"><i class="fas fa-fw fa-check"></i> Masukkan</button>
     </div>
 </div>
