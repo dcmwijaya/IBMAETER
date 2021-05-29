@@ -25,19 +25,45 @@ class Pengumuman_Model extends Model
         $builder->select('*');
         $builder->join('pengumuman', 'pengumuman.id_pengumuman = pengumuman_visibility.id_pengumuman');
         $builder->join('user', 'user.uid = pengumuman_visibility.uid');
-        $builder->where(session('uid'), $look);
-        $query = $builder->get()->getResultArray();
+        $builder->where('status', $look);
+        $builder->where('pengumuman_visibility.uid', session('uid'));
+        $query = $builder->get(5)->getResultArray();
         return $query;
     }
 
     public function CountExpVisibility($uid) // count jumlah pengumuman
     {
-        $look = array('status' => 'Belum Dilihat');
+        // $look = array('status' => 'Belum Dilihat');
         $builder = $this->db->table('pengumuman_visibility');
-        $builder->where($uid, $look);
+        $builder->where('uid', session('uid'));
+        $builder->where('status', 'Belum Dilihat');
         $query = $builder->countAllResults();
         return $query;
     }
+
+    public function UpdateVisibility($data, $id_pengumuman)
+    {
+        $builder = $this->db->table('pengumuman_visibility');
+        $builder->where('id_pengumuman', $id_pengumuman);
+        $builder->where('uid', session('uid'));
+        $query = $builder->update($data);
+        return $query;
+    }
+
+    public function UpdateshowExpVisibility() // buat tampilin user experience
+    {
+        $look = array('status' => 'Belum Dilihat');
+        $builder = $this->db->table('pengumuman_visibility');
+        $builder->select('*');
+        $builder->join('pengumuman', 'pengumuman.id_pengumuman = pengumuman_visibility.id_pengumuman');
+        $builder->join('user', 'user.uid = pengumuman_visibility.uid');
+        $builder->where('status', $look);
+        $builder->where('pengumuman_visibility.uid', session('uid'));
+        $query = $builder->get(5)->getResultArray();
+        return $query;
+    }
+
+    // pengumuman section
 
     public function showInfo()
     {

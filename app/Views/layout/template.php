@@ -234,8 +234,13 @@
 <!------------------------------------ Catch Data for Kelola Barang -------------------------------------->
 <?= $this->include('scripts/global/kelola_barang'); ?>
 
+<!------------------------------------ Catch for user pengumuman ------------------------------------->
+<?= $this->include('scripts/global/pengumuman'); ?>
+
 <!------------------------------------ Catch for Pengaduan -------------------------------------->
 <?= $this->include('scripts/global/pengaduan'); ?>
+
+<!-- ##################################### PROFILE SECTION ##################################### -->
 
 <!------------------------------------ Catch for profile edit ------------------------------------->
 <?= $this->include('scripts/global/profile_edit'); ?>

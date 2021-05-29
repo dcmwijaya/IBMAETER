@@ -510,6 +510,88 @@ class Menu extends BaseController
 		}
 	}
 
+	// Visibilitas Experience Function
+	public function PengumumanDilihat()
+	{
+		if (session('uid') != null) {
+			$id_pengumuman = $this->request->getPost('id_pengumuman');
+			$data = array(
+				'status' => 'Dilihat',
+				'waktu' => date("Y-m-d H:i:s"),
+				'id_pengumuman' => $id_pengumuman
+			);
+			// $update_visibility = $this->newsModel->UpdateVisibility($data, $id_visibility);
+			if ($this->newsModel->UpdateVisibility($data, $id_pengumuman)) {
+				$response = [
+					'success' => true,
+					'msg' => '<div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Pengumuman Dilihat !</div>',
+					'data' => $data
+				];
+			} else {
+				$response = [
+					'success' => true,
+					'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Gagal Menjalankan Aksi !</div>',
+					'data' => $data
+				];
+			}
+			return $this->response->setJSON($response);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function CountDilihat()
+	{
+		if (session('uid') != null) {
+			$total = $this->newsModel->CountExpVisibility(session('uid'));
+			$response = [
+				'success' => true,
+				'msg' => 'success',
+				'totalcount' => $total
+			];
+			return $this->response->setJSON($response);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function UpdateListDilihat()
+	{
+		if (session('uid') != null) {
+			$updateListVisibility = $this->newsModel->UpdateshowExpVisibility();
+			$data = '';
+			// $data .= '<option value="">(Tidak Ada)</option>';
+
+			foreach ($updateListVisibility as $u) {
+
+				$data .= '
+				<a href="' . base_url('Menu/Pengumuman/') . '" class="list-group-item border m-0">
+					<div class="row mx-auto align-items-center">
+						<div class="col-2">
+							<i class="fas fa-fw fa-users"></i>
+						</div>
+						<div class="col-10">
+							<div class="text-dark">
+								<span>' . $u['judul'] . '</span>
+							</div>
+							<div class="text-muted small mt-1 overflowy-notif">
+								<span>' . $u['isi'] . '</span>
+							</div>
+							<div class="text-muted small mt-1">
+								<small>' . $u['waktu'] . '</small>
+							</div>
+						</div>
+					</div>
+				</a>';
+			}
+			return $data;
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+
+
 	// ====================================================== Profile Akun =========================================================
 	public function Profakun($email)
 	{
