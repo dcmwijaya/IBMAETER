@@ -6,6 +6,7 @@ body{
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
 .cbg-sea {
@@ -19,6 +20,7 @@ body{
   background-color: white;
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
+  z-index: 996;
 }
 
 .mulai:hover {
@@ -82,40 +84,58 @@ body{
 }
 
 .navbar{
-  background-color: rgba(185, 229, 255, 0.8);
-  position: fixed;
+  background: linear-gradient(90deg, rgb(63, 185, 255, 0.7) 0%, rgb(160, 255, 242, 0.7) 100%);
   width: 100%;
   z-index: 999;
 }
 
-.login-body{
-  background-image: url("../img/home/HHome.png");
-  background-repeat: no-repeat;
-  background-size: 1600px 900px;
-}
-
 .home-landing{
   padding-top: 200px;
-  height: 100px;
-  margin-bottom: -1000px;
+  background-image: url("../img/home/HomeLanding.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: 1650px 1100px;
+  z-index: 996;
+  margin-bottom: 0px;
 }
 
 .kebijakan-landing{
-  padding-top: 200px;
-  height: 100px;
-  margin-bottom: 50px;
+  padding-top: 100px;
+  background-image: url("../img/home/HomeLanding.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: 2200px 2180px;
+  z-index: 996;
+  margin-bottom: 0px;
 }
 
 .waspada-landing{
   padding-top: 200px;
-  height: 100px;
-  margin-bottom: -400px;
+  background-image: url("../img/home/HomeLanding.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: 2300px 1850px;
+  z-index: 996;
+  margin-bottom: 0px;
 }
 
-#footer {
-  font-size: 14px;
-  background-image: url("../img/home/FHome.png");
-  background-repeat: no-repeat;
-  background-size: 1600px 900px;
-  height: 1000px;
+#footer{
+  top:0px;
+  min-height:100%;
+  position:relative;
+}
+
+#footer .footer-content {
+  color: black;
+  background: linear-gradient(-90deg, rgb(63, 185, 255, 0.7) 0%, rgb(160, 255, 242, 0.7) 100%);
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  position: static;
+  bottom: 0px;
+}
+
+#footer .copyright {
+  float: left;
+  padding-left: 30px;
 }
