@@ -77,8 +77,8 @@
   overflow-x: clip;
 }
 
-.mbc12 {
-  margin-bottom: 12px;
+.text-green {
+  color: #0f9c21 !important;
 }
 
 @media (max-width: 575.98px) {

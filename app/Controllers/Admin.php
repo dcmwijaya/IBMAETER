@@ -336,7 +336,7 @@ class Admin extends BaseController
 				if (!$this->validate($rules)) {
 					$response = [
 						'success' => false,
-						'msg' => '<div class="notif-failed">Data Gagal Ditambahkan!</div>',
+						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Validasi Tambah User Gagal !</div>',
 						// get error
 						'user' => $validation->getError('user'),
 						'email' => $validation->getError('email'),
@@ -382,12 +382,12 @@ class Admin extends BaseController
 				if ($this->adminModel->addUser($data)) {
 					$response = [
 						'success' => true,
-						'msg' => '<div class="notif-success">Data Berhasil Ditambahkan!</div>',
+						'msg' => '<div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Tambah Data User Berhasil!</div>',
 					];
 				} else {
 					$response = [
 						'success' => true,
-						'msg' => '<div class="notif-failed">Data Gagal Ditambahkan!</div>',
+						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Tambah Data User Gagal !</div>',
 					];
 				}
 				return $this->response->setJSON($response);
@@ -407,22 +407,26 @@ class Admin extends BaseController
 		if (session('uid') != null) {
 			// seleksi role pengguna
 			if (session('role') == 0) {
-				if (!$this->validate([
-					'new_nama' => [
-						'rules' => 'max_length[60]',
+				$validation = \Config\Services::Validation();
+				$rules = [
+					'user' => [
+						'rules' => 'required|max_length[60]',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'max_length' => 'nama huruf harus lebih kecil dari 60 karakter'
 						]
 					],
-					'new_email' => [
-						'rules' => 'valid_email',
+					'email' => [
+						'rules' => 'required|valid_email',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'valid_email' => 'E-mail User harus sesuai format email'
 						]
 					],
-					'new_ttl' => [
-						'rules' => 'valid_date',
+					'ttl' => [
+						'rules' => 'required|valid_date',
 						'errors' => [
+							'required' => 'Input Harus di isi!',
 							'valid_date' => 'Masukan TTL Salah !'
 						]
 					],
@@ -433,26 +437,28 @@ class Admin extends BaseController
 							'max_length' => 'Password haurs lebih kecil dari 24 karakter'
 						]
 					],
-					'new_gender' => [
-						'rules' => 'alpha_numeric_punct',
+					'gender' => [
+						'rules' => 'required|max_length[24]',
 						'errors' => [
-							'alpha_numeric_punct' => 'Harus memilih salah satu !'
+							'required' => 'Input Harus di isi!',
+							'max_length' => 'input gender maksimal 24 karakter'
 						]
 					],
-					'new_role' => [
-						'rules' => 'numeric',
+					'role' => [
+						'rules' => 'required|alpha_numeric',
 						'errors' => [
-							'numeric' => 'input harus angka'
+							'required' => 'Input Harus di isi!',
+							'alpha_numeric' => 'input harus angka'
 						]
 					],
-					'new_division' => [
-						'rules' => 'numeric',
+					'division' => [
+						'rules' => 'permit_empty|alpha_numeric',
 						'errors' => [
-							'numeric' => 'input division Invalid !'
+							'alpha_numeric' => 'input division invalid !'
 						]
 					],
-					'new_img' => [
-						'rules' => 'max_size[new_img,4096]|is_image[new_img]|max_dims[new_img,3500,3500]|ext_in[new_img,png,jpg,jpeg]',
+					'add_img' => [
+						'rules' => 'max_size[add_img,4096]|is_image[add_img]|max_dims[add_img,3500,3500]|ext_in[add_img,png,jpg,jpeg]',
 						'errors' => [
 							'max_size' => 'File gambar tidak boleh lebih dari 4MB !',
 							'is_image' => 'File bukan gambar !',
@@ -460,15 +466,27 @@ class Admin extends BaseController
 							'ext_in' => 'Format file harus jpg/jpeg/png !'
 						]
 					]
-				])) {
-					echo "VALIDATE SALAH";
-					// session()->setFlashdata('pesan', '<div class="notif-failed">Data Gagal Di Update!</div>');
-					// return redirect()->to('Datauser')->withInput();
+				];
+				if (!$this->validate($rules)) {
+					$response = [
+						'success' => false,
+						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Validasi Input Edit Data User Gagal !</div>',
+						// get error
+						'user' => $validation->getError('user'),
+						'email' => $validation->getError('email'),
+						'new_password' => $validation->getError('new_password'),
+						'ttl' => $validation->getError('ttl'),
+						'gender' => $validation->getError('gender'),
+						'role' => $validation->getError('role'),
+						'division' => $validation->getError('division'),
+						'add_img' => $validation->getError('add_img'),
+					];
+					return $this->response->setJSON($response);
 				}
 				$id = $this->request->getPost('user_id');
 				$getUid = $this->userModel->getUserId($id);
 
-				$fileImg = $this->request->getFile('new_img');
+				$fileImg = $this->request->getFile('add_img');
 				// cek gambar apakah tetap gambar lama
 				if ($fileImg->getError() == 4) { // jika mendapat error 4(file tidak diuplod)
 					$namaImg = $getUid['picture'];
@@ -495,7 +513,7 @@ class Admin extends BaseController
 				}
 				//If the divisi_user IS NOT '' or 0 or '0' or NULL
 				$old_division = $getUid['divisi_user'];
-				$new_division = $this->request->getPost('new_division');
+				$new_division = $this->request->getPost('division');
 				$division = '';
 				if (!empty($new_division)) {
 					$division = $new_division;
@@ -504,18 +522,18 @@ class Admin extends BaseController
 				}
 
 				$data = array(
-					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_nama'), ENT_QUOTES)),
-					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_email'), ENT_QUOTES)),
+					'nama' => str_replace("'", "", htmlspecialchars($this->request->getPost('user'), ENT_QUOTES)),
+					'email' => str_replace("'", "", htmlspecialchars($this->request->getPost('email'), ENT_QUOTES)),
 					'password' => $pass,
-					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_gender'), ENT_QUOTES)),
-					'role' => intval($this->request->getPost('new_role')),
+					'gender' => str_replace("'", "", htmlspecialchars($this->request->getPost('gender'), ENT_QUOTES)),
+					'role' => intval($this->request->getPost('role')),
 					'divisi_user' => intval($division),
-					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('new_ttl'), ENT_QUOTES)),
+					'tanggal_lahir' => str_replace("'", "", htmlspecialchars($this->request->getPost('ttl'), ENT_QUOTES)),
 					'picture' => $namaImg
 				);
 				// Execution
-				$this->adminModel->updateUser($data, $id);
-				session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
+				// $this->adminModel->updateUser($data, $id);
+				// session()->setFlashdata('pesan', '<div class="notif-success">Data Berhasil Di Update!</div>');
 
 				$aktivitas = session('nama') . " mengubah Akun dengan nama : " . $data['nama'] . ", email : " . $data['email'] . ", dan divisi : " . $data['divisi_user'] . " sebagai " . $data['role'];
 				// insert user aktivity saat mengubah akun baru
@@ -525,7 +543,19 @@ class Admin extends BaseController
 					'waktu_aktivitas' => date("Y-m-d H:i:s")
 				]);
 
-				return redirect()->to('Datauser');
+				if ($this->adminModel->updateUser($data, $id)) {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Update Data User Berhasil !</div>',
+					];
+				} else {
+					$response = [
+						'success' => true,
+						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Update Data User Gagal !</div>',
+					];
+				}
+				return $this->response->setJSON($response);
+				// return redirect()->to('Datauser');
 			} else {
 				return redirect()->to('/dashboard');
 			}
