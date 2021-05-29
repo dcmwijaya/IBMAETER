@@ -81,6 +81,11 @@
   overflow-x: clip;
 }
 
+.overflowy-notif {
+  max-height: 15px;
+  overflow-y: clip;
+}
+
 .text-green {
   color: #0f9c21 !important;
 }

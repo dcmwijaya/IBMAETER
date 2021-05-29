@@ -25,13 +25,18 @@
 					<!-- Dropdown - Messages -->
 					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0 shadow" aria-labelledby="alertsDropdown">
 						<div class="dropdown-menu-header bg-softblue">
-							<i class="fas fa-bell fa-fw"></i> <?= $infoCV; ?> Notifikasi Baru
+							<i class="fas fa-bell fa-fw"></i>
+							<?php if ($infoCV > 0) : ?>
+								<span id="CounterPengumumanUid"><?= $infoCV; ?> Notifikasi Baru !</span>
+							<?php else : ?>
+								<span id="CounterPengumumanUid">Tidak Ada Notifikasi</span>
+							<?php endif; ?>
 						</div>
 						<!-- VISIBILITY -->
-						<div class="list-group">
+						<div class="list-group" id="ListNotifikasiExp">
 							<!-- Info Pengumuman Cluster -->
 							<?php foreach ($infoV as $p) : ?>
-								<a href="<?= base_url('Menu/Pengumuman/' . $p['id_pengumuman']); ?>" class="list-group-item border m-0">
+								<a href="<?= base_url('Menu/Pengumuman/'); ?>" class="list-group-item border m-0">
 									<div class="row mx-auto align-items-center">
 										<div class="col-2">
 											<i class="fas fa-fw fa-users"></i>
@@ -40,7 +45,7 @@
 											<div class="text-dark">
 												<span><?= $p['judul']; ?></span>
 											</div>
-											<div class="text-muted small mt-1">
+											<div class="text-muted small mt-1 overflowy-notif">
 												<span><?= $p['isi']; ?></span>
 											</div>
 											<div class="text-muted small mt-1">
