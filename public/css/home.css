@@ -3,7 +3,9 @@
 }
 
 body{
-  margin:0px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .cbg-sea {
@@ -13,17 +15,18 @@ body{
 .mulai {
   color: #0211f1;
   font-weight: bold;
-  border: 4px #010b92 inset;
-  background-image: linear-gradient(rgb(71, 187, 255), rgb(185, 229, 255));
+  border: 4px #010b92 double;
+  background-color: white;
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
 }
 
 .mulai:hover {
-  color: #001158;
+  color: #0033ff;
   border: 4px #05052bbb inset;
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
+  background-color: rgba(185, 229, 255, 0.8);
 }
 
 .card-img-top{
@@ -78,213 +81,41 @@ body{
   text-align: justify;
 }
 
+.navbar{
+  background-color: rgba(185, 229, 255, 0.8);
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+.login-body{
+  background-image: url("../img/home/HHome.png");
+  background-repeat: no-repeat;
+  background-size: 1600px 900px;
+}
+
+.home-landing{
+  padding-top: 200px;
+  height: 100px;
+  margin-bottom: -1000px;
+}
+
+.kebijakan-landing{
+  padding-top: 200px;
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+.waspada-landing{
+  padding-top: 200px;
+  height: 100px;
+  margin-bottom: -400px;
+}
+
 #footer {
   font-size: 14px;
-  background: #37517e;
-}
-
-#footer .line{
-  display: none;
-}
-
-#footer .footer-top {
-  padding: 60px 0 30px 0;
-  background-image: linear-gradient(rgb(71, 187, 255), rgb(185, 229, 255));
-}
-
-#footer .footer-top .footer-contact {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-contact h3 {
-  font-size: 28px;
-  margin: 0 0 10px 0;
-  padding: 2px 0 2px 0;
-  line-height: 1;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #37517e;
-}
-
-#footer .footer-top .footer-contact p {
-  font-size: 14px;
-  line-height: 24px;
-  margin-bottom: 0;
-  font-family: "Jost", sans-serif;
-  color: #5e5e5e;
-}
-
-#footer .footer-top h4 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #37517e;
-  position: relative;
-  padding-bottom: 12px;
-}
-
-#footer .footer-top .footer-links {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer .footer-top .footer-links ul i {
-  padding-right: 2px;
-  color: #47b2e4;
-  font-size: 18px;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
-
-#footer .footer-top .footer-links ul a {
-  color: #777777;
-  transition: 0.3s;
-  display: inline-block;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul a:hover {
-  text-decoration: none;
-  color: #37517e;
-  font-weight: bold;
-  margin-left: 8px;
-  transition: 2s;
-}
-
-#footer .footer-top .social-links a {
-  margin-top: -20px;
-  font-size: 18px;
-  display: inline-block;
-  background: #47b2e4;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-}
-
-#footer .footer-top .social-links a:hover {
-  background: #209dd8;
-  color: #fff;
-  text-decoration: none;
-}
-
-#footer .footer-bottom {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  color: #fff;
-}
-
-#footer .copyright {
-  float: left;
-}
-
-#footer .credits {
-  float: right;
-  font-size: 13px;
-}
-
-#footer .credits a {
-  transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-  #footer .footer-top{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-  }
-  #footer .footer-top .f1-content, .f4-content{
-    text-align: center;
-  }
-  #footer .footer-top .f2-content{
-    padding: 10px;
-    flex: 50%;
-    text-align: left;
-  }
-  #footer .footer-top .f3-content{
-    padding: 10px;
-    flex: 50%;
-    text-align: left;
-  }
-  .f-kolom ul li{
-    left: 50px;
-    right: 50px;
-  }
-  #footer .footer-bottom {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  #footer .copyright, #footer .credits {
-    text-align: center;
-    float: none;
-  }
-  #footer .credits {
-    padding-top: 4px;
-  }
-  #footer .line{
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    width: 90%;
-    border: 1px solid;
-  }
-}
-
-.info-card{
-  max-width: 1000px;
-  margin:0 auto;
-  border-radius: 20px;
-  border: 2px blue solid;
-  padding: 15px 15px 15px 25px;
-}
-
-.info-card .card-title{
-  margin-top: 20px;
-}
-
-.info-card img{
-  max-width: 100%;
-  max-height: 100%;
-  width: 1920px;
-  height: 260px;
-}
-
-.img-info{
-  border-radius: 20px;
-}
-
-.event-description{
-  padding-left: 40px;
-}
-
-.info-card .row button{
-  float: right;
-  margin-right: 8%;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-}
-
-.kebijakan{
-  max-width: 1920px;
-  margin:0 auto;
-  border-radius: 20px;
+  background-image: url("../img/home/FHome.png");
+  background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  height: 1000px;
 }
