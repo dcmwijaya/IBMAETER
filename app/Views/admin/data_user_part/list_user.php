@@ -22,10 +22,12 @@
                 <td><?= $u['nama_divisi']; ?></td>
                 <td><?= ($u['role'] == 0) ? 'Admin' : 'Pekerja' ?></td>
                 <td>
-                    <div class="btn-group" role="group" aria-label="user_action">
-                        <button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" onclick="EditUserModal(<?= $u['uid']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
-                        <button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" onclick="DeleteUserModal(<?= $u['uid']; ?>)"><i class="fas fa-trash fa-fw"></i></button>
-                    </div>
+                    <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) : ?>
+                        <div class="btn-group" role="group" aria-label="user_action">
+                            <button type="button" class="btn btn-warning btn-sm btn-edit-user px-2 rounded-left" onclick="EditUserModal(<?= $u['uid']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm btn-delete-user px-2 rounded-right" onclick="DeleteUserModal(<?= $u['uid']; ?>)"><i class="fas fa-trash fa-fw"></i></button>
+                        </div>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php $no++; ?>

@@ -106,10 +106,20 @@
 		});
 		$('.toast').toast('show');
 		// load tables
+	});
+	// Memulai Loading Page dengan AJAX
+	// load list data when document load
+	$(document).ready(function() {
+		// page data_user
+		listUser();
+		// page kelola_barang
+		listItem()
+		listPerizinan();
+		listSpesifikasi()
+		listPengumuman();
+		// page komplain
 		listKomplain();
 		listArsipKomplain();
-		listUser();
-		// PengaduanForm();
 	});
 </script>
 
@@ -817,6 +827,10 @@
 									type: "POST",
 									success: function(data) {
 										$('[name="division"]').html(data);
+										// pembatasan dewan direksi
+										<?php if (session('divisi_user') > 1) : ?>
+											$('#division option[value="1"]').remove();
+										<?php endif; ?>
 									},
 									error: function(data) {
 										alert('AJAX Division Part Error :(');
@@ -1340,16 +1354,6 @@
 			}
 		});
 	}
-
-
-	// Memulai Loading Page dengan AJAX
-	$(document).ready(function() {
-		// load list data when document load
-		listItem()
-		listPerizinan();
-		listSpesifikasi()
-		listPengumuman();
-	});
 </script>
 
 <!-------------------------------------------------- Catch for Arsip komp & komplain-------------------------------------------------->

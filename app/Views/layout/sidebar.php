@@ -39,16 +39,20 @@
 									</h6>
 									<hr class="my-0 font-weight-bold">
 									<div class=" mb-1" id="admin_menu">
-										<a href="<?= base_url('Admin/Datauser') ?>" class="<?= ($CurrentMenu == 'data_user') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-users fa-fw me-3"></i><span>Data Pekerja</span>
-										</a>
-										<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<div class="notifs">
-												<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
-												<span class="badge badge-danger px-1 ml-1"><?= ($log_notifs > 0) ? $log_notifs : ''; ?></span>
-												<span class="sr-only">unread messages</span>
-											</div>
-										</a>
+										<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) : ?>
+											<a href="<?= base_url('Admin/Datauser') ?>" class="<?= ($CurrentMenu == 'data_user') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+												<i class="fas fa-users fa-fw me-3"></i><span>Data Pekerja</span>
+											</a>
+										<?php endif; ?>
+										<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
+											<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+												<div class="notifs">
+													<i class="fas fa-clipboard-list fa-fw me-3"></i><span>Perizinan Barang</span>
+													<span class="badge badge-danger px-1 ml-1"><?= ($log_notifs > 0) ? $log_notifs : ''; ?></span>
+													<span class="sr-only">unread messages</span>
+												</div>
+											</a>
+										<?php endif; ?>
 										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
 										</a>

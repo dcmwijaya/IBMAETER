@@ -77,6 +77,10 @@
   overflow-x: clip;
 }
 
+.overflowx-text {
+  overflow-x: clip;
+}
+
 .text-green {
   color: #0f9c21 !important;
 }

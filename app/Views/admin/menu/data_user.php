@@ -31,7 +31,9 @@ foreach ($us as $usc) {
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" onclick="TambahUserModal()"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
+									<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) : ?>
+										<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" onclick="TambahUserModal()"><i class="fas fa-plus fa-fw"></i> Tambah User</button>
+									<?php endif; ?>
 									<a type="button" href="<?= base_url('exlapor/pdfprintUser'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>
 								</div>
 								<div class="flex-fill">

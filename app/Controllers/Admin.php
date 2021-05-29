@@ -58,7 +58,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"title" => "Data Pekerja | IBMAETER",
 					"CurrentMenu" => "data_user",
@@ -84,7 +84,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"user" => $this->userModel->getJoinDivisionUser(),
 					'validation' => \Config\Services::validation(),
@@ -103,7 +103,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"user" => $this->userModel->getJoinDivisionUser(),
 					'validation' => \Config\Services::Validation()
@@ -121,7 +121,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"user" => $this->userModel->getJoinDivisionUser(),
 					'validation' => \Config\Services::Validation()
@@ -139,7 +139,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"user" => $this->userModel->getJoinDivisionUser(),
 					'validation' => \Config\Services::Validation()
@@ -157,7 +157,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"user" => $this->userModel->getJoinDivisionUser(),
 				];
@@ -175,7 +175,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$uid = $this->request->getPost('uid');
 				$data = $this->userModel->getJoinDivisionUser($uid);
@@ -192,7 +192,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$id = $this->request->getPost('id_divisi');
 				$division = $this->userModel->viewDivisionUser();
 				$data = '';
@@ -219,7 +219,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$id = $this->request->getPost('id_divisi');
 				$roleDivision = $this->request->getPost('role_divisi');
 				$data = '';
@@ -254,15 +254,11 @@ class Admin extends BaseController
 		}
 	}
 
-	public function validate_form()
-	{
-	}
-
 	public function Add_User()
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$validation = \Config\Services::Validation();
 				$rules = [ //passing validate
 					'user' => [
@@ -404,7 +400,7 @@ class Admin extends BaseController
 		// seleksi login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$validation = \Config\Services::Validation();
 				$rules = [
 					'user' => [
@@ -538,6 +534,12 @@ class Admin extends BaseController
 					'waktu_aktivitas' => date("Y-m-d H:i:s")
 				]);
 
+				// update session
+				if (session('uid') == $getUid['uid']) {
+					$user = $this->userModel->getUser(session('email'));
+					$this->session->set($user);
+				}
+
 				if ($this->adminModel->updateUser($data, $id)) {
 					$response = [
 						'success' => true,
@@ -549,9 +551,6 @@ class Admin extends BaseController
 						'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Update Data User Gagal !</div>',
 					];
 				}
-
-				$user = $this->userModel->getUser(session('email'));
-				$this->session->set($user);
 
 				return $this->response->setJSON($response);
 			} else {
@@ -566,7 +565,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) {
 				$id = $this->request->getPost('user_id');
 
 				$user = $this->adminModel->find($id); //cari gambar berdasarkan id
