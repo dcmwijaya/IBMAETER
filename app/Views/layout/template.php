@@ -210,10 +210,10 @@
 </script>
 
 
-<!-- ================================ ADMIN SECTION  ================================-->
+<!-- #################################### ADMIN SECTION  ####################################-->
 
 <!------------------------------------ Catch Data for Data User -------------------------------------->
-<!--.......................... Config croppie js ..........................--->
+<!-- Config croppie js --->
 <script src="<?= base_url('../vendor/croppie/croppie.js') ?>"></script>
 <?= $this->include('scripts/admin/data_user'); ?>
 
@@ -226,11 +226,10 @@
 <!------------------------------------ Catch for Arsip komp & komplain -------------------------------------->
 <?= $this->include('scripts/admin/komplain'); ?>
 
-
 <!------------------------------------ Catch for Perizinan Absensi --------------------------------->
 <?= $this->include('scripts/admin/aktivitas'); ?>
 
-<!-- ================================ USER SECTION ================================ -->
+<!-- ##################################### USER SECTION ##################################### -->
 
 <!------------------------------------ Catch Data for Kelola Barang -------------------------------------->
 <?= $this->include('scripts/global/kelola_barang'); ?>
