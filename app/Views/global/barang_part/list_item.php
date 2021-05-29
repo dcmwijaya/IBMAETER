@@ -35,7 +35,7 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="inoutcom">
                         <button type="button" class="btn btn-light btn-sm btn-in-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" onclick="InModal(<?= $b['id_item']; ?>)"><i class="fas fa-plus-circle fa-fw"></i> Masuk</button>
-                        <button type="button" style="background-color:#37af06" class="btn text-light btn-sm btn-out-item px-2 rounded-right" data-id="<?= $b['id_item']; ?>" onclick="OutModal(<?= $b['id_item']; ?>)"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
+                        <button type="button" style="background-color:#37af06" class="btn text-light btn-sm btn-out-item px-2 rounded-right btn-modal-close" data-id="<?= $b['id_item']; ?>" onclick="OutModal(<?= $b['id_item']; ?>)"><i class="fas fa-dolly fa-fw"></i> Keluar</button>
                     </div>
                 </td>
             </tr>

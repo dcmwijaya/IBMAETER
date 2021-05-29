@@ -42,5 +42,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
+    <button type="button" class="btn btn-danger btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Keluar</button>
 </div>

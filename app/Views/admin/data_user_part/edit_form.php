@@ -9,7 +9,7 @@
                 <input type="hidden" id="crop-result" name="crop_img">
                 <div id="add-input-file">
                     <input type="file" class="custom-file-input" id="add_img" name="add_img">
-                    <label class="custom-file-label label-img-input" for="add_img"><i class="fas fa-fw fa-camera mr-2"></i>Pilih Gambar</label>
+                    <label class="custom-file-label label-img-input overflowx-text" for="add_img"><i class="fas fa-fw fa-camera mr-2"></i>Pilih Gambar</label>
                     <div class="invalid-feedback mt-1" id="error_add_img"></div>
                 </div>
             </div>

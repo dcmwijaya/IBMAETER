@@ -90,7 +90,7 @@
     <div class="modal-footer">
         <input type="hidden" name="perizinan_no_log">
         <input type="hidden" name="perizinan_status" value="Ditolak">
-        <button type="button" class="btn btn-danger modal-dissmis" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
+        <button type="button" class="btn btn-danger modal-dismiss btn-modal-close" data-dismiss="modal"><i class="fas fa-fw fa-window-close"></i> Batal</button>
         <button type="submit" class="btn btn-primary"><i class="fas fa-check-square fa-fw"></i> Tolak</button>
     </div>
 </div>

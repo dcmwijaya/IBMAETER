@@ -19,12 +19,12 @@
                 <label for="email_user" class="font-weight-bold"><i class="fas fa-fw fa-envelope mr-2"></i>E-mail</label>
                 <input type="email" class="form-control disabled" id="email_user" name="email" readonly>
             </div>
+        </div>
+        <div class="col-sm-4 border-left">
             <div class="form-group">
                 <label for="ttl" class="font-weight-bold"><i class="fas fa-fw fa-calendar-alt mr-2"></i>Tanggal Lahir</label>
                 <input type="date" class="form-control disabled" value="" id="ttl" name="ttl" readonly>
             </div>
-        </div>
-        <div class="col-sm-4 border-left">
             <div class="form-group">
                 <label for="gender_user" class="font-weight-bold"><i class="fas fa-fw fa-restroom mr-2"></i>Gender</label>
                 <select class="form-control disabled" id="gender" name="gender" readonly disabled>
