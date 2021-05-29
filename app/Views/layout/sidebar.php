@@ -38,12 +38,15 @@
 										<a class=" d-flex align-items-center text-muted disabled"><i class="fas fa-fw fa-address-card"></i></a>
 									</h6>
 									<hr class="my-0 font-weight-bold">
+									<!-- ROLE DIVISI ADMIN -->
 									<div class=" mb-1" id="admin_menu">
+										<!-- dewan direksi & manager & it staff == ABSOLUTE-->
 										<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 2) || intval(session('divisi_user')) == 10) : ?>
 											<a href="<?= base_url('Admin/Datauser') ?>" class="<?= ($CurrentMenu == 'data_user') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 												<i class="fas fa-users fa-fw me-3"></i><span>Data Pekerja</span>
 											</a>
 										<?php endif; ?>
+										<!-- pengadaan barang -->
 										<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
 											<a href="<?= base_url('Admin/Perizinan') ?>" class="<?= ($CurrentMenu == 'perizinan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 												<div class="notifs">
@@ -53,19 +56,22 @@
 												</div>
 											</a>
 										<?php endif; ?>
-										<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
-										</a>
-										<a href="<?= base_url('Admin/LogUser') ?>" class="<?= ($CurrentMenu == 'logUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<i class="fas fa-book-reader fa-fw me-3"></i><span>Aktivitas User</span>
-										</a>
-										<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
-											<div class="notifs">
-												<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
-												<span class="badge badge-danger px-1 ml-1"><?= ($komplain_notifs > 0) ? $komplain_notifs : ''; ?></span>
-												<span class="sr-only">unread messages</span>
-											</div>
-										</a>
+										<!-- humas -->
+										<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) : ?>
+											<a href="<?= base_url('Admin/Adminpengumuman') ?>" class="<?= ($CurrentMenu == 'edit_pengumuman') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+												<i class="fas fa-bullhorn fa-fw me-3"></i><span>Edit Pengumuman</span>
+											</a>
+											<a href="<?= base_url('Admin/LogUser') ?>" class="<?= ($CurrentMenu == 'logUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+												<i class="fas fa-book-reader fa-fw me-3"></i><span>Aktivitas User</span>
+											</a>
+											<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
+												<div class="notifs">
+													<i class="fas fa-gavel fa-fw me-3"></i><span>Komplain Pekerja</span>
+													<span class="badge badge-danger px-1 ml-1"><?= ($komplain_notifs > 0) ? $komplain_notifs : ''; ?></span>
+													<span class="sr-only">unread messages</span>
+												</div>
+											</a>
+										<?php endif; ?>
 									</div>
 								</div>
 							<?php endif; ?>

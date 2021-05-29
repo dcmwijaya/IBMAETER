@@ -535,10 +535,10 @@ class Admin extends BaseController
 				]);
 
 				// update session
-				if (session('uid') == $getUid['uid']) {
-					$user = $this->userModel->getUser(session('email'));
-					$this->session->set($user);
-				}
+				// if (session('uid') == $getUid['uid']) {
+				// 	$user = $this->userModel->getUser(session('email'));
+				// 	$this->session->set($user);
+				// }
 
 				if ($this->adminModel->updateUser($data, $id)) {
 					$response = [
@@ -638,7 +638,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"title" => "Perizinan Barang | IBMAETER",
 					"CurrentMenu" => "perizinan",
@@ -668,7 +668,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"log_item" => $this->LogModel->ReadLogItem(),
 					'validation' => \Config\Services::Validation()
@@ -686,7 +686,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"log_item" => $this->LogModel->ReadLogItem(),
 					'validation' => \Config\Services::Validation()
@@ -707,7 +707,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$no_log = $this->request->getPost('no_log');
 				$data = $this->LogModel->getIdPerizinan($no_log);
@@ -725,7 +725,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) {
 				if (!$this->validate([
 					'komen' => [
 						'rules' => 'max_length[256]',
@@ -785,7 +785,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"title" => "Edit Pengumuman | IBMAETER",
 					"CurrentMenu" => "edit_pengumuman",
@@ -812,7 +812,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$data['table_pengumuman'] = $this->newsModel->showTask();
 				// echo json_encode($data);
@@ -832,7 +832,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				return view('admin/pengumuman_part/tambah_form');
 			} else {
@@ -848,7 +848,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				return view('admin/pengumuman_part/delete_form');
 			} else {
@@ -863,7 +863,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				return view('admin/pengumuman_part/blank_field');
 			} else {
@@ -880,7 +880,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$id = $this->request->getPost('id_pengumuman');
 				$data = $this->newsModel->getIdPengumuman($id);
@@ -898,7 +898,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				if (!$this->validate([
 					'judul' => [
 						'rules' => 'max_length[256]',
@@ -945,7 +945,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$id = $this->request->getPost('id_pengumuman');
 				// $data = array(
 				// 	'waktu' => date("Y-m-d h:i:sa"),
@@ -981,7 +981,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"title" => "Aktivitas User | IBMAETER",
 					"CurrentMenu" => "logUser",
@@ -1013,7 +1013,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// validasi
 				if (!$this->validate([
 					'komen' => [
@@ -1070,7 +1070,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					"title" => "Komplain Pekerja | IBMAETER",
 					"CurrentMenu" => "komplainUser",
@@ -1098,7 +1098,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$data['komplain'] = $this->komplainModel->getKomplain();
 				// echo json_encode($data);
@@ -1116,7 +1116,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$data['arsipKomp'] = $this->arsipKompModel->getJoinUser();
 				// echo json_encode($data);
@@ -1135,7 +1135,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					'arsipKomp' => $this->arsipKompModel->getAll(),
 					'validation' => \Config\Services::Validation()
@@ -1153,7 +1153,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					'komplain' => $this->komplainModel->getKomplain(),
 					'validation' => \Config\Services::Validation()
@@ -1171,7 +1171,7 @@ class Admin extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				$data = [
 					'komplain' => $this->komplainModel->getKomplain(),
 					'validation' => \Config\Services::Validation()
@@ -1192,7 +1192,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$id = $this->request->getPost("id_komplain");
 				$data = $this->komplainModel->getKomplain($id);
@@ -1210,7 +1210,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$id = $this->request->getPost("id_arsipKomp");
 				$data = $this->arsipKompModel->getIdArsipKomp($id);
@@ -1228,7 +1228,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				// AJAX
 				$id = $this->request->getPost("id_arsipKomp");
 				$data = $this->arsipKompModel->getUidAdminArsipKomp($id);
@@ -1246,7 +1246,7 @@ class Admin extends BaseController
 		// seleksi no login
 		if (session('uid') != null) {
 			// seleksi role pengguna
-			if (session('role') == 0) {
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
 				if (!$this->validate([
 					'perizinan_komen' => [
 						'rules' => 'max_length[256]',
