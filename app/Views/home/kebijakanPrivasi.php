@@ -42,11 +42,8 @@
 							<h3><i class="fas fa-globe-europe fa-fw me-2"></i>Umum</h3>
 							<hr>
 							<p>IBMAETER membangun website sebagai sarana kelola inventaris barang dan manajemen pekerja pada suatu gudang. LAYANAN ini disediakan oleh IBMAETER tanpa biaya dan dimaksudkan untuk
-								digunakan sebagaimana adanya. Halaman ini digunakan untuk menginformasikan pengunjung mengenai kebijakan kami dengan pengumpulan, penggunaan, dan
-								pengungkapan Informasi Pribadi jika ada yang memutuskan untuk menggunakan Layanan kami. Jika Anda memilih untuk menggunakan Layanan kami,
-								maka Anda menyetujui pengumpulan dan penggunaan informasi yang terkait dengan kebijakan ini. Informasi Pribadi yang kami kumpulkan digunakan
-								untuk menyediakan dan meningkatkan Layanan. Kami tidak akan menggunakan atau membagikan informasi Anda dengan siapa pun kecuali seperti yang
-								dijelaskan dalam Kebijakan Privasi ini. Istilah-istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama seperti dalam
+								digunakan sebagaimana adanya. Informasi Pribadi yang kami kumpulkan digunakan untuk menyediakan dan meningkatkan Layanan. Kami tidak akan menggunakan atau membagikan informasi Anda
+								dengan siapa pun kecuali seperti yang dijelaskan dalam Kebijakan Privasi ini. Istilah-istilah yang digunakan dalam Kebijakan Privasi ini memiliki arti yang sama seperti dalam
 								Syarat dan Ketentuan kami, yang dapat diakses di aplikasi kecuali ditentukan lain dalam Kebijakan Privasi ini.
 							</p>
 						</section><br>
@@ -88,8 +85,7 @@
 						<section id="anak2">
 							<h3><i class="fas fa-child fa-fw me-2"></i>Privasi Anak-Anak</h3>
 							<hr>
-							<p>Layanan ini tidak ditujukan kepada siapa pun yang berusia di bawah 17 tahun. Kami tidak secara sadar mengumpulkan informasi identitas pribadi dari
-								anak-anak berusia di bawah 17 tahun. Dalam kasus ini kami menemukan bahwa seorang anak di bawah 17 tahun telah memberi kami informasi pribadi,
+							<p>Layanan ini tidak ditujukan kepada siapa pun yang berusia di bawah 17 tahun. Dalam kasus ini kami menemukan bahwa seorang anak di bawah 17 tahun telah memberi kami informasi pribadi,
 								kami segera menghapus ini dari server kami. Jika Anda adalah orang tua atau wali dan Anda sadar bahwa anak Anda telah memberi kami informasi
 								pribadi, silakan hubungi kami sehingga kami akan dapat melakukan tindakan yang diperlukan.
 						</section><br>
@@ -97,12 +93,11 @@
 							<h3><i class="fas fa-paperclip fa-fw me-2"></i>Perubahan pada Kebijakan Privasi ini</h3>
 							<hr>
 							<p>Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Dengan demikian, Anda disarankan untuk meninjau halaman ini secara berkala untuk
-								setiap perubahan. Kami akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini. Perubahan ini
-								efektif segera setelah diposkan di halaman ini.
+								setiap perubahan.
 						</section>
 					</div>
 				</div>
-			</div><br><br>
+			</div><br><br><br><br>
 		</section>
 		<!-- END of Artikel -->
 

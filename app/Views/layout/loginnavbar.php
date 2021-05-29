@@ -29,7 +29,7 @@
 					?>
 					<li class="nav-item me-3">
 						<a class="nav-link reg" href="<?= $pesan; ?>" target="_blank" http-equiv="refresh" content="2">
-							<i class="fas fa-phone-square fa-fw me-1"></i>Kontak
+							<i class="fas fa-envelope fa-fw me-1"></i>Hubungi
 						</a>
 					</li>
 					<li class="nav-item me-3">
