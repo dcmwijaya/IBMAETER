@@ -92,7 +92,7 @@ foreach ($countPermission as $cp) {
 												<?php else : ?>
 													<td><?= $abs['alasan_izin']; ?></td>
 													<td>
-														<button type="button" class="btn btn-sm btn-img-item px-2 " data-img="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" data-toggle="modal" data-target="#gambarBukti">
+														<button type="button" class="btn btn-sm btn-img-izin px-2 " data-img="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" data-toggle="modal" data-target="#buktiIzin">
 															<img src="<?= base_url('../img/bukti_absen/' . $abs['bukti_izin']); ?>" width="150" height="auto">
 														</button>
 													</td>
@@ -101,8 +101,8 @@ foreach ($countPermission as $cp) {
 												<td>
 													<?php if ($abs['respons'] == "Pending") : ?>
 														<div class="btn-group" role="group" aria-label="inoutcom">
-															<button type="button" class="btn btn-success btn-sm btn-acc-item px-2 rounded-left" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Terima"><i class="fas fa-check fa-fw"></i>Terima</button>
-															<button type="button" class="btn btn-danger btn-sm btn-rjc-item px-2 rounded-right" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Tolak"><i class="fas fa-times fa-fw"></i>Tolak</button>
+															<button type="button" class="btn btn-success btn-sm btn-acc-izin px-2 rounded-left" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Terima"><i class="fas fa-check fa-fw"></i>Terima</button>
+															<button type="button" class="btn btn-danger btn-sm btn-rjc-izin px-2 rounded-right" data-idizin="<?= $abs['id_absen']; ?>" data-toggle="modal" data-target="#Tolak"><i class="fas fa-times fa-fw"></i>Tolak</button>
 														</div>
 													<?php elseif ($abs['respons'] == "Diterima") : ?>
 														<button type="button" class="btn btn-success btn-sm px-2 rounded" disabled><i class="fas fa-check fa-fw"></i>Diterima</button>
@@ -189,11 +189,11 @@ foreach ($countPermission as $cp) {
 </main>
 
 <!-- Gambar Modal -->
-<div class="modal fade" id="gambarBukti" aria-hidden="true" aria-labelledby="gambarBuktiLabel" tabindex="-1">
+<div class="modal fade" id="buktiIzin" aria-hidden="true" aria-labelledby="buktiIzinLabel" tabindex="-1">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="gambarBuktiLabel">Bukti Screenshot</h5>
+				<h5 class="modal-title" id="buktiIzinLabel">Bukti Screenshot</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -201,9 +201,6 @@ foreach ($countPermission as $cp) {
 			<div class="modal-body">
 				<img width="750px" height="auto">
 			</div>
-			<!-- <div class="modal-footer">
-				<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
-			</div> -->
 		</div>
 	</div>
 </div>

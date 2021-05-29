@@ -32,7 +32,6 @@
     <?= $this->include('home/landingNavbar'); ?>
     <?= $this->renderSection('homecontent'); ?>
     <?= $this->include('home/landingFooter'); ?>
-    <?= $this->include('layout/tentang'); ?>
 </body>
 
 

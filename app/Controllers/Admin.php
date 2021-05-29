@@ -1045,6 +1045,14 @@ class Admin extends BaseController
 					'waktu_komen' => date("Y-m-d H:i:s", time())
 				]);
 
+				$aktivitas = "Izin Absensi dengan ID : " . $id . ", " . strtolower($status) . " oleh " . session('nama') . ".";
+				// insert user aktivity saat menerima/menolak izin absen
+				$this->userActivityModel->insert([
+					'uid_aktivitas' => session('uid'),
+					'aktivitas' => $aktivitas,
+					'waktu_aktivitas' => date("Y-m-d H:i:s")
+				]);
+
 				session()->setFlashdata('pesan', '<h4>Pesan Terkirim.</h4>');
 				return redirect()->to('/Admin/LogUser');
 			} else {
