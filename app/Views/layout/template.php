@@ -1328,12 +1328,12 @@
 			},
 			success: function(data) {
 				$('#Pengumuman_Form').html(data);
+				PengumumanModalClose();
 			},
 			error: function(data) {
 				alert(data);
 			}
 		});
-		PengumumanModalClose();
 	}
 
 	function showDeleteModal(id) {
