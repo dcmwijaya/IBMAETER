@@ -353,7 +353,8 @@ class Exlapor extends BaseController
 					"title" => "EXCEL PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
-					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					'absensi_notif' => $this->absensiModel->getPending()
 				];
 
 				return view('admin/export/exxlsIzin', $data);
@@ -375,7 +376,8 @@ class Exlapor extends BaseController
 					"title" => "DOC PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
-					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					'absensi_notif' => $this->absensiModel->getPending()
 				];
 
 				return view('admin/export/exdocIzin', $data);
@@ -397,7 +399,8 @@ class Exlapor extends BaseController
 					"title" => "PDF PERIZINAN | IBMAETER",
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
-					"komplain_notifs" => $this->komplainModel->notifsKomplain()
+					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					'absensi_notif' => $this->absensiModel->getPending()
 				];
 
 				$html = view('admin/export/expdfIzin', $data);
@@ -658,7 +661,8 @@ class Exlapor extends BaseController
 				"title" => "EXCEL STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
-				"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 
 			return view('global/export/exxlsStatizin', $data);
@@ -674,7 +678,8 @@ class Exlapor extends BaseController
 				"title" => "DOC STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
-				"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 
 			return view('global/export/exdocStatizin', $data);
@@ -690,7 +695,8 @@ class Exlapor extends BaseController
 				"title" => "PDF STATUS PERIZINAN | IBMAETER",
 				"log_item" => $this->LogModel->ReadLogItem(),
 				"log_notifs" => $this->LogModel->notifsLog(),
-				"komplain_notifs" => $this->komplainModel->notifsKomplain()
+				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 
 			$html = view('global/export/expdfStatizin', $data);

@@ -89,6 +89,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/kelolabarang', $data);
 		} else {
@@ -501,6 +502,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending(),
 				"pengumuman" => $this->newsModel->paginate(3, 'pengumuman'),
 				"pager" => $this->newsModel->pager,
 				"curpage" => $curpage
@@ -607,6 +609,7 @@ class Menu extends BaseController
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending(),
 				'aktivitas' => $this->userActivityModel->getActivity(session('uid'))
 			];
 			return view('global/menu/myprofile', $data);
@@ -630,6 +633,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId($uid),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/editprofile', $data);
 		} else {
@@ -776,6 +780,7 @@ class Menu extends BaseController
 				'user_division' => $this->userDivisiModel->getDivisi(session('divisi_user')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d")),
 				'izin' => $this->absensiModel->getStatusIzin(session('uid'), date("Y-m-d")),
 				'validation' => \Config\Services::Validation()
@@ -907,6 +912,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/laporanBulanan', $data);
 		} else {
@@ -929,6 +935,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/pengaduan', $data);
 		} else {
@@ -1080,6 +1087,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				'absensi_notif' => $this->absensiModel->getPending(),
 				"class" => $this->barangModel->invenclass(),
 				"category" => $this->barangModel->jenis(),
 				"sc1" => $this->barangModel->stockclass1(),
