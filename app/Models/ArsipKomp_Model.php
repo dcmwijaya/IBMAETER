@@ -45,9 +45,12 @@ class ArsipKomp_Model extends Model
 
     public function CountPengaduanExpVisibility() // count jumlah pengaduan by uid
     {
-        $builder = $this->db->table('komplain_visibility');
-        $builder->where('uid', intval(session('uid')));
-        $builder->where('status', 'Belum Dilihat');
+        $builder = $this->db->table('komplain_arsip');
+        $builder->select('id_arsipKomp, no_arsipKomp, uid_arsipKomp, judul_arsipKomp, foto_arsipKomp, waktu_arsipKomp, status_arsipKomp, komplain_visibility.id_visibility, komplain_visibility.no_komplain, komplain_visibility.status, komplain_visibility.uid');
+        $builder->join('komplain_visibility', 'komplain_visibility.no_komplain = komplain_arsip.no_arsipKomp', 'left');
+        $builder->where('komplain_visibility.uid', session('uid'));
+        $builder->where('komplain_visibility.status', 'Belum Dilihat');
+        $builder->where('komplain_arsip.uid_arsipKomp', session('uid'));
         $query = $builder->countAllResults();
         return $query;
     }

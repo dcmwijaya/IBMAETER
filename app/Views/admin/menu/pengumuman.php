@@ -10,23 +10,6 @@
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
-		<?php if (session()->getFlashdata('Pengumuman')) : ?>
-			<div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
-				<div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
-					<div class="toast-header bg-dark text-light">
-						<img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
-						<strong class="mr-auto">INVENBAR CI-4</strong>
-						<small>Baru Saja</small>
-						<button type="button" class="ml-2 mb-1 close text-light modal-dismiss btn-modal-close" data-dismiss="toast" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="toast-body">
-						<?= session()->getFlashdata('Pengumuman'); ?>
-					</div>
-				</div>
-			</div>
-		<?php endif ?>
 		<section class="pb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">

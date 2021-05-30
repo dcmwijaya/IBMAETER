@@ -86,8 +86,17 @@
   overflow-y: clip;
 }
 
+.scroller {
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
 .text-green {
   color: #0f9c21 !important;
+}
+
+.text-chocholate {
+  color: chocolate;
 }
 
 @media (max-width: 575.98px) {

@@ -635,6 +635,7 @@ class Menu extends BaseController
 				'validation' => \Config\Services::Validation(),
 				'user' => $this->userModel->getUserId($uid),
 				"log_notifs" => $this->LogModel->notifsLog(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 				'absensi_notif' => $this->absensiModel->getPending()
 			];
