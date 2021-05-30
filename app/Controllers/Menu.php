@@ -637,6 +637,7 @@ class Menu extends BaseController
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/editprofile', $data);
