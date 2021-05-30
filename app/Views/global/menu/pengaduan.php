@@ -7,20 +7,17 @@
 <!--Main layout-->
 <main class="bg-dark">
 	<div class="container pt-4">
-		<?php if (session()->getFlashdata('pengaduanSukses')) : ?>
-			<div class="alert alert-success" role="alert">
-				<?= session()->getFlashdata('pengaduanSukses'); ?>
-			</div>
-		<?php endif ?>
 		<section class="mb-4">
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong><i class="fas fa-fw fa-balance-scale"></i> PENGADUAN</strong>
+						<strong><i class="fas fa-fw fa-balance-scale"></i> Menu Pengaduan</strong>
 					</h5>
 				</div>
+				<div id="toast_alert"></div>
 				<div class="card-body pt-1 bg-light">
-					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+					<div id="AlertPengaduan"></div>
+					<div class="container mb-3 pb-2">
 						<div class="row">
 							<div class="col-sm-11 mx-auto" id="pengaduan-user">
 								<form id="Pengaduan_Form" method="POST" enctype="multipart/form-data">
@@ -31,12 +28,18 @@
 						</div>
 					</div>
 				</div>
+				<div class="card-header text-center py-3">
+					<h5 class="mb-0 text-center">
+						<strong><i class="fas fa-fw fa-fist-raised"></i> Hasil Keputusan Admin</strong>
+					</h5>
+				</div>
 				<div class="card-body pt-1">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row">
 							<div class="col">
 								<!-- load tabel -->
-								<div id="Pengaduan_AJAX"></div>
+								<small>Berikut ini hasil pengaduan yang anda telah sampaikan kepada Admin.</small>
+								<div id="Pengaduan_AJAX" class="pt-3"></div>
 							</div>
 						</div>
 					</div>
@@ -57,9 +60,20 @@
 					<span class="text-light" aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form id="Pengaduan_Form" method="POST" enctype="multipart/form-data">
+			<form id="Pengaduan_FormQ" method="POST" enctype="multipart/form-data">
 
 			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Gambar Modal -->
+<div class="modal fade" id="gambarBukti" aria-hidden="true" aria-labelledby="gambarBuktiLabel" tabindex="-1">
+	<div class="modal-dialog modal-lg modal-dialog-centered bg-transparent">
+		<div class="modal-content bg-transparent">
+			<div class="modal-body bg-transparent">
+				<img width="750px" height="auto">
+			</div>
 		</div>
 	</div>
 </div>

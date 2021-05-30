@@ -107,6 +107,8 @@
 										</a>
 										<a href="<?= base_url('Menu/Pengaduan') ?>" class="<?= ($CurrentMenu == 'pengaduan') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 											<i class="fas fa-comment-dots fa-fw me-3"></i><span>Pengaduan</span>
+											<span class="badge badge-danger px-1 ml-1" id="SidebarPengaduanCounter"><?= ($PengaduanCounter > 0) ? $PengaduanCounter : ''; ?></span>
+											<span class="sr-only">unread messages</span>
 										</a>
 									</div>
 								</div>

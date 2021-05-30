@@ -69,6 +69,7 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 					'absensi_notif' => $this->absensiModel->getPending(),
 					"us" => $this->adminModel->countUser()
 				];
@@ -652,6 +653,7 @@ class Admin extends BaseController
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 					'absensi_notif' => $this->absensiModel->getPending(),
 					'validation' => \Config\Services::Validation()
 				];
@@ -798,6 +800,7 @@ class Admin extends BaseController
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"log_item" => $this->LogModel->ReadLogItem(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 					'absensi_notif' => $this->absensiModel->getPending(),
 					'validation' => \Config\Services::Validation()
 				];
@@ -994,6 +997,7 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 					'absensi_notif' => $this->absensiModel->getPending(),
 					"validation" => \Config\Services::Validation(),
 					"absensi" => $this->absensiModel->getAbsen(),
@@ -1083,6 +1087,7 @@ class Admin extends BaseController
 					"user" => $this->adminModel->getUser(),
 					"log_notifs" => $this->LogModel->notifsLog(),
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+					"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 					'absensi_notif' => $this->absensiModel->getPending(),
 					// 'komplain' => $this->komplainModel->getKomplain(),
 					// 'arsipKomp' => $this->arsipKompModel->getAll(),

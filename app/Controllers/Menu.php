@@ -89,6 +89,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/kelolabarang', $data);
@@ -502,6 +503,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending(),
 				"pengumuman" => $this->newsModel->paginate(3, 'pengumuman'),
 				"pager" => $this->newsModel->pager,
@@ -609,6 +611,7 @@ class Menu extends BaseController
 				"infoCV" => $this->newsModel->CountExpVisibility(array('uid' => session('uid'))), // counter pengumuman
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending(),
 				'aktivitas' => $this->userActivityModel->getActivity(session('uid'))
 			];
@@ -780,6 +783,7 @@ class Menu extends BaseController
 				'user_division' => $this->userDivisiModel->getDivisi(session('divisi_user')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending(),
 				'absensi' => $this->absensiModel->getStatus(session('uid'), date("Y-m-d")),
 				'izin' => $this->absensiModel->getStatusIzin(session('uid'), date("Y-m-d")),
@@ -912,6 +916,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/laporanBulanan', $data);
@@ -935,6 +940,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending()
 			];
 			return view('global/menu/pengaduan', $data);
@@ -947,17 +953,27 @@ class Menu extends BaseController
 	{
 		// seleksi no login
 		if (session('uid') != null) {
-			// seleksi role pengguna
-			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
-				// AJAX
-				$data['PengaduanList'] = $this->arsipKompModel->getJoinUser();
-				// echo json_encode($data);
-				return view('admin/komplain_part/list_arsip', $data);
-			} else {
-				return redirect()->to('/dashboard');
-			}
+			// AJAX
+			$data['PengaduanList'] = $this->arsipKompModel->getPengaduanUser();
+			return view('global/pengaduan_part/list_pengaduan', $data);
 		} else {
-			return redirect()->to('/login');
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	//----------------------------------- form Pengaduan -----------------------------------
+
+	public function DetailPengaduan_Form()
+	{
+		// seleksi login
+		if (session('uid') != null) {
+			// $data = [
+			// 	'arsipKomp' => $this->arsipKompModel->getAll(),
+			// 	'validation' => \Config\Services::Validation()
+			// ];
+			return view('global/pengaduan_part/detail_pengaduan_modal');
+		} else {
+			return redirect()->to('/dashboard');
 		}
 	}
 
@@ -976,12 +992,79 @@ class Menu extends BaseController
 		}
 	}
 
+	// ..................................Visibilitas Experience Function.................................
+	public function PengaduanDilihat()
+	{
+		if (session('uid') != null) {
+			$no_komplain = $this->request->getPost('no_pengaduan');
+			$data = array(
+				'status' => 'Dilihat',
+				'waktu' => date("Y-m-d"),
+			);
+			// DEBUG DATA
+			if ($this->arsipKompModel->UpdatePengaduanVisibility($data, $no_komplain)) {
+				$response = [
+					'success' => true,
+					'data' => $data,
+					'no_komplain' => $no_komplain,
+					'session' => session('uid')
+				];
+			}
+			return $this->response->setJSON($response);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	public function CountKomplainVisibilityDilihat() // pengaduan 
+	{
+		if (session('uid') != null) {
+			$total = $this->arsipKompModel->CountPengaduanExpVisibility();
+			// DEBUG DATA
+			$response = [
+				'success' => true,
+				'msg' => 'success',
+				'totalcount' => $total, // ini yang dipakai
+				'session' => session('uid')
+			];
+			return $this->response->setJSON($response);
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
+	// ---------------------------------------- Aksi Pengaduan -----------------------------------------
+	public function GetUidPengaduanArsipKomplain() // Pick uid arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$id = $this->request->getPost("id_arsipKomp");
+			$data = $this->arsipKompModel->getIdArsipKomp($id);
+			echo json_encode($data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
+	public function GetPengaduanAdminArsipKomplain() // Pick uid arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// AJAX
+			$id = $this->request->getPost("id_arsipKomp");
+			$data = $this->arsipKompModel->getUidAdminArsipKomp($id);
+			echo json_encode($data);
+		} else {
+			return redirect()->to('/dashboard');
+		}
+	}
+
 	public function adukan()
 	{
 		if (session('uid') != null) {
-
-			// jika valdiasi tidakk lolos maka redirect ke halaman edit
-			if (!$this->validate([
+			$validation = \Config\Services::Validation();
+			$rules = [
 				'judul' => [
 					'rules' => 'required',
 					'errors' => ['required' => 'Judul harus diisi.']
@@ -1002,9 +1085,20 @@ class Menu extends BaseController
 						'mime_in' => 'Bukti screenshot harus berekstensi .jpg, .jpeg, atau .png'
 					]
 				]
-			])) {
-				return redirect()->to('/Menu/pengaduan')->withInput();
+			];
+			// jika valdiasi tidakk lolos maka redirect ke halaman edit
+			if (!$this->validate($rules)) {
+				$response = [
+					'success' => false,
+					'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Validasi Input Edit Data User Gagal !</div>',
+					// get error
+					'judul' => $validation->getError('judul'),
+					'isi' => $validation->getError('isi'),
+					'foto' => $validation->getError('foto'),
+				];
+				return $this->response->setJSON($response);
 			}
+
 
 			// mengambil uid pengadu
 			$uid = $this->request->getVar('uid');
@@ -1055,8 +1149,6 @@ class Menu extends BaseController
 			// die;
 
 
-			$this->komplainModel->insert($data);
-
 			$aktivitas = session('nama') . " mengajukan Komplain dengan nomor komplain : " . $no_komp . ".";
 
 			// insert user aktivity saat melakukan pengaduan
@@ -1066,8 +1158,20 @@ class Menu extends BaseController
 				'waktu_aktivitas' => date("Y-m-d H:i:s")
 			]);
 
-			session()->setFlashdata('pengaduanSukses', 'Pengaduan telah diterima, masalah sedang diselidiki.');
-			return redirect()->to('/Menu/pengaduan');
+			if ($this->komplainModel->insert($data)) {
+				$response = [
+					'success' => true,
+					'msg' => '<div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Update Data User Berhasil !</div>',
+				];
+			} else {
+				$response = [
+					'success' => true,
+					'msg' => '<div class="notif-failed"><i class="fas fa-fw fa-exclamation-triangle text-danger mr-2"></i>Update Data User Gagal !</div>',
+				];
+			}
+
+			return $this->response->setJSON($response);
+			// return redirect()->to('/Menu/pengaduan');
 		} else {
 			return redirect()->to('/login');
 		}
@@ -1087,6 +1191,7 @@ class Menu extends BaseController
 				'user' => $this->userModel->getUserId(session('uid')),
 				"log_notifs" => $this->LogModel->notifsLog(),
 				"komplain_notifs" => $this->komplainModel->notifsKomplain(),
+				"PengaduanCounter" => $this->arsipKompModel->CountPengaduanExpVisibility(),
 				'absensi_notif' => $this->absensiModel->getPending(),
 				"class" => $this->barangModel->invenclass(),
 				"category" => $this->barangModel->jenis(),

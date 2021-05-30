@@ -30,6 +30,36 @@ class ArsipKomp_Model extends Model
         return $query;
     }
 
+    // pengaduan 
+
+    public function getPengaduanUser()
+    {
+        $builder = $this->db->table('komplain_arsip');
+        $builder->select('id_arsipKomp, no_arsipKomp, uid_arsipKomp, judul_arsipKomp, foto_arsipKomp, waktu_arsipKomp, status_arsipKomp, komplain_visibility.id_visibility, komplain_visibility.no_komplain, komplain_visibility.status, komplain_visibility.uid');
+        $builder->join('komplain_visibility', 'komplain_visibility.no_komplain = komplain_arsip.no_arsipKomp', 'left');
+        $builder->where('komplain_visibility.uid', session('uid'));
+        $builder->where('komplain_arsip.uid_arsipKomp', session('uid'));
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
+
+    public function CountPengaduanExpVisibility() // count jumlah pengaduan by uid
+    {
+        $builder = $this->db->table('komplain_visibility');
+        $builder->where('uid', intval(session('uid')));
+        $builder->where('status', 'Belum Dilihat');
+        $query = $builder->countAllResults();
+        return $query;
+    }
+
+    public function UpdatePengaduanVisibility($data, $no_komplain)
+    {
+        $builder = $this->db->table('komplain_visibility');
+        $builder->where('no_komplain', $no_komplain);
+        $builder->where('uid', intval(session('uid')));
+        $query = $builder->update($data);
+        return $query;
+    }
     // public function getHold($uid)
     // {
     //     return $this->where(['status_arsipKomp' => 'hold'])->findAll();

@@ -118,8 +118,12 @@
 		listSpesifikasi()
 		listPengumuman();
 		// page komplain
-		listKomplain();
-		listArsipKomplain();
+		<?php if (session('role') == 0) : ?>
+			listKomplain();
+			listArsipKomplain();
+		<?php endif; ?>
+		// page pengaduan
+		listPengaduan();
 	});
 </script>
 
@@ -139,8 +143,12 @@
 				listSpesifikasi()
 				listPengumuman();
 				// page komplain
-				listKomplain();
-				listArsipKomplain();
+				<?php if (session('role') == 0) : ?>
+					listKomplain();
+					listArsipKomplain();
+				<?php endif; ?>
+				// page pengaduan
+				listPengaduan();
 			}, 1000);
 		});
 		$('#sidebar').click(function(e) {
@@ -205,6 +213,13 @@
 		$(".btn-modal-close").on("click", function() {
 			$('#Pengumuman_Modal').modal("hide");
 			$('#Pengumuman_Form').html('');
+		});
+	}
+
+	function PengaduanModalClose() {
+		$(".btn-modal-close").on("click", function() {
+			$('#Pengaduan_Modal').modal("hide");
+			$('#Pengaduan_FormQ').html('');
 		});
 	}
 </script>
