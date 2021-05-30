@@ -20,7 +20,7 @@
 				<?php endif ?>
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>ABSENSI PEKERJA</strong>
+						<strong><i class="fas fa-fw fa-clipboard mr-2"></i> Absensi Pekerja</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">

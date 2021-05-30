@@ -22,11 +22,12 @@ foreach ($us as $usc) {
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>DATA USER</strong>
+						<strong><i class="fas fa-fw fa-users mr-2"></i>Data User</strong>
 					</h5>
 				</div>
 				<div id="toast_alert"></div>
 				<div class="card-body pt-1">
+					<small>Harap berhati-hati dalam memberikan hak akses</small>
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
 							<div class="d-flex">
@@ -54,7 +55,7 @@ foreach ($us as $usc) {
 								<div id="User_AJAX"></div>
 							</div>
 						</div>
-						<p class="userVCount">Jumlah pengguna saat ini : <?= $usersCount; ?></p>
+						<p class="userVCount"><i class="fas fa-fw fa-user-tie"></i> Jumlah pengguna saat ini : <?= $usersCount; ?></p>
 						<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listUser()"><i class="fas fa-redo-alt fa-fw"></i></button>
 					</div>
 				</div>

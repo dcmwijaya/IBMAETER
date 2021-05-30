@@ -56,7 +56,7 @@ foreach ($countPermission as $cp) {
 						</div>
 					<?php endif ?>
 					<h5 class="mb-0 text-center">
-						<strong>ABSENSI USER</strong>
+						<strong><i class="fas fa-fw fa-user-clock mr-2"></i>Absensi User</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -144,7 +144,7 @@ foreach ($countPermission as $cp) {
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>AKTIVITAS USER</strong>
+						<strong><i class="fas fa-fw fa-tv mr-2"></i>Rekaman Data Aktivitas User</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">

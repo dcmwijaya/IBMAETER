@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-header text-center py-3">
                     <h5 class="mb-0 text-center">
-                        <strong>Menu Perizinan Barang</strong>
+                        <strong><i class="fas fa-fw fa-exchange-alt mr-2"></i>Menu Perizinan Barang</strong>
                     </h5>
                 </div>
                 <div class="card-body pt-1">

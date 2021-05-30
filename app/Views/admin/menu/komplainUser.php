@@ -17,7 +17,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>KOMPLAIN PEKERJA</strong>
+						<strong><i class="fas fa-fw fa-user-secret mr-2"></i>Komplain Pekerja</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -53,7 +53,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>ARSIP KOMPLAIN PEKERJA</strong>
+						<strong><i class="fas fa-fw fa-folder-open mr-2"></i>Arsip Komplain Pekerja</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">

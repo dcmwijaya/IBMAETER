@@ -14,7 +14,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>Manajemen Barang Gudang</strong>
+						<strong><i class="fas fa-fw fa-box mr-2"></i> Manajemen Barang Gudang</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -56,7 +56,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>Status Perizinan Barang Masuk/Keluar</strong>
+						<strong><i class="fas fa-fw fa-exchange-alt mr-2"></i>Status Perizinan Barang Masuk/Keluar</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">
@@ -94,7 +94,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>Spesifikasi Barang Didalam Gudang</strong>
+						<strong><i class="fas fa-fw fa-database mr-2"></i>Spesifikasi Barang Didalam Gudang</strong>
 					</h5>
 				</div>
 				<div class="card-body pt-1">

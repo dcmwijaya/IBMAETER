@@ -240,7 +240,7 @@ if (!empty($otc)) {
 			<div class="card card-wrap-dashboard">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>DASHBOARD</strong>
+						<strong><i class="fas fa-fw fa-laptop mr-2"></i>Dashboard</strong>
 					</h5>
 
 					<?php if (session()->getFlashdata('msg')) : ?>
