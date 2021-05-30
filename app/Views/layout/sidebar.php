@@ -63,6 +63,8 @@
 											</a>
 											<a href="<?= base_url('Admin/LogUser') ?>" class="<?= ($CurrentMenu == 'logUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 												<i class="fas fa-book-reader fa-fw me-3"></i><span>Aktivitas User</span>
+												<span class="badge badge-danger px-1 ml-1"><?= ($absensi_notif > 0) ? $absensi_notif : ''; ?></span>
+												<span class="sr-only">unread messages</span>
 											</a>
 											<a href="<?= base_url('Admin/Complain') ?>" class="<?= ($CurrentMenu == 'komplainUser') ? 'active' : '' ?> list-group-item list-group-item-action py-2 ripple">
 												<div class="notifs">

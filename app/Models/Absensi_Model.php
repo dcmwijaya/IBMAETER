@@ -33,6 +33,11 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date, 'status_absen' => "Izin"])->first();
     }
 
+    public function getPending()
+    {
+        return $this->db->table('absensi')->selectCount('id_absen')->distinct()->where(["respons" => "Pending"])->countAllResults();
+    }
+
     public function countPresent($bawah = null, $atas = null)
     {
         // query utama : 'status_absen' = "Hadir"
