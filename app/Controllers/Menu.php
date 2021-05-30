@@ -936,6 +936,24 @@ class Menu extends BaseController
 		}
 	}
 
+	public function ShowPengaduanKomplainArsip() // Show Master Data Arsip Komplain
+	{
+		// seleksi no login
+		if (session('uid') != null) {
+			// seleksi role pengguna
+			if (intval(session('role')) == 0 && intval(session('divisi_user') <= 3) || intval(session('divisi_user')) == 10) {
+				// AJAX
+				$data['PengaduanList'] = $this->arsipKompModel->getJoinUser();
+				// echo json_encode($data);
+				return view('admin/komplain_part/list_arsip', $data);
+			} else {
+				return redirect()->to('/dashboard');
+			}
+		} else {
+			return redirect()->to('/login');
+		}
+	}
+
 	public function PengaduanForm() // Edit Form In Master Data Item
 	{
 		// seleksi no login

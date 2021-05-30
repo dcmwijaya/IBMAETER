@@ -17,7 +17,9 @@
 							<i class="fas fa-bell fa-fw" style="font-size: 20px;">
 								<!-- Counter - Messages -->
 								<?php if ($infoCV > 0) : ?>
-									<span class="custom-indicator badge-danger badge-counter"><?= ($infoCV > 0) ? $infoCV : ''; ?></span>
+									<div id="NavbarCounterPengumuman">
+										<span class="custom-indicator badge-danger badge-counter"><?= ($infoCV > 0) ? $infoCV : ''; ?></span>
+									</div>
 								<?php endif; ?>
 							</i>
 						</div>

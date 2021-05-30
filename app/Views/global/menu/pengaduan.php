@@ -31,9 +31,36 @@
 						</div>
 					</div>
 				</div>
+				<div class="card-body pt-1">
+					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
+						<div class="row">
+							<div class="col">
+								<!-- load tabel -->
+								<div id="Pengaduan_AJAX"></div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPengaduan()"><i class="fas fa-redo-alt fa-fw"></i></button>
+				</div>
 			</div>
 		</section>
 	</div><br>
 </main>
 
+<!-- Pengaduan Modal -->
+<div class="modal fade" id="Pengaduan_Modal" tabindex="-1" aria-labelledby="Pengaduan_Label" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header text-light" id="Pengaduan_Header">
+				<h5 class="modal-title" id="Pengaduan_Label">Pengaduan Modal</h5>
+				<button type="button" class="close modal-dismiss btn-modal-close" data-dismiss="modal" aria-label="Close">
+					<span class="text-light" aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="Pengaduan_Form" method="POST" enctype="multipart/form-data">
+
+			</form>
+		</div>
+	</div>
+</div>
 <?= $this->endSection() ?>

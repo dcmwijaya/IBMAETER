@@ -12,7 +12,7 @@
                         <strong><i class="fas fa-fw fa-bell mr-2"></i>PENGUMUMAN</strong>
                     </h5>
                 </div>
-                <div id="toast_alert"></div>
+                <!-- <div id="toast_alert"></div> -->
                 <div class="card-body pt-1" style="margin-top: 30px;margin-bottom: 30px;">
                     <div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
                         <div class="row">
@@ -22,7 +22,6 @@
                                         <div class=" card-body event-description">
                                             <?php $c = 1; ?>
                                             <?php foreach ($infoJoinV as $i) : ?>
-
                                                 <hr>
                                                 <div class="pengumuman-slide px-4">
                                                     <div class="pengumuman_header clearfix pb-4 px-7">
