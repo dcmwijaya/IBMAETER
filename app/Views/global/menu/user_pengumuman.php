@@ -9,7 +9,7 @@
             <div class="card col-sm-12 mx-auto">
                 <div class="card-header text-center py-3">
                     <h5 class="mb-0 text-center">
-                        <strong><i class="fas fa-fw fa-bell mr-2"></i>Menu Pengumuman</strong>
+                        <strong><i class="fas fa-fw fa-bell mr-2"></i> Pengumuman</strong>
                     </h5>
                 </div>
                 <!-- <div id="toast_alert"></div> -->

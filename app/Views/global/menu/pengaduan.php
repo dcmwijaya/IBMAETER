@@ -11,7 +11,7 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong><i class="fas fa-fw fa-balance-scale"></i> Menu Pengaduan</strong>
+						<strong><i class="fas fa-fw fa-balance-scale"></i> Pengaduan</strong>
 					</h5>
 				</div>
 				<div id="toast_alert"></div>
