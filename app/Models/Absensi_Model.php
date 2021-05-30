@@ -33,9 +33,12 @@ class Absensi_Model extends Model
         return $this->where(['uid_absen' => $uid, 'tgl_absen' => $date, 'status_absen' => "Izin"])->first();
     }
 
-    public function countPresent($bawah = null, $atas = null)
+    public function countPresent($bawah = null, $atas = null, $ket = false)
     {
         // menghitung jumlah hadir dari tabel absensi
+        if ($ket != null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Hadir"])->get()->getResultArray();
+        }
         // query utama : 'status_absen' = "Hadir"
         if ($bawah == null and $atas == null) {
             return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Hadir"])->get()->getResultArray();
@@ -48,9 +51,12 @@ class Absensi_Model extends Model
         }
     }
 
-    public function countLate($bawah = null, $atas = null)
+    public function countLate($bawah = null, $atas = null, $ket = false)
     {
         // menghitung jumlah hadir tapi terlambat dari tabel absensi
+        if ($ket != null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Terlambat"])->get()->getResultArray();
+        }
         // query utama : 'status_absen' = "Terlambat"
         if ($bawah == null and $atas == null) {
             return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Terlambat"])->get()->getResultArray();
@@ -63,9 +69,12 @@ class Absensi_Model extends Model
         }
     }
 
-    public function countPermission($bawah = null, $atas = null)
+    public function countPermission($bawah = null, $atas = null, $ket = false)
     {
         // menghitung jumlah izin dari tabel absensi
+        if ($ket != null) {
+            return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['status_absen' => "Izin", 'respons' => "Diterima"])->get()->getResultArray();
+        }
         // query utama : 'status_absen' = "Izin" AND 'respons' = "Diterima"
         if ($bawah == null and $atas == null) {
             return $this->db->table('absensi')->selectCount('uid_absen')->distinct()->where(['tgl_absen' => date("Y-m-d"), 'status_absen' => "Izin", 'respons' => "Diterima"])->get()->getResultArray();

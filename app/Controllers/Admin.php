@@ -993,10 +993,9 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					"validation" => \Config\Services::Validation(),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countPresent" => $this->absensiModel->countPresent(),
-					"countLate" => $this->absensiModel->countLate(),
-					"countPermission" => $this->absensiModel->countPermission(),
-					"totalUser" => $this->userModel->countUser(),
+					"countPresent" => $this->absensiModel->countPresent(null, null, "all"),
+					"countLate" => $this->absensiModel->countLate(null, null, "all"),
+					"countPermission" => $this->absensiModel->countPermission(null, null, "all"),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 				return view('admin/menu/logUser', $data);
@@ -1293,7 +1292,7 @@ class Admin extends BaseController
 				if ($status == 'accepted') {
 					$statusAct = "menerima";
 				}
-				$aktivitas = session('nama') . $statusAct . " komplain pekerja dengan nomor komplain : " . $data['no_arsipKomp'] . ".";
+				$aktivitas = session('nama') . " " . $statusAct . " komplain pekerja dengan nomor komplain : " . $data['no_arsipKomp'] . ".";
 				// insert user aktivity saat menambahkan pengumuman
 				$this->userActivityModel->insert([
 					'uid_aktivitas' => session('uid'),
