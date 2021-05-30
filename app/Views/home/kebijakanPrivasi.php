@@ -1,10 +1,10 @@
 <?= $this->extend('home/landingTemplate') ?>
 
 <?= $this->section('homecontent') ?>
-<!--Main layout-->
-<main class="kebijakan-landing">
-	<!--Main container-->
-	<div class="container">
+<!--Div layout-->
+<div class="kebijakan-landing">
+	<!--Div container-->
+	<div class="container kebijakan-content">
 
 		<!-- Atrikel -->
 		<section class="article">
@@ -15,7 +15,7 @@
 					</div>
 					<hr class="solid"><br>
 				</div>
-			</div><br><br>
+			</div>
 			<div class="kebijakan">
 				<div class="row">
 					<div class="card-body col-md-3 kebijakan-wrap">
@@ -102,7 +102,7 @@
 		<!-- END of Artikel -->
 
 	</div>
-	<!--Main container-->
-</main>
-<!--Main layout-->
+	<!--Div container-->
+</div>
+<!--Div layout-->
 <?= $this->endSection() ?>

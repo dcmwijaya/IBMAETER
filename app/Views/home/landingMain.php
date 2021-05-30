@@ -1,10 +1,10 @@
 <?= $this->extend('home/landingTemplate') ?>
 
 <?= $this->section('homecontent') ?>
-<!--Main layout-->
-<main class="home-landing">
-    <!--Main container-->
-    <div class="container">
+<!--Div layout-->
+<div class="home-landing">
+    <!--Div container-->
+    <div class="container home-content">
         <!--Grid row-->
         <div class="row">
             <div class="intro col-md-6 mb-4">
@@ -17,7 +17,7 @@
                     </p>
                     <a href="<?= base_url("login"); ?>" class="btn mulai btn-info btn-lg shadow-sm" style="letter-spacing:3px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Mulai&nbsp;Inventaris</a>
                 </div>
-            </div>
+            </div><hr class="batas">
             <div class="col-md-6 mb-4">
                 <img src="<?= base_url('img/Warehouse.jpg') ?>" class="card-img-top" alt="gudang">
             </div>
@@ -174,7 +174,7 @@
         <!-- END of Artikel -->
 
     </div>
-    <!--Main container-->
-</main>
-<!--Main layout-->
+    <!--Div container-->
+</div>
+<!--Div layout-->
 <?= $this->endSection() ?>

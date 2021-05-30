@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<?= base_url('../css/home.css') ?>">
 </head>
 
-<body class="login-body">
+<body>
     <?= $this->include('home/landingNavbar'); ?>
     <?= $this->renderSection('homecontent'); ?>
     <?= $this->include('home/landingFooter'); ?>
