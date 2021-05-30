@@ -126,15 +126,6 @@ foreach ($countPermission as $cp) {
 								</table>
 							</div>
 						</div>
-						<?php
-						foreach ($absensi as $a) {
-							if ($absensi != null) {
-								$count = intval($a['id_absen']);
-							} else {
-								$count = 0;
-							}
-						}
-						?>
 						<p class="absensiCount">
 							<?php if (date("l") != "Saturday" and date("l") != "Sunday") : ?>
 								<b>Absensi hari ini, <?= date("d M Y"); ?> </b><br>

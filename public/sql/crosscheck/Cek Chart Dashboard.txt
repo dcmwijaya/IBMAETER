@@ -64,7 +64,7 @@ UNION ALL
 SELECT request, ubah_stok AS Acc_Stok FROM alur_barang WHERE ubah_stok AND status = "Diterima" AND request = "Keluar";
 
 //Untuk cek gender male dan female
-SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Male"
+SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Laki-Laki"
 UNION ALL
-SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Female"
+SELECT gender AS Jenis_kelamin, COUNT(gender) AS Jumlah FROM user WHERE gender = "Perempuan"
 GROUP BY gender;

@@ -778,8 +778,7 @@ class Exlapor extends BaseController
 				"countPresent" => $this->absensiModel->countPresent($limitBawah, $limitAtas),
 				"countLate" => $this->absensiModel->countLate($limitBawah, $limitAtas),
 				"countPermission" => $this->absensiModel->countPermission($limitBawah, $limitAtas),
-				"startDate" => $limitBawah,
-				"endDate" => $limitAtas
+				"totalAbsensi" => $this->absensiModel->countAllResults()
 			];
 
 			$aktivitas = session('nama') . " mencetak Laporan Bulanan";
