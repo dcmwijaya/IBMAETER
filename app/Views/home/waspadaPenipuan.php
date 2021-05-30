@@ -1,10 +1,10 @@
 <?= $this->extend('home/landingTemplate') ?>
 
 <?= $this->section('homecontent') ?>
-<!--Main layout-->
-<main class="waspada-landing">
-	<!--Main container-->
-	<div class="container">
+<!--Div layout-->
+<div class="waspada-landing">
+	<!--Div container-->
+	<div class="container waspada-content">
 
 		<!-- Atrikel -->
 		<section class="article">
@@ -15,7 +15,7 @@
 					</div>
 					<hr class="solid"><br>
 				</div>
-			</div><br><br>
+			</div>
 			<div class="waspadapenipuan">
 				<div class="row">
 					<div class="card-body col-md-3 waspadapenipuan-wrap">
@@ -91,7 +91,7 @@
 		<!-- END of Artikel -->
 
 	</div>
-	<!--Main container-->
-</main>
-<!--Main layout-->
+	<!--Div container-->
+</div>
+<!--Div layout-->
 <?= $this->endSection() ?>
