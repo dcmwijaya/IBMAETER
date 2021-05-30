@@ -118,20 +118,11 @@ foreach ($countPermission as $cp) {
 								</table>
 							</div>
 						</div>
-						<?php
-						foreach ($absensi as $a) {
-							if ($absensi != null) {
-								$count = intval($a['id_absen']);
-							} else {
-								$count = 0;
-							}
-						}
-						?>
 						<p class="absensiCount">
 							Jumlah pekerja hadir : <?= $presentCount; ?> <br>
 							Jumlah pekerja terlambat : <?= $lateCount; ?> <br>
 							Jumlah pekerja ijin : <?= $permissionCount; ?> <br>
-							Jumlah pekerja tidak hadir : <?= $count - $presentCount; ?>
+							Jumlah pekerja tidak hadir : <?= $totalUser - $presentCount; ?>
 						</p>
 					</div>
 				</div>

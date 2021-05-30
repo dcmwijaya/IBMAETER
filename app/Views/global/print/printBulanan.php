@@ -121,20 +121,6 @@ foreach ($countPermission as $cp) {
 	}
 }
 
-// perulangan menentukan jumlah hari aktif yaitu senin-jumat
-$stamp = strtotime($startDate);
-$endStamp = strtotime($endDate);
-$jumlahHari = 0;
-
-// perulangan hingga stamp sama dengan senDate
-while (date("Y-m-d", $stamp) != $endDate) {
-	if (date("l", $stamp) != "Saturday" and date("l", $stamp) != "Sunday") {
-		$jumlahHari++;
-	}
-	$stamp = strtotime("+1 day", $stamp);
-}
-
-$totalAbsensi = ($cfm1 + $cfm2) * $jumlahHari; // jumlah karyawan X jumlah hari
 $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 
 ?>
