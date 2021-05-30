@@ -64,37 +64,46 @@
 														<span><small><?= $user['gender']; ?></small></span>
 													</label>
 												</div>
-												<?php if (date("H:i:s") <= "16:15:05") : ?>
-													<div class="form-group absensi-content">
-														<label for="status_absen">
-															<i class="fas fa-file-signature fa-fw me-1"></i>
-															<b>Status:</b>
-															<?php if ($absensi == false) : ?>
-																<span><small>Belum Absensi</small></span>
-															<?php else : ?>
-																<span><small>Sudah Absensi</small></span>
-															<?php endif; ?>
-														</label>
-													</div>
-													<div class="group-tombol">
+												<?php if (date("l") != "Saturday" and date("l") != "Sunday") : ?>
+													<?php if (date("H:i:s") <= "16:15:05") : ?>
+														<div class="form-group absensi-content">
+															<label for="status_absen">
+																<i class="fas fa-file-signature fa-fw me-1"></i>
+																<b>Status:</b>
+																<?php if ($absensi == false) : ?>
+																	<span><small>Belum Absensi</small></span>
+																<?php else : ?>
+																	<span><small>Sudah Absensi</small></span>
+																<?php endif; ?>
+															</label>
+														</div>
+														<div class="group-tombol">
+															<div class="my-4">
+																<input type="hidden" class="form-control" value="<?= ($absensi == false) ? $user['email'] : ""; ?>" name="email_absen">
+																<button type="submit" class="btn btn-success btn-absensi p-3 btn-left" <?= ($absensi == false) ? "" : "disabled"; ?>>
+																	<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Absensi Sekarang</p>
+																</button>
+															</div>
+														<?php else : ?>
+															<div class="my-4">
+																<button type="submit" class="btn btn-success btn-akhir-sesi p-3 btn-left" disabled>
+																	<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Sesi Absen Berakhir</p>
+																</button>
+															</div>
+														<?php endif; ?>
 														<div class="my-4">
-															<input type="hidden" class="form-control" value="<?= ($absensi == false) ? $user['email'] : ""; ?>" name="email_absen">
-															<button type="submit" class="btn btn-success btn-absensi p-3 btn-left" <?= ($absensi == false) ? "" : "disabled"; ?>>
-																<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Absensi Sekarang</p>
+															<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
+																<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
 															</button>
 														</div>
 													<?php else : ?>
-														<div class="my-4">
-															<button type="submit" class="btn btn-success btn-akhir-sesi p-3 btn-left" disabled>
-																<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Sesi Absen Berakhir</p>
-															</button>
+														<div class="form-group absensi-content">
+															<label for="status_absen">
+																<i class="fas fa-file-signature fa-fw me-1"></i>
+																<b>Status:</b> <span><small>Hari Libur</small></span>
+															</label>
 														</div>
 													<?php endif; ?>
-													<div class="my-4">
-														<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
-															<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
-														</button>
-													</div>
 											</form>
 										</div>
 									</div>

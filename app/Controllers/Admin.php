@@ -993,9 +993,9 @@ class Admin extends BaseController
 					"komplain_notifs" => $this->komplainModel->notifsKomplain(),
 					"validation" => \Config\Services::Validation(),
 					"absensi" => $this->absensiModel->getAbsen(),
-					"countPresent" => $this->absensiModel->countPresent(null, null, "all"),
-					"countLate" => $this->absensiModel->countLate(null, null, "all"),
-					"countPermission" => $this->absensiModel->countPermission(null, null, "all"),
+					"countPresent" => $this->absensiModel->countPresent(),
+					"countLate" => $this->absensiModel->countLate(),
+					"countPermission" => $this->absensiModel->countPermission(),
 					'aktivitas' => $this->userActivityModel->getActivity()
 				];
 				return view('admin/menu/logUser', $data);

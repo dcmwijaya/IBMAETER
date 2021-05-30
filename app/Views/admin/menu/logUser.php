@@ -4,7 +4,15 @@
 <link rel="stylesheet" href="<?= base_url('../css/content.css') ?>" /> <!-- include cakra --->
 
 <?php
-
+// menghitung jumlah karyawan
+foreach ($user as $u) {
+	if ($user != null) {
+		$jumlahUser = intval($u['uid']);
+	} else {
+		$jumlahUser = 0;
+	}
+}
+// menghitung jumlah hadir
 foreach ($countPresent as $wc) {
 	if ($countPresent != null) {
 		$presentCount = $wc['uid_absen'];
@@ -12,7 +20,7 @@ foreach ($countPresent as $wc) {
 		$presentCount = 0;
 	}
 }
-
+// menghitung jumlah telat
 foreach ($countLate as $nwc) {
 	if ($countLate != null) {
 		$lateCount = $nwc['uid_absen'];
@@ -20,7 +28,7 @@ foreach ($countLate as $nwc) {
 		$lateCount = 0;
 	}
 }
-
+// menghitung jumlah izin
 foreach ($countPermission as $cp) {
 	if ($countPermission != null) {
 		$permissionCount = $cp['uid_absen'];
@@ -128,10 +136,15 @@ foreach ($countPermission as $cp) {
 						}
 						?>
 						<p class="absensiCount">
-							Jumlah pekerja hadir : <?= $presentCount; ?> <br>
-							Jumlah pekerja terlambat : <?= $lateCount; ?> <br>
-							Jumlah pekerja ijin : <?= $permissionCount; ?> <br>
-							Jumlah pekerja tidak hadir : <?= $count - $presentCount; ?>
+							<?php if (date("l") != "Saturday" and date("l") != "Sunday") : ?>
+								<b>Absensi hari ini, <?= date("d M Y"); ?> </b><br>
+								Jumlah pekerja hadir : <?= $presentCount; ?> <br>
+								Jumlah pekerja terlambat : <?= $lateCount; ?> <br>
+								Jumlah pekerja ijin : <?= $permissionCount; ?> <br>
+								Jumlah pekerja tidak hadir : <?= $jumlahUser - $presentCount - $lateCount - $permissionCount; ?>
+							<?php else : ?>
+								<b>Hari ini, <?= date("d M Y"); ?>, adalah akhir pekan.</b>
+							<?php endif; ?>
 						</p>
 					</div>
 				</div>

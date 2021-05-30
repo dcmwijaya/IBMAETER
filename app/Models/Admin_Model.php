@@ -8,7 +8,7 @@ class Admin_Model extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'uid';
-    protected $allowedFields = ['nama', 'email', 'password', 'role', 'picture'];
+    protected $allowedFields = ['nama', 'email', 'password', 'role', 'picture', 'divisi_user', 'tanggal_lahir', 'gender', 'nama_divisi'];
 
     // ============= CRUD Data User ================
 
