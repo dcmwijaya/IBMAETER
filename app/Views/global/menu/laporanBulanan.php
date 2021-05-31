@@ -18,10 +18,10 @@
 						<div class="row">
 							<div class="mb-3">
 								<div class="row mx-auto">
-									<div class="col-md-5" id="img-laporanbulanan">
+									<div class="col-md-6">
 										<img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1">
 									</div>
-									<div class="col-md-6 border-left px-4" id="laporanbulanan-user">
+									<div class="col-md-6 border-left px-4">
 										<form action=" <?= base_url('exlapor/pdfprintBulanan'); ?>" method="POST" enctype="multipart/form-data">
 											<div class="form-group laporanbulanan-content">
 												<label for="ItemTime_before" class="font-weight-bold">Tanggal Awal</label>

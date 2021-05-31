@@ -3,7 +3,7 @@
 
 <!-- if admin -->
 <?php $noLogCounter = 1; ?>
-<?php if (session('role') == 0) : ?>
+<?php if (session('role') != null) : ?>
     <table id="table_perizinan" class="display nowrap " style="font-size: 14px; width:100%; overflow-x:auto;">
         <thead>
             <tr>
@@ -15,6 +15,7 @@
                 <th>Status</th>
                 <th>Keterangan</th>
                 <th>Aksi</th>
+
             </tr>
         </thead>
         <tbody>
@@ -50,14 +51,18 @@
                     <td style="<?= $tdStyle; ?>"><?= $log['ket']; ?></td>
                     <td>
                         <?php if ($log['status'] == 'Pending') : ?>
-                            <div class="btn-group shadow-sm" role="group" aria-label="inoutcom">
-                                <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" onclick="AcceptPerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-check fa-fw"></i>Terima</button>
-                                <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" onclick="DeclinePerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-times fa-fw"></i>Tolak</button>
-                            </div>
+                            <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
+                                <div class="btn-group shadow-sm" role="group" aria-label="inoutcom">
+                                    <button type="button" class="btn btn-success btn-sm btn-acc-item shadow-sm px-2 rounded-left" data-no="<?= $log['no_log']; ?>" onclick="AcceptPerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-check fa-fw"></i>Terima</button>
+                                    <button type="button" class="btn btn-danger btn-sm btn-rjc-item shadow-sm px-2 rounded-right" data-no="<?= $log['no_log']; ?>" onclick="DeclinePerizinan(<?= $log['no_log']; ?>)"><i class="fas fa-times fa-fw"></i>Tolak</button>
+                                </div>
+                            <?php endif; ?>
                         <?php else : ?>
                             <div class="info-progress">
                                 <form action="<?= base_url('exlapor/pdfprintNotaizin/'); ?>" method="POST" enctype="multipart/form-data">
-                                    <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
+                                    <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
+                                        <span class=" py-2 badge badge-info" style="font-weight: 500;font-size: 11px;"><i class="fas fa-thumbs-up fa-fw mr-1"></i>Telah Diproses</span>
+                                    <?php endif; ?>
                                     <?php if ($log['status'] == 'Diterima') : ?>
                                         <input type="hidden" name="notaIzin" value="<?= $log['no_log']; ?>">
                                         <button type="submit" class="ml-2 btn btn-success text-light btn-sm btn-acc-item shadow-sm px-2 rounded-left"><i class="fas fa-print fa-fw"></i></button>

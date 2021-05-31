@@ -29,7 +29,7 @@
                 <label for="password" class="font-weight-bold"><i class="fas fa-fw fa-key mr-2"></i>Password Baru</label>
                 <input type="password" class="form-control mb-2" id="password" placeholder="Tuliskan Password User..." name="new_password">
                 <div class="invalid-feedback" id="error_new_password"></div>
-                <small class="font-weight-bold">*Kosongkan jika tidak diubah</small>
+                <small class="text-muted">*Kosongkan password jika tidak diubah</small>
             </div>
         </div>
         <div class="col-sm-4 border-left">

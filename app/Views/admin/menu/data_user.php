@@ -27,7 +27,6 @@ foreach ($us as $usc) {
 				</div>
 				<div id="toast_alert"></div>
 				<div class="card-body pt-1">
-					<small>Harap berhati-hati dalam memberikan hak akses</small>
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="row my-3">
 							<div class="d-flex">
@@ -58,7 +57,9 @@ foreach ($us as $usc) {
 						<p class="userVCount"><i class="fas fa-fw fa-user-tie"></i> Jumlah pengguna saat ini : <?= $usersCount; ?></p>
 						<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listUser()"><i class="fas fa-redo-alt fa-fw"></i></button>
 					</div>
+					<small>Harap berhati-hati dalam memberikan hak akses</small>
 				</div>
+			</div>
 		</section>
 	</div>
 </main class="mb-3">

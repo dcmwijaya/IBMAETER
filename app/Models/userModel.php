@@ -25,6 +25,7 @@ class userModel extends Model
             $builder = $this->db->table('user');
             $builder->select('user.uid, user.email, user.divisi_user, user.gender, user.nama, user.picture, user.role, user.tanggal_lahir, id_divisi, nama_divisi, kode_divisi, role_divisi');
             $builder->join('user_divisi', 'user_divisi.id_divisi = user.divisi_user', 'left');
+            // $builder->whereNotIn(['uid' => intval(session('uid'))]);
             $query = $builder->get()->getResultArray();
             return $query;
         }

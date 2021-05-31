@@ -204,7 +204,15 @@
                     } else {
                         $('#toast_alert').html(`
                         <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 1500; right: 0; bottom: 0;">
-                            <div class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
+                            <div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true" autohide: false>
+                                <div class="toast-header bg-dark text-light">
+                                    <img src="<?= base_url('img/icon/favicon-16x16.png') ?>" class="rounded mr-2" alt="Pesan">
+                                    <strong class="mr-auto">IBMAETER</strong>
+                                    <small>Baru Saja</small>
+                                    <button type="button" class="ml-2 mb-1 close text-light btn-toast-close" data-dismiss="toast" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>  
                                 <div class="toast-body bg-light">
                                     <div class="notif-success"><i class="fas fa-fw fa-check-circle text-green mr-2"></i>Pengaduan Berhasil Dikirim !</div>
                                 </div>

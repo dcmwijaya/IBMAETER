@@ -22,7 +22,7 @@
 						<div class="row my-3">
 							<div class="d-flex">
 								<div class="flex-fill mr-auto">
-									<?php if (session('role') == 0) : ?>
+									<?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
 										<button type="button" class="btn btn-primary btn-sm p-2 shadow-sm" onclick="ItemTambahmodal()"><i class="fas fa-plus fa-fw"></i> Tambah Barang</button>
 									<?php endif; ?>
 									<a type="button" href="<?= base_url('exlapor/pdfprintBarang'); ?>" id="item_pdf" class="r-btn btn btn-success btn-sm p-2 shadow-sm"><i class="fas fa-print fa-fw"></i> Print Laporan</a>

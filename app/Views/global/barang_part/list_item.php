@@ -9,7 +9,7 @@
             <th>Stok</th>
             <th>Jenis</th>
             <th>Room</th>
-            <?php if (session('role') == 0) : ?>
+            <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
                 <th>Aksi</th>
             <?php endif; ?>
             <th>Kirim</th>
@@ -24,7 +24,7 @@
                 <td><?= $b['stok']; ?></td>
                 <td><?= $b['jenis']; ?></td>
                 <td><?= $b['penyimpanan']; ?></td>
-                <?php if (session('role') == 0) : ?>
+                <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
                     <td>
                         <div class="btn-group" role="group" aria-label="upordel">
                             <button type="button" class="btn btn-warning btn-sm btn-edit-item px-2 rounded-left" data-id="<?= $b['id_item']; ?>" onclick="ItemEditmodal(<?= $b['id_item']; ?>)"><i class="fas fa-edit fa-fw"></i></button>

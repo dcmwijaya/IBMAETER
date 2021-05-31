@@ -23,90 +23,77 @@
 						<strong><i class="fas fa-fw fa-clipboard mr-2"></i> Absensi Pekerja</strong>
 					</h5>
 				</div>
-				<div class="card-body pt-1">
+				<div class="card-body pt-1 bg-light">
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
-						<div class="row">
-							<div class="info-card card mb-3 bg-light">
-								<div class="row no-gutters">
-									<div class="col-md-5" id="img-absensi">
-										<img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1">
-									</div>
-									<div class="col-md-6" id="absensi-user">
-										<div class=" card-body event-description">
-											<form action="<?= ($absensi == false) ? base_url('/menu/absen') : ""; ?>" method="POST" enctype="multipart/form-data">
-												<?= csrf_field(); ?>
-												<div class="form-group absensi-content">
-													<label for="nama_user">
-														<i class="fas fa-user-tie fa-fw me-1"></i>
-														<b>Nama User:</b>
-														<span><small><?= $user['nama']; ?></small></span>
-													</label>
-												</div>
-												<div class="form-group absensi-content">
-													<label for="email_user">
-														<i class="fas fa-envelope-open-text fa-fw me-1"></i>
-														<b>Email:</b>
-														<span><small><?= $user['email']; ?></small></span>
-													</label>
-												</div>
-												<div class="form-group absensi-content">
-													<label for="email_user">
-														<i class="fas fa-laptop-house fa-fw me-1"></i>
-														<b>Divisi Pekerja:</b>
-														<!-- perlu di join -->
-														<span><small><?= $user_division['nama_divisi']; ?></small></span>
-													</label>
-												</div>
-												<div class="form-group absensi-content">
-													<label for="email_user">
-														<i class="fas fa-venus-mars fa-fw me-1"></i>
-														<b>Gender:</b>
-														<span><small><?= $user['gender']; ?></small></span>
-													</label>
-												</div>
-												<?php if (date("l") != "Saturday" and date("l") != "Sunday") : ?>
-													<?php if (date("H:i:s") <= "16:15:05") : ?>
-														<div class="form-group absensi-content">
-															<label for="status_absen">
-																<i class="fas fa-file-signature fa-fw me-1"></i>
-																<b>Status:</b>
-																<?php if ($absensi == false) : ?>
-																	<span><small>Belum Absensi</small></span>
-																<?php else : ?>
-																	<span><small>Sudah Absensi</small></span>
-																<?php endif; ?>
-															</label>
-														</div>
-														<div class="group-tombol">
-															<div class="my-4">
-																<input type="hidden" class="form-control" value="<?= ($absensi == false) ? $user['email'] : ""; ?>" name="email_absen">
-																<button type="submit" class="btn btn-success btn-absensi p-3 btn-left" <?= ($absensi == false) ? "" : "disabled"; ?>>
-																	<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Absensi Sekarang</p>
-																</button>
-															</div>
-														<?php else : ?>
-															<div class="my-4">
-																<button type="submit" class="btn btn-success btn-akhir-sesi p-3 btn-left" disabled>
-																	<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Sesi Absen Berakhir</p>
-																</button>
-															</div>
-														<?php endif; ?>
-														<div class="my-4">
-															<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
-																<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
-															</button>
-														</div>
-													<?php else : ?>
-														<div class="form-group absensi-content">
-															<label for="status_absen">
-																<i class="fas fa-file-signature fa-fw me-1"></i>
-																<b>Status:</b> <span><small>Hari Libur</small></span>
-															</label>
-														</div>
-													<?php endif; ?>
-											</form>
+						<div class="row no-gutters">
+							<div class="col-md-6">
+								<img src="<?= base_url("img/ibpk.png"); ?>" class="card-img" alt="img-1">
+							</div>
+							<div class="col-md-6 border-left">
+								<div class=" card-body event-description">
+									<form action="<?= ($absensi == false) ? base_url('/menu/absen') : ""; ?>" method="POST" enctype="multipart/form-data">
+										<?= csrf_field(); ?>
+										<div class="form-group absensi-content">
+											<label class="col-12">
+												<p class="card-text"><i class="fas fa-user fa-fw me-1"></i><b class="col-4 p-0">Nama <span class="col-2 p-1"> : </span></b><?= $user['nama']; ?></p>
+											</label>
 										</div>
-									</div>
+										<div class="form-group absensi-content">
+											<label class="col-12">
+												<p class="card-text"><i class="fas fa-envelope-open-text fa-fw me-1"></i><b class="col-4 p-0">Email <span class="col-2 p-1"> : </span></b><?= $user['email']; ?></p>
+											</label>
+										</div>
+										<div class="form-group absensi-content">
+											<label class="col-12">
+												<p class="card-text"><i class="fas fa-laptop-house fa-fw me-1"></i><b class="col-4 p-0">Divisi<span class="col-2 p-1"> : </span></b><?= $user_division['nama_divisi']; ?></p>
+											</label>
+										</div>
+										<div class="form-group absensi-content">
+											<label class="col-12">
+												<p class="card-text"><i class="fas fa-venus-mars fa-fw me-1"></i><b class="col-4 p-0">Gender<span class="col-2 p-1"> : </span></b><?= $user['gender']; ?></p><br>
+											</label>
+										</div>
+										<div class="col-12 pp">
+											<?php if (date("l") != "Saturday" and date("l") != "Sunday") : ?>
+												<?php if (date("H:i:s") <= "16:15:05") : ?>
+													<div class="form-group absensi-content">
+														<label class="col-12">
+															<b class="col-4"><i class="fas fa-file-signature fa-fw me-1"></i>Status:</b>
+															<?php if ($absensi == false) : ?>
+																<span><small>Belum Absensi</small></span>
+															<?php else : ?>
+																<span><small>Sudah Absensi</small></span>
+															<?php endif; ?>
+														</label>
+													</div>
+													<div class="">
+														<input type="hidden" class="form-control" value="<?= ($absensi == false) ? $user['email'] : ""; ?>" name="email_absen">
+														<button type="submit" class="btn btn-success btn-absensi p-3 btn-left" <?= ($absensi == false) ? "" : "disabled"; ?>>
+															<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Absensi Sekarang</p>
+														</button>
+													</div>
+												<?php else : ?>
+													<div class="">
+														<button type="submit" class="btn btn-success btn-akhir-sesi p-3 btn-left" disabled>
+															<p class="text-center nama_tombol"><i class="fas fa-briefcase fa-fw me-1"></i>Sesi Absen Berakhir</p>
+														</button>
+													</div>
+												<?php endif; ?>
+												<div class="">
+													<button type="button" class="btn btn-success btn-izin p-3 btn-right" data-toggle="modal" data-target="<?= ($izin == false) ? "#Izin" : ""; ?>" <?= ($izin == false) ? "" : "disabled"; ?>>
+														<p class="text-center nama_tombol"><i class="far fa-envelope me-1"></i>Ajukan Izin</p>
+													</button>
+												</div>
+											<?php else : ?>
+												<div class="form-group absensi-content">
+													<label for="status_absen">
+														<i class="fas fa-file-signature fa-fw me-1"></i>
+														<b>Status:</b> <span><small>Hari Libur</small></span>
+													</label>
+												</div>
+											<?php endif; ?>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>

@@ -50,7 +50,7 @@
                 <td>
                     <form action="../exlapor/pdfprintNotaspesifikasi" method="POST" role="form">
                         <div class="btn-group" role="group" aria-label="inoutcom">
-                            <?php if (session('role') == 0) : ?>
+                            <?php if (intval(session('role')) == 0 && intval(session('divisi_user') <= 4) && intval(session('divisi_user') != 3) || intval(session('divisi_user')) == 10) : ?>
                                 <button type="button" class="btn btn-dark btn-sm detl-edit-item px-2 rounded-left" onclick="SpecEditmodal(<?= $b['id_item']; ?>)"><i class="fas fa-edit fa-fw"></i></button>
                             <?php endif; ?>
                             <button type="button" style="background-color: #1687b3;" class="btn text-light btn-sm detl-item px-2" onclick="SpecDetailmodal(<?= $b['id_item']; ?>)"><i class="fas fa-file-alt fa-fw"></i></button>

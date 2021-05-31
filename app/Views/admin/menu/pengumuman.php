@@ -21,7 +21,6 @@
 					<div class="container mb-3 pb-2" style="border-bottom: 1px solid #dfdfdf;">
 						<div class="">
 							<button type="button" class="btn btn-primary px-3 shadow-sm" onclick="showTambahmodal()"><i class="fas fa-plus-square fa-fw"></i> Tambah</button>
-							<button type="button" class="btn btn-dark shadow-sm" onclick="listPengumuman()"><i class="fas fa-sync fa-fw"></i> Reload</button>
 						</div>
 						<div class="row my-3">
 							<div class="flex-fill">
@@ -34,9 +33,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="container">
-						<small><b>*NB :</b></small>
-					</div>
+					<button type="button" class="btn bg-softblue shadow-sm btn-sm p-2" onclick="listPengumuman()"><i class="fas fa-redo-alt fa-fw"></i></button>
 				</div>
 			</div><br>
 		</section>
