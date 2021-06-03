@@ -1,12 +1,15 @@
+![HKI](https://img.shields.io/badge/Project-HKI-blue?logo=github&color=%23F7DF1E)
 ![CI4](https://img.shields.io/badge/-Codeigniter4-blue?style=flat&logo=Codeigniter)
-![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
+![JS](https://img.shields.io/badge/Javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
+![JQUERY](https://img.shields.io/badge/JQuery%20-%23323330.svg?&style=flat&logo=jquery&logoColor=%23F7DF1E&color=FF3366)
+![JSON](https://img.shields.io/badge/JSON%20-%23323330.svg?&style=flat&logo=json&logoColor=%23F7DF1E&color=9900FF)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
 ![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
 ![MySQL](https://img.shields.io/badge/-MySQL-tosca.svg?style=flat&logo=mysql&logoColor=white)
 
-# Ibmaeter-Ci4
+# IBMAETER
 <b>Website inventaris barang gudang dan manajemen pekerja terpadu dengan menggunakan framework Codeigniter 4</b>
-<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C</p>
+<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C dan juga ditujukan untuk mendapatkan Hak Kekayaan Intelektual</p>
 
 <br>
 
@@ -65,8 +68,8 @@ $php spark serve
 ## Akun untuk login
 | Role | Email | Password |
 | --- | --- | --- |
-| Admin | kukun@gmail.com | Admin123 |
-| Pekerja | erwin1@gmail.com | User123 |
+| Admin | tesla@gmail.com | Admin123 |
+| Pekerja | kukun@gmail.com | User123 |
 
 <br>
 
@@ -81,9 +84,18 @@ $php spark serve
 
 <br>
 
-## Kelompok-5 Framework-C UPN V JATIM
+## Tim Mahasiswa
 | NO | NAMA ANGGOTA TIM | NPM |
 | --- | --- | --- |
 | 1 | Devan Cakra Mudra Wijaya | 18081010013 |
 | 2 | Merdin Risalul Abrori | 18081010081 |
 | 3 | Rifky Akhmad Fernanda | 18081010126 |
+
+<br>
+
+## Tim Dosen
+| NO | NAMA ANGGOTA TIM |
+| --- | --- |
+| 1 | Rizky Parlika, S.Kom, M.Kom |
+| 2 | Arista Pratama, S.Kom, M.Kom |
+| 3 | Lugito Michael Imanuel Prasetya, S.Kom |

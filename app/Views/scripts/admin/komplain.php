@@ -106,6 +106,7 @@
                             alert(' Operasi Detail Arsip AJAX Gagal :(');
                         }
                     });
+                    KomplainModalClose();
                 },
                 error: function(data) {
                     alert(' Operasi AJAX Gagal :(');
