@@ -18,7 +18,7 @@
 								<label for="staticEmail" class="col-sm-3 col-form-label font-weight-bold">Admin&nbsp;&nbsp;&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left form-control-sm" value="erwin@gmail.com" id="myInput1" readonly>
+										<input type="text" class="float-left col-sm-6 form-control-sm" value="erwin@gmail.com" id="myInput1" readonly>
 										<button onclick="copy1()" class="btn btn-sm btn-success ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
@@ -27,7 +27,7 @@
 								<label for="inputPassword" class="col-sm-3 col-form-label font-weight-bold">Password&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left col-sm-5 form-control-sm" value="Admin123" id="myInput2" readonly>
+										<input type="text" class="float-left col-sm-6 form-control-sm" value="Admin123" id="myInput2" readonly>
 										<button onclick="copy2()" class="btn btn-sm btn-danger ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
@@ -36,7 +36,7 @@
 								<label for="staticEmail" class="col-sm-3 col-form-label font-weight-bold">Pekerja&nbsp;&nbsp;&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left col-sm-5 form-control-sm" value="kukun@gmail.com" id="myInput3" readonly>
+										<input type="text" class="float-left col-sm-6 form-control-sm" value="kukun@gmail.com" id="myInput3" readonly>
 										<button onclick="copy3()" class="btn btn-sm btn-secondary ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
@@ -45,7 +45,7 @@
 								<label for="inputPassword" class="col-sm-3 col-form-label font-weight-bold">Password&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left col-sm-5 form-control-sm" value="User123" id="myInput4" readonly>
+										<input type="text" class="float-left col-sm-6 form-control-sm" value="User123" id="myInput4" readonly>
 										<button onclick="copy4()" class="btn btn-sm btn-danger ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
