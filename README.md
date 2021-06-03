@@ -1,10 +1,12 @@
 ![CI4](https://img.shields.io/badge/-Codeigniter4-blue?style=flat&logo=Codeigniter)
-![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
+![JS](https://img.shields.io/badge/Javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
+![JQUERY](https://img.shields.io/badge/JQuery%20-%23323330.svg?&style=flat&logo=jquery&logoColor=%23F7DF1E&color=FF3366)
+![JSON](https://img.shields.io/badge/JSON%20-%23323330.svg?&style=flat&logo=json&logoColor=%23F7DF1E&color=9900FF)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
 ![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
 ![MySQL](https://img.shields.io/badge/-MySQL-tosca.svg?style=flat&logo=mysql&logoColor=white)
 
-# Ibmaeter-Ci4
+# IBMAETER
 <b>Website inventaris barang gudang dan manajemen pekerja terpadu dengan menggunakan framework Codeigniter 4</b>
 <p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C dan juga ditujukan untuk mendapatkan Hak Kekayaan Intelektual</p>
 
