@@ -79,9 +79,15 @@
 }
 
 .navbar{
-  background: linear-gradient(90deg, rgb(63, 185, 255, 0.7) 0%, rgb(160, 255, 242, 0.7) 100%);
   width: 100%;
-  z-index: 999;
+  z-index: 999;  
+  background-color: white;
+}
+
+header > img{
+  width: 100%;
+  height: 300px;
+  margin-bottom: -200px;
 }
 
 body {
@@ -93,101 +99,49 @@ body {
 }
 
 .home-landing{
-  padding-top: 200px;
-  background-image: url("../img/home/view-full/LHome-1.png");
-  background-repeat: no-repeat;
-  background-size: 1920px 800px;
-  height: 800px;
   z-index: 996;
+  margin-bottom: -200px;
 }
 
 .kebijakan-landing{
-  padding-top: 200px;
-  background-image: url("../img/home/view-full/LHome-2.png");
-  background-repeat: no-repeat;
-  background-size: 1920px 2180px;
-  height: 2180px;
   z-index: 996;
+  margin-bottom: -200px;
 }
 
 .waspada-landing{
-  padding-top: 200px;
-  background-image: url("../img/home/view-full/LHome-2.png");
-  background-repeat: no-repeat;
-  background-size: 1920px 1800px;
-  height: 1800px;
   z-index: 996;
+  margin-bottom: -200px;
 }
 
-#footer{
-  height: auto;
-  width: auto;
+.footer{
+  width: 100%;
   position: relative;
-}
-
-#footer .footer-content {
   top:0px;
   color: black;
-  background: linear-gradient(-90deg, rgb(63, 185, 255, 0.7) 0%, rgb(160, 255, 242, 0.7) 100%);
-  width: 100%;
-  height: 50px;
   line-height: 50px;
   position: static;
-  bottom: 0px;
+  bottom: 0px;  
+  background-color: white;
 }
 
-#footer .copyright {
-  float: left;
-  padding-left: 30px;
+.footer > img{
+  width: 120%;
+  height: 300px;
+}
+
+.design-footer{
+  width: 100%;
+  height: 50px;
 }
 
 .batas{
   display: none;
 }
 
-
 /* ################################################################################################# */
 /*========================================= Ukuran Tablet  =========================================*/
 /* ############################################################################################### */
-@media only screen and (max-width: 1024px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    padding-top: 30vh;
-    background-size: 1920px 1370px;
-    height: 100vh;
-    padding-left: 50px;
-  }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 1920px 2290px;
-    height: 160vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 1920px 1800px;
-    height: 130vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
-}
-
 @media only screen and (max-width: 768px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -20vh;
-    background-size: 1920px 1150px;
-    height: 110vh;
-    margin-left: -50px;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -196,42 +150,13 @@ body {
     font-size: 20px;
     word-spacing: 20px;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 1420px 2500px;
-    height: 240vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 1420px 2100px;
-    height: 195vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
-
-
-
 
 /* ##################################################################################################### */
 /*========================================= Ukuran Smartphone  =========================================*/
 /* ################################################################################################### */
 
 @media only screen and (max-width: 540px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    background-size: 1920px 1320px;
-    height: 180vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -244,36 +169,9 @@ body {
     padding: 10px;
     display: block;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 1200px 3200px;
-    height: 420vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 1200px 2500px;
-    height: 300vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 415px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 200vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -290,36 +188,9 @@ body {
     padding: 10px;
     display: block;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 3800px;
-    height: 488vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 2900px;
-    height: 380vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 412px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 180vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -327,37 +198,10 @@ body {
   .batas{    
     padding: 10px;
     display: block;
-  }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 3780px;
-    height: 450vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 2900px;
-    height: 335vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
   }
 }
 
 @media only screen and (max-width: 378px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 210vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -366,36 +210,9 @@ body {
     padding: 10px;
     display: block;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 800px 4100px;
-    height: 520vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 800px 4100px;
-    height: 520vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 376px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1600px;
-    height: 190vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -412,36 +229,9 @@ body {
   #footer .copyright{
     padding-left:14%;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 4100px;
-    height: 500vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 3300px;
-    height: 400vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 360px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 220vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -458,36 +248,9 @@ body {
     padding: 10px;
     display: block;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 4200px;
-    height: 540vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 3250px;
-    height: 480vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 322px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 230vh;
-  }
-
   .card-img-top{
     margin-top: 30px;
   }
@@ -509,36 +272,9 @@ body {
   #footer{
     font-size: 14px;
   }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 4700px;
-    height: 700vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 3700px;
-    height: 600vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
-  }
 }
 
 @media only screen and (max-width: 282px) {
-  /*================= Home Landing =================*/
-  .home-landing{
-    margin-top: -150px;
-    background-size: 1920px 1500px;
-    height: 220vh;
-  }
-
   #footer{
     font-size: 12px;
   }
@@ -561,25 +297,5 @@ body {
   .batas{    
     padding: 10px;
     display: block;
-  }
-
-  /*================= Kebijakan Landing =================*/
-  .kebijakan-landing{
-    background-size: 600px 5600px;
-    height: 710vh;
-  }
-
-  .kebijakan-content{
-    margin-top: -150px;
-  }
-
-  /*================= Waspada Landing =================*/
-  .waspada-landing{
-    background-size: 600px 4300px;
-    height: 600vh;
-  }
-
-  .waspada-content{
-    margin-top: -150px;
   }
 }

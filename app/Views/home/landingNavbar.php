@@ -32,5 +32,6 @@
            </div>
        </nav>
        <!--/.Navbar-->
+       <img src="../img/home/HHome.png">
    </header>
    <!--Main Navigation-->

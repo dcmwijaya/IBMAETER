@@ -1,7 +1,8 @@
-<footer id="footer">
-    <div class="footer-content clearfix">
-        <div class="copyright">
-            &copy; 2021 <strong><span>Ibmaeter</span></strong>. All Rights Reserved
-        </div>
+<footer class="footer">
+    <img src="../img/home/FHome.png">
+    <div class="container design-footer">
+        <p class="text-center">
+            &copy; 2021 <strong><span>IBMAETER</span></strong> | All Rights Reserved
+        </p>
     </div>
 </footer>
