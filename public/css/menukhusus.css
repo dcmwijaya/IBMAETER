@@ -66,12 +66,12 @@
 
 .btn-left{
   float: left;
-  width: 220px;
+  width: 200px;
 }
 
 .btn-right{
   float: right;
-  width: 220px;
+  width: 200px;
 }
 
 #img-laporanbulanan{
@@ -118,13 +118,13 @@ thead { display:table-header-group; }
 @media (max-width: 1265px) {
   .btn-left{
     float: left;
-    width: 220px;
+    width: 200px;
     margin-bottom: 20px;
   }
 
   .btn-right{
     float: left;
-    width: 220px;
+    width: 200px;
   }
 
   .laporan-button p{

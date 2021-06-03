@@ -9,7 +9,7 @@
         <div class="row">
             <div class="intro col-md-6 mb-4">
                 <div class="view overlay z-depth-1-half">
-                    <h2>Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</h2>
+                    <h2 style="word-spacing: 20px;">Inventaris Barang Gudang dan Manajemen Pekerja Terpadu</h2>
                     <hr>
                     <p>Ibmaeter merupakan website yang dapat membantu anda dalam mengelola aktivitas inventaris barang gudang dan manajemen pekerja gudang. Fitur-fitur yang disediakan
                         dapat mempertahankan performa bisnis anda dengan tetap pegang kendali penuh pada persediaan stok barang yang tersaji
