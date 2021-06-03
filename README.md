@@ -6,7 +6,7 @@
 
 # Ibmaeter-Ci4
 <b>Website inventaris barang gudang dan manajemen pekerja terpadu dengan menggunakan framework Codeigniter 4</b>
-<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C</p>
+<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C dan juga ditujukan untuk mendapatkan Hak Kekayaan Intelektual</p>
 
 <br>
 
@@ -65,8 +65,8 @@ $php spark serve
 ## Akun untuk login
 | Role | Email | Password |
 | --- | --- | --- |
-| Admin | kukun@gmail.com | Admin123 |
-| Pekerja | erwin1@gmail.com | User123 |
+| Admin | tesla@gmail.com | Admin123 |
+| Pekerja | kukun@gmail.com | User123 |
 
 <br>
 
@@ -81,9 +81,18 @@ $php spark serve
 
 <br>
 
-## Kelompok-5 Framework-C UPN V JATIM
+## Tim Mahasiswa
 | NO | NAMA ANGGOTA TIM | NPM |
 | --- | --- | --- |
 | 1 | Devan Cakra Mudra Wijaya | 18081010013 |
 | 2 | Merdin Risalul Abrori | 18081010081 |
 | 3 | Rifky Akhmad Fernanda | 18081010126 |
+
+<br>
+
+## Tim Dosen
+| NO | NAMA ANGGOTA TIM |
+| --- | --- |
+| 1 | Rizky Parlika, S.Kom, M.Kom |
+| 2 | Arista Pratama, S.Kom, M.Kom |
+| 3 | Lugito Michael Imanuel Prasetya, S.Kom |
