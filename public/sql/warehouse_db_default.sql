@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jun 2021 pada 19.50
+-- Waktu pembuatan: 03 Jun 2021 pada 22.25
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -457,7 +457,7 @@ INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `divisi_user`, `
 (10, 'Kurniawan Kuntoro', 'kukun@gmail.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 1, 8, 'default.jpg', 'Laki-laki', '1985-05-14'),
 (11, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$qkWqu1ODqi.744EeV3Re3OqBtLYnH8wxD4csHrJEylRU1jp.Ppgqi', 1, 7, 'default.jpg', 'Laki-laki', '1984-09-17'),
 (12, 'Serline Claudya', 'serline@gmail.com', '$2y$10$ba3UBtfBOTOH5eDquRNZsOIBiYgOVq83WDbb2CXE3WhjJy.kAzTN.', 1, 6, 'default.jpg', 'Perempuan', '1989-05-14'),
-(13, 'Alfha Fierly Firdaus', 'alfhaff@gmail.com', '$2y$10$wc851oFM4IwkxFJayGWyLuWuu4e2HImDwVaPD6MlWKUGnqp8u0eVG', 0, 3, 'default.jpg', 'Laki-laki', '1992-02-04'),
+(13, 'Alfha Fierly Firdaus', 'alfhaff@gmail.com', '$2y$10$wc851oFM4IwkxFJayGWyLuWuu4e2HImDwVaPD6MlWKUGnqp8u0eVG', 0, 1, 'default.jpg', 'Laki-laki', '1992-02-04'),
 (14, 'Tasya Anastasya Mufida', 'tasyamufida@gmail.com', '$2y$10$lWgQ/EmPhz1G5vo.QXEAm.n8ac.21PZUgZV0zx4Tks2zASTH5TTya', 0, 1, 'default.jpg', 'Perempuan', '1994-02-02'),
 (15, 'Billy Gate', 'billy@gmail.com', '$2y$10$oEZ2N2cpnzo8OsWbVYGXKuYjqFyh9wNoHEAD0OXc/cCO.kBr1KRIm', 0, 0, 'default.jpg', 'Laki-laki', '1984-05-08'),
 (16, 'Jane Doe', 'janedoe@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Perempuan', '0000-00-00'),
@@ -640,7 +640,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT untuk tabel `alur_barang`
 --
 ALTER TABLE `alur_barang`
-  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `alur_barang_visibility`
@@ -658,13 +658,13 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT untuk tabel `komplain`
 --
 ALTER TABLE `komplain`
-  MODIFY `id_komplain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_komplain` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `komplain_arsip`
 --
 ALTER TABLE `komplain_arsip`
-  MODIFY `id_arsipKomp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_arsipKomp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `komplain_visibility`
@@ -676,7 +676,7 @@ ALTER TABLE `komplain_visibility`
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengumuman_visibility`
