@@ -1,7 +1,7 @@
 DELIMITER $$
 
-CREATE OR REPLACE TRIGGER `komp_visibilitas` AFTER INSERT
-ON `komplain` FOR EACH ROW
+CREATE OR REPLACE TRIGGER `isi_visibilitas` AFTER INSERT
+ON `pengumuman` FOR EACH ROW
 BEGIN
   DECLARE done INT DEFAULT FALSE;
   DECLARE ids INT;
@@ -26,9 +26,9 @@ BEGIN
     IF done
     THEN LEAVE ins_loop;
     END IF;
-    INSERT INTO `komplain_visibility` (
+    INSERT INTO `pengumuman_visibility` (
       `id_visibility`,
-      `no_komplain`,
+      `id_pengumuman`,
       `uid`,
       `role`,
       `status`,
@@ -37,11 +37,11 @@ BEGIN
     VALUES
       (
         NULL,
-        new.`no_komplain`,
+        new.`id_pengumuman`,
         ids,
         roles,
         "Belum Dilihat",
-        CURDATE()
+        new.`waktu`
       );
   END LOOP;
   CLOSE cur1;

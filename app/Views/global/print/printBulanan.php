@@ -169,11 +169,11 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="100%" colspan="6" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">
 								<h3 class="mb-0 text-center">
-									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
-								</h3><br>INVENBAR INDONESIA
+									<center><strong>Detail Laporan Bulanan IBMAETER</strong></center>
+								</h3><br>IBMAETER INDONESIA
 							</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
-							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : IBMAETER@invweb.ac.id</div>
 						</td>
 					</tr>
 				</table>
@@ -182,7 +182,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Brief Information Invenbar</strong></center>
+							<center><strong>Brief Information IBMAETER</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -299,7 +299,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="70%" colspan="6" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
-								Founder Invenbar,
+								Founder IBMAETER,
 							</h4>
 						</td>
 					</tr>
@@ -325,11 +325,11 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="100%" colspan="6" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">
 								<h3 class="mb-0 text-center">
-									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
-								</h3><br>INVENBAR INDONESIA
+									<center><strong>Detail Laporan Bulanan IBMAETER</strong></center>
+								</h3><br>IBMAETER INDONESIA
 							</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
-							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : ibmaeter@invweb.ac.id</div>
 						</td>
 					</tr>
 				</table>
@@ -337,7 +337,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Barang Gudang Invenbar</strong></center>
+							<center><strong>Barang Gudang IBMAETER</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -377,7 +377,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="70%" colspan="6" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
-								Founder Invenbar,
+								Founder IBMAETER,
 							</h4>
 						</td>
 					</tr>
@@ -403,11 +403,11 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="100%" colspan="6" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">
 								<h3 class="mb-0 text-center">
-									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
-								</h3><br>INVENBAR INDONESIA
+									<center><strong>Detail Laporan Bulanan IBMAETER</strong></center>
+								</h3><br>IBMAETER INDONESIA
 							</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
-							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : ibmaeter@invweb.ac.id</div>
 						</td>
 					</tr>
 				</table>
@@ -415,7 +415,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Spesifikasi Barang Gudang Invenbar</strong></center>
+							<center><strong>Spesifikasi Barang Gudang IBMAETER</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -489,7 +489,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="70%" colspan="6" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
-								Founder Invenbar,
+								Founder IBMAETER,
 							</h4>
 						</td>
 					</tr>
@@ -515,11 +515,11 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="100%" colspan="6" style="text-align: center;">
 							<div style="font-size: 13pt; font-weight: bold;">
 								<h3 class="mb-0 text-center">
-									<center><strong>Detail Laporan Bulanan Invenbar</strong></center>
-								</h3><br>INVENBAR INDONESIA
+									<center><strong>Detail Laporan Bulanan IBMAETER</strong></center>
+								</h3><br>IBMAETER INDONESIA
 							</div>
 							<div style="font-weight: 200;">Website Inventaris Barang Gudang Toko Toserba</div>
-							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : invenbar@invweb.ac.id</div>
+							<div style="font-weight: 200;">Telp. 031-4614099 Fax. 5619082 / Email : ibmaeter@invweb.ac.id</div>
 						</td>
 					</tr>
 				</table>
@@ -527,7 +527,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 				<div class="card" style="margin-top: 58px;">
 					<div class="card-header text-center py-3">
 						<h3 class="mb-0 text-center">
-							<center><strong>Perizinan Income-Outcome Barang Invenbar</strong></center>
+							<center><strong>Perizinan Income-Outcome Barang IBMAETER</strong></center>
 						</h3>
 					</div>
 					<div class="card-body">
@@ -611,7 +611,7 @@ $truantedCount = $totalAbsensi - $presentCount - $lateCount - $permissionCount;
 						<td width="70%" colspan="6" style="text-align: center;"></td>
 						<td width="30%" style="text-align: right;">
 							<h4 style="margin-bottom: 30px;">
-								Founder Invenbar,
+								Founder IBMAETER,
 							</h4>
 						</td>
 					</tr>

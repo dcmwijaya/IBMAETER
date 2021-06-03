@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2021 at 07:42 PM
+-- Generation Time: May 30, 2021 at 04:29 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -682,32 +682,6 @@ INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status
 -- Triggers `alur_barang`
 --
 DELIMITER $$
-CREATE TRIGGER `log_visibilitas` AFTER INSERT ON `alur_barang` FOR EACH ROW BEGIN
-DECLARE done INT DEFAULT FALSE;
-DECLARE ids INT;
-DECLARE roles INT;
-DECLARE cur1 CURSOR FOR SELECT `uid` FROM `user`;
-DECLARE cur2 CURSOR FOR SELECT `role` FROM `user`;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
-OPEN cur1;
-OPEN cur2;
-
-	ins_loop: LOOP
-            FETCH cur1 INTO ids;
-            FETCH cur2 INTO roles;
-            IF done THEN
-                LEAVE ins_loop;
-            END IF;
-            INSERT INTO `alur_barang_visibility` VALUES (NULL, new.`no_log`, ids, roles, "Belum Dilihat", CURDATE());
-        END LOOP;
-
-CLOSE cur1;
-CLOSE cur2;
-END
-$$
-DELIMITER ;
-DELIMITER $$
 CREATE TRIGGER `stok_dinamis` AFTER UPDATE ON `alur_barang` FOR EACH ROW BEGIN
 IF (new.`status`="Diterima") THEN
 IF (new.`request`="Masuk") THEN
@@ -721,67 +695,6 @@ UPDATE `item` SET `item`.`stok` = `item`.`stok` - new.`ubah_stok`
     END
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `alur_barang_visibility`
---
-
-CREATE TABLE `alur_barang_visibility` (
-  `id_visibility` int(11) NOT NULL,
-  `no_log` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `role` int(11) NOT NULL,
-  `status` enum('Dilihat','Belum Dilihat') NOT NULL,
-  `waktu` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `alur_barang_visibility`
---
-
-INSERT INTO `alur_barang_visibility` (`id_visibility`, `no_log`, `uid`, `role`, `status`, `waktu`) VALUES
-(1, 8, 1, 0, 'Belum Dilihat', '2021-05-26'),
-(2, 8, 2, 1, 'Belum Dilihat', '2021-05-26'),
-(3, 8, 3, 1, 'Belum Dilihat', '2021-05-26'),
-(4, 8, 4, 0, 'Belum Dilihat', '2021-05-26'),
-(5, 8, 53, 1, 'Belum Dilihat', '2021-05-26'),
-(6, 8, 69, 0, 'Belum Dilihat', '2021-05-26'),
-(7, 8, 73, 0, 'Belum Dilihat', '2021-05-26'),
-(8, 9, 11, 0, 'Belum Dilihat', '2021-05-27'),
-(9, 9, 13, 0, 'Belum Dilihat', '2021-05-27'),
-(10, 9, 7, 0, 'Belum Dilihat', '2021-05-27'),
-(11, 9, 22, 0, 'Belum Dilihat', '2021-05-27'),
-(12, 9, 17, 0, 'Belum Dilihat', '2021-05-27'),
-(13, 9, 15, 0, 'Belum Dilihat', '2021-05-27'),
-(14, 9, 19, 1, 'Belum Dilihat', '2021-05-27'),
-(15, 9, 25, 1, 'Belum Dilihat', '2021-05-27'),
-(16, 9, 31, 1, 'Belum Dilihat', '2021-05-27'),
-(17, 9, 27, 1, 'Belum Dilihat', '2021-05-27'),
-(18, 9, 8, 1, 'Belum Dilihat', '2021-05-27'),
-(19, 9, 5, 1, 'Belum Dilihat', '2021-05-27'),
-(20, 9, 6, 0, 'Belum Dilihat', '2021-05-27'),
-(21, 9, 24, 0, 'Belum Dilihat', '2021-05-27'),
-(22, 9, 3, 0, 'Belum Dilihat', '2021-05-27'),
-(23, 9, 9, 1, 'Belum Dilihat', '2021-05-27'),
-(24, 9, 26, 0, 'Belum Dilihat', '2021-05-27'),
-(25, 9, 16, 0, 'Belum Dilihat', '2021-05-27'),
-(26, 9, 2, 1, 'Belum Dilihat', '2021-05-27'),
-(27, 9, 4, 1, 'Belum Dilihat', '2021-05-27'),
-(28, 9, 10, 1, 'Belum Dilihat', '2021-05-27'),
-(29, 9, 18, 1, 'Belum Dilihat', '2021-05-27'),
-(30, 9, 20, 1, 'Belum Dilihat', '2021-05-27'),
-(31, 9, 33, 1, 'Belum Dilihat', '2021-05-27'),
-(32, 9, 29, 1, 'Belum Dilihat', '2021-05-27'),
-(33, 9, 28, 1, 'Belum Dilihat', '2021-05-27'),
-(34, 9, 30, 1, 'Belum Dilihat', '2021-05-27'),
-(35, 9, 32, 0, 'Belum Dilihat', '2021-05-27'),
-(36, 9, 12, 0, 'Belum Dilihat', '2021-05-27'),
-(37, 9, 21, 0, 'Belum Dilihat', '2021-05-27'),
-(38, 9, 14, 0, 'Belum Dilihat', '2021-05-27'),
-(39, 9, 1, 0, 'Belum Dilihat', '2021-05-27'),
-(40, 9, 23, 0, 'Belum Dilihat', '2021-05-27');
 
 -- --------------------------------------------------------
 
@@ -935,34 +848,50 @@ INSERT INTO `komplain` (`id_komplain`, `no_komplain`, `uid_komplain`, `judul_kom
 -- Triggers `komplain`
 --
 DELIMITER $$
-CREATE TRIGGER `del_komp_visib` AFTER DELETE ON `komplain` FOR EACH ROW BEGIN
-DELETE FROM `komplain_visibility` WHERE `no_komplain` = old.`no_komplain`;
-END
-$$
-DELIMITER ;
-DELIMITER $$
 CREATE TRIGGER `komp_visibilitas` AFTER INSERT ON `komplain` FOR EACH ROW BEGIN
-DECLARE done INT DEFAULT FALSE;
-DECLARE ids INT;
-DECLARE roles INT;
-DECLARE cur1 CURSOR FOR SELECT `uid` FROM `user`;
-DECLARE cur2 CURSOR FOR SELECT `role` FROM `user`;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
-OPEN cur1;
-OPEN cur2;
-
-	ins_loop: LOOP
-            FETCH cur1 INTO ids;
-            FETCH cur2 INTO roles;
-            IF done THEN
-                LEAVE ins_loop;
-            END IF;
-            INSERT INTO `komplain_visibility` VALUES (NULL, new.`no_komplain`, ids, roles, "Belum Dilihat", CURDATE());
-        END LOOP;
-
-CLOSE cur1;
-CLOSE cur2;
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE ids INT;
+  DECLARE roles INT;
+  DECLARE cur1 CURSOR FOR
+  SELECT
+    `uid`
+  FROM
+    `user`;
+  DECLARE cur2 CURSOR FOR
+  SELECT
+    `role`
+  FROM
+    `user`;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+  OPEN cur1;
+  OPEN cur2;
+  ins_loop :
+  LOOP
+    FETCH cur1 INTO ids;
+    FETCH cur2 INTO roles;
+    IF done
+    THEN LEAVE ins_loop;
+    END IF;
+    INSERT INTO `komplain_visibility` (
+      `id_visibility`,
+      `no_komplain`,
+      `uid`,
+      `role`,
+      `status`,
+      `waktu`
+    )
+    VALUES
+      (
+        NULL,
+        new.`no_komplain`,
+        ids,
+        roles,
+        "Belum Dilihat",
+        CURDATE()
+      );
+  END LOOP;
+  CLOSE cur1;
+  CLOSE cur2;
 END
 $$
 DELIMITER ;
@@ -1046,27 +975,49 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `isi_visibilitas` AFTER INSERT ON `pengumuman` FOR EACH ROW BEGIN
-DECLARE done INT DEFAULT FALSE;
-DECLARE ids INT;
-DECLARE roles INT;
-DECLARE cur1 CURSOR FOR SELECT `uid` FROM `user`;
-DECLARE cur2 CURSOR FOR SELECT `role` FROM `user`;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
-OPEN cur1;
-open cur2;
-
-	ins_loop: LOOP
-            FETCH cur1 INTO ids;
-            FETCH cur2 INTO roles;
-            IF done THEN
-                LEAVE ins_loop;
-            END IF;
-            INSERT INTO `pengumuman_visibility` VALUES (null, new.`id_pengumuman`, ids, roles, "Belum Dilihat", new.`waktu`);
-        END LOOP;
-
-CLOSE cur1;
-close cur2;
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE ids INT;
+  DECLARE roles INT;
+  DECLARE cur1 CURSOR FOR
+  SELECT
+    `uid`
+  FROM
+    `user`;
+  DECLARE cur2 CURSOR FOR
+  SELECT
+    `role`
+  FROM
+    `user`;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+  OPEN cur1;
+  OPEN cur2;
+  ins_loop :
+  LOOP
+    FETCH cur1 INTO ids;
+    FETCH cur2 INTO roles;
+    IF done
+    THEN LEAVE ins_loop;
+    END IF;
+    INSERT INTO `pengumuman_visibility` (
+      `id_visibility`,
+      `id_pengumuman`,
+      `uid`,
+      `role`,
+      `status`,
+      `waktu`
+    )
+    VALUES
+      (
+        NULL,
+        new.`id_pengumuman`,
+        ids,
+        roles,
+        "Belum Dilihat",
+        new.`waktu`
+      );
+  END LOOP;
+  CLOSE cur1;
+  CLOSE cur2;
 END
 $$
 DELIMITER ;
@@ -1111,7 +1062,7 @@ INSERT INTO `pengumuman_visibility` (`id_visibility`, `id_pengumuman`, `uid`, `r
 (18, 1, 16, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (19, 1, 30, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (20, 1, 2, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
-(21, 1, 4, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
+(21, 1, 4, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (22, 1, 10, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (23, 1, 18, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (24, 1, 20, 1, 'Belum Dilihat', '2021-05-25 07:57:43'),
@@ -1122,7 +1073,7 @@ INSERT INTO `pengumuman_visibility` (`id_visibility`, `id_pengumuman`, `uid`, `r
 (29, 1, 12, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (30, 1, 21, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (31, 1, 14, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
-(32, 1, 1, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
+(32, 1, 1, 0, 'Dilihat', '2021-05-30 09:48:05'),
 (33, 1, 23, 0, 'Belum Dilihat', '2021-05-25 07:57:43'),
 (34, 2, 1, 0, 'Belum Dilihat', '2021-05-25 08:11:59'),
 (35, 2, 2, 0, 'Belum Dilihat', '2021-05-25 08:11:59'),
@@ -1348,6 +1299,28 @@ INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `divisi_user`, `
 (32, 'rifkya911', 'sdd911@gmail.com', '$2y$10$0XwDQb.gsioR4khSMMCvyONjoxYGtdCyX6ZnRzG8kh7IKgY4YoHJ.', 0, 8, '1622037819_b141b00d72e0d792ce5a.jpg', 'Laki-laki', '2021-05-13'),
 (33, 'Qiqi', 'qiqi@gmail.com', '$2y$10$LHZUsw3/Spyma54o8ydNiO0CGisJuYkGeEtzB7LmX8iDgvrSC5ASC', 0, 1, 'default.jpg', 'Perempuan', '1987-07-14');
 
+--
+-- Triggers `user`
+--
+DELIMITER $$
+CREATE TRIGGER `update_role` AFTER UPDATE ON `user` FOR EACH ROW BEGIN
+
+  update
+    `komplain_visibility`
+  set
+    old.`role` = new.`role`
+  WHERE `uid` = new.`uid`;
+  
+  UPDATE
+    `pengumuman_visibility`
+  SET
+    old.`role` = new.`role`
+  WHERE `uid` = new.`uid`;
+  
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -1385,7 +1358,14 @@ INSERT INTO `user_activity` (`id_aktivitas`, `uid_aktivitas`, `aktivitas`, `wakt
 (17, 6, 'Erwin Schrödinger mencetak Laporan Bulanan', '2021-05-29 23:09:33'),
 (18, 6, 'Erwin Schrödinger mencetak Laporan Bulanan', '2021-05-29 23:11:27'),
 (19, 6, 'Erwin Schrödinger melakukan Logout.', '2021-05-29 23:15:54'),
-(20, 1, 'Nikola Tesla melakukan Login.', '2021-05-29 23:16:05');
+(20, 1, 'Nikola Tesla melakukan Login.', '2021-05-29 23:16:05'),
+(21, 6, 'Erwin Schrödinger melakukan Login.', '2021-05-30 09:31:12'),
+(22, 6, 'Erwin Schrödinger melakukan Logout.', '2021-05-30 09:31:27'),
+(23, 1, 'Nikola Tesla melakukan Login.', '2021-05-30 09:31:43'),
+(24, 1, 'Nikola Tesla melakukan Absensi.', '2021-05-30 09:48:17'),
+(25, 1, 'Nikola Tesla melakukan Login.', '2021-05-30 12:28:00'),
+(26, 1, 'Nikola Tesla melakukan Login.', '2021-05-30 19:03:17'),
+(27, 1, 'Nikola Tesla mencetak Laporan Bulanan', '2021-05-30 19:49:54');
 
 -- --------------------------------------------------------
 
@@ -1431,12 +1411,6 @@ ALTER TABLE `absensi`
 --
 ALTER TABLE `alur_barang`
   ADD PRIMARY KEY (`no_log`);
-
---
--- Indexes for table `alur_barang_visibility`
---
-ALTER TABLE `alur_barang_visibility`
-  ADD PRIMARY KEY (`id_visibility`);
 
 --
 -- Indexes for table `item`
@@ -1516,12 +1490,6 @@ ALTER TABLE `alur_barang`
   MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `alur_barang_visibility`
---
-ALTER TABLE `alur_barang_visibility`
-  MODIFY `id_visibility` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
@@ -1573,7 +1541,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user_divisi`
