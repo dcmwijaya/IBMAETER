@@ -18,7 +18,7 @@
 								<label for="staticEmail" class="col-sm-3 col-form-label font-weight-bold">Admin&nbsp;&nbsp;&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left form-control-sm" value="kukun@gmail.com" id="myInput1" readonly>
+										<input type="text" class="float-left form-control-sm" value="tesla@gmail.com" id="myInput1" readonly>
 										<button onclick="copy1()" class="btn btn-sm btn-success ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
@@ -36,7 +36,7 @@
 								<label for="staticEmail" class="col-sm-3 col-form-label font-weight-bold">Pekerja&nbsp;&nbsp;&nbsp; :</label>
 								<div class="col-sm-9">
 									<div class="clearfix col-9">
-										<input type="text" class="float-left col-sm-5 form-control-sm" value="erwin@gmail.com" id="myInput3" readonly>
+										<input type="text" class="float-left form-control-sm" value="kukun@gmail.com" id="myInput3" readonly>
 										<button onclick="copy3()" class="btn btn-sm btn-secondary ml-3 py-2 shadow-sm px-3 float-right"><i class="fas fa-fw fa-clipboard"></i></button>
 									</div>
 								</div>
@@ -51,11 +51,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-6 border-left">
-							<pre>Anggota Kelompok 5 Framework C :
-							<br>1. 18081010013 - Devan Cakra Mudra Wijaya&nbsp; <i class="fas fa-code" style="color: #000336"></i>
-							<br>2. 18081010081 - Merdin Risalul Abrori&nbsp; <i class="fas fa-lemon" style="color: #60c940"></i>
-							<br>3. 18081010126 - Rifky Akhmad Fernanda&nbsp; <i class="fas fa-cat fa-fw" style="color: #c72876;"></i>
+						<div class="col-sm-6 border-left" style="line-height: 5x;">
+							<pre><strong>Tim Pencipta Website :</strong>
+							<br>1. Rizky Parlika, S.Kom, M.Kom&nbsp; <i class="fas fa-book-reader" style="color: #0000FF;"></i>
+							<br>2. Rifky Akhmad Fernanda&nbsp; <i class="fas fa-cat fa-fw" style="color: #c72876;"></i>
+							<br>3. Devan Cakra Mudra Wijaya&nbsp; <i class="fas fa-code" style="color: #000336;"></i>
+							<br>4. Merdin Risalul Abrori&nbsp; <i class="fas fa-database" style="color: #60c940;"></i>							
+							<br>5. Arista Pratama, S.Kom, M.Kom&nbsp; <i class="fas fa-eye" style="color: #0000FF;"></i>
+							<br>6. Lugito Michael Imanuel Prasetya, S.Kom&nbsp; <i class="fas fa-user-check fa-fw" style="color: #c72876;"></i>
 							</pre>
 						</div>
 					</div>
