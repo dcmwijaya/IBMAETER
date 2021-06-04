@@ -28,32 +28,3 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		function copy1() {
-			var copyText = document.getElementById("myInput1");
-			copyText.select();
-			copyText.setSelectionRange(0, 99999); /* For mobile devices */
-			document.execCommand("copy");
-		}
-
-		function copy2() {
-			var copyText = document.getElementById("myInput2");
-			copyText.select();
-			copyText.setSelectionRange(0, 99999); /* For mobile devices */
-			document.execCommand("copy");
-		}
-
-		function copy3() {
-			var copyText = document.getElementById("myInput3");
-			copyText.select();
-			copyText.setSelectionRange(0, 99999); /* For mobile devices */
-			document.execCommand("copy");
-		}
-
-		function copy4() {
-			var copyText = document.getElementById("myInput4");
-			copyText.select();
-			copyText.setSelectionRange(0, 99999); /* For mobile devices */
-			document.execCommand("copy");
-		}
-	</script>
