@@ -529,19 +529,13 @@ class Exlapor extends BaseController
 	{
 		// seleksi login
 		if (session('uid') != null) {
-			// jika user merupakan Admin
-			if (session('role') == 0) {
-				$id = $this->request->getPost('notaIzin');
+			$id = $this->request->getPost('notaIzin');
 
-				$data = [
-					"title" => "NOTA PERIZINAN | IBMAETER",
-					"log_item" => $this->LogModel->NotaItem($id)
-				];
-
-				return view('admin/print/printNotaizin', $data);
-			} else {
-				return redirect()->to('/dashboard');
-			}
+			$data = [
+				"title" => "NOTA PERIZINAN | IBMAETER",
+				"log_item" => $this->LogModel->NotaItem($id)
+			];
+			return view('admin/print/printNotaizin', $data);
 		} else {
 			return redirect()->to('/login');
 		}
