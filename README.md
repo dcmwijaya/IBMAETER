@@ -68,7 +68,8 @@ $php spark serve
 
 ## Solusi Error Sewaktu Run Server
 1. Ketiklah di gitbash seperti ini : composer update --no-dev
-2. 
+2. Lalu ketik di gitbash seperti ini : composer audit
+3. Kemudian cek ada permasalahan lagi atau tidak, kalau semisal masih ada error tinggal menyesuaikan dengan keadaan saja.
 
 <br>
 
