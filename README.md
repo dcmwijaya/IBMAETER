@@ -78,8 +78,8 @@ composer update --no-dev
 ## Akun untuk login
 | Role | Email | Password |
 | --- | --- | --- |
-| Admin | tesla@gmail.com | Admin123 |
-| Pekerja | kukun@gmail.com | User123 |
+| Admin | alfhaff@gmail.com | Superadmin123 |
+| Pekerja | adeline@gmail.com | User123456 |
 
 <br>
 
