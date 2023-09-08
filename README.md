@@ -59,7 +59,7 @@ composer create-project codeigniter4/appstarter ibmaeter-ci4
 ## Run Server
 1. Pastikan masih berada di dalam folder ibmaeter-ci4 -> Klik kanan pilih gitbash lalu ketikkan :
 ```bash
-$php spark serve
+php spark serve
 ```
 2. Buka XAMPP lalu start apache dan mysql
 3. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 atau sesuaikan yang ada pada gitbash
