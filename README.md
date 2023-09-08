@@ -23,9 +23,9 @@
 <br>
 
 ## Environment
-1. Download XAMPP
+1. Download XAMPP dengan PHP versi 7
 ```bash
-https://www.apachefriends.org/index.html
+https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
 ```
 2. Download Visual Studio Code 
 ```bash
@@ -67,9 +67,11 @@ php spark serve
 <br>
 
 ## Solusi Error Sewaktu Run Server
-1. Ketiklah di gitbash seperti ini : composer update --no-dev
-2. Lalu ketik di gitbash seperti ini : composer audit
-3. Kemudian cek ada permasalahan lagi atau tidak, kalau semisal masih ada error tinggal menyesuaikan dengan keadaan saja.
+1. Ketiklah di gitbash seperti ini :
+```bash
+composer update --no-dev
+```
+2. Kemudian cek ada permasalahan lagi atau tidak, kalau semisal masih ada error tinggal menyesuaikan dengan keadaan saja.
 
 <br>
 
