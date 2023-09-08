@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jun 2021 pada 22.25
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.4.15
+-- Waktu pembuatan: 08 Sep 2023 pada 08.41
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,6 +58,21 @@ CREATE TABLE `alur_barang` (
   `ket` varchar(255) DEFAULT NULL,
   `uid_alur_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `alur_barang`
+--
+
+INSERT INTO `alur_barang` (`no_log`, `id_item`, `uid`, `tgl`, `request`, `status`, `ubah_stok`, `ket`, `uid_alur_admin`) VALUES
+(1, 12, 2, '2023-09-08 01:11:58', 'Masuk', 'Diterima', 400, 'Terverifikasi !', 1),
+(2, 6, 2, '2023-09-08 01:11:51', 'Keluar', 'Ditolak', 200, 'Terverifikasi !', 1),
+(3, 5, 2, '2023-09-08 01:11:29', 'Masuk', 'Ditolak', 350, 'Terverifikasi !', 1),
+(4, 13, 2, '2023-09-08 01:12:03', 'Keluar', 'Diterima', 300, 'Terverifikasi !', 1),
+(5, 11, 2, '2023-09-08 01:22:57', 'Keluar', 'Diterima', 200, 'Terverifikasi !', 1),
+(6, 20, 2, '2023-09-08 01:22:48', 'Keluar', 'Diterima', 350, 'Terverifikasi !', 1),
+(7, 24, 2, '2023-09-08 01:22:54', 'Masuk', 'Diterima', 25, 'Terverifikasi !', 1),
+(8, 37, 2, '2023-09-08 01:22:46', 'Masuk', 'Diterima', 250, 'Terverifikasi !', 1),
+(9, 65, 2, '2023-09-08 01:22:42', 'Keluar', 'Diterima', 1000, 'Terverifikasi !', 1);
 
 --
 -- Trigger `alur_barang`
@@ -118,6 +133,30 @@ CREATE TABLE `alur_barang_visibility` (
   `waktu` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `alur_barang_visibility`
+--
+
+INSERT INTO `alur_barang_visibility` (`id_visibility`, `no_log`, `uid`, `role`, `status`, `waktu`) VALUES
+(1, 1, 2, 0, 'Belum Dilihat', '2023-09-08'),
+(2, 1, 1, 1, 'Belum Dilihat', '2023-09-08'),
+(3, 2, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(4, 2, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(5, 3, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(6, 3, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(7, 4, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(8, 4, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(9, 5, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(10, 5, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(11, 6, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(12, 6, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(13, 7, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(14, 7, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(15, 8, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(16, 8, 2, 1, 'Belum Dilihat', '2023-09-08'),
+(17, 9, 1, 0, 'Belum Dilihat', '2023-09-08'),
+(18, 9, 2, 1, 'Belum Dilihat', '2023-09-08');
+
 -- --------------------------------------------------------
 
 --
@@ -151,20 +190,20 @@ INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`
 (8, 7, '3-007-9610', 'Minyak Goreng Filma', 200, 'Minyak', 'G', 210000, 8000),
 (9, 10, '1-006-2539', 'Pepsodent Pasta Gigi', 2000, 'Cair', 'F', 5000, 75),
 (10, 2, '5-006-9524', 'Permen Kopiko', 500, 'Padat', 'F', 7000, 150),
-(11, 1, '5-004-7415', 'Yaki Sushi Nori (Rumput Laut)', 400, 'Padat', 'D', 50000, 50),
-(12, 6, '3-005-6887', 'Minyak Kayu Putih Cap Lang', 470, 'Minyak', 'E', 22000, 60),
-(13, 2, '5-007-2744', 'Silverqueen Coklat Piramid', 700, 'Padat', 'G', 50000, 500),
+(11, 1, '5-004-7415', 'Yaki Sushi Nori (Rumput Laut)', 200, 'Padat', 'D', 50000, 50),
+(12, 6, '3-005-6887', 'Minyak Kayu Putih Cap Lang', 870, 'Minyak', 'E', 22000, 60),
+(13, 2, '5-007-2744', 'Silverqueen Coklat Piramid', 400, 'Padat', 'G', 50000, 500),
 (14, 2, '5-006-9973', 'Leo Sapi Panggang Keripik Kentang Snack', 700, 'Padat', 'F', 15000, 48),
 (15, 1, '5-007-5288', 'Lemonilo Mie Instant', 2000, 'Padat', 'G', 106500, 70),
 (16, 1, '5-003-3373', 'Indomie Goreng 1 Dus', 400, 'Padat', 'C', 100000, 3000),
 (17, 1, '5-002-2852', 'Mie Sedaap Goreng 1 Dus', 1900, 'Padat', 'B', 70000, 4500),
 (18, 2, '1-001-3770', 'Buavita Jus Buah Jambu', 500, 'Cair', 'A', 25000, 1300),
 (19, 12, '1-005-9649', 'Sunkist Orange Jus', 50, 'Cair', 'E', 34000, 750),
-(20, 13, '5-007-7018', 'Facial Tissue Tisu Nice', 800, 'Padat', 'G', 29500, 900),
+(20, 13, '5-007-7018', 'Facial Tissue Tisu Nice', 450, 'Padat', 'G', 29500, 900),
 (21, 8, '5-005-4785', 'Chocolatos Dark Family Pack', 300, 'Padat', 'E', 22500, 66),
 (22, 7, '1-006-4190', 'Blue Band Cake and Cookie Margarine Sachet', 450, 'Cair', 'F', 49700, 200),
 (23, 2, '5-004-0566', 'Softex Comfort Slim', 500, 'Padat', 'D', 14500, 350),
-(24, 13, '3-006-3854', 'Kara Minyak Kelapa', 300, 'Minyak', 'F', 57000, 2000),
+(24, 13, '3-006-3854', 'Kara Minyak Kelapa', 325, 'Minyak', 'F', 57000, 2000),
 (25, 3, '3-005-4261', 'Minyak Wijen Oh Guan Hing', 560, 'Minyak', 'E', 27500, 100),
 (26, 14, '3-004-2981', 'Minyak Goreng Bimoli', 600, 'Minyak', 'D', 28000, 2100),
 (27, 13, '3-003-8393', 'Minyak Goreng Sunco', 800, 'Minyak', 'C', 30000, 2100),
@@ -177,7 +216,7 @@ INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`
 (34, 13, '2-002-1389', 'Cumi Tube Kupas Bersih Segar Beku Kualitas Premium Super', 700, 'Daging', 'B', 47000, 100),
 (35, 13, '2-006-9864', 'Cumi Ring Frozen', 220, 'Daging', 'F', 37500, 500),
 (36, 13, '2-006-7135', 'Frozen Canadian Lobster Canada Udang Lobster Capit Import', 50, 'Daging', 'F', 695000, 500),
-(37, 3, '4-003-1936', 'Baterai Remote ABC', 400, 'Mudah Terbakar', 'C', 5500, 200),
+(37, 3, '4-003-1936', 'Baterai Remote ABC', 650, 'Mudah Terbakar', 'C', 5500, 200),
 (38, 3, '4-002-1490', 'Baterai Alkalin', 500, 'Mudah Terbakar', 'B', 10500, 50),
 (39, 14, '4-002-0763', 'Parfum Hugo Boss The Scent Edt Man', 350, 'Mudah Terbakar', 'B', 900000, 500),
 (40, 10, '4-001-5972', 'Original Parfum Jaguar Classic Gold', 200, 'Mudah Terbakar', 'A', 205000, 500),
@@ -205,7 +244,7 @@ INSERT INTO `item` (`id_item`, `id_supplier`, `kode_barang`, `nama_item`, `stok`
 (62, 6, '3-005-8055', 'Minyak Kayu Putih Cap Lang Spesial', 470, 'Minyak', 'E', 40000, 60),
 (63, 2, '5-007-7532', 'Silverqueen Coklat Piramid Spesial', 700, 'Padat', 'G', 80000, 500),
 (64, 2, '5-006-1339', 'Leo Sapi Panggang Keripik Kentang Snack Spesial', 700, 'Padat', 'F', 28000, 48),
-(65, 1, '5-007-2379', 'Lemonilo Mie Instant Spesial', 2000, 'Padat', 'G', 130000, 70),
+(65, 1, '5-007-2379', 'Lemonilo Mie Instant Spesial', 1000, 'Padat', 'G', 130000, 70),
 (66, 1, '5-003-5908', 'Indomie Goreng 1 Dus Spesial', 400, 'Padat', 'C', 135000, 3000),
 (67, 1, '5-002-1263', 'Mie Sedaap Goreng 1 Dus Spesial', 1900, 'Padat', 'B', 130000, 4500),
 (68, 2, '1-001-6649', 'Buavita Jus Buah Jambu Spesial', 500, 'Cair', 'A', 18000, 1300),
@@ -445,39 +484,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `divisi_user`, `picture`, `gender`, `tanggal_lahir`) VALUES
-(1, 'Nikola Tesla', 'tesla@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 1, 'default.jpg', 'Laki-laki', '1977-05-25'),
-(2, 'John Doe', 'johndoe@gmail.com', ' $2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 10, 'default.jpg', 'Laki-laki', '1974-05-05'),
-(3, 'Muhammad Al Fatih', 'fatih@gmail.com', ' $2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 2, 'default.jpg', 'Laki-laki', '1979-07-26'),
-(4, 'Khalid Walid', 'khalid@gmail.com', ' $2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 2, 'default.jpg', 'Laki-laki', '1976-02-10'),
-(5, 'Albert Einstein', 'einstein@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 10, 'default.jpg', 'Laki-laki', '1974-05-05'),
-(6, 'Erwin Schrödinger', 'erwin@gmail.com', '$2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 4, 'default.jpg', 'Laki-laki', '1977-05-25'),
-(7, 'Allan Poe', 'allan@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 6, 'default.jpg', 'Laki-laki', '1987-01-30'),
-(8, 'Paul A.M. Dirac', 'dirac@gmail.com', '$2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 5, 'default.jpg', 'Laki-laki', '1985-03-21'),
-(9, 'Muhammad Ibnu', 'ibnu@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 5, 'default.jpg', 'Laki-laki', '1992-02-10'),
-(10, 'Kurniawan Kuntoro', 'kukun@gmail.com', '$2y$10$ffptJql9WmysGHENlyUile/blayl4iLAvyvMRZd.9g2TaySULlfIG', 1, 8, 'default.jpg', 'Laki-laki', '1985-05-14'),
-(11, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$qkWqu1ODqi.744EeV3Re3OqBtLYnH8wxD4csHrJEylRU1jp.Ppgqi', 1, 7, 'default.jpg', 'Laki-laki', '1984-09-17'),
-(12, 'Serline Claudya', 'serline@gmail.com', '$2y$10$ba3UBtfBOTOH5eDquRNZsOIBiYgOVq83WDbb2CXE3WhjJy.kAzTN.', 1, 6, 'default.jpg', 'Perempuan', '1989-05-14'),
-(13, 'Alfha Fierly Firdaus', 'alfhaff@gmail.com', '$2y$10$wc851oFM4IwkxFJayGWyLuWuu4e2HImDwVaPD6MlWKUGnqp8u0eVG', 0, 1, 'default.jpg', 'Laki-laki', '1992-02-04'),
-(14, 'Tasya Anastasya Mufida', 'tasyamufida@gmail.com', '$2y$10$lWgQ/EmPhz1G5vo.QXEAm.n8ac.21PZUgZV0zx4Tks2zASTH5TTya', 0, 1, 'default.jpg', 'Perempuan', '1994-02-02'),
-(15, 'Billy Gate', 'billy@gmail.com', '$2y$10$oEZ2N2cpnzo8OsWbVYGXKuYjqFyh9wNoHEAD0OXc/cCO.kBr1KRIm', 0, 0, 'default.jpg', 'Laki-laki', '1984-05-08'),
-(16, 'Jane Doe', 'janedoe@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Perempuan', '0000-00-00'),
-(17, 'Asuka Langley', 'asuka@gmail.com', ' $2y$10$NHGv1T3eNUlnNfPjlgCiB.npk/.9o8.B5lwZ2QiHcPsTA6r/Q9XH2', 0, 2, 'default.jpg', 'Perempuan', '1995-08-24'),
-(18, 'Makinami Mari', 'makinami@gmail.com', '$2y$10$bs0KTnI2k1M8BMw8onU8C.frt28siCF5talRoKMTjotz4kOehkFSG', 0, 3, 'default.jpg', 'Perempuan', '1990-01-28'),
-(19, 'Budi Anwar', 'budi@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 6, 'default.jpg', 'Laki-laki', '1994-06-05'),
-(20, 'Nabila Sabila', 'nabila@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 7, 'default.jpg', 'Perempuan', '1991-03-26'),
-(21, 'Sophia', 'sophia@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 8, 'default.jpg', 'Perempuan', '1989-02-20'),
-(22, 'Aqila Waqidah', 'aqila@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 8, 'default.jpg', 'Perempuan', '1988-02-14'),
-(23, 'Wahyu', 'wahyu@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 8, 'default.jpg', 'Laki-laki', '1991-02-16'),
-(24, 'Fathur Rohman', 'fathur@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Laki-laki', '1991-04-26'),
-(25, 'Cantika', 'cantika@gmail.com', '$2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Perempuan', '1990-05-15'),
-(26, 'Ifrida Nabila', 'ifrida@gmail.com', ' $2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Perempuan', '1993-02-20'),
-(27, 'David Joestar', 'david@gmail.com', '$2y$10$xhULUdOUhwxBH1hCwrUoPeImopBifkkAeXwmD7NVg6uIV5HNiCYiy', 1, 9, 'default.jpg', 'Laki-laki', '1994-05-25'),
-(28, 'Rizky Ahmad', 'rifkyakhmad911@gmail.com', '$2y$10$S4lLu3JNtZ7K2F8MB3iAiu84Pui4iEDuJAdYcEvf4eW/cTt.Pw5Pq', 0, 1, 'default.jpg', 'Laki-laki', '1998-05-26'),
-(29, 'Eula Lawrence', 'rifkxc@gmail.com', '$2y$10$7UotMRfbctgZZK9kSh4FFeGCuSuSIFgHOT3IufP83PwPqmy/e67uu', 0, 2, 'default.jpg', 'Perempuan', '1994-10-25'),
-(30, 'Jean', 'jean.brindilr@gmail.com', '$2y$10$LHZUsw3/Spyma54o8ydNiO0CGisJuYkGeEtzB7LmX8iDgvrSC5ASC', 0, 1, 'default.jpg', 'Perempuan', '2021-05-26'),
-(31, 'Faisal', 'cv1@gmail.com', '$2y$10$bZTeYYc4vcfVUyrcrGpb4OgPFTB2LDNJ9jeE.zXHAX7K8rSr.dv2u', 0, 3, 'default.jpg', 'Laki-laki', '2021-05-26'),
-(32, 'rifkya911', 'sdd911@gmail.com', '$2y$10$0XwDQb.gsioR4khSMMCvyONjoxYGtdCyX6ZnRzG8kh7IKgY4YoHJ.', 0, 8, 'default.jpg', 'Laki-laki', '2021-05-13'),
-(33, 'Qiqi', 'qiqi@gmail.com', '$2y$10$LHZUsw3/Spyma54o8ydNiO0CGisJuYkGeEtzB7LmX8iDgvrSC5ASC', 0, 1, 'default.jpg', 'Perempuan', '1987-07-14');
+(1, 'Alfha Fierly. F', 'af@gmail.com', '$2y$10$iQeLI0Cz4.yMf5OH1NPoWuWwRVtg8rQiKgfDVUQzrc.0K45IeWo4W', 0, 1, '1694154906_1117936d377284b83093.jpeg', 'Laki-laki', '1988-02-04'),
+(2, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$fuQZDVW.aCnlvxN6MHgJC.7Sy2wvw1nBv3bvQtMusYIeWLKCbFcye', 1, 7, '1694154521_aab7bfc7e653cb62d80c.jpeg', 'Perempuan', '1997-11-20');
 
 --
 -- Trigger `user`
@@ -513,6 +521,59 @@ CREATE TABLE `user_activity` (
   `aktivitas` varchar(256) NOT NULL,
   `waktu_aktivitas` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `user_activity`
+--
+
+INSERT INTO `user_activity` (`id_aktivitas`, `uid_aktivitas`, `aktivitas`, `waktu_aktivitas`) VALUES
+(0, 1, 'Alfha Fierly Firdaus melakukan Login.', '2023-09-08 13:05:51'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Logout.', '2023-09-08 13:06:04'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-09-08 13:06:19'),
+(0, 2, 'Adielya Moline menambah stok Barang dengan ID : 12, sejumlah : 400', '2023-09-08 13:07:43'),
+(0, 2, 'Adielya Moline melaukan Pengeluaran stok Barang dengan ID : 6, sejumlah : 200', '2023-09-08 13:08:34'),
+(0, 2, 'Adielya Moline menambah stok Barang dengan ID : 5, sejumlah : 350', '2023-09-08 13:09:07'),
+(0, 2, 'Adielya Moline melaukan Pengeluaran stok Barang dengan ID : 13, sejumlah : 300', '2023-09-08 13:09:56'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-09-08 13:10:51'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Login.', '2023-09-08 13:10:55'),
+(0, 1, 'Perizinan dengan nomor 3, Ditolak oleh Alfha Fierly Firdaus', '2023-09-08 13:11:29'),
+(0, 1, 'Perizinan dengan nomor 2, Ditolak oleh Alfha Fierly Firdaus', '2023-09-08 13:11:51'),
+(0, 1, 'Perizinan dengan nomor 1, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:11:58'),
+(0, 1, 'Perizinan dengan nomor 4, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:12:03'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Logout.', '2023-09-08 13:13:03'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-09-08 13:13:13'),
+(0, 2, 'Adielya Moline melaukan Pengeluaran stok Barang dengan ID : 11, sejumlah : 200', '2023-09-08 13:20:16'),
+(0, 2, 'Adielya Moline melaukan Pengeluaran stok Barang dengan ID : 20, sejumlah : 350', '2023-09-08 13:20:38'),
+(0, 2, 'Adielya Moline menambah stok Barang dengan ID : 24, sejumlah : 25', '2023-09-08 13:21:03'),
+(0, 2, 'Adielya Moline menambah stok Barang dengan ID : 37, sejumlah : 250', '2023-09-08 13:21:44'),
+(0, 2, 'Adielya Moline melaukan Pengeluaran stok Barang dengan ID : 65, sejumlah : 1000', '2023-09-08 13:22:12'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-09-08 13:22:25'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Login.', '2023-09-08 13:22:28'),
+(0, 1, 'Perizinan dengan nomor 9, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:22:42'),
+(0, 1, 'Perizinan dengan nomor 8, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:22:46'),
+(0, 1, 'Perizinan dengan nomor 6, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:22:49'),
+(0, 1, 'Perizinan dengan nomor 7, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:22:54'),
+(0, 1, 'Perizinan dengan nomor 5, Diterima oleh Alfha Fierly Firdaus', '2023-09-08 13:22:57'),
+(0, 1, 'Alfha Fierly Firdaus mengubah Akun dengan nama : Adielya Moline, email : adeline@gmail.com, dan divisi : 7 sebagai 1', '2023-09-08 13:28:41'),
+(0, 1, 'Alfha Fierly Firdaus mengubah Akun dengan nama : Alfha Fierly Firdaus, email : alfhaff@gmail.com, dan divisi : 1 sebagai 0', '2023-09-08 13:30:24'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Logout.', '2023-09-08 13:30:51'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Login.', '2023-09-08 13:30:53'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Logout.', '2023-09-08 13:31:00'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-09-08 13:31:03'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-09-08 13:31:08'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Login.', '2023-09-08 13:31:11'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Edit Profil.', '2023-09-08 13:33:03'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Edit Profil.', '2023-09-08 13:34:35'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Edit Profil.', '2023-09-08 13:35:06'),
+(0, 1, 'Alfha Fierly Firdaus melakukan Edit Profil.', '2023-09-08 13:35:43'),
+(0, 1, 'Alfha Fierly. F melakukan Edit Profil.', '2023-09-08 13:36:43'),
+(0, 1, 'Alfha Fierly. F melakukan Edit Profil.', '2023-09-08 13:37:46'),
+(0, 1, 'Alfha Fierly. F melakukan Edit Profil.', '2023-09-08 13:38:39'),
+(0, 1, 'Alfha Fierly. F melakukan Logout.', '2023-09-08 13:38:48'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-09-08 13:38:53'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-09-08 13:39:11'),
+(0, 1, 'Alfha Fierly. F melakukan Login.', '2023-09-08 13:39:20'),
+(0, 1, 'Alfha Fierly. F melakukan Logout.', '2023-09-08 13:40:28');
 
 -- --------------------------------------------------------
 
@@ -615,12 +676,6 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indeks untuk tabel `user_activity`
---
-ALTER TABLE `user_activity`
-  ADD PRIMARY KEY (`id_aktivitas`);
-
---
 -- Indeks untuk tabel `user_divisi`
 --
 ALTER TABLE `user_divisi`
@@ -640,13 +695,13 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT untuk tabel `alur_barang`
 --
 ALTER TABLE `alur_barang`
-  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `alur_barang_visibility`
 --
 ALTER TABLE `alur_barang_visibility`
-  MODIFY `id_visibility` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_visibility` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `item`
@@ -695,12 +750,6 @@ ALTER TABLE `supplier`
 --
 ALTER TABLE `user`
   MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT untuk tabel `user_activity`
---
-ALTER TABLE `user_activity`
-  MODIFY `id_aktivitas` int(7) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_divisi`
