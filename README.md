@@ -67,7 +67,7 @@ $php spark serve
 <br>
 
 ## Solusi Error Sewaktu Run Server
-1. Ketiklah di gitbash seperti ini : composer update
+1. Ketiklah di gitbash seperti ini : composer update --no-dev
 2. 
 
 <br>
