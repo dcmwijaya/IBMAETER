@@ -66,6 +66,12 @@ $php spark serve
 
 <br>
 
+## Solusi Error Sewaktu Run Server
+1. Ketiklah di gitbash seperti ini : composer update
+2. 
+
+<br>
+
 ## Akun untuk login
 | Role | Email | Password |
 | --- | --- | --- |
