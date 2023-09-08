@@ -78,7 +78,7 @@ composer update --no-dev
 ## Akun untuk login
 | Role | Email | Password |
 | --- | --- | --- |
-| Admin | alfhaff@gmail.com | Superadmin123 |
+| Admin | af@gmail.com | Superadmin123 |
 | Pekerja | adeline@gmail.com | User123456 |
 
 <br>
