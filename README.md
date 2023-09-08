@@ -29,15 +29,15 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-window
 ```
 2. Download Visual Studio Code 
 ```bash
-https://code.visualstudio.com/
+https://code.visualstudio.com/docs/?dv=win
 ```
 3. Download Composer
 ```bash
-https://getcomposer.org/
+https://getcomposer.org/Composer-Setup.exe
 ```
 4. Download Git
 ```bash
-http://git-scm.com/
+https://git-scm.com/download/win
 ```
 5. Buat database dengan nama warehouse_db di local, ketikkan pada browser :
 ```bash
