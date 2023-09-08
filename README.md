@@ -43,7 +43,8 @@ http://git-scm.com/
 ```bash
 localhost/phpmyadmin/
 ```
-6. Import database dengan nama warehouse_db.sql
+6. Import database dengan nama warehouse_db_default.sql
+7. Import semua trigger dan arahkan ke database warehouse_db yang sudah dibuat tadi di local (opsional).
 
 <br>
 
@@ -87,15 +88,15 @@ $php spark serve
 ## Tim Mahasiswa
 | NO | NAMA ANGGOTA TIM | NPM |
 | --- | --- | --- |
-| 1 | Devan Cakra Mudra Wijaya | 18081010013 |
-| 2 | Merdin Risalul Abrori | 18081010081 |
-| 3 | Rifky Akhmad Fernanda | 18081010126 |
+| 1 | Devan Cakra Mudra Wijaya, S.Kom. | 18081010013 |
+| 2 | Merdin Risalul Abrori, S.Kom. | 18081010081 |
+| 3 | Rifky Akhmad Fernanda, S.Kom. | 18081010126 |
 
 <br>
 
 ## Tim Dosen
 | NO | NAMA ANGGOTA TIM |
 | --- | --- |
-| 1 | Rizky Parlika, S.Kom, M.Kom |
-| 2 | Arista Pratama, S.Kom, M.Kom |
-| 3 | Lugito Michael Imanuel Prasetya, S.Kom |
+| 1 | Rizky Parlika, S.Kom., M.Kom. |
+| 2 | Arista Pratama, S.Kom., M.Kom. |
+| 3 | Lugito Michael Imanuel Prasetya, S.Kom. |
