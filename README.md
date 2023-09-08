@@ -18,7 +18,7 @@
 | --- | --- |
 | Fitur | Login, Create, Read, Update, Delete, Validation, Print, Export excel, Pagination, Search, ETC |
 | Framework | Bootstrap 4, CodeIgniter 4 |
-| Tools | Visual Studio Code, XAMPP (PHP Versi 7.4.16), Composer, Git |
+| Tools | Visual Studio Code, XAMPP (PHP Versi 7.4), Composer, Git |
 
 <br>
 
