@@ -55,7 +55,7 @@ https://git-scm.com/download/win
 localhost/phpmyadmin/
 ```
 3. Create a database called "warehouse_db" on local.
-4. Open the "mytour" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
+4. Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
 
 <br>
 
@@ -68,16 +68,18 @@ localhost/phpmyadmin/
 <br>
 
 ## Running
-1. Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
+1.Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
 <ul>
 <li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
 
 ````bash
 composer update --no-dev
 ````
-<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
-<li>Third, this step is mandatory, so please copy the following command:</li>
 
+<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
+
+<li>Third, this step is mandatory, so please copy the following command:</li>
+  
 ````bash
 php spark serve
 ````
@@ -85,7 +87,7 @@ php spark serve
 2. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
 3. Please login and access the features, enjoy [Done].
 
-<br>
+<br><br>
 
 ## IBMAETER Project Team Members
 | NUMBER | FULL NAME |
