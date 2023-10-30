@@ -78,7 +78,7 @@ composer update --no-dev
 php spark serve
 ````
 </ul>
-4. Buka peramban anda (Tab baru), lalu ketik -> localhost:8080 atau sesuaikan dengan yang ada di GitBash anda.<br>
+4. Buka peramban Anda (Tab baru), lalu ketik -> localhost:8080 atau sesuaikan dengan yang ada di GitBash Anda.<br>
 5. Silakan masuk dan akses fitur-fiturnya, selamat menikmati [Selesai].
 
 <br><br>
