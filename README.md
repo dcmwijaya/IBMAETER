@@ -49,7 +49,9 @@ https://git-scm.com/download/win
 localhost/phpmyadmin/
 ```
 3.Create a database called "warehouse_db" on local.<br>
-4.Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
+4.Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.<br>
+5.If the database is not working properly, you can import the triggers provided by the application creator in the IBMAETER/public/sql/trigger directory.<br>
+6.Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
 
 <br>
 
@@ -63,8 +65,7 @@ localhost/phpmyadmin/
 
 ## Running
 1.Download this repository.<br>
-2.Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.<br>
-3.Open the "IBMAETER" directory, then open GitBash inside that directory.<br>
+2.Open the "IBMAETER" directory, then open GitBash inside that directory.<br>
 <ul>
     <li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
   
@@ -78,8 +79,29 @@ composer update --no-dev
 php spark serve
 ````
 </ul>
-4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
-5. Please login and access the features, enjoy [Done].
+3. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+4. Please login and access the features, enjoy [Done].
+
+<br><br>
+
+## Highlights
+<img alt="menu home" src="https://github.com/devancakra/IBMAETER/assets/54527592/b5e21391-03bd-4383-ad51-ff568195b6eb"><br>
+<img alt="menu kebijakan" src="https://github.com/devancakra/IBMAETER/assets/54527592/1f153c11-9bec-4410-8299-3482c6b76bf0"><br>
+<img alt="menu waspada penipuan" src="https://github.com/devancakra/IBMAETER/assets/54527592/139ddd95-5e66-4ce5-90df-1836e569611c"><br>
+<img alt="menu login" src="https://github.com/devancakra/IBMAETER/assets/54527592/7f4c8e7c-1680-44c0-bdcc-e8053563ed74"><br>
+<img alt="menu dashboard-1" src="https://github.com/devancakra/IBMAETER/assets/54527592/505474f2-0470-48fa-96c3-9d688d6cef49"><br>
+<img alt="menu dashboard-2" src="https://github.com/devancakra/IBMAETER/assets/54527592/c0a7f6cb-e2b1-4df0-af52-cf6bd7dcbc82"><br>
+<img alt="menu tambah pekerja" src="https://github.com/devancakra/IBMAETER/assets/54527592/82002203-22e1-4e60-9e1b-1f0e3851a77f"><br>
+<img alt="fitur edit pekerja" src="https://github.com/devancakra/IBMAETER/assets/54527592/631cd95a-417d-4753-9e3c-a5f70bc54bf8"><br>
+<img alt="menu perizinan barang" src="https://github.com/devancakra/IBMAETER/assets/54527592/d2dcff65-b527-48fa-93d1-e4ad4cbbdaa7"><br>
+<img alt="menu kelola barang" src="https://github.com/devancakra/IBMAETER/assets/54527592/48e56a4f-394a-46b3-ae9e-94e508f48366"><br>
+<img alt="fitur print" src="https://github.com/devancakra/IBMAETER/assets/54527592/c8f4e484-fc07-43c2-80b2-60fc0091d326"><br>
+<img alt="menu absensi" src="https://github.com/devancakra/IBMAETER/assets/54527592/541eeab4-2c09-46ed-bb1c-ee4567947007"><br>
+<img alt="fitur user record" src="https://github.com/devancakra/IBMAETER/assets/54527592/dba734b5-9f92-43bb-9624-3e1bb54a450c"><br>
+<img alt="menu ubah profile" src="https://github.com/devancakra/IBMAETER/assets/54527592/2bcd0723-6088-448c-b729-b79c20e5fee2"><br>
+<img alt="menu pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/22b011c9-8bf2-479a-bd71-d7ff9f172457"><br>
+<img alt="menu edit pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/e0c5762f-0645-419b-a1b9-893e2da9de35"><br>
+<img alt="fitur pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/89a0b96b-b4b7-44d7-af30-d02346e6c764">
 
 <br><br>
 
