@@ -84,7 +84,7 @@ php spark serve
 <br><br>
 
 ## IBMAETER Project Team Members
-| NUMBER | FULL NAME |
+| MEMBER | FULL NAME |
 | --- | --- |
 | 1 | Rizky Parlika, S.Kom., M.Kom. |
 | 2 | Rifky Akhmad Fernanda, S.Kom. |
