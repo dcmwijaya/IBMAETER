@@ -1,24 +1,24 @@
 ![HKI](https://img.shields.io/badge/Project-HKI-blue?logo=github&color=%23F7DF1E)
-![CI4](https://img.shields.io/badge/-Codeigniter4-blue?style=flat&logo=Codeigniter)
-![JS](https://img.shields.io/badge/Javascript%20-%23323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
-![JQUERY](https://img.shields.io/badge/JQuery%20-%23323330.svg?&style=flat&logo=jquery&logoColor=%23F7DF1E&color=FF3366)
-![JSON](https://img.shields.io/badge/JSON%20-%23323330.svg?&style=flat&logo=json&logoColor=%23F7DF1E&color=9900FF)
+![CI4](https://img.shields.io/badge/-Codeigniter4-darkblue?style=flat&logo=Codeigniter)
+![JS](https://img.shields.io/badge/Javascript-brown.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
+![JQUERY](https://img.shields.io/badge/JQuery-%23323330.svg?&style=flat&logo=jquery&logoColor=%23F7DF1E&color=FF3366)
+![JSON](https://img.shields.io/badge/JSON-%23323330.svg?&style=flat&logo=json&logoColor=%23F7DF1E&color=9900FF)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
-![PHP](https://img.shields.io/badge/-PHP-grey.svg?&logo=PHP&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-tosca.svg?style=flat&logo=mysql&logoColor=white)
+![PHP](https://img.shields.io/badge/-PHP-darkgreen.svg?&logo=PHP&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-darkcyan.svg?style=flat&logo=mysql&logoColor=white)
 
 # IBMAETER
-<b>Website inventaris barang gudang dan manajemen pekerja terpadu dengan menggunakan framework Codeigniter 4</b>
-<p>Dibuat untuk pemenuhan tugas Final Project mata kuliah Pemrograman Framework C dan juga ditujukan untuk mendapatkan Hak Kekayaan Intelektual</p>
+<strong>IPR Project</strong><br>
+IBMAETER is a website that facilitates users in managing warehouse inventory activities and warehouse worker management. The features provided can maintain business performance while maintaining full control of stock inventory, item prices, item weight, and others that are presented quickly and in real time, so that users do not need to do all activities manually. Users also benefit in saving their time.
 
 <br>
 
-## Tools / Framework / Other
-| Bagian | Keterangan |
+## Features / Framework / Tools
+| Part | Description |
 | --- | --- |
-| Fitur | Login, Create, Read, Update, Delete, Validation, Print, Export excel, Pagination, Search, ETC |
+| Features | Login, Create, Read, Update, Delete, Validation, Print, Export excel, Pagination, Search, ETC |
 | Framework | Bootstrap 4, CodeIgniter 4 |
-| Tools | Visual Studio Code, XAMPP (PHP Versi 7.4), Composer, Git |
+| Tools | Visual Studio Code, XAMPP (PHP Version 7.4), Composer, Git |
 
 <br>
 
