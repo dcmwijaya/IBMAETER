@@ -64,23 +64,8 @@ localhost/phpmyadmin/
 ## Running
 1. Download this repository.
 2. Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
-3.Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
-<ul>
-<li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
-
-````bash
-composer update --no-dev
-````
-
-<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
-
-<li>Third, this step is mandatory, so please copy the following command:</li>
-  
-````bash
-php spark serve
-````
-</ul>
-4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+3. Open the "IBMAETER" directory, then open GitBash inside the directory.
+4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.
 5. Please login and access the features, enjoy [Done].
 
 <br><br>
