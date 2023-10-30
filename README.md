@@ -23,19 +23,19 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <br>
 
 ## Download & Install
-1. XAMPP with PHP version 7.4 :
+1.XAMPP with PHP version 7.4 :
 ```bash
 https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
 ```
-2. Visual Studio Code :
+2.Visual Studio Code :
 ```bash
 https://code.visualstudio.com/docs/?dv=win
 ```
-3. Composer :
+3.Composer :
 ```bash
 https://getcomposer.org/Composer-Setup.exe
 ```
-4. Git :
+4.Git :
 ```bash
 https://git-scm.com/download/win
 ```
@@ -43,13 +43,13 @@ https://git-scm.com/download/win
 <br>
 
 ## Database
-1. Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.
-2. Access the browser first in order to open the database admin panel, please copy the following link:
+1.Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.
+2.Access the browser first in order to open the database admin panel, please copy the following link:
 ```bash
 localhost/phpmyadmin/
 ```
-3. Create a database called "warehouse_db" on local.
-4. Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
+3.Create a database called "warehouse_db" on local.
+4.Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
 
 <br>
 
@@ -62,10 +62,23 @@ localhost/phpmyadmin/
 <br>
 
 ## Running
-1. Download this repository.
-2. Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
-3. Open the "IBMAETER" directory, then open GitBash inside the directory.
-4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.
+1.Download this repository.<br>
+2.Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.<br>
+3.Open the "IBMAETER" directory, then open GitBash inside that directory.<br>
+<ul>
+    <li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
+  
+````bash
+composer update --no-dev
+````
+<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
+<li>Third, this step is mandatory, so please copy the following command:</li>
+
+````bash
+php spark serve
+````
+</ul>
+4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
 5. Please login and access the features, enjoy [Done].
 
 <br><br>
