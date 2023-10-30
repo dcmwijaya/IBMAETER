@@ -31,11 +31,7 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-window
 ```bash
 https://code.visualstudio.com/docs/?dv=win
 ```
-3.Composer :
-```bash
-https://getcomposer.org/Composer-Setup.exe
-```
-4.Git :
+3.Git :
 ```bash
 https://git-scm.com/download/win
 ```
@@ -65,16 +61,11 @@ localhost/phpmyadmin/
 
 ## Running
 1.Download this repository.<br>
-2.Open the "IBMAETER" directory, then open GitBash inside that directory.<br>
+2.Open the "IBMAETER" directory, then open GitBash inside that directory.
 <ul>
-    <li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
-  
-````bash
-composer update --no-dev
-````
-<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
-<li>Third, this step is mandatory, so please copy the following command:</li>
-
+<li>First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.</li>
+<li>Secondly, this step is mandatory, so please copy the following command:</li><br>
+    
 ````bash
 php spark serve
 ````
