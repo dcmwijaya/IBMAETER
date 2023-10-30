@@ -43,8 +43,8 @@ https://git-scm.com/download/win
 <br>
 
 ## Basis data
-1.Buka XAMPP, lalu mulai bagian Apache & MySQL. Hal ini bertujuan untuk dapat mendukung website secara optimal.<br>
-2.Akses peramban terlebih dahulu untuk membuka panel admin database, silakan salin tautan berikut:
+1.Buka XAMPP, lalu tekan tombol mulai di bagian Apache & MySQL. Hal ini bertujuan untuk dapat mendukung website secara optimal.<br>
+2.Akses peramban terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut:
 ```bash
 localhost/phpmyadmin/
 ```
