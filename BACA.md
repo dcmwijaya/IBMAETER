@@ -31,11 +31,7 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-window
 ```bash
 https://code.visualstudio.com/docs/?dv=win
 ```
-3.Composer :
-```bash
-https://getcomposer.org/Composer-Setup.exe
-```
-4.Git :
+3.Git :
 ```bash
 https://git-scm.com/download/win
 ```
@@ -65,15 +61,10 @@ localhost/phpmyadmin/
 
 ## Menjalankan
 1.Unduh repositori ini.<br>
-2.Buka direktori "IBMAETER", lalu buka GitBash di dalam direktori tersebut.<br>
+2.Buka direktori "IBMAETER", lalu buka GitBash di dalam direktori tersebut.
 <ul>
-    <li>Pertama, jika tidak ada kesalahan yang terjadi maka lewati saja langkah ini, tetapi jika sebaliknya, silakan salin perintah berikut:</li>
-  
-````bash
-composer update --no-dev
-````
-<li>Kedua, kemudian periksa apakah masih ada masalah atau tidak, jika masih ada kesalahan maka sesuaikan saja dengan situasinya.</li>
-<li>Ketiga, langkah ini wajib dilakukan, jadi silakan salin perintah berikut ini:</li>
+<li>Pertama, periksa apakah ada masalah atau tidak, jika masih ada kesalahan, sesuaikan saja dengan situasinya.</li>
+<li>Kedua, langkah ini wajib dilakukan, jadi silakan salin perintah berikut ini:</li><br>
 
 ````bash
 php spark serve
