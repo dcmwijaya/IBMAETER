@@ -8,7 +8,7 @@
 ![MySQL](https://img.shields.io/badge/-MySQL-darkcyan.svg?style=flat&logo=mysql&logoColor=white)
 
 # IBMAETER
-<strong>IPR Project</strong><br>
+<strong>IPR Project - Computer Programs</strong><br>
 IBMAETER is a website that facilitates users in managing warehouse inventory activities and warehouse worker management. The features provided can maintain business performance while maintaining full control of stock inventory, item prices, item weight, and others that are presented quickly and in real time, so that users do not need to do all activities manually. Users also benefit in saving their time.
 
 <br>
