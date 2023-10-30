@@ -75,16 +75,15 @@ localhost/phpmyadmin/
 ````bash
 composer update --no-dev
 ````
-
-<li>Secondly, this step is mandatory, so please copy the following command:</li>
+<li>Secondly, then check whether there are any more problems or not, if there are still errors, just adjust to the situation.</li>
+<li>Third, this step is mandatory, so please copy the following command:</li>
 
 ````bash
 php spark serve
 ````
 </ul>
-2. Then check whether there are any more problems or not, if there are still errors, just adjust to the situation.<br>
-3. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
-4. Please login and access the features, enjoy [Done].
+2. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+3. Please login and access the features, enjoy [Done].
 
 <br>
 
