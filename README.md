@@ -42,12 +42,6 @@ https://git-scm.com/download/win
 
 <br>
 
-## Settings
-1. Download this repository.
-2. Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
-
-<br>
-
 ## Database
 1. Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.
 2. Access the browser first in order to open the database admin panel, please copy the following link:
@@ -68,7 +62,9 @@ localhost/phpmyadmin/
 <br>
 
 ## Running
-1.Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
+1. Download this repository.
+2. Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
+3.Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
 <ul>
 <li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
 
@@ -84,8 +80,8 @@ composer update --no-dev
 php spark serve
 ````
 </ul>
-2. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
-3. Please login and access the features, enjoy [Done].
+4. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+5. Please login and access the features, enjoy [Done].
 
 <br><br>
 
