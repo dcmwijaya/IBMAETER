@@ -43,12 +43,12 @@ https://git-scm.com/download/win
 <br>
 
 ## Database
-1.Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.
+1.Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.<br>
 2.Access the browser first in order to open the database admin panel, please copy the following link:
 ```bash
 localhost/phpmyadmin/
 ```
-3.Create a database called "warehouse_db" on local.
+3.Create a database called "warehouse_db" on local.<br>
 4.Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
 
 <br>
