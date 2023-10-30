@@ -16,7 +16,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 ## Features / Framework / Tools
 | Part | Description |
 | --- | --- |
-| Features | Login, Create, Read, Update, Delete, Validation, Print, Export, Pagination, Search, ETC |
+| Features | Login, Create, Read, Update, Delete, Pagination, Search, Validation, Print, Export, ETC |
 | Framework | Bootstrap 4, CodeIgniter 4 |
 | Tools | Visual Studio Code, XAMPP (PHP Version 7.4), Composer, Git |
 
