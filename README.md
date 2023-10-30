@@ -22,80 +22,74 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 
 <br>
 
-## Environment
-1. Download XAMPP dengan PHP versi 7
+## Download & Install
+1. XAMPP with PHP version 7.4 :
 ```bash
 https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
 ```
-2. Download Visual Studio Code 
+2. Visual Studio Code :
 ```bash
 https://code.visualstudio.com/docs/?dv=win
 ```
-3. Download Composer
+3. Composer :
 ```bash
 https://getcomposer.org/Composer-Setup.exe
 ```
-4. Download Git
+4. Git :
 ```bash
 https://git-scm.com/download/win
 ```
-5. Buat database dengan nama warehouse_db di local, ketikkan pada browser :
+
+<br>
+
+## Settings
+1. Download this repository.
+2. Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
+
+<br>
+
+## Database
+1. Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.
+2. Access the browser first in order to open the database admin panel, please copy the following link:
 ```bash
 localhost/phpmyadmin/
 ```
-6. Import database dengan nama warehouse_db_default.sql
-7. Import semua trigger dan arahkan ke database warehouse_db yang sudah dibuat tadi di local (opsional).
+3. Create a database called "warehouse_db" on local.
+4. Open the "mytour" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.
 
 <br>
 
-## Install Codeigniter Melalui Composer
-Install Codeigniter 4 dengan nama ibmaeter-ci4 melalui gitbash arahkan pada htdocs
-```bash
-composer create-project codeigniter4/appstarter ibmaeter-ci4
-```
-
-<br>
-
-## Run Server
-1. Pastikan masih berada di dalam folder ibmaeter-ci4 -> Klik kanan pilih gitbash lalu ketikkan :
-```bash
-php spark serve
-```
-2. Buka XAMPP lalu start apache dan mysql
-3. Buka browser anda (Tab baru) lalu ketikkan -> localhost:8080 atau sesuaikan yang ada pada gitbash
-
-<br>
-
-## Solusi Error Sewaktu Run Server
-1. Ketiklah di gitbash seperti ini :
-```bash
-composer update --no-dev
-```
-2. Kemudian cek ada permasalahan lagi atau tidak, kalau semisal masih ada error tinggal menyesuaikan dengan keadaan saja.
-
-<br>
-
-## Akun untuk login
+## Default Account
 | Role | Email | Password |
 | --- | --- | --- |
 | Admin | af@gmail.com | Superadmin123 |
-| Pekerja | adeline@gmail.com | User123456 |
+| User | adeline@gmail.com | User123456 |
 
 <br>
 
-## Cara Menjalankan Web Secara Local
-1. Download repository ini
-2. Environment pastikan semua telah dilakukan -> Install Codeigniter 4 melalui gitbash
-3. Lalu buka file XAMP (php.ini) -> hapus semicolon (;) didepan extension=intl ->save
-4. Extract file yang di download tadi -> Copy & Paste isi folder yang di download tadi ke -> XAMP (htdocs) -> masuk kedalam folder ibmaeter-ci4 / jika belum ada buat dulu foldernya
-5. Run Server
-6. Login akun
-7. Selesai, selamat menikmati
+## Running
+1. Open the "IBMAETER" directory, then open GitBash inside the directory.<br>
+<ul>
+<li>First, if no error occurs then just skip this step, but if otherwise then please copy the following command:</li>
+
+````bash
+composer update --no-dev
+````
+
+<li>Secondly, this step is mandatory, so please copy the following command:</li>
+
+````bash
+php spark serve
+````
+</ul>
+2. Then check whether there are any more problems or not, if there are still errors, just adjust to the situation.<br>
+3. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+4. Please login and access the features, enjoy [Done].
 
 <br>
 
-## Anggota Tim Project IBMAETER
-| NO | NAMA ANGGOTA TIM |
+## IBMAETER Project Team Members
+| NUMBER | FULL NAME |
 | --- | --- |
 | 1 | Rizky Parlika, S.Kom., M.Kom. |
 | 2 | Rifky Akhmad Fernanda, S.Kom. |
