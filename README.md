@@ -76,23 +76,79 @@ php spark serve
 <br><br>
 
 ## Highlights
-<img alt="menu home" src="https://github.com/devancakra/IBMAETER/assets/54527592/b5e21391-03bd-4383-ad51-ff568195b6eb"><br>
-<img alt="menu kebijakan" src="https://github.com/devancakra/IBMAETER/assets/54527592/1f153c11-9bec-4410-8299-3482c6b76bf0"><br>
-<img alt="menu waspada penipuan" src="https://github.com/devancakra/IBMAETER/assets/54527592/139ddd95-5e66-4ce5-90df-1836e569611c"><br>
-<img alt="menu login" src="https://github.com/devancakra/IBMAETER/assets/54527592/7f4c8e7c-1680-44c0-bdcc-e8053563ed74"><br>
-<img alt="menu dashboard-1" src="https://github.com/devancakra/IBMAETER/assets/54527592/505474f2-0470-48fa-96c3-9d688d6cef49"><br>
-<img alt="menu dashboard-2" src="https://github.com/devancakra/IBMAETER/assets/54527592/c0a7f6cb-e2b1-4df0-af52-cf6bd7dcbc82"><br>
-<img alt="menu tambah pekerja" src="https://github.com/devancakra/IBMAETER/assets/54527592/82002203-22e1-4e60-9e1b-1f0e3851a77f"><br>
-<img alt="fitur edit pekerja" src="https://github.com/devancakra/IBMAETER/assets/54527592/631cd95a-417d-4753-9e3c-a5f70bc54bf8"><br>
-<img alt="menu perizinan barang" src="https://github.com/devancakra/IBMAETER/assets/54527592/d2dcff65-b527-48fa-93d1-e4ad4cbbdaa7"><br>
-<img alt="menu kelola barang" src="https://github.com/devancakra/IBMAETER/assets/54527592/48e56a4f-394a-46b3-ae9e-94e508f48366"><br>
-<img alt="fitur print" src="https://github.com/devancakra/IBMAETER/assets/54527592/c8f4e484-fc07-43c2-80b2-60fc0091d326"><br>
-<img alt="menu absensi" src="https://github.com/devancakra/IBMAETER/assets/54527592/541eeab4-2c09-46ed-bb1c-ee4567947007"><br>
-<img alt="fitur user record" src="https://github.com/devancakra/IBMAETER/assets/54527592/dba734b5-9f92-43bb-9624-3e1bb54a450c"><br>
-<img alt="menu ubah profile" src="https://github.com/devancakra/IBMAETER/assets/54527592/2bcd0723-6088-448c-b729-b79c20e5fee2"><br>
-<img alt="menu pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/22b011c9-8bf2-479a-bd71-d7ff9f172457"><br>
-<img alt="menu edit pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/e0c5762f-0645-419b-a1b9-893e2da9de35"><br>
-<img alt="fitur pengumuman" src="https://github.com/devancakra/IBMAETER/assets/54527592/89a0b96b-b4b7-44d7-af30-d02346e6c764">
+<table>
+<tr>
+<th width="280">Home</th>
+<th width="280">Policies</th>
+<th width="280">Scam Alert</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/b5e21391-03bd-4383-ad51-ff568195b6eb" alt="home"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/1f153c11-9bec-4410-8299-3482c6b76bf0" alt="policies"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/139ddd95-5e66-4ce5-90df-1836e569611c" alt="scam-alert"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="840">Login</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/7f4c8e7c-1680-44c0-bdcc-e8053563ed74" alt="login"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th colspan="2">Dashboard</th>
+</tr>
+<tr>
+<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/505474f2-0470-48fa-96c3-9d688d6cef49" alt="dashboard-1"></td>
+<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c0a7f6cb-e2b1-4df0-af52-cf6bd7dcbc82" alt="dashboard-2"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Add Workers</th>
+<th width="280">Edit Workers</th>
+<th width="280">Item Authorization</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/82002203-22e1-4e60-9e1b-1f0e3851a77f" alt="add-workers"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/631cd95a-417d-4753-9e3c-a5f70bc54bf8" alt="edit-workers"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d2dcff65-b527-48fa-93d1-e4ad4cbbdaa7" alt="item-authorization"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Manage Items</th>
+<th width="280">Print Feature</th>
+<th width="280">Attendance</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/48e56a4f-394a-46b3-ae9e-94e508f48366" alt="manage-items"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c8f4e484-fc07-43c2-80b2-60fc0091d326" alt="print-feature"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/89a0b96b-b4b7-44d7-af30-d02346e6c764" alt="attendance"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">User Track Record</th>
+<th width="280">Edit Profile</th>
+<th width="280">Announcements</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/dba734b5-9f92-43bb-9624-3e1bb54a450c" alt="user-track-record"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/2bcd0723-6088-448c-b729-b79c20e5fee2" alt="edit-profile"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/22b011c9-8bf2-479a-bd71-d7ff9f172457" alt="announcements"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="840">Edit Announcements</th>
+</tr>
+<tr>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/e0c5762f-0645-419b-a1b9-893e2da9de35" alt="edit-announcements"></td>
+</tr>
+</table>
 
 <br><br>
 
