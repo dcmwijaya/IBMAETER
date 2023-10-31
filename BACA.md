@@ -80,7 +80,7 @@ php spark serve
 <tr>
 <th width="280">Beranda</th>
 <th width="280">Kebijakan</th>
-<th width="280">Peringatan Penipuan</th>
+<th width="280">Waspada Penipuan</th>
 </tr>
 <tr>
 <td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/b5e21391-03bd-4383-ad51-ff568195b6eb" alt="home"></td>
