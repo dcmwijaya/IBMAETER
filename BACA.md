@@ -167,7 +167,7 @@ php spark serve
 ## LISENSI
 Lisensi 3 Klausul BSD
 
-Hak Cipta (c) 2023, Devan C. M. Wijaya, S.Kom.
+Hak Cipta (c) 2023, Devan C. M. Wijaya, S.Kom dkk
 
 Penyebarluasan dan penggunaan dalam bentuk sumber dan biner, dengan atau tanpa dengan atau tanpa modifikasi, diperbolehkan asalkan memenuhi persyaratan berikut:
 
