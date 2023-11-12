@@ -11,45 +11,53 @@
 <strong>IPR Project - Computer Programs</strong><br>
 IBMAETER is a website that facilitates users in managing warehouse inventory activities and warehouse worker management. The features provided can maintain business performance while maintaining full control of stock inventory, item prices, item weight, and others that are presented quickly and in real time, so that users do not need to do all activities manually. Users also benefit in saving their time.
 
-<br>
+<br><br>
 
 ## Features / Framework / Tools
 | Part | Description |
 | --- | --- |
 | Features | Login, Create, Read, Update, Delete, Pagination, Search, Validation, Print, Export, ETC |
 | Framework | Bootstrap 4, CodeIgniter 4 |
-| Tools | Visual Studio Code, XAMPP (PHP Version 7.4), Composer, Git |
+| Tools | Visual Studio Code, XAMPP (PHP Version 7.4), Git |
 
-<br>
+<br><br>
 
 ## Download & Install
-1.XAMPP with PHP version 7.4 :
-```bash
-https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
-```
-2.Visual Studio Code :
-```bash
-https://code.visualstudio.com/docs/?dv=win
-```
-3.Git :
-```bash
-https://git-scm.com/download/win
-```
+1. XAMPP with PHP version 7.4 :
 
+   ```bash
+   https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
+   ```
 <br>
+
+2. Visual Studio Code :
+
+   ```bash
+   https://code.visualstudio.com/docs/?dv=win
+   ```
+<br>
+
+3. Git :
+   ```bash
+   https://git-scm.com/download/win
+   ```
+
+<br><br>
 
 ## Database
-1.Open XAMPP, then start the Apache & MySQL section. This aims to be able to support the website optimally.<br>
-2.Access the browser first in order to open the database admin panel, please copy the following link:
-```bash
-localhost/phpmyadmin/
-```
-3.Create a database called "warehouse_db" on local.<br>
-4.Open the "warehouse_db" database and Import the database (warehouse_db_default.sql) in the IBMAETER/public/sql directory.<br>
-5.If the database is not working properly, you can import the triggers provided by the application creator in the IBMAETER/public/sql/trigger directory.<br>
-6.Then open the XAMP file (php.ini) -> remove semicolon (;) in front of extension=intl -> save.
+1. Open ``` XAMPP ```, then start the ``` Apache ``` & ``` MySQL ``` section. This aims to be able to support the website optimally.
 
-<br>
+2. Access the browser first in order to open the database admin panel, please copy the following link: ``` localhost/phpmyadmin/ ```.
+
+3. Create a database called ``` warehouse_db ``` on local.
+
+4. Open the ``` warehouse_db ``` database and Import ``` warehouse_db_default.sql ``` in the ``` IBMAETER/public/sql ``` directory.
+
+5. If the database is not working properly, you can import the ``` triggers ``` provided by the application creator in the ``` IBMAETER/public/sql/trigger ``` directory.
+
+6. Then open the XAMP file: ``` php.ini ``` -> remove ``` semicolon (;) ``` in front of ``` extension=intl ``` -> save.
+
+<br><br>
 
 ## Default Account
 | Role | Email | Password |
@@ -57,20 +65,23 @@ localhost/phpmyadmin/
 | Admin | af@gmail.com | Superadmin123 |
 | User | adeline@gmail.com | User123456 |
 
-<br>
+<br><br>
 
-## Running
-1.Download this repository.<br>
-2.Open the "IBMAETER" directory, then open GitBash inside that directory.
-<ul>
-<li>First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.</li>
-<li>Secondly, this step is mandatory, so please copy the following command:</li><br>
-    
-````bash
-php spark serve
-````
-</ul>
-3. Open your browser (New tab), then type -> localhost:8080 or customize the one on your GitBash.<br>
+## Get Started
+1. Download and extract this repository.
+
+2. Open the ``` IBMAETER ``` directory, then open ``` GitBash ``` inside that directory.
+   
+   • First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.
+   
+   • Secondly, this step is mandatory, so please copy the following command:
+   
+   ````bash
+   php spark serve
+   ````
+
+3. Open your ``` browser ``` (New tab), then type -> ``` localhost:8080 ``` or customize the one on your ``` GitBash ```.
+   
 4. Please login and access the features, enjoy [Done].
 
 <br><br>
@@ -161,6 +172,11 @@ php spark serve
 | 4 | Merdin Risalul Abrori, S.Kom. |
 | 5 | Arista Pratama, S.Kom., M.Kom. |
 | 6 | Lugito Michael Imanuel Prasetya, S.Kom. |
+
+<br><br>
+
+## Disclaimer
+This application has been created by including third-party sources. Third parties here are service providers, whose services are in the form of libraries, frameworks, and others. I thank you very much for the service. It has proven to be very helpful and implementable.
 
 <br><br>
 
