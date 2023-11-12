@@ -56,7 +56,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 
 5. Jika basis data tidak berfungsi dengan baik, anda dapat mengimpor ``` trigger ``` yang disediakan oleh pembuat aplikasi di direktori ``` IBMAETER/public/sql/trigger ```.
 
-6. Kemudian buka berkas XAMP: ``` php.ini ``` -> hapus ``` titik koma (;) ``` di depan ``` extension=intl ``` -> simpan.
+6. Kemudian buka berkas XAMPP: ``` php.ini ``` -> hapus ``` titik koma (;) ``` di depan ``` extension=intl ``` -> simpan.
 
 <br><br>
 
