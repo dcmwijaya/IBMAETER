@@ -71,18 +71,18 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 ## Memulai
 1. Unduh dan ekstrak repositori ini.
 
-2. Buka direktori ``` IBMAETER ```, lalu buka ``` GitBash ``` di dalam direktori tersebut.<br>
-<ul>
-<li>Pertama, periksa apakah ada masalah atau tidak, jika masih ada kesalahan, sesuaikan saja dengan situasinya.</li><br>
-<li>Kedua, langkah ini wajib dilakukan, jadi silakan salin perintah berikut ini:</li><br>
-
-````bash
-php spark serve
-````
-</ul>
+2. Buka direktori ``` IBMAETER ```, lalu buka ``` GitBash ``` di dalam direktori tersebut.
+   
+   • Pertama, periksa apakah ada masalah atau tidak, jika masih ada kesalahan, sesuaikan saja dengan situasinya.
+   
+   • Kedua, langkah ini wajib dilakukan, jadi silakan salin perintah berikut ini:
+   
+   ````bash
+   php spark serve
+   ````
 
 3. Buka ``` peramban ``` anda (Tab baru), lalu ketik -> ``` localhost:8080 ``` atau sesuaikan dengan yang ada di ``` GitBash ``` anda.
-
+   
 4. Silakan masuk dan akses fitur-fiturnya, selamat menikmati [Selesai].
 
 <br><br>
