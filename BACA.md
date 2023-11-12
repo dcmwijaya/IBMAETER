@@ -81,7 +81,7 @@ php spark serve
 ````
 </ul>
 
-3. Buka ``` peramban ``` Anda (Tab baru), lalu ketik -> ``` localhost:8080 ``` atau sesuaikan dengan yang ada di ``` GitBash ``` Anda.
+3. Buka ``` peramban ``` anda (Tab baru), lalu ketik -> ``` localhost:8080 ``` atau sesuaikan dengan yang ada di ``` GitBash ``` anda.
 
 4. Silakan masuk dan akses fitur-fiturnya, selamat menikmati [Selesai].
 
