@@ -11,45 +11,54 @@
 <strong>Proyek HKI - Program Komputer</strong><br>
 IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inventaris gudang dan manajemen pekerja gudang. Fitur-fitur yang disediakan dapat menjaga performa bisnis dengan tetap memegang kendali penuh atas stok persediaan barang, harga barang, berat barang, dan lainnya yang disajikan secara cepat dan real time, sehingga pengguna tidak perlu melakukan semua aktivitas secara manual. Pengguna juga diuntungkan dalam upaya penghematan waktu.
 
-<br>
+<br><br>
 
 ## Fitur / Kerangka Kerja / Peralatan
 | Bagian | Deskripsi |
 | --- | --- |
 | Fitur | Masuk, Buat, Baca, Ubah, Hapus, Paginasi, Pencarian, Validasi, Cetak, Ekspor, DLL |
 | Kerangka Kerja | Bootstrap 4, CodeIgniter 4 |
-| Peralatan | Visual Studio Code, XAMPP (PHP Versi 7.4), Composer, Git |
+| Peralatan | Visual Studio Code, XAMPP (PHP Versi 7.4), Git |
 
-<br>
+<br><br>
 
 ## Unduh & Instal
-1.XAMPP dengan PHP versi 7.4 :
-```bash
-https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
-```
-2.Visual Studio Code :
-```bash
-https://code.visualstudio.com/docs/?dv=win
-```
-3.Git :
-```bash
-https://git-scm.com/download/win
-```
+1. XAMPP dengan PHP versi 7.4 :
 
+   ```bash
+   https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
+   ```
 <br>
+
+2. Visual Studio Code :
+
+   ```bash
+   https://code.visualstudio.com/docs/?dv=win
+   ```
+<br>
+
+3. Git :
+   
+   ```bash
+   https://git-scm.com/download/win
+   ```
+
+<br><br>
 
 ## Basis data
-1.Buka XAMPP, lalu tekan tombol mulai di bagian Apache & MySQL. Hal ini bertujuan untuk dapat mendukung website secara optimal.<br>
-2.Akses peramban terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut:
-```bash
-localhost/phpmyadmin/
-```
-3.Buat basis data bernama "warehouse_db" di lokal.<br>
-4.Buka basis data "warehouse_db" dan Impor basis data (warehouse_db_default.sql) di direktori IBMAETER/public/sql.<br>
-5.Jika basis data tidak berfungsi dengan baik, Anda dapat mengimpor pemicu yang disediakan oleh pembuat aplikasi di direktori IBMAETER/public/sql/trigger.<br>
-6.Kemudian buka berkas XAMP (php.ini) -> hapus titik koma (;) di depan extension=intl -> simpan.
+1. Buka ``` XAMPP ```, lalu tekan tombol mulai di bagian ``` Apache ``` & ``` MySQL ```. Hal ini bertujuan untuk dapat mendukung website secara optimal.
 
-<br>
+2. Akses ``` peramban ``` terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut: ``` localhost/phpmyadmin/ ```.
+   
+3. Buat basis data bernama ``` warehouse_db ``` di lokal.
+
+4. Buka basis data ``` warehouse_db ``` dan Impor ``` warehouse_db_default.sql ``` di direktori ``` IBMAETER/public/sql ```.
+
+5. Jika basis data tidak berfungsi dengan baik, anda dapat mengimpor ``` trigger ``` yang disediakan oleh pembuat aplikasi di direktori ``` IBMAETER/public/sql/trigger ```.
+
+6. Kemudian buka berkas XAMP: ``` php.ini ``` -> hapus ``` titik koma (;) ``` di depan ``` extension=intl ``` -> simpan.
+
+<br><br>
 
 ## Akun Bawaan
 | Peran | Surel | Kata Sandi |
@@ -59,7 +68,7 @@ localhost/phpmyadmin/
 
 <br>
 
-## Menjalankan
+## Memulai
 1.Unduh repositori ini.<br>
 2.Buka direktori "IBMAETER", lalu buka GitBash di dalam direktori tersebut.
 <ul>
@@ -161,6 +170,11 @@ php spark serve
 | 4 | Merdin Risalul Abrori, S.Kom. |
 | 5 | Arista Pratama, S.Kom., M.Kom. |
 | 6 | Lugito Michael Imanuel Prasetya, S.Kom. |
+
+<br><br>
+
+## Penafian
+Aplikasi ini dibuat dengan menyertakan sumber-sumber dari pihak ketiga. Pihak ketiga di sini adalah penyedia layanan, yang layanannya berupa pustaka, kerangka kerja, dan lain-lain. Saya ucapkan terima kasih banyak atas layanannya. Telah terbukti sangat membantu dan dapat diimplementasikan.
 
 <br><br>
 
