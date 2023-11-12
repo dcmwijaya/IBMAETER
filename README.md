@@ -56,7 +56,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 
 5. If the database is not working properly, you can import the ``` triggers ``` provided by the application creator in the ``` IBMAETER/public/sql/trigger ``` directory.
 
-6. Then open the XAMP file: ``` php.ini ``` -> remove ``` semicolon (;) ``` in front of ``` extension=intl ``` -> save.
+6. Then open the XAMPP file: ``` php.ini ``` -> remove ``` semicolon (;) ``` in front of ``` extension=intl ``` -> save.
 
 <br><br>
 
