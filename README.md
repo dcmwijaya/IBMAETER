@@ -177,6 +177,17 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 
 <br><br>
 
+## Reminder
+If the database auto-increment is still not in order, then you can do the following in phpMyAdmin:
+
+```bash
+SET  @num := 0;
+UPDATE your_table SET id = @num := (@num+1);
+ALTER TABLE your_table AUTO_INCREMENT =1;
+```
+
+<br><br>
+
 ## Disclaimer
 This application has been created by including third-party sources. Third parties here are service providers, whose services are in the form of libraries, frameworks, and others. I thank you very much for the service. It has proven to be very helpful and implementable.
 
