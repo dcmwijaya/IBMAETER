@@ -65,7 +65,6 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 | --- | --- | --- |
 | Admin | af@gmail.com | Superadmin123 |
 | User | adeline@gmail.com | User123456 |
-| User | renaldyy@gmail.com | User123456 |
 
 <br>
 
@@ -96,9 +95,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Waspada Penipuan</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/6082b9c1-a7e1-4996-b832-ecbf94b1c604" alt="home"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/f78f2ae3-ec19-46d7-b7bf-d3bfa14a6e34" alt="policies"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d72f5366-0120-4be5-a5d2-56541f916067" alt="scam-alert"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/b5e21391-03bd-4383-ad51-ff568195b6eb" alt="home"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/1f153c11-9bec-4410-8299-3482c6b76bf0" alt="policies"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/139ddd95-5e66-4ce5-90df-1836e569611c" alt="scam-alert"></td>
 </tr>
 </table>
 <table>
@@ -106,7 +105,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="840">Masuk</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/11124e55-c517-4825-9bfd-330ac7e9efd8" alt="login"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/7f4c8e7c-1680-44c0-bdcc-e8053563ed74" alt="login"></td>
 </tr>
 </table>
 <table>
@@ -114,8 +113,8 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th colspan="2">Dasbor</th>
 </tr>
 <tr>
-<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d794fb81-26df-4c34-9dfb-dc598e29d572" alt="dashboard-1"></td>
-<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/8e4fe0fa-0aff-4167-afc1-9d76856ba7aa" alt="dashboard-2"></td>
+<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/505474f2-0470-48fa-96c3-9d688d6cef49" alt="dashboard-1"></td>
+<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c0a7f6cb-e2b1-4df0-af52-cf6bd7dcbc82" alt="dashboard-2"></td>
 </tr>
 </table>
 <table>
@@ -125,9 +124,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Otorisasi Barang</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/052cacaa-ed28-4ec3-8495-16692459edaa" alt="add-workers"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/1798253b-a077-4c26-b770-b08583cd9946" alt="edit-workers"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/53631b43-d492-4d13-a432-ea3a270fb4ca" alt="item-authorization"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/82002203-22e1-4e60-9e1b-1f0e3851a77f" alt="add-workers"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/631cd95a-417d-4753-9e3c-a5f70bc54bf8" alt="edit-workers"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d2dcff65-b527-48fa-93d1-e4ad4cbbdaa7" alt="item-authorization"></td>
 </tr>
 </table>
 <table>
@@ -137,9 +136,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Absensi</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/9f9d0cb0-72de-467b-8ce6-164c8f060d8a" alt="manage-items"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/112edd8f-bb00-47ab-b636-c3b5a15d2622" alt="print-feature"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/e0127ed8-59f1-41c8-9eb5-8c8b4f626449" alt="attendance"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/48e56a4f-394a-46b3-ae9e-94e508f48366" alt="manage-items"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c8f4e484-fc07-43c2-80b2-60fc0091d326" alt="print-feature"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/89a0b96b-b4b7-44d7-af30-d02346e6c764" alt="attendance"></td>
 </tr>
 </table>
 <table>
@@ -149,9 +148,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Pengumuman</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/429b61ce-b9cc-4e48-a6ae-cd1d4eceac96" alt="user-track-record"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/25b13a23-3d4d-4384-9ff3-96fb4c7e318b" alt="edit-profile"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c7e48dfc-cd29-4421-a111-2bd583289340" alt="announcements"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/dba734b5-9f92-43bb-9624-3e1bb54a450c" alt="user-track-record"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/2bcd0723-6088-448c-b729-b79c20e5fee2" alt="edit-profile"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/22b011c9-8bf2-479a-bd71-d7ff9f172457" alt="announcements"></td>
 </tr>
 </table>
 <table>
@@ -159,7 +158,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="840">Ubah Pengumuman</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/fd955f5e-9ea5-4c57-b5ba-5f5cffa26cbe" alt="edit-announcements"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/e0c5762f-0645-419b-a1b9-893e2da9de35" alt="edit-announcements"></td>
 </tr>
 </table>
 
@@ -174,17 +173,6 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 | 4 | Merdin Risalul Abrori, S.Kom. |
 | 5 | Arista Pratama, S.Kom., M.Kom. |
 | 6 | Lugito Michael Imanuel Prasetya, S.Kom. |
-
-<br><br>
-
-## Pengingat
-Jika penambahan otomatis basis data masih belum beres, maka Anda dapat melakukan hal berikut ini di phpMyAdmin:
-
-```bash
-SET  @num := 0;
-UPDATE your_table SET id = @num := (@num+1);
-ALTER TABLE your_table AUTO_INCREMENT =1;
-```
 
 <br><br>
 

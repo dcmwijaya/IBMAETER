@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Sep 2023 pada 08.41
+-- Waktu pembuatan: 14 Nov 2023 pada 13.46
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 7.4.30
 
@@ -301,28 +301,56 @@ CREATE TABLE `komplain` (
 -- Trigger `komplain`
 --
 DELIMITER $$
+CREATE TRIGGER `del_komp_visib` AFTER DELETE ON `komplain` FOR EACH ROW BEGIN
+DELETE FROM `komplain_visibility` WHERE `no_komplain` = old.`no_komplain`;
+END
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `komp_visibilitas` AFTER INSERT ON `komplain` FOR EACH ROW BEGIN
-DECLARE done INT DEFAULT FALSE;
-DECLARE ids INT;
-DECLARE roles INT;
-DECLARE cur1 CURSOR FOR SELECT `uid` FROM `user`;
-DECLARE cur2 CURSOR FOR SELECT `role` FROM `user`;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
-OPEN cur1;
-OPEN cur2;
-
-	ins_loop: LOOP
-            FETCH cur1 INTO ids;
-            FETCH cur2 INTO roles;
-            IF done THEN
-                LEAVE ins_loop;
-            END IF;
-            INSERT INTO `komplain_visibility` VALUES (NULL, new.`no_komplain`, ids, roles, "Belum Dilihat", CURDATE());
-        END LOOP;
-
-CLOSE cur1;
-CLOSE cur2;
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE ids INT;
+  DECLARE roles INT;
+  DECLARE cur1 CURSOR FOR
+  SELECT
+    `uid`
+  FROM
+    `user`;
+  DECLARE cur2 CURSOR FOR
+  SELECT
+    `role`
+  FROM
+    `user`;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+  OPEN cur1;
+  OPEN cur2;
+  ins_loop :
+  LOOP
+    FETCH cur1 INTO ids;
+    FETCH cur2 INTO roles;
+    IF done
+    THEN LEAVE ins_loop;
+    END IF;
+    INSERT INTO `komplain_visibility` (
+      `id_visibility`,
+      `no_komplain`,
+      `uid`,
+      `role`,
+      `status`,
+      `waktu`
+    )
+    VALUES
+      (
+        NULL,
+        new.`no_komplain`,
+        ids,
+        roles,
+        "Belum Dilihat",
+        CURDATE()
+      );
+  END LOOP;
+  CLOSE cur1;
+  CLOSE cur2;
 END
 $$
 DELIMITER ;
@@ -377,6 +405,13 @@ CREATE TABLE `pengumuman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `pengumuman`
+--
+
+INSERT INTO `pengumuman` (`id_pengumuman`, `waktu`, `judul`, `isi`, `uid`) VALUES
+(1, '2023-11-14 07:45:23', 'Event: IBMAETER Hack Action 2023', 'Yth.\r\nPekerja PT Blabla\r\ndi Tempat\r\n\r\nAssalamu&#039;alaikum..\r\nMengingat kegiatan Hack Action 2023 IBMAETER diadakan pada bulan depan, maka mohon setiap departemen dapat mempersiapkan diri dengan sebaik-baiknya. Sekian informasi dari saya, terima kasih.', 1);
+
+--
 -- Trigger `pengumuman`
 --
 DELIMITER $$
@@ -426,6 +461,15 @@ CREATE TABLE `pengumuman_visibility` (
   `status` enum('Dilihat','Belum Dilihat') NOT NULL,
   `waktu` datetime NOT NULL COMMENT 'dilihat pada waktu?'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pengumuman_visibility`
+--
+
+INSERT INTO `pengumuman_visibility` (`id_visibility`, `id_pengumuman`, `uid`, `role`, `status`, `waktu`) VALUES
+(1, 1, 2, 0, 'Belum Dilihat', '2023-11-14 07:45:23'),
+(2, 1, 1, 1, 'Dilihat', '2023-11-14 19:45:33'),
+(3, 1, 34, 1, 'Belum Dilihat', '2023-11-14 07:45:23');
 
 -- --------------------------------------------------------
 
@@ -485,7 +529,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`uid`, `nama`, `email`, `password`, `role`, `divisi_user`, `picture`, `gender`, `tanggal_lahir`) VALUES
 (1, 'Alfha Fierly. F', 'af@gmail.com', '$2y$10$iQeLI0Cz4.yMf5OH1NPoWuWwRVtg8rQiKgfDVUQzrc.0K45IeWo4W', 0, 1, '1694154906_1117936d377284b83093.jpeg', 'Laki-laki', '1988-02-04'),
-(2, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$fuQZDVW.aCnlvxN6MHgJC.7Sy2wvw1nBv3bvQtMusYIeWLKCbFcye', 1, 7, '1694154521_aab7bfc7e653cb62d80c.jpeg', 'Perempuan', '1997-11-20');
+(2, 'Adielya Moline', 'adeline@gmail.com', '$2y$10$fuQZDVW.aCnlvxN6MHgJC.7Sy2wvw1nBv3bvQtMusYIeWLKCbFcye', 1, 7, '1694154521_aab7bfc7e653cb62d80c.jpeg', 'Perempuan', '1997-11-20'),
+(34, 'Renaldy Yudistira Atmadja', 'renaldyy@gmail.com', '$2y$10$nR4psjSrCd1/hWaSwF1O8ORD2O2xYWljQ95jlRfRtLhuPeabZijk.', 1, 6, '1699964925_9461973874932a5baba1.jpg', 'Laki-laki', '1998-02-12');
 
 --
 -- Trigger `user`
@@ -573,7 +618,17 @@ INSERT INTO `user_activity` (`id_aktivitas`, `uid_aktivitas`, `aktivitas`, `wakt
 (0, 2, 'Adielya Moline melakukan Login.', '2023-09-08 13:38:53'),
 (0, 2, 'Adielya Moline melakukan Logout.', '2023-09-08 13:39:11'),
 (0, 1, 'Alfha Fierly. F melakukan Login.', '2023-09-08 13:39:20'),
-(0, 1, 'Alfha Fierly. F melakukan Logout.', '2023-09-08 13:40:28');
+(0, 1, 'Alfha Fierly. F melakukan Logout.', '2023-09-08 13:40:28'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-11-14 19:20:57'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-11-14 19:23:16'),
+(0, 1, 'Alfha Fierly. F melakukan Login.', '2023-11-14 19:23:19'),
+(0, 1, 'Alfha Fierly. F menambahkan Akun baru dengan nama : Renaldy Yudistira, email : renaldyy@gmail.com, dan divisi : 6 sebagai 1', '2023-11-14 19:28:45'),
+(0, 1, 'Alfha Fierly. F mengubah Akun dengan nama : Renaldy Yudistira Atmadja, email : renaldyy@gmail.com, dan divisi : 6 sebagai 1', '2023-11-14 19:30:54'),
+(0, 1, 'Alfha Fierly. F melakukan Logout.', '2023-11-14 19:38:05'),
+(0, 2, 'Adielya Moline melakukan Login.', '2023-11-14 19:38:24'),
+(0, 2, 'Adielya Moline melakukan Logout.', '2023-11-14 19:38:42'),
+(0, 1, 'Alfha Fierly. F melakukan Login.', '2023-11-14 19:38:46'),
+(0, 1, 'Alfha Fierly. F menambahkan pengumuman dengan judul <b>Event: IBMAETER Hack Action 2023</b>.', '2023-11-14 19:45:23');
 
 -- --------------------------------------------------------
 
@@ -731,13 +786,13 @@ ALTER TABLE `komplain_visibility`
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengumuman_visibility`
 --
 ALTER TABLE `pengumuman_visibility`
-  MODIFY `id_visibility` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_visibility` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
@@ -749,7 +804,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `uid` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_divisi`
