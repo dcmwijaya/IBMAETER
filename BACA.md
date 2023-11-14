@@ -96,7 +96,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Waspada Penipuan</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/11124e55-c517-4825-9bfd-330ac7e9efd8" alt="home"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/6082b9c1-a7e1-4996-b832-ecbf94b1c604" alt="home"></td>
 <td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/f78f2ae3-ec19-46d7-b7bf-d3bfa14a6e34" alt="policies"></td>
 <td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d72f5366-0120-4be5-a5d2-56541f916067" alt="scam-alert"></td>
 </tr>
@@ -106,7 +106,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="840">Masuk</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/10c8f43f-fcc9-4a46-a942-940ddf56c7e0" alt="login"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/11124e55-c517-4825-9bfd-330ac7e9efd8" alt="login"></td>
 </tr>
 </table>
 <table>
