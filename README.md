@@ -137,9 +137,9 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <th width="280">Attendance</th>
 </tr>
 <tr>
-<td><img src="" alt="manage-items"></td>
-<td><img src="" alt="print-feature"></td>
-<td><img src="" alt="attendance"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/9f9d0cb0-72de-467b-8ce6-164c8f060d8a" alt="manage-items"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/112edd8f-bb00-47ab-b636-c3b5a15d2622" alt="print-feature"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/e0127ed8-59f1-41c8-9eb5-8c8b4f626449" alt="attendance"></td>
 </tr>
 </table>
 <table>
