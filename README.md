@@ -65,6 +65,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 | --- | --- | --- |
 | Admin | af@gmail.com | Superadmin123 |
 | User | adeline@gmail.com | User123456 |
+| User | renaldyy@gmail.com | User123456 |
 
 <br><br>
 
@@ -148,9 +149,9 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <th width="280">Announcements</th>
 </tr>
 <tr>
-<td><img src="" alt="user-track-record"></td>
-<td><img src="" alt="edit-profile"></td>
-<td><img src="" alt="announcements"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/429b61ce-b9cc-4e48-a6ae-cd1d4eceac96" alt="user-track-record"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/25b13a23-3d4d-4384-9ff3-96fb4c7e318b" alt="edit-profile"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c7e48dfc-cd29-4421-a111-2bd583289340" alt="announcements"></td>
 </tr>
 </table>
 <table>
@@ -158,7 +159,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <th width="840">Edit Announcements</th>
 </tr>
 <tr>
-<td><img src="" alt="edit-announcements"></td>
+<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/fd955f5e-9ea5-4c57-b5ba-5f5cffa26cbe" alt="edit-announcements"></td>
 </tr>
 </table>
 
