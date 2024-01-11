@@ -13,7 +13,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 
 <br><br>
 
-## Features / Framework / Tools
+## Project Requirements
 | Part | Description |
 | --- | --- |
 | Features | Login, Create, Read, Update, Delete, Pagination, Search, Validation, Print, Export, ETC |
