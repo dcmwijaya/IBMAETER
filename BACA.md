@@ -196,7 +196,7 @@ Aplikasi ini dibuat dengan menyertakan sumber-sumber dari pihak ketiga. Pihak ke
 ## LISENSI
 Lisensi 3 Klausul BSD
 
-Hak Cipta (c) 2023, Devan C. M. Wijaya, S.Kom dkk
+Hak Cipta © 2023, Devan C. M. Wijaya, S.Kom dkk
 
 Penyebarluasan dan penggunaan dalam bentuk sumber dan biner, dengan atau tanpa dengan atau tanpa modifikasi, diperbolehkan asalkan memenuhi persyaratan berikut:
 
