@@ -196,7 +196,7 @@ This application has been created by including third-party sources. Third partie
 ## LICENSE
 BSD 3 Clause License
 
-Copyright (c) 2023, Devan C. M. Wijaya, S.Kom et al
+Copyright © 2023, Devan C. M. Wijaya, S.Kom et al
 
 Dissemination and use in source and binary form, with or without with or without modification, is allowed provided that the following conditions are met:
 
