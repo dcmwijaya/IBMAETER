@@ -24,38 +24,48 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <br><br>
 
 ## Download & Install
-1. XAMPP with PHP version 7.4 :
+1. XAMPP with PHP version 7.4
+
+   <table><tr><td width="810">
 
    ```
    https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
    ```
-<br>
+   
+   </td></tr></table><br>
 
-2. Visual Studio Code :
+2. Visual Studio Code
+
+   <table><tr><td width="810">
 
    ```
    https://code.visualstudio.com/docs/?dv=win
    ```
-<br>
+   
+   </td></tr></table><br>
 
-3. Git :
+3. Git
+
+   <table><tr><td width="810">
    
    ```
    https://git-scm.com/download/win
    ```
+   
+   </td></tr></table>
 
 <br><br>
 
 ## Database
-1. Open ``` XAMPP ```, then start the ``` Apache ``` & ``` MySQL ``` section. This aims to be able to support the website optimally.
+1. Open ``` XAMPP ```, then start the ``` Apache ``` & ``` MySQL ``` section. This aims to be able to support the website optimally.<br><br>
 
-2. Access the browser first in order to open the database admin panel, please copy the following link: ``` localhost/phpmyadmin/ ```.
+2. Access the browser first in order to open the database admin panel, please copy the following link: ``` localhost/phpmyadmin/ ```.<br><br>
 
-3. Create a database called ``` warehouse_db ``` on local.
+3. Create a database called ``` warehouse_db ``` on local.<br><br>
 
-4. Open the ``` warehouse_db ``` database and Import ``` warehouse_db_default.sql ``` in the ``` IBMAETER/public/sql ``` directory.
+4. Open the ``` warehouse_db ``` database and Import ``` warehouse_db_default.sql ``` in the ``` IBMAETER/public/sql ``` directory.<br><br>
 
-5. If the database is not working properly, you can import the ``` triggers ``` provided by the application creator in the ``` IBMAETER/public/sql/trigger ``` directory.
+5. If the database is not working properly, you can import the ``` triggers ``` provided by the application creator in the ``` IBMAETER/public/sql/trigger ``` directory.<br><br>
 
 6. Then open the XAMPP file: ``` php.ini ``` -> remove ``` semicolon (;) ``` in front of ``` extension=intl ``` -> save.
 
@@ -71,19 +81,23 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 <br><br>
 
 ## Get Started
-1. Download and extract this repository.
+1. Download and extract this repository.<br><br>
 
 2. Open the ``` IBMAETER ``` directory, then open ``` GitBash ``` inside that directory.
    
    • First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.
    
    • Secondly, this step is mandatory, so please copy the following command:
-   
+
+   <table><tr><td width="810">
+      
    ````bash
    php spark serve
    ````
+   
+   </td></tr></table><br>
 
-3. Open your ``` browser ``` (New tab), then type -> ``` localhost:8080 ``` or customize the one on your ``` GitBash ```.
+3. Open your ``` browser ``` (New tab), then type -> ``` localhost:8080 ``` or customize the one on your ``` GitBash ```.<br><br>
    
 4. Please login and access the features, enjoy [Done].
 
@@ -181,11 +195,15 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 ## Reminder
 If the database auto-increment is still not in order, then you can do the following in phpMyAdmin:
 
+<table><tr><td width="840">
+   
 ```sql
 SET  @num := 0;
 UPDATE your_table SET id = @num := (@num+1);
 ALTER TABLE your_table AUTO_INCREMENT =1;
 ```
+
+</td></tr></table>
 
 <br><br>
 
