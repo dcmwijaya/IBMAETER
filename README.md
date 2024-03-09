@@ -26,21 +26,21 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 ## Download & Install
 1. XAMPP with PHP version 7.4 :
 
-   ```bash
+   ```
    https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
    ```
 <br>
 
 2. Visual Studio Code :
 
-   ```bash
+   ```
    https://code.visualstudio.com/docs/?dv=win
    ```
 <br>
 
 3. Git :
    
-   ```bash
+   ```
    https://git-scm.com/download/win
    ```
 
@@ -181,11 +181,16 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 ## Reminder
 If the database auto-increment is still not in order, then you can do the following in phpMyAdmin:
 
-```bash
+```sql
 SET  @num := 0;
 UPDATE your_table SET id = @num := (@num+1);
 ALTER TABLE your_table AUTO_INCREMENT =1;
 ```
+
+<br><br>
+
+## Appreciation
+If you find this work useful, please support it as a token of appreciation to the author by clicking the ``` ⭐Star ``` button.
 
 <br><br>
 
