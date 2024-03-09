@@ -24,38 +24,48 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <br><br>
 
 ## Unduh & Instal
-1. XAMPP dengan PHP versi 7.4 :
+1. XAMPP with PHP version 7.4
 
-   ```bash
+   <table><tr><td width="810">
+
+   ```
    https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
    ```
-<br>
+   
+   </td></tr></table><br>
 
-2. Visual Studio Code :
+2. Visual Studio Code
 
-   ```bash
+   <table><tr><td width="810">
+
+   ```
    https://code.visualstudio.com/docs/?dv=win
    ```
-<br>
-
-3. Git :
    
-   ```bash
+   </td></tr></table><br>
+
+3. Git
+
+   <table><tr><td width="810">
+   
+   ```
    https://git-scm.com/download/win
    ```
+   
+   </td></tr></table>
 
 <br><br>
 
 ## Basis data
-1. Buka ``` XAMPP ```, lalu tekan tombol mulai di bagian ``` Apache ``` & ``` MySQL ```. Hal ini bertujuan untuk dapat mendukung website secara optimal.
+1. Buka ``` XAMPP ```, lalu tekan tombol mulai di bagian ``` Apache ``` & ``` MySQL ```. Hal ini bertujuan untuk dapat mendukung website secara optimal.<br><br>
 
-2. Akses ``` peramban ``` terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut: ``` localhost/phpmyadmin/ ```.
+2. Akses ``` peramban ``` terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut: ``` localhost/phpmyadmin/ ```.<br><br>
    
-3. Buat basis data bernama ``` warehouse_db ``` di lokal.
+3. Buat basis data bernama ``` warehouse_db ``` di lokal.<br><br>
 
-4. Buka basis data ``` warehouse_db ``` dan Impor ``` warehouse_db_default.sql ``` di direktori ``` IBMAETER/public/sql ```.
+4. Buka basis data ``` warehouse_db ``` dan Impor ``` warehouse_db_default.sql ``` di direktori ``` IBMAETER/public/sql ```.<br><br>
 
-5. Jika basis data tidak berfungsi dengan baik, anda dapat mengimpor ``` trigger ``` yang disediakan oleh pembuat aplikasi di direktori ``` IBMAETER/public/sql/trigger ```.
+5. Jika basis data tidak berfungsi dengan baik, anda dapat mengimpor ``` trigger ``` yang disediakan oleh pembuat aplikasi di direktori ``` IBMAETER/public/sql/trigger ```.<br><br>
 
 6. Kemudian buka berkas XAMPP: ``` php.ini ``` -> hapus ``` titik koma (;) ``` di depan ``` extension=intl ``` -> simpan.
 
@@ -71,19 +81,23 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <br>
 
 ## Memulai
-1. Unduh dan ekstrak repositori ini.
+1. Unduh dan ekstrak repositori ini.<br><br>
 
-2. Buka direktori ``` IBMAETER ```, lalu buka ``` GitBash ``` di dalam direktori tersebut.
+2. Buka direktori ``` IBMAETER ```, lalu buka ``` GitBash ``` di dalam direktori tersebut.<br><br>
    
-   • Pertama, periksa apakah ada masalah atau tidak, jika masih ada kesalahan, sesuaikan saja dengan situasinya.
+   • Pertama, periksa apakah ada masalah atau tidak, jika masih ada kesalahan, sesuaikan saja dengan situasinya.<br><br>
    
    • Kedua, langkah ini wajib dilakukan, jadi silakan salin perintah berikut ini:
-   
+
+   <table><tr><td width="810">
+      
    ````bash
    php spark serve
    ````
+   
+   </td></tr></table><br>
 
-3. Buka ``` peramban ``` anda (Tab baru), lalu ketik -> ``` localhost:8080 ``` atau sesuaikan dengan yang ada di ``` GitBash ``` anda.
+3. Buka ``` peramban ``` anda (Tab baru), lalu ketik -> ``` localhost:8080 ``` atau sesuaikan dengan yang ada di ``` GitBash ``` anda.<br><br>
    
 4. Silakan masuk dan akses fitur-fiturnya, selamat menikmati [Selesai].
 
@@ -181,11 +195,20 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 ## Pengingat
 Jika penambahan otomatis basis data masih belum beres, maka Anda dapat melakukan hal berikut ini di phpMyAdmin:
 
-```bash
+<table><tr><td width="840">
+   
+```sql
 SET  @num := 0;
 UPDATE your_table SET id = @num := (@num+1);
 ALTER TABLE your_table AUTO_INCREMENT =1;
 ```
+
+</td></tr></table>
+
+<br><br>
+
+## Apresiasi
+Jika anda merasa karya ini bermanfaat, dukunglah karya ini sebagai bentuk apresiasi kepada penulis dengan cara mengeklik tombol ``` ⭐Bintang ```.
 
 <br><br>
 
