@@ -85,7 +85,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
 
 2. Open the ``` IBMAETER ``` directory, then open ``` GitBash ``` inside that directory.<br><br>
    
-   • First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.<br>
+   • First, check whether there is a problem or not, if there is still an error, just adjust it according to the situation.<br><br>
    
    • Secondly, this step is mandatory, so please copy the following command:
 
