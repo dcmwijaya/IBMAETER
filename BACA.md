@@ -193,7 +193,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <br><br>
 
 ## Pengingat
-Jika penambahan otomatis basis data masih belum beres, maka Anda dapat melakukan hal berikut ini di phpMyAdmin:
+Jika penambahan otomatis basis data masih belum beres, maka anda dapat melakukan hal berikut ini di phpMyAdmin:
 
 <table><tr><td width="840">
    
