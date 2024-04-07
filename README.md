@@ -29,7 +29,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
    <table><tr><td width="810">
 
    ```
-   https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe/download
+   https://bit.ly/XAMPP_PHP7_Installer
    ```
    
    </td></tr></table><br>
@@ -39,7 +39,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
    <table><tr><td width="810">
 
    ```
-   https://code.visualstudio.com/docs/?dv=win
+   https://bit.ly/VScode_Installer
    ```
    
    </td></tr></table><br>
@@ -49,7 +49,7 @@ IBMAETER is a website that facilitates users in managing warehouse inventory act
    <table><tr><td width="810">
    
    ```
-   https://git-scm.com/download/win
+   https://bit.ly/GIT_Installer
    ```
    
    </td></tr></table>
