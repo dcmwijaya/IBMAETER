@@ -1,12 +1,8 @@
-![IPR](https://img.shields.io/badge/Project-IPR-blue?logo=github&color=%23F7DF1E)
-![GitHub last commit](https://img.shields.io/github/last-commit/devancakra/IBMAETER)
-![CI4](https://img.shields.io/badge/-Codeigniter4-darkblue?style=flat&logo=Codeigniter)
-![JS](https://img.shields.io/badge/JS-brown.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)
-![JQUERY](https://img.shields.io/badge/JQuery-%23323330.svg?&style=flat&logo=jquery&logoColor=%23F7DF1E&color=FF3366)
-![JSON](https://img.shields.io/badge/JSON-%23323330.svg?&style=flat&logo=json&logoColor=%23F7DF1E&color=9900FF)
-![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple.svg?&logo=bootstrap&logoColor=white)
-![PHP](https://img.shields.io/badge/-PHP-darkgreen.svg?&logo=PHP&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-darkcyan.svg?style=flat&logo=mysql&logoColor=white)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?style=flat)](https://github.com/ellerbrock/open-source-badges/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?logo=github&color=%23F7DF1E)](https://opensource.org/licenses/MIT)
+![GitHub last commit](https://img.shields.io/github/last-commit/devancakra/IBMAETER?logo=Codeforces&logoColor=white&color=%23F7DF1E)
+![Project](https://img.shields.io/badge/Project-Website-light.svg?style=flat&logo=googlechrome&logoColor=white&color=%23F7DF1E)
+![Type](https://img.shields.io/badge/Type-IPR-light.svg?style=flat&logo=gitbook&logoColor=white&color=%23F7DF1E)
 
 # IBMAETER
 <strong>Proyek HKI - Program Komputer</strong><br><br>
@@ -111,9 +107,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Waspada Penipuan</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/6082b9c1-a7e1-4996-b832-ecbf94b1c604" alt="home"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/f78f2ae3-ec19-46d7-b7bf-d3bfa14a6e34" alt="policies"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d72f5366-0120-4be5-a5d2-56541f916067" alt="scam-alert"></td>
+<td><img src="documentation/images/Home.jpg" alt="home"></td>
+<td><img src="documentation/images/Policies.jpg" alt="policies"></td>
+<td><img src="documentation/images/Scam Alert.jpg" alt="scam-alert"></td>
 </tr>
 </table>
 <table>
@@ -121,7 +117,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="840">Masuk</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/11124e55-c517-4825-9bfd-330ac7e9efd8" alt="login"></td>
+<td><img src="documentation/images/Login.jpg" alt="login"></td>
 </tr>
 </table>
 <table>
@@ -129,8 +125,8 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th colspan="2">Dasbor</th>
 </tr>
 <tr>
-<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/d794fb81-26df-4c34-9dfb-dc598e29d572" alt="dashboard-1"></td>
-<td width="420"><img src="https://github.com/devancakra/IBMAETER/assets/54527592/8e4fe0fa-0aff-4167-afc1-9d76856ba7aa" alt="dashboard-2"></td>
+<td width="420"><img src="documentation/images/Dashboard-1.jpg" alt="dashboard-1"></td>
+<td width="420"><img src="documentation/images/Dashboard-2.jpg" alt="dashboard-2"></td>
 </tr>
 </table>
 <table>
@@ -140,9 +136,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Otorisasi Barang</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/052cacaa-ed28-4ec3-8495-16692459edaa" alt="add-workers"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/1798253b-a077-4c26-b770-b08583cd9946" alt="edit-workers"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/53631b43-d492-4d13-a432-ea3a270fb4ca" alt="item-authorization"></td>
+<td><img src="documentation/images/Add Workers.jpg" alt="add-workers"></td>
+<td><img src="documentation/images/Edit Workers.jpg" alt="edit-workers"></td>
+<td><img src="documentation/images/Item Authorization.jpg" alt="item-authorization"></td>
 </tr>
 </table>
 <table>
@@ -152,9 +148,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Absensi</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/9f9d0cb0-72de-467b-8ce6-164c8f060d8a" alt="manage-items"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/112edd8f-bb00-47ab-b636-c3b5a15d2622" alt="print-feature"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/e0127ed8-59f1-41c8-9eb5-8c8b4f626449" alt="attendance"></td>
+<td><img src="documentation/images/Manage Items.jpg" alt="manage-items"></td>
+<td><img src="documentation/images/Print Feature.jpg" alt="print-feature"></td>
+<td><img src="documentation/images/Attendance.jpg" alt="attendance"></td>
 </tr>
 </table>
 <table>
@@ -164,9 +160,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="280">Pengumuman</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/429b61ce-b9cc-4e48-a6ae-cd1d4eceac96" alt="user-track-record"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/25b13a23-3d4d-4384-9ff3-96fb4c7e318b" alt="edit-profile"></td>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/c7e48dfc-cd29-4421-a111-2bd583289340" alt="announcements"></td>
+<td><img src="documentation/images/User Track Record.jpg" alt="user-track-record"></td>
+<td><img src="documentation/images/Edit Profile.jpg" alt="edit-profile"></td>
+<td><img src="documentation/images/Announcements.jpg" alt="announcements"></td>
 </tr>
 </table>
 <table>
@@ -174,7 +170,7 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 <th width="840">Ubah Pengumuman</th>
 </tr>
 <tr>
-<td><img src="https://github.com/devancakra/IBMAETER/assets/54527592/fd955f5e-9ea5-4c57-b5ba-5f5cffa26cbe" alt="edit-announcements"></td>
+<td><img src="documentation/images/Edit Announcements.jpg" alt="edit-announcements"></td>
 </tr>
 </table>
 
@@ -213,14 +209,12 @@ Jika karya ini bermanfaat bagi anda, maka dukunglah karya ini sebagai bentuk apr
 <br><br>
 
 ## Penafian
-Aplikasi ini dibuat dengan menyertakan sumber-sumber dari pihak ketiga. Pihak ketiga di sini adalah penyedia layanan, yang layanannya berupa pustaka, kerangka kerja, dan lain-lain. Saya ucapkan terima kasih banyak atas layanannya. Telah terbukti sangat membantu dan dapat diimplementasikan.
+Aplikasi ini merupakan hasil karya saya bersama tim saya dan bukan merupakan hasil plagiat dari penelitian atau karya orang lain, kecuali yang berkaitan dengan layanan pihak ketiga yang meliputi: pustaka, kerangka kerja, dan lain sebagainya.
 
 <br><br>
 
 ## LISENSI
-Lisensi 3 Klausul BSD
-
-Hak Cipta © 2023, Devan C. M. Wijaya, S.Kom dkk
+LISENSI 3 KLAUSUL BSD - Hak Cipta © 2023 - Devan C. M. Wijaya, S.Kom dkk
 
 Penyebarluasan dan penggunaan dalam bentuk sumber dan biner, dengan atau tanpa dengan atau tanpa modifikasi, diperbolehkan asalkan memenuhi persyaratan berikut:
 
