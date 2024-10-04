@@ -214,7 +214,7 @@ This application is the result of my work with my team and is not the result of 
 <br><br>
 
 ## LICENSE
-BSD 3 CLAUSE LICENSE - Copyright © 2023 - Devan C. M. Wijaya, S.Kom et al
+BSD 3 CLAUSE LICENSE - Copyright © 2023 - Devan C. M. Wijaya et al
 
 Dissemination and use in source and binary form, with or without with or without modification, is allowed provided that the following conditions are met:
 
