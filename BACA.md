@@ -180,9 +180,9 @@ IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inv
 | ANGGOTA | NAMA LENGKAP |
 | --- | --- |
 | 1 | Rizky Parlika, S.Kom., M.Kom. |
-| 2 | Rifky Akhmad Fernanda, S.Kom. |
-| 3 | Devan Cakra Mudra Wijaya, S.Kom. |
-| 4 | Merdin Risalul Abrori, S.Kom. |
+| 2 | Rifky Akhmad Fernanda |
+| 3 | Devan Cakra Mudra Wijaya |
+| 4 | Merdin Risalul Abrori |
 | 5 | Arista Pratama, S.Kom., M.Kom. |
 | 6 | Lugito Michael Imanuel Prasetya, S.Kom. |
 
