@@ -214,7 +214,7 @@ Aplikasi ini merupakan hasil karya saya bersama tim saya dan bukan merupakan has
 <br><br>
 
 ## LISENSI
-LISENSI 3 KLAUSUL BSD - Hak Cipta © 2023 - Devan C. M. Wijaya dkk
+LISENSI 3 KLAUSUL BSD - Hak Cipta © 2022 - Devan C. M. Wijaya dkk
 
 Penyebarluasan dan penggunaan dalam bentuk sumber dan biner, dengan atau tanpa dengan atau tanpa modifikasi, diperbolehkan asalkan memenuhi persyaratan berikut:
 
