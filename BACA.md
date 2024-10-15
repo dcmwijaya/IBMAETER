@@ -6,7 +6,7 @@
 
 # IBMAETER
 <strong>Proyek HKI - Program Komputer</strong><br><br>
-IBMAETER merupakan website yang memudahkan pengguna dalam mengelola kegiatan inventaris gudang dan manajemen pekerja gudang. Fitur-fitur yang disediakan dapat menjaga performa bisnis dengan tetap memegang kendali penuh atas stok persediaan barang, harga barang, berat barang, dan lainnya yang disajikan secara cepat dan real time, sehingga pengguna tidak perlu melakukan semua aktivitas secara manual. Pengguna juga diuntungkan dalam upaya penghematan waktu.
+IBMAETER adalah sebuah website yang dirancang untuk mempermudah pengelolaan inventori gudang dan manajemen tenaga kerja. Fitur-fitur yang tersedia memungkinkan bisnis untuk tetap memiliki kendali penuh atas stok barang, harga, berat produk, dan lainnya, yang disajikan dengan cepat dan real-time. Hal ini menghilangkan kebutuhan akan proses manual, membantu pengguna menghemat waktu berharga, dan meningkatkan performa bisnis secara keseluruhan.
 
 <br><br>
 
