@@ -6,7 +6,7 @@
 
 # IBMAETER
 <strong>IPR Project - Computer Programs</strong><br><br>
-IBMAETER is a website that facilitates users in managing warehouse inventory activities and warehouse worker management. The features provided can maintain business performance while maintaining full control of stock inventory, item prices, item weight, and others that are presented quickly and in real time, so that users do not need to do all activities manually. Users also benefit in saving their time.
+IBMAETER is a website designed to streamline warehouse inventory and workforce management. Its features allow businesses to maintain full control over stock levels, product prices, weights, and more, all delivered quickly and in real time. This eliminates the need for manual processes, helping users save valuable time and improve overall business performance.
 
 <br><br>
 
